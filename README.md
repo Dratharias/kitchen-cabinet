@@ -377,7 +377,7 @@ CREATE TABLE sessions (
 
 
 ## ⚙️ Config & Docker
-```mermaid
+```shell
 # .env
 POSTGRES_PASSWORD=[REDACTED]
 DOMAIN=jmongeau.com
