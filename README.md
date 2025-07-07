@@ -381,7 +381,7 @@ CREATE TABLE sessions (
 # .env
 POSTGRES_PASSWORD=[REDACTED]
 DOMAIN=jmongeau.com
-DATABASE_URL_RECIPES=postgresql://dratharias:${POSTGRES_PASSWORD}@10.21.70.10:5432/recipes
+DATABASE_URL_RECIPES=postgresql://dratharias:[REDACTED]@10.21.70.10:5432/recipes
 
 # kitchen-cabinet
 RECIPES_DOMAIN=https://recettes.jmongeau.com
