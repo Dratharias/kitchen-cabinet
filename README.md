@@ -131,59 +131,59 @@ erDiagram
   SIDE_DISHES       }o--|| RECIPES       : complements
 
   RECIPES {
-    UUID id
-    TEXT title
-    BOOL published
+    UUID    id
+    TEXT    title
+    BOOL    published
     VARCHAR short_desc
-    TEXT description
-    TEXT notes
-    UUID estimated_time FK
-    UUID thumbnail_id FK
+    TEXT    description
+    TEXT    notes
+    UUID    estimated_time_FK
+    UUID    thumbnail_id_FK
     VARCHAR yield
   }
 
   INGREDIENTS {
-    UUID id
-    VARCHAR name
+    UUID     id
+    VARCHAR  name
     SMALLINT calories_per_100g
   }
 
   INGREDIENT_SECTIONS {
-    UUID id
-    UUID recipe_id FK
-    VARCHAR title
+    UUID     id
+    UUID     recipe_id_FK
+    VARCHAR  title
     SMALLINT order
   }
 
   RECIPE_INGREDIENTS {
-    UUID id
-    UUID recipe_id FK
-    UUID section_id FK
-    UUID? ingredient_id FK
-    UUID? linked_recipe FK
+    UUID    id
+    UUID    recipe_id_FK
+    UUID    section_id_FK
+    UUID    ingredient_id_FK
+    UUID    linked_recipe_FK
     VARCHAR amount
     VARCHAR unit
-    BOOL optional
+    BOOL    optional
   }
 
   STEP_SECTIONS {
-    UUID id
-    UUID recipe_id FK
-    VARCHAR title
+    UUID     id
+    UUID     recipe_id_FK
+    VARCHAR  title
     SMALLINT order
   }
 
   RECIPE_STEPS {
-    UUID id
-    UUID recipe_id FK
-    UUID section_id FK
+    UUID    id
+    UUID    recipe_id_FK
+    UUID    section_id_FK
     SMALLINT order
-    TEXT description
-    UUID? linked_recipe FK
+    TEXT    description
+    UUID    linked_recipe_FK
   }
 
   RECIPE_TIMES {
-    UUID id
+    UUID     id
     SMALLINT prep
     SMALLINT marinate
     SMALLINT ferment
@@ -193,74 +193,75 @@ erDiagram
   }
 
   MEDIA {
-    UUID id
-    TEXT url
+    UUID    id
+    TEXT    url
     VARCHAR alt_text
   }
 
   TAGS {
-    UUID id
+    UUID    id
     VARCHAR tag
   }
 
   RECIPE_TAGS {
-    UUID id
-    UUID recipe_id FK
-    UUID tag_id FK
+    UUID    id
+    UUID    recipe_id_FK
+    UUID    tag_id_FK
   }
 
   TAG_SCORING {
-    UUID id
-    UUID user_id FK
-    UUID tag_id FK
-    INT score
+    UUID     id
+    UUID     user_id_FK
+    UUID     tag_id_FK
+    INT      score
     DATETIME updated_at
   }
 
   FRIDGE_INVENTORY {
-    UUID id
-    UUID ingredient_id FK
-    DECIMAL quantity
-    VARCHAR unit
-    DATE expiry_date
+    UUID     id
+    UUID     ingredient_id_FK
+    DECIMAL  quantity
+    VARCHAR  unit
+    DATE     expiry_date
   }
 
   SEASONAL {
-    UUID id
-    UUID ingredient_id FK
+    UUID    id
+    UUID    ingredient_id_FK
     VARCHAR season
     VARCHAR location
   }
 
   BLOG_POSTS {
-    UUID id
-    TEXT title
-    TEXT content
+    UUID     id
+    TEXT     title
+    TEXT     content
     DATETIME published_at
   }
 
   TEAS {
-    UUID id
+    UUID    id
     VARCHAR name
     VARCHAR origin
     VARCHAR type
-    TEXT notes
+    TEXT    notes
   }
 
   TEA_RATINGS {
-    UUID id
-    UUID tea_id FK
-    UUID admin_id FK
-    INT rating
-    TEXT comment
+    UUID    id
+    UUID    tea_id_FK
+    UUID    admin_id_FK
+    INT     rating
+    TEXT    comment
   }
 
   SIDE_DISHES {
-    UUID id
-    UUID recipe_id FK
+    UUID     id
+    UUID     recipe_id_FK
     SMALLINT prep_time_min
   }
 ```
+
 📝 Forms & API Interfaces
 1. Authentication
 
