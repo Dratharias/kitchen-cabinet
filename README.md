@@ -193,13 +193,16 @@ erDiagram
     SMALLINT rest
   }
 
+  %% recipe_id_FK is an optional link to a recipe (existing)
+  %% step_id_FK is an optional link to a recipe step
   MEDIA {
     UUID    id
     TEXT    url
     VARCHAR alt_text
-    UUID    recipe_id_FK "optional link to recipe (existing)"
-    UUID    step_id_FK NULL "optional link to a recipe step"
-  }
+    UUID    recipe_id_FK
+    UUID    step_id_FK
+}
+
 
   TAGS {
     UUID    id
