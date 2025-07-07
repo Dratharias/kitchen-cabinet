@@ -111,7 +111,7 @@ erDiagram
   RECIPES ||--o{ RECIPE_INGREDIENTS  : includes
   RECIPES ||--o{ RECIPE_STEPS        : describes
   RECIPES }o--|| RECIPE_TIMES        : uses
-  RECIPES }o--|| MEDIA               : thumbnail
+  RECIPES }o--o{ MEDIA               : thumbnail
 
   INGREDIENT_SECTIONS ||--o{ RECIPE_INGREDIENTS : groups
   STEP_SECTIONS       ||--o{ RECIPE_STEPS       : groups
@@ -119,6 +119,7 @@ erDiagram
   RECIPE_INGREDIENTS }o--|| INGREDIENTS   : references
   RECIPE_INGREDIENTS }o--|| RECIPES       : nested_recipe
   RECIPE_STEPS       }o--|| RECIPES       : substep_recipe
+  RECIPE_STEPS       }o--o{ MEDIA         : substep_media
 
   RECIPE_TAGS        }o--|| TAGS          : categorizes
 
@@ -196,6 +197,8 @@ erDiagram
     UUID    id
     TEXT    url
     VARCHAR alt_text
+    UUID    recipe_id_FK "optional link to recipe (existing)"
+    UUID    step_id_FK NULL "optional link to a recipe step"
   }
 
   TAGS {
