@@ -128,10 +128,6 @@ SELECT 'Cannelle', 'Cinnamon', macroId,
        (SELECT categoryId FROM Category WHERE strValue = 'Épice')
 FROM ins;
 
--- =========================================================
--- EXTENDED FOOD LIST
--- =========================================================
-
 -- Banane / Banana
 WITH ins AS (
     INSERT INTO Macro (calories, protein, fiber, sugar, saturated, trans, caffein)

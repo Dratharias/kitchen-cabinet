@@ -1,0 +1,111 @@
+erDiagram
+
+  Category {
+    uuid categoryId PK
+    varchar strValue
+    varchar type
+    smallint numValue
+  }
+
+  Publication {
+    uuid publicationId PK
+    varchar title
+    text[] description
+    text[] note
+    boolean public
+    boolean published
+    varchar thumbnail
+    uuid type FK
+    uuid style FK
+    uuid author FK
+    uuid resource FK
+  }
+
+  Content {
+    uuid contentId PK
+    varchar title
+    text[] description
+    text[] note
+    uuid category FK
+  }
+
+  Ingredient {
+    uuid ingredientId PK
+    smallint quantity
+    uuid isRecipe FK
+    uuid product FK
+  }
+
+  Unit {
+    uuid unitId PK
+    varchar name
+  }
+
+  Macro {
+    uuid macroId PK
+    smallint calories
+    smallint protein
+    smallint fiber
+    smallint sugar
+    smallint saturated
+    smallint trans
+    smallint caffein
+  }
+
+  Product {
+    uuid productId PK
+    varchar name
+    varchar enName
+    uuid macro FK
+    uuid category FK
+  }
+
+  PrepTime {
+    uuid prepTimeId PK
+    smallint duration
+    uuid category FK
+  }
+
+  Segment {
+    uuid segmentId PK
+    text paragraph
+    smallint order
+  }
+
+  Resource {
+    uuid resourceId PK
+    uuid url FK
+  }
+
+  Review {
+    uuid reviewId PK
+    uuid product FK
+    uuid publication FK
+    smallint rating
+    text[] comment
+    text[] description
+    char buyAgain
+    date dateReview
+  }
+
+  %% ===========================
+  %% RELATIONS SIMPLIFIÉES
+  %% ===========================
+
+  Category ||--o{ Publication : "type/style/author"
+  Category ||--o{ Content : "category"
+  Category ||--o{ Product : "category"
+  Category ||--o{ PrepTime : "category"
+  Category ||--o{ Resource : "url"
+
+  Unit }o--o{ Ingredient : "has units" 
+  Publication ||--o{ Review : "review a publication"
+  Publication ||--|| Resource : "contains"
+
+  Ingredient }o--|| Product : "has Ingredients"
+  Product ||--|| Macro : "has macros"
+  Product ||--o{ Review : "review a product"
+  Segment }o--|| Content : "contains"
+
+  Resource ||--o{ Content : "has content"
+  Resource ||--o{ Publication : "has variant"
