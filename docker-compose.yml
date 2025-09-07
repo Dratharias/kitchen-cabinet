@@ -6,6 +6,8 @@ services:
       - "3000:3000"
     volumes:
       - ./:/app
-      - /app/node_modules
     stdin_open: true
     tty: true
+    environment:
+      VITE_MEALTICKET_USER: ${MEALTICKET_USER}
+      VITE_MEALTICKET_PASSWORD: ${MEALTICKET_PASSWORD}

@@ -1,9 +1,17 @@
-import type { Component } from 'solid-js';
+import { ToastProvider } from './services/ToastProvider';
+import Layout from './views/layout/Layout';
 
-const App: Component = () => {
+function App() {
   return (
-    <p class="text-4xl text-green-700 text-center py-20">Hello tailwind!</p>
+    <>
+      <ToastProvider />
+      <Layout>
+        <main class="">
+          Allo
+        </main>
+      </Layout>
+    </>
   );
-};
+}
 
 export default App;

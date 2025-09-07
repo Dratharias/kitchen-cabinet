@@ -11,4 +11,7 @@ export default defineConfig({
   build: {
     target: 'esnext',
   },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
+  }
 });

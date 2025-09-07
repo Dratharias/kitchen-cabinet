@@ -1,1 +1,48 @@
 @import 'tailwindcss';
+
+@theme {
+  /* fresh */
+  --color-fresh-50:  oklch(0.94 0.04 155);
+  --color-fresh-100: oklch(0.88 0.08 150);
+  --color-fresh-200: oklch(0.81 0.11 146);
+  --color-fresh-300: oklch(0.75 0.12 142);
+  --color-fresh-400: oklch(0.69 0.13 138);
+  --color-fresh-500: oklch(0.60 0.12 136);
+  --color-fresh-600: oklch(0.50 0.12 134);
+  --color-fresh-700: oklch(0.40 0.09 131);
+  --color-fresh-800: oklch(0.23 0.03 129);
+
+  /* forest */
+  --color-forest-50:  oklch(0.94 0.04 164);
+  --color-forest-100: oklch(0.88 0.09 156);
+  --color-forest-200: oklch(0.77 0.08 143);
+  --color-forest-300: oklch(0.54 0.07 130);
+  --color-forest-400: oklch(0.24 0.01 120);
+
+  /* harmony */
+  --color-harmony-50:  oklch(0.90 0.11 147);
+  --color-harmony-100: oklch(0.84 0.15 145);
+  --color-harmony-200: oklch(0.78 0.18 144);
+  --color-harmony-300: oklch(0.72 0.20 143);
+  --color-harmony-400: oklch(0.66 0.22 142);
+  --color-harmony-500: oklch(0.60 0.21 141);
+  --color-harmony-600: oklch(0.54 0.20 140);
+  --color-harmony-700: oklch(0.48 0.18 139);
+  --color-harmony-800: oklch(0.42 0.16 138);
+  --color-harmony-900: oklch(0.36 0.13 137);
+
+  /* mintsage */
+  --color-mintsage-50:  oklch(0.98 0.01 160);
+  --color-mintsage-100: oklch(0.94 0.08 141);
+  --color-mintsage-300: oklch(0.81 0.13 146);
+  --color-mintsage-500: oklch(0.56 0.08 143);
+  --color-mintsage-700: oklch(0.41 0.04 140);
+
+  /* breeze */
+  --color-breeze-50:  oklch(0.96 0.02 93);
+  --color-breeze-100: oklch(0.89 0.02 325);
+  --color-breeze-300: oklch(0.77 0.05 293);
+  --color-breeze-500: oklch(0.66 0.08 271);
+  --color-breeze-700: oklch(0.73 0.10 186);
+}
+
