@@ -8,7 +8,7 @@ async function fetchPublication(slug: string) {
   return res.json();
 }
 
-export function Feed() {
+export function Feeds() {
   const params = useParams();
   const slug = params.slug;
   const navigate = useNavigate();

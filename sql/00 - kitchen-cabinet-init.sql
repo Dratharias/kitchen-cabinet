@@ -8,7 +8,15 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 -- ====================================================================
 DROP TABLE IF EXISTS Review, ResourcePublication, ResourceContent,
     IngredientUnit, Ingredient, Product, Macro, Unit, Content, Segment,
-    PrepTime, Resource, Publication, Category CASCADE;
+    PrepTime, Resource, Publication, Category, AppUser CASCADE;
+
+CREATE TABLE AppUser (
+    userId   UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password TEXT NOT NULL,          -- store hashed password
+    role     VARCHAR(20) NOT NULL DEFAULT 'user', -- 'admin' or 'user'
+    created  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 -- ====================================================================
 -- CATEGORY

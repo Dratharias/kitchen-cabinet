@@ -7,6 +7,14 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model AppUser {
+  userId   String   @id @default(uuid())
+  username String   @unique
+  password String
+  role     String   @default("user")
+  created  DateTime @default(now())
+}
+
 model Category {
   categoryId String   @id @default(uuid())
   strValue   String

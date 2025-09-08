@@ -1,8 +1,10 @@
 import { createSignal } from "solid-js";
 import { authenticate } from "../../services/ToastProvider";
 import { setIsAuthenticated } from "../../services/authStore";
+import Button from "../../components/ui/Button";
+import Input from "../../components/ui/Input";
 
-export default function LoginForm() {
+export function LoginForm() {
   const [username, setUsername] = createSignal("");
   const [password, setPassword] = createSignal("");
   const [loading, setLoading] = createSignal(false);
@@ -17,42 +19,35 @@ export default function LoginForm() {
   };
 
   return (
-    <div class="flex items-center justify-center min-h-screen bg-gray-100">
-      <form 
-        class="bg-white p-6 rounded-lg shadow-md w-80" 
-        onSubmit={handleSubmit}
-      >
+    <div class="flex items-center justify-center min-h-[70vh] w-full">
+      <form onSubmit={handleSubmit} class="w-full max-w-sm">
         <h2 class="text-2xl font-semibold mb-4 text-center">Login</h2>
         
-        <label class="block mb-2 text-sm font-medium text-gray-700">
+        <label class="block mb-2 text-sm font-medium">
           Username
-          <input
+          <Input
             type="text"
             value={username()}
             onInput={(e) => setUsername(e.currentTarget.value)}
-            class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
+            class="mt-1"
           />
         </label>
 
-        <label class="block mb-4 text-sm font-medium text-gray-700">
+        <label class="block mb-4 text-sm font-medium">
           Password
-          <input
+          <Input
             type="password"
             value={password()}
             onInput={(e) => setPassword(e.currentTarget.value)}
-            class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
+            class="mt-1"
           />
         </label>
 
-        <button
-          type="submit"
-          class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50"
-          disabled={loading()}
-        >
+        <Button type="submit" disabled={loading()}>
           {loading() ? "Connexion..." : "Login"}
-        </button>
+        </Button>
       </form>
     </div>
   );

@@ -1,16 +1,26 @@
 services:
-  meal-ticket:
-    build: .
-    container_name: meal-ticket
+  backend:
+    build: ./backend
+    container_name: meal-ticket-backend
     ports:
       - "3000:3000"
-      - "5173:5173"
     volumes:
-      - ./:/app
+      - ./backend:/app
       - /app/node_modules
+    env_file:
+      - ./backend/.env
     stdin_open: true
     tty: true
-    environment:
-      VITE_MEALTICKET_USER: ${MEALTICKET_USER}
-      VITE_MEALTICKET_PASSWORD: ${MEALTICKET_PASSWORD}
-      DATABASE_URL: ${DATABASE_URL}
+
+  frontend:
+    build: ./frontend
+    container_name: meal-ticket-frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    env_file:
+      - ./frontend/.env
+    stdin_open: true
+    tty: true
