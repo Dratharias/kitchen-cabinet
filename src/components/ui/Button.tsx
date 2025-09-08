@@ -1,47 +1,26 @@
 import { JSX } from "solid-js";
 import Span from "./Span";
 
-// Type pour le composant générique
 export type ButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
   active?: boolean;
   label?: string;
   emoji?: string;
 };
 
-const baseButtonClasses = `
-  p-2 rounded-md transition-colors flex items-center justify-center
-  hover:cursor-pointer
-`;
-const sizeClasses = "h-full w-fit flex-1 sm:h-fit sm:w-1/4";
-
-// Classes selon état
-const activeClasses = `
-  text-fresh-600 
-  dark:text-harmony-200 
-  hover:text-fresh-400 
-  dark:hover:text-harmony-100
-`;
-
-const inactiveClasses = `
-  text-forest-400 
-  dark:text-forest-200 
-  hover:text-forest-600 
-  dark:hover:text-harmony-300
-`;
-
 const Button = (props: ButtonProps): JSX.Element => {
+  const classes = () => {
+    const base =
+      "flex-1 justify-center px-4 py-2 rounded-md border border-current font-medium transition-colors duration-200 cursor-pointer flex items-center gap-2";
+    const color = props.active
+      ? "bg-mintsage-60 dark:bg-forest-375 text-forest-900 dark:text-harmony-100"
+      : "bg-transparent text-current hover:text-fresh-400 dark:hover:text-forest-400";
+
+    return [base, color, props.class].filter(Boolean).join(" ");
+  };
+
   return (
-    <button
-      {...props}
-      class={`${baseButtonClasses} ${sizeClasses} relative group ${props.class || ""}`}
-      aria-label={props.label}
-    >
-      <Span
-        emoji={props.emoji}
-        label={props.label}
-        hideOnSmall
-        colorType={props.active ? "active" : "inactive"}
-      />
+    <button {...props} class={classes()} aria-label={props.label}>
+      <Span emoji={props.emoji} label={props.label} hideOnSmall />
     </button>
   );
 };

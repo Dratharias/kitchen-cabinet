@@ -3,7 +3,7 @@ import SearchBar from "../../components/navbar/SearchBar";
 
 export function MobileLayout(props) {
   return (
-    <div class="flex flex-col min-h-screen w-screen relative bg-fresh-50 dark:bg-forest-400 text-forest-700 dark:text-harmony-100">
+    <div class="flex flex-col min-h-screen bg-mintsage-50 dark:bg-forest-400 text-forest-700 dark:text-harmony-100">
       {/* Contenu */}
       <main class="flex mx-auto">{props.children}</main>
 

@@ -17,6 +17,7 @@
   --color-forest-100: oklch(0.88 0.09 156);
   --color-forest-200: oklch(0.77 0.08 143);
   --color-forest-300: oklch(0.54 0.07 130);
+  --color-forest-375: oklch(0.35 0.01 140);
   --color-forest-400: oklch(0.24 0.01 120);
 
   /* harmony */
@@ -33,6 +34,7 @@
 
   /* mintsage */
   --color-mintsage-50:  oklch(0.98 0.01 160);
+  --color-mintsage-60: oklch(0.96 0.025 155);
   --color-mintsage-100: oklch(0.94 0.08 141);
   --color-mintsage-300: oklch(0.81 0.13 146);
   --color-mintsage-500: oklch(0.56 0.08 143);
