@@ -20,6 +20,7 @@ model Category {
   products          Product[]
   prepTime          PrepTime[]
   resourcesUrl      Resource[]
+  publicationTag PublicationTag[]
 
   @@unique([strValue, type])
   @@index([type])
@@ -49,11 +50,21 @@ model Publication {
   ingredients Ingredient[]
   reviews     Review[]
   resourcePublications ResourcePublication[]
-
+  tags           PublicationTag[]
+  
   @@index([typeId])
   @@index([styleId])
   @@index([authorId])
   @@index([published])
+}
+
+model PublicationTag {
+  publication   Publication @relation(fields: [publicationId], references: [publicationId])
+  publicationId String
+  category      Category    @relation(fields: [categoryId], references: [categoryId])
+  categoryId    String
+
+  @@id([publicationId, categoryId])
 }
 
 model Content {

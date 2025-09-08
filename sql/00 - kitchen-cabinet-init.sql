@@ -42,6 +42,14 @@ CREATE TABLE Publication (
     resource      UUID                                                      -- FK added later
 );
 
+CREATE TABLE PublicationTag (
+    publicationId UUID REFERENCES Publication(publicationId) ON DELETE CASCADE,
+    categoryId    UUID REFERENCES Category(categoryId)       ON DELETE RESTRICT,
+    PRIMARY KEY (publicationId, categoryId)
+);
+
+CREATE INDEX idx_pubtag_pub  ON PublicationTag(publicationId);
+CREATE INDEX idx_pubtag_cat  ON PublicationTag(categoryId);
 CREATE INDEX idx_publication_type       ON Publication(type);
 CREATE INDEX idx_publication_style      ON Publication(style);
 CREATE INDEX idx_publication_author     ON Publication(author);
@@ -55,6 +63,8 @@ CREATE TABLE Content (
     title       VARCHAR(255) NOT NULL,
     description TEXT[],
     note        TEXT[],
+    totalPrepTime INT NOT NULL DEFAULT 0,
+    servings INT,
     category    UUID REFERENCES Category(categoryId) ON DELETE RESTRICT
 );
 
@@ -110,6 +120,14 @@ CREATE TABLE PrepTime (
     duration   SMALLINT NOT NULL CHECK (duration >= 0),
     category   UUID NOT NULL REFERENCES Category(categoryId) ON DELETE RESTRICT
 );
+
+CREATE TABLE ContentPrepTime (
+    contentId   UUID REFERENCES Content(contentId) ON DELETE CASCADE,
+    prepTimeId  UUID REFERENCES PrepTime(prepTimeId) ON DELETE CASCADE,
+    PRIMARY KEY (contentId, prepTimeId)
+);
+CREATE INDEX idx_contpreptime_content ON ContentPrepTime(contentId);
+CREATE INDEX idx_contpreptime_time    ON ContentPrepTime(prepTimeId);
 
 CREATE TABLE Segment (
     segmentId UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
@@ -261,6 +279,70 @@ CREATE TRIGGER tbiu_respub_forbid_book_in_book
 BEFORE INSERT OR UPDATE ON ResourcePublication
 FOR EACH ROW
 EXECUTE FUNCTION trg_forbid_book_in_book();
+
+-- Function: recalcule le totalPrepTime pour un contentId donné
+CREATE OR REPLACE FUNCTION recalc_total_prep_time(contentId UUID)
+RETURNS VOID AS $$
+BEGIN
+    UPDATE Content c
+       SET totalPrepTime = COALESCE((
+           SELECT SUM(pt.duration)
+             FROM ContentPrepTime cp
+             JOIN PrepTime pt ON pt.prepTimeId = cp.prepTimeId
+            WHERE cp.contentId = contentId
+       ), 0)
+     WHERE c.contentId = contentId;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Trigger sur ContentPrepTime (ajout / suppression / update)
+CREATE OR REPLACE FUNCTION trg_update_total_prep_time_content_cp()
+RETURNS TRIGGER AS $$
+BEGIN
+    PERFORM recalc_total_prep_time(COALESCE(NEW.contentId, OLD.contentId));
+    RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER tbiu_contpreptime_update
+AFTER INSERT OR UPDATE OR DELETE ON ContentPrepTime
+FOR EACH ROW
+EXECUTE FUNCTION trg_update_total_prep_time_content_cp();
+
+-- Trigger sur PrepTime (modification de la durée)
+CREATE OR REPLACE FUNCTION trg_update_total_prep_time_preptime()
+RETURNS TRIGGER AS $$
+DECLARE
+    contentId UUID;
+BEGIN
+    FOR contentId IN
+        SELECT cp.contentId
+          FROM ContentPrepTime cp
+         WHERE cp.prepTimeId = NEW.prepTimeId
+    LOOP
+        PERFORM recalc_total_prep_time(contentId);
+    END LOOP;
+    RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER tbu_preptime_update
+AFTER UPDATE OF duration ON PrepTime
+FOR EACH ROW
+EXECUTE FUNCTION trg_update_total_prep_time_preptime();
+
+CREATE OR REPLACE FUNCTION trg_pubtag_enforce_tag_type()
+RETURNS TRIGGER AS $$
+BEGIN
+    PERFORM ensure_category_type(NEW.categoryId, 'Tag');
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER tbiu_pubtag_enforce_tag_type
+BEFORE INSERT OR UPDATE ON PublicationTag
+FOR EACH ROW
+EXECUTE FUNCTION trg_pubtag_enforce_tag_type();
 
 -- ====================================================================
 -- Minimal taxonomy seed
