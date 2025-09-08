@@ -4,10 +4,13 @@ services:
     container_name: meal-ticket
     ports:
       - "3000:3000"
+      - "5173:5173"
     volumes:
       - ./:/app
+      - /app/node_modules
     stdin_open: true
     tty: true
     environment:
       VITE_MEALTICKET_USER: ${MEALTICKET_USER}
       VITE_MEALTICKET_PASSWORD: ${MEALTICKET_PASSWORD}
+      DATABASE_URL: ${DATABASE_URL}

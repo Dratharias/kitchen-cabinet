@@ -12,7 +12,7 @@ package-lock.json
 .env*.local
 
 # dependencies
-/node_modules
+node_modules
 
 # IDEs and editors
 /.idea
@@ -20,6 +20,7 @@ package-lock.json
 .classpath
 *.launch
 .settings/
+.continue
 
 # Temp
 gitignore
@@ -27,3 +28,5 @@ gitignore
 # System Files
 .DS_Store
 Thumbs.db
+
+/src/generated/prisma

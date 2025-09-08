@@ -1,0 +1,190 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Category {
+  categoryId String   @id @default(uuid())
+  strValue   String
+  type       String
+  numValue   Int?     @db.SmallInt
+
+  publicationsType  Publication[] @relation("PublicationType")
+  publicationsStyle Publication[] @relation("PublicationStyle")
+  publicationsAuth  Publication[] @relation("PublicationAuthor")
+  contents          Content[]
+  products          Product[]
+  prepTime          PrepTime[]
+  resourcesUrl      Resource[]
+
+  @@unique([strValue, type])
+  @@index([type])
+  @@index([strValue])
+  @@index([type, strValue])
+}
+
+model Publication {
+  publicationId String   @id @default(uuid())
+  title         String
+  description   String[]
+  note          String[]
+  public        Boolean  @default(false)
+  published     Boolean  @default(false)
+  thumbnail     String?
+
+  typeId   String? @map("type")
+  styleId  String? @map("style")
+  authorId String? @map("author")
+  resourceId String?
+
+  type   Category? @relation("PublicationType", fields: [typeId], references: [categoryId])
+  style  Category? @relation("PublicationStyle", fields: [styleId], references: [categoryId])
+  author Category? @relation("PublicationAuthor", fields: [authorId], references: [categoryId])
+  resource Resource? @relation(fields: [resourceId], references: [resourceId])
+
+  ingredients Ingredient[]
+  reviews     Review[]
+  resourcePublications ResourcePublication[]
+
+  @@index([typeId])
+  @@index([styleId])
+  @@index([authorId])
+  @@index([published])
+}
+
+model Content {
+  contentId   String   @id @default(uuid())
+  title       String
+  description String[]
+  note        String[]
+  categoryId  String
+
+  category Category @relation(fields: [categoryId], references: [categoryId])
+  resources ResourceContent[]
+
+}
+
+model Unit {
+  unitId String @id @default(uuid())
+  name   String @unique
+
+  ingredientUnits IngredientUnit[]
+}
+
+model Macro {
+  macroId   String @id @default(uuid())
+  calories  Int?   @db.SmallInt
+  protein   Int?   @db.SmallInt
+  fiber     Int?   @db.SmallInt
+  sugar     Int?   @db.SmallInt
+  saturated Int?   @db.SmallInt
+  trans     Int?   @db.SmallInt
+  caffein   Int?   @db.SmallInt
+
+  products Product[]
+}
+
+model Product {
+  productId String @id @default(uuid())
+  name      String
+  enName    String?
+  macroId   String?
+  categoryId String
+
+  macro    Macro?    @relation(fields: [macroId], references: [macroId])
+  category Category  @relation(fields: [categoryId], references: [categoryId])
+  ingredients Ingredient[]
+  reviews     Review[]
+
+  @@index([categoryId])
+}
+
+model Ingredient {
+  ingredientId String @id @default(uuid())
+  quantity     Int?   @db.SmallInt
+  isRecipeId   String? @map("isRecipe")
+  productId    String
+
+  product Product @relation(fields: [productId], references: [productId])
+  isRecipe Publication? @relation(fields: [isRecipeId], references: [publicationId])
+
+  units IngredientUnit[]
+}
+
+model IngredientUnit {
+  ingredientId String
+  unitId       String
+
+  ingredient Ingredient @relation(fields: [ingredientId], references: [ingredientId])
+  unit       Unit       @relation(fields: [unitId], references: [unitId])
+
+  @@id([ingredientId, unitId])
+  @@index([unitId])
+}
+
+model PrepTime {
+  prepTimeId String @id @default(uuid())
+  duration   Int    @db.SmallInt
+  categoryId String
+
+  category Category @relation(fields: [categoryId], references: [categoryId])
+}
+
+model Segment {
+  segmentId String @id @default(uuid())
+  paragraph String @unique
+  order     Int    @db.SmallInt
+}
+
+model Resource {
+  resourceId String @id @default(uuid())
+  urlId      String
+
+  url Category @relation(fields: [urlId], references: [categoryId])
+  contents ResourceContent[]
+  publications ResourcePublication[]
+
+  publicationsLinked Publication[]
+  
+  @@index([urlId])
+}
+
+model ResourceContent {
+  resourceId String
+  contentId  String
+
+  resource Resource @relation(fields: [resourceId], references: [resourceId])
+  content  Content  @relation(fields: [contentId], references: [contentId])
+
+  @@id([resourceId, contentId])
+}
+
+model ResourcePublication {
+  resourceId    String
+  publicationId String
+  orderInBook   Int? @db.SmallInt
+
+  resource    Resource    @relation(fields: [resourceId], references: [resourceId])
+  publication Publication @relation(fields: [publicationId], references: [publicationId])
+
+  @@id([resourceId, publicationId])
+  @@unique([resourceId, orderInBook])
+}
+
+model Review {
+  reviewId    String @id @default(uuid())
+  productId   String
+  publicationId String
+  rating      Int?   @db.SmallInt
+  comment     String[]
+  description String[]
+  buyAgain    String? @db.Char(1)
+  dateReview  DateTime @default(now())
+
+  product     Product     @relation(fields: [productId], references: [productId])
+  publication Publication @relation(fields: [publicationId], references: [publicationId])
+}

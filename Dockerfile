@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Installer dépendances
-RUN npm ci
+RUN npm ci && npm install -g ts-node-dev 
 
 # Copier tout le projet
 COPY . .
