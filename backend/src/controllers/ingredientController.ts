@@ -1,6 +1,6 @@
 import { FastifyRequest, FastifyReply, FastifyInstance } from "fastify";
 import { PrismaClient } from "@prisma/client";
-import { CRUDController } from "./crudController";
+import { CRUDController } from "./crudController.js";
 
 const prisma = new PrismaClient();
 

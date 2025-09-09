@@ -1,0 +1,13 @@
+{
+  "name": "kitchen-cabinet",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "docker:up": "docker compose up --build -d",
+    "docker:down": "docker compose down",
+    "docker:clean": "docker compose down --volumes --remove-orphans && docker system prune -f",
+    "install:all": "cd frontend && npm ci && cd ../backend && npm ci",
+    "docker:dev": "npm run docker:clean; npm run install:all; npm run docker:up",
+    "docker:nuke": "docker system prune -a; cd backend; rm -drf dist; npm run build; cd ..; npm run docker:dev"
+  }
+}

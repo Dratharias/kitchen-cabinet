@@ -6,193 +6,195 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 -- ====================================================================
 -- CLEANUP
 -- ====================================================================
-DROP TABLE IF EXISTS Review, ResourcePublication, ResourceContent,
-    IngredientUnit, Ingredient, Product, Macro, Unit, Content, Segment,
-    PrepTime, Resource, Publication, Category, AppUser CASCADE;
+DROP TABLE IF EXISTS review, resource_publication, resource_content,
+    ingredient_unit, ingredient, product, macro, unit, content, segment,
+    prep_time, content_prep_time, resource, publication, category, app_user CASCADE;
 
-CREATE TABLE AppUser (
-    userId   UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+-- ====================================================================
+-- USERS
+-- ====================================================================
+CREATE TABLE app_user (
+    user_id  UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     username VARCHAR(50) UNIQUE NOT NULL,
-    password TEXT NOT NULL,          -- store hashed password
-    role     VARCHAR(20) NOT NULL DEFAULT 'user', -- 'admin' or 'user'
+    password TEXT NOT NULL,
+    role     VARCHAR(20) NOT NULL DEFAULT 'user',
     created  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- ====================================================================
 -- CATEGORY
 -- ====================================================================
-CREATE TABLE Category (
-    categoryId UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    strValue   VARCHAR(255) NOT NULL,
-    type       VARCHAR(50)  NOT NULL,
-    numValue   SMALLINT CHECK (numValue >= 0),
-    UNIQUE (strValue, type)
+CREATE TABLE category (
+    category_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    str_value   VARCHAR(255) NOT NULL,
+    type        VARCHAR(50)  NOT NULL,
+    num_value   SMALLINT CHECK (num_value >= 0),
+    UNIQUE (str_value, type)
 );
 
-CREATE INDEX idx_category_type       ON Category(type);
-CREATE INDEX idx_category_strvalue   ON Category(strValue);
-CREATE INDEX idx_category_type_value ON Category(type, strValue);
+CREATE INDEX idx_category_type       ON category(type);
+CREATE INDEX idx_category_str_value  ON category(str_value);
+CREATE INDEX idx_category_type_value ON category(type, str_value);
 
 -- ====================================================================
 -- PUBLICATION
 -- ====================================================================
-CREATE TABLE Publication (
-    publicationId UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    title         VARCHAR(255) NOT NULL,
-    description   TEXT[],
-    note          TEXT[],
-    public        BOOLEAN NOT NULL DEFAULT FALSE,
-    published     BOOLEAN NOT NULL DEFAULT FALSE,
-    thumbnail     VARCHAR(255),
-    type          UUID REFERENCES Category(categoryId) ON DELETE RESTRICT,   -- 'Type'
-    style         UUID REFERENCES Category(categoryId) ON DELETE RESTRICT,   -- 'Style'
-    author        UUID REFERENCES Category(categoryId) ON DELETE RESTRICT,   -- 'Author'
-    resource      UUID                                                      -- FK added later
+CREATE TABLE publication (
+    publication_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    title          VARCHAR(255) NOT NULL,
+    description    TEXT[],
+    note           TEXT[],
+    public         BOOLEAN NOT NULL DEFAULT FALSE,
+    published      BOOLEAN NOT NULL DEFAULT FALSE,
+    thumbnail      VARCHAR(255),
+    type_id        UUID REFERENCES category(category_id) ON DELETE RESTRICT,
+    style_id       UUID REFERENCES category(category_id) ON DELETE RESTRICT,
+    author_id      UUID REFERENCES category(category_id) ON DELETE RESTRICT,
+    resource_id    UUID
 );
 
-CREATE TABLE PublicationTag (
-    publicationId UUID REFERENCES Publication(publicationId) ON DELETE CASCADE,
-    categoryId    UUID REFERENCES Category(categoryId)       ON DELETE RESTRICT,
-    PRIMARY KEY (publicationId, categoryId)
+CREATE TABLE publication_tag (
+    publication_id UUID REFERENCES publication(publication_id) ON DELETE CASCADE,
+    category_id    UUID REFERENCES category(category_id)       ON DELETE RESTRICT,
+    PRIMARY KEY (publication_id, category_id)
 );
 
-CREATE INDEX idx_pubtag_pub  ON PublicationTag(publicationId);
-CREATE INDEX idx_pubtag_cat  ON PublicationTag(categoryId);
-CREATE INDEX idx_publication_type       ON Publication(type);
-CREATE INDEX idx_publication_style      ON Publication(style);
-CREATE INDEX idx_publication_author     ON Publication(author);
-CREATE INDEX idx_publication_published  ON Publication(published);
+CREATE INDEX idx_pubtag_pub  ON publication_tag(publication_id);
+CREATE INDEX idx_pubtag_cat  ON publication_tag(category_id);
+CREATE INDEX idx_publication_type       ON publication(type_id);
+CREATE INDEX idx_publication_style      ON publication(style_id);
+CREATE INDEX idx_publication_author     ON publication(author_id);
+CREATE INDEX idx_publication_published  ON publication(published);
 
 -- ====================================================================
 -- CONTENT
 -- ====================================================================
-CREATE TABLE Content (
-    contentId   UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    title       VARCHAR(255) NOT NULL,
-    description TEXT[],
-    note        TEXT[],
-    totalPrepTime INT NOT NULL DEFAULT 0,
-    servings INT,
-    category    UUID REFERENCES Category(categoryId) ON DELETE RESTRICT
+CREATE TABLE content (
+    content_id      UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    title           VARCHAR(255) NOT NULL,
+    description     TEXT[],
+    note            TEXT[],
+    total_prep_time INT NOT NULL DEFAULT 0,
+    servings        INT,
+    category_id     UUID REFERENCES category(category_id) ON DELETE RESTRICT
 );
 
 -- ====================================================================
--- INGREDIENTS / PRODUCTS / UNITS / MACROS
+-- UNITS / MACROS / PRODUCTS / INGREDIENTS
 -- ====================================================================
-CREATE TABLE Unit (
-    unitId UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    name   VARCHAR(20) UNIQUE NOT NULL
+CREATE TABLE unit (
+    unit_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    name    VARCHAR(20) UNIQUE NOT NULL
 );
 
-CREATE TABLE Macro (
-    macroId   UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    calories  SMALLINT CHECK (calories  >= 0),
-    protein   SMALLINT CHECK (protein   >= 0),
-    fiber     SMALLINT CHECK (fiber     >= 0),
-    sugar     SMALLINT CHECK (sugar     >= 0),
-    saturated SMALLINT CHECK (saturated >= 0),
-    trans     SMALLINT CHECK (trans     >= 0),
-    caffein   SMALLINT CHECK (caffein   >= 0)
+CREATE TABLE macro (
+    macro_id   UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    calories   SMALLINT CHECK (calories  >= 0),
+    protein    SMALLINT CHECK (protein   >= 0),
+    fiber      SMALLINT CHECK (fiber     >= 0),
+    sugar      SMALLINT CHECK (sugar     >= 0),
+    saturated  SMALLINT CHECK (saturated >= 0),
+    trans      SMALLINT CHECK (trans     >= 0),
+    caffein    SMALLINT CHECK (caffein   >= 0)
 );
 
-CREATE TABLE Product (
-    productId UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    name      VARCHAR(255) NOT NULL,
-    enName    VARCHAR(255),
-    macro     UUID REFERENCES Macro(macroId)       ON DELETE RESTRICT,
-    category  UUID REFERENCES Category(categoryId) ON DELETE RESTRICT
+CREATE TABLE product (
+    product_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    name       VARCHAR(255) NOT NULL,
+    en_name    VARCHAR(255),
+    macro_id   UUID REFERENCES macro(macro_id)       ON DELETE RESTRICT,
+    category_id UUID REFERENCES category(category_id) ON DELETE RESTRICT
 );
-CREATE INDEX idx_product_category ON Product(category);
+CREATE INDEX idx_product_category ON product(category_id);
 
-CREATE TABLE Ingredient (
-    ingredientId UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    quantity     SMALLINT CHECK (quantity >= 0),
-    isRecipe     UUID REFERENCES Publication(publicationId) ON DELETE RESTRICT, -- sub-recipe
-    product      UUID REFERENCES Product(productId)         ON DELETE RESTRICT
+CREATE TABLE ingredient (
+    ingredient_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    quantity      SMALLINT CHECK (quantity >= 0),
+    is_recipe_id  UUID REFERENCES publication(publication_id) ON DELETE RESTRICT,
+    product_id    UUID REFERENCES product(product_id)          ON DELETE RESTRICT
 );
-CREATE INDEX idx_ingredient_product  ON Ingredient(product);
-CREATE INDEX idx_ingredient_isrecipe ON Ingredient(isRecipe);
+CREATE INDEX idx_ingredient_product  ON ingredient(product_id);
+CREATE INDEX idx_ingredient_is_recipe ON ingredient(is_recipe_id);
 
-CREATE TABLE IngredientUnit (
-    ingredientId UUID REFERENCES Ingredient(ingredientId) ON DELETE CASCADE,
-    unitId       UUID REFERENCES Unit(unitId)             ON DELETE RESTRICT,
-    PRIMARY KEY (ingredientId, unitId)
+CREATE TABLE ingredient_unit (
+    ingredient_id UUID REFERENCES ingredient(ingredient_id) ON DELETE CASCADE,
+    unit_id       UUID REFERENCES unit(unit_id)             ON DELETE RESTRICT,
+    PRIMARY KEY (ingredient_id, unit_id)
 );
-CREATE INDEX idx_ingunit_unit ON IngredientUnit(unitId);
+CREATE INDEX idx_ingunit_unit ON ingredient_unit(unit_id);
 
 -- ====================================================================
--- TIMING / SEGMENTS
+-- PREP TIME / CONTENT PREP TIME
 -- ====================================================================
-CREATE TABLE PrepTime (
-    prepTimeId UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    duration   SMALLINT NOT NULL CHECK (duration >= 0),
-    category   UUID NOT NULL REFERENCES Category(categoryId) ON DELETE RESTRICT
+CREATE TABLE prep_time (
+    prep_time_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    duration     SMALLINT NOT NULL CHECK (duration >= 0),
+    category_id  UUID NOT NULL REFERENCES category(category_id) ON DELETE RESTRICT
 );
 
-CREATE TABLE ContentPrepTime (
-    contentId   UUID REFERENCES Content(contentId) ON DELETE CASCADE,
-    prepTimeId  UUID REFERENCES PrepTime(prepTimeId) ON DELETE CASCADE,
-    PRIMARY KEY (contentId, prepTimeId)
+CREATE TABLE content_prep_time (
+    content_id   UUID REFERENCES content(content_id) ON DELETE CASCADE,
+    prep_time_id UUID REFERENCES prep_time(prep_time_id) ON DELETE CASCADE,
+    PRIMARY KEY (content_id, prep_time_id)
 );
-CREATE INDEX idx_contpreptime_content ON ContentPrepTime(contentId);
-CREATE INDEX idx_contpreptime_time    ON ContentPrepTime(prepTimeId);
+CREATE INDEX idx_contpreptime_content ON content_prep_time(content_id);
+CREATE INDEX idx_contpreptime_time    ON content_prep_time(prep_time_id);
 
-CREATE TABLE Segment (
-    segmentId UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    paragraph TEXT UNIQUE NOT NULL,
-    "order"   SMALLINT NOT NULL CHECK ("order" >= 0)
+-- ====================================================================
+-- SEGMENT
+-- ====================================================================
+CREATE TABLE segment (
+    segment_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    paragraph  TEXT UNIQUE NOT NULL,
+    "order"    SMALLINT NOT NULL CHECK ("order" >= 0)
 );
 
 -- ====================================================================
 -- RESOURCE
 -- ====================================================================
-CREATE TABLE Resource (
-    resourceId UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    url        UUID REFERENCES Category(categoryId) ON DELETE RESTRICT  -- 'URL'
+CREATE TABLE resource (
+    resource_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    url_id      UUID REFERENCES category(category_id) ON DELETE RESTRICT
 );
-CREATE INDEX idx_resource_url ON Resource(url);
+CREATE INDEX idx_resource_url ON resource(url_id);
 
--- Resource <-> Content
-CREATE TABLE ResourceContent (
-    resourceId UUID REFERENCES Resource(resourceId) ON DELETE CASCADE,
-    contentId  UUID REFERENCES Content(contentId)   ON DELETE RESTRICT,
-    PRIMARY KEY (resourceId, contentId)
-);
-
--- Resource <-> Publication (used for variants/books)
-CREATE TABLE ResourcePublication (
-    resourceId    UUID REFERENCES Resource(resourceId)    ON DELETE CASCADE,
-    publicationId UUID REFERENCES Publication(publicationId) ON DELETE RESTRICT,
-    order_in_book SMALLINT CHECK (order_in_book >= 0),
-    PRIMARY KEY (resourceId, publicationId)
+CREATE TABLE resource_content (
+    resource_id UUID REFERENCES resource(resource_id) ON DELETE CASCADE,
+    content_id  UUID REFERENCES content(content_id)   ON DELETE RESTRICT,
+    PRIMARY KEY (resource_id, content_id)
 );
 
-CREATE UNIQUE INDEX idx_respub_order UNIQUE (resourceId, order_in_book);
+CREATE TABLE resource_publication (
+    resource_id    UUID REFERENCES resource(resource_id)    ON DELETE CASCADE,
+    publication_id UUID REFERENCES publication(publication_id) ON DELETE RESTRICT,
+    order_in_book  SMALLINT CHECK (order_in_book >= 0),
+    PRIMARY KEY (resource_id, publication_id)
+);
+CREATE UNIQUE INDEX idx_respub_order ON resource_publication(resource_id, order_in_book);
 
--- Publication.resource -> Resource
-ALTER TABLE Publication
+ALTER TABLE publication
   ADD CONSTRAINT fk_publication_resource
-  FOREIGN KEY (resource)
-  REFERENCES Resource(resourceId)
+  FOREIGN KEY (resource_id)
+  REFERENCES resource(resource_id)
   ON DELETE RESTRICT
   DEFERRABLE INITIALLY DEFERRED;
 
 -- ====================================================================
 -- REVIEW
 -- ====================================================================
-CREATE TABLE Review (
-    reviewId    UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    product     UUID REFERENCES Product(productId)       ON DELETE CASCADE,
-    publication UUID REFERENCES Publication(publicationId) ON DELETE CASCADE,
-    rating      SMALLINT CHECK (rating BETWEEN 0 AND 10),
-    comment     TEXT[],
-    description TEXT[],
-    buyAgain    CHAR(1) CHECK (buyAgain IN ('T','F','M','N')),
-    dateReview  DATE DEFAULT CURRENT_DATE
+CREATE TABLE review (
+    review_id      UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    product_id     UUID REFERENCES product(product_id)       ON DELETE CASCADE,
+    publication_id UUID REFERENCES publication(publication_id) ON DELETE CASCADE,
+    rating         SMALLINT CHECK (rating BETWEEN 0 AND 10),
+    comment        TEXT[],
+    description    TEXT[],
+    buy_again      CHAR(1) CHECK (buy_again IN ('T','F','M','N')),
+    date_review    DATE DEFAULT CURRENT_DATE
 );
 
 -- ====================================================================
--- GUARD RAILS
+-- GUARD RAILS / TRIGGERS
 -- ====================================================================
 
 -- Helper: enforce Category.type
@@ -204,8 +206,8 @@ BEGIN
     END IF;
 
     IF EXISTS (
-        SELECT 1 FROM Category c
-         WHERE c.categoryId = cat_id
+        SELECT 1 FROM category c
+         WHERE c.category_id = cat_id
            AND c.type = expected_type
     ) THEN
         RETURN TRUE;
@@ -219,15 +221,15 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE FUNCTION trg_publication_enforce_category_types()
 RETURNS TRIGGER AS $$
 BEGIN
-    PERFORM ensure_category_type(NEW.type,   'Type');
-    PERFORM ensure_category_type(NEW.style,  'Style');
-    PERFORM ensure_category_type(NEW.author, 'Author');
+    PERFORM ensure_category_type(NEW.type_id,   'Type');
+    PERFORM ensure_category_type(NEW.style_id,  'Style');
+    PERFORM ensure_category_type(NEW.author_id, 'Author');
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER tbiu_publication_enforce_category_types
-BEFORE INSERT OR UPDATE ON Publication
+BEFORE INSERT OR UPDATE ON publication
 FOR EACH ROW
 EXECUTE FUNCTION trg_publication_enforce_category_types();
 
@@ -235,13 +237,13 @@ EXECUTE FUNCTION trg_publication_enforce_category_types();
 CREATE OR REPLACE FUNCTION trg_resource_enforce_url_type()
 RETURNS TRIGGER AS $$
 BEGIN
-    PERFORM ensure_category_type(NEW.url, 'URL');
+    PERFORM ensure_category_type(NEW.url_id, 'URL');
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER tbiu_resource_enforce_url_type
-BEFORE INSERT OR UPDATE ON Resource
+BEFORE INSERT OR UPDATE ON resource
 FOR EACH ROW
 EXECUTE FUNCTION trg_resource_enforce_url_type();
 
@@ -254,29 +256,29 @@ DECLARE
 BEGIN
     SELECT EXISTS (
         SELECT 1
-          FROM Publication p
-          JOIN Category ct ON ct.categoryId = p.type
-         WHERE p.resource = NEW.resourceId
+          FROM publication p
+          JOIN category ct ON ct.category_id = p.type_id
+         WHERE p.resource_id = NEW.resource_id
            AND ct.type = 'Type'
-           AND ct.strValue = 'Book'
+           AND ct.str_value = 'Book'
     ) INTO parent_is_book;
 
     IF NOT parent_is_book THEN
         RAISE EXCEPTION 'Resource % is not attached to a Book publication, cannot aggregate publications here.',
-            NEW.resourceId;
+            NEW.resource_id;
     END IF;
 
     SELECT EXISTS (
         SELECT 1
-          FROM Publication p
-          JOIN Category ct ON ct.categoryId = p.type
-         WHERE p.publicationId = NEW.publicationId
+          FROM publication p
+          JOIN category ct ON ct.category_id = p.type_id
+         WHERE p.publication_id = NEW.publication_id
            AND ct.type = 'Type'
-           AND ct.strValue = 'Book'
+           AND ct.str_value = 'Book'
     ) INTO child_is_book;
 
     IF child_is_book THEN
-        RAISE EXCEPTION 'A Book cannot contain another Book (publicationId=%).', NEW.publicationId;
+        RAISE EXCEPTION 'A Book cannot contain another Book (publication_id=%).', NEW.publication_id;
     END IF;
 
     RETURN NEW;
@@ -284,78 +286,79 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER tbiu_respub_forbid_book_in_book
-BEFORE INSERT OR UPDATE ON ResourcePublication
+BEFORE INSERT OR UPDATE ON resource_publication
 FOR EACH ROW
 EXECUTE FUNCTION trg_forbid_book_in_book();
 
--- Function: recalcule le totalPrepTime pour un contentId donné
-CREATE OR REPLACE FUNCTION recalc_total_prep_time(contentId UUID)
+-- Function: recalcule le total_prep_time pour un content_id donné
+CREATE OR REPLACE FUNCTION recalc_total_prep_time(content_id UUID)
 RETURNS VOID AS $$
 BEGIN
-    UPDATE Content c
-       SET totalPrepTime = COALESCE((
+    UPDATE content c
+       SET total_prep_time = COALESCE((
            SELECT SUM(pt.duration)
-             FROM ContentPrepTime cp
-             JOIN PrepTime pt ON pt.prepTimeId = cp.prepTimeId
-            WHERE cp.contentId = contentId
+             FROM content_prep_time cp
+             JOIN prep_time pt ON pt.prep_time_id = cp.prep_time_id
+            WHERE cp.content_id = content_id
        ), 0)
-     WHERE c.contentId = contentId;
+     WHERE c.content_id = content_id;
 END;
 $$ LANGUAGE plpgsql;
 
--- Trigger sur ContentPrepTime (ajout / suppression / update)
+-- Trigger sur content_prep_time (ajout / suppression / update)
 CREATE OR REPLACE FUNCTION trg_update_total_prep_time_content_cp()
 RETURNS TRIGGER AS $$
 BEGIN
-    PERFORM recalc_total_prep_time(COALESCE(NEW.contentId, OLD.contentId));
+    PERFORM recalc_total_prep_time(COALESCE(NEW.content_id, OLD.content_id));
     RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER tbiu_contpreptime_update
-AFTER INSERT OR UPDATE OR DELETE ON ContentPrepTime
+AFTER INSERT OR UPDATE OR DELETE ON content_prep_time
 FOR EACH ROW
 EXECUTE FUNCTION trg_update_total_prep_time_content_cp();
 
--- Trigger sur PrepTime (modification de la durée)
+-- Trigger sur prep_time (modification de la durée)
 CREATE OR REPLACE FUNCTION trg_update_total_prep_time_preptime()
 RETURNS TRIGGER AS $$
 DECLARE
-    contentId UUID;
+    content_id UUID;
 BEGIN
-    FOR contentId IN
-        SELECT cp.contentId
-          FROM ContentPrepTime cp
-         WHERE cp.prepTimeId = NEW.prepTimeId
+    FOR content_id IN
+        SELECT cp.content_id
+          FROM content_prep_time cp
+         WHERE cp.prep_time_id = NEW.prep_time_id
     LOOP
-        PERFORM recalc_total_prep_time(contentId);
+        PERFORM recalc_total_prep_time(content_id);
     END LOOP;
     RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER tbu_preptime_update
-AFTER UPDATE OF duration ON PrepTime
+AFTER UPDATE OF duration ON prep_time
 FOR EACH ROW
 EXECUTE FUNCTION trg_update_total_prep_time_preptime();
 
+-- PublicationTag enforce type
 CREATE OR REPLACE FUNCTION trg_pubtag_enforce_tag_type()
 RETURNS TRIGGER AS $$
 BEGIN
-    PERFORM ensure_category_type(NEW.categoryId, 'Tag');
+    PERFORM ensure_category_type(NEW.category_id, 'Tag');
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER tbiu_pubtag_enforce_tag_type
-BEFORE INSERT OR UPDATE ON PublicationTag
+BEFORE INSERT OR UPDATE ON publication_tag
 FOR EACH ROW
 EXECUTE FUNCTION trg_pubtag_enforce_tag_type();
 
 -- ====================================================================
 -- Minimal taxonomy seed
 -- ====================================================================
-INSERT INTO Category (strValue, type) VALUES
+INSERT INTO category (str_value, type) VALUES
     ('Book',   'Type'),
     ('Recipe', 'Type'),
     ('Article','Type'),

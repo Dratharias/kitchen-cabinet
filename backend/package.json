@@ -2,9 +2,11 @@
   "name": "kitchen-cabinet-backend",
   "version": "1.0.0",
   "main": "src/server.ts",
+  "type": "module",
   "scripts": {
+    "dev": "ts-node-dev --loader ts-node/esm --respawn --transpile-only src/server.ts",
+    "build": "tsc",
     "start": "node dist/server.js",
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev"
   },

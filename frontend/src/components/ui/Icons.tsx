@@ -11,5 +11,5 @@ export const SearchIcon = (props: { class?: string }) => (
 );
 
 export const HamburgerIcon = (props: { class?: string }) => (
-  <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 5"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m2.75 12.25h10.5m-10.5-4h10.5m-10.5-4h10.5"/></svg>
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m2.75 12.25h10.5m-10.5-4h10.5m-10.5-4h10.5"/></svg>
 );

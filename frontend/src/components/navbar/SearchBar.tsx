@@ -17,8 +17,8 @@ const SearchBar = (): JSX.Element => {
         <div
           class={`
             rounded-xl shadow-sm p-1 flex items-center
-            bg-fresh-50 hover:bg-fresh-100
-            dark:bg-forest-400 dark:hover:bg-forest-300
+            bg-mintsage-50 hover:bg-forest-200
+            dark:bg-forest-400 dark:hover:bg-harmony-700
           `}
         >
           <Input

@@ -4,6 +4,7 @@ import { isAuthenticated } from "../../services/authStore";
 import { useLogout } from "../../services/ToastProvider";
 import NavButtons from "./NavButtons";
 import { useNavState } from "./NavContext";
+import ClickOutsideContainer from "../ui/ClickOutsideContainer";
 
 type MenuItem = {
   label: string;
@@ -97,13 +98,18 @@ const Navbar = () => {
             onClick={() => activate("feed")}
             class="px-3 py-2 rounded-md text-current hover:bg-forest-200 dark:hover:bg-harmony-700 transition-colors duration-200"
           />
-          <NavButtons.HamburgerButton
-            onClick={() => setOpen(!open())}
-            class="fixed right-4 top-4 px-3 py-2 rounded-md text-current hover:bg-forest-200 dark:hover:bg-harmony-700 transition-colors duration-200"
-          />
+        </div>
+        <NavButtons.HamburgerButton
+          onClick={() => setOpen(!open())}
+          class="fixed right-4 top-4 px-3 py-2 rounded-md text-current hover:bg-forest-200 dark:hover:bg-harmony-700 transition-colors duration-200"
+        />
 
-          {open() && (
-            <ul class="fixed right-4 top-16 mt-2 w-56 bg-mintsage-50 dark:bg-forest-400 border border-forest-300 dark:border-harmony-700 rounded-lg shadow-xl z-50 animate-fade-in">
+        {open() && (
+          <ClickOutsideContainer
+            onClickOutside={() => setOpen(false)}
+            class="fixed right-6 top-16 mt-2 w-56 bg-mintsage-50 dark:bg-forest-400 border border-forest-300 dark:border-harmony-700 rounded-lg shadow-xl z-50 animate-fade-in"
+          >
+            <ul>
               {menuItems.map((item, index) => (
                 <li
                   id={item.label ? item.label : `menu-item-${index}`}
@@ -114,8 +120,9 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
-          )}
-        </div>
+          </ClickOutsideContainer>
+        )}
+
       </div>
     </nav>
   );

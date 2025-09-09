@@ -4,22 +4,25 @@ datasource db {
 }
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  binaryTargets   = ["native", "linux-musl-openssl-3.0.x"]
 }
 
 model AppUser {
-  userId   String   @id @default(uuid())
+  userId   String   @id @default(uuid()) @map("user_id")
   username String   @unique
   password String
-  role     String   @default("user")
+  role     String
   created  DateTime @default(now())
+
+  @@map("app_user")
 }
 
 model Category {
-  categoryId String   @id @default(uuid())
-  strValue   String
+  categoryId String  @id @default(uuid()) @map("category_id")
+  strValue   String  @map("str_value")
   type       String
-  numValue   Int?     @db.SmallInt
+  numValue   Int?    @db.SmallInt @map("num_value")
 
   publicationsType  Publication[] @relation("PublicationType")
   publicationsStyle Publication[] @relation("PublicationStyle")
@@ -28,16 +31,17 @@ model Category {
   products          Product[]
   prepTime          PrepTime[]
   resourcesUrl      Resource[]
-  publicationTag PublicationTag[]
+  publicationTag    PublicationTag[]
 
   @@unique([strValue, type])
   @@index([type])
   @@index([strValue])
   @@index([type, strValue])
+  @@map("category")
 }
 
 model Publication {
-  publicationId String   @id @default(uuid())
+  publicationId String   @id @default(uuid()) @map("publication_id")
   title         String
   description   String[]
   note          String[]
@@ -45,57 +49,64 @@ model Publication {
   published     Boolean  @default(false)
   thumbnail     String?
 
-  typeId   String? @map("type")
-  styleId  String? @map("style")
-  authorId String? @map("author")
-  resourceId String?
+  typeId      String? @map("type_id")
+  styleId     String? @map("style_id")
+  authorId    String? @map("author_id")
+  resourceId  String? @map("resource_id")
 
   type   Category? @relation("PublicationType", fields: [typeId], references: [categoryId])
   style  Category? @relation("PublicationStyle", fields: [styleId], references: [categoryId])
   author Category? @relation("PublicationAuthor", fields: [authorId], references: [categoryId])
   resource Resource? @relation(fields: [resourceId], references: [resourceId])
 
-  ingredients Ingredient[]
-  reviews     Review[]
+  ingredients          Ingredient[]
+  reviews              Review[]
   resourcePublications ResourcePublication[]
-  tags           PublicationTag[]
-  
+  tags                 PublicationTag[]
+
   @@index([typeId])
   @@index([styleId])
   @@index([authorId])
   @@index([published])
+  @@map("publication")
 }
 
 model PublicationTag {
   publication   Publication @relation(fields: [publicationId], references: [publicationId])
-  publicationId String
+  publicationId String      @map("publication_id")
   category      Category    @relation(fields: [categoryId], references: [categoryId])
-  categoryId    String
+  categoryId    String      @map("category_id")
 
   @@id([publicationId, categoryId])
+  @@map("publication_tag")
 }
 
 model Content {
-  contentId   String   @id @default(uuid())
+  contentId   String @id @default(uuid()) @map("content_id")
   title       String
   description String[]
   note        String[]
-  categoryId  String
+  totalPrepTime Int   @default(0) @map("total_prep_time")
+  servings    Int?
+  categoryId  String @map("category_id")
 
-  category Category @relation(fields: [categoryId], references: [categoryId])
+  category  Category @relation(fields: [categoryId], references: [categoryId])
   resources ResourceContent[]
 
+  @@map("content")
 }
 
 model Unit {
-  unitId String @id @default(uuid())
+  unitId String @id @default(uuid()) @map("unit_id")
   name   String @unique
 
   ingredientUnits IngredientUnit[]
+
+  @@map("unit")
 }
 
 model Macro {
-  macroId   String @id @default(uuid())
+  macroId   String @id @default(uuid()) @map("macro_id")
   calories  Int?   @db.SmallInt
   protein   Int?   @db.SmallInt
   fiber     Int?   @db.SmallInt
@@ -105,14 +116,16 @@ model Macro {
   caffein   Int?   @db.SmallInt
 
   products Product[]
+
+  @@map("macro")
 }
 
 model Product {
-  productId String @id @default(uuid())
+  productId String @id @default(uuid()) @map("product_id")
   name      String
-  enName    String?
-  macroId   String?
-  categoryId String
+  enName    String? @map("en_name")
+  macroId   String? @map("macro_id")
+  categoryId String @map("category_id")
 
   macro    Macro?    @relation(fields: [macroId], references: [macroId])
   category Category  @relation(fields: [categoryId], references: [categoryId])
@@ -120,90 +133,102 @@ model Product {
   reviews     Review[]
 
   @@index([categoryId])
+  @@map("product")
 }
 
 model Ingredient {
-  ingredientId String @id @default(uuid())
+  ingredientId String @id @default(uuid()) @map("ingredient_id")
   quantity     Int?   @db.SmallInt
-  isRecipeId   String? @map("isRecipe")
-  productId    String
+  isRecipeId   String? @map("is_recipe_id")
+  productId    String @map("product_id")
 
   product Product @relation(fields: [productId], references: [productId])
   isRecipe Publication? @relation(fields: [isRecipeId], references: [publicationId])
 
   units IngredientUnit[]
+
+  @@map("ingredient")
 }
 
 model IngredientUnit {
-  ingredientId String
-  unitId       String
+  ingredientId String @map("ingredient_id")
+  unitId       String @map("unit_id")
 
   ingredient Ingredient @relation(fields: [ingredientId], references: [ingredientId])
   unit       Unit       @relation(fields: [unitId], references: [unitId])
 
   @@id([ingredientId, unitId])
   @@index([unitId])
+  @@map("ingredient_unit")
 }
 
 model PrepTime {
-  prepTimeId String @id @default(uuid())
+  prepTimeId String @id @default(uuid()) @map("prep_time_id")
   duration   Int    @db.SmallInt
-  categoryId String
+  categoryId String @map("category_id")
 
   category Category @relation(fields: [categoryId], references: [categoryId])
+
+  @@map("prep_time")
 }
 
 model Segment {
-  segmentId String @id @default(uuid())
+  segmentId String @id @default(uuid()) @map("segment_id")
   paragraph String @unique
   order     Int    @db.SmallInt
+
+  @@map("segment")
 }
 
 model Resource {
-  resourceId String @id @default(uuid())
-  urlId      String
+  resourceId String @id @default(uuid()) @map("resource_id")
+  urlId      String @map("url_id")
 
   url Category @relation(fields: [urlId], references: [categoryId])
   contents ResourceContent[]
   publications ResourcePublication[]
-
   publicationsLinked Publication[]
-  
+
   @@index([urlId])
+  @@map("resource")
 }
 
 model ResourceContent {
-  resourceId String
-  contentId  String
+  resourceId String @map("resource_id")
+  contentId  String @map("content_id")
 
   resource Resource @relation(fields: [resourceId], references: [resourceId])
   content  Content  @relation(fields: [contentId], references: [contentId])
 
   @@id([resourceId, contentId])
+  @@map("resource_content")
 }
 
 model ResourcePublication {
-  resourceId    String
-  publicationId String
-  orderInBook   Int? @db.SmallInt
+  resourceId    String @map("resource_id")
+  publicationId String @map("publication_id")
+  orderInBook   Int?   @db.SmallInt @map("order_in_book")
 
   resource    Resource    @relation(fields: [resourceId], references: [resourceId])
   publication Publication @relation(fields: [publicationId], references: [publicationId])
 
   @@id([resourceId, publicationId])
   @@unique([resourceId, orderInBook])
+  @@map("resource_publication")
 }
 
 model Review {
-  reviewId    String @id @default(uuid())
-  productId   String
-  publicationId String
-  rating      Int?   @db.SmallInt
-  comment     String[]
-  description String[]
-  buyAgain    String? @db.Char(1)
-  dateReview  DateTime @default(now())
+  reviewId      String @id @default(uuid()) @map("review_id")
+  productId     String @map("product_id")
+  publicationId String @map("publication_id")
+  rating        Int?   @db.SmallInt
+  comment       String[]
+  description   String[]
+  buyAgain      String? @db.Char(1) @map("buy_again")
+  dateReview    DateTime @default(now()) @map("date_review")
 
   product     Product     @relation(fields: [productId], references: [productId])
   publication Publication @relation(fields: [publicationId], references: [publicationId])
+
+  @@map("review")
 }

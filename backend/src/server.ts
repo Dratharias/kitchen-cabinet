@@ -1,13 +1,14 @@
 import Fastify from "fastify";
-import cors from "@fastify/cors";
-import createRoutes from "./routes";
-import { PORT } from "../config";
+import { fastifyCors } from "@fastify/cors";
+import createRoutes from "./routes.js";
+import { PORT } from "./config.js";
 
 const fastify = Fastify({ logger: true });
 
-await fastify.register(cors, { origin: true });
+fastify.register(fastifyCors, {
+  origin: "*",
+});
 await fastify.register(createRoutes);
 
-fastify.listen({ port: PORT }).then(() => {
-  console.log(`Fastify server running at http://localhost:${PORT}`);
-});
+await fastify.listen({ port: PORT, host: '0.0.0.0' });
+console.log(`🚀 Fastify server running at http://localhost:${PORT}`);

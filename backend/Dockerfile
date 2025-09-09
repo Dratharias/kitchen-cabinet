@@ -2,12 +2,20 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
+# Copy only what’s needed for install first
+COPY package*.json tsconfig.json ./
 
-RUN npm ci && npm install -g ts-node-dev nodemon
+# Install dependencies
+RUN npm ci --no-cache
 
-COPY . .
+# Copy all source files
+COPY . . 
 
-EXPOSE 3000
+# Build TypeScript
+RUN npm run build
 
-CMD ["ts-node-dev", "--respawn", "--transpile-only", "src/server.ts"]
+# Expose port
+EXPOSE 3001
+
+# Run compiled server
+CMD ["npm", "run", "start"]

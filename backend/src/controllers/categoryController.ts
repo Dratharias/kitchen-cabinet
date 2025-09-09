@@ -1,4 +1,4 @@
-import { CRUDController } from "./crudController";
+import { CRUDController } from "./crudController.js";
 import { FastifyRequest, FastifyReply, FastifyInstance } from "fastify";
 import { PrismaClient } from "@prisma/client";
 

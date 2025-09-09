@@ -1,6 +1,6 @@
 import { FastifyRequest, FastifyReply, FastifyInstance } from "fastify";
 import { PrismaClient } from "@prisma/client";
-import { CRUDController } from "./crudController";
+import { CRUDController } from "./crudController.js";
 
 const prisma = new PrismaClient();
 
@@ -172,36 +172,38 @@ export const publicationController: CRUDController<PublicationBody, PublicationP
         : { [sortBy]: sortOrder };
 
     const publications = await prisma.publication.findMany({
-        where: publicationWhere,
-        include: {
+      where: publicationWhere,
+      include: {
         type: true,
         style: true,
         author: true,
         resource: {
-            include: {
-            resourceContents: {
-                include: {
+          include: {
+            contents: {
+              include: {
                 content: {
-                    include: {
+                  include: {
                     category: true,
-                    ingredients: {
-                        include: { product: true, units: { include: { unit: true } } },
-                    },
-                    macro: true,
-                    },
-                    where: contentWhere,
+                  },
                 },
-                },
+              },
             },
-            },
+          },
+        },
+        ingredients: {  // <-- this is correct, Publication.ingredients exists
+          include: {
+            product: true,
+            units: { include: { unit: true } },
+          },
         },
         tags: { include: { category: true } },
         reviews: true,
-        },
-        orderBy,
-        take,
-        skip,
+      },
+      orderBy,
+      take,
+      skip,
     });
+
 
     reply.send(publications);
   },
