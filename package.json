@@ -1,6 +1,6 @@
 {
   "name": "kitchen-cabinet",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "docker:up": "docker compose up --build -d",

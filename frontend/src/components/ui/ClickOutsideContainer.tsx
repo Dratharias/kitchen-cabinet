@@ -1,24 +1,29 @@
-import { JSX, onCleanup } from "solid-js";
+import { JSX, onCleanup, onMount } from "solid-js";
 
 type ClickOutsideContainerProps = {
   children: JSX.Element;
   onClickOutside: () => void;
   class?: string;
+  style?: JSX.CSSProperties;
 };
 
 const ClickOutsideContainer = (props: ClickOutsideContainerProps) => {
   let containerRef: HTMLDivElement | undefined;
 
   const handleClick = (event: MouseEvent) => {
-    if (containerRef && !containerRef.contains(event.target as Node)) {
+    if (!containerRef) return;
+
+    if (!containerRef.contains(event.target as Node)) {
       props.onClickOutside();
     }
   };
 
-  document.addEventListener("click", handleClick);
+  onMount(() => {
+    document.addEventListener("pointerdown", handleClick);
+  });
 
   onCleanup(() => {
-    document.removeEventListener("click", handleClick);
+    document.removeEventListener("pointerdown", handleClick);
   });
 
   return (
