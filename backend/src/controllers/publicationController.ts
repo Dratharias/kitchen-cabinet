@@ -17,200 +17,135 @@ interface PublicationBody {
   resourceId?: string;
 }
 
-interface PublicationSearchQuery {
-  q?: string;                     // recherche texte
-  typeId?: string;                 // filtre type
-  styleId?: string;                // filtre style
-  tags?: string[];                 // ex: ["vegan", "gluten-free"]
-  ingredients?: string[];          // ex: ["chicken", "garlic"]
-  maxPrepTime?: number;            // en minutes
-  minCalories?: number;
-  maxCalories?: number;
-  servings?: number;               // portions exactes
-  sortBy?: "title" | "prepTime" | "calories" | "createdAt";
-  sortOrder?: "asc" | "desc";
-  take?: number;
-  skip?: number;
-}
-
-interface PublicationParams {
-  id: string;
-}
+interface PublicationParams { id: string; }
 
 export const publicationController: CRUDController<PublicationBody, PublicationParams> & {
-  getPublicationsWithRelations: (req: FastifyRequest, reply: FastifyReply) => Promise<any>;
+  getFeeds: (req: FastifyRequest, reply: FastifyReply) => Promise<any>;
+  getLibrary: (req: FastifyRequest, reply: FastifyReply) => Promise<any>;
   getPublicationDetails: (req: FastifyRequest<{ Params: PublicationParams }>, reply: FastifyReply) => Promise<any>;
   countPublicationsByCategory: (req: FastifyRequest, reply: FastifyReply) => Promise<any>;
 } = {
+
+  // --- CRUD standard ---
   create: async (req, reply) => {
-    const data = req.body;
-    const publication = await prisma.publication.create({ data });
-    reply.code(201).send(publication);
+    try {
+      const publication = await prisma.publication.create({ data: req.body });
+      reply.code(201).send(publication);
+    } catch (err: any) {
+      reply.code(500).send({ error: err.message });
+    }
   },
 
   readAll: async (_req, reply) => {
-    const publications = await prisma.publication.findMany();
-    reply.send(publications);
+    try {
+      const publications = await prisma.publication.findMany();
+      reply.send(publications);
+    } catch (err: any) {
+      reply.code(500).send({ error: err.message });
+    }
   },
 
   readOne: async (req, reply) => {
-    const { id } = req.params;
-    const publication = await prisma.publication.findUnique({ where: { publicationId: id } });
-    reply.send(publication ?? { error: "Not found" });
+    try {
+      const publication = await prisma.publication.findUnique({ where: { publicationId: req.params.id } });
+      reply.send(publication ?? { error: "Not found" });
+    } catch (err: any) {
+      reply.code(500).send({ error: err.message });
+    }
   },
 
   update: async (req, reply) => {
-    const { id } = req.params;
-    const data = req.body;
-    const updated = await prisma.publication.update({ where: { publicationId: id }, data });
-    reply.send(updated);
+    try {
+      const updated = await prisma.publication.update({ where: { publicationId: req.params.id }, data: req.body });
+      reply.send(updated);
+    } catch (err: any) {
+      reply.code(500).send({ error: err.message });
+    }
   },
 
   delete: async (req, reply) => {
-    const { id } = req.params;
-    await prisma.publication.delete({ where: { publicationId: id } });
-    reply.send({ success: true });
+    try {
+      await prisma.publication.delete({ where: { publicationId: req.params.id } });
+      reply.send({ success: true });
+    } catch (err: any) {
+      reply.code(500).send({ error: err.message });
+    }
   },
 
-  // Routes avancées
-  getPublicationsWithRelations: async (_req, reply) => {
-    const publications = await prisma.publication.findMany({
-      include: {
-        type: true,
-        style: true,
-        author: true,
-        ingredients: true,
-        reviews: true,
-        resourcePublications: true,
-      },
-    });
-    reply.send(publications);
+  // --- Feeds : Article | Recipe ---
+  getFeeds: async (_req, reply) => {
+    try {
+      const feeds = await prisma.publication.findMany({
+        where: {
+          published: true,
+          public: true,
+          type: { strValue: { in: ["Article", "Recipe"] } }
+        },
+        select: { publicationId: true, title: true, type: true, style: true, thumbnail: true, description: true }
+      });
+      reply.send(feeds);
+    } catch (err: any) {
+      reply.code(500).send({ error: err.message });
+    }
+  },
+
+  // --- Library : Book | Review ---
+  getLibrary: async (_req, reply) => {
+    try {
+      const library = await prisma.publication.findMany({
+        where: {
+          published: true,
+          public: true,
+          type: { strValue: { in: ["Book", "Review"] } }
+        },
+        include: {
+          type: true,
+          style: true,
+          author: true,
+          ingredients: { include: { product: true, units: { include: { unit: true } } } },
+          reviews: true,
+          resourcePublications: { include: { resource: true } },
+        },
+      });
+      reply.send(library);
+    } catch (err: any) {
+      reply.code(500).send({ error: err.message });
+    }
   },
 
   getPublicationDetails: async (req, reply) => {
-    const { id } = req.params;
-    const publication = await prisma.publication.findUnique({
-      where: { publicationId: id },
-      include: {
-        type: true,
-        style: true,
-        author: true,
-        ingredients: { include: { product: true, units: { include: { unit: true } } } },
-        reviews: true,
-        resourcePublications: { include: { resource: true } },
-      },
-    });
-    reply.send(publication ?? { error: "Not found" });
+    try {
+      const publication = await prisma.publication.findUnique({
+        where: { publicationId: req.params.id },
+        include: {
+          type: true,
+          style: true,
+          author: true,
+          ingredients: { include: { product: true, units: { include: { unit: true } } } },
+          reviews: true,
+          resourcePublications: { include: { resource: true } },
+        },
+      });
+      reply.send(publication ?? { error: "Not found" });
+    } catch (err: any) {
+      reply.code(500).send({ error: err.message });
+    }
   },
 
   countPublicationsByCategory: async (_req, reply) => {
-    const counts = await prisma.publication.groupBy({
-      by: ["typeId"],
-      _count: { _all: true },
-    });
-    reply.send(counts);
-  },
-
-  search: async (
-    req: FastifyRequest<{ Querystring: PublicationSearchQuery }>,
-    reply: FastifyReply
-    ) => {
-    const {
-        q,
-        typeId,
-        styleId,
-        tags,
-        ingredients,
-        maxPrepTime,
-        minCalories,
-        maxCalories,
-        servings,
-        sortBy = "title",
-        sortOrder = "asc",
-        take = 50,
-        skip = 0,
-    } = req.query;
-    
-    const publicationWhere: any = {
-        published: true,
-        ...(typeId && { typeId }),
-        ...(styleId && { styleId }),
-        ...(q && {
-        OR: [
-            { title: { contains: q, mode: "insensitive" } },
-            { description: { hasSome: [q] } },
-        ],
-        }),
-        ...(tags && tags.length > 0 && {
-        tags: {
-            some: {
-            category: { strValue: { in: tags }, type: "Tag" },
-            },
-        },
-        }),
-    };
-
-    const contentWhere: any = {
-        ...(maxPrepTime && { totalPrepTime: { lte: maxPrepTime } }),
-        ...(servings && { servings: { gte: servings } }),
-        ...(minCalories && { macro: { calories: { gte: minCalories } } }),
-        ...(maxCalories && { macro: { calories: { lte: maxCalories } } }),
-        ...(ingredients && ingredients.length > 0 && {
-        ingredients: {
-            some: {
-            product: { name: { in: ingredients, mode: "insensitive" } },
-            },
-        },
-        }),
-    };
-
-    const orderBy: any =
-        sortBy === "prepTime"
-        ? { resource: { resourceContents: { some: { content: { totalPrepTime: sortOrder } } } } }
-        : sortBy === "calories"
-        ? { resource: { resourceContents: { some: { content: { macro: { calories: sortOrder } } } } } }
-        : { [sortBy]: sortOrder };
-
-    const publications = await prisma.publication.findMany({
-      where: publicationWhere,
-      include: {
-        type: true,
-        style: true,
-        author: true,
-        resource: {
-          include: {
-            contents: {
-              include: {
-                content: {
-                  include: {
-                    category: true,
-                  },
-                },
-              },
-            },
-          },
-        },
-        ingredients: {  // <-- this is correct, Publication.ingredients exists
-          include: {
-            product: true,
-            units: { include: { unit: true } },
-          },
-        },
-        tags: { include: { category: true } },
-        reviews: true,
-      },
-      orderBy,
-      take,
-      skip,
-    });
-
-
-    reply.send(publications);
+    try {
+      const counts = await prisma.publication.groupBy({ by: ["typeId"], _count: { _all: true } });
+      reply.send(counts);
+    } catch (err: any) {
+      reply.code(500).send({ error: err.message });
+    }
   },
 
   advancedRoutes: (path: string, fastify: FastifyInstance) => {
-    fastify.get(`${path}/with-relations`, publicationController.getPublicationsWithRelations);
+    fastify.get(`${path}/feeds`, publicationController.getFeeds);
+    fastify.get(`${path}/library`, publicationController.getLibrary);
     fastify.get(`${path}/:id/details`, publicationController.getPublicationDetails);
     fastify.get(`${path}/count-by-type`, publicationController.countPublicationsByCategory);
   },
+
 };

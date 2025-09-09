@@ -73,7 +73,7 @@ const Navbar = () => {
 
   return (
     <nav class="w-full bg-mintsage-50 dark:bg-forest-400 text-forest-700 dark:text-harmony-100">
-      <div class="max-w-7xl mx-auto p-2 sm:px-6 lg:px-8">
+      <div class="md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto p-2 sm:px-6 lg:px-8">
         {/* boutons principaux */}
         <div class="flex items-center text-nowrap justify-evenly h-16 space-x-2 text-center">
           <NavButtons.LibraryButton

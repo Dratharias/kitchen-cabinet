@@ -17,7 +17,7 @@ function registerCRUDRoutes<TBody = any, TParams = any, TQuery = any>(
   fastify: FastifyInstance,
   path: string,
   controller: CRUDController<TBody, TParams, TQuery>,
-  protectedRoute = true
+  protectedRoute = false
 ) {
   const preHandler = protectedRoute ? [authGuard] : [];
 

@@ -7,7 +7,7 @@ const Input = (props: InputProps): JSX.Element => {
 
   const inputClass = `
     w-full flex-1 text-lg sm:text-xl rounded-lg p-2
-    border border-forest-300 dark:border-harmony-700
+    border border-forest-300 dark:border-harmony-100
     bg-mintsage-50 dark:bg-forest-400
     text-forest-700 dark:text-harmony-100
     focus:outline-none focus:ring-2
