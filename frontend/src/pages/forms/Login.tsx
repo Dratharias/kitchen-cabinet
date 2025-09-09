@@ -3,6 +3,7 @@ import { authenticate } from "../../services/ToastProvider";
 import { isAuthenticated, setIsAuthenticated } from "../../services/authStore";
 import Button from "../../components/ui/Button";
 import Input from "../../components/ui/Input";
+import { colorTheme, surfaceTheme } from "../../theme/colors";
 
 export function LoginForm() {
   const [username, setUsername] = createSignal("");
@@ -25,18 +26,26 @@ export function LoginForm() {
   };
 
   return (
-    <div class="flex items-center justify-center min-h-[70vh] w-full">
+    <div class={`flex items-center justify-center min-h-[70vh] w-full`}>
       {isAuthenticated() ? (
-        <div class="text-center space-y-4">
-          <h2 class="text-2xl font-semibold">Bienvenue {username()} 🎉</h2>
-          <p class="text-gray-600">Vous êtes connecté avec succès.</p>
-          <Button class="mx-auto" onClick={handleLogout}>Logout</Button>
+        <div class={`text-center space-y-4 ${surfaceTheme.Card}`}>
+          <h2 class={surfaceTheme.CardTitle}>
+            Bienvenue {username()} 🎉
+          </h2>
+          <p class={surfaceTheme.CardSubtitle}>
+            Vous êtes connecté avec succès.
+          </p>
+          <Button class={colorTheme.NavbarButton + " mx-auto"} onClick={handleLogout}>
+            Logout
+          </Button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} class="w-full max-w-sm">
-          <h2 class="text-2xl font-semibold mb-4 text-center">Login</h2>
+        <form onSubmit={handleSubmit} class={`w-full max-w-sm ${surfaceTheme.Card} space-y-4`}>
+          <h2 class={`${surfaceTheme.CardTitle} text-center mb-4`}>
+            Login
+          </h2>
 
-          <label class="block mb-2 text-sm font-medium">
+          <label class="block text-sm font-medium">
             Username
             <Input
               type="text"
@@ -47,7 +56,7 @@ export function LoginForm() {
             />
           </label>
 
-          <label class="block mb-4 text-sm font-medium">
+          <label class="block text-sm font-medium">
             Password
             <Input
               type="password"
@@ -58,7 +67,7 @@ export function LoginForm() {
             />
           </label>
 
-          <Button type="submit" disabled={loading()}>
+          <Button class={colorTheme.NavbarButton} type="submit" disabled={loading()}>
             {loading() ? "Connexion..." : "Login"}
           </Button>
         </form>

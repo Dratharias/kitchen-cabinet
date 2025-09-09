@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "@solidjs/router";
-import { createSignal, createEffect, Accessor } from "solid-js";
+import { createSignal, createEffect } from "solid-js";
 import { isAuthenticated } from "../../services/authStore";
 import { useLogout } from "../../services/ToastProvider";
 import NavButtons from "./NavButtons";
@@ -7,10 +7,11 @@ import { useNavState } from "./NavContext";
 import NavbarMenu from "./NavbarMenu";
 import type { MenuItem } from "../../types/menu";
 import ClickOutsideContainer from "../ui/ClickOutsideContainer";
+import { colorTheme, surfaceTheme } from "../../theme/colors";
 
 const Navbar = () => {
   const { searchOpen, toggleSearch } = useNavState();
-  const [isEditor, setIsEditor] = createSignal(true);
+  const [isEditor] = createSignal(true);
   const [open, setOpen] = createSignal(false);
   const [activeKey, setActiveKey] = createSignal<string>(
     localStorage.getItem("activeNav") || "feed"
@@ -21,7 +22,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const logout = useLogout();
 
-  // Persistance de la navigation
+  // Persist navigation
   createEffect(() => {
     localStorage.setItem("activeNav", activeKey());
   });
@@ -72,46 +73,43 @@ const Navbar = () => {
   const menuItems = isEditor() ? [...commonItems, ...editorItems] : commonItems;
 
   return (
-    <nav class="w-full bg-mintsage-50 dark:bg-forest-400 text-forest-700 dark:text-harmony-100">
+    <nav class={`${colorTheme.Navbar} w-full`}>
       <div class="md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto p-2 sm:px-6 lg:px-8">
-        {/* boutons principaux */}
+        {/* Primary buttons */}
         <div class="flex items-center text-nowrap justify-evenly h-16 space-x-2 text-center">
           <NavButtons.LibraryButton
             active={isActive("library")}
             onClick={() => activate("library")}
-            class="px-3 py-2 rounded-md text-current hover:bg-forest-200 dark:hover:bg-harmony-700 transition-colors duration-200"
+            class={colorTheme.NavbarButton}
           />
           <NavButtons.SearchButton
             open={searchOpen()}
             onClick={toggleSearch}
-            class="px-3 py-2 rounded-md text-current hover:bg-forest-200 dark:hover:bg-harmony-700 transition-colors duration-200"
+            class={colorTheme.NavbarButton}
           />
           <NavButtons.FeedButton
             active={isActive("feed")}
             onClick={() => activate("feed")}
-            class="px-3 py-2 rounded-md text-current hover:bg-forest-200 dark:hover:bg-harmony-700 transition-colors duration-200"
+            class={colorTheme.NavbarButton}
           />
         </div>
 
+        {/* Menu toggle */}
+        <ClickOutsideContainer onClickOutside={() => setOpen(false)}>
+          {/* bouton hamburger */}
+          <NavButtons.HamburgerButton
+            onClick={() => setOpen(!open())}
+            class={`fixed right-4 top-4 ${colorTheme.NavbarButton}`}
+          />
 
-        {/* menu toggle */}
-        
-          <ClickOutsideContainer
-            onClickOutside={() => setOpen(false)}
-            class=""
-          >
-            {/* bouton hamburger */}
-            <NavButtons.HamburgerButton
-              onClick={() => setOpen(!open())}
-              class="fixed right-4 top-4 px-3 py-2 rounded-md text-current hover:bg-forest-200 dark:hover:bg-harmony-700 transition-colors duration-200"
-            />
-            {open() && (
-              <div class="fixed right-6 top-16 mt-2 w-56 bg-mintsage-50 dark:bg-forest-400 border border-forest-300 dark:border-harmony-700 rounded-lg shadow-xl z-50 animate-fade-in">
-                <NavbarMenu  items={menuItems} onClose={() => setOpen(false)} />
-              </div>
-            )}
-          </ClickOutsideContainer>
-        
+          {open() && (
+            <div
+              class={`${surfaceTheme.CardCompact} fixed right-6 top-16 mt-2 w-56 z-50 animate-fade-in`}
+            >
+              <NavbarMenu items={menuItems} onClose={() => setOpen(false)} />
+            </div>
+          )}
+        </ClickOutsideContainer>
       </div>
     </nav>
   );

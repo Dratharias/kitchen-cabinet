@@ -1,26 +1,24 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
+import { faker } from "@faker-js/faker";
 
 const prisma = new PrismaClient();
 
-async function main() {
-  console.log("⚡ Seed start");
+async function createUnits() {
+  const units = ["g", "kg", "ml", "l", "piece"];
+  return Promise.all(
+    units.map(name =>
+      prisma.unit.upsert({
+        where: { name },
+        update: {},
+        create: { name },
+      })
+    )
+  );
+}
 
-  // --- Units ---
-  const unitGram = await prisma.unit.upsert({
-    where: { name: "g" },
-    update: {},
-    create: { name: "g" },
-  });
-
-  const unitPiece = await prisma.unit.upsert({
-    where: { name: "piece" },
-    update: {},
-    create: { name: "piece" },
-  });
-
-  // --- Categories ---
-  const categoriesData = [
+async function createCategories() {
+  const baseCategories = [
     { strValue: "Article", type: "Type" },
     { strValue: "Recipe", type: "Type" },
     { strValue: "Book", type: "Type" },
@@ -32,6 +30,13 @@ async function main() {
     { strValue: "default-url", type: "URL" },
   ];
 
+  const more = Array.from({ length: 16 }, () => ({
+    strValue: faker.word.noun(),
+    type: faker.helpers.arrayElement(["Type", "Style", "Tag", "URL"]),
+  }));
+
+  const categoriesData = [...baseCategories, ...more];
+
   const categories = await Promise.all(
     categoriesData.map(c =>
       prisma.category.upsert({
@@ -42,172 +47,133 @@ async function main() {
     )
   );
 
-  const catMap = Object.fromEntries(categories.map(c => [c.strValue, c]));
+  return Object.fromEntries(categories.map(c => [c.strValue, c]));
+}
 
-  // --- Macros ---
-  const [macroTomato, macroPasta] = await Promise.all([
-    prisma.macro.create({ data: { calories: 18, protein: 1, fiber: 1 } }),
-    prisma.macro.create({ data: { calories: 131, protein: 5, fiber: 2 } }),
-  ]);
+async function createMacros(n) {
+  return Promise.all(
+    Array.from({ length: n }, () =>
+      prisma.macro.create({
+        data: {
+          calories: faker.number.int({ min: 10, max: 500 }),
+          protein: faker.number.int({ min: 0, max: 50 }),
+          fiber: faker.number.int({ min: 0, max: 30 }),
+        },
+      })
+    )
+  );
+}
 
-  // --- Products ---
-  const [tomato, pasta] = await Promise.all([
-    prisma.product.create({ data: { name: "Tomato", categoryId: catMap["Recipe"].categoryId, macroId: macroTomato.macroId } }),
-    prisma.product.create({ data: { name: "Pasta", categoryId: catMap["Recipe"].categoryId, macroId: macroPasta.macroId } }),
-  ]);
+async function createProducts(n, categories, macros) {
+  return Promise.all(
+    Array.from({ length: n }, () =>
+      prisma.product.create({
+        data: {
+          name: faker.commerce.productName(),
+          categoryId: categories["Recipe"].categoryId,
+          macroId: faker.helpers.arrayElement(macros).macroId,
+        },
+      })
+    )
+  );
+}
 
-  // --- Publications Feeds ---
-  const pubPastaRecipe = await prisma.publication.create({
-    data: {
-      title: "How to cook pasta",
-      description: ["Step by step guide."],
-      note: [],
-      published: true,
-      public: true,
-      typeId: catMap["Recipe"].categoryId,
-      styleId: catMap["Italian"].categoryId,
-      thumbnail: "https://picsum.photos/200/200",
-    },
-  });
+async function createPublications(n, categories) {
+  return Promise.all(
+    Array.from({ length: n }, () =>
+      prisma.publication.create({
+        data: {
+          title: faker.lorem.words(3),
+          description: [faker.lorem.sentence()],
+          note: [],
+          published: true,
+          public: true,
+          typeId: categories[faker.helpers.arrayElement(["Recipe", "Article", "Book", "Review"])].categoryId,
+          styleId: categories[faker.helpers.arrayElement(["Italian", "French"])].categoryId,
+          thumbnail: faker.image.urlPicsumPhotos({ width: 200, height: 200 }),
+        },
+      })
+    )
+  );
+}
 
-  const pubSolidArticle = await prisma.publication.create({
-    data: {
-      title: "Intro to SolidJS",
-      description: ["Understanding reactive UI frameworks."],
-      note: [],
-      published: true,
-      public: true,
-      typeId: catMap["Article"].categoryId,
-      styleId: catMap["French"].categoryId,
-      thumbnail: "https://picsum.photos/200/201",
-    },
-  });
+async function createIngredients(n, products, publications) {
+  return Promise.all(
+    Array.from({ length: n }, () =>
+      prisma.ingredient.create({
+        data: {
+          productId: faker.helpers.arrayElement(products).productId,
+          quantity: faker.number.int({ min: 50, max: 500 }),
+          isRecipeId: faker.helpers.arrayElement(publications).publicationId,
+        },
+      })
+    )
+  );
+}
 
-  // --- Resource ---
-  const resource = await prisma.resource.create({ data: { urlId: catMap["default-url"].categoryId } });
+async function createIngredientUnits(ingredients, units) {
+  return Promise.all(
+    ingredients.map(ing =>
+      prisma.ingredientUnit.upsert({
+        where: {
+          ingredientId_unitId: {
+            ingredientId: ing.ingredientId,
+            unitId: units[0].unitId, // default to grams
+          },
+        },
+        update: {},
+        create: { ingredientId: ing.ingredientId, unitId: units[0].unitId },
+      })
+    )
+  );
+}
 
-  // --- Publications Library ---
-  const pubJSBook = await prisma.publication.create({
-    data: {
-      title: "JavaScript: The Good Parts",
-      description: ["Classic JS book."],
-      note: [],
-      published: true,
-      public: true,
-      typeId: catMap["Book"].categoryId,
-      thumbnail: "https://picsum.photos/200/202",
-      resourceId: resource.resourceId,
-    },
-  });
+async function createContents(n, categories) {
+  return Promise.all(
+    Array.from({ length: n }, () =>
+      prisma.content.create({
+        data: {
+          title: faker.lorem.words(4),
+          description: [faker.lorem.sentences(2)],
+          note: [],
+          totalPrepTime: faker.number.int({ min: 10, max: 120 }),
+          servings: faker.number.int({ min: 1, max: 8 }),
+          categoryId: categories["Recipe"].categoryId,
+        },
+      })
+    )
+  );
+}
 
-  const pubSolidReview = await prisma.publication.create({
-    data: {
-      title: "User Reviews on SolidJS",
-      description: ["Compilation of reviews."],
-      note: [],
-      published: true,
-      public: true,
-      typeId: catMap["Review"].categoryId,
-      thumbnail: "https://picsum.photos/200/203",
-    },
-  });
+async function createUsers() {
+  const hashedAdmin = await bcrypt.hash("admin123", 10);
+  const hashedUser = await bcrypt.hash("user123", 10);
 
-  // --- Ingredients ---
-  const ingTomato = await prisma.ingredient.create({
-    data: { productId: tomato.productId, quantity: 200, isRecipeId: pubPastaRecipe.publicationId },
-  });
-
-  const ingPasta = await prisma.ingredient.create({
-    data: { productId: pasta.productId, quantity: 100, isRecipeId: pubPastaRecipe.publicationId },
-  });
-
-  // --- IngredientUnit ---
-  await Promise.all([
-    prisma.ingredientUnit.upsert({
-      where: { ingredientId_unitId: { ingredientId: ingTomato.ingredientId, unitId: unitGram.unitId } },
-      update: {},
-      create: { ingredientId: ingTomato.ingredientId, unitId: unitGram.unitId },
+  return Promise.all([
+    prisma.appUser.create({
+      data: { username: "admin", password: hashedAdmin, role: "admin" },
     }),
-    prisma.ingredientUnit.upsert({
-      where: { ingredientId_unitId: { ingredientId: ingPasta.ingredientId, unitId: unitGram.unitId } },
-      update: {},
-      create: { ingredientId: ingPasta.ingredientId, unitId: unitGram.unitId },
+    prisma.appUser.create({
+      data: { username: "user", password: hashedUser, role: "user" },
     }),
   ]);
+}
 
-  // --- Content ---
-  const contentPasta = await prisma.content.create({
-    data: {
-      title: "Pasta Recipe Content",
-      description: ["Content describing pasta steps."],
-      note: [],
-      totalPrepTime: 30,
-      servings: 2,
-      categoryId: catMap["Recipe"].categoryId,
-    },
-  });
+async function main() {
+  console.log("⚡ Seed start");
 
-  const contentSolid = await prisma.content.create({
-    data: {
-      title: "SolidJS Article Content",
-      description: ["Content about SolidJS."],
-      note: [],
-      totalPrepTime: 10,
-      servings: 1,
-      categoryId: catMap["Article"].categoryId,
-    },
-  });
+  const units = await createUnits();
+  const categories = await createCategories();
+  const macros = await createMacros(25);
+  const products = await createProducts(25, categories, macros);
+  const publications = await createPublications(25, categories);
+  const ingredients = await createIngredients(25, products, publications);
 
-  // --- ResourceContent ---
-  await prisma.resourceContent.upsert({
-    where: { resourceId_contentId: { resourceId: resource.resourceId, contentId: contentSolid.contentId } },
-    update: {},
-    create: { resourceId: resource.resourceId, contentId: contentSolid.contentId },
-  });
+  await createIngredientUnits(ingredients, units);
+  await createContents(25, categories);
+  await createUsers();
 
-  // --- ResourcePublication ---
-  await prisma.resourcePublication.upsert({
-    where: { resourceId_publicationId: { resourceId: resource.resourceId, publicationId: pubSolidReview.publicationId } },
-    update: {},
-    create: { resourceId: resource.resourceId, publicationId: pubSolidReview.publicationId, orderInBook: 1 },
-  });
-
-  // --- Reviews ---
-  await prisma.review.create({
-    data: {
-      productId: tomato.productId,
-      publicationId: pubPastaRecipe.publicationId,
-      rating: 5,
-      comment: ["Excellent!"],
-      description: ["Very tasty pasta."],
-      buyAgain: "T",
-    },
-  });
-
-  await prisma.review.create({
-    data: {
-      productId: pasta.productId,
-      publicationId: pubPastaRecipe.publicationId,
-      rating: 4,
-      comment: ["Good."],
-      description: ["Cooked well."],
-      buyAgain: "T",
-    },
-  });
-
-  // --- Test user ---
-  const hashed = await bcrypt.hash("test123", 10);
-
-  await prisma.appUser.create({
-    data: {
-      username: "dratharias",
-      password: hashed,
-      role: "admin",
-    },
-  });
-
-  console.log("✅ Seed complet terminé !");
-  console.log("✅ Seeded test user !");
+  console.log("✅ Seed complete with 25 entries per table and 2 users!");
 }
 
 main()

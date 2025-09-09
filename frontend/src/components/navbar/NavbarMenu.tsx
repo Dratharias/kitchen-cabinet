@@ -1,5 +1,5 @@
 import { useNavigate } from "@solidjs/router";
-import List, { ListItem } from "../ui/List";
+import { List, ListItem } from "../ui/List";
 import RequireAuth from "../ui/RequireAuth";
 import type { MenuItem } from "../../types/menu";
 

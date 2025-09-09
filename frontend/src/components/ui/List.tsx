@@ -1,4 +1,5 @@
 import { JSX, ParentProps, For } from "solid-js";
+import { surfaceTheme } from "../../theme/colors";
 
 export type ListItem = {
   id?: string;
@@ -11,20 +12,25 @@ type ListProps = ParentProps & {
   class?: string;
 };
 
-const List = (props: ListProps) => {
+export const List = (props: ListProps) => {
   return (
-    <ul class={`divide-y divide-forest-200 dark:divide-harmony-600 ${props.class || ""}`}>
+    <ul class={`${surfaceTheme.List} ${props.class || ""}`}>
       {props.items ? (
         <For each={props.items}>
-          {(item, index) => (
-            <li
-              id={item.id ?? `list-item-${index()}`}
-              class="px-4 py-3 text-sm cursor-pointer transition-colors duration-200 hover:bg-forest-200 dark:hover:bg-harmony-700"
-              onClick={item.onClick}
-            >
-              {item.label}
-            </li>
-          )}
+          {(item, index) => {
+            const itemClass = [
+              "px-4 py-3 text-sm transition-colors duration-200",
+              item.onClick ? surfaceTheme.ListItemInteractive : surfaceTheme.ListItemStatic
+            ]
+              .filter(Boolean)
+              .join(" ");
+
+            return (
+              <li id={item.id ?? `list-item-${index()}`} class={itemClass} onClick={item.onClick}>
+                {item.label}
+              </li>
+            );
+          }}
         </For>
       ) : (
         props.children
@@ -32,5 +38,3 @@ const List = (props: ListProps) => {
     </ul>
   );
 };
-
-export default List;

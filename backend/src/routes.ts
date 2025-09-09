@@ -13,7 +13,7 @@ import { productController } from "./controllers/productController.js";
 import { reviewController } from "./controllers/reviewController.js";
 import { unitController } from "./controllers/unitController.js";
 
-function registerCRUDRoutes<TBody = any, TParams = any, TQuery = any>(
+function registerCRUDRoutes<TBody = any, TParams = any, TQuery = Record<string, any>>(
   fastify: FastifyInstance,
   path: string,
   controller: CRUDController<TBody, TParams, TQuery>,
@@ -23,17 +23,16 @@ function registerCRUDRoutes<TBody = any, TParams = any, TQuery = any>(
 
   // CRUD routes
   if (controller.create) fastify.post<{ Body: TBody }>(path, { preHandler }, controller.create);
-  if (controller.readAll) fastify.get(path, { preHandler }, controller.readAll);
+  if (controller.readAll) fastify.get<{ Querystring: TQuery }>(path, { preHandler }, controller.readAll as any);
   if (controller.readOne) fastify.get<{ Params: TParams }>(`${path}/:id`, { preHandler }, controller.readOne);
   if (controller.update) fastify.put<{ Params: TParams; Body: Partial<TBody> }>(`${path}/:id`, { preHandler }, controller.update);
   if (controller.delete) fastify.delete<{ Params: TParams }>(`${path}/:id`, { preHandler }, controller.delete);
 
   // Advanced routes
   if (controller.advancedRoutes) controller.advancedRoutes(path, fastify);
-
-  // Search route with typed query
-  if (controller.search) fastify.get<{ Querystring: TQuery }>(`${path}/search`, { preHandler }, controller.search);
+  if (controller.search) fastify.get<{ Querystring: TQuery }>(`${path}/search`, { preHandler }, controller.search as any);
 }
+
 
 export default async function createRoutes(fastify: FastifyInstance) {
   // Public route for login

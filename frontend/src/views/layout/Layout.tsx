@@ -3,7 +3,7 @@ import { MobileLayout } from "./MobileLayout";
 import { NavProvider } from '../../components/navbar/NavContext'; 
 import { createSignal, onMount, onCleanup } from "solid-js";
 
-function Layout(props) {
+export function Layout(props) {
   const [isMobile, setIsMobile] = createSignal(false);
 
   onMount(() => {
@@ -24,5 +24,3 @@ function Layout(props) {
     </NavProvider>
   );
 }
-
-export default Layout;
