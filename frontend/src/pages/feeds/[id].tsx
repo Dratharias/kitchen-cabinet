@@ -1,21 +1,19 @@
-import { Component, Show } from "solid-js";
+import { Component, Show, createResource } from "solid-js";
 import { useParams } from "@solidjs/router";
-import { createResource } from "solid-js";
-import { useApiFetch } from "../../hooks/useApiFetch";
-import CardDetails from "../../components/browser/CardDetails";
-import { Publication } from "../../types/publication";
+import { usePublicationApi } from "../../hooks/usePublicationApi";
+import FeedDetails from "../../components/browser/FeedDetails";
 
 export const FeedPage: Component = () => {
   const params = useParams<{ id: string }>();
-  const [publication] = createResource(
-    () => params.id,
-    id => useApiFetch<Publication>(`/api/publications/${id}/details`)
+
+  const [publication] = createResource(() => params.id, (id) =>
+    usePublicationApi.getFeed(id)
   );
 
   return (
-    <div class="p-6">
+    <div class="p-0">
       <Show when={publication()} keyed fallback={<p>Chargement...</p>}>
-        {(pub) => <CardDetails {...pub} />}
+        {(pub) => <FeedDetails {...pub} />}
       </Show>
     </div>
   );

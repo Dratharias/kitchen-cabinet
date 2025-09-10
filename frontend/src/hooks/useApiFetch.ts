@@ -9,7 +9,7 @@ export async function useApiFetch<T>(
   apiUrl?: string
 ): Promise<T> {
   try {
-    const baseUrl = apiUrl ?? import.meta.env.VITE_API_URL ?? "http://localhost:3000";
+    const baseUrl = apiUrl ?? import.meta.env.VITE_API_URL ?? "http://localhost:3001";
     let url = new URL(path, baseUrl);
 
     if (query) {

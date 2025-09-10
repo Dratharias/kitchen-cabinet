@@ -1,21 +1,19 @@
-import { Component, Show } from "solid-js";
+import { Component, Show, createResource } from "solid-js";
 import { useParams } from "@solidjs/router";
-import { createResource } from "solid-js";
-import { useApiFetch } from "../../hooks/useApiFetch";
-import CardDetails from "../../components/browser/CardDetails";
-import { Publication } from "../../types/publication";
+import { usePublicationApi } from "../../hooks/usePublicationApi";
+import { ReviewDetails } from "../../components/browser/ReviewDetails";
 
 export const LibraryPage: Component = () => {
   const params = useParams<{ id: string }>();
-  const [publication] = createResource(
-    () => params.id,
-    id => useApiFetch<Publication>(`/api/publications/${id}/details`)
+
+  const [publication] = createResource(() => params.id, (id) =>
+    usePublicationApi.getReview(id)
   );
 
   return (
-    <div class="p-6">
-      <Show when={publication()} keyed fallback={<p>Chargement...</p>}>
-        {(pub) => <CardDetails {...pub} />}
+    <div class="p-0">
+      <Show when={publication()} keyed fallback={<p class="p-4">Chargement...</p>}>
+        {(pub) => <ReviewDetails publication={pub} />}
       </Show>
     </div>
   );

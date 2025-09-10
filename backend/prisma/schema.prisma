@@ -92,8 +92,20 @@ model Content {
 
   category  Category @relation(fields: [categoryId], references: [categoryId])
   resources ResourceContent[]
+  contentPrepTime ContentPrepTime[]
 
   @@map("content")
+}
+
+model ContentPrepTime {
+  contentId  String @map("content_id")
+  prepTimeId String @map("prep_time_id")
+
+  content  Content  @relation(fields: [contentId], references: [contentId])
+  prepTime PrepTime @relation(fields: [prepTimeId], references: [prepTimeId])
+
+  @@id([contentId, prepTimeId])
+  @@map("content_prep_time")
 }
 
 model Unit {
@@ -168,6 +180,7 @@ model PrepTime {
   categoryId String @map("category_id")
 
   category Category @relation(fields: [categoryId], references: [categoryId])
+  contentPrepTime ContentPrepTime[]
 
   @@map("prep_time")
 }

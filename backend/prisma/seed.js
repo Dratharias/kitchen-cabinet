@@ -1,183 +1,203 @@
 import { PrismaClient } from "@prisma/client";
-import bcrypt from "bcrypt";
-import { faker } from "@faker-js/faker";
-
 const prisma = new PrismaClient();
 
-async function createUnits() {
-  const units = ["g", "kg", "ml", "l", "piece"];
-  return Promise.all(
-    units.map(name =>
-      prisma.unit.upsert({
-        where: { name },
-        update: {},
-        create: { name },
-      })
-    )
-  );
-}
-
-async function createCategories() {
-  const baseCategories = [
-    { strValue: "Article", type: "Type" },
-    { strValue: "Recipe", type: "Type" },
-    { strValue: "Book", type: "Type" },
-    { strValue: "Review", type: "Type" },
-    { strValue: "Italian", type: "Style" },
-    { strValue: "French", type: "Style" },
-    { strValue: "Vegan", type: "Tag" },
-    { strValue: "Gluten-Free", type: "Tag" },
-    { strValue: "default-url", type: "URL" },
-  ];
-
-  const more = Array.from({ length: 16 }, () => ({
-    strValue: faker.word.noun(),
-    type: faker.helpers.arrayElement(["Type", "Style", "Tag", "URL"]),
-  }));
-
-  const categoriesData = [...baseCategories, ...more];
-
-  const categories = await Promise.all(
-    categoriesData.map(c =>
-      prisma.category.upsert({
-        where: { strValue_type: { strValue: c.strValue, type: c.type } },
-        update: {},
-        create: c,
-      })
-    )
-  );
-
-  return Object.fromEntries(categories.map(c => [c.strValue, c]));
-}
-
-async function createMacros(n) {
-  return Promise.all(
-    Array.from({ length: n }, () =>
-      prisma.macro.create({
-        data: {
-          calories: faker.number.int({ min: 10, max: 500 }),
-          protein: faker.number.int({ min: 0, max: 50 }),
-          fiber: faker.number.int({ min: 0, max: 30 }),
-        },
-      })
-    )
-  );
-}
-
-async function createProducts(n, categories, macros) {
-  return Promise.all(
-    Array.from({ length: n }, () =>
-      prisma.product.create({
-        data: {
-          name: faker.commerce.productName(),
-          categoryId: categories["Recipe"].categoryId,
-          macroId: faker.helpers.arrayElement(macros).macroId,
-        },
-      })
-    )
-  );
-}
-
-async function createPublications(n, categories) {
-  return Promise.all(
-    Array.from({ length: n }, () =>
-      prisma.publication.create({
-        data: {
-          title: faker.lorem.words(3),
-          description: [faker.lorem.sentence()],
-          note: [],
-          published: true,
-          public: true,
-          typeId: categories[faker.helpers.arrayElement(["Recipe", "Article", "Book", "Review"])].categoryId,
-          styleId: categories[faker.helpers.arrayElement(["Italian", "French"])].categoryId,
-          thumbnail: faker.image.urlPicsumPhotos({ width: 200, height: 200 }),
-        },
-      })
-    )
-  );
-}
-
-async function createIngredients(n, products, publications) {
-  return Promise.all(
-    Array.from({ length: n }, () =>
-      prisma.ingredient.create({
-        data: {
-          productId: faker.helpers.arrayElement(products).productId,
-          quantity: faker.number.int({ min: 50, max: 500 }),
-          isRecipeId: faker.helpers.arrayElement(publications).publicationId,
-        },
-      })
-    )
-  );
-}
-
-async function createIngredientUnits(ingredients, units) {
-  return Promise.all(
-    ingredients.map(ing =>
-      prisma.ingredientUnit.upsert({
-        where: {
-          ingredientId_unitId: {
-            ingredientId: ing.ingredientId,
-            unitId: units[0].unitId, // default to grams
-          },
-        },
-        update: {},
-        create: { ingredientId: ing.ingredientId, unitId: units[0].unitId },
-      })
-    )
-  );
-}
-
-async function createContents(n, categories) {
-  return Promise.all(
-    Array.from({ length: n }, () =>
-      prisma.content.create({
-        data: {
-          title: faker.lorem.words(4),
-          description: [faker.lorem.sentences(2)],
-          note: [],
-          totalPrepTime: faker.number.int({ min: 10, max: 120 }),
-          servings: faker.number.int({ min: 1, max: 8 }),
-          categoryId: categories["Recipe"].categoryId,
-        },
-      })
-    )
-  );
-}
-
-async function createUsers() {
-  const hashedAdmin = await bcrypt.hash("admin123", 10);
-  const hashedUser = await bcrypt.hash("user123", 10);
-
-  return Promise.all([
-    prisma.appUser.create({
-      data: { username: "admin", password: hashedAdmin, role: "admin" },
-    }),
-    prisma.appUser.create({
-      data: { username: "user", password: hashedUser, role: "user" },
-    }),
-  ]);
-}
+const NUM_PUBLICATIONS = 50; // change to 1000 if needed
+const NUM_PRODUCTS = 100;
+const NUM_CONTENTS_PER_PUBLICATION = 5;
+const NUM_PREPTIMES_PER_PUBLICATION = 5;
 
 async function main() {
-  console.log("⚡ Seed start");
+  console.log("Seeding database...");
 
-  const units = await createUnits();
-  const categories = await createCategories();
-  const macros = await createMacros(25);
-  const products = await createProducts(25, categories, macros);
-  const publications = await createPublications(25, categories);
-  const ingredients = await createIngredients(25, products, publications);
+  // --- Helper functions ---
+  async function getOrCreateCategory(strValue, type) {
+    let cat = await prisma.category.findFirst({ where: { strValue, type } });
+    if (!cat) {
+      cat = await prisma.category.create({ data: { strValue, type } });
+    }
+    return cat;
+  }
 
-  await createIngredientUnits(ingredients, units);
-  await createContents(25, categories);
-  await createUsers();
+  async function getOrCreateUnit(name) {
+    let unit = await prisma.unit.findFirst({ where: { name } });
+    if (!unit) {
+      unit = await prisma.unit.create({ data: { name } });
+    }
+    return unit;
+  }
 
-  console.log("✅ Seed complete with 25 entries per table and 2 users!");
+  async function getOrCreateResource(urlCategory) {
+    let res = await prisma.resource.findFirst({ where: { urlId: urlCategory.categoryId } });
+    if (!res) {
+      res = await prisma.resource.create({ data: { urlId: urlCategory.categoryId } });
+    }
+    return res;
+  }
+
+  // --- Categories ---
+  const types = [
+    await getOrCreateCategory("Recipe", "Type"),
+    await getOrCreateCategory("Book", "Type"),
+    await getOrCreateCategory("Article", "Type")
+  ];
+
+  const styles = [
+    await getOrCreateCategory("Italian", "Style"),
+    await getOrCreateCategory("French", "Style"),
+    await getOrCreateCategory("Asian", "Style")
+  ];
+
+  const authors = [
+    await getOrCreateCategory("Chef John", "Author"),
+    await getOrCreateCategory("Chef Jane", "Author"),
+    await getOrCreateCategory("Chef Lee", "Author")
+  ];
+
+  const urlCategory = await getOrCreateCategory("https://example.com", "URL");
+
+  // --- Units ---
+  const gram = await getOrCreateUnit("gram");
+  const piece = await getOrCreateUnit("piece");
+  const ml = await getOrCreateUnit("ml");
+  const units = [gram, piece, ml];
+
+  // --- Resources ---
+  const cookbook = await getOrCreateResource(urlCategory);
+  const website = await getOrCreateResource(urlCategory);
+  const resources = [cookbook, website];
+
+  // --- Generate Publications ---
+  const publications = [];
+  const resourceOrderCounter = { [cookbook.resourceId]: 1, [website.resourceId]: 1 };
+
+  for (let i = 1; i <= NUM_PUBLICATIONS; i++) {
+    const type = types[i % types.length];
+    const style = styles[i % styles.length];
+    const author = authors[i % authors.length];
+    const res = resources[i % resources.length];
+
+    const pub = await prisma.publication.create({
+      data: {
+        title: `Publication ${i}`,
+        description: [`Step 1 for Publication ${i}`, `Step 2 for Publication ${i}`],
+        note: ["Auto-generated"],
+        public: true,
+        published: true,
+        typeId: type.categoryId,
+        styleId: style.categoryId,
+        authorId: author.categoryId,
+      },
+    });
+    publications.push(pub);
+
+    // Link ResourcePublication
+    await prisma.resourcePublication.create({
+      data: {
+        resourceId: res.resourceId,
+        publicationId: pub.publicationId,
+        orderInBook: resourceOrderCounter[res.resourceId]++,
+      },
+    });
+  }
+
+  // --- Generate Products ---
+  const products = [];
+  for (let i = 1; i <= NUM_PRODUCTS; i++) {
+    const type = types[i % types.length];
+    const macro = await prisma.macro.create({
+      data: {
+        calories: Math.floor(Math.random() * 500),
+        protein: Math.floor(Math.random() * 50),
+        fiber: Math.floor(Math.random() * 20),
+        sugar: Math.floor(Math.random() * 30),
+        saturated: Math.floor(Math.random() * 20),
+      },
+    });
+
+    const product = await prisma.product.create({
+      data: {
+        name: `Product ${i}`,
+        categoryId: type.categoryId,
+        macroId: macro.macroId,
+      },
+    });
+    products.push(product);
+  }
+
+  // --- Ingredients ---
+  for (let product of products) {
+    const publication = publications[Math.floor(Math.random() * publications.length)];
+    const unit = units[Math.floor(Math.random() * units.length)];
+    await prisma.ingredient.create({
+      data: {
+        productId: product.productId,
+        isRecipeId: publication.publicationId,
+        quantity: Math.floor(Math.random() * 500),
+        units: { create: [{ unitId: unit.unitId }] },
+      },
+    });
+  }
+
+  // --- Contents & PrepTimes ---
+  for (let pub of publications) {
+    const contents = [];
+    const prepTimes = [];
+    for (let i = 1; i <= NUM_CONTENTS_PER_PUBLICATION; i++) {
+      const content = await prisma.content.create({
+        data: {
+          title: `Content for ${pub.title} - ${i}`,
+          description: [`Do something ${i} for ${pub.title}`],
+          note: ["Auto-generated"],
+          categoryId: pub.typeId,
+        },
+      });
+      contents.push(content);
+
+      const prep = await prisma.prepTime.create({
+        data: { duration: Math.floor(Math.random() * 60) + 5, categoryId: pub.typeId },
+      });
+      prepTimes.push(prep);
+    }
+
+    // Link Content-PrepTime and ResourceContent
+    for (let j = 0; j < contents.length; j++) {
+      await prisma.contentPrepTime.create({
+        data: {
+          contentId: contents[j].contentId,
+          prepTimeId: prepTimes[j % prepTimes.length].prepTimeId,
+        },
+      });
+
+      const res = resources[j % resources.length];
+      await prisma.resourceContent.create({
+        data: {
+          contentId: contents[j].contentId,
+          resourceId: res.resourceId,
+        },
+      });
+    }
+  }
+
+  // --- Reviews ---
+  for (let product of products) {
+    const publication = publications[Math.floor(Math.random() * publications.length)];
+    await prisma.review.create({
+      data: {
+        productId: product.productId,
+        publicationId: publication.publicationId,
+        rating: Math.floor(Math.random() * 5) + 1,
+        comment: ["Auto-generated comment"],
+        description: ["Auto-generated description"],
+        buyAgain: "Y",
+      },
+    });
+  }
+
+  console.log("Seeding finished.");
 }
 
 main()
-  .catch(e => {
+  .catch((e) => {
     console.error(e);
     process.exit(1);
   })

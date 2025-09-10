@@ -3,11 +3,23 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "docker:up": "docker compose up --build -d",
-    "docker:down": "docker compose down",
-    "docker:clean": "docker compose down --volumes --remove-orphans && docker system prune -f",
-    "install:all": "cd frontend && npm ci && cd ../backend && npm ci",
-    "docker:dev": "npm run docker:clean; npm run install:all; npm run docker:up",
-    "docker:nuke": "docker system prune -a; cd backend; rm -drf dist; npm run build; cd ..; npm run docker:dev"
+    "up": "docker compose up -d",
+    "up:build": "docker compose up --build -d",
+    "down": "docker compose down",
+    "clean": "docker compose down --volumes --remove-orphans && docker system prune -f",
+    "clean:all": "npm run clean:backend && npm run clean:frontend && npm run clean",
+    "clean:backend": "cd backend && rm -fr dist node_modules && cd ..",
+    "clean:frontend": "cd frontend && rm -fr node_modules && cd ..",
+    "install:all": "cd frontend && npm ci && cd ../backend && npm ci && npm run build && cd ..",
+    
+    "prisma:generate": "docker exec meal-ticket-backend sh -c 'npx prisma generate'",
+    "prisma:migrate": "docker exec meal-ticket-backend sh -c 'npx prisma migrate deploy'",
+    "prisma:push": "docker exec meal-ticket-backend sh -c 'npx prisma db push'",
+    "prisma:baseline": "docker exec meal-ticket-backend sh -c 'npx prisma migrate resolve --applied 20240101000000_init'",
+    "prisma:init": "docker exec meal-ticket-backend sh -c 'npx prisma db push --force-reset && npx prisma generate'",
+    "prisma:seed": "docker exec meal-ticket-backend sh -c 'node /app/prisma/seed.js'",
+    "prisma:build": "docker exec meal-ticket-backend sh -c 'npx prisma generate && npx prisma db push --accept-data-loss && node /app/prisma/seed.js'",
+    "nuke": "npm run clean:all && npm run install:all && npm run up && npm run prisma:build",
+    "nuke:all": "docker system prune -a -f && npm run clean:backend && npm run install:all && npm run up && npm run prisma:build && npm run prisma:seed"
   }
 }
