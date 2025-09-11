@@ -1,36 +1,27 @@
 import { useApiFetch } from "./useApiFetch";
-import { Publication, Paginated } from "../types/publication";
+import type { Publication, Paginated } from "../types/publication";
+
+type PublicationEndpoint = "publication" | "review";
 
 export const usePublicationApi = {
-  // --- Feeds ---
-  async getFeeds(query?: Record<string, string | number>) {
+  // --- Generic fetcher for publication ---
+  async getPublications(
+    endpoint: PublicationEndpoint,
+    query?: Record<string, string | number>
+  ) {
     const res = await useApiFetch<Paginated<Publication>>(
-      "/api/publications/all",
+      `/api/publications/${endpoint}`,
       query
     );
-    console.log("[API:getFeeds] response:", res);
+    console.log(`[API:getPublications:${endpoint}] response:`, res);
     return res;
   },
 
-  async getFeed(id: string) {
-    const res = await useApiFetch<Publication>(`/api/publications/feeds/${id}`);
-    console.log("[API:getFeed] response:", res);
-    return res;
-  },
-
-  // --- Reviews ---
-  async getReviews(query?: Record<string, string | number>) {
-    const res = await useApiFetch<Paginated<Publication>>(
-      "/api/publications/reviews",
-      query
+  async getPublication(endpoint: PublicationEndpoint, id: string) {
+    const res = await useApiFetch<Publication>(
+      `/api/publications/${endpoint}/${id}`
     );
-    console.log("[API:getReviews] response:", res);
+    console.log(`[API:getPublication] response:`, res);
     return res;
-  },
-
-  async getReview(id: string) {
-    const res = await useApiFetch<Publication>(`/api/publications/reviews/${id}`);
-    console.log("[API:getReview] response:", res);
-    return res;
-  },
+  }
 };

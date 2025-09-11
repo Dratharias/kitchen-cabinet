@@ -8,117 +8,105 @@ generator client {
   binaryTargets   = ["native", "linux-musl-openssl-3.0.x"]
 }
 
-model AppUser {
-  userId   String   @id @default(uuid()) @map("user_id")
+model app_user {
+  user_id   String   @id @default(uuid())
   username String   @unique
   password String
-  role     String
+  role     String   @default("user")
   created  DateTime @default(now())
 
   @@map("app_user")
 }
 
-model Category {
-  categoryId String  @id @default(uuid()) @map("category_id")
-  strValue   String  @map("str_value")
-  type       String
-  numValue   Int?    @db.SmallInt @map("num_value")
+model category {
+  category_id String  @id @default(uuid())
+  str_value   String
+  type        String
+  num_value   Int?    @db.SmallInt
 
-  publicationsType  Publication[] @relation("PublicationType")
-  publicationsStyle Publication[] @relation("PublicationStyle")
-  publicationsAuth  Publication[] @relation("PublicationAuthor")
-  contents          Content[]
-  products          Product[]
-  prepTime          PrepTime[]
-  resourcesUrl      Resource[]
-  publicationTag    PublicationTag[]
+  publications_type   publication[]    @relation("PublicationType")
+  publications_style  publication[]    @relation("PublicationStyle")
+  publications_author publication[]    @relation("PublicationAuthor")
+  publication_tags    publication_tag[]
+  product_categories  product_category[]
+  prep_time_categories prep_time_category[]
 
-  @@unique([strValue, type])
+  @@unique([str_value, type])
   @@index([type])
-  @@index([strValue])
-  @@index([type, strValue])
-  @@map("category")
+  @@index([str_value])
+  @@index([str_value, type])
 }
 
-model Publication {
-  publicationId String   @id @default(uuid()) @map("publication_id")
-  title         String
-  description   String[]
-  note          String[]
-  public        Boolean  @default(false)
-  published     Boolean  @default(false)
-  thumbnail     String?
+model publication {
+  publication_id String   @id @default(uuid())
+  title          String
+  description    String[]
+  note           String[]
+  public         Boolean  @default(false)
+  published      Boolean  @default(false)
+  thumbnail      String?
+  type_id        String?
+  style_id       String?
+  author_id      String?
 
-  typeId      String? @map("type_id")
-  styleId     String? @map("style_id")
-  authorId    String? @map("author_id")
-  resourceId  String? @map("resource_id")
+  type   category? @relation("PublicationType", fields: [type_id], references: [category_id])
+  style  category? @relation("PublicationStyle", fields: [style_id], references: [category_id])
+  author category? @relation("PublicationAuthor", fields: [author_id], references: [category_id])
 
-  type   Category? @relation("PublicationType", fields: [typeId], references: [categoryId])
-  style  Category? @relation("PublicationStyle", fields: [styleId], references: [categoryId])
-  author Category? @relation("PublicationAuthor", fields: [authorId], references: [categoryId])
-  resource Resource? @relation(fields: [resourceId], references: [resourceId])
+  contents       content[]
+  ingredientsRef ingredient[] @relation("RecipeReference")
+  reviews        review[]
+  tags           publication_tag[]
 
-  ingredients          Ingredient[]
-  reviews              Review[]
-  resourcePublications ResourcePublication[]
-  tags                 PublicationTag[]
-
-  @@index([typeId])
-  @@index([styleId])
-  @@index([authorId])
+  @@index([type_id])
+  @@index([style_id])
+  @@index([author_id])
   @@index([published])
-  @@map("publication")
 }
 
-model PublicationTag {
-  publication   Publication @relation(fields: [publicationId], references: [publicationId])
-  publicationId String      @map("publication_id")
-  category      Category    @relation(fields: [categoryId], references: [categoryId])
-  categoryId    String      @map("category_id")
+model publication_tag {
+  publication_id String
+  category_id    String
 
-  @@id([publicationId, categoryId])
-  @@map("publication_tag")
+  publication publication @relation(fields: [publication_id], references: [publication_id], onDelete: Cascade)
+  category    category    @relation(fields: [category_id], references: [category_id], onDelete: Cascade)
+
+  @@id([publication_id, category_id])
 }
 
-model Content {
-  contentId   String @id @default(uuid()) @map("content_id")
-  title       String
-  description String[]
-  note        String[]
-  totalPrepTime Int   @default(0) @map("total_prep_time")
-  servings    Int?
-  categoryId  String @map("category_id")
+model content {
+  content_id     String @id @default(uuid())
+  publication_id String
+  total_prep_time Int    @default(0)
+  servings       Int?
 
-  category  Category @relation(fields: [categoryId], references: [categoryId])
-  resources ResourceContent[]
-  contentPrepTime ContentPrepTime[]
+  publication        publication         @relation(fields: [publication_id], references: [publication_id], onDelete: Cascade)
+  content_segments    content_segment[]
+  content_ingredients content_ingredient[]
+  content_prep_times   content_prep_time[]
 
-  @@map("content")
+  @@index([publication_id])
 }
 
-model ContentPrepTime {
-  contentId  String @map("content_id")
-  prepTimeId String @map("prep_time_id")
+model segment {
+  segment_id String @id @default(uuid())
+  title      String?
+  paragraph  String @unique
+  order_num  Int?   @db.SmallInt
 
-  content  Content  @relation(fields: [contentId], references: [contentId])
-  prepTime PrepTime @relation(fields: [prepTimeId], references: [prepTimeId])
-
-  @@id([contentId, prepTimeId])
-  @@map("content_prep_time")
+  content_segments content_segment[]
+  segment_prep_time segment_prep_time[]
 }
 
-model Unit {
-  unitId String @id @default(uuid()) @map("unit_id")
-  name   String @unique
+model unit {
+  unit_id String @id @default(uuid())
+  name    String @unique
 
-  ingredientUnits IngredientUnit[]
-
-  @@map("unit")
+  ingredient_units ingredient_unit[]
 }
 
-model Macro {
-  macroId   String @id @default(uuid()) @map("macro_id")
+model macro {
+  macro_id   String @id @default(uuid())
   calories  Int?   @db.SmallInt
   protein   Int?   @db.SmallInt
   fiber     Int?   @db.SmallInt
@@ -127,121 +115,124 @@ model Macro {
   trans     Int?   @db.SmallInt
   caffein   Int?   @db.SmallInt
 
-  products Product[]
-
-  @@map("macro")
+  products product[]
 }
 
-model Product {
-  productId String @id @default(uuid()) @map("product_id")
-  name      String
-  enName    String? @map("en_name")
-  macroId   String? @map("macro_id")
-  categoryId String @map("category_id")
+model product {
+  product_id String  @id @default(uuid())
+  name       String
+  en_name    String?
+  macro_id   String?
 
-  macro    Macro?    @relation(fields: [macroId], references: [macroId])
-  category Category  @relation(fields: [categoryId], references: [categoryId])
-  ingredients Ingredient[]
-  reviews     Review[]
-
-  @@index([categoryId])
-  @@map("product")
+  macro             macro? @relation(fields: [macro_id], references: [macro_id])
+  ingredients       ingredient[]
+  reviews           review[]
+  product_categories product_category[]
 }
 
-model Ingredient {
-  ingredientId String @id @default(uuid()) @map("ingredient_id")
-  quantity     Int?   @db.SmallInt
-  isRecipeId   String? @map("is_recipe_id")
-  productId    String @map("product_id")
+model ingredient {
+  ingredient_id String  @id @default(uuid())
+  quantity     Int?    @db.SmallInt
+  is_recipe_id String?
+  product_id   String
 
-  product Product @relation(fields: [productId], references: [productId])
-  isRecipe Publication? @relation(fields: [isRecipeId], references: [publicationId])
-
-  units IngredientUnit[]
-
-  @@map("ingredient")
+  product           product @relation(fields: [product_id], references: [product_id], onDelete: Cascade)
+  isRecipe          publication? @relation("RecipeReference", fields: [is_recipe_id], references: [publication_id])
+  content_ingredients content_ingredient[]
+  ingredient_units   ingredient_unit[]
 }
 
-model IngredientUnit {
-  ingredientId String @map("ingredient_id")
-  unitId       String @map("unit_id")
+model prep_time {
+  prep_time_id String @id @default(uuid())
+  duration     Int    @db.SmallInt
 
-  ingredient Ingredient @relation(fields: [ingredientId], references: [ingredientId])
-  unit       Unit       @relation(fields: [unitId], references: [unitId])
-
-  @@id([ingredientId, unitId])
-  @@index([unitId])
-  @@map("ingredient_unit")
+  content_prep_times content_prep_time[]
+  segment_prep_time  segment_prep_time[]
+  prep_time_categories prep_time_category[]
 }
 
-model PrepTime {
-  prepTimeId String @id @default(uuid()) @map("prep_time_id")
-  duration   Int    @db.SmallInt
-  categoryId String @map("category_id")
+model content_segment {
+  content_id String
+  segment_id String
+  position   Int? @db.SmallInt
 
-  category Category @relation(fields: [categoryId], references: [categoryId])
-  contentPrepTime ContentPrepTime[]
+  content content @relation(fields: [content_id], references: [content_id], onDelete: Cascade)
+  segment segment @relation(fields: [segment_id], references: [segment_id], onDelete: Cascade)
 
-  @@map("prep_time")
+  @@id([content_id, segment_id])
 }
 
-model Segment {
-  segmentId String @id @default(uuid()) @map("segment_id")
-  paragraph String @unique
-  order     Int    @db.SmallInt
+model content_ingredient {
+  content_id    String
+  ingredient_id String
 
-  @@map("segment")
+  content    content    @relation(fields: [content_id], references: [content_id], onDelete: Cascade)
+  ingredient ingredient @relation(fields: [ingredient_id], references: [ingredient_id], onDelete: Cascade)
+
+  @@id([content_id, ingredient_id])
 }
 
-model Resource {
-  resourceId String @id @default(uuid()) @map("resource_id")
-  urlId      String @map("url_id")
+model content_prep_time {
+  content_id  String
+  prep_time_id String
 
-  url Category @relation(fields: [urlId], references: [categoryId])
-  contents ResourceContent[]
-  publications ResourcePublication[]
-  publicationsLinked Publication[]
+  content  content  @relation(fields: [content_id], references: [content_id], onDelete: Cascade)
+  prep_time prep_time @relation(fields: [prep_time_id], references: [prep_time_id], onDelete: Cascade)
 
-  @@index([urlId])
-  @@map("resource")
+  @@id([content_id, prep_time_id])
 }
 
-model ResourceContent {
-  resourceId String @map("resource_id")
-  contentId  String @map("content_id")
+model segment_prep_time {
+  segment_id  String
+  prep_time_id String
 
-  resource Resource @relation(fields: [resourceId], references: [resourceId])
-  content  Content  @relation(fields: [contentId], references: [contentId])
+  segment  segment  @relation(fields: [segment_id], references: [segment_id], onDelete: Cascade)
+  prep_time prep_time @relation(fields: [prep_time_id], references: [prep_time_id], onDelete: Cascade)
 
-  @@id([resourceId, contentId])
-  @@map("resource_content")
+  @@id([segment_id, prep_time_id])
 }
 
-model ResourcePublication {
-  resourceId    String @map("resource_id")
-  publicationId String @map("publication_id")
-  orderInBook   Int?   @db.SmallInt @map("order_in_book")
+model ingredient_unit {
+  ingredient_id String
+  unit_id       String
 
-  resource    Resource    @relation(fields: [resourceId], references: [resourceId])
-  publication Publication @relation(fields: [publicationId], references: [publicationId])
+  ingredient ingredient @relation(fields: [ingredient_id], references: [ingredient_id], onDelete: Cascade)
+  unit       unit       @relation(fields: [unit_id], references: [unit_id], onDelete: Cascade)
 
-  @@id([resourceId, publicationId])
-  @@unique([resourceId, orderInBook])
-  @@map("resource_publication")
+  @@id([ingredient_id, unit_id])
+  @@index([unit_id])
 }
 
-model Review {
-  reviewId      String @id @default(uuid()) @map("review_id")
-  productId     String @map("product_id")
-  publicationId String @map("publication_id")
-  rating        Int?   @db.SmallInt
-  comment       String[]
-  description   String[]
-  buyAgain      String? @db.Char(1) @map("buy_again")
-  dateReview    DateTime @default(now()) @map("date_review")
+model product_category {
+  product_id  String
+  category_id String
 
-  product     Product     @relation(fields: [productId], references: [productId])
-  publication Publication @relation(fields: [publicationId], references: [publicationId])
+  product  product  @relation(fields: [product_id], references: [product_id], onDelete: Cascade)
+  category category @relation(fields: [category_id], references: [category_id], onDelete: Cascade)
 
-  @@map("review")
+  @@id([product_id, category_id])
+}
+
+model prep_time_category {
+  prep_time_id String
+  category_id  String
+
+  prep_time prep_time @relation(fields: [prep_time_id], references: [prep_time_id], onDelete: Cascade)
+  category  category  @relation(fields: [category_id], references: [category_id], onDelete: Cascade)
+
+  @@id([prep_time_id, category_id])
+}
+
+model review {
+  review_id      String   @id @default(uuid())
+  product_id     String?
+  publication_id String?
+  rating         Int?     @db.SmallInt
+  comment        String[]
+  description    String[]
+  buy_again      String?  @db.Char(1)
+  date_review    DateTime @default(now())
+
+  product     product?     @relation(fields: [product_id], references: [product_id], onDelete: Cascade)
+  publication publication? @relation(fields: [publication_id], references: [publication_id], onDelete: Cascade)
 }

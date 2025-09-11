@@ -4,24 +4,36 @@ import Span from "../ui/Span";
 import { PrevPageButton, NextPageButton } from "../ui/PaginationButtons";
 import { colorTheme } from "../../theme/colors";
 
+export interface PaginationProps {
+  page: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}
+
 export interface CardListProps {
   cards: CardProps[];
-  pagination?: {
-    page: number;
-    totalPages: number;
-    onPageChange: (page: number) => void;
-  };
+  pagination?: PaginationProps;
   class?: string;
 }
 
 const CardList: Component<CardListProps> = (props) => {
+  const handlePrev = () => {
+    if (props.pagination && props.pagination.page > 1) {
+      props.pagination.onPageChange(props.pagination.page - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (props.pagination && props.pagination.page < props.pagination.totalPages) {
+      props.pagination.onPageChange(props.pagination.page + 1);
+    }
+  };
+
   return (
-    <div class={`flex flex-col w-full ${props.class || ""} min-h-full`}>
+    <div class={`flex flex-col w-full ${props.class ?? ""} min-h-full`}>
       {/* Grid responsive et flexible */}
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
-        <For each={props.cards}>
-          {(card) => <Card {...card} />}
-        </For>
+        <For each={props.cards}>{(card) => <Card {...card} />}</For>
       </div>
 
       {/* Pagination */}
@@ -29,21 +41,21 @@ const CardList: Component<CardListProps> = (props) => {
         <div class="flex justify-evenly items-center mt-6 gap-4">
           <PrevPageButton
             active={false}
-            onClick={() => props.pagination!.onPageChange(props.pagination!.page - 1)}
-            disabled={props.pagination!.page <= 1}
+            onClick={handlePrev}
+            disabled={props.pagination?.page <= 1}
             class={`${colorTheme.NavbarButton} max-w-64`}
           >
             Précédent
           </PrevPageButton>
 
           <Span class="text-sm font-medium">
-            Page {props.pagination.page} / {props.pagination.totalPages}
+            Page {props.pagination?.page} / {props.pagination?.totalPages}
           </Span>
 
           <NextPageButton
             active={false}
-            onClick={() => props.pagination!.onPageChange(props.pagination!.page + 1)}
-            disabled={props.pagination!.page >= props.pagination.totalPages}
+            onClick={handleNext}
+            disabled={props.pagination?.page >= props.pagination?.totalPages}
             reverse={true}
             class={`${colorTheme.NavbarButton} max-w-64`}
           >

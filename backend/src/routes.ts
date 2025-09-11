@@ -1,17 +1,7 @@
 import { FastifyInstance } from "fastify";
 import { CRUDController } from "./controllers/crudController.js";
 import { loginHandler, authGuard } from "./controllers/authController.js";
-
-import { categoryController } from "./controllers/categoryController.js";
-import { publicationController } from "./controllers/publicationController.js";
-import { ingredientController } from "./controllers/ingredientController.js";
-import { resourceController } from "./controllers/resourceController.js";
-import { contentController } from "./controllers/contentController.js";
-import { macroController } from "./controllers/macroController.js";
-import { prepTimeController } from "./controllers/prepTimeController.js";
-import { productController } from "./controllers/productController.js";
-import { reviewController } from "./controllers/reviewController.js";
-import { unitController } from "./controllers/unitController.js";
+import publicationController from "./controllers/publicationController.js";
 
 function registerCRUDRoutes<TBody = any, TParams = any, TQuery = Record<string, any>>(
   fastify: FastifyInstance,
@@ -39,14 +29,5 @@ export default async function createRoutes(fastify: FastifyInstance) {
   fastify.post("/api/auth/login", loginHandler);
 
   // Protected CRUD routes
-  registerCRUDRoutes(fastify, "/api/categories", categoryController);
   registerCRUDRoutes(fastify, "/api/publications", publicationController);
-  registerCRUDRoutes(fastify, "/api/ingredients", ingredientController);
-  registerCRUDRoutes(fastify, "/api/resources", resourceController);
-  registerCRUDRoutes(fastify, "/api/units", unitController);
-  registerCRUDRoutes(fastify, "/api/macros", macroController);
-  registerCRUDRoutes(fastify, "/api/products", productController);
-  registerCRUDRoutes(fastify, "/api/preptimes", prepTimeController);
-  registerCRUDRoutes(fastify, "/api/reviews", reviewController);
-  registerCRUDRoutes(fastify, "/api/contents", contentController);
 }
