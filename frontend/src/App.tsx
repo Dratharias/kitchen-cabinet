@@ -9,15 +9,19 @@ function App() {
   return (
     <Router>
       <ToastProvider>
-        {/* Content Browser */}
+        {/* Home - Default to foods */}
         <Route path="/" component={() => <Layout><ContentBrowser foods /></Layout>} />
+        
+        {/* Content Browser Routes */}
         <Route path="/foods" component={() => <Layout><ContentBrowser foods /></Layout>} />
         <Route path="/feeds" component={() => <Layout><ContentBrowser feeds /></Layout>} />
-
-        {/* Standard routes */}
-        <Route path="/login" component={() => (<Layout><LoginForm /></Layout>)} />
-        <Route path="/publication/:id" component={() => <Layout><PublicationPage/></Layout>} />
-        <Route path="/review/:id" component={() => <Layout><PublicationPage/></Layout>} />
+        
+        {/* Authentication */}
+        <Route path="/login" component={() => <Layout><LoginForm /></Layout>} />
+        
+        {/* Publication Detail Routes */}
+        <Route path="/foods/:id" component={() => <Layout><PublicationPage category="foods" /></Layout>} />
+        <Route path="/feeds/:id" component={() => <Layout><PublicationPage category="feeds" /></Layout>} />
       </ToastProvider>
     </Router>
   );

@@ -1,1 +1,1 @@
-{"root":["./src/config.ts","./src/routes.ts","./src/server.ts","./src/controllers/authController.ts","./src/controllers/crudController.ts","./src/controllers/publicationController.ts","./src/types/publication.ts"],"errors":true,"version":"5.9.2"}
+{"root":["./src/config.ts","./src/routes.ts","./src/server.ts","./src/controllers/authController.ts","./src/controllers/crudController.ts","./src/controllers/publicationController.ts","./src/types/publication.ts"],"version":"5.9.2"}

@@ -1,27 +1,32 @@
 import { useApiFetch } from "./useApiFetch";
-import type { Publication, Paginated } from "../types/publication";
-
-type PublicationEndpoint = "publication" | "review";
+import type { PublicationDetails, PublicationListResponse } from "../types/publication";
 
 export const usePublicationApi = {
-  // --- Generic fetcher for publication ---
-  async getPublications(
-    endpoint: PublicationEndpoint,
-    query?: Record<string, string | number>
-  ) {
-    const res = await useApiFetch<Paginated<Publication>>(
-      `/api/publications/${endpoint}`,
-      query
-    );
-    console.log(`[API:getPublications:${endpoint}] response:`, res);
+  // Get all publications with pagination and filtering
+  async getPublications(query?: Record<string, string | number | string[]>) {
+    const res = await useApiFetch<PublicationListResponse>("/api/publications", query);
+    console.log(`[API:getPublications] response:`, res);
     return res;
   },
 
-  async getPublication(endpoint: PublicationEndpoint, id: string) {
-    const res = await useApiFetch<Publication>(
-      `/api/publications/${endpoint}/${id}`
-    );
+  // Get single publication by ID
+  async getPublication(id: string) {
+    const res = await useApiFetch<PublicationDetails>(`/api/publications/${id}`);
     console.log(`[API:getPublication] response:`, res);
+    return res;
+  },
+
+  // Get reviews for a publication
+  async getPublicationReviews(id: string) {
+    const res = await useApiFetch(`/api/publications/${id}/reviews`);
+    console.log(`[API:getPublicationReviews] response:`, res);
+    return res;
+  },
+
+  // Search publications (same as getPublications but different endpoint)
+  async searchPublications(query?: Record<string, string | number | string[]>) {
+    const res = await useApiFetch<PublicationListResponse>("/api/publications/search", query);
+    console.log(`[API:searchPublications] response:`, res);
     return res;
   }
 };

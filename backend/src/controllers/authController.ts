@@ -14,13 +14,13 @@ export async function loginHandler(req:any, reply:any) {
       return reply.status(400).send({ error: "Missing credentials" });
     }
 
-    const user = await prisma.appUser.findUnique({ where: { username } });
+    const user = await prisma.app_user.findUnique({ where: { username } });
     if (!user) return reply.status(401).send({ error: "Invalid username or password" });
 
     const valid = await bcrypt.compare(password, user.password);
     if (!valid) return reply.status(401).send({ error: "Invalid username or password" });
 
-    const token = jwt.sign({ userId: user.userId, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
+    const token = jwt.sign({ userId: user.user_id, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
     return reply.send({ username: user.username, role: user.role, token });
 
   } catch (err) {

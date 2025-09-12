@@ -1,11 +1,11 @@
 export interface FetchOptions {
-  query?: Record<string, string | number | boolean>;
+  query?: Record<string, string | number | boolean | string[]>;
   port?: number;
 }
 
 export async function useApiFetch<T>(
   path: string,
-  query?: Record<string, string | number>,
+  query?: Record<string, string | number | string[]>,
   apiUrl?: string
 ): Promise<T> {
   try {
@@ -13,7 +13,13 @@ export async function useApiFetch<T>(
     let url = new URL(path, baseUrl);
 
     if (query) {
-      Object.entries(query).forEach(([k, v]) => url.searchParams.append(k, String(v)));
+      Object.entries(query).forEach(([k, v]) => {
+        if (Array.isArray(v)) {
+          v.forEach(item => url.searchParams.append(k, String(item)));
+        } else {
+          url.searchParams.append(k, String(v));
+        }
+      });
     }
 
     const res = await fetch(url.toString());

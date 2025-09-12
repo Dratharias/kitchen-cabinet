@@ -14,7 +14,7 @@ const Navbar = () => {
   const [isEditor] = createSignal(true);
   const [open, setOpen] = createSignal(false);
   const [activeKey, setActiveKey] = createSignal<string>(
-    localStorage.getItem("activeNav") || "feed"
+    localStorage.getItem("activeNav") || "foods"
   );
 
   const location = useLocation();
@@ -30,11 +30,11 @@ const Navbar = () => {
   const activate = (key: string) => {
     setActiveKey(key);
     switch (key) {
-      case "library":
-        navigate("/library");
-        break;
-      case "feed":
+      case "feeds":
         navigate("/feeds");
+        break;
+      case "foods":
+        navigate("/foods");
         break;
       default:
         console.warn("Unknown nav key:", key);
@@ -42,9 +42,8 @@ const Navbar = () => {
   };
 
   const isActive = (key: string) => {
-    if (key === "feed") return location.pathname === "/" || location.pathname.startsWith("/feeds");
-    if (key === "review") return location.pathname.startsWith("/review");
-    if (key === "library") return location.pathname.startsWith("/library");
+    if (key === "foods") return location.pathname === "/" || location.pathname.startsWith("/foods");
+    if (key === "feeds") return location.pathname.startsWith("/feeds");
     return false;
   };
 
@@ -78,8 +77,8 @@ const Navbar = () => {
         {/* Primary buttons */}
         <div class="flex items-center text-nowrap justify-evenly h-16 space-x-2 text-center">
           <NavButtons.LibraryButton
-            active={isActive("library")}
-            onClick={() => activate("library")}
+            active={isActive("feeds")}
+            onClick={() => activate("feeds")}
             class={colorTheme.NavbarButton}
           />
           <NavButtons.SearchButton
@@ -88,8 +87,8 @@ const Navbar = () => {
             class={colorTheme.NavbarButton}
           />
           <NavButtons.FeedButton
-            active={isActive("feed")}
-            onClick={() => activate("feed")}
+            active={isActive("foods")}
+            onClick={() => activate("foods")}
             class={colorTheme.NavbarButton}
           />
         </div>

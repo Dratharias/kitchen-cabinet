@@ -1,45 +1,46 @@
 import { Component, createSignal, createResource } from "solid-js";
 import { usePublicationApi } from "../hooks/usePublicationApi";
 import CardList from "../components/browser/CardList";
-import type { Paginated, Publication } from "../types/publication";
-import { CardProps } from "../components/browser/Card";
+import type { PublicationListResponse, PublicationListItem } from "../types/publication";
 
 export const ContentBrowser: Component<{ feeds?: boolean; foods?: boolean }> = (props) => {
   const [page, setPage] = createSignal(1);
   const limit = 12;
-
+  
   const types = () => {
     if (props.feeds) return ["Article", "Review", "Book"];
     if (props.foods) return ["Recipe", "Cookbook", "FoodPost"];
     return [];
   };
 
-  const [publications] = createResource<Paginated<Publication>, { page: number; limit: number; types: string[] }>(
+  const [publications] = createResource<PublicationListResponse, { page: number; limit: number; types: string[] }>(
     () => ({ page: page(), limit, types: types() }),
     async ({ page, limit, types }) => {
       if (!types.length) {
         return {
-          items: [],
-          total: 0,
-          page: 1,
-          pageSize: limit,
-          data: null,
-          pagination: {}
+          data: [],
+          pagination: {
+            total: 0,
+            page: 1,
+            limit,
+            totalPages: 0
+          }
         };
       }
-      const endpoint = "publication";
-      return usePublicationApi.getPublications(endpoint, { page, limit, types: types.join(',') });
+      
+      return usePublicationApi.getPublications({ 
+        page: page.toString(), 
+        limit: limit.toString(), 
+        type: types 
+      });
     }
   );
 
   const cards = () =>
-    publications()?.items
-      .map((pub) => {
-        const isReview = pub.type?.type === "Review";
-        const baseUrl = isReview ? "/review" : "/read";
-        
-        if (props.feeds) return { publication: pub, pathPrefix: "feeds" as const, baseUrl };
-        if (props.foods) return { publication: pub, pathPrefix: "foods" as const, baseUrl };
+    publications()?.data
+      ?.map((pub: PublicationListItem) => {       
+        if (props.feeds) return { publication: pub, pathPrefix: "feeds" as const };
+        if (props.foods) return { publication: pub, pathPrefix: "foods" as const };
         return null;
       })
       .filter((c) => c !== null) ?? [];
@@ -49,8 +50,8 @@ export const ContentBrowser: Component<{ feeds?: boolean; foods?: boolean }> = (
       <CardList
         cards={cards()}
         pagination={{
-          page: publications()?.page ?? 1,
-          totalPages: Math.ceil((publications()?.total ?? 1) / limit), 
+          page: publications()?.pagination?.page ?? 1,
+          totalPages: publications()?.pagination?.totalPages ?? 1,
           onPageChange: setPage,
         }}
       />

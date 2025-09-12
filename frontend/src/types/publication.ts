@@ -1,103 +1,188 @@
-export interface Category {
+// Base category interface used across different publication elements
+export interface CategoryInfo {
+  categoryId: string;
   strValue: string;
   type: string;
 }
 
-export interface Paginated<T> {
-  data: T;
-  pagination: any;
-  items: T[];
-  total: number;
-  page: number;
-  pageSize: number;
-}
+// Publication type, style, and author interfaces
+export interface PublicationType extends CategoryInfo {}
+export interface PublicationStyle extends CategoryInfo {}
+export interface Author extends CategoryInfo {}
 
-export interface Publication {
-  publicationId: string;
-  title: string;
-  description?: string[];
-  note?: string[];
-  public: boolean;
-  published: boolean;
-  thumbnail?: string;
-  contents?: ContentDetails[];
-  type?: Category;
-  style?: Category;
-  author?: Category;
-  tags?: Category[];
-  reviews: ReviewWithProduct[];
-  resources: Resource[];
-}
-
-export interface Resource {
-  contents: ContentDetails[];
-}
-
-export interface ContentDetails {
-  contentId: string;
-  totalPrepTime?: number;
-  servings?: number;
-  prepTimes: PrepTimeDetails[];
-  ingredients: IngredientDetails[];
-  segments: SegmentDetails[];
-}
-
-export interface PrepTimeDetails {
-  duration: number;
-  category?: Category;
-}
-
-export interface IngredientDetails {
-  quantity?: number;
-  units: UnitDetails[];
-  product: ProductDetails;
-}
-
-export interface UnitDetails {
-  name: string;
-}
-
-export interface ProductDetails {
-  productId?: string;
-  name: string;
-  enName?: string;
-  categories?: Category[];
-  macro?: MacroDetails;
-  reviews?: ProductReview[];
-}
-
-export interface MacroDetails {
-  calories?: number;
-  protein?: number;
-  fiber?: number;
-  sugar?: number;
-  saturated?: number;
-  trans?: number;
-  caffein?: number;
-}
-
-export interface ProductReview {
+// Review interface
+export interface PublicationReview {
   reviewId: string;
+  productId?: string;
   rating?: number;
   comment?: string[];
   description?: string[];
   buyAgain?: string;
-  dateReview: Date | null;
+  dateReview?: Date | null;
 }
 
+// Preparation time interfaces
+export interface PrepTimeCategory {
+  prepTimeId: string;
+  categoryId: string;
+}
+
+export interface ContentPrepTime {
+  prepTimeId: string;
+  duration: number;
+  category?: CategoryInfo;
+}
+
+// Segment interface for content structure
 export interface SegmentDetails {
+  segmentId: string;
   title?: string;
   paragraph: string;
   order: number;
-  prepTimes: PrepTimeDetails[];
+  prepTimes: ContentPrepTime[];
 }
 
-export interface ReviewWithProduct {
-  reviewId: string;
-  rating?: number;
-  comment?: string[];
-  description?: string[];
-  buyAgain?: string;
-  dateReview: Date | null;
-  product?: ProductDetails;
+// Ingredient interfaces
+export interface IngredientUnit {
+  name: string;
 }
+
+export interface IngredientProduct {
+  productId: string;
+  name: string;
+}
+
+export interface IngredientDetails {
+  ingredientId: string;
+  quantity?: number;
+  units?: IngredientUnit[];
+  product: IngredientProduct;
+}
+
+// Content details interface
+export interface ContentDetails {
+  contentId: string;
+  totalPrepTime: number;
+  servings?: number;
+  prepTimes: ContentPrepTime[];
+  segments: SegmentDetails[];
+  ingredients: IngredientDetails[];
+}
+
+// Full publication details interface (used for single publication view)
+export interface PublicationDetails {
+  publicationId: string;
+  title: string;
+  description: string[];
+  note: string[];
+  public: boolean;
+  published: boolean;
+  thumbnail?: string;
+  type?: PublicationType;
+  style?: PublicationStyle;
+  author?: Author;
+  reviews: PublicationReview[];
+  contents: ContentDetails[];
+}
+
+// Simplified publication interface for list views
+export interface PublicationListItem {
+  publicationId: string;
+  title: string;
+  description: string[];
+  note: string[];
+  thumbnail?: string;
+  type?: PublicationType;
+  style?: PublicationStyle;
+  author?: Author;
+}
+
+// Pagination interface
+export interface PaginationInfo {
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+}
+
+// API response interface for publication lists
+export interface PublicationListResponse {
+  data: PublicationListItem[];
+  pagination: PaginationInfo;
+}
+
+// Frontend-specific interfaces for components
+export interface CardData {
+  publication: PublicationListItem;
+  pathPrefix: "feeds" | "foods";
+  baseUrl: string;
+}
+
+export interface PaginationProps {
+  page: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}
+
+// Query interfaces for API calls
+export interface PublicationQuery {
+  page?: string;
+  limit?: string;
+  type?: string[];
+  search?: string;
+}
+
+export interface PublicationCreateRequest {
+  title: string;
+  description?: string[];
+  note?: string[];
+  public?: boolean;
+  published?: boolean;
+  thumbnail?: string;
+  type_id?: string;
+  style_id?: string;
+  author_id?: string;
+}
+
+export interface PublicationUpdateRequest extends Partial<PublicationCreateRequest> {}
+
+// API response types
+export type ApiResponse<T> = T;
+export type ApiError = {
+  error: string;
+  code?: string;
+};
+
+// Utility types for different publication categories
+export type PublicationTypeValue = 
+  | "Article" 
+  | "Review" 
+  | "Book" 
+  | "Recipe" 
+  | "Cookbook" 
+  | "FoodPost";
+
+export type FeedTypes = "Article" | "Review" | "Book";
+export type FoodTypes = "Recipe" | "Cookbook" | "FoodPost";
+
+// Type guards for runtime type checking
+export const isPublicationDetails = (obj: any): obj is PublicationDetails => {
+  return obj && typeof obj === 'object' && 
+         'publicationId' in obj && 
+         'contents' in obj &&
+         Array.isArray(obj.contents);
+};
+
+export const isPublicationListItem = (obj: any): obj is PublicationListItem => {
+  return obj && typeof obj === 'object' && 
+         'publicationId' in obj && 
+         !('contents' in obj);
+};
+
+// Filter utilities
+export const getTypesByCategory = (category: 'feeds' | 'foods'): PublicationTypeValue[] => {
+  const feedTypes: FeedTypes[] = ["Article", "Review", "Book"];
+  const foodTypes: FoodTypes[] = ["Recipe", "Cookbook", "FoodPost"];
+  
+  return category === 'feeds' ? feedTypes : foodTypes;
+};
