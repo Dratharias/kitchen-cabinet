@@ -1,6 +1,6 @@
-import Button, { ButtonProps } from "../ui/Button";
-import Span from "../ui/Span";
-import { FeedIcon, HamburgerIcon, LibraryIcon, SearchIcon } from "../ui/Icons";
+import Button, { ButtonProps } from "../ui/html/Button";
+import Span from "../ui/html/Span";
+import { FeedIcon, HamburgerIcon, LibraryIcon, SearchIcon } from "../ui/html/Icons";
 
 export const FeedButton = (props: Omit<ButtonProps, "icon">) => (
   <Button {...props} icon={<FeedIcon class="w-5 h-5" />}>

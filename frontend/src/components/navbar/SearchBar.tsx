@@ -1,6 +1,6 @@
 import { JSX, Show, createMemo } from "solid-js";
 import { useNavState } from "./NavContext";
-import Input from "../ui/Input";
+import Input from "../ui/html/Input";
 
 const SearchBar = (): JSX.Element => {
   const { searchOpen, activeItem } = useNavState();

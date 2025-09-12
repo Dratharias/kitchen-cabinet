@@ -1,13 +1,14 @@
 import { Component } from "solid-js";
 import { useNavigate } from "@solidjs/router";
-import Button from "../ui/Button";
-import Image from "../ui/Image";
-import Span from "../ui/Span";
-import { Publication } from "../../types/publication";
-import { colorTheme } from "../../theme/colors";
+import Button from "../html/Button";
+import Span from "../html/Span";
+import Image from "../html/Image";
+import { colorTheme } from "../../../theme/colors";
+import { MappedPublicationData } from "../../../types/publication";
+
 
 export interface CardProps {
-  publication: Publication;
+  publication: MappedPublicationData;
   pathPrefix: "feeds" | "foods";
 }
 
@@ -18,17 +19,11 @@ const Card: Component<CardProps> = (props) => {
     navigate(`/${props.pathPrefix}/${props.publication.publicationId}`);
   };
 
-  const firstContent = () => props.publication.resources?.[0]?.contents?.[0];
+  // Use selectedContent if available
+  const content = () => props.publication.selectedContent;
 
-  // Get total prep time from first content if available
-  const prepTime = () => {
-    const times = firstContent()?.prepTimes;
-    if (!times || times.length === 0) return null;
-    const total = times.reduce((sum, t) => sum + t.duration, 0);
-    return total; // assuming duration is in minutes
-  };
-
-  const servings = () => firstContent()?.servings;
+  const prepTime = () => props.publication.prepTime || (content()?.prepTimes?.reduce((sum, t) => sum + t.duration, 0) ?? null);
+  const servings = () => content()?.servings;
 
   return (
     <Button

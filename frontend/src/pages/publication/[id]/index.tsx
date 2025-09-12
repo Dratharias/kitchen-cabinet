@@ -1,8 +1,8 @@
 import { Component, Show, createResource, createMemo } from "solid-js";
 import { useParams, useLocation } from "@solidjs/router";
-import { usePublicationApi } from "../../hooks/usePublicationApi";
-import type { PublicationDetails, ContentDetails, MappedPublicationData } from "../../types/publication";
-import { PublicationDetails as PublicationDetailsComponent } from "../../components/browser/PublicationDetails";
+import { usePublicationApi } from "../../../hooks/usePublicationApi";
+import type { PublicationDetails, ContentDetails, MappedPublicationData } from "../../../types/publication";
+import { PublicationDetails as PublicationDetailsComponent } from "../../../components/ui/browser/PublicationDetails";
 
 export interface PublicationPageProps {
   category?: "foods" | "feeds";

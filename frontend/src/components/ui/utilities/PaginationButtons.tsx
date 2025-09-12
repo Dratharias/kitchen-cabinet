@@ -1,5 +1,5 @@
-import Button, { ButtonProps } from "./Button";
-import { ArrowIcon } from "./Icons";
+import Button, { ButtonProps } from "../html/Button";
+import { ArrowIcon } from "../html/Icons";
 
 export const PrevPageButton = (props: Omit<ButtonProps, "icon">) => (
   <Button

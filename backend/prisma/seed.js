@@ -17,6 +17,7 @@
  * - Articles & FoodPosts = segment-heavy, text-focused.
  * - Users: exactly one admin.
  * - Categories are idempotent (no duplicates).
+ * - Publications now include random tags (1-4 tags per publication).
  */
 
 import { PrismaClient } from "@prisma/client";
@@ -101,6 +102,20 @@ async function createIngredient(product) {
   return { ingredient_id: ingredientId };
 }
 
+async function addTagsToPublication(publicationId, availableTags) {
+  const tagCount = faker.number.int({ min: 1, max: 4 });
+  const selectedTags = faker.helpers.arrayElements(availableTags, tagCount);
+  
+  for (const tag of selectedTags) {
+    await prisma.publication_tag.create({
+      data: {
+        publication_id: publicationId,
+        category_id: tag.category_id,
+      },
+    });
+  }
+}
+
 // ---------------------------
 // Reviews
 // ---------------------------
@@ -135,7 +150,7 @@ async function createReviewForProduct(product) {
 // ---------------------------
 // Publication Archetypes
 // ---------------------------
-async function createBookOrCookbook(typeName, style, author) {
+async function createBookOrCookbook(typeName, style, author, availableTags) {
   const pubId = uuidv4();
   const type = await prisma.category.findFirst({ where: { str_value: typeName, type: "Type" } });
 
@@ -152,6 +167,8 @@ async function createBookOrCookbook(typeName, style, author) {
       author_id: author.category_id,
     },
   });
+
+  await addTagsToPublication(pubId, availableTags);
 
   const chapters = faker.number.int({ min: 3, max: 8 });
   for (let i = 1; i <= chapters; i++) {
@@ -185,7 +202,7 @@ async function createBookOrCookbook(typeName, style, author) {
   return pub;
 }
 
-async function createRecipe(style, author, product) {
+async function createRecipe(style, author, product, availableTags) {
   const pubId = uuidv4();
   const type = await prisma.category.findFirst({ where: { str_value: "Recipe", type: "Type" } });
 
@@ -202,6 +219,8 @@ async function createRecipe(style, author, product) {
       author_id: author.category_id,
     },
   });
+
+  await addTagsToPublication(pubId, availableTags);
 
   const contentId = uuidv4();
   const prep = faker.number.int({ min: 10, max: 90 });
@@ -246,7 +265,7 @@ async function createRecipe(style, author, product) {
   return pub;
 }
 
-async function createArticleOrFoodPost(typeName, style, author) {
+async function createArticleOrFoodPost(typeName, style, author, availableTags) {
   const pubId = uuidv4();
   const type = await prisma.category.findFirst({ where: { str_value: typeName, type: "Type" } });
 
@@ -263,6 +282,8 @@ async function createArticleOrFoodPost(typeName, style, author) {
       author_id: author.category_id,
     },
   });
+
+  await addTagsToPublication(pubId, availableTags);
 
   const contents = faker.number.int({ min: 1, max: 2 });
   for (let i = 0; i < contents; i++) {
@@ -306,6 +327,20 @@ async function main() {
   const styleBreakfast = await ensureCategory("Breakfast", "Style");
   const authorJulia = await ensureCategory("Julia Child", "Author");
 
+  // Create tag categories
+  const tagNames = [
+    "Healthy", "Quick", "Vegetarian", "Vegan", "Gluten-Free", 
+    "Low-Carb", "High-Protein", "Comfort Food", "Spicy", "Sweet",
+    "Savory", "Mediterranean", "Asian", "Mexican", "Italian",
+    "American", "French", "Indian", "Thai", "Chinese"
+  ];
+  
+  const availableTags = [];
+  for (const tagName of tagNames) {
+    const tag = await ensureCategory(tagName, "Tag");
+    availableTags.push(tag);
+  }
+
   const products = [];
   for (let i = 0; i < 20; i++) products.push(await createProduct());
 
@@ -317,15 +352,15 @@ async function main() {
     const product = faker.helpers.arrayElement(products);
 
     if (r < 0.10) {
-      pubs.push(await createBookOrCookbook("Book", styleBreakfast, authorJulia));
+      pubs.push(await createBookOrCookbook("Book", styleBreakfast, authorJulia, availableTags));
     } else if (r < 0.25) {
-      pubs.push(await createBookOrCookbook("Cookbook", styleBreakfast, authorJulia));
+      pubs.push(await createBookOrCookbook("Cookbook", styleBreakfast, authorJulia, availableTags));
     } else if (r < 0.45) {
-      pubs.push(await createArticleOrFoodPost("Article", styleBreakfast, authorJulia));
+      pubs.push(await createArticleOrFoodPost("Article", styleBreakfast, authorJulia, availableTags));
     } else if (r < 0.60) {
-      pubs.push(await createArticleOrFoodPost("FoodPost", styleBreakfast, authorJulia));
+      pubs.push(await createArticleOrFoodPost("FoodPost", styleBreakfast, authorJulia, availableTags));
     } else if (r < 0.80) {
-      pubs.push(await createRecipe(styleBreakfast, authorJulia, product));
+      pubs.push(await createRecipe(styleBreakfast, authorJulia, product, availableTags));
     } else {
       if (Math.random() < 0.5) {
         await createReviewForProduct(product);
@@ -336,7 +371,7 @@ async function main() {
     }
   }
 
-  console.log("✅ Mass seed completed!");
+  console.log("✅ Mass seed completed with tags!");
 }
 
 main()

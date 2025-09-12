@@ -10,6 +10,12 @@ export interface PublicationStyle {
   type: string;
 }
 
+export interface PublicationTags {
+  categoryId: string;
+  strValue: string;
+  type: string;
+}
+
 export interface Author {
   categoryId: string;
   strValue: string;
@@ -31,14 +37,16 @@ export interface PrepTimeCategory {
   categoryId: string;
 }
 
+export interface Category {
+  categoryId: string;
+  strValue: string;
+  type: string;
+}
+
 export interface ContentPrepTime {
   prepTimeId: string;
   duration: number;
-  category?: {
-    categoryId: string;
-    strValue: string;
-    type: string;
-  };
+  category?: Category;
 }
 
 export interface SegmentDetails {
@@ -82,21 +90,10 @@ export interface PublicationDetails {
   public: boolean;
   published: boolean;
   thumbnail?: string;
-  type?: {
-    categoryId: string;
-    strValue: string;
-    type: string;
-  };
-  style?: {
-    categoryId: string;
-    strValue: string;
-    type: string;
-  };
-  author?: {
-    categoryId: string;
-    strValue: string;
-    type: string;
-  };
+  type?: PublicationType;
+  tags?: PublicationTags[];
+  style?: PublicationStyle;
+  author?: Author;
   reviews: {
     count: number;
     averageRating: number;
@@ -112,6 +109,7 @@ export interface PublicationListItem {
   thumbnail?: string;
   type?: PublicationType;
   style?: PublicationStyle;
+  tags?: PublicationTags[];
   author?: Author;
 }
 
@@ -125,4 +123,44 @@ export interface PaginationInfo {
 export interface PublicationListResponse {
   data: PublicationListItem[];
   pagination: PaginationInfo;
+}
+
+export interface ContentPrepTimeInput {
+  prepTimeId: string;
+  duration?: number;
+}
+
+export interface ContentIngredientInput {
+  ingredientId: string;
+  amount: number;
+  unitId?: string;
+}
+
+export interface ContentInput {
+  contentId?: string;
+  servings?: number;
+  totalPrepTime?: number;
+  contentPrepTimes?: ContentPrepTimeInput[];
+  contentIngredients?: ContentIngredientInput[];
+}
+
+export interface ReviewInput {
+  userId: string;
+  rating: number;
+  comment?: string;
+}
+
+export interface PublicationBody {
+  title: string;
+  description?: string[];
+  note?: string[];
+  public?: boolean;
+  published?: boolean;
+  thumbnail?: string;
+  type_id?: string;
+  style_id?: string;
+  author_id?: string;
+  tags_id?: string[];
+  contents?: ContentInput[];
+  reviews?: ReviewInput[];
 }

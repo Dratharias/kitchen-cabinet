@@ -81,7 +81,8 @@ export interface PublicationDetails {
   type?: PublicationType;
   style?: PublicationStyle;
   author?: Author;
-  reviews: PublicationReview[];
+  reviewsCount?: number;
+  averageRating?: number | null;
   contents: ContentDetails[];
 }
 
@@ -244,21 +245,6 @@ export interface ContentDetails {
   prepTimes: ContentPrepTime[];
   segments: SegmentDetails[];
   ingredients: IngredientDetails[];
-}
-
-export interface PublicationDetails {
-  publicationId: string;
-  title: string;
-  description: string[];
-  note: string[];
-  public: boolean;
-  published: boolean;
-  thumbnail?: string;
-  type?: PublicationType;
-  style?: PublicationStyle;
-  author?: Author;
-  reviews: PublicationReview[];
-  contents: ContentDetails[];
 }
 
 // Frontend mapped type for easier consumption

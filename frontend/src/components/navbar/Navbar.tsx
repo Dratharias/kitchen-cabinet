@@ -6,7 +6,7 @@ import NavButtons from "./NavButtons";
 import { useNavState } from "./NavContext";
 import NavbarMenu from "./NavbarMenu";
 import type { MenuItem } from "../../types/menu";
-import ClickOutsideContainer from "../ui/ClickOutsideContainer";
+import ClickOutsideContainer from "../ui/utilities/ClickOutsideContainer";
 import { colorTheme, surfaceTheme } from "../../theme/colors";
 
 const Navbar = () => {

@@ -1,5 +1,5 @@
 import { JSX, ParentProps, For } from "solid-js";
-import { surfaceTheme } from "../../theme/colors";
+import { surfaceTheme } from "../../../theme/colors";
 
 export type ListItem = {
   id?: string;

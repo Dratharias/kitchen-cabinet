@@ -1,5 +1,5 @@
 import { JSX, splitProps } from "solid-js";
-import { surfaceTheme } from "../../theme/colors";
+import { surfaceTheme } from "../../../theme/colors";
 
 type InputProps = JSX.InputHTMLAttributes<HTMLInputElement>;
 

@@ -1,8 +1,8 @@
 import { createSignal } from "solid-js";
 import { authenticate } from "../../services/ToastProvider";
 import { isAuthenticated, setIsAuthenticated } from "../../services/authStore";
-import Button from "../../components/ui/Button";
-import Input from "../../components/ui/Input";
+import Button from "../../components/ui/html/Button";
+import Input from "../../components/ui/html/Input";
 import { colorTheme, surfaceTheme } from "../../theme/colors";
 
 export function LoginForm() {

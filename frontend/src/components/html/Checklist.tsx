@@ -1,7 +1,7 @@
 import { Component, createSignal, For } from "solid-js";
 import { List } from "./List";
 import Span from "./Span";
-import { surfaceTheme } from "../../theme/colors";
+import { surfaceTheme } from "../../../theme/colors";
 
 export interface ChecklistProps {
   items: string[];

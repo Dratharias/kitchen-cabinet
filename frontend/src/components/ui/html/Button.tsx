@@ -1,5 +1,5 @@
 import { JSX, splitProps } from "solid-js";
-import { colorTheme } from "../../theme/colors";
+import { colorTheme } from "../../../theme/colors";
 
 export type ButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
   active?: boolean;

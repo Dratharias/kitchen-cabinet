@@ -1,7 +1,7 @@
 import { Component } from "solid-js";
 import { List } from "./List";
 import Span from "./Span";
-import { surfaceTheme } from "../../theme/colors";
+import { surfaceTheme } from "../../../theme/colors";
 
 export interface AriaProps {
   title?: string;

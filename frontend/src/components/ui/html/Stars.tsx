@@ -2,7 +2,7 @@ import { Component, createSignal, For, Setter } from "solid-js";
 
 export interface StarsProps {
   score?: number;             // initial score
-  onChange?: Setter<number>;  // optional callback when score changes
+  onChange?: (value: number) => void; // optional callback when score changes
   readonly?: boolean;         // if true, cannot change
   size?: number;              // optional star size
 }
