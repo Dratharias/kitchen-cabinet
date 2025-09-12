@@ -77,15 +77,30 @@ export interface ContentDetails {
 export interface PublicationDetails {
   publicationId: string;
   title: string;
-  description: string[];
-  note: string[];
+  description?: string[];
+  note?: string[];
   public: boolean;
   published: boolean;
   thumbnail?: string;
-  type?: PublicationType;
-  style?: PublicationStyle;
-  author?: Author;
-  reviews: PublicationReview[];
+  type?: {
+    categoryId: string;
+    strValue: string;
+    type: string;
+  };
+  style?: {
+    categoryId: string;
+    strValue: string;
+    type: string;
+  };
+  author?: {
+    categoryId: string;
+    strValue: string;
+    type: string;
+  };
+  reviews: {
+    count: number;
+    averageRating: number;
+  };
   contents: ContentDetails[];
 }
 

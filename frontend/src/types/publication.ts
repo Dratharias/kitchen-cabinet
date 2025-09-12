@@ -186,3 +186,87 @@ export const getTypesByCategory = (category: 'feeds' | 'foods'): PublicationType
   
   return category === 'feeds' ? feedTypes : foodTypes;
 };
+
+export interface CategoryInfo {
+  categoryId: string;
+  strValue: string;
+  type: string;
+}
+
+export interface PublicationType extends CategoryInfo {}
+export interface PublicationStyle extends CategoryInfo {}
+export interface Author extends CategoryInfo {}
+
+export interface PublicationReview {
+  reviewId: string;
+  productId?: string;
+  rating?: number;
+  comment?: string[];
+  description?: string[];
+  buyAgain?: string;
+  dateReview?: Date | null;
+}
+
+export interface ContentPrepTime {
+  prepTimeId: string;
+  duration: number;
+  category?: CategoryInfo;
+}
+
+export interface SegmentDetails {
+  segmentId: string;
+  title?: string;
+  paragraph: string;
+  order: number;
+  prepTimes: ContentPrepTime[];
+}
+
+export interface IngredientUnit {
+  name: string;
+}
+
+export interface IngredientProduct {
+  productId: string;
+  name: string;
+}
+
+export interface IngredientDetails {
+  ingredientId: string;
+  quantity?: number;
+  units?: IngredientUnit[];
+  product: IngredientProduct;
+}
+
+export interface ContentDetails {
+  contentId: string;
+  totalPrepTime: number;
+  servings?: number;
+  prepTimes: ContentPrepTime[];
+  segments: SegmentDetails[];
+  ingredients: IngredientDetails[];
+}
+
+export interface PublicationDetails {
+  publicationId: string;
+  title: string;
+  description: string[];
+  note: string[];
+  public: boolean;
+  published: boolean;
+  thumbnail?: string;
+  type?: PublicationType;
+  style?: PublicationStyle;
+  author?: Author;
+  reviews: PublicationReview[];
+  contents: ContentDetails[];
+}
+
+// Frontend mapped type for easier consumption
+export interface MappedPublicationData extends PublicationDetails {
+  ingredients: string[];
+  preparation: string[];
+  prepTime: string;
+  selectedContent?: ContentDetails;
+  isReview: boolean;
+  category: "foods" | "feeds" | "unknown";
+}

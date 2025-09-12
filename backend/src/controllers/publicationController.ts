@@ -234,7 +234,6 @@ const publicationController: CRUDController<PublicationBody, ParamsWithId, Publi
     }
   },
 
-
   readOne: async (req: FastifyRequest<{ Params: ParamsWithId }>, reply: FastifyReply) => {
     const { id } = req.params;
 
@@ -244,13 +243,13 @@ const publicationController: CRUDController<PublicationBody, ParamsWithId, Publi
     }
 
     try {
+      // Fetch the publication (without heavy reviews include)
       const pub = await prisma.publication.findUnique({
         where: { publication_id: id },
         include: {
           type: true,
           style: true,
           author: true,
-          reviews: true,
           contents: {
             include: {
               content_segments: {
@@ -282,7 +281,21 @@ const publicationController: CRUDController<PublicationBody, ParamsWithId, Publi
         return;
       }
 
-      reply.send(mapPublicationDetails(pub));
+      // Fetch review stats separately
+      const reviewStats = await prisma.review.aggregate({
+        where: { publication_id: id },
+        _count: { review_id: true },
+        _avg: { rating: true },
+      });
+
+      // Merge stats into the mapped object
+      const details = mapPublicationDetails(pub);
+      details.reviews = {
+        count: reviewStats._count.review_id,
+        averageRating: reviewStats._avg.rating ?? 0,
+      };
+
+      reply.send(details);
     } catch (err: any) {
       reply.code(500).send({ error: err.message });
     }

@@ -1,26 +1,26 @@
 import { Component, createSignal } from "solid-js";
-import { Publication, ContentDetails } from "../../types/publication";
+import type { ContentDetails } from "../../types/publication";
 
-export const PublicationDetails: Component<
-  Publication & {
-    ingredients?: string[];
-    preparation?: string[];
-    prepTime?: string;
-    selectedContent?: ContentDetails;
-    isReview?: boolean; // <-- add this
-  }
-> = (props) => {
+interface PublicationDetailsProps {
+  title: string;
+  thumbnail?: string;
+  prepTime?: string;
+  selectedContent?: ContentDetails;
+  ingredients?: string[];
+  preparation?: string[];
+  description?: string[];
+  note?: string[];
+  isReview?: boolean;
+  category?: "foods" | "feeds" | "unknown";
+}
+
+export const PublicationDetails: Component<PublicationDetailsProps> = (props) => {
   const [activeTab, setActiveTab] = createSignal<"ingredients" | "prep">("ingredients");
 
   return (
     <div class="flex flex-col w-full">
-      {/* Thumbnail */}
       {props.thumbnail && (
-        <img
-          src={props.thumbnail}
-          alt={props.title}
-          class="w-full h-64 object-cover rounded-b"
-        />
+        <img src={props.thumbnail} alt={props.title} class="w-full h-64 object-cover rounded-b" />
       )}
 
       <h1 class="mt-4 px-4">{props.title}</h1>

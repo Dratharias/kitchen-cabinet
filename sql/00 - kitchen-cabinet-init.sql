@@ -286,4 +286,4 @@ FOR EACH ROW EXECUTE FUNCTION trg_content_enforce_min_count();
 -- Minimal Taxonomy Seed
 -- ====================================================================
 INSERT INTO category (str_value, type) VALUES
-    ('Book', 'Type'), ('Recipe', 'Type'), ('Article','Type'), ('Review','Type');
+    ('Book', 'Type'), ('Recipe', 'Type'), ('Article','Type'), ('Review','Type'), ('FoodPost','Type'), ('Cookbook','Type');
