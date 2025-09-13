@@ -3,7 +3,7 @@ import { authenticate } from "../../services/ToastProvider";
 import { isAuthenticated, setIsAuthenticated } from "../../services/authStore";
 import Button from "../../components/ui/html/Button";
 import Input from "../../components/ui/html/Input";
-import { colorTheme, surfaceTheme } from "../../theme/colors";
+import Span from "../../components/ui/html/Span";
 
 export function LoginForm() {
   const [username, setUsername] = createSignal("");
@@ -26,22 +26,22 @@ export function LoginForm() {
   };
 
   return (
-    <div class={`flex items-center justify-center min-h-[70vh] w-full`}>
+    <div class={`flex items-center text-center justify-center min-h-[70vh] w-full text-prim-txt dark:text-prim-txt-d`}>
       {isAuthenticated() ? (
-        <div class={`text-center space-y-4 ${surfaceTheme.Card}`}>
-          <h2 class={surfaceTheme.CardTitle}>
+        <div>
+          <h2 class="pl-4 text-xl font-bold mb-4">
             Bienvenue {username()} 🎉
           </h2>
-          <p class={surfaceTheme.CardSubtitle}>
+          <Span class="mx-auto">
             Vous êtes connecté avec succès.
-          </p>
-          <Button class={colorTheme.NavbarButton + " mx-auto"} onClick={handleLogout}>
+          </Span>
+          <Button class="mx-auto mt-4" onClick={handleLogout}>
             Logout
           </Button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} class={`w-full max-w-sm ${surfaceTheme.Card} space-y-4`}>
-          <h2 class={`${surfaceTheme.CardTitle} text-center mb-4`}>
+        <form onSubmit={handleSubmit} class={`w-full max-w-sm space-y-4`}>
+          <h2 class="text-xl font-bold mb-4">
             Login
           </h2>
 
@@ -67,7 +67,7 @@ export function LoginForm() {
             />
           </label>
 
-          <Button class={colorTheme.NavbarButton} type="submit" disabled={loading()}>
+          <Button class={""} type="submit" disabled={loading()}>
             {loading() ? "Connexion..." : "Login"}
           </Button>
         </form>

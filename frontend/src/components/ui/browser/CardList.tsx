@@ -2,7 +2,6 @@ import { Component, For, Show } from "solid-js";
 import Card, { CardProps } from "./Card";
 import Span from "../html/Span";
 import { PrevPageButton, NextPageButton } from "../utilities/PaginationButtons";
-import { colorTheme } from "../../../theme/colors";
 
 export interface PaginationProps {
   page: number;
@@ -40,10 +39,9 @@ const CardList: Component<CardListProps> = (props) => {
       <Show when={props.pagination && props.pagination.totalPages > 1}>
         <div class="flex justify-evenly items-center mt-6 gap-4">
           <PrevPageButton
-            active={false}
             onClick={handlePrev}
             disabled={props.pagination?.page <= 1}
-            class={`${colorTheme.NavbarButton} max-w-64`}
+            class={`max-w-64`}
           >
             Précédent
           </PrevPageButton>
@@ -53,11 +51,10 @@ const CardList: Component<CardListProps> = (props) => {
           </Span>
 
           <NextPageButton
-            active={false}
             onClick={handleNext}
             disabled={props.pagination?.page >= props.pagination?.totalPages}
             reverse={true}
-            class={`${colorTheme.NavbarButton} max-w-64`}
+            class={`max-w-64`}
           >
             Suivant
           </NextPageButton>

@@ -1,10 +1,9 @@
 import Navbar from "../../components/navbar/Navbar";
 import SearchBar from "../../components/navbar/SearchBar";
-import { surfaceTheme } from "../../theme/colors";
 
 export function DesktopLayout(props) {
   return (
-    <div class={`${surfaceTheme.Card} flex flex-col w-full min-h-screen`}>
+    <div class={`flex flex-col w-full min-h-screen bg-layout dark:bg-layout-d`}>
       {/* Navbar */}
       <div class="flex flex-col fixed top-0 left-0 right-0 z-40">
         <Navbar />

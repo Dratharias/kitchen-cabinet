@@ -7,8 +7,6 @@ import { useNavState } from "./NavContext";
 import NavbarMenu from "./NavbarMenu";
 import type { MenuItem } from "../../types/menu";
 import ClickOutsideContainer from "../ui/utilities/ClickOutsideContainer";
-import { colorTheme, surfaceTheme } from "../../theme/colors";
-
 const Navbar = () => {
   const { searchOpen, toggleSearch } = useNavState();
   const [isEditor] = createSignal(true);
@@ -72,24 +70,21 @@ const Navbar = () => {
   const menuItems = isEditor() ? [...commonItems, ...editorItems] : commonItems;
 
   return (
-    <nav class={`${colorTheme.Navbar} w-full`}>
+    <nav class={`w-full`}>
       <div class="md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto p-2 sm:px-6 lg:px-8">
         {/* Primary buttons */}
         <div class="flex items-center text-nowrap justify-evenly h-16 space-x-2 text-center">
           <NavButtons.LibraryButton
             active={isActive("feeds")}
             onClick={() => activate("feeds")}
-            class={colorTheme.NavbarButton}
           />
           <NavButtons.SearchButton
             open={searchOpen()}
             onClick={toggleSearch}
-            class={colorTheme.NavbarButton}
           />
           <NavButtons.FeedButton
             active={isActive("foods")}
             onClick={() => activate("foods")}
-            class={colorTheme.NavbarButton}
           />
         </div>
 
@@ -98,12 +93,13 @@ const Navbar = () => {
           {/* bouton hamburger */}
           <NavButtons.HamburgerButton
             onClick={() => setOpen(!open())}
-            class={`fixed right-4 top-4 ${colorTheme.NavbarButton}`}
+            open={open()}
+            class={`fixed right-4 top-4`}
           />
 
           {open() && (
             <div
-              class={`${surfaceTheme.CardCompact} fixed right-6 top-16 mt-2 w-56 z-50 animate-fade-in`}
+              class={`fixed right-6 top-16 mt-2 w-56 z-50 animate-fade-in`}
             >
               <NavbarMenu items={menuItems} onClose={() => setOpen(false)} />
             </div>

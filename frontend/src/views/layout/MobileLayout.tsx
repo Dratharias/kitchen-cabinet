@@ -1,10 +1,9 @@
 import Navbar from "../../components/navbar/Navbar";
 import SearchBar from "../../components/navbar/SearchBar";
-import { surfaceTheme } from "../../theme/colors";
 
 export function MobileLayout(props) {
   return (
-    <div class={`${surfaceTheme.Card} flex flex-col min-h-screen`}>
+    <div class={`flex flex-col min-h-screen bg-layout dark:bg-layout-d`}>
       {/* Contenu */}
       <main class="flex mx-auto pt-4">{props.children}</main>
 

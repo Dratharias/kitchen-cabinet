@@ -1,7 +1,8 @@
 import { JSX, Show } from "solid-js";
 import { isAuthenticated } from "../../../services/authStore";
 import { useNavigate } from "@solidjs/router";
-import { colorTheme, surfaceTheme } from "../../../theme/colors";
+import Button from "../html/Button";
+import Span from "../html/Span";
 
 type RequireAuthProps = {
   fallback?: JSX.Element;
@@ -16,16 +17,16 @@ const RequireAuth = (props: RequireAuthProps) => {
       when={isAuthenticated()}
       fallback={
         props.fallback ?? (
-          <div class={`text-center p-4 ${surfaceTheme.Card}`}>
-            <p class={`${surfaceTheme.CardSubtitle}`}>
+          <div class={`text-center p-4`}>
+            <Span>
               Vous devez être connecté.
-            </p>
-            <button
-              class={`${colorTheme.Button} mt-2 underline`}
+            </Span>
+            <Button
+              class={`mt-2 underline`}
               onClick={() => navigate("/login")}
             >
               Se connecter
-            </button>
+            </Button>
           </div>
         )
       }

@@ -1,0 +1,13 @@
+@theme {
+  /* Shadow using cherry palette in rgba */
+  --color-shadow: 0 0 0 1px rgba(16, 0, 7, 1);       /* cherry-900 */
+  --color-shadow-focus: 0 0 0 1px rgba(224, 61, 96, 1); /* cherry-400 */
+  --color-shadow-d: 0 0 0 1px rgba(255, 238, 235, 1);   /* cherry-50 */
+  --color-shadow-focus-d: 0 0 0 1px rgba(224, 61, 96, 1); /* cherry-400 */
+
+  /* Subtle container shadows mapped to cherry tones */
+  --color-shadow-container: 0 0 1px rgba(16, 0, 7, 0.05);   /* cherry-900 with low opacity */
+  --color-shadow-container-focus: 0 0 0 1px rgba(224, 61, 96, 0.15); /* cherry-400 soft */
+  --color-shadow-container-d: 0 0 1px rgba(16, 0, 7, 0.1);   /* cherry-900 */
+  --color-shadow-container-focus-d: 0 0 0 1px rgba(224, 61, 96, 0.1); /* cherry-400 softer */
+}

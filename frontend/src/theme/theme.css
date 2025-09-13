@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+
+/* Base palettes */
+@import './colors/cherry.css';
+
+@import './components/button.css';
+@import './components/text.css';
+@import './components/input.css';
+@import './components/shadow.css';
+
+@theme {
+  /* Layout */
+  --color-layout: var(--color-cherry-50);
+  --color-layout-d: var(--color-cherry-900);
+}

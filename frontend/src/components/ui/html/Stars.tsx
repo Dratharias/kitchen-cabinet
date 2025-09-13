@@ -1,4 +1,4 @@
-import { Component, createSignal, For, Setter } from "solid-js";
+import { Component, createSignal, For } from "solid-js";
 
 export interface StarsProps {
   score?: number;             // initial score
