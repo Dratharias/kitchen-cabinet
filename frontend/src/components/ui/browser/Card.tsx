@@ -1,7 +1,7 @@
 import { Component } from "solid-js";
 import { useNavigate } from "@solidjs/router";
 import Button from "../html/Button";
-import Span from "../html/Span";
+import { Span } from "../html/Span";
 import Image from "../html/Image";
 import { MappedPublicationData } from "../../../types/publication";
 

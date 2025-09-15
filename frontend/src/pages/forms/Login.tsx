@@ -3,7 +3,7 @@ import { authenticate } from "../../services/ToastProvider";
 import { isAuthenticated, setIsAuthenticated } from "../../services/authStore";
 import Button from "../../components/ui/html/Button";
 import Input from "../../components/ui/html/Input";
-import Span from "../../components/ui/html/Span";
+import { Span } from "../../components/ui/html/Span";
 
 export function LoginForm() {
   const [username, setUsername] = createSignal("");

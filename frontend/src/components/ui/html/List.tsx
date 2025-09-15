@@ -1,6 +1,7 @@
-import { JSX, ParentProps, For, splitProps, createMemo } from "solid-js";
-import Span from "./Span";
+import { JSX, ParentProps, For, createMemo } from "solid-js";
+import { Span } from "./Span";
 import Button from "./Button";
+import { Checklist } from "./Checklist";
 
 export type ListItem = {
   id?: string;
@@ -8,81 +9,100 @@ export type ListItem = {
   onClick?: () => void;
   class?: string;
   variant?: "primary" | "secondary";
+  regularMode?: boolean;
   disabled?: boolean;
   active?: boolean;
   icon?: JSX.Element;
 };
 
 type ListProps = ParentProps & {
-  items?: ListItem[];
+  items?: ListItem[] | string[]; // string[] pour checklist
   class?: string;
   itemClass?: string;
+  mode?: "button" | "regular" | "checklist";
+  variant?: "primary" | "secondary";
 };
 
-export const List = (props: ListProps) => {
-  const baseClass =
-    "flex items-center gap-2 px-4 py-2 w-full text-left border-none rounded-none font-medium transition-colors duration-200 cursor-pointer disabled:cursor-not-allowed";
+const isListItem = (item: string | ListItem): item is ListItem =>
+  typeof item !== "string";
 
-  const variants: Record<
-    NonNullable<ListItem["variant"]>,
+export const List = (props: ListProps) => {
+  // Si mode checklist, on délègue à ton composant Checklist
+  if (props.mode === "checklist" && props.items) {
+    const checklistItems = props.items as string[];
+    return <Checklist items={checklistItems} />;
+  }
+
+  const baseItemClass =
+    "flex items-center text-left font-medium transition-colors duration-200 ";
+
+  const ulVariants: Record<
+    NonNullable<ListProps["variant"]>,
     Record<"base" | "active" | "disabled", string>
   > = {
     primary: {
-      base:
-        "bg-btn-prim text-prim-txt hover:bg-btn-prim-hov hover:text-prim-txt-hov dark:bg-btn-prim-d dark:text-prim-txt-d dark:hover:bg-btn-prim-hov-d dark:hover:text-prim-txt-hov-d",
-      active: "bg-btn-prim-act text-prim-txt-act dark:bg-btn-prim-act-d dark:text-prim-txt-act-d",
-      disabled: "bg-btn-dis text-prim-txt-dis dark:bg-btn-dis-d dark:text-prim-txt-dis-d",
+      base: "border-primary-500 dark:border-primary-600 text-prim-txt dark:text-prim-txt-d",
+      active: "ring-2 ring-primary-400 text-prim-txt-ac dark:text-prim-txt-ac-d",
+      disabled: "opacity-50 cursor-not-allowed text-prim-txt-dis dark:text-prim-txt-dis-d",
     },
     secondary: {
-      base:
-        "bg-btn-sec text-sec-txt hover:bg-btn-sec-hov hover:text-sec-txt-hov dark:bg-btn-sec-d dark:text-sec-txt-d dark:hover:bg-btn-sec-hov-d dark:hover:text-sec-txt-hov-d",
-      active: "bg-btn-sec-act text-sec-txt-act dark:bg-btn-sec-act-d dark:text-sec-txt-act-d",
-      disabled: "bg-btn-dis text-sec-txt-dis dark:bg-btn-dis-d dark:text-sec-txt-dis-d",
+      base: "border-secondary-500 dark:border-secondary-600 text-sec-txt dark:text-sec-txt-d",
+      active: "ring-2 ring-secondary-400",
+      disabled: "opacity-50 cursor-not-allowed",
     },
   };
 
+  const ulClass = createMemo(() => {
+    const variant = props.variant ?? "secondary";
+    const baseUlClasses = `border rounded-md ${props.class ?? ""}`;
+    const variantClasses = ulVariants[variant]?.base ?? "";
+    return [baseUlClasses, variantClasses].filter(Boolean).join(" ");
+  });
+
   return (
-    <ul class={props.class ?? ""}>
-      {props.items ? (
-        <For each={props.items}>
-          {(item, index) => {
-            const state = createMemo<"active" | "disabled" | "base">(() =>
-              item.disabled ? "disabled" : item.active ? "active" : "base"
-            );
+    <ul class={ulClass()}>
+      <For each={props.items}>
+        {(item, index) => {
+          if (!isListItem(item)) return null; // TypeScript safe
 
-            const classes = createMemo(() => {
-              const variant = item.variant ?? "secondary";
-              const stateClasses = variants[variant][state()];
-              return [baseClass, stateClasses, props.itemClass, item.class].filter(Boolean).join(" ");
-            });
+          const state = createMemo<"active" | "disabled" | "base">(() =>
+            item.disabled ? "disabled" : item.active ? "active" : "base"
+          );
 
-            return (
-              <div class="rounded
-                block w-full border border-sm
-                text-prim-txt dark:text-prim-txt-d
-                bg-btn-prim dark:bg-btn-prim-d
-                hover:bg-btn-prim-hov dark:hover:bg-btn-prim-hov-d
-              ">
-                <li
-                  id={item.id ?? `list-item-${index()}`}
-                  class="block w-full p-1"
+          const liClasses = createMemo(() => {
+            const itemBase = "w-full text-left rounded-md";
+            const itemState =
+              item.disabled
+                ? "opacity-50 cursor-not-allowed"
+                : item.active
+                ? "bg-gray-200 dark:bg-gray-700"
+                : "";
+            return [baseItemClass, itemBase, itemState, props.itemClass, item.class]
+              .filter(Boolean)
+              .join(" ");
+          });
+
+          const regularMode = item.regularMode ?? props.mode === "regular";
+
+          return (
+            <li id={item.id ?? `list-item-${index()}`} class={liClasses()}>
+              {regularMode ? (
+                <Span class="w-full block p-1 sm:p-2">{item.label}</Span>
+              ) : (
+                <Button
+                  onClick={item.onClick}
+                  disabled={item.disabled}
+                  class="w-full justify-start rounded-none border-none"
                 >
-                  <Button
-                    onClick={item.onClick}
-                    disabled={item.disabled}
-                    class={`w-full text-inherit bg-inherit border-none`}
-                  >
-                    {item.icon}
-                    <Span>{item.label}</Span>
-                  </Button>
-                </li>
-              </div>
-            );
-          }}
-        </For>
-      ) : (
-        props.children
-      )}
+                  {item.icon}
+                  <Span>{item.label}</Span>
+                </Button>
+              )}
+            </li>
+          );
+        }}
+      </For>
+      {!props.items && props.children}
     </ul>
   );
 };

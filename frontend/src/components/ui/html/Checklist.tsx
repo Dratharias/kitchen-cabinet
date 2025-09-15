@@ -1,27 +1,32 @@
-import { Component, createSignal, For } from "solid-js";
-import Span from "./Span";
+import { Component, For } from "solid-js";
+import { Span } from "./Span";
 
 export interface ChecklistProps {
   items: string[];
+  checked?: boolean[];
+  onChange?: (index: number, value: boolean) => void;
 }
 
-const Checklist: Component<ChecklistProps> = (props) => {
-  const [checked, setChecked] = createSignal<boolean[]>(props.items.map(() => false));
-
+export const Checklist: Component<ChecklistProps> = (props) => {
   const toggle = (index: number) => {
-    setChecked((prev) => {
-      const next = [...prev];
-      next[index] = !next[index];
-      return next;
-    });
+    if (!props.onChange) return;
+    props.onChange(index, !(props.checked?.[index] ?? false));
   };
 
   return (
     <div class="w-full">
       <For each={props.items}>
         {(item, i) => (
-          <div class="flex items-center gap-2 p-2 border-b border-gray-200 dark:border-gray-700 cursor-pointer" onClick={() => toggle(i())}>
-            <input type="checkbox" checked={checked()[i()]} class="cursor-pointer" readOnly />
+          <div
+            class="flex items-center gap-2 p-2 border-b border-gray-200 dark:border-gray-700 cursor-pointer"
+            onClick={() => toggle(i())}
+          >
+            <input
+              type="checkbox"
+              checked={props.checked?.[i()] ?? false}
+              class="cursor-pointer"
+              readOnly
+            />
             <Span>{item}</Span>
           </div>
         )}
@@ -29,5 +34,3 @@ const Checklist: Component<ChecklistProps> = (props) => {
     </div>
   );
 };
-
-export default Checklist;

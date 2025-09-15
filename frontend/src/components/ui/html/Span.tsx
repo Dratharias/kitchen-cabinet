@@ -4,7 +4,7 @@ export type SpanProps = JSX.HTMLAttributes<HTMLSpanElement> & {
   hideOnSmall?: boolean;
 };
 
-const Span = (props: SpanProps): JSX.Element => {
+export const Span = (props: SpanProps): JSX.Element => {
   const [local, rest] = splitProps(props, ["class", "children", "hideOnSmall"]);
 
   const baseClass = "transition-colors duration-200";
@@ -13,7 +13,7 @@ const Span = (props: SpanProps): JSX.Element => {
     [
       baseClass,
       local.hideOnSmall ? "hidden sm:inline" : "",
-      local.class, // prend les classes tailwind comme `text-prim-txt`
+      local.class,
     ]
       .filter(Boolean)
       .join(" ")
@@ -25,5 +25,3 @@ const Span = (props: SpanProps): JSX.Element => {
     </span>
   );
 };
-
-export default Span;

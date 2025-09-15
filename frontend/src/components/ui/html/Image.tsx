@@ -1,13 +1,27 @@
-import { Component, JSX } from "solid-js";
+import { Component, createSignal, JSX } from "solid-js";
 
 interface ImageProps extends JSX.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
   alt: string;
   class?: string;
+  fallbackSrc?: string; // URL de fallback
 }
 
 const Image: Component<ImageProps> = (props) => {
-  return <img {...props} class={props.class ?? "rounded"} />;
+  const [src, setSrc] = createSignal(props.src);
+
+  return (
+    <img
+      {...props}
+      src={src()}
+      class={props.class ?? "rounded"}
+      onError={() => {
+        if (props.fallbackSrc && src() !== props.fallbackSrc) {
+          setSrc(props.fallbackSrc);
+        }
+      }}
+    />
+  );
 };
 
 export default Image;

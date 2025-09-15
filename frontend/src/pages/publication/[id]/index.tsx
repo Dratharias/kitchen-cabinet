@@ -39,6 +39,7 @@ export const PublicationPage: Component<PublicationPageProps> = (props) => {
     const ingredients =
       content?.ingredients.map((ingredient) => {
         const qty = ingredient.quantity ?? "";
+        const mul = ingredient.multiplyFactor
         const units = ingredient.units?.map((u) => u.name).join(", ") ?? "";
         return `${qty} ${units} ${ingredient.product.name}`.trim();
       }) ?? [];
@@ -98,7 +99,6 @@ export const PublicationPage: Component<PublicationPageProps> = (props) => {
               thumbnail={d.thumbnail}
               prepTime={d.prepTime}
               selectedContent={d.selectedContent}
-              ingredients={d.ingredients}
               preparation={d.preparation}
               description={d.description}
               note={d.note}

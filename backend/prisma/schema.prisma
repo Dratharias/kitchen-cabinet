@@ -24,12 +24,12 @@ model category {
   type        String
   num_value   Int?    @db.SmallInt
 
-  publications_type   publication[]    @relation("PublicationType")
-  publications_style  publication[]    @relation("PublicationStyle")
-  publications_author publication[]    @relation("PublicationAuthor")
+  publications_type   publication[]     @relation("PublicationType")
+  publications_style  publication[]     @relation("PublicationStyle")
+  publications_author publication[]     @relation("PublicationAuthor")
+  prep_time           prep_time[]       @relation("PrepTimeStyle")
   publication_tags    publication_tag[]
   product_categories  product_category[]
-  prep_time_categories prep_time_category[]
 
   @@unique([str_value, type])
   @@index([type])
@@ -135,6 +135,7 @@ model ingredient {
   quantity     Int?    @db.SmallInt
   is_recipe_id String?
   product_id   String
+  multiply_factor Decimal @db.Decimal(10, 2)
 
   product           product @relation(fields: [product_id], references: [product_id], onDelete: Cascade)
   isRecipe          publication? @relation("RecipeReference", fields: [is_recipe_id], references: [publication_id])
@@ -145,10 +146,12 @@ model ingredient {
 model prep_time {
   prep_time_id String @id @default(uuid())
   duration     Int    @db.SmallInt
+  style_id     String?
 
+  style        category? @relation("PrepTimeStyle", fields: [style_id], references: [category_id])
+  
   content_prep_times content_prep_time[]
   segment_prep_time  segment_prep_time[]
-  prep_time_categories prep_time_category[]
 }
 
 model content_segment {
@@ -211,16 +214,6 @@ model product_category {
   category category @relation(fields: [category_id], references: [category_id], onDelete: Cascade)
 
   @@id([product_id, category_id])
-}
-
-model prep_time_category {
-  prep_time_id String
-  category_id  String
-
-  prep_time prep_time @relation(fields: [prep_time_id], references: [prep_time_id], onDelete: Cascade)
-  category  category  @relation(fields: [category_id], references: [category_id], onDelete: Cascade)
-
-  @@id([prep_time_id, category_id])
 }
 
 model review {

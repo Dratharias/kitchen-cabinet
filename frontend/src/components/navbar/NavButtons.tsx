@@ -1,5 +1,5 @@
 import Button, { ButtonProps } from "../ui/html/Button";
-import Span from "../ui/html/Span";
+import { Span } from "../ui/html/Span";
 import { FeedIcon, HamburgerIcon, LibraryIcon, SearchIcon } from "../ui/html/Icons";
 
 export const FeedButton = (props: Omit<ButtonProps, "icon">) => (

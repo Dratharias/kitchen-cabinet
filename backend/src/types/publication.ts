@@ -126,6 +126,7 @@ export interface PublicationListResponse {
 }
 
 export interface ContentPrepTimeInput {
+  categoryId: string;
   prepTimeId: string;
   duration?: number;
 }

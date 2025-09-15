@@ -1,5 +1,5 @@
 import { JSX, splitProps, createSignal, createMemo } from "solid-js";
-import Span from "./Span";
+import { Span } from "./Span";
 
 export type InputProps = JSX.InputHTMLAttributes<HTMLInputElement> & {
   error?: boolean;
@@ -40,7 +40,7 @@ const Input = (props: InputProps): JSX.Element => {
       <input
         {...rest}
         disabled={local.disabled}
-        class={`${classes()} flex-1 w-full`}
+        class={`${classes()} flex-1 w-full ring-1`}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
       />

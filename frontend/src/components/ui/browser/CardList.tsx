@@ -1,6 +1,6 @@
 import { Component, For, Show } from "solid-js";
 import Card, { CardProps } from "./Card";
-import Span from "../html/Span";
+import { Span } from "../html/Span";
 import { PrevPageButton, NextPageButton } from "../utilities/PaginationButtons";
 
 export interface PaginationProps {

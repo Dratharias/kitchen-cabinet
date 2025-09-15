@@ -51,11 +51,17 @@ function mapPublication(pub: any, includeReviews = true): PublicationDetails {
       prepTimes: (c.content_prep_times ?? []).map((pt: any) => ({
         prepTimeId: pt.prep_time.prep_time_id,
         duration: pt.prep_time.duration,
+        category: pt.prep_time.style && {
+          categoryId: pt.prep_time.style.category_id,
+          strValue: pt.prep_time.style.str_value,
+          type: pt.prep_time.style.type,
+        },
       })),
       ingredients: (c.content_ingredients ?? []).map((ci: any) => ({
         ingredientId: ci.ingredient.ingredient_id,
         quantity: ci.ingredient.quantity,
         units: ci.ingredient.ingredient_units?.map((u: any) => ({ name: u.unit.name })),
+        multiplyFactor: ci.ingredient.multiply_factor,
         product: {
           productId: ci.ingredient.product.product_id,
           name: ci.ingredient.product.name,
@@ -71,6 +77,11 @@ function mapPublication(pub: any, includeReviews = true): PublicationDetails {
           prepTimes: (seg.segment.segment_prep_time ?? []).map((spt: any) => ({
             prepTimeId: spt.prep_time.prep_time_id,
             duration: spt.prep_time.duration,
+            category: spt.prep_time.style && {
+              categoryId: spt.prep_time.style.category_id,
+              strValue: spt.prep_time.style.str_value,
+              type: spt.prep_time.style.type,
+            },
           })),
         })),
     })),
@@ -87,7 +98,6 @@ function mapPublication(pub: any, includeReviews = true): PublicationDetails {
       : undefined,
   };
 }
-
 
 // Build nested data for prisma create/update (accept Partial for updates)
 function buildCreateData(body: PublicationBody) {
@@ -107,9 +117,16 @@ function buildCreateData(body: PublicationBody) {
           servings: c.servings,
           total_prep_time: c.totalPrepTime ?? 0,
           ...(c.contentPrepTimes?.length && {
-            content_prep_times: { 
-              create: c.contentPrepTimes.map(pt => ({ prep_time_id: pt.prepTimeId })) 
-            }
+            content_prep_times: {
+              create: c.contentPrepTimes.map(pt => ({
+                prep_time: {
+                  create: {
+                    duration: pt.duration,
+                    style_id: pt.categoryId,
+                  },
+                },
+              })),
+            },
           }),
           ...(c.contentIngredients?.length && {
             content_ingredients: { 
@@ -154,8 +171,8 @@ async function savePublication(id: string | null, body: Partial<PublicationBody>
     tags: true,
     contents: {
       include: {
-        content_segments: { include: { segment: true } },
-        content_prep_times: { include: { prep_time: true } },
+        content_segments: { include: { segment: { include: { segment_prep_time: { include: { prep_time: { include: { style: true } } } } } } } },
+        content_prep_times: { include: { prep_time: { include: { style: true } } } },
         content_ingredients: {
           include: { ingredient: { include: { product: true, ingredient_units: { include: { unit: true } } } } },
         },
@@ -287,8 +304,8 @@ const publicationController: CRUDController<PublicationBody, { id: string }, { p
           tags: { include: { category: true } },
           contents: {
             include: {
-              content_segments: { include: { segment: true } },
-              content_prep_times: { include: { prep_time: true } },
+              content_segments: { include: { segment: { include: { segment_prep_time: { include: { prep_time: { include: { style: true } } } } } } } },
+              content_prep_times: { include: { prep_time: { include: { style: true } } } },
               content_ingredients: {
                 include: { ingredient: { include: { product: true, ingredient_units: { include: { unit: true } } } } },
               },

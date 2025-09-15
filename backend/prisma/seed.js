@@ -92,6 +92,7 @@ async function createIngredient(product) {
       ingredient_id: ingredientId,
       quantity: faker.number.int({ min: 1, max: 500 }),
       product_id: product.product_id,
+      multiply_factor: faker.number.float({ min: 0.01, max: 1.0, precision: 0.01 }).toFixed(2)
     },
   });
 
@@ -175,7 +176,7 @@ async function createBookOrCookbook(typeName, style, author, availableTags) {
   for (let i = 1; i <= chapters; i++) {
     const contentId = uuidv4();
     await prisma.content.create({
-      data: { content_id: contentId, publication_id: pubId, servings: null, total_prep_time: 0 },
+      data: { content_id: contentId, publication_id: pubId, servings: null, servings: 4, total_prep_time: 0 },
     });
 
     const segments = faker.number.int({ min: 2, max: 6 });
@@ -203,10 +204,11 @@ async function createBookOrCookbook(typeName, style, author, availableTags) {
   return pub;
 }
 
-async function createRecipe(style, author, product, availableTags) {
+async function createRecipe(style, author, product, availableTags, prepTimeCategories) {
   const pubId = uuidv4();
   const type = await prisma.category.findFirst({ where: { str_value: "Recipe", type: "Type" } });
 
+  // Création de la publication
   const pub = await prisma.publication.create({
     data: {
       publication_id: pubId,
@@ -222,31 +224,66 @@ async function createRecipe(style, author, product, availableTags) {
     },
   });
 
+  // Ajout des tags
   await addTagsToPublication(pubId, availableTags);
 
+  // Création du contenu principal
   const contentId = uuidv4();
-  const prep = faker.number.int({ min: 10, max: 90 });
   await prisma.content.create({
     data: {
       content_id: contentId,
       publication_id: pubId,
       servings: faker.number.int({ min: 1, max: 8 }),
-      total_prep_time: prep,
+      total_prep_time: 0, // sera recalculé après création des prep times
     },
   });
 
-  const prepId = uuidv4();
-  await prisma.prep_time.create({ data: { prep_time_id: prepId, duration: prep } });
-  await prisma.content_prep_time.create({ data: { content_id: contentId, prep_time_id: prepId } });
+  // Ajout de plusieurs prep_times avec catégories
+  const prepTimesCount = faker.number.int({ min: 1, max: 4 });
+  let totalPrepTime = 0;
+  for (let i = 0; i < prepTimesCount; i++) {
+    const prepDuration = faker.number.int({ min: 10, max: 90 });
+    const prepCategory = faker.helpers.arrayElement(prepTimeCategories);
 
-  const ingredients = faker.number.int({ min: 2, max: 6 });
-  for (let i = 0; i < ingredients; i++) {
-    const ingredient = await createIngredient(product);
-    await prisma.content_ingredient.create({ data: { content_id: contentId, ingredient_id: ingredient.ingredient_id } });
+    const prepTime = await prisma.prep_time.create({
+      data: {
+        prep_time_id: uuidv4(),
+        duration: prepDuration,
+        style_id: prepCategory.category_id, // lien un à un
+      },
+    });
+
+    await prisma.content_prep_time.create({
+      data: {
+        content_id: contentId,
+        prep_time_id: prepTime.prep_time_id,
+      },
+    });
+
+    totalPrepTime += prepDuration;
   }
 
-  const segs = faker.number.int({ min: 1, max: 3 });
-  for (let i = 1; i <= segs; i++) {
+  // Mise à jour du temps total de préparation
+  await prisma.content.update({
+    where: { content_id: contentId },
+    data: { total_prep_time: totalPrepTime },
+  });
+
+  // Création des ingrédients
+  const ingredientsCount = faker.number.int({ min: 2, max: 6 });
+  for (let i = 0; i < ingredientsCount; i++) {
+    const ingredient = await createIngredient(product);
+    await prisma.content_ingredient.create({
+      data: {
+        content_id: contentId,
+        ingredient_id: ingredient.ingredient_id,
+      },
+    });
+  }
+
+  // Création de segments textuels (étapes)
+  const segmentsCount = faker.number.int({ min: 1, max: 3 });
+  for (let i = 1; i <= segmentsCount; i++) {
     const segId = uuidv4();
     await prisma.segment.create({
       data: {
@@ -256,16 +293,20 @@ async function createRecipe(style, author, product, availableTags) {
         order_num: i,
       },
     });
-    await prisma.content_segment.create({ data: { content_id: contentId, segment_id: segId, position: i } });
+    await prisma.content_segment.create({
+      data: { content_id: contentId, segment_id: segId, position: i },
+    });
   }
 
+  // Création de quelques reviews
   if (Math.random() < 0.7) {
-    const count = faker.number.int({ min: 1, max: 5 });
-    for (let i = 0; i < count; i++) await createReviewForPublication(pub);
+    const reviewsCount = faker.number.int({ min: 1, max: 5 });
+    for (let i = 0; i < reviewsCount; i++) await createReviewForPublication(pub);
   }
 
   return pub;
 }
+
 
 async function createArticleOrFoodPost(typeName, style, author, availableTags) {
   const pubId = uuidv4();
@@ -319,6 +360,9 @@ async function createArticleOrFoodPost(typeName, style, author, availableTags) {
 // ---------------------------
 // Main
 // ---------------------------
+// ---------------------------
+// Main
+// ---------------------------
 async function main() {
   await ensureUser("admin", "admin123", "admin");
 
@@ -344,8 +388,18 @@ async function main() {
     availableTags.push(tag);
   }
 
+  // Create prep time categories
+  const prepTimeCategoryNames = ["Prep", "Cook", "Rest", "Chill"];
+  const prepTimeCategories = [];
+  for (const name of prepTimeCategoryNames) {
+    prepTimeCategories.push(await ensureCategory(name, "PrepTime"));
+  }
+
+  // Create products
   const products = [];
-  for (let i = 0; i < 20; i++) products.push(await createProduct());
+  for (let i = 0; i < 20; i++) {
+    products.push(await createProduct());
+  }
 
   const pubs = [];
   const total = 100;
@@ -363,7 +417,7 @@ async function main() {
     } else if (r < 0.60) {
       pubs.push(await createArticleOrFoodPost("FoodPost", styleBreakfast, authorJulia, availableTags));
     } else if (r < 0.80) {
-      pubs.push(await createRecipe(styleBreakfast, authorJulia, product, availableTags));
+      pubs.push(await createRecipe(styleBreakfast, authorJulia, product, availableTags, prepTimeCategories));
     } else {
       if (Math.random() < 0.5) {
         await createReviewForProduct(product);
@@ -374,8 +428,9 @@ async function main() {
     }
   }
 
-  console.log("✅ Mass seed completed with tags!");
+  console.log("✅ Mass seed completed with tags and prep times!");
 }
+
 
 main()
   .catch((e) => {

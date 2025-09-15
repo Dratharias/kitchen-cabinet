@@ -236,6 +236,7 @@ export interface IngredientDetails {
   quantity?: number;
   units?: IngredientUnit[];
   product: IngredientProduct;
+  multiplyFactor: number;
 }
 
 export interface ContentDetails {

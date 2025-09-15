@@ -1,4 +1,4 @@
-import Stars from "../html/Stars";
+import Stars from "../utilities/Stars";
 
 type StarsEditorProps<T> = {
   draft: T;

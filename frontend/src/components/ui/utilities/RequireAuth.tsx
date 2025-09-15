@@ -2,7 +2,7 @@ import { JSX, Show } from "solid-js";
 import { isAuthenticated } from "../../../services/authStore";
 import { useNavigate } from "@solidjs/router";
 import Button from "../html/Button";
-import Span from "../html/Span";
+import { Span } from "../html/Span";
 
 type RequireAuthProps = {
   fallback?: JSX.Element;

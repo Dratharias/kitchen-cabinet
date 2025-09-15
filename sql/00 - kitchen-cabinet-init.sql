@@ -137,13 +137,16 @@ CREATE TABLE ingredient (
     quantity      SMALLINT,
     is_recipe_id  UUID,
     product_id    UUID NOT NULL,
+    multiply_factor DECIMAL(10,2),
     FOREIGN KEY (product_id)   REFERENCES product(product_id) ON DELETE CASCADE,
     FOREIGN KEY (is_recipe_id) REFERENCES publication(publication_id) ON DELETE SET NULL
 );
 
 CREATE TABLE prep_time (
     prep_time_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    duration     SMALLINT NOT NULL CHECK (duration >= 0)
+    duration     SMALLINT NOT NULL CHECK (duration >= 0),
+    category_id  UUID NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES category(category_id) ON DELETE CASCADE
 );
 
 -- ====================================================================

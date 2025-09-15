@@ -1,6 +1,6 @@
 import { Component } from "solid-js";
 import { List } from "./List";
-import Span from "./Span";
+import { Span } from "./Span";
 
 export interface AriaProps {
   title?: string;
