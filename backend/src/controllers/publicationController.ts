@@ -9,6 +9,14 @@ import {
   ReviewInput,
 } from "../types/publication.js";
 
+// Helpers (deep create/read/update/delete)
+import {
+  createPublicationDeep,
+  updatePublicationDeep,
+  readPublicationDeep,
+  deletePublication as deletePublicationDeep,
+} from "../helpers/publicationHelpers";
+
 const prisma = new PrismaClient();
 
 /**
@@ -99,100 +107,14 @@ function mapPublication(pub: any, includeReviews = true): PublicationDetails {
   };
 }
 
-// Build nested data for prisma create/update (accept Partial for updates)
-function buildCreateData(body: PublicationBody) {
-  return {
-    title: body.title,
-    description: body.description ?? [],
-    note: body.note ?? [],
-    public: body.public ?? false,
-    published: body.published ?? false,
-    ...(body.thumbnail && { thumbnail: body.thumbnail }),
-    ...(body.type_id && { type_id: body.type_id }),
-    ...(body.style_id && { style_id: body.style_id }),
-    ...(body.author_id && { author_id: body.author_id }),
-    ...(body.contents?.length && {
-      contents: {
-        create: body.contents.map((c: ContentInput) => ({
-          servings: c.servings,
-          total_prep_time: c.totalPrepTime ?? 0,
-          ...(c.contentPrepTimes?.length && {
-            content_prep_times: {
-              create: c.contentPrepTimes.map(pt => ({
-                prep_time: {
-                  create: {
-                    duration: pt.duration,
-                    style_id: pt.categoryId,
-                  },
-                },
-              })),
-            },
-          }),
-          ...(c.contentIngredients?.length && {
-            content_ingredients: { 
-              create: c.contentIngredients.map(i => ({ ingredient_id: i.ingredientId })) 
-            }
-          }),
-        }))
-      }
-    }),
-    ...(body.reviews?.length && {
-      reviews: { 
-        create: body.reviews.map((r: ReviewInput) => ({ 
-          rating: r.rating, 
-          comment: r.comment ? [r.comment] : [] 
-        })) 
-      }
-    }),
-  };
-}
-
-function buildUpdateData(body: Partial<PublicationBody>) {
-  const data: any = {};
-  
-  if (body.title !== undefined) data.title = body.title;
-  if (body.description !== undefined) data.description = body.description;
-  if (body.note !== undefined) data.note = body.note;
-  if (body.public !== undefined) data.public = body.public;
-  if (body.published !== undefined) data.published = body.published;
-  if (body.thumbnail !== undefined) data.thumbnail = body.thumbnail;
-  if (body.type_id !== undefined) data.type_id = body.type_id;
-  if (body.style_id !== undefined) data.style_id = body.style_id;
-  if (body.author_id !== undefined) data.author_id = body.author_id;
-  
-  return data;
-}
-
+// savePublication wrapper using helpers
 async function savePublication(id: string | null, body: Partial<PublicationBody>) {
-  const include = {
-    type: true,
-    style: true,
-    author: true,
-    tags: true,
-    contents: {
-      include: {
-        content_segments: { include: { segment: { include: { segment_prep_time: { include: { prep_time: { include: { style: true } } } } } } } },
-        content_prep_times: { include: { prep_time: { include: { style: true } } } },
-        content_ingredients: {
-          include: { ingredient: { include: { product: true, ingredient_units: { include: { unit: true } } } } },
-        },
-      },
-    },
-  };
-
   if (id) {
-    const data = buildUpdateData(body);
-    return prisma.publication.update({
-      where: { publication_id: id },
-      data,
-      include,
-    });
+    // update deep via helper
+    return updatePublicationDeep(prisma, id, body);
   } else {
-    const data = buildCreateData(body as PublicationBody);
-    return prisma.publication.create({
-      data,
-      include,
-    });
+    // create deep via helper
+    return createPublicationDeep(prisma, body);
   }
 }
 
@@ -206,7 +128,8 @@ const publicationController: CRUDController<PublicationBody, { id: string }, { p
       const mapped = mapPublication(pub);
       reply.code(201).send(mapped);
     } catch (err: any) {
-      reply.code(500).send({ error: err.message });
+      req.log?.error?.(err);
+      reply.code(500).send({ error: err.message ?? "Internal error" });
     }
   },
 
@@ -230,7 +153,7 @@ const publicationController: CRUDController<PublicationBody, { id: string }, { p
         ];
       }
 
-      // fetch publications page with type filtering
+      // Fetch publications page with type filtering
       const pubs = await prisma.publication.findMany({
         where: whereClause,
         skip,
@@ -240,7 +163,13 @@ const publicationController: CRUDController<PublicationBody, { id: string }, { p
           type: true,
           style: true,
           author: true,
-          tags: { include: { category: true } }
+          tags: { include: { category: true } },
+          contents: {
+            include: {
+              content_prep_times: { include: { prep_time: { include: { style: true } } } },
+              content_segments: { include: { segment: { include: { segment_prep_time: { include: { prep_time: { include: { style: true } } } } } } } },
+            },
+          },
         },
       });
 
@@ -265,14 +194,38 @@ const publicationController: CRUDController<PublicationBody, { id: string }, { p
 
       const mapped = pubs.map((p) => {
         const base = mapPublication(p, false);
+
+        // Sélectionne le contenu principal (ici premier contenu)
+        const content = p.contents?.[0] ?? null;
+
+        // Rendement / yield
+        const yieldValue = content?.servings ?? null;
+
+        // Temps de préparation total
+        let totalPrepTime = content?.total_prep_time ?? null;
+        if (!totalPrepTime && content?.content_prep_times?.length) {
+          totalPrepTime = content.content_prep_times.reduce(
+            (sum: number, pt: any) => sum + (pt.prep_time?.duration ?? 0),
+            0
+          );
+        }
+        if (!totalPrepTime && content?.content_segments?.length) {
+          const segmentPrepSum = content.content_segments
+            .flatMap((s: any) => s.segment_prep_time ?? [])
+            .reduce((sum: number, spt: any) => sum + (spt.prep_time?.duration ?? 0), 0);
+          totalPrepTime = segmentPrepSum || totalPrepTime;
+        }
+
         return {
           ...base,
           reviewsCount: statsByPub[p.publication_id]?.count ?? 0,
           averageRating: statsByPub[p.publication_id]?.average ?? null,
+          yield: yieldValue,
+          totalPrepTime,
         };
       });
 
-      // total count with same filtering for accurate pagination
+      // Total count with same filtering for accurate pagination
       const total = await prisma.publication.count({ where: whereClause });
 
       reply.send({
@@ -285,7 +238,8 @@ const publicationController: CRUDController<PublicationBody, { id: string }, { p
         },
       });
     } catch (err: any) {
-      reply.code(500).send({ error: err.message });
+      req.log?.error?.(err);
+      reply.code(500).send({ error: err.message ?? "Internal error" });
     }
   },
 
@@ -295,25 +249,8 @@ const publicationController: CRUDController<PublicationBody, { id: string }, { p
     if (!isUUID(id)) return reply.code(400).send({ error: "Invalid UUID" });
 
     try {
-      const pub = await prisma.publication.findUnique({
-        where: { publication_id: id },
-        include: {
-          type: true,
-          style: true,
-          author: true,
-          tags: { include: { category: true } },
-          contents: {
-            include: {
-              content_segments: { include: { segment: { include: { segment_prep_time: { include: { prep_time: { include: { style: true } } } } } } } },
-              content_prep_times: { include: { prep_time: { include: { style: true } } } },
-              content_ingredients: {
-                include: { ingredient: { include: { product: true, ingredient_units: { include: { unit: true } } } } },
-              },
-            },
-          },
-        },
-      });
-
+      // Use deep read helper to return same include graph as create/update
+      const pub = await readPublicationDeep(prisma, id);
       if (!pub) return reply.code(404).send({ error: "Not found" });
 
       // Aggregate reviews: count and average rating (only numeric rating)
@@ -334,7 +271,8 @@ const publicationController: CRUDController<PublicationBody, { id: string }, { p
 
       reply.send(response);
     } catch (err: any) {
-      reply.code(500).send({ error: err.message });
+      req.log?.error?.(err);
+      reply.code(500).send({ error: err.message ?? "Internal error" });
     }
   },
 
@@ -360,7 +298,8 @@ const publicationController: CRUDController<PublicationBody, { id: string }, { p
         averageRating: agg._avg?.rating ?? null,
       });
     } catch (err: any) {
-      reply.code(500).send({ error: err.message });
+      req.log?.error?.(err);
+      reply.code(500).send({ error: err.message ?? "Internal error" });
     }
   },
 
@@ -370,10 +309,12 @@ const publicationController: CRUDController<PublicationBody, { id: string }, { p
     if (!isUUID(id)) return reply.code(400).send({ error: "Invalid UUID" });
 
     try {
-      await prisma.publication.delete({ where: { publication_id: id } });
+      // use helper delete (deep)
+      await deletePublicationDeep(prisma, id);
       reply.send({ success: true });
     } catch (err: any) {
-      reply.code(500).send({ error: err.message });
+      req.log?.error?.(err);
+      reply.code(500).send({ error: err.message ?? "Internal error" });
     }
   },
 

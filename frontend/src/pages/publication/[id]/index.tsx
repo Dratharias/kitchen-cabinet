@@ -39,7 +39,6 @@ export const PublicationPage: Component<PublicationPageProps> = (props) => {
     const ingredients =
       content?.ingredients.map((ingredient) => {
         const qty = ingredient.quantity ?? "";
-        const mul = ingredient.multiplyFactor
         const units = ingredient.units?.map((u) => u.name).join(", ") ?? "";
         return `${qty} ${units} ${ingredient.product.name}`.trim();
       }) ?? [];
@@ -61,26 +60,30 @@ export const PublicationPage: Component<PublicationPageProps> = (props) => {
 
     return {
       ...pub,
+      tags: pub.tags ?? [],
       ingredients,
       preparation,
       prepTime: formatPrepTime(totalPrepTime),
       selectedContent: content,
       isReview: !!isReview() || pub.type?.strValue === "Review",
       category: category(),
+      reviewsCount: pub.reviewsCount,
+      averageRating: pub.averageRating,
     };
+
   });
 
   return (
-    <div class="p-0">
+    <div>
       <Show when={publication.error}>
-        <div class="p-4 text-red-600">
+        <div class="text-red-600">
           <h2 class="text-xl font-bold mb-2">Error loading publication</h2>
           <p>{publication.error?.message ?? "An unexpected error occurred"}</p>
         </div>
       </Show>
 
       <Show when={publication.loading}>
-        <div class="p-4 animate-pulse">
+        <div class="animate-pulse">
           <div class="h-8 bg-gray-200 rounded w-3/4 mb-4"></div>
           <div class="h-4 bg-gray-200 rounded w-full mb-2"></div>
           <div class="h-4 bg-gray-200 rounded w-5/6 mb-2"></div>
@@ -95,6 +98,7 @@ export const PublicationPage: Component<PublicationPageProps> = (props) => {
 
           return (
             <PublicationDetailsComponent
+              publicationId={d.publicationId}
               title={d.title}
               thumbnail={d.thumbnail}
               prepTime={d.prepTime}
@@ -104,6 +108,8 @@ export const PublicationPage: Component<PublicationPageProps> = (props) => {
               note={d.note}
               isReview={d.isReview}
               category={d.category}
+              reviewsCount={d.reviewsCount}
+              averageRating={d.averageRating}
             />
           );
         }}

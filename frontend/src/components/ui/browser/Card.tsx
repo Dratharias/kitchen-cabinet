@@ -3,8 +3,8 @@ import { useNavigate } from "@solidjs/router";
 import Button from "../html/Button";
 import { Span } from "../html/Span";
 import Image from "../html/Image";
+import Stars from "../utilities/Stars";
 import { MappedPublicationData } from "../../../types/publication";
-
 
 export interface CardProps {
   publication: MappedPublicationData;
@@ -18,53 +18,78 @@ const Card: Component<CardProps> = (props) => {
     navigate(`/${props.pathPrefix}/${props.publication.publicationId}`);
   };
 
-  // Use selectedContent if available
   const content = () => props.publication.selectedContent;
-
-  const prepTime = () => props.publication.prepTime || (content()?.prepTimes?.reduce((sum, t) => sum + t.duration, 0) ?? null);
+  const prepTime = () =>
+    props.publication.prepTime ||
+    (content()?.prepTimes?.reduce((sum, t) => sum + t.duration, 0) ?? null);
   const servings = () => content()?.servings;
 
   return (
     <Button
-      class={`flex gap-4 p-4 max-h-48 overflow-hidden`}
+      class="flex text-left !px-0 !py-0 max-h-48 w-full overflow-hidden border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
       onClick={handleClick}
     >
+      {/* Left: Thumbnail + Stars */}
       {props.publication.thumbnail && (
+      <div class="flex flex-col w-24 h-full rounded-none overflow-hidden relative">
         <Image
           src={props.publication.thumbnail}
           alt={props.publication.title}
-          class="w-24 h-24 object-cover rounded flex-shrink-0"
+          class="w-full h-full object-cover"
         />
-      )}
+        {props.publication.averageRating != null && props.publication.averageRating > 0 && (
+          <div class="absolute bottom-1 left-0 w-full flex flex-col items-center justify-center p-1">
+            <Stars score={props.publication.averageRating * 2} readonly size={14} />
+          </div>
+        )}
+      </div>
+    )}
 
-      <div class="flex-1 text-start flex flex-col justify-between">
+      {/* Right: Info */}
+      <div class="flex-1 flex flex-col p-1 md:p-2 justify-between ">
         <div>
-          <h3 class={`line-clamp-2`}>
-            <Span>{props.publication.title}</Span>
+          {/* Title */}
+          <h3 class="line-clamp-2 font-semibold text-sm">
+            {props.publication.title}
           </h3>
 
+          {/* Description */}
           {props.publication.description?.[0] && (
-            <p class={`text-sm line-clamp-3`}>
-              <Span>{props.publication.description[0]}</Span>
+            <p class="text-xs line-clamp-2 mt-1">
+              {props.publication.description[0]}
             </p>
           )}
 
+          {/* Type & Style */}
           {(props.publication.type || props.publication.style) && (
-            <Span class={`text-xs`}>
+            <div class="text-xs mt-1">
               {props.publication.type?.strValue}
               {props.publication.style ? ` • ${props.publication.style.strValue}` : ""}
+            </div>
+          )}
+
+          {/* Tags */}
+          {props.publication.tags.length > 0 && (
+            <div class="flex flex-wrap gap-1 mt-1">
+              {props.publication.tags.map((tag) => (
+                <Span class="text-[9px] rounded px-1 py-0.5">{tag.strValue}</Span>
+              ))}
+            </div>
+          )}
+
+          {/* Author */}
+          {props.publication.author?.strValue && (
+            <Span class="text-xs mt-1 block">
+              By {props.publication.author.strValue}
             </Span>
           )}
         </div>
 
-        {/* PrepTime & Yield */}
-        {(prepTime() || servings()) && (
-          <Span class={`mt-2 text-xs`}>
-            {prepTime() && <>⏱ {prepTime()} min</>}
-            {prepTime() && servings() && " • "}
-            {servings() && <>Yield: {servings()}</>}
-          </Span>
-        )}
+        {/* Bottom: Prep Time & Yield */}
+        <div class="flex items-center gap-3 text-xs text-gray-600 mt-2">
+          {prepTime() && <span class="flex items-center gap-1">⏱ {prepTime()} min</span>}
+          {servings() && <span class="flex items-center gap-1">🍽 {servings()}</span>}
+        </div>
       </div>
     </Button>
   );

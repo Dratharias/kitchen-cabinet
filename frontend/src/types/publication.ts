@@ -6,20 +6,10 @@ export interface CategoryInfo {
 }
 
 // Publication type, style, and author interfaces
+export interface PublicationTags extends CategoryInfo {}
 export interface PublicationType extends CategoryInfo {}
 export interface PublicationStyle extends CategoryInfo {}
 export interface Author extends CategoryInfo {}
-
-// Review interface
-export interface PublicationReview {
-  reviewId: string;
-  productId?: string;
-  rating?: number;
-  comment?: string[];
-  description?: string[];
-  buyAgain?: string;
-  dateReview?: Date | null;
-}
 
 // Preparation time interfaces
 export interface PrepTimeCategory {
@@ -71,6 +61,7 @@ export interface ContentDetails {
 
 // Full publication details interface (used for single publication view)
 export interface PublicationDetails {
+  reviews: PublicationReview[];
   publicationId: string;
   title: string;
   description: string[];
@@ -78,6 +69,7 @@ export interface PublicationDetails {
   public: boolean;
   published: boolean;
   thumbnail?: string;
+  tags: PublicationTags[];
   type?: PublicationType;
   style?: PublicationStyle;
   author?: Author;
@@ -90,6 +82,9 @@ export interface PublicationDetails {
 export interface PublicationListItem {
   publicationId: string;
   title: string;
+  tags: PublicationTags[];
+  averageRating: number;
+  reviewsCount: number;
   description: string[];
   note: string[];
   thumbnail?: string;
@@ -250,9 +245,13 @@ export interface ContentDetails {
 
 // Frontend mapped type for easier consumption
 export interface MappedPublicationData extends PublicationDetails {
+  publicationId: string;
+  tags: PublicationTags[];
   ingredients: string[];
   preparation: string[];
   prepTime: string;
+  averageRating: number | null;
+  reviewsCount: number | null;
   selectedContent?: ContentDetails;
   isReview: boolean;
   category: "foods" | "feeds" | "unknown";

@@ -99,7 +99,7 @@ const Navbar = () => {
 
           {open() && (
             <div
-              class={`fixed right-6 top-16 mt-2 w-56 z-50 animate-fade-in`}
+              class={`fixed right-6 top-16 mt-2 w-56 z-50 animate-fade-in `}
             >
               <NavbarMenu items={menuItems} onClose={() => setOpen(false)} />
             </div>

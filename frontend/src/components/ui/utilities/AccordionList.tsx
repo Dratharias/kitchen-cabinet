@@ -27,9 +27,15 @@ export const AccordionList: Component<AccordionListProps> = (props) => {
     <div class={`w-full ${props.class ?? ""}`}>
       {isEmpty ? (
         // Pas de bouton ni chevron si vide
-        <Span class="flex items-center w-full px-2 py-1 font-medium">
-          {props.title}
-        </Span>
+        <Button
+            type="button"
+            disabled
+            class="flex items-center !text-sec-txt dark:!text-sec-txt-d justify-between w-full px-2 py-1 font-medium rounded"
+          >
+            <Span class="flex items-center w-full font-medium">
+            {props.title}
+            </Span>
+          </Button>
       ) : (
         <>
           <Button

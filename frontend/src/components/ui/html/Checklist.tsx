@@ -18,7 +18,7 @@ export const Checklist: Component<ChecklistProps> = (props) => {
       <For each={props.items}>
         {(item, i) => (
           <div
-            class="flex items-center gap-2 p-2 border-b border-gray-200 dark:border-gray-700 cursor-pointer"
+            class="flex items-center gap-2 p-2 cursor-pointer"
             onClick={() => toggle(i())}
           >
             <input

@@ -16,9 +16,15 @@ export const usePublicationApi = {
     return res;
   },
 
-  // Get reviews for a publication
-  async getPublicationReviews(id: string) {
-    const res = await useApiFetch(`/api/publications/${id}/reviews`);
+  // Get reviews for a publication (with optional pagination)
+  async getPublicationReviews(
+    id: string,
+    query?: { page?: number; limit?: number }
+  ) {
+    const res = await useApiFetch(
+      `/api/publications/${id}/reviews`,
+      query
+    );
     console.log(`[API:getPublicationReviews] response:`, res);
     return res;
   },

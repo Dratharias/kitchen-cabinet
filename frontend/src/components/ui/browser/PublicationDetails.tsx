@@ -1,4 +1,5 @@
 import { Component, createSignal, createMemo } from "solid-js";
+import { useNavigate } from "@solidjs/router";
 import type { ContentDetails } from "../../../types/publication";
 import Image from "../html/Image";
 import NumberSpinner from "../utilities/NumberSpinner";
@@ -6,6 +7,7 @@ import { Span } from "../html/Span";
 import { AccordionList } from "../utilities/AccordionList";
 import { IngredientPrepToggler } from "../utilities/IngredientPrepToggler";
 import { Checklist } from "../html/Checklist";
+import Button from "../html/Button";
 
 interface Ingredient {
   ingredientId?: string;
@@ -17,6 +19,9 @@ interface Ingredient {
 }
 
 interface PublicationDetailsProps {
+  publicationId: string;
+  reviewsCount: number;
+  averageRating: number;
   title: string;
   thumbnail?: string;
   prepTime?: string | number;
@@ -35,6 +40,7 @@ export const PublicationDetails: Component<PublicationDetailsProps> = (props) =>
   const baseYield = props.selectedContent?.servings ?? 1;
   const [activeTab, setActiveTab] = createSignal<"ingredient" | "preparation">("ingredient");
   const [servings, setServings] = createSignal<number>(baseYield);
+  const navigate = useNavigate();
 
   function getAdjustedQuantity(ingredient: Ingredient, servings: number, baseYield: number) {
     const quantity = Number(ingredient.quantity ?? 0);
@@ -141,22 +147,61 @@ export const PublicationDetails: Component<PublicationDetailsProps> = (props) =>
     []
   );
 
+  const renderStars = (rating: number) => {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5;
+    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+    return (
+      <>
+        {"★".repeat(fullStars)}
+        {halfStar && "☆"}
+        {"☆".repeat(emptyStars)}
+      </>
+    );
+  };
+
   return (
     <div class="flex flex-col w-full text-prim-txt dark:text-prim-txt-d">
       <Image
         src={props.thumbnail ?? fallbackThumbnail}
         fallbackSrc={fallbackThumbnail}
         alt={props.title}
-        class="w-full h-64 object-cover rounded-b"
+        class="w-full max-h-64 h-64 object-cover rounded-b mb-8"
       />
 
       <Span class="mt-4 px-4 text-4xl font-semibold">
         <h1>{props.title}</h1>
       </Span>
+      <div class="flex items-center gap-2 px-4 mt-4">
+        
+      <div>
+          <Button
+            class="bg-layout border-none dark:bg-layout-d"
+            onClick={() => {
+              const id = props.publicationId;
+              if (id) {
+                navigate(`/foods/${id}/reviews`);
+              }
+            }}
+          >
+            <span class="text-yellow-500">
+              {renderStars(props.averageRating ?? 0)}
+            </span>
+            <span class="ml-2 text-lg font-medium">
+              {props.averageRating?.toFixed(1) ?? "N/A"}
+            </span>
+            <span class="text-sm text-gray-500">
+              ({props.reviewsCount ?? 0} avis)
+            </span>
+          </Button>
+      </div>
+        
+    </div>
 
-      <div class="grid grid-cols-2 gap-4 px-4 mt-2">
+      <div class="grid grid-cols-2 gap-4 px-4 mt-8">
         <AccordionList
-          class="text-left mb-4"
+          class="text-left mb-4 !text-prim-txt !dark:text-prim-txt-d"
           title={`${effectivePrep().label} ${effectivePrep().value}`}
           items={
             effectivePrep().details.length > 0
@@ -169,8 +214,8 @@ export const PublicationDetails: Component<PublicationDetailsProps> = (props) =>
               : []
           }
         />
-        <div class="flex items-center">
-          <Span class="mr-4">Rendement:</Span>
+        <div class="flex items-center h-10">
+          <Span class="mr-4 text-lg font-medium">Rendement:</Span>
           <NumberSpinner value={servings()} min={1} max={20} onChange={setServings} />
         </div>
       </div>

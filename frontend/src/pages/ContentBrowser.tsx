@@ -40,10 +40,12 @@ export const ContentBrowser: Component<{ feeds?: boolean; foods?: boolean }> = (
     category,
     public: false,
     published: false,
-    reviewsCount: 0,
-    averageRating: 0,
-    contents: []
+    reviewsCount: pub.reviewsCount ?? 0,
+    averageRating: pub.averageRating ?? null,
+    contents: [],
+    reviews: []
   });
+
 
 
   const cards = () =>
@@ -60,7 +62,7 @@ export const ContentBrowser: Component<{ feeds?: boolean; foods?: boolean }> = (
 
 
   return (
-    <div class="flex-1 flex flex-col w-full p-4">
+    <div class="flex-1 flex flex-col w-full">
       <CardList
         cards={cards()}
         pagination={{

@@ -4,6 +4,7 @@ import { ToastProvider } from './services/ToastProvider';
 import { LoginForm } from './pages/forms/Login';
 import { PublicationPage } from './pages/publication/[id]';
 import { ContentBrowser } from './pages/ContentBrowser';
+import { ReviewPage } from './pages/publication/[id]/reviews';
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
         {/* Publication Detail Routes */}
         <Route path="/foods/:id" component={() => <Layout><PublicationPage category="foods" /></Layout>} />
         <Route path="/feeds/:id" component={() => <Layout><PublicationPage category="feeds" /></Layout>} />
+
+        {/* Reviews Routes */}
+        <Route path="/foods/:id/reviews" component={() => <Layout><ReviewPage/></Layout>} />
+        <Route path="/feeds/:id/reviews" component={() => <Layout><ReviewPage/></Layout>} />
       </ToastProvider>
     </Router>
   );

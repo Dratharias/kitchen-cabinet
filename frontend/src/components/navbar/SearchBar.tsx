@@ -13,7 +13,7 @@ const SearchBar = (): JSX.Element => {
 
   return (
     <Show when={searchOpen()}>
-      <div class="w-full max-w-4xl mx-auto px-1 sm:px-2 mb-2 sm:mt-2">
+      <div class="w-full max-w-4xl mx-auto px-1 sm:px-2 mb-2 sm:mt-2 !opacity-100">
         <div
           class={`
             rounded-xl shadow-sm p-1 flex items-center

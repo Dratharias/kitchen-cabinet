@@ -2,6 +2,7 @@ import { Component, For, Show } from "solid-js";
 import Card, { CardProps } from "./Card";
 import { Span } from "../html/Span";
 import { PrevPageButton, NextPageButton } from "../utilities/PaginationButtons";
+import { PaginationNavigator } from "../utilities/PaginationNavigator";
 
 export interface PaginationProps {
   page: number;
@@ -31,33 +32,14 @@ const CardList: Component<CardListProps> = (props) => {
   return (
     <div class={`flex flex-col w-full ${props.class ?? ""} min-h-full`}>
       {/* Grid responsive et flexible */}
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-rows-12 sm:grid-rows-6 xl:grid-rows-4 gap-4 xl:gap-6 flex-1">
         <For each={props.cards}>{(card) => <Card {...card} />}</For>
       </div>
 
       {/* Pagination */}
       <Show when={props.pagination && props.pagination.totalPages > 1}>
         <div class="flex justify-evenly items-center mt-6 gap-4">
-          <PrevPageButton
-            onClick={handlePrev}
-            disabled={props.pagination?.page <= 1}
-            class={`max-w-64`}
-          >
-            Précédent
-          </PrevPageButton>
-
-          <Span class="text-sm font-medium">
-            Page {props.pagination?.page} / {props.pagination?.totalPages}
-          </Span>
-
-          <NextPageButton
-            onClick={handleNext}
-            disabled={props.pagination?.page >= props.pagination?.totalPages}
-            reverse={true}
-            class={`max-w-64`}
-          >
-            Suivant
-          </NextPageButton>
+          <PaginationNavigator pagination={props.pagination} />
         </div>
       </Show>
     </div>
