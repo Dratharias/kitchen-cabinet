@@ -26,9 +26,9 @@ export default async function createRoutes(fastify: FastifyInstance) {
   registry.registerCustomRoute('POST', '/api/auth/login', loginHandler);
 
   // -----------------------
-  // Protected CRUD routes
+  // Other protected CRUD routes
   // -----------------------
-  const controllers: Record<string, GenericController<any, any, any> | GenericPaginatedController<any, any, any>> = {
+  const protectedControllers: Record<string, GenericController<any, any, any> | GenericPaginatedController<any, any, any>> = {
     publications: new PublicationController(),
     contents: new ContentController(),
     products: new ProductController(),
@@ -41,7 +41,7 @@ export default async function createRoutes(fastify: FastifyInstance) {
     users: new AppUserController()
   };
 
-  Object.entries(controllers).forEach(([name, controller]) => {
+  Object.entries(protectedControllers).forEach(([name, controller]) => {
     registry.registerCrud(controller, {
       path: `/api/${name}`,
       protected: true
@@ -49,16 +49,29 @@ export default async function createRoutes(fastify: FastifyInstance) {
   });
 
   // -----------------------
-  // Public CRUD routes (read-only)
+  // Reviews with mixed access
   // -----------------------
+  const reviewController = new ReviewController();
 
-  registry.registerCrud(new PublicPublicationController(), {
-    path: '/api/public/publications',
-    methods: ['findAll', 'findById']
+  // Public read
+  registry.registerCrud(reviewController, {
+    path: '/api/reviews',
+    methods: ['findAll', 'findById'],
+    protected: false
   });
 
-  registry.registerCrud(new ReviewController(), {
+  // Protected CUD
+  registry.registerCrud(reviewController, {
     path: '/api/reviews',
+    methods: ['create', 'update', 'delete'],
+    protected: true
+  });
+
+  // -----------------------
+  // Public publications read-only
+  // -----------------------
+  registry.registerCrud(new PublicPublicationController(), {
+    path: '/api/public/publications',
     methods: ['findAll', 'findById']
   });
 }
