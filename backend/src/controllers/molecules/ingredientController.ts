@@ -30,7 +30,7 @@ export class IngredientController
         quantity: payload.quantity,
         is_recipe_id: payload.is_recipe_id,
         product_id: payload.product_id,
-        multiply_factor: payload.multiply_factor,
+        multiply_factor: payload.multiply_factor ?? 1,
 
         content_ingredients: payload.connect?.content_ingredients
           ? {
@@ -94,45 +94,45 @@ export class IngredientController
     const ingredient = await prisma.ingredient.update({
         where: { ingredient_id: id },
         data: {
-        quantity: payload.quantity,
-        is_recipe_id: payload.is_recipe_id,
-        product_id: payload.product_id,
-        multiply_factor: payload.multiply_factor,
+          quantity: payload.quantity,
+          is_recipe_id: payload.is_recipe_id,
+          product_id: payload.product_id,
+          multiply_factor: payload.multiply_factor,
 
-        content_ingredients: payload.connect?.content_ingredients
-            ? {
-                connect: payload.connect.content_ingredients.map((c) => ({
-                content_id_ingredient_id: { ingredient_id: id, content_id: c.content_id },
-                })),
-            }
-            : payload.set?.content_ingredients
-            ? {
-                set: payload.set.content_ingredients.map((c) => ({
-                content_id_ingredient_id: { ingredient_id: id, content_id: c.content_id },
-                })),
-            }
-            : undefined,
+          content_ingredients: payload.connect?.content_ingredients
+              ? {
+                  connect: payload.connect.content_ingredients.map((c) => ({
+                  content_id_ingredient_id: { ingredient_id: id, content_id: c.content_id },
+                  })),
+              }
+              : payload.set?.content_ingredients
+              ? {
+                  set: payload.set.content_ingredients.map((c) => ({
+                  content_id_ingredient_id: { ingredient_id: id, content_id: c.content_id },
+                  })),
+              }
+              : undefined,
 
-        ingredient_units: payload.connect?.ingredient_units
-            ? {
-                connect: payload.connect.ingredient_units.map((u) => ({
-                ingredient_id_unit_id: { ingredient_id: id, unit_id: u.unit_id },
-                })),
-            }
-            : payload.set?.ingredient_units
-            ? {
-                set: payload.set.ingredient_units.map((u) => ({
-                ingredient_id_unit_id: { ingredient_id: id, unit_id: u.unit_id },
-                })),
-            }
-            : undefined,
+          ingredient_units: payload.connect?.ingredient_units
+              ? {
+                  connect: payload.connect.ingredient_units.map((u) => ({
+                  ingredient_id_unit_id: { ingredient_id: id, unit_id: u.unit_id },
+                  })),
+              }
+              : payload.set?.ingredient_units
+              ? {
+                  set: payload.set.ingredient_units.map((u) => ({
+                  ingredient_id_unit_id: { ingredient_id: id, unit_id: u.unit_id },
+                  })),
+              }
+              : undefined,
         },
         include: {
         product: true,
         isRecipe: true,
         content_ingredients: true,
         ingredient_units: true,
-        },
+      },
     });
 
     return normalizeIngredient(ingredient);

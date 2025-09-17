@@ -4,6 +4,7 @@ import { PublicationCore, PublicationRelations } from "types/controller.types.js
 import { PublicationCreateDto, PublicationUpdateDto, PublicationReadDto, PublicationReadAllDto } from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
 import { PaginatedResponse, ReviewData } from "types/db.types.js";
+import { OrchestratorController } from "../orchestratorController.js";
 
 const prisma = new PrismaClient();
 
@@ -36,7 +37,14 @@ export const normalizePublication = (pub: any): PublicationReadDto => ({
 export class PublicationController
   implements GenericPaginatedController<PublicationReadDto, PublicationCore, PublicationRelations>
 {
+  constructor(private orchestrator?: OrchestratorController) {}
+
   async create(payload: PublicationCore & { connect?: PublicationCreateDto["connect"] }): Promise<PublicationReadDto> {
+    if (this.orchestrator) {
+      const created = await this.orchestrator.createEntity('publications', payload);
+      return this.findById(created.publication_id) as Promise<PublicationReadDto>;
+    }
+
     const newId = uuidv4();
     const publication = await prisma.publication.create({
       data: {
@@ -108,7 +116,6 @@ async findAll(params?: PublicationReadAllDto): Promise<PaginatedResponse<Publica
 
   const total = await prisma.publication.count({ where });
 
-  // Valeurs par défaut pour la pagination
   const limit = params?.take ? Number(params.take) : 12;
   const skip = params?.skip ? Number(params.skip) : 0;
 
@@ -135,9 +142,8 @@ async findAll(params?: PublicationReadAllDto): Promise<PaginatedResponse<Publica
   return { items, total, page, limit, totalPages };
 }
 
-
-
   async update(id: string, payload: PublicationUpdateDto): Promise<PublicationReadDto> {
+
     const publication = await prisma.publication.update({
       where: { publication_id: id },
       data: {

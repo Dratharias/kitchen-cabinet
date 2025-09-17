@@ -135,7 +135,7 @@ model ingredient {
   quantity     Int?    @db.SmallInt
   is_recipe_id String?
   product_id   String
-  multiply_factor Decimal @db.Decimal(10, 2)
+  multiply_factor Decimal @db.Decimal(10, 2) @default(1.00)
 
   product           product @relation(fields: [product_id], references: [product_id], onDelete: Cascade)
   isRecipe          publication? @relation("RecipeReference", fields: [is_recipe_id], references: [publication_id])

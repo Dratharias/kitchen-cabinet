@@ -11,8 +11,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "paths": {
-      "@shared-types/*": ["./shared-types/*"]
+      "@types/*": ["./types/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/shared-types/**/*.ts"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/types/**/*.ts"]
 }

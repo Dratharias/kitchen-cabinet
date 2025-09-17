@@ -3,9 +3,6 @@ import { ControllerMap, junctionOrder, GenericController } from "../types/crud.t
 export class OrchestratorController {
   constructor(private controllers: ControllerMap) {}
 
-  /**
-   * Create a single entity and handle its relations automatically.
-   */
   async createEntity<T extends keyof ControllerMap>(
     entityName: T,
     payload: any
@@ -13,12 +10,10 @@ export class OrchestratorController {
     const controller = this.controllers[entityName] as GenericController<any, any, any>;
     const created = await controller.create(payload);
 
-    // Handle connect relations
     if (payload.connect) {
       await this.handleRelations(entityName, created, payload.connect, false);
     }
 
-    // Handle set relations
     if (payload.set) {
       await this.handleRelations(entityName, created, payload.set, true);
     }
@@ -26,11 +21,7 @@ export class OrchestratorController {
     return created;
   }
 
-  /**
-   * Automatically handle relations for an entity.
-   * It detects junction tables from `junctionOrder` and creates the linking entries.
-   */
-  private async handleRelations(
+  async handleRelations(
     entityName: keyof ControllerMap,
     createdEntity: any,
     relations: Record<string, any>,
@@ -39,7 +30,6 @@ export class OrchestratorController {
     for (const [relationKey, items] of Object.entries(relations)) {
       if (!items) continue;
 
-      // Find junction table for entityName -> relationKey
       const junctionName = junctionOrder.find(
         j => j.includes(entityName) && j.includes(relationKey)
       );
@@ -51,10 +41,21 @@ export class OrchestratorController {
       const itemArray = Array.isArray(items) ? items : [items];
 
       for (const item of itemArray) {
-        // Construct payload for junction table automatically
+        let relatedEntityId: string;
+        if (typeof item === 'string') {
+          relatedEntityId = item;
+        } else if (item.id || item[`${relationKey}_id`]) {
+          relatedEntityId = item.id ?? item[`${relationKey}_id`];
+        } else {
+          // Item is a payload - create the related entity first
+          const relatedController = this.controllers[relationKey as keyof ControllerMap] as GenericController<any, any, any>;
+          const createdRelated = await relatedController.create(item);
+          relatedEntityId = createdRelated.id ?? createdRelated[`${relationKey}_id`];
+        }
+
         const junctionPayload: any = {
           [`${entityName}_id`]: createdEntity.id ?? createdEntity[`${entityName}_id`],
-          [`${relationKey}_id`]: item.id ?? item[`${relationKey}_id`] ?? item
+          [`${relationKey}_id`]: relatedEntityId
         };
         await junctionController.create(junctionPayload);
       }
@@ -63,11 +64,7 @@ export class OrchestratorController {
     }
   }
 
-  /**
-   * Create all entities in the proper order.
-   */
   async createAllEntities(entityPayloads: Partial<Record<keyof ControllerMap, any[]>>) {
-    // Define creation order for entities
     const creationOrder: (keyof ControllerMap)[] = [
       "categories", "macros", "prepTimes", "segments", "units",
       "ingredients", "products",
@@ -76,7 +73,6 @@ export class OrchestratorController {
 
     const results: Partial<Record<keyof ControllerMap, any[]>> = {};
 
-    // Create all entities first
     for (const entity of creationOrder) {
       const payloads = entityPayloads[entity];
       if (!payloads || payloads.length === 0) continue;
@@ -88,7 +84,6 @@ export class OrchestratorController {
       }
     }
 
-    // Handle junction tables not covered by `connect`/`set` (optional)
     const validJunctions = junctionOrder.filter((j): j is keyof ControllerMap => j in this.controllers);
 
     for (const junction of validJunctions) {

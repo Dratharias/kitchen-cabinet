@@ -1,4 +1,4 @@
-# API Documentation
+# API Routes Documentation
 
 ## Base URL
 All endpoints are relative to your base URL (e.g., `https://api.yourapp.com`)
@@ -9,21 +9,6 @@ Protected endpoints require JWT token authentication via `Authorization: Bearer 
 ### Login
 ```http
 POST /api/auth/login
-Content-Type: application/json
-
-{
-  "username": "string",
-  "password": "string"
-}
-```
-
-**Response:**
-```json
-{
-  "username": "string",
-  "role": "admin|user|guest",
-  "token": "jwt_token_string"
-}
 ```
 
 ## Protected CRUD Endpoints
@@ -109,10 +94,13 @@ Read-only access to published public publications.
 - `GET /api/public/publications/:id` - Get public publication by ID
 
 ### Reviews
-Read-only access to reviews.
+Read-only and protected access to reviews.
 
-- `GET /api/reviews` - List reviews
-- `GET /api/reviews/:id` - Get review by ID
+- `GET /api/reviews` - List reviews (public)
+- `GET /api/reviews/:id` - Get review by ID (public)
+- `POST /api/reviews` - Create review (protected)
+- `PUT /api/reviews/:id` - Update review (protected)
+- `DELETE /api/reviews/:id` - Delete review (protected)
 
 ## Query Parameters
 
@@ -123,55 +111,13 @@ Read-only access to reviews.
 ### Filtering
 Most endpoints support filtering through query parameters matching the entity fields.
 
-### Publication-specific filters
+#### Publication-specific filters
 - `tagIds[]` - Array of tag category IDs
 - `contentIds[]` - Array of content IDs
 
-## Request/Response Examples
-
-### Create Publication
-```http
-POST /api/publications
-Authorization: Bearer <token>
-Content-Type: application/json
-
-{
-  "title": "Recipe Title",
-  "description": ["Recipe description"],
-  "note": ["Additional notes"],
-  "public": true,
-  "published": true,
-  "thumbnail": "image_url",
-  "type_id": "category_id",
-  "style_id": "category_id",
-  "author_id": "category_id",
-  "connect": {
-    "tags": [{"category_id": "tag_id"}],
-    "contents": [{"content_id": "content_id"}]
-  }
-}
-```
-
-### Paginated Response Format
-```json
-{
-  "items": [...],
-  "total": 100,
-  "page": 1,
-  "limit": 12,
-  "totalPages": 9
-}
-```
-
-### Error Response Format
-```json
-{
-  "error": "Error message description"
-}
-```
-
 ## HTTP Status Codes
 - `200` - OK
+- `201` - Created
 - `400` - Bad Request
 - `401` - Unauthorized
 - `404` - Not Found

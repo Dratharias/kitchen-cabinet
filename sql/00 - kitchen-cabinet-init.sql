@@ -136,7 +136,7 @@ CREATE TABLE ingredient (
     quantity      SMALLINT,
     is_recipe_id  UUID,
     product_id    UUID NOT NULL,
-    multiply_factor DECIMAL(10,2),
+    multiply_factor DECIMAL(10,2) DEFAULT 1.00,
     FOREIGN KEY (product_id)   REFERENCES product(product_id) ON DELETE CASCADE,
     FOREIGN KEY (is_recipe_id) REFERENCES publication(publication_id) ON DELETE SET NULL
 );
