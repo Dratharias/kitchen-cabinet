@@ -1,8 +1,8 @@
 import { Component, Show, createResource, createMemo } from "solid-js";
 import { useParams, useLocation } from "@solidjs/router";
 import { usePublicationApi } from "../../../hooks/usePublicationApi";
-import type { PublicationDetails, ContentDetails, MappedPublicationData } from "../../../types/publication";
-import { PublicationDetails as PublicationDetailsComponent } from "../../../components/ui/browser/PublicationDetails";
+import type { PublicationDetails, ContentDetails, MappedPublicationData } from "../../../shared-types/publication";
+import { PublicationDetails as PublicationDetailsComponent } from "../../../components/ui/organisms/PublicationDetails";
 
 export interface PublicationPageProps {
   category?: "foods" | "feeds";
@@ -15,8 +15,7 @@ export const PublicationPage: Component<PublicationPageProps> = (props) => {
   const category = createMemo<"foods" | "feeds" | "unknown">(() => {
     const path = location.pathname;
     if (path.startsWith("/foods/")) return "foods";
-    if (path.startsWith("/feeds/")) return "feeds";
-    if (path.startsWith("/review/")) return "feeds";
+    if (path.startsWith("/feeds/") || path.startsWith("/review/")) return "feeds";
     return "unknown";
   });
 
@@ -26,7 +25,12 @@ export const PublicationPage: Component<PublicationPageProps> = (props) => {
     () => params.id,
     async (id) => {
       if (!id) throw new Error("Publication ID is required");
-      return usePublicationApi.getPublication(id);
+      try {
+        return await usePublicationApi.getPublication(id);
+      } catch (e) {
+        console.error("Failed to fetch publication:", e);
+        throw e;
+      }
     }
   );
 
@@ -37,10 +41,10 @@ export const PublicationPage: Component<PublicationPageProps> = (props) => {
     const content: ContentDetails | undefined = pub.contents?.[0];
 
     const ingredients =
-      content?.ingredients.map((ingredient) => {
-        const qty = ingredient.quantity ?? "";
-        const units = ingredient.units?.map((u) => u.name).join(", ") ?? "";
-        return `${qty} ${units} ${ingredient.product.name}`.trim();
+      content?.ingredients.map((ing) => {
+        const qty = ing.quantity ?? "";
+        const units = ing.units?.map((u) => u.name).join(", ") ?? "";
+        return `${qty} ${units} ${ing.product.name}`.trim();
       }) ?? [];
 
     const preparation =
@@ -50,13 +54,12 @@ export const PublicationPage: Component<PublicationPageProps> = (props) => {
 
     const totalPrepTime = content?.prepTimes.reduce((sum, p) => sum + p.duration, 0) ?? 0;
 
-    const formatPrepTime = (minutes: number) => {
-      if (minutes === 0) return "0 min";
-      if (minutes < 60) return `${minutes} min`;
-      const hours = Math.floor(minutes / 60);
-      const mins = minutes % 60;
-      return mins === 0 ? `${hours}h` : `${hours}h ${mins}min`;
-    };
+    const formatPrepTime = (minutes: number) =>
+      minutes === 0
+        ? "0 min"
+        : minutes < 60
+        ? `${minutes} min`
+        : `${Math.floor(minutes / 60)}h${minutes % 60 ? ` ${minutes % 60}min` : ""}`;
 
     return {
       ...pub,
@@ -67,10 +70,9 @@ export const PublicationPage: Component<PublicationPageProps> = (props) => {
       selectedContent: content,
       isReview: !!isReview() || pub.type?.strValue === "Review",
       category: category(),
-      reviewsCount: pub.reviewsCount,
-      averageRating: pub.averageRating,
+      reviewsCount: pub.reviewsCount ?? 0,
+      averageRating: pub.averageRating ?? null,
     };
-
   });
 
   return (
@@ -92,30 +94,23 @@ export const PublicationPage: Component<PublicationPageProps> = (props) => {
       </Show>
 
       <Show when={mappedData()}>
-        {(data) => {
-          const d = data();
-          if (!d) return null;
-
-          return (
-            <PublicationDetailsComponent
-              publicationId={d.publicationId}
-              title={d.title}
-              thumbnail={d.thumbnail}
-              prepTime={d.prepTime}
-              selectedContent={d.selectedContent}
-              preparation={d.preparation}
-              description={d.description}
-              note={d.note}
-              isReview={d.isReview}
-              category={d.category}
-              reviewsCount={d.reviewsCount}
-              averageRating={d.averageRating}
-            />
-          );
-        }}
+        {(d) => (
+          <PublicationDetailsComponent
+            publicationId={d.publicationId}
+            title={d.title}
+            thumbnail={d.thumbnail}
+            prepTime={d.prepTime}
+            selectedContent={d.selectedContent}
+            preparation={d.preparation}
+            description={d.description}
+            note={d.note}
+            isReview={d.isReview}
+            category={d.category}
+            reviewsCount={d.reviewsCount}
+            averageRating={d.averageRating}
+          />
+        )}
       </Show>
-
-
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import { Component, createSignal, createResource, Show } from "solid-js";
 import { useParams } from "@solidjs/router";
 import { usePublicationApi } from "../../../hooks/usePublicationApi";
-import ReviewList, { ReviewItem } from "../../../components/ui/browser/ReviewList";
-import Image from "../../../components/ui/html/Image";
+import ReviewList, { ReviewItem } from "../../../components/ui/organisms/ReviewList";
+import Image from "../../../components/ui/atoms/Image";
 
 interface BackendReview {
   productName: string;

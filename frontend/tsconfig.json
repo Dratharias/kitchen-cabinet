@@ -9,7 +9,10 @@
     "jsxImportSource": "solid-js",
     "types": ["vite/client"],
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "paths": {
+      "@shared-types/*": ["./shared-types/*"]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/shared-types/**/*.ts"]
 }

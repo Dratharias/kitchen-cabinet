@@ -1,7 +1,7 @@
 import { Component } from "solid-js";
-import Button from "../html/Button";
-import { Span } from "../html/Span";
-import { MinusIcon, PlusIcon } from "../html/Icons";
+import Button from "../atoms/Button";
+import { Span } from "../atoms/Span";
+import { MinusIcon, PlusIcon } from "../atoms/Icons";
 
 interface NumberSpinnerProps {
   value: number;

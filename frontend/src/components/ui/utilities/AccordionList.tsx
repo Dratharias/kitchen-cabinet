@@ -1,8 +1,8 @@
 import { Component, createSignal } from "solid-js";
-import { ChevronIcon } from "../html/Icons";
-import { Span } from "../html/Span";
-import { List, ListItem } from "../html/List";
-import Button from "../html/Button";
+import { ChevronIcon } from "../atoms/Icons";
+import { Span } from "../atoms/Span";
+import { List, ListItem } from "../atoms/List";
+import Button from "../atoms/Button";
 
 interface AccordionListProps {
   title: string;

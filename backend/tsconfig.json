@@ -7,8 +7,12 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "outDir": "./dist",
-    "rootDir": "./src" 
+    "rootDir": "src",
+    "outDir": "dist",
+    "baseUrl": "src",
+    "paths": {
+      "@shared-types/*": ["shared-types/*"]
+    }
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*.ts"]
 }

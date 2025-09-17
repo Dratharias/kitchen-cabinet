@@ -1,13 +1,13 @@
 import { Component, createSignal, createMemo } from "solid-js";
 import { useNavigate } from "@solidjs/router";
-import type { ContentDetails } from "../../../types/publication";
-import Image from "../html/Image";
+import type { ContentDetails } from "../../../shared-types/publication";
+import Image from "../atoms/Image";
 import NumberSpinner from "../utilities/NumberSpinner";
-import { Span } from "../html/Span";
+import { Span } from "../atoms/Span";
 import { AccordionList } from "../utilities/AccordionList";
 import { IngredientPrepToggler } from "../utilities/IngredientPrepToggler";
-import { Checklist } from "../html/Checklist";
-import Button from "../html/Button";
+import { Checklist } from "../atoms/Checklist";
+import Button from "../atoms/Button";
 
 interface Ingredient {
   ingredientId?: string;

@@ -1,5 +1,5 @@
 import { createSignal, createEffect, Component } from "solid-js";
-import Button from "../html/Button";
+import Button from "../atoms/Button";
 
 interface IngredientPrepTogglerProps {
   active: "ingredient" | "preparation";

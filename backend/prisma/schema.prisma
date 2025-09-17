@@ -13,6 +13,7 @@ model app_user {
   username String   @unique
   password String
   role     String   @default("user")
+  updated DateTime @default(now())
   created  DateTime @default(now())
 
   @@map("app_user")
@@ -22,7 +23,6 @@ model category {
   category_id String  @id @default(uuid())
   str_value   String
   type        String
-  num_value   Int?    @db.SmallInt
 
   publications_type   publication[]     @relation("PublicationType")
   publications_style  publication[]     @relation("PublicationStyle")

@@ -1,5 +1,5 @@
 import { Component, Show } from "solid-js";
-import { Span } from "../html/Span";
+import { Span } from "../atoms/Span";
 
 export interface ReviewCardProps {
   reviewId: string;

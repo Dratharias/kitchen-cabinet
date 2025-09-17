@@ -1,5 +1,5 @@
 import { Component } from "solid-js";
-import { Span } from "../html/Span";
+import { Span } from "../atoms/Span";
 import { PrevPageButton, NextPageButton } from "./PaginationButtons";
 
 export interface PaginationProps {

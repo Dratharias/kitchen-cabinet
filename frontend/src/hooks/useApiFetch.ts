@@ -1,23 +1,19 @@
 export interface FetchOptions {
   query?: Record<string, string | number | boolean | string[]>;
-  port?: number;
+  apiUrl?: string;
 }
 
-export async function useApiFetch<T>(
-  path: string,
-  query?: Record<string, string | number | string[]>,
-  apiUrl?: string
-): Promise<T> {
+export async function useApiFetch<T>(path: string, query?: Record<string, string | number | string[]>, apiUrl?: string): Promise<T> {
   try {
     const baseUrl = apiUrl ?? import.meta.env.VITE_API_URL ?? "http://localhost:3001";
-    let url = new URL(path, baseUrl);
+    const url = new URL(path, baseUrl);
 
     if (query) {
-      Object.entries(query).forEach(([k, v]) => {
-        if (Array.isArray(v)) {
-          v.forEach(item => url.searchParams.append(k, String(item)));
+      Object.entries(query).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach(v => url.searchParams.append(key, String(v)));
         } else {
-          url.searchParams.append(k, String(v));
+          url.searchParams.append(key, String(value));
         }
       });
     }

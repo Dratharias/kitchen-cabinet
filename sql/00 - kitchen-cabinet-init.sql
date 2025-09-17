@@ -46,7 +46,6 @@ CREATE TABLE category (
     category_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     str_value   VARCHAR(255) NOT NULL,
     type        VARCHAR(50) NOT NULL,
-    num_value   SMALLINT CHECK (num_value >= 0),
     UNIQUE (str_value, type)
 );
 

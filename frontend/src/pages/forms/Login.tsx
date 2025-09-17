@@ -1,9 +1,9 @@
 import { createSignal } from "solid-js";
 import { authenticate } from "../../services/ToastProvider";
 import { isAuthenticated, setIsAuthenticated } from "../../services/authStore";
-import Button from "../../components/ui/html/Button";
-import Input from "../../components/ui/html/Input";
-import { Span } from "../../components/ui/html/Span";
+import Button from "../../components/ui/atoms/Button";
+import Input from "../../components/ui/atoms/Input";
+import { Span } from "../../components/ui/atoms/Span";
 
 export function LoginForm() {
   const [username, setUsername] = createSignal("");

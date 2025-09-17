@@ -1,6 +1,6 @@
 import { JSX, For } from "solid-js";
-import Button from "../html/Button";
-import { Span } from "../html/Span";
+import Button from "../atoms/Button";
+import { Span } from "../atoms/Span";
 
 type DraftListProps<T> = {
   draft: () => T;

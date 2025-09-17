@@ -1,5 +1,5 @@
 import { Component, createSignal, For } from "solid-js";
-import { Span } from "../html/Span";
+import { Span } from "../atoms/Span";
 
 export interface StarsProps {
   score?: number; // 1-10 (half-stars possible)

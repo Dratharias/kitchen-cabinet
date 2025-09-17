@@ -1,65 +1,94 @@
-import { Component, createSignal, createResource } from "solid-js";
-import { usePublicationApi } from "../hooks/usePublicationApi";
-import CardList from "../components/ui/browser/CardList";
-import type { PublicationListResponse, PublicationListItem, MappedPublicationData } from "../types/publication";
-import { CardProps } from "../components/ui/browser/Card";
+import { Component, createSignal, createResource, createEffect } from "solid-js";
+import { usePublicationApi, PublicationListWithPagination } from "../hooks/usePublicationApi";
+import CardList from "../components/ui/molecules/CardList";
+import type {
+  MappedPublicationsData,
+} from "../shared-types/publication";
+import { getTypesByCategory } from "../shared-types/publication";
+
+// --- Map backend publication → frontend mapped data ---
+export const mapToMappedPublicationData = (
+  pub: any
+): MappedPublicationsData => {
+  // Flatten all segments in all contents
+  const allContents = pub.contents?.map((content: any) => {
+    return {
+      totalPrepTime: content.totalPrepTime,
+      servings: content.servings
+    };
+  }) || [];
+
+  // Use first content as the "selected" one
+  const selectedContent = allContents[0];
+
+  // Extract tags names for easier display
+  const tagNames = pub.tags?.map((t: any) => t.category?.str_value).filter(Boolean) || [];
+
+  // Map other top-level info
+  return {
+    publicationId: pub.publication_id,
+    title: pub.title,
+    description: pub.description,
+    note: pub.note,
+    public: pub.public,
+    published: pub.published,
+    thumbnail: pub.thumbnail,
+    tags: tagNames,
+    type: pub.type?.str_value ? { ...pub.type } : null,
+    style: pub.style?.str_value ? { ...pub.style } : null,
+    author: pub.author?.str_value ? { ...pub.author } : null,
+    averageRating: pub.averageRating ?? null,
+    prepTime: selectedContent?.totalPrepTime?.toString() || "N/A",
+    servings: selectedContent?.servings || 0,
+    isReview: pub.type?.str_value === "Review",
+  } as MappedPublicationsData;
+};
+
 
 export const ContentBrowser: Component<{ feeds?: boolean; foods?: boolean }> = (props) => {
   const [page, setPage] = createSignal(1);
   const limit = 12;
-  
-  const types = () => {
-    if (props.feeds) return ["Article", "Review", "Book"];
-    if (props.foods) return ["Recipe", "Cookbook", "FoodPost"];
-    return [];
-  };
 
-  const [publications] = createResource<PublicationListResponse, { page: number; limit: number; types: string[] }>(
+  // Types by category
+  const types = () =>
+    props.feeds ? getTypesByCategory("feeds") : props.foods ? getTypesByCategory("foods") : [];
+
+  // Reset page when category changes
+  createEffect(() => setPage(1));
+
+  // Fetch publications using SolidJS resource
+  const [publications] = createResource<PublicationListWithPagination, { page: number; limit: number; types: string[] }>(
     () => ({ page: page(), limit, types: types() }),
     async ({ page, limit, types }) => {
       if (!types.length) {
-        return { data: [], pagination: { total: 0, page: 1, limit, totalPages: 0 } };
+        return { data: [], pagination: { total: 0, page: 1, limit, totalPages: 1 } };
       }
 
-      return usePublicationApi.getPublications({ 
-        page: page.toString(), 
-        limit: limit.toString(), 
-        type: types 
+      return usePublicationApi.getPublications({
+        page: page.toString(),
+        limit: limit.toString(),
+        type: types,
       });
     }
   );
 
+  const category: "feeds" | "foods" = props.feeds
+    ? "feeds"
+    : props.foods
+    ? "foods"
+    : (() => { throw new Error("No category selected"); })();
 
-  const mapToMappedPublicationData = (pub: PublicationListItem, category: "feeds" | "foods"): MappedPublicationData => ({
-    ...pub,
-    selectedContent: undefined,
-    prepTime: "",
-    ingredients: [],
-    preparation: [],
-    isReview: pub.type?.strValue === "Review",
-    category,
-    public: false,
-    published: false,
-    reviewsCount: pub.reviewsCount ?? 0,
-    averageRating: pub.averageRating ?? null,
-    contents: [],
-    reviews: []
-  });
+  // Create an array of mapped publications
+  const mappedPublications = () => {
+    const data = publications()?.data || [];
+    return data.map(mapToMappedPublicationData);
+  };
 
-
-
-  const cards = () =>
-    publications()?.data
-      ?.map((pub) => {
-        if (props.feeds)
-          return { publication: mapToMappedPublicationData(pub, "feeds"), pathPrefix: "feeds" as "feeds" };
-        if (props.foods)
-          return { publication: mapToMappedPublicationData(pub, "foods"), pathPrefix: "foods" as "foods" };
-        return null;
-      })
-      .filter(Boolean) as CardProps[] ?? [];
-
-
+  // Prepare cards for CardList
+  const cards = () => mappedPublications().map((pub) => ({
+    publication: pub,
+    pathPrefix: category,
+  }));
 
   return (
     <div class="flex-1 flex flex-col w-full">
