@@ -1,595 +1,524 @@
-# API Types Documentation
+# API Payloads & Response Documentation
 
-Cette documentation décrit les **types TypeScript** utilisés à travers l'application, à la fois côté frontend et backend.  
-Les types peuvent être importés depuis le package partagé `@shared-types`.
+## Authentication
 
-```shell
-kitchen-cabinet$ ls shared-types/
-db.ts  delete.ts  publication-query.ts  publication.ts  review.ts  upsert.ts
-```
+### POST `/api/auth/login`
 
-## Core Database Types
-
-### User Management
-```typescript
-interface AppUser {
-  user_id: string;
-  username: string;
-  password: string;
-  role: string;
-  created: string; // DateTime en ISO string
+**Request Payload:**
+```json
+{
+  "username": "string",
+  "password": "string"
 }
 ```
 
-### Category System
-```typescript
-interface Category {
-  category_id: string;
-  str_value: string;
-  type: string;
-  num_value?: number;
-
-  // Relations
-  publications_type?: Publication[];
-  publications_style?: Publication[];
-  publications_author?: Publication[];
-  prep_time?: PrepTime[];
-  publication_tags?: PublicationTag[];
-  product_categories?: ProductCategory[];
+**Response:**
+```json
+{
+  "username": "string",
+  "role": "admin" | "user" | "guest",
+  "token": "string"
 }
 ```
 
-### Publications
-```typescript
-interface Publication {
-  publication_id: string;
-  title: string;
-  description: string[];
-  note: string[];
-  public: boolean;
-  published: boolean;
-  thumbnail?: string;
-  type_id?: string;
-  style_id?: string;
-  author_id?: string;
-
-  type?: Category;
-  style?: Category;
-  author?: Category;
-
-  contents?: Content[];
-  ingredientsRef?: Ingredient[];
-  reviews?: Review[];
-  tags?: PublicationTag[];
-}
-
-interface PublicationTag {
-  publication_id: string;
-  category_id: string;
-
-  publication?: Publication;
-  category?: Category;
+**Error Response:**
+```json
+{
+  "error": "string"
 }
 ```
 
-### Content Management
-```typescript
-interface Content {
-  content_id: string;
-  publication_id: string;
-  total_prep_time: number;
-  servings?: number;
+## Users
 
-  publication?: Publication;
-  content_segments?: ContentSegment[];
-  content_ingredients?: ContentIngredient[];
-  content_prep_times?: ContentPrepTime[];
-}
+### POST `/api/users`
 
-interface Segment {
-  segment_id: string;
-  title?: string;
-  paragraph: string;
-  order_num?: number;
-
-  content_segments?: ContentSegment[];
-  segment_prep_time?: SegmentPrepTime[];
+**Request Payload:**
+```json
+{
+  "username": "string",
+  "password": "string",
+  "role": "admin" | "user" | "guest"
 }
 ```
 
-### Product & Ingredients
-```typescript
-interface Product {
-  product_id: string;
-  name: string;
-  en_name?: string;
-  macro_id?: string;
-
-  macro?: Macro;
-  ingredients?: Ingredient[];
-  reviews?: Review[];
-  product_categories?: ProductCategory[];
-}
-
-interface Ingredient {
-  ingredient_id: string;
-  quantity?: number;
-  is_recipe_id?: string;
-  product_id: string;
-  multiply_factor: number;
-
-  product?: Product;
-  isRecipe?: Publication;
-  content_ingredients?: ContentIngredient[];
-  ingredient_units?: IngredientUnit[];
-}
-
-interface Unit {
-  unit_id: string;
-  name: string;
-
-  ingredient_units?: IngredientUnit[];
+**Response:**
+```json
+{
+  "username": "string",
+  "role": "admin" | "user" | "guest"
 }
 ```
 
-### Nutritional Information
-```typescript
-interface Macro {
-  macro_id: string;
-  calories?: number;
-  protein?: number;
-  fiber?: number;
-  sugar?: number;
-  saturated?: number;
-  trans?: number;
-  caffein?: number;
+### GET `/api/users/:id`
 
-  products?: Product[];
+**Response:**
+```json
+{
+  "username": "string",
+  "role": "admin" | "user" | "guest"
 }
 ```
 
-### Time Management
-```typescript
-interface PrepTime {
-  prep_time_id: string;
-  duration: number;
-  style_id?: string;
+### PUT `/api/users/:id`
 
-  style?: Category;
-  content_prep_times?: ContentPrepTime[];
-  segment_prep_time?: SegmentPrepTime[];
+**Request Payload:**
+```json
+{
+  "username": "string",
+  "role": "admin" | "user" | "guest"
 }
 ```
 
-### Reviews
-```typescript
-interface Review {
-  review_id: string;
-  product_id?: string;
-  publication_id?: string;
-  rating?: number;
-  comment: string[];
-  description: string[];
-  buy_again?: string;
-  date_review: string;
-
-  product?: Product;
-  publication?: Publication;
+**Response:**
+```json
+{
+  "username": "string",
+  "role": "admin" | "user" | "guest"
 }
 ```
 
-## Junction Tables
+## Categories
 
-### Content Relations
-```typescript
-interface ContentSegment {
-  content_id: string;
-  segment_id: string;
-  position?: number;
+### POST `/api/categories`
 
-  content?: Content;
-  segment?: Segment;
-}
-
-interface ContentIngredient {
-  content_id: string;
-  ingredient_id: string;
-
-  content?: Content;
-  ingredient?: Ingredient;
-}
-
-interface ContentPrepTime {
-  content_id: string;
-  prep_time_id: string;
-
-  content?: Content;
-  prep_time?: PrepTime;
-}
-```
-
-### Other Relations
-```typescript
-interface SegmentPrepTime {
-  segment_id: string;
-  prep_time_id: string;
-
-  segment?: Segment;
-  prep_time?: PrepTime;
-}
-
-interface IngredientUnit {
-  ingredient_id: string;
-  unit_id: string;
-
-  ingredient?: Ingredient;
-  unit?: Unit;
-}
-
-interface ProductCategory {
-  product_id: string;
-  category_id: string;
-
-  product?: Product;
-  category?: Category;
-}
-```
-
-## Deep Types (Nested Relations)
-
-### Deep Publication
-```typescript
-interface DeepPublication {
-  publication_id: string;
-  title: string;
-  description: string[];
-  note: string[];
-  public: boolean;
-  published: boolean;
-  thumbnail?: string;
-
-  // Relations
-  type?: Category;
-  style?: Category;
-  author?: Category;
-  tags?: PublicationTag[];
-
-  // Nested contents
-  contents?: DeepContent[];
-
-  // Ingredients referencing recipes
-  ingredientsRef?: DeepIngredient[];
-
-  // Reviews
-  reviews?: DeepReview[];
-}
-```
-
-### Deep Content
-```typescript
-interface DeepContent {
-  content_id: string;
-  total_prep_time: number;
-  servings?: number;
-
-  content_segments?: {
-    segment_id: string;
-    title?: string;
-    paragraph: string;
-    order_num?: number;
-    position?: number;
-  }[];
-
-  content_ingredients?: DeepIngredient[];
-
-  content_prep_times?: {
-    prep_time_id: string;
-    duration: number;
-    style?: Category;
-  }[];
-}
-```
-
-### Deep Ingredient
-```typescript
-interface DeepIngredient {
-  ingredient_id: string;
-  quantity?: number;
-  multiply_factor: number;
-
-  // Linked product
-  product?: DeepProduct;
-
-  // If this ingredient references a recipe
-  isRecipe?: DeepPublication;
-
-  ingredient_units?: {
-    unit_id: string;
-    name: string;
-  }[];
-}
-```
-
-### Deep Product
-```typescript
-interface DeepProduct {
-  product_id: string;
-  name: string;
-  en_name?: string;
-
-  // Product macro
-  macro?: Macro;
-
-  // Nested ingredients
-  ingredients?: DeepIngredient[];
-
-  // Reviews
-  reviews?: DeepReview[];
-
-  // Categories
-  product_categories?: Category[];
-}
-```
-
-### Deep Review
-```typescript
-interface DeepReview {
-  review_id: string;
-  rating?: number;
-  comment: string[];
-  description: string[];
-  buy_again?: string;
-  date_review: string;
-
-  product?: DeepProduct;
-  publication?: DeepPublication;
-}
-
-// Simplified publication for reviews (prevents infinite recursion)
-interface PublicationForReview {
-  publication_id: string;
-  title: string;
-  description: string[];
-  note: string[];
-  public: boolean;
-  published: boolean;
-  thumbnail?: string;
-
-  type?: Category;
-  style?: Category;
-  author?: Category;
-  tags?: PublicationTag[];
-}
-```
-
-## API Payloads
-
-### UPSERT Operations
-
-#### Utility Types
-```typescript
-// Makes all properties optional recursively
-type PartialDeep<T> = {
-  [P in keyof T]?: T[P] extends (infer U)[]
-    ? PartialDeep<U>[]
-    : T[P] extends object
-    ? PartialDeep<T[P]>
-    : T[P];
-};
-
-// Optional ID helper for nested objects
-type WithOptionalId<T> = T extends { [key: string]: any }
-  ? { id?: string } & PartialDeep<T>
-  : T;
-```
-
-#### Upsert Payload Map
-```typescript
-interface UpsertPayloadMap {
-  app_user: { 
-    user_id?: string; 
-    username?: string; 
-    password?: string; 
-    role?: string 
-  };
-  category: { 
-    category_id?: string; 
-    str_value?: string; 
-    type?: string; 
-    num_value?: number 
-  };
-  publication: WithOptionalId<DeepPublication>;
-  publication_tag: { 
-    publication_id: string; 
-    category_id: string 
-  };
-  content: WithOptionalId<DeepContent>;
-  segment: { 
-    segment_id?: string; 
-    title?: string; 
-    paragraph?: string; 
-    order_num?: number 
-  };
-  unit: { 
-    unit_id?: string; 
-    name?: string 
-  };
-  macro: WithOptionalId<Macro>;
-  product: WithOptionalId<DeepProduct>;
-  ingredient: WithOptionalId<DeepIngredient>;
-  prep_time: { 
-    prep_time_id?: string; 
-    duration?: number; 
-    style_id?: string 
-  };
-  content_segment: { 
-    content_id: string; 
-    segment_id: string; 
-    position?: number 
-  };
-  content_ingredient: { 
-    content_id: string; 
-    ingredient_id: string 
-  };
-  content_prep_time: { 
-    content_id: string; 
-    prep_time_id: string 
-  };
-  segment_prep_time: { 
-    segment_id: string; 
-    prep_time_id: string 
-  };
-  ingredient_unit: { 
-    ingredient_id: string; 
-    unit_id: string 
-  };
-  product_category: { 
-    product_id: string; 
-    category_id: string 
-  };
-  review: WithOptionalId<DeepReview>;
-}
-
-type UpsertTable = keyof UpsertPayloadMap;
-
-interface UpsertRequest<T extends UpsertTable = UpsertTable> {
-  table: T;
-  id?: string; // if present → update, otherwise create
-  payload: UpsertPayloadMap[T];
-}
-```
-
-### DELETE Operations
-
-#### Delete Payload Map
-```typescript
-type DeletePayloadMap = {
-  app_user: { user_id: string };
-  category: { category_id: string };
-  publication: { publication_id: string };
-  publication_tag: { publication_id: string; category_id: string };
-  content: { content_id: string };
-  segment: { segment_id: string };
-  unit: { unit_id: string };
-  macro: { macro_id: string };
-  product: { product_id: string };
-  ingredient: { ingredient_id: string };
-  prep_time: { prep_time_id: string };
-  content_segment: { content_id: string; segment_id: string };
-  content_ingredient: { content_id: string; ingredient_id: string };
-  content_prep_time: { content_id: string; prep_time_id: string };
-  segment_prep_time: { segment_id: string; prep_time_id: string };
-  ingredient_unit: { ingredient_id: string; unit_id: string };
-  product_category: { product_id: string; category_id: string };
-  review: { review_id: string };
-};
-
-type DeleteTable = keyof DeletePayloadMap;
-
-interface DeleteRequest<T extends DeleteTable = DeleteTable> {
-  table: T;
-  payload: DeletePayloadMap[T] | DeletePayloadMap[T][]; // allow batch deletion
-}
-```
-
-### QUERY Operations
-
-#### Get All Publications
-```typescript
-interface GetAllPublicationsQuery {
-  page?: number;         // pagination
-  limit?: number;        // items per page
-  search?: string;       // search by title or description
-  tags?: string[];       // filter by tags
-  typeIds?: string[];    // filter by type
-  styleIds?: string[];   // filter by style
-  authorIds?: string[];  // filter by author
-  publishedOnly?: boolean; // filter only published publications
-}
-```
-
-#### Get One Publication
-```typescript
-interface GetOnePublicationQuery {
-  publicationId: string;
-  includeContents?: boolean;   // include nested contents
-  includeIngredients?: boolean; // include nested ingredients
-  includeReviews?: boolean;     // include reviews (default false)
-}
-```
-
-#### Get Nested Data
-```typescript
-interface GetNestedQuery {
-  publicationId?: string;
-  productId?: string;
-  ingredientId?: string;
-  nestedTable: "contents" | "ingredients" | "reviews" | "productCategories" | "prepTimes";
-  filters?: Record<string, any>; // specific filters
-}
-```
-
-#### Get With Filters
-```typescript
-interface GetFilteredQuery {
-  filters: Record<string, any>; // ex: { 'ingredients.productId': 'abc', tags: ['vegan'] }
-  page?: number;
-  limit?: number;
-  sortBy?: string;
-  sortOrder?: "asc" | "desc";
-}
-```
-
-## Usage Examples
-
-### Creating a New Publication
-```typescript
-const newPublication: UpsertRequest<'publication'> = {
-  table: 'publication',
-  payload: {
-    title: "Chocolate Cake Recipe",
-    description: ["Delicious chocolate cake"],
-    note: ["Best served warm"],
-    public: true,
-    published: true,
-    contents: [
-      {
-        total_prep_time: 60,
-        servings: 8,
-        content_ingredients: [
-          {
-            quantity: 200,
-            multiply_factor: 1,
-            product: {
-              name: "Dark Chocolate",
-              macro: {
-                calories: 500,
-                protein: 5
-              }
-            }
-          }
-        ]
-      }
-    ]
+**Request Payload:**
+```json
+{
+  "str_value": "string",
+  "type": "string",
+  "connect": {
+    "publications_type": [{"publication_id": "string"}],
+    "publications_style": [{"publication_id": "string"}],
+    "publications_author": [{"publication_id": "string"}],
+    "prep_time": [{"prep_time_id": "string"}],
+    "publication_tags": [{"category_id": "string", "publication_id": "string"}],
+    "product_categories": [{"category_id": "string", "product_id": "string"}]
   }
-};
+}
 ```
 
-### Querying Publications
-```typescript
-const query: GetAllPublicationsQuery = {
-  page: 1,
-  limit: 10,
-  search: "chocolate",
-  tags: ["dessert", "cake"],
-  publishedOnly: true
-};
+**Response:**
+```json
+{
+  "category_id": "string",
+  "str_value": "string",
+  "type": "string"
+}
 ```
 
-### Deleting a Review
-```typescript
-const deleteReview: DeleteRequest<'review'> = {
-  table: 'review',
-  payload: { review_id: "review-123" }
-};
+### GET `/api/categories`
+
+**Response:**
+```json
+[
+  {
+    "category_id": "string",
+    "str_value": "string",
+    "type": "string"
+  }
+]
 ```
+
+## Publications
+
+### POST `/api/publications`
+
+**Request Payload:**
+```json
+{
+  "title": "string",
+  "description": ["string"],
+  "note": ["string"],
+  "public": boolean,
+  "published": boolean,
+  "thumbnail": "string" | null,
+  "type_id": "string" | null,
+  "style_id": "string" | null,
+  "author_id": "string" | null,
+  "connect": {
+    "contents": [{"content_id": "string"}],
+    "ingredientsRef": [{"ingredient_id": "string"}],
+    "reviews": [{"review_id": "string"}],
+    "tags": [{"category_id": "string"}],
+    "type": [{"category_id": "string"}],
+    "style": [{"category_id": "string"}],
+    "author": [{"user_id": "string"}]
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "publication_id": "string",
+  "title": "string",
+  "description": ["string"],
+  "note": ["string"],
+  "public": boolean,
+  "published": boolean,
+  "thumbnail": "string" | null,
+  "type_id": "string" | null,
+  "style_id": "string" | null,
+  "author_id": "string" | null,
+  "averageCount": number,
+  "averageScore": number,
+  "type": {
+    "str_value": "string",
+    "type": "string"
+  } | null,
+  "style": {
+    "str_value": "string",
+    "type": "string"
+  } | null,
+  "author": {
+    "str_value": "string",
+    "type": "string"
+  } | null,
+  "contents": [...] | null,
+  "ingredientsRef": [...] | null,
+  "tags": [...] | null
+}
+```
+
+### GET `/api/publications` (with pagination)
+
+**Query Parameters:**
+- `skip`: number (default: 0)
+- `take`: number (default: 12)
+- `filter[field]`: various filters
+
+**Response:**
+```json
+{
+  "items": [
+    {
+      "publication_id": "string",
+      "title": "string",
+      "description": ["string"],
+      "note": ["string"],
+      "public": boolean,
+      "published": boolean,
+      "thumbnail": "string" | null,
+      "type_id": "string" | null,
+      "style_id": "string" | null,
+      "author_id": "string" | null,
+      "averageCount": number,
+      "averageScore": number,
+      "type": object | null,
+      "style": object | null,
+      "author": object | null,
+      "contents": array | null,
+      "ingredientsRef": array | null,
+      "tags": array | null
+    }
+  ],
+  "total": number,
+  "page": number,
+  "limit": number,
+  "totalPages": number
+}
+```
+
+### GET `/api/public/publications` (public read-only)
+
+**Response:** Same as protected route but only returns public publications
+
+## Contents
+
+### POST `/api/contents`
+
+**Request Payload:**
+```json
+{
+  "publication_id": "string",
+  "total_prep_time": number,
+  "servings": number | null,
+  "connect": {
+    "content_segments": [{"segment_id": "string"}],
+    "content_ingredients": [{"ingredient_id": "string"}],
+    "content_prep_times": [{"prep_time_id": "string"}]
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "content_id": "string",
+  "publication_id": "string",
+  "total_prep_time": number,
+  "servings": number | null,
+  "publication": {...} | null,
+  "content_segments": [...] | null,
+  "content_ingredients": [...] | null,
+  "content_prep_times": [...] | null
+}
+```
+
+## Products
+
+### POST `/api/products`
+
+**Request Payload:**
+```json
+{
+  "name": "string",
+  "en_name": "string" | null,
+  "macro_id": "string" | null,
+  "connect": {
+    "ingredients": [{"ingredient_id": "string"}],
+    "reviews": [{"review_id": "string"}],
+    "product_categories": [{"category_id": "string"}],
+    "macro": [{"macro_id": "string"}]
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "product_id": "string",
+  "name": "string",
+  "en_name": "string" | null,
+  "macro_id": "string" | null,
+  "macro": {...} | null,
+  "ingredients": [...] | null,
+  "reviews": [...] | null,
+  "product_categories": [...] | null
+}
+```
+
+## Ingredients
+
+### POST `/api/ingredients`
+
+**Request Payload:**
+```json
+{
+  "quantity": number | null,
+  "is_recipe_id": "string" | null,
+  "product_id": "string",
+  "multiply_factor": number,
+  "connect": {
+    "product": [{"product_id": "string"}],
+    "content_ingredients": [{"content_id": "string"}],
+    "ingredient_units": [{"unit_id": "string"}]
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "ingredient_id": "string",
+  "quantity": number | null,
+  "is_recipe_id": "string" | null,
+  "product_id": "string",
+  "multiply_factor": number,
+  "product": {...} | null,
+  "isRecipe": {...} | null,
+  "content_ingredients": [...] | null,
+  "ingredient_units": [...] | null
+}
+```
+
+## Macros
+
+### POST `/api/macros`
+
+**Request Payload:**
+```json
+{
+  "calories": number | null,
+  "protein": number | null,
+  "fiber": number | null,
+  "sugar": number | null,
+  "saturated": number | null,
+  "trans": number | null,
+  "caffein": number | null,
+  "connect": {
+    "products": [{"product_id": "string"}]
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "macro_id": "string",
+  "calories": number | null,
+  "protein": number | null,
+  "fiber": number | null,
+  "sugar": number | null,
+  "saturated": number | null,
+  "trans": number | null,
+  "caffein": number | null,
+  "products": [...] | null
+}
+```
+
+## Units
+
+### POST `/api/units`
+
+**Request Payload:**
+```json
+{
+  "name": "string",
+  "connect": {
+    "ingredient_units": [{"ingredient_id": "string"}]
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "unit_id": "string",
+  "name": "string",
+  "ingredient_units": [...] | null
+}
+```
+
+## Prep Times
+
+### POST `/api/prepTimes`
+
+**Request Payload:**
+```json
+{
+  "duration": number,
+  "style_id": "string" | null,
+  "connect": {
+    "style": [{"category_id": "string"}],
+    "content_prep_times": [{"content_id": "string"}],
+    "segment_prep_time": [{"segment_id": "string"}]
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "prep_time_id": "string",
+  "duration": number,
+  "style_id": "string" | null,
+  "style": {...} | null,
+  "content_prep_times": [...] | null,
+  "segment_prep_time": [...] | null
+}
+```
+
+## Segments
+
+### POST `/api/segments`
+
+**Request Payload:**
+```json
+{
+  "title": "string" | null,
+  "paragraph": "string",
+  "order_num": number | null,
+  "connect": {
+    "content_segments": [{"content_id": "string"}],
+    "segment_prep_time": [{"prep_time_id": "string"}]
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "segment_id": "string",
+  "title": "string" | null,
+  "paragraph": "string",
+  "order_num": number | null,
+  "content_segments": [...] | null,
+  "segment_prep_time": [...] | null
+}
+```
+
+## Reviews
+
+### POST `/api/reviews`
+
+**Request Payload:**
+```json
+{
+  "product_id": "string" | null,
+  "publication_id": "string" | null,
+  "rating": number | null,
+  "comment": ["string"],
+  "description": ["string"],
+  "buy_again": "Y" | "N" | "M" | "D" | null,
+  "date_review": "string",
+  "connect": {
+    "product": [{"product_id": "string"}],
+    "publication": [{"publication_id": "string"}]
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "review_id": "string",
+  "product_id": "string" | null,
+  "publication_id": "string" | null,
+  "rating": number | null,
+  "comment": ["string"],
+  "description": ["string"],
+  "buy_again": "Y" | "N" | "M" | "D" | null,
+  "date_review": "string",
+  "product": {...} | null,
+  "publication": {...} | null
+}
+```
+
+## Common Patterns
+
+### Update Operations
+All PUT endpoints accept:
+```json
+{
+  // Core fields (same as create)
+  "field": "value",
+  
+  // Connection operations
+  "connect": {
+    "relation": [{"id": "string"}]
+  },
+  
+  // Set operations (replace all relations)
+  "set": {
+    "relation": [{"id": "string"}]
+  }
+}
+```
+
+### Delete Operations
+All DELETE endpoints return:
+```json
+{
+  "deleted": true
+}
+```
+
+### Error Responses
+Standard error format:
+```json
+{
+  "error": "Error message"
+}
+```
+
+### Authentication Headers
+Protected routes require:
+```
+Authorization: Bearer <token>
+```
+
+### Rate Limiting
+- Max 5 failed auth attempts per IP
+- 15-minute block duration
+- Returns 429 status with custom message

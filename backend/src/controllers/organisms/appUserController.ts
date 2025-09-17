@@ -1,15 +1,16 @@
 import { PrismaClient } from "@prisma/client";
-import { GenericController } from "types/crud.types";
-import { UserUpsert, UserRead } from "types/controller.types";
-import { UserRoleData } from "types/db.types";
+import { GenericController } from "types/crud.types.js";
+import { UserRoleData } from "types/db.types.js";
+import { UserCreateDto, UserUpdateDto } from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
 
 const prisma = new PrismaClient();
 
 export class AppUserController
-  implements GenericController<UserRead, UserUpsert, UserUpsert>
+  implements GenericController<UserUpdateDto, UserCreateDto, UserUpdateDto>
 {
-  async create(payload: UserUpsert): Promise<UserRead> {
+  // Crée un utilisateur et retourne uniquement les champs de lecture (pas le password)
+  async create(payload: UserCreateDto): Promise<UserUpdateDto> {
     const user = await prisma.app_user.create({
       data: {
         user_id: uuidv4(),
@@ -18,24 +19,30 @@ export class AppUserController
         role: payload.role,
       },
     });
+
     return { username: user.username, role: user.role as UserRoleData };
   }
 
-  async findById(id: string): Promise<UserRead | null> {
+  // Find est optionnel mais ici fourni pour compléter l'interface
+  async findById(id: string): Promise<UserUpdateDto | null> {
     const user = await prisma.app_user.findUnique({ where: { user_id: id } });
     return user ? { username: user.username, role: user.role as UserRoleData } : null;
   }
 
-  async findAll(): Promise<UserRead[]> {
+  async findAll(): Promise<UserUpdateDto[]> {
     const users = await prisma.app_user.findMany();
     return users.map((u) => ({ username: u.username, role: u.role as UserRoleData }));
   }
 
-  async update(id: string, payload: UserUpsert): Promise<UserRead> {
+  async update(
+    id: string,
+    payload: Partial<UserCreateDto & UserUpdateDto>
+  ): Promise<UserUpdateDto> {
     const user = await prisma.app_user.update({
       where: { user_id: id },
       data: payload,
     });
+
     return { username: user.username, role: user.role as UserRoleData };
   }
 

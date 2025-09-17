@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.13",
-    "@types/node": "^24.5.0",
+    "@types/node": "^24.5.1",
     "prisma": "^6.16.2",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2",

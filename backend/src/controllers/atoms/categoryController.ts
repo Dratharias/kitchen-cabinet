@@ -1,8 +1,9 @@
 import { PrismaClient } from "@prisma/client";
-import { GenericController } from "types/crud.types";
-import { Category, CategoryCore, CategoryRelations, CategoryUpsertDto } from "types/controller.types";
+import { GenericController } from "types/crud.types.js";
+import { Category, CategoryCore, CategoryRelations } from "types/controller.types.js";
 import { v4 as uuidv4 } from "uuid";
-import { PublicationData } from "types/db.types";
+import { PublicationData } from "types/db.types.js";
+import { CategoryCreateDto, CategoryUpdateDto } from "types/dto.types.js";
 
 const prisma = new PrismaClient();
 
@@ -41,7 +42,7 @@ export class CategoryController
 {
 
     async create(payload: CategoryCore & {
-        connect?: CategoryUpsertDto["connect"];
+        connect?: CategoryCreateDto["connect"];
     }): Promise<Category> {
         const category = await prisma.category.create({
             data: {
@@ -126,7 +127,7 @@ export class CategoryController
     return categories.map(normalizeCategory);
   }
 
-    async update(id: string, payload: CategoryUpsertDto): Promise<Category> {
+    async update(id: string, payload: CategoryUpdateDto): Promise<Category> {
     const category = await prisma.category.update({
         where: { category_id: id },
         data: {
