@@ -1,11 +1,9 @@
-import { PrismaClient } from "@prisma/client";
 import { Product, Publication, Review } from "types/controller.types.js";
 import { ReviewCreateDto, ReviewReadAllDto, ReviewUpdateDto } from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
 import { PaginatedResponse } from "types/db.types.js";
 import { GenericPaginatedController } from "types/crud.types.js";
-
-const prisma = new PrismaClient();
+import { prisma } from "../../config.js";
 
 export const normalizeReview = (review: any): Review => ({
   review_id: review.review_id,

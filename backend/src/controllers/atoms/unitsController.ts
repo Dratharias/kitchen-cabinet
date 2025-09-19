@@ -1,10 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "../../config.js";
 import { GenericController } from "types/crud.types.js";
 import { IngredientUnit, Unit } from "types/controller.types.js";
 import { UnitCreateDto, UnitUpdateDto } from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
-
-const prisma = new PrismaClient();
 
 export const normalizeUnit = (unit: any): Unit => ({
   unit_id: unit.unit_id,

@@ -93,8 +93,8 @@ CREATE INDEX idx_publication_published ON publication(published);
 CREATE TABLE content (
     content_id     UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     publication_id UUID NOT NULL,
-    total_prep_time INT DEFAULT 0,
-    servings       INT,
+    total_prep_time SMALLINT DEFAULT 0,
+    servings       SMALLINT,
     FOREIGN KEY (publication_id) REFERENCES publication(publication_id) ON DELETE CASCADE
 );
 
@@ -125,7 +125,7 @@ CREATE TABLE macro (
 
 CREATE TABLE product (
     product_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    name       VARCHAR(255) NOT NULL,
+    name       VARCHAR(255) NOT NULL UNIQUE,
     en_name    VARCHAR(255),
     macro_id   UUID,
     FOREIGN KEY (macro_id) REFERENCES macro(macro_id) ON DELETE SET NULL

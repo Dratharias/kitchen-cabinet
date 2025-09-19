@@ -25,7 +25,7 @@
     "@faker-js/faker": "^10.0.0",
     "@types/bcrypt": "^6.0.0",
     "@types/jsonwebtoken": "^9.0.10",
-    "@types/node": "^24.5.1",
+    "@types/node": "^24.5.2",
     "prisma": "^6.16.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.2"

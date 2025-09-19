@@ -1,11 +1,9 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "../../config.js";
 import { GenericController } from "types/crud.types.js";
 import { Category, CategoryCore, CategoryRelations } from "types/controller.types.js";
 import { v4 as uuidv4 } from "uuid";
 import { PublicationData } from "types/db.types.js";
 import { CategoryCreateDto, CategoryUpdateDto } from "types/dto.types.js";
-
-const prisma = new PrismaClient();
 
 export function normalizeCategory(cat: any): Category {
   return {

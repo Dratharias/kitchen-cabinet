@@ -1,8 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "../../config.js";
 import { PublicationReadAllDto } from "../../types/dto.types.js";
 import { normalizePublication, PublicationController } from "../organisms/publicationController.js";
-
-const prisma = new PrismaClient();
 
 export class PublicPublicationController extends PublicationController {
   async findAll(params?: PublicationReadAllDto) {

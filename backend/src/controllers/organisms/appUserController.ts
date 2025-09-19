@@ -1,10 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "../../config.js";
 import { GenericController } from "types/crud.types.js";
 import { UserRoleData } from "types/db.types.js";
 import { UserCreateDto, UserUpdateDto } from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
-
-const prisma = new PrismaClient();
 
 export class AppUserController
   implements GenericController<UserUpdateDto, UserCreateDto, UserUpdateDto>

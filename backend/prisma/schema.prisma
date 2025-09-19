@@ -77,8 +77,8 @@ model publication_tag {
 model content {
   content_id     String @id @default(uuid())
   publication_id String
-  total_prep_time Int    @default(0)
-  servings       Int?
+  total_prep_time Int    @default(0) @db.SmallInt
+  servings       Int? @db.SmallInt
 
   publication        publication         @relation(fields: [publication_id], references: [publication_id], onDelete: Cascade)
   content_segments    content_segment[]
@@ -120,7 +120,7 @@ model macro {
 
 model product {
   product_id String  @id @default(uuid())
-  name       String
+  name       String  @unique
   en_name    String?
   macro_id   String?
 

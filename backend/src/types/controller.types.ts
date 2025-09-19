@@ -4,65 +4,78 @@ import {
   ContentPrepTimeData, PublicationTagData, SegmentData,
   SegmentPrepTimeData, ProductData, ProductCategoryData,
   MacroData, IngredientData, IngredientUnitData,
-  UnitData, PrepTimeData, ReviewData
+  UnitData, PrepTimeData, ReviewData,
+  AppUserData
 } from "./db.types.js";
+
+/* ============================================================
+   User/Read
+   ============================================================ */
+export type User = Required<Pick<AppUserData, "username" | "role" | "updated">>;
+
 
 /* ============================================================
    Catégorie
    ============================================================ */
 export type Category = CategoryCore & CategoryRelations & { category_id: string };
-export type CategoryCore = Required<Pick<CategoryData, "str_value" | "type">>;
+export type CategoryCore = Required<Pick<CategoryData, "str_value" | "type">> & { category_id?: string };
 export type CategoryRelations = Partial<Omit<CategoryData, "str_value" | "type" | "category_id">>;
 
 /* ============================================================
    Publication
    ============================================================ */
 export type Publication = PublicationCore & PublicationRelations & { publication_id: string };
-export type PublicationCore = Required<Omit<PublicationData, "publication_id" | "contents" | "ingredientsRef" | "reviews" | "tags">>;
+export type PublicationCore = Required<Omit<PublicationData, "publication_id" | "contents" | "ingredientsRef" | "reviews" | "tags">> & { publication_id?: string };
 export type PublicationRelations = Required<Pick<PublicationData, "contents" | "ingredientsRef" | "reviews" | "tags" | "type" | "style" | "author">>;
 
 /* ============================================================
    Contenu
    ============================================================ */
 export type Content = ContentCore & ContentRelations & { content_id: string };
-export type ContentCore = Required<Pick<ContentData, "publication_id" | "total_prep_time" | "servings">>;
+export type ContentCore = Required<Pick<ContentData, "publication_id" | "total_prep_time" | "servings">> & { content_id?: string };
 export type ContentRelations = Required<Omit<ContentData, "content_id" | "publication_id" | "total_prep_time" | "servings">>;
 
 /* ============================================================
    Segment
    ============================================================ */
 export type Segment = SegmentCore & SegmentRelations & { segment_id: string };
-export type SegmentCore = Required<Omit<SegmentData, "segment_id" | "content_segments" | "segment_prep_time">>;
+export type SegmentCore = Required<Omit<SegmentData, "segment_id" | "content_segments" | "segment_prep_time">> & { segment_id?: string };
 export type SegmentRelations = Required<Pick<SegmentData, "content_segments" | "segment_prep_time">>;
 
 /* ============================================================
    Produit
    ============================================================ */
 export type Product = ProductCore & ProductRelations & { product_id: string };
-export type ProductCore = Required<Omit<ProductData, "ingredients" | "reviews" | "product_categories" | "macro">>;
+export type ProductCore = Required<Omit<ProductData, "product_id" | "ingredients" | "reviews" | "product_categories" | "macro">> & { product_id?: string };
 export type ProductRelations = Required<Pick<ProductData, "ingredients" | "reviews" | "product_categories" | "macro">>;
 
 /* ============================================================
    Macro nutritionnel
    ============================================================ */
-export type Macro = Required<Omit<MacroData, "products">> & { products: Product[] | null };
+export type Macro = MacroCore & MacroRelations & { macro_id: string };
+export type MacroCore = Required<Omit<MacroData, "macro_id" | "products">> & { macro_id?: string };
+export type MacroRelations = { products: Product[] | null };
 
 /* ============================================================
    Ingrédient
    ============================================================ */
 export type Ingredient = IngredientCore & IngredientRelations & { ingredient_id: string };
-export type IngredientCore = Required<Omit<IngredientData, "product" | "isRecipe" | "content_ingredients" | "ingredient_units">>;
+export type IngredientCore = Required<Omit<IngredientData, "ingredient_id" | "product" | "isRecipe" | "content_ingredients" | "ingredient_units">> & { ingredient_id?: string };
 export type IngredientRelations = Required<Pick<IngredientData, "product" | "isRecipe" | "content_ingredients" | "ingredient_units">>;
 
 /* ============================================================
    Unité de mesure
    ============================================================ */
-export type Unit = Required<Omit<UnitData, "ingredient_units">> & { ingredient_units: IngredientUnit[] | null };
+export type Unit = UnitCore & UnitRelations & { unit_id: string };
+export type UnitCore = Required<Omit<UnitData, "unit_id" | "ingredient_units">> & { unit_id?: string };
+export type UnitRelations = { ingredient_units: IngredientUnit[] | null };
 
 /* ============================================================
    Temps de préparation
    ============================================================ */
-export type PrepTime = Required<Omit<PrepTimeData, "style" | "content_prep_times" | "segment_prep_time">> & {
+export type PrepTime = PrepTimeCore & PrepTimeRelations & { prep_time_id: string };
+export type PrepTimeCore = Required<Omit<PrepTimeData, "prep_time_id" | "style" | "content_prep_times" | "segment_prep_time">> & { prep_time_id?: string };
+export type PrepTimeRelations = {
   style: Category | null;
   content_prep_times: ContentPrepTime[] | null;
   segment_prep_time: SegmentPrepTime[] | null;
@@ -71,7 +84,9 @@ export type PrepTime = Required<Omit<PrepTimeData, "style" | "content_prep_times
 /* ============================================================
    Avis / Review
    ============================================================ */
-export type Review = Required<Omit<ReviewData, "product" | "publication">> & {
+export type Review = ReviewCore & ReviewRelations & { review_id: string };
+export type ReviewCore = Required<Omit<ReviewData, "review_id" | "product" | "publication">> & { review_id?: string };
+export type ReviewRelations = {
   product: Product | null;
   publication: Publication | null;
 };

@@ -18,10 +18,6 @@ import { PublicPublicationController } from '../controllers/molecules/publicPubl
 import { OrchestratorController } from '../controllers/orchestratorController.js';
 
 export default async function createRoutes(fastify: FastifyInstance) {
-  const registry = new RouteRegistry(fastify, authGuard);
-
-  registry.registerCustomRoute('POST', '/api/auth/login', loginHandler);
-
   const baseControllers = {
     contents: new ContentController(),
     products: new ProductController(),
@@ -32,15 +28,19 @@ export default async function createRoutes(fastify: FastifyInstance) {
     segments: new SegmentController(),
     units: new UnitController(),
     users: new AppUserController(),
-    reviews: new ReviewController()
+    reviews: new ReviewController(),
+    publications: new PublicationController()
   };
 
   const controllerMap: ControllerMap = baseControllers as any;
   const orchestrator = new OrchestratorController(controllerMap);
+  
+  const registry = new RouteRegistry(fastify, authGuard, orchestrator);
+
+  registry.registerCustomRoute('POST', '/api/auth/login', loginHandler);
 
   const protectedControllers: Record<string, GenericController<any, any, any> | GenericPaginatedController<any, any, any>> = {
-    ...baseControllers,
-    publications: new PublicationController(orchestrator)
+    ...baseControllers
   };
 
   Object.entries(protectedControllers).forEach(([name, controller]) => {
@@ -70,4 +70,6 @@ export default async function createRoutes(fastify: FastifyInstance) {
     path: '/api/public/publications',
     methods: ['findAll', 'findById']
   });
+
+  registry.registerOrchestratorRoute('/api/orchestrator', true);
 }

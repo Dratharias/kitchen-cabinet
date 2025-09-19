@@ -1,23 +1,30 @@
-import { Category, CategoryCore, CategoryRelations, Product, ProductCore, 
-  ProductRelations, Ingredient, IngredientCore, IngredientRelations, Macro, 
-  Unit, PrepTime, Segment, SegmentCore, SegmentRelations, Content, ContentCore, 
-  ContentRelations, PublicationCore, PublicationRelations, Review, Publication, IngredientUnit
+import { 
+  Category, CategoryCore, CategoryRelations, 
+  Product, ProductCore, ProductRelations, 
+  Ingredient, IngredientCore, IngredientRelations, 
+  Macro, MacroCore, MacroRelations,
+  Unit, UnitCore, UnitRelations,
+  PrepTime, PrepTimeCore, PrepTimeRelations,
+  Segment, SegmentCore, SegmentRelations, 
+  Content, ContentCore, ContentRelations, 
+  Publication, PublicationCore, PublicationRelations, 
+  Review, ReviewCore, ReviewRelations,
 } from "./controller.types.js";
 import { PaginatedResponse, ReadAllParams } from "./db.types.js";
-import { UserUpdateDto, UserCreateDto, PublicationReadDto } from "./dto.types.js";
+import { UserUpdateDto, UserCreateDto } from "./dto.types.js";
 
 export interface ControllerMap {
   users: GenericController<UserUpdateDto, UserCreateDto, UserUpdateDto>;
   categories: GenericController<Category, CategoryCore, CategoryRelations>;
   products: GenericController<Product, ProductCore, ProductRelations>;
   ingredients: GenericController<Ingredient, IngredientCore, IngredientRelations>;
-  macros: GenericController<Macro, Omit<Macro, "macro_id" | "products">, Partial<Pick<Macro, "products">>>;
-  units: GenericController<Unit, Omit<Unit, "ingredient_units">, { ingredient_units: IngredientUnit[] | null }>;
-  prepTimes: GenericController<PrepTime, Omit<PrepTime, "style" | "content_prep_times" | "segment_prep_time">, { style: Category | null; content_prep_times: any[] | null; segment_prep_time: any[] | null }>;
+  macros: GenericController<Macro, MacroCore, MacroRelations>;
+  units: GenericController<Unit, UnitCore, UnitRelations>;
+  prepTimes: GenericController<PrepTime, PrepTimeCore, PrepTimeRelations>;
   segments: GenericController<Segment, SegmentCore, SegmentRelations>;
   contents: GenericController<Content, ContentCore, ContentRelations>;
-  publications: GenericController<PublicationReadDto, PublicationCore, PublicationRelations>;
-  reviews: GenericController<Review, Omit<Review, "product" | "publication">,{ product: Product | null; publication: Publication | null }>;
+  publications: GenericPaginatedController<Publication, PublicationCore, PublicationRelations>;
+  reviews: GenericController<Review, ReviewCore, ReviewRelations>;
 }
 
 export const junctionOrder = [
@@ -61,4 +68,3 @@ export interface GenericPaginatedController<T, C, U, RelationConnectDto = any, R
   
   delete(id: string): Promise<{ deleted: boolean }>;
 }
-

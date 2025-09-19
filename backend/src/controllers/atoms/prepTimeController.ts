@@ -1,10 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "../../config.js";
 import { GenericController } from "types/crud.types.js";
 import { Category, PrepTime } from "types/controller.types.js";
 import { PrepTimeCreateDto, PrepTimeUpdateDto } from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
-
-const prisma = new PrismaClient();
 
 export const normalizePrepTime = (prepTime: any): PrepTime => ({
   prep_time_id: prepTime.prep_time_id,

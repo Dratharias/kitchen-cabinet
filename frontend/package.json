@@ -21,11 +21,11 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.13",
-    "@types/node": "^24.5.1",
+    "@types/node": "^24.5.2",
     "prisma": "^6.16.2",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2",
-    "vite": "^7.1.5",
+    "vite": "^7.1.6",
     "vite-plugin-solid": "^2.11.8"
   }
 }

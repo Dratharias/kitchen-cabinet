@@ -1,9 +1,8 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "../../config.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-const prisma = new PrismaClient();
 const JWT_SECRET = process.env.JWT_SECRET || "supersecret";
 
 const funny401Messages = [
