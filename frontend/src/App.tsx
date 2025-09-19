@@ -1,6 +1,6 @@
 import { Router, Route } from '@solidjs/router';
 import { Layout } from './views/layout/Layout';
-import { ToastProvider } from './services/ToastProvider';
+import { ToastProvider } from './components/ToastProvider';
 import { LoginForm } from './pages/forms/Login';
 import { PublicationPage } from './pages/publication/[id]';
 import { ContentBrowser } from './pages/ContentBrowser';

@@ -11,3 +11,4 @@ export * from "./content";
 export * from "./publication";
 export * from "./user";
 export * from "./review";
+export * from "./orchestrator";

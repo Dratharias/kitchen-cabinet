@@ -1,28 +1,19 @@
 import { Component, createSignal, createResource, Show } from "solid-js";
 import { useParams } from "@solidjs/router";
-import { usePublicationApi } from "../../../hooks/usePublicationApi";
-import ReviewList, { ReviewItem } from "../../../components/ui/organisms/ReviewList";
-import Image from "../../../components/ui/atoms/Image";
+import { PublicationsService } from "@/services/publications";
+import { ReviewsService } from "@/services/reviews";
+import ReviewList, { ReviewItem } from "@/components/ui/organisms/ReviewList";
+import Image from "@/components/ui/atoms/Image";
+import type { Publication, Review } from "@/types";
 
-interface BackendReview {
-  productName: string;
-  reviewId: string;
-  rating?: number | null;
-  comment?: string[];
-  description?: string[];
-  buyAgain?: "Y" | "N" | "M" | "I" | null;
-  dateReview: string;
-  reviewedEntity?: { type: "product" | "publication"; id: string; title: string } | null;
-}
-
-interface BackendReviewResponse {
-  publication?: { publication_id: string; title: string; thumbnail?: string };
-  count: number;
-  averageRating?: number | null;
+interface ReviewsPageData {
+  title: string;
+  thumbnail: string | null;
+  totalCount: number;
+  averageRating: number | null;
+  reviews: ReviewItem[];
   page: number;
-  limit: number;
   totalPages: number;
-  reviews: BackendReview[];
 }
 
 export const ReviewPage: Component = () => {
@@ -31,45 +22,79 @@ export const ReviewPage: Component = () => {
   const [page, setPage] = createSignal(1);
   const fallbackThumbnail = "https://picsum.photos/640/480?random=42";
 
+  // Fetch publication details for header
+  const [publication] = createResource<Publication, string>(
+    () => params.id,
+    async (id) => {
+      if (!id) throw new Error("Publication ID is required");
+      return PublicationsService.getPublicationById(id);
+    }
+  );
 
-  const [reviews] = createResource(page, async (p: number) => {
-    const data = (await usePublicationApi.getPublicationReviews(params.id, {
-      page: p,
-      limit: pageSize,
-    })) as BackendReviewResponse;
+  // Fetch reviews with pagination
+  const [reviews] = createResource<ReviewsPageData, { publicationId: string; page: number }>(
+    () => ({ publicationId: params.id, page: page() }),
+    async ({ publicationId, page }) => {
+      if (!publicationId) throw new Error("Publication ID is required");
 
-    const reviewItems: ReviewItem[] = (data.reviews ?? []).map((r) => {
-      const item: ReviewItem = {
-        reviewId: r.reviewId,
-        rating: r.rating ?? undefined,
-        comment: r.comment ?? [],
-        description: r.description ?? [],
-        buyAgain: r.buyAgain ?? null,
-        dateReview: r.dateReview,
-        productName: r.productName ?? undefined
-      };
+      // Get reviews filtered by publication_id
+      const reviewsData = await ReviewsService.getReviews({
+        page,
+        limit: pageSize,
+        filter: { publication_id: publicationId }
+      });
 
-      if (r.reviewedEntity) {
-        if (r.reviewedEntity.type === "product") {
-          item.productName = r.reviewedEntity.title;
-        } else if (r.reviewedEntity.type === "publication") {
-          item.publicationTitle = r.reviewedEntity.title;
+      const pub = publication();
+      
+      // Map reviews to ReviewItem format
+      const reviewItems: ReviewItem[] = reviewsData.map((r: Review) => {
+        const item: ReviewItem = {
+          reviewId: r.review_id,
+          rating: r.rating ?? undefined,
+          comment: r.comment ?? [],
+          description: r.description ?? [],
+          buyAgain: r.buy_again ?? null,
+          dateReview: r.date_review,
+          productName: r.product.name ?? null,
+          publicationTitle: r.publication.title ?? null
+        };
+
+        // Add product or publication info
+        if (r.product) {
+          item.productName = r.product.name;
         }
-      }
+        if (r.publication) {
+          item.publicationTitle = r.publication.title;
+        }
 
-      return item;
-    });
+        return item;
+      });
 
-    return {
-      title: data.publication?.title ?? "Unknown",
-      thumbnail: data.publication?.thumbnail ?? null,
-      totalCount: data.count ?? 0,
-      averageRating: data.averageRating ?? null,
-      reviews: reviewItems,
-      page: data.page,
-      totalPages: data.totalPages,
-    };
-  });
+      // Calculate average rating
+      const validRatings = reviewsData
+        .map(r => r.rating)
+        .filter((r): r is number => r !== null && r !== undefined);
+      
+      const averageRating = validRatings.length > 0 
+        ? validRatings.reduce((sum, rating) => sum + rating, 0) / validRatings.length 
+        : null;
+
+      // Calculate total pages (assuming we can get total count from the response)
+      // Note: The API response format for reviews doesn't include pagination info
+      // You may need to adjust this based on actual API response structure
+      const totalPages = Math.ceil(reviewsData.length / pageSize);
+
+      return {
+        title: pub?.title ?? "Unknown",
+        thumbnail: pub?.thumbnail ?? null,
+        totalCount: reviewsData.length,
+        averageRating,
+        reviews: reviewItems,
+        page,
+        totalPages: Math.max(1, totalPages),
+      };
+    }
+  );
 
   return (
     <div class="p-4">
@@ -83,15 +108,21 @@ export const ReviewPage: Component = () => {
 
       <Show when={reviews()}>
         <Image
-          src={reviews().thumbnail ?? fallbackThumbnail}
+          src={reviews()!.thumbnail ?? fallbackThumbnail}
           fallbackSrc={fallbackThumbnail}
-          alt={reviews().title}
+          alt={reviews()!.title}
           class="w-full max-h-20 object-cover object-center rounded-b mb-8"
         />
 
         <h2 class="text-2xl font-bold mb-4">
           Reviews for {reviews()!.title} ({reviews()!.totalCount} reviews)
         </h2>
+
+        <Show when={reviews()!.averageRating !== null}>
+          <p class="text-lg mb-4">
+            Average Rating: {reviews()!.averageRating!.toFixed(1)}/5
+          </p>
+        </Show>
 
         <ReviewList
           reviews={reviews()!.reviews}

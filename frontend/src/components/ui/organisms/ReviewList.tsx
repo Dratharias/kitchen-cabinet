@@ -1,14 +1,15 @@
 import { Component, For, Show } from "solid-js";
 import { ReviewCard } from "./ReviewCard";
 import { PaginationNavigator } from "../utilities/PaginationNavigator";
+import { BuyAgain } from "@/types";
 
 export interface ReviewItem {
-  productName: string;
+  productName?: string;
   reviewId: string;
-  rating?: number | null;
-  comment: string[];
-  description: string[];
-  buyAgain?: "Y" | "N" | "M" | "I" | null;
+  rating: number;
+  comment?: string[] | null;
+  description?: string[] | null;
+  buyAgain?: BuyAgain | null;
   dateReview: string;
   publicationTitle?: string;
 }
@@ -29,8 +30,8 @@ const ReviewList: Component<ReviewListProps> = (props) => {
       <For each={props.reviews}>
         {(review) => (
             <ReviewCard
-            {...review}
-            publicationTitle={review.publicationTitle}
+              {...review}
+              publicationTitle={review.publicationTitle}
             />
         )}
         </For>

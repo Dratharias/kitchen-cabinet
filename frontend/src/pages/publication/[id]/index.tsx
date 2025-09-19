@@ -1,11 +1,28 @@
 import { Component, Show, createResource, createMemo } from "solid-js";
 import { useParams, useLocation } from "@solidjs/router";
-import { usePublicationApi } from "../../../hooks/usePublicationApi";
-import type { PublicationDetails, ContentDetails, MappedPublicationData } from "../../../shared-types/publication";
-import { PublicationDetails as PublicationDetailsComponent } from "../../../components/ui/organisms/PublicationDetails";
+import { PublicationsService } from "@/services/publications";
+import type { Category, Content, Ingredient, Publication, Segment } from "@/types";
+import { PublicationDetails as PublicationDetailsComponent } from "@/components/ui/organisms/PublicationDetails";
 
 export interface PublicationPageProps {
   category?: "foods" | "feeds";
+}
+
+export interface MappedPublicationData {
+  publication_id: string;
+  title: string;
+  description: string[];
+  note: string[];
+  thumbnail: string | null;
+  tags: Category[];
+  ingredients: Ingredient[];
+  preparation: Segment[];
+  prepTime: number;
+  selectedContent: Content[];
+  isReview: boolean;
+  category: "foods" | "feeds" | "unknown";
+  reviewsCount: number | 0;
+  averageRating: number | null;
 }
 
 export const PublicationPage: Component<PublicationPageProps> = (props) => {
@@ -21,12 +38,12 @@ export const PublicationPage: Component<PublicationPageProps> = (props) => {
 
   const isReview = createMemo(() => location.pathname.startsWith("/review/"));
 
-  const [publication] = createResource<PublicationDetails, string>(
+  const [publication] = createResource<Publication, string>(
     () => params.id,
     async (id) => {
       if (!id) throw new Error("Publication ID is required");
       try {
-        return await usePublicationApi.getPublication(id);
+        return await PublicationsService.getPublicationById(id);
       } catch (e) {
         console.error("Failed to fetch publication:", e);
         throw e;
@@ -38,21 +55,34 @@ export const PublicationPage: Component<PublicationPageProps> = (props) => {
     const pub = publication();
     if (!pub) return null;
 
-    const content: ContentDetails | undefined = pub.contents?.[0];
+    const content = pub.contents?.[0];
 
-    const ingredients =
-      content?.ingredients.map((ing) => {
-        const qty = ing.quantity ?? "";
-        const units = ing.units?.map((u) => u.name).join(", ") ?? "";
-        return `${qty} ${units} ${ing.product.name}`.trim();
-      }) ?? [];
+    // Map ingredients from content
+    const ingredients = content?.content_ingredients?.map((contentIng) => {
+      const ing = contentIng.ingredient;
+      if (!ing) return "";
+      
+      const qty = ing.quantity ?? "";
+      const units = ing.ingredient_units?.map(iu => iu.unit?.name).filter(Boolean).join(", ") ?? "";
+      const productName = ing.product?.name ?? "";
+      
+      return `${qty} ${units} ${productName}`.trim();
+    }) || [];
 
-    const preparation =
-      content?.segments
-        .sort((a, b) => a.order - b.order)
-        .map((seg) => (seg.title ? `${seg.title}: ` : "") + seg.paragraph) ?? [];
+    // Map preparation from segments
+    const preparation = content?.content_segments
+      ?.sort((a, b) => (a.segment?.order_num ?? 0) - (b.segment?.order_num ?? 0))
+      ?.map((cs) => {
+        const seg = cs.segment;
+        if (!seg) return "";
+        return (seg.title ? `${seg.title}: ` : "") + seg.paragraph;
+      })
+      .filter(Boolean) || [];
 
-    const totalPrepTime = content?.prepTimes.reduce((sum, p) => sum + p.duration, 0) ?? 0;
+    // Calculate total prep time
+    const totalPrepTime = content?.content_prep_times?.reduce((sum, cpt) => {
+      return sum + (cpt.prep_time?.duration ?? 0);
+    }, 0) ?? 0;
 
     const formatPrepTime = (minutes: number) =>
       minutes === 0
@@ -61,17 +91,28 @@ export const PublicationPage: Component<PublicationPageProps> = (props) => {
         ? `${minutes} min`
         : `${Math.floor(minutes / 60)}h${minutes % 60 ? ` ${minutes % 60}min` : ""}`;
 
+    // Calculate average rating
+    const reviews = pub.reviews || [];
+    const validRatings = reviews.map(r => r.rating).filter((r): r is number => r !== null && r !== undefined);
+    const averageRating = validRatings.length > 0 
+      ? validRatings.reduce((sum, rating) => sum + rating, 0) / validRatings.length 
+      : null;
+
     return {
-      ...pub,
+      publication_id: pub.publication_id,
+      title: pub.title,
+      description: pub.description,
+      note: pub.note,
+      thumbnail: pub.thumbnail,
       tags: pub.tags ?? [],
       ingredients,
       preparation,
       prepTime: formatPrepTime(totalPrepTime),
       selectedContent: content,
-      isReview: !!isReview() || pub.type?.strValue === "Review",
+      isReview: !!isReview() || pub.type?.str_value === "Review",
       category: category(),
-      reviewsCount: pub.reviewsCount ?? 0,
-      averageRating: pub.averageRating ?? null,
+      reviewsCount: reviews.length,
+      averageRating,
     };
   });
 
@@ -96,7 +137,7 @@ export const PublicationPage: Component<PublicationPageProps> = (props) => {
       <Show when={mappedData()}>
         {(d) => (
           <PublicationDetailsComponent
-            publicationId={d.publicationId}
+            publicationId={d.publication_id}
             title={d.title}
             thumbnail={d.thumbnail}
             prepTime={d.prepTime}

@@ -75,7 +75,7 @@ export class RouteRegistry {
     }
   }
 
-  registerOrchestratorRoute(path: string = '/api/orchestrator', authRequired: boolean = true) {
+  registerOrchestratorRoute(path: string, authRequired: boolean = true) {
     if (!this.orchestrator) {
       throw new Error('Orchestrator is required to register orchestrator routes');
     }

@@ -1,8 +1,11 @@
 export type UUID = string;
 
 export interface PaginatedRequest {
-  skip?: number;
-  take?: number;
+  page?: number;
+  limit?: number;
+  sortBy?: string;
+  order?: 'asc' | 'desc';
+  filter?: Record<string, any>;
 }
 
 export interface PaginatedResponse<T> {

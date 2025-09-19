@@ -1,524 +1,458 @@
-# API Payloads & Examples Documentation
+# API Routes Documentation
 
 ## Authentication
 
-### POST `/api/auth/login`
+### POST /api/auth/login
 
-**Request:**
+**Payload:**
 ```json
 {
-  "username": "admin",
-  "password": "password123"
+  "username": "string",
+  "password": "string"
 }
 ```
 
 **Response:**
 ```json
 {
-  "username": "admin",
-  "role": "admin",
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+  "username": "string",
+  "role": "admin" | "user" | "guest",
+  "token": "string"
+}
+```
+
+**Error Responses:**
+- `400`: Missing credentials
+- `401`: Invalid username or password
+- `429`: Too many attempts, get lost!
+- `500`: Internal server error
+
+---
+
+## Reviews (Public)
+
+### GET /api/reviews
+
+**Query Parameters:**
+```
+?page=number&limit=number&sortBy=string&order=asc|desc&filter=object
+```
+
+**Response:**
+```json
+[
+  {
+    "review_id": "string",
+    "product_id": "string | null",
+    "publication_id": "string | null", 
+    "rating": "number | null",
+    "comment": "string[]",
+    "description": "string[]",
+    "buy_again": "Y" | "N" | "M" | "D" | null,
+    "date_review": "string",
+    "product": "ProductData | null",
+    "publication": "PublicationData | null"
+  }
+]
+```
+
+### GET /api/reviews/:id
+
+**Response:**
+```json
+{
+  "review_id": "string",
+  "product_id": "string | null",
+  "publication_id": "string | null",
+  "rating": "number | null", 
+  "comment": "string[]",
+  "description": "string[]",
+  "buy_again": "Y" | "N" | "M" | "D" | null,
+  "date_review": "string",
+  "product": "ProductData | null",
+  "publication": "PublicationData | null"
+}
+```
+
+**Error Response:**
+- `404`: Not found
+
+---
+
+## Publications (Public)
+
+### GET /api/publications
+
+**Query Parameters:**
+```
+?page=number&limit=number&sortBy=string&order=asc|desc&filter=object
+```
+
+**Response:**
+```json
+{
+  "items": [
+    {
+      "publication_id": "string",
+      "title": "string",
+      "description": "string[]",
+      "note": "string[]",
+      "public": "boolean",
+      "published": "boolean",
+      "thumbnail": "string | null",
+      "type_id": "string | null",
+      "style_id": "string | null",
+      "author_id": "string | null",
+      "type": "CategoryCore | null",
+      "style": "CategoryCore | null", 
+      "author": "CategoryCore | null",
+      "contents": "ContentData[] | null",
+      "ingredientsRef": "IngredientData[] | null",
+      "reviews": "ReviewData[] | null",
+      "tags": "PublicationTagData[] | null"
+    }
+  ],
+  "total": "number",
+  "page": "number",
+  "limit": "number",
+  "totalPages": "number"
+}
+```
+
+### GET /api/publications/:id
+
+**Response:**
+```json
+{
+  "publication_id": "string",
+  "title": "string", 
+  "description": "string[]",
+  "note": "string[]",
+  "public": "boolean",
+  "published": "boolean",
+  "thumbnail": "string | null",
+  "type_id": "string | null",
+  "style_id": "string | null",
+  "author_id": "string | null",
+  "type": "CategoryCore | null",
+  "style": "CategoryCore | null",
+  "author": "CategoryCore | null", 
+  "contents": "ContentData[] | null",
+  "ingredientsRef": "IngredientData[] | null",
+  "reviews": "ReviewData[] | null",
+  "tags": "PublicationTagData[] | null"
+}
+```
+
+**Error Response:**
+- `404`: Not found
+
+---
+
+## Orchestrator (Protected)
+
+### POST /api/publicate
+
+**Authentication Required:** Bearer token
+
+**Payload Examples:**
+
+#### Create Publication with Related Entities
+```json
+{
+  "action": "create",
+  "publications": {
+    "id?": "temp-publication-1",
+    "data": {
+      "title": "string",
+      "description": ["string"],
+      "note": ["string"], 
+      "public": "boolean",
+      "published": "boolean",
+      "thumbnail": "string | null",
+      "type_id": "string | null",
+      "style_id": "string | null",
+      "author_id": "string | null"
+    }
+  },
+  "contents": [
+    {
+      "id?": "temp-content-1",
+      "data": {
+        "publication_id": "string",
+        "total_prep_time": "number",
+        "servings": "number | null"
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id?": "temp-segment-1", 
+      "data": {
+        "title": "string | null",
+        "paragraph": "string",
+        "order_num": "number | null"
+      }
+    }
+  ],
+  "ingredients": [
+    {
+      "id?": "temp-ingredient-1",
+      "data": {
+        "quantity": "number | null",
+        "is_recipe_id": "string | null",
+        "product_id": "string",
+        "multiply_factor": "number"
+      }
+    }
+  ],
+  "products": [
+    {
+      "id?": "temp-product-1",
+      "data": {
+        "name": "string",
+        "en_name": "string | null",
+        "macro_id": "string | null"
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id?": "temp-categorie-1",
+      "data": {
+        "str_value": "string",
+        "type": "string"
+      }
+    }
+  ],
+  "units": [
+    {
+      "id?": "temp-unit-1",
+      "data": {
+        "name": "string"
+      }
+    }
+  ],
+  "prepTimes": [
+    {
+      "id?": "temp-preptime-1",
+      "data": {
+        "duration": "number",
+        "style_id": "string | null"
+      }
+    }
+  ],
+  "macros": [
+    {
+      "id?": "temp-macro-1",
+      "data": {
+        "calories": "number | null",
+        "protein": "number | null",
+        "fiber": "number | null",
+        "sugar": "number | null",
+        "saturated": "number | null",
+        "trans": "number | null",
+        "caffein": "number | null"
+      }
+    }
+  ]
+}
+```
+
+#### Create Review for Product
+```json
+{
+  "action": "create",
+  "reviews": {
+    "id?": "temp-review-1",
+    "data": {
+      "rating": "number | null",
+      "comment": ["string"],
+      "description": ["string"],
+      "buy_again": "Y" | "N" | "M" | "D" | null,
+      "date_review": "string",
+      "product_id": "string",
+      "publication_id": null
+    }
+  },
+  "products": [
+    {
+      "id?": "temp-product",
+      "data": {
+        "name": "string",
+        "en_name": "string | null",
+        "macro_id": "string | null"
+      }
+    }
+  ]
+}
+```
+
+#### Create Review for Publication
+```json
+{
+  "action": "create",
+  "reviews": {
+    "id?": "temp-review-1",
+    "data": {
+      "rating": "number | null",
+      "comment": ["string"], 
+      "description": ["string"],
+      "buy_again": "Y" | "N" | "M" | "D" | null,
+      "date_review": "string",
+      "product_id": null,
+      "publication_id": "string"
+    }
+  },
+  "publications": {
+    "id?": "temp-publication",
+    "data": {
+      "title": "string",
+      "description": ["string"],
+      "note": ["string"],
+      "public": "boolean",
+      "published": "boolean",
+      "thumbnail": "string | null",
+      "type_id": "string | null",
+      "style_id": "string | null",
+      "author_id": "string | null"
+    }
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "results": {
+    "publications": ["Publication[]"],
+    "contents": ["Content[]"],
+    "segments": ["Segment[]"],
+    "ingredients": ["Ingredient[]"],
+    "products": ["Product[]"],
+    "categories": ["Category[]"],
+    "units": ["Unit[]"],
+    "prepTimes": ["PrepTime[]"],
+    "reviews": ["Review[]"],
+    "macros": ["Macro[]"],
+    "users": ["User[]"]
+  }
 }
 ```
 
 **Error Response:**
 ```json
 {
-  "error": "Invalid credentials"
+  "success": false,
+  "error": "string"
 }
 ```
 
-## Ultra Nested Publication Creation
+**Error Responses:**
+- `401`: Various funny messages (Unauthorized)
+- `429`: Too many attempts, get lost!
 
-### POST `/api/publications` - Complete Recipe Example
+---
 
-This example shows creating a complete recipe with all nested entities in a single request. The orchestrator automatically generates UUIDs for all entities.
+## Data Types Reference
 
-**Request:**
+### CategoryCore
 ```json
 {
-  "title": "Classic Chocolate Chip Cookies",
-  "description"?: ["Soft and chewy chocolate chip cookies perfect for any occasion"],
-  "note"?: ["Make sure butter is room temperature", "Don't overbake for chewy texture"],
-  "public"?: true,
-  "published"?: true,
-  "thumbnail"?: "https://example.com/cookie-image.jpg",
-  "type_id"?: null,
-  "style_id"?: null,
-  "author_id"?: null,
-  "connect"?: {
-    "type"?: [{"str_value": "Dessert", "type": "publication_type"}],
-    "style"?: [{"str_value": "American", "type": "cuisine"}],
-    "author"?: [{"str_value": "Chef Marie", "type": "author"}],
-    "tags"?: [
-      {"str_value": "Easy", "type": "difficulty"},
-      {"str_value": "Family Friendly", "type": "occasion"},
-      {"str_value": "Cookies", "type": "category"}
-    ],
-    "contents"?: [{
-      "publication_id"?: "string",
-      "total_prep_time": 45,
-      "servings"?: 24,
-      "connect"?: {
-        "content_segments"?: [
-          {
-            "title"?: "Prepare Dry Ingredients",
-            "paragraph": "In a medium bowl, whisk together flour, baking soda, and salt. Set aside.",
-            "order_num"?: 1,
-            "connect"?: {
-              "segment_prep_time"?: [{
-                "duration": 5,
-                "style_id"?: null,
-                "connect"?: {
-                  "style"?: [{"str_value": "Prep", "type": "prep_style"}]
-                }
-              }]
-            }
-          },
-          {
-            "title"?: "Cream Butter and Sugars",
-            "paragraph": "In a large bowl, cream together butter, granulated sugar, and brown sugar until light and fluffy, about 3-4 minutes.",
-            "order_num"?: 2,
-            "connect"?: {
-              "segment_prep_time"?: [{
-                "duration": 5,
-                "connect"?: {
-                  "style"?: [{"str_value": "Mix", "type": "prep_style"}]
-                }
-              }]
-            }
-          },
-          {
-            "title"?: "Add Eggs and Vanilla",
-            "paragraph": "Beat in eggs one at a time, then stir in vanilla extract.",
-            "order_num"?: 3,
-            "connect"?: {
-              "segment_prep_time"?: [{
-                "duration": 2,
-                "connect"?: {
-                  "style"?: [{"str_value": "Mix", "type": "prep_style"}]
-                }
-              }]
-            }
-          },
-          {
-            "title"?: "Combine Wet and Dry",
-            "paragraph": "Gradually blend in the flour mixture. Fold in chocolate chips.",
-            "order_num"?: 4,
-            "connect"?: {
-              "segment_prep_time"?: [{
-                "duration": 3,
-                "connect"?: {
-                  "style"?: [{"str_value": "Mix", "type": "prep_style"}]
-                }
-              }]
-            }
-          },
-          {
-            "title"?: "Bake",
-            "paragraph": "Drop rounded tablespoons of dough onto ungreased cookie sheets. Bake for 9-11 minutes or until golden brown.",
-            "order_num"?: 5,
-            "connect"?: {
-              "segment_prep_time"?: [{
-                "duration": 30,
-                "connect"?: {
-                  "style"?: [{"str_value": "Bake", "type": "prep_style"}]
-                }
-              }]
-            }
-          }
-        ],
-        "content_ingredients"?: [
-          {
-            "quantity"?: 2.25,
-            "is_recipe_id"?: null,
-            "product_id": "string",
-            "multiply_factor"?: 1,
-            "connect"?: {
-              "product"?: [{
-                "name": "All-Purpose Flour",
-                "en_name"?: "Flour",
-                "macro_id"?: null,
-                "connect"?: {
-                  "macro"?: [{
-                    "calories"?: 364,
-                    "protein"?: 10.3,
-                    "fiber"?: 2.7,
-                    "sugar"?: 0.3,
-                    "saturated"?: null,
-                    "trans"?: null,
-                    "caffein"?: null
-                  }],
-                  "product_categories"?: [
-                    {"str_value": "Baking", "type": "product_category"},
-                    {"str_value": "Pantry Staples", "type": "product_category"}
-                  ]
-                }
-              }],
-              "ingredient_units"?: [
-                {"name": "cups"}
-              ]
-            }
-          },
-          {
-            "quantity"?: 1,
-            "multiply_factor"?: 1,
-            "connect"?: {
-              "product"?: [{
-                "name": "Baking Soda",
-                "en_name"?: "Baking Soda",
-                "connect"?: {
-                  "product_categories"?: [
-                    {"str_value": "Baking", "type": "product_category"}
-                  ]
-                }
-              }],
-              "ingredient_units"?: [
-                {"name": "teaspoon"}
-              ]
-            }
-          },
-          {
-            "quantity"?: 1,
-            "multiply_factor"?: 1,
-            "connect"?: {
-              "product"?: [{
-                "name": "Salt",
-                "en_name"?: "Salt",
-                "connect"?: {
-                  "product_categories"?: [
-                    {"str_value": "Seasonings", "type": "product_category"}
-                  ]
-                }
-              }],
-              "ingredient_units"?: [
-                {"name": "teaspoon"}
-              ]
-            }
-          },
-          {
-            "quantity"?: 1,
-            "multiply_factor"?: 1,
-            "connect"?: {
-              "product"?: [{
-                "name": "Butter",
-                "en_name"?: "Butter",
-                "connect"?: {
-                  "macro"?: [{
-                    "calories"?: 717,
-                    "protein"?: 0.9,
-                    "fiber"?: 0,
-                    "sugar"?: 0.1,
-                    "saturated"?: 51.4,
-                    "trans"?: null,
-                    "caffein"?: null
-                  }],
-                  "product_categories"?: [
-                    {"str_value": "Dairy", "type": "product_category"}
-                  ]
-                }
-              }],
-              "ingredient_units"?: [
-                {"name": "cup"}
-              ]
-            }
-          },
-          {
-            "quantity"?: 0.75,
-            "multiply_factor"?: 1,
-            "connect"?: {
-              "product"?: [{
-                "name": "Granulated Sugar",
-                "en_name"?: "White Sugar",
-                "connect"?: {
-                  "macro"?: [{
-                    "calories"?: 387,
-                    "protein"?: 0,
-                    "fiber"?: 0,
-                    "sugar"?: 99.98,
-                    "saturated"?: null,
-                    "trans"?: null,
-                    "caffein"?: null
-                  }],
-                  "product_categories"?: [
-                    {"str_value": "Baking", "type": "product_category"},
-                    {"str_value": "Sweeteners", "type": "product_category"}
-                  ]
-                }
-              }],
-              "ingredient_units"?: [
-                {"name": "cup"}
-              ]
-            }
-          },
-          {
-            "quantity"?: 0.75,
-            "multiply_factor"?: 1,
-            "connect"?: {
-              "product"?: [{
-                "name": "Brown Sugar",
-                "en_name"?: "Brown Sugar",
-                "connect"?: {
-                  "macro"?: [{
-                    "calories"?: 380,
-                    "protein"?: 0.1,
-                    "fiber"?: 0,
-                    "sugar"?: 97.03,
-                    "saturated"?: null,
-                    "trans"?: null,
-                    "caffein"?: null
-                  }],
-                  "product_categories"?: [
-                    {"str_value": "Baking", "type": "product_category"},
-                    {"str_value": "Sweeteners", "type": "product_category"}
-                  ]
-                }
-              }],
-              "ingredient_units"?: [
-                {"name": "cup"}
-              ]
-            }
-          },
-          {
-            "quantity"?: 2,
-            "multiply_factor"?: 1,
-            "connect"?: {
-              "product"?: [{
-                "name": "Large Eggs",
-                "en_name"?: "Eggs",
-                "connect"?: {
-                  "macro"?: [{
-                    "calories"?: 155,
-                    "protein"?: 13,
-                    "fiber"?: 0,
-                    "sugar"?: 1.1,
-                    "saturated"?: 3.1,
-                    "trans"?: null,
-                    "caffein"?: null
-                  }],
-                  "product_categories"?: [
-                    {"str_value": "Dairy", "type": "product_category"},
-                    {"str_value": "Protein", "type": "product_category"}
-                  ]
-                }
-              }],
-              "ingredient_units"?: [
-                {"name": "whole"}
-              ]
-            }
-          },
-          {
-            "quantity"?: 2,
-            "multiply_factor"?: 1,
-            "connect"?: {
-              "product"?: [{
-                "name": "Vanilla Extract",
-                "en_name"?: "Vanilla",
-                "connect"?: {
-                  "product_categories"?: [
-                    {"str_value": "Baking", "type": "product_category"},
-                    {"str_value": "Flavorings", "type": "product_category"}
-                  ]
-                }
-              }],
-              "ingredient_units"?: [
-                {"name": "teaspoons"}
-              ]
-            }
-          },
-          {
-            "quantity"?: 2,
-            "multiply_factor"?: 1,
-            "connect"?: {
-              "product"?: [{
-                "name": "Chocolate Chips",
-                "en_name"?: "Chocolate Chips",
-                "connect"?: {
-                  "macro"?: [{
-                    "calories"?: 479,
-                    "protein"?: 4.2,
-                    "fiber"?: 7,
-                    "sugar"?: 47.8,
-                    "saturated"?: 16.2,
-                    "trans"?: null,
-                    "caffein"?: null
-                  }],
-                  "product_categories"?: [
-                    {"str_value": "Baking", "type": "product_category"},
-                    {"str_value": "Chocolate", "type": "product_category"}
-                  ]
-                }
-              }],
-              "ingredient_units"?: [
-                {"name": "cups"}
-              ]
-            }
-          }
-        ],
-        "content_prep_times"?: [
-          {
-            "duration": 15,
-            "style_id"?: null,
-            "connect"?: {
-              "style"?: [{"str_value": "Prep", "type": "prep_style"}]
-            }
-          },
-          {
-            "duration": 30,
-            "connect"?: {
-              "style"?: [{"str_value": "Bake", "type": "prep_style"}]
-            }
-          }
-        ]
-      }
-    }]
-  }
+  "category_id": "string | undefined",
+  "str_value": "string",
+  "type": "string"
 }
 ```
 
-**Response:**
+### ContentData
 ```json
 {
-  "publication_id": "550e8400-e29b-41d4-a716-446655440000",
-  "title": "Classic Chocolate Chip Cookies",
-  "description": ["Soft and chewy chocolate chip cookies perfect for any occasion"],
-  "note": ["Make sure butter is room temperature", "Don't overbake for chewy texture"],
-  "public": true,
-  "published": true,
-  "thumbnail": "https://example.com/cookie-image.jpg",
-  "type_id": "550e8400-e29b-41d4-a716-446655440001",
-  "style_id": "550e8400-e29b-41d4-a716-446655440002",
-  "author_id": "550e8400-e29b-41d4-a716-446655440003",
-  "averageCount": 0,
-  "averageScore": 0,
-  "type": {
-    "str_value": "Dessert",
-    "type": "publication_type"
-  },
-  "style": {
-    "str_value": "American",
-    "type": "cuisine"
-  },
-  "author": {
-    "str_value": "Chef Marie",
-    "type": "author"
-  },
-  "contents": [...],
-  "ingredientsRef": [...],
-  "tags": [...]
+  "content_id": "string",
+  "publication_id": "string", 
+  "total_prep_time": "number",
+  "servings": "number | null",
+  "publication": "PublicationData | null",
+  "content_segments": "ContentSegmentData[] | null",
+  "content_ingredients": "ContentIngredientData[] | null",
+  "content_prep_times": "ContentPrepTimeData[] | null"
 }
 ```
 
-## Standard CRUD Examples
-
-### Simple Category Creation
-
-**POST `/api/categories`:**
+### IngredientData
 ```json
 {
-  "str_value": "Vegetarian",
-  "type": "dietary_restriction"
+  "ingredient_id": "string",
+  "quantity": "number | null",
+  "is_recipe_id": "string | null",
+  "product_id": "string",
+  "multiply_factor": "number",
+  "product": "ProductData | null",
+  "isRecipe": "PublicationData | null",
+  "content_ingredients": "ContentIngredientData[] | null",
+  "ingredient_units": "IngredientUnitData[] | null"
 }
 ```
 
-### Simple Product Creation
-
-**POST `/api/products`:**
+### ProductData
 ```json
 {
-  "name": "Organic Tomatoes",
-  "en_name"?: "Tomatoes",
-  "macro_id"?: null,
-  "connect"?: {
-    "macro"?: [{
-      "calories"?: 18,
-      "protein"?: 0.9,
-      "fiber"?: 1.2,
-      "sugar"?: 2.6,
-      "saturated"?: null,
-      "trans"?: null,
-      "caffein"?: null
-    }],
-    "product_categories"?: [
-      {"str_value": "Vegetables", "type": "product_category"},
-      {"str_value": "Organic", "type": "certification"}
-    ]
-  }
+  "product_id": "string",
+  "name": "string", 
+  "en_name": "string | null",
+  "macro_id": "string | null",
+  "macro": "MacroData | null",
+  "ingredients": "IngredientData[] | null",
+  "reviews": "ReviewData[] | null",
+  "product_categories": "ProductCategoryData[] | null"
 }
 ```
 
-### Publication Update with Relations
-
-**PUT `/api/publications/:id`:**
+### MacroData
 ```json
 {
-  "title"?: "Updated Recipe Title",
-  "description"?: [...],
-  "note"?: [...],
-  "public"?: false,
-  "published"?: true,
-  "thumbnail"?: null,
-  "type_id"?: null,
-  "style_id"?: null,
-  "author_id"?: null,
-  "connect"?: {
-    "tags"?: [
-      {"category_id": "550e8400-e29b-41d4-a716-446655440004"}
-    ]
-  },
-  "set"?: {
-    "contents"?: [
-      {"content_id": "550e8400-e29b-41d4-a716-446655440005"}
-    ]
-  }
+  "macro_id": "string",
+  "calories": "number | null",
+  "protein": "number | null",
+  "fiber": "number | null",
+  "sugar": "number | null",
+  "saturated": "number | null",
+  "trans": "number | null",
+  "caffein": "number | null",
+  "products": "ProductData[] | null"
 }
 ```
 
-## Pagination Response Format
-
-**GET `/api/publications?skip=0&take=12`:**
+### PrepTimeData
 ```json
 {
-  "items": [...],
-  "total": 150,
-  "page": 1,
-  "limit": 12,
-  "totalPages": 13
+  "prep_time_id": "string",
+  "duration": "number",
+  "style_id": "string | null",
+  "style": "CategoryData | null",
+  "content_prep_times": "ContentPrepTimeData[] | null",
+  "segment_prep_time": "SegmentPrepTimeData[] | null"
 }
 ```
 
-## Error Response Format
-
-**Standard Error:**
+### UnitData
 ```json
 {
-  "error": "Validation failed: title is required"
+  "unit_id": "string",
+  "name": "string",
+  "ingredient_units": "IngredientUnitData[] | null"
 }
 ```
 
-**Authentication Error:**
+### SegmentData
 ```json
 {
-  "error": "Unauthorized access"
+  "segment_id": "string",
+  "title": "string | null",
+  "paragraph": "string",
+  "order_num": "number | null",
+  "content_segments": "ContentSegmentData[] | null",
+  "segment_prep_time": "SegmentPrepTimeData[] | null"
 }
-```
-
-**Rate Limit Error:**
-```json
-{
-  "error": "Too many failed login attempts. Please try again in 15 minutes."
-}
-```
-
-## Headers Required
-
-### Protected Endpoints
-```http
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-Content-Type: application/json
-```
-
-### Public Endpoints
-```http
-Content-Type: application/json
 ```

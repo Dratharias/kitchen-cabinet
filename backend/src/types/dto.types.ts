@@ -64,8 +64,8 @@ export type PublicationUpdateDto = Partial<PublicationCore & PublicationRelation
 };
 
 export type PublicationReadDto = Required<Omit<Publication, "reviews">> & {
-  averageScore?: number | 0;
-  averageCount?: number | 0;
+  averageRating?: number | 0;
+  reviewCount?: number | 0;
 };
 
 export type PublicationReadAllDto = {

@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "@solidjs/router";
 import { createSignal, createEffect } from "solid-js";
 import { isAuthenticated } from "../../services/authStore";
-import { useLogout } from "../../services/ToastProvider";
+import { useLogout } from "../ToastProvider";
 import NavButtons from "./NavButtons";
 import { useNavState } from "./NavContext";
 import NavbarMenu from "./NavbarMenu";

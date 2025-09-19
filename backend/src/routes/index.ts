@@ -13,7 +13,7 @@ import { PrepTimeController } from '../controllers/atoms/prepTimeController.js';
 import { SegmentController } from '../controllers/atoms/segmentController.js';
 import { UnitController } from '../controllers/atoms/unitsController.js';
 import { AppUserController } from '../controllers/organisms/appUserController.js';
-import { GenericController, GenericPaginatedController, ControllerMap } from '../types/crud.types.js';
+import { ControllerMap } from '../types/crud.types.js';
 import { PublicPublicationController } from '../controllers/molecules/publicPublicationController.js';
 import { OrchestratorController } from '../controllers/orchestratorController.js';
 
@@ -39,19 +39,6 @@ export default async function createRoutes(fastify: FastifyInstance) {
 
   registry.registerCustomRoute('POST', '/api/auth/login', loginHandler);
 
-  const protectedControllers: Record<string, GenericController<any, any, any> | GenericPaginatedController<any, any, any>> = {
-    ...baseControllers
-  };
-
-  Object.entries(protectedControllers).forEach(([name, controller]) => {
-    if (name === 'reviews') return;
-    
-    registry.registerCrud(controller, {
-      path: `/api/${name}`,
-      protected: true
-    });
-  });
-
   const reviewController = new ReviewController();
 
   registry.registerCrud(reviewController, {
@@ -60,16 +47,11 @@ export default async function createRoutes(fastify: FastifyInstance) {
     protected: false
   });
 
-  registry.registerCrud(reviewController, {
-    path: '/api/reviews',
-    methods: ['create', 'update', 'delete'],
-    protected: true
-  });
-
   registry.registerCrud(new PublicPublicationController(), {
-    path: '/api/public/publications',
-    methods: ['findAll', 'findById']
+    path: '/api/publications',
+    methods: ['findAll', 'findById'],
+    protected: false
   });
 
-  registry.registerOrchestratorRoute('/api/orchestrator', true);
+  registry.registerOrchestratorRoute('/api/publicate', true);
 }

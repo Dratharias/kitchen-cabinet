@@ -26,8 +26,8 @@ export interface PublicationPayload {
 }
 export interface Publication extends PublicationPayload {
   publication_id: UUID;
-  averageCount: number;
-  averageScore: number;
+  reviewCount: number;
+  averageRating: number;
   type?: Category;
   style?: Category;
   author?: Category;
