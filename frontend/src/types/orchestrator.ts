@@ -77,7 +77,7 @@ export interface ReviewCreate {
 }
 
 export interface OrchestratorRequest {
-  action: 'create';
+  action: 'create' | 'update';
   publications?: OrchestratorEntity<PublicationCreate>;
   contents?: OrchestratorEntity<ContentCreate>[];
   segments?: OrchestratorEntity<SegmentCreate>[];

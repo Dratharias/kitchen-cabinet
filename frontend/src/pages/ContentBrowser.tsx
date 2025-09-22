@@ -26,7 +26,7 @@ export interface MappedPublicationsData {
 export const mapToMappedPublicationData = (pub: Publication): MappedPublicationsData => {
   // Get first content for prep time and servings
   const firstContent = pub.contents?.[0];
-  
+
   // Extract tag names
   const tagNames = pub.tags?.map(t => t.str_value).filter(Boolean) || [];
 
@@ -36,8 +36,8 @@ export const mapToMappedPublicationData = (pub: Publication): MappedPublications
     minutes === 0
       ? "0 min"
       : minutes < 60
-      ? `${minutes} min`
-      : `${Math.floor(minutes / 60)}h${minutes % 60 ? ` ${minutes % 60}min` : ""}`;
+        ? `${minutes} min`
+        : `${Math.floor(minutes / 60)}h${minutes % 60 ? ` ${minutes % 60}min` : ""}`;
 
   return {
     publicationId: pub.publication_id,
@@ -60,25 +60,25 @@ export const mapToMappedPublicationData = (pub: Publication): MappedPublications
 };
 
 // Get types by category helper
-const getTypesByCategory = (category: "feeds" | "foods"): string[] => {
+const getTypesByCategory = (category: "feeds" | "reviews"): string[] => {
   // This should match your existing logic for filtering types
   // You may need to adjust this based on your actual type filtering logic
   if (category === "feeds") {
     return ["Review", "Article", "Guide"];
   }
-  if (category === "foods") {
+  if (category === "reviews") {
     return ["Recipe", "Ingredient"];
   }
   return [];
 };
 
-export const ContentBrowser: Component<{ feeds?: boolean; foods?: boolean }> = (props) => {
+export const ContentBrowser: Component<{ feeds?: boolean; reviews?: boolean }> = (props) => {
   const [page, setPage] = createSignal(1);
   const limit = 12;
 
   // Types by category
   const types = () =>
-    props.feeds ? getTypesByCategory("feeds") : props.foods ? getTypesByCategory("foods") : [];
+    props.feeds ? getTypesByCategory("feeds") : props.reviews ? getTypesByCategory("reviews") : [];
 
   // Reset page when category changes
   createEffect(() => setPage(1));
@@ -102,11 +102,11 @@ export const ContentBrowser: Component<{ feeds?: boolean; foods?: boolean }> = (
     }
   );
 
-  const category: "feeds" | "foods" = props.feeds
+  const category: "feeds" | "reviews" = props.feeds
     ? "feeds"
-    : props.foods
-    ? "foods"
-    : (() => { throw new Error("No category selected"); })();
+    : props.reviews
+      ? "reviews"
+      : (() => { throw new Error("No category selected"); })();
 
   // Create an array of mapped publications
   const mappedPublications = () => {
@@ -115,10 +115,13 @@ export const ContentBrowser: Component<{ feeds?: boolean; foods?: boolean }> = (
   };
 
   // Prepare cards for CardList
-  const cards = () => mappedPublications().map((pub) => ({
-    publication: pub,
-    pathPrefix: category,
-  }));
+  const cards = () => mappedPublications().map((pub) => (
+    console.log(pub),
+    {
+      publication: pub,
+      pathPrefix: category,
+    }
+  ));
 
   return (
     <div class="flex-1 flex flex-col w-full">

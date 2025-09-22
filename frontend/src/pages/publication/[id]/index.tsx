@@ -5,7 +5,7 @@ import type { Category, Content, Ingredient, Publication, Segment } from "@/type
 import { PublicationDetails as PublicationDetailsComponent } from "@/components/ui/organisms/PublicationDetails";
 
 export interface PublicationPageProps {
-  category?: "foods" | "feeds";
+  category?: "reviews" | "feeds";
 }
 
 export interface MappedPublicationData {
@@ -61,11 +61,11 @@ export const PublicationPage: Component<PublicationPageProps> = (props) => {
     const ingredients = content?.content_ingredients?.map((contentIng) => {
       const ing = contentIng.ingredient;
       if (!ing) return "";
-      
+
       const qty = ing.quantity ?? "";
       const units = ing.ingredient_units?.map(iu => iu.unit?.name).filter(Boolean).join(", ") ?? "";
       const productName = ing.product?.name ?? "";
-      
+
       return `${qty} ${units} ${productName}`.trim();
     }) || [];
 
@@ -88,14 +88,14 @@ export const PublicationPage: Component<PublicationPageProps> = (props) => {
       minutes === 0
         ? "0 min"
         : minutes < 60
-        ? `${minutes} min`
-        : `${Math.floor(minutes / 60)}h${minutes % 60 ? ` ${minutes % 60}min` : ""}`;
+          ? `${minutes} min`
+          : `${Math.floor(minutes / 60)}h${minutes % 60 ? ` ${minutes % 60}min` : ""}`;
 
     // Calculate average rating
     const reviews = pub.reviews || [];
     const validRatings = reviews.map(r => r.rating).filter((r): r is number => r !== null && r !== undefined);
-    const averageRating = validRatings.length > 0 
-      ? validRatings.reduce((sum, rating) => sum + rating, 0) / validRatings.length 
+    const averageRating = validRatings.length > 0
+      ? validRatings.reduce((sum, rating) => sum + rating, 0) / validRatings.length
       : null;
 
     return {
