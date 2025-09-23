@@ -1,12 +1,15 @@
 import { useLocation, useNavigate } from "@solidjs/router";
 import { createSignal, createEffect } from "solid-js";
-import { isAuthenticated } from "../../services/authStore";
-import { useLogout } from "../ToastProvider";
 import NavButtons from "./NavButtons";
 import { useNavState } from "./NavContext";
 import NavbarMenu from "./NavbarMenu";
-import type { MenuItem } from "../../types/menu";
 import ClickOutsideContainer from "../ui/utilities/ClickOutsideContainer";
+
+export interface MenuItem {
+  label: string | (() => string);
+  action: () => void;
+}
+
 const Navbar = () => {
   const { searchOpen, toggleSearch } = useNavState();
   const [isEditor] = createSignal(true);
@@ -18,7 +21,6 @@ const Navbar = () => {
   const location = useLocation();
   const currentId = location.pathname.split("/").pop() || "";
   const navigate = useNavigate();
-  const logout = useLogout();
 
   // Persist navigation
   createEffect(() => {
@@ -45,17 +47,8 @@ const Navbar = () => {
     return false;
   };
 
+  // Items communs (hors login/logout, gérés par NavbarMenu)
   const commonItems: MenuItem[] = [
-    {
-      label: () => (isAuthenticated() ? "Logout" : "Login"),
-      action: () => {
-        if (isAuthenticated()) {
-          logout();
-        } else {
-          navigate("/login", { replace: true });
-        }
-      },
-    },
     { label: "Create", action: () => console.log("Create", currentId) },
     { label: "Review", action: () => activate("review") },
   ];
@@ -70,7 +63,7 @@ const Navbar = () => {
   const menuItems = isEditor() ? [...commonItems, ...editorItems] : commonItems;
 
   return (
-    <nav class={`w-full`}>
+    <nav class="w-full">
       <div class="md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto p-2 sm:px-6 lg:px-8">
         {/* Primary buttons */}
         <div class="flex items-center text-nowrap justify-evenly h-16 space-x-2 text-center">
@@ -90,17 +83,13 @@ const Navbar = () => {
 
         {/* Menu toggle */}
         <ClickOutsideContainer onClickOutside={() => setOpen(false)}>
-          {/* bouton hamburger */}
           <NavButtons.HamburgerButton
             onClick={() => setOpen(!open())}
             open={open()}
-            class={`fixed right-4 top-4`}
+            class="fixed right-4 top-4"
           />
-
           {open() && (
-            <div
-              class={`fixed right-6 top-16 mt-2 w-56 z-50 animate-fade-in `}
-            >
+            <div class="fixed right-6 top-16 mt-2 w-56 z-50 animate-fade-in">
               <NavbarMenu items={menuItems} onClose={() => setOpen(false)} />
             </div>
           )}

@@ -4,10 +4,9 @@ import Button from "../atoms/Button";
 import { Span } from "../atoms/Span";
 import Image from "../atoms/Image";
 import Stars from "./Stars";
-import { MappedPublicationData } from "../../../shared-types/publication";
 
 export interface CardProps {
-  publication: MappedPublicationData;
+  publication: any;
   pathPrefix: "feeds" | "foods";
 }
 
@@ -18,7 +17,6 @@ const Card: Component<CardProps> = (props) => {
     navigate(`/${props.pathPrefix}/${props.publication.publicationId}`);
   };
 
-  console.log(props.publication)
 
   return (
     <Button

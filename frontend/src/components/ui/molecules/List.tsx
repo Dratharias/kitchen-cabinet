@@ -1,7 +1,7 @@
 import { JSX, ParentProps, For, createMemo } from "solid-js";
-import { Span } from "./Span";
-import Button from "./Button";
-import { Checklist } from "./Checklist";
+import Button from "../atoms/Button";
+import { Checklist } from "../atoms/Checklist";
+import { Span } from "../atoms/Span";
 
 export type ListItem = {
   id?: string;

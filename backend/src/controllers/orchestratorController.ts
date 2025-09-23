@@ -1,351 +1,353 @@
 import { v4 as uuidv4 } from "uuid";
-import { ControllerMap, GenericController } from "../types/crud.types.js";
-import { OrchestratorRequest, OrchestratorResponse } from "../types/orchestrator.types.js";
 import { prisma } from "../config.js";
+import {
+  OrchestratorRequest,
+  OrchestratorResponse,
+} from "../types/orchestrator.types.js";
+import { PrismaClient } from "@prisma/client";
 
 export class OrchestratorController {
-  private junctionOrder = [
-    "contentIngredients",
-    "contentPrepTimes",
-    "contentSegments",
-    "segmentPrepTimes",
-    "ingredientUnits",
-    "productCategories",
-    "publicationTags"
-  ];
+  public async processRequest(
+    request: OrchestratorRequest
+  ): Promise<OrchestratorResponse> {
+    const { action, payload } = request;
 
-  private junctionTableMap: Record<string, string> = {
-    "contentIngredients": "content_ingredient",
-    "contentPrepTimes": "content_prep_time",
-    "contentSegments": "content_segment",
-    "segmentPrepTimes": "segment_prep_time",
-    "ingredientUnits": "ingredient_unit",
-    "productCategories": "product_category",
-    "publicationTags": "publication_tag"
-  };
+    if (action === "create") {
+      try {
+        const results = await prisma.$transaction(async (tx) => {
+          const resultsMap: any = {};
 
-  private idFieldMap: Record<keyof ControllerMap, string> = {
-    users: 'user_id',
-    categories: 'category_id',
-    products: 'product_id',
-    ingredients: 'ingredient_id',
-    macros: 'macro_id',
-    units: 'unit_id',
-    prepTimes: 'prep_time_id',
-    segments: 'segment_id',
-    contents: 'content_id',
-    publications: 'publication_id',
-    reviews: 'review_id',
-  };
+          for (const key in payload) {
+            const publicationData = payload[key];
+            const processedResult = await this.processPublication(
+              publicationData,
+              tx as any
+            );
+            resultsMap[key] = processedResult;
+          }
+          return resultsMap;
+        });
 
-  constructor(private controllers: ControllerMap) {}
-
-  private getIdField(entityType: keyof ControllerMap): string {
-    const idField = this.idFieldMap[entityType];
-    if (!idField) {
-      throw new Error(`Unknown entity type: ${entityType}. ID field not found.`);
-    }
-    return idField;
-  }
-
-  async execute(request: OrchestratorRequest): Promise<OrchestratorResponse> {
-    try {
-      const results: Record<string, any[]> = {};
-      const entityMap: Record<string, Record<string, string>> = {};
-
-      // Phase 1: traiter toutes les entités simples sauf junctions
-      for (const [entityType, payloads] of Object.entries(request)) {
-        if (
-          entityType === "action" ||
-          !payloads ||
-          this.junctionOrder.includes(entityType) ||
-          (Array.isArray(payloads) && payloads.length === 0)
-        ) {
-          continue;
-        }
-
-        await this.processEntity(entityType, payloads, request.action, results, entityMap);
+        return { success: true, results };
+      } catch (error: any) {
+        console.error("Orchestrator transaction failed:", error);
+        return { success: false, error: error.message };
       }
-
-      // Phase 2: gérer les tables de jointure
-      if (request.action === "create") {
-        await this.processJunctions(entityMap);
-      }
-
-      return { success: true, results };
-    } catch (error) {
+    } else {
       return {
         success: false,
-        error: error instanceof Error ? error.message : "Unknown error occurred"
+        error: `Action '${action}' not supported yet.`,
       };
     }
   }
 
-  private async processEntity(
-    entityType: string,
-    payloads: any,
-    action: string,
-    results: Record<string, any[]>,
-    entityMap: Record<string, Record<string, string>>
+  private async processPublication(
+    publicationData: any,
+    tx: PrismaClient
+  ): Promise<any> {
+    // Process Categories (Type, Style, Author)
+    const typeId = publicationData.type?.data?.str_value
+      ? await this.processCategory(publicationData.type, "Type", tx)
+      : null;
+    const styleId = publicationData.style?.data?.str_value
+      ? await this.processCategory(publicationData.style, "Style", tx)
+      : null;
+    const authorId = publicationData.author?.data?.str_value
+      ? await this.processCategory(publicationData.author, "Author", tx)
+      : null;
+
+    // Create or update Publication
+    const publicationId = publicationData.publication_id || uuidv4();
+    const publication = await tx.publication.upsert({
+      where: { publication_id: publicationId },
+      update: {
+        title: publicationData.title,
+        description: publicationData.description,
+        note: publicationData.note,
+        thumbnail: publicationData.thumbnail,
+        type_id: typeId,
+        style_id: styleId,
+        author_id: authorId,
+      },
+      create: {
+        publication_id: publicationId,
+        title: publicationData.title,
+        description: publicationData.description,
+        note: publicationData.note,
+        thumbnail: publicationData.thumbnail,
+        type_id: typeId,
+        style_id: styleId,
+        author_id: authorId,
+        public: true,
+        published: true,
+      },
+    });
+
+    // Process Tags
+    if (publicationData.tags) {
+      for (const tagPayload of publicationData.tags) {
+        const categoryId = await this.processCategory(
+          tagPayload,
+          "Tag",
+          tx
+        );
+        await tx.publication_tag.create({
+          data: {
+            publication_id: publication.publication_id,
+            category_id: categoryId,
+          },
+        });
+      }
+    }
+
+    // Process Contents
+    if (publicationData.contents) {
+      for (const contentPayload of publicationData.contents) {
+        await this.processContent(contentPayload, publication.publication_id, tx);
+      }
+    }
+
+    return publication;
+  }
+
+  private async processContent(
+    contentPayload: any,
+    publicationId: string,
+    tx: PrismaClient
   ): Promise<void> {
-    const controller = this.controllers[entityType as keyof ControllerMap];
-    if (!controller) {
-      throw new Error(`Controller not found for entity: ${entityType}`);
+    const contentId = contentPayload.content_id || uuidv4();
+    const content = await tx.content.upsert({
+      where: { content_id: contentId },
+      update: {
+        total_prep_time: contentPayload.data.total_prep_time,
+        servings: contentPayload.data.servings,
+        publication_id: publicationId,
+      },
+      create: {
+        content_id: contentId,
+        total_prep_time: contentPayload.data.total_prep_time,
+        servings: contentPayload.data.servings,
+        publication_id: publicationId,
+      },
+    });
+
+    // Process Segments
+    if (contentPayload.content_segments) {
+      for (const segmentPayload of contentPayload.content_segments) {
+        const segmentId = await this.processSegment(
+          segmentPayload.segment,
+          tx
+        );
+        await tx.content_segment.create({
+          data: {
+            content_id: content.content_id,
+            segment_id: segmentId,
+            position: segmentPayload.position,
+          },
+        });
+      }
     }
 
-    results[entityType] = [];
-    entityMap[entityType] = {};
+    // Process Ingredients
+    if (contentPayload.content_ingredients) {
+      for (const ingredientPayload of contentPayload.content_ingredients) {
+        const ingredientId = await this.processIngredient(
+          ingredientPayload,
+          tx
+        );
+        await tx.content_ingredient.create({
+          data: {
+            content_id: content.content_id,
+            ingredient_id: ingredientId,
+          },
+        });
+      }
+    }
 
-    const payloadArray = Array.isArray(payloads) ? payloads : [payloads];
+    // Process PrepTimes
+    if (contentPayload.content_prep_times) {
+      for (const prepTimePayload of contentPayload.content_prep_times) {
+        await this.processPrepTime(
+          prepTimePayload,
+          tx
+        );
+      }
+    }
+  }
 
-    for (const payload of payloadArray) {
-      let result: any;
+  private async processCategory(
+    categoryPayload: any,
+    type: string,
+    tx: PrismaClient
+  ): Promise<string> {
+    const { str_value } = categoryPayload.data;
+    const existingCategory = await tx.category.findUnique({
+      where: { str_value_type: { str_value, type } },
+    });
 
-      switch (action) {
-      case "create": {
-        let createData = { ...payload.data };
+    if (existingCategory) {
+      return existingCategory.category_id;
+    }
 
-        if (entityType === "review") {
-          // on conserve les IDs fournis
-          result = await controller.create(createData);
-        } else if (entityType === "product") {
-          // vérifier existence par nom insensible à la casse
-          const existing = await prisma.product.findFirst({
-            where: { name: { equals: createData.name, mode: "insensitive" } }
-          });
+    const newCategoryId = uuidv4();
+    const newCategory = await tx.category.create({
+      data: {
+        category_id: newCategoryId,
+        str_value,
+        type,
+      },
+    });
+    return newCategory.category_id;
+  }
 
-          result = existing ? existing : await controller.create({ ...createData, product_id: uuidv4() });
-        } else if (entityType === "category") {
-          const existing = await prisma.category.findFirst({
-            where: {
-              str_value: { equals: createData.str_value, mode: "insensitive" },
-              type: { equals: createData.type, mode: "insensitive" }
+  private async processSegment(
+    segmentPayload: any,
+    tx: PrismaClient
+  ): Promise<string> {
+    const { paragraph } = segmentPayload.data;
+    const existingSegment = await tx.segment.findUnique({
+      where: { paragraph },
+    });
+
+    if (existingSegment) {
+      return existingSegment.segment_id;
+    }
+
+    const newSegmentId = uuidv4();
+    const newSegment = await tx.segment.create({
+      data: {
+        segment_id: newSegmentId,
+        paragraph,
+        title: segmentPayload.data.title,
+        order_num: segmentPayload.data.order_num,
+      },
+    });
+    return newSegment.segment_id;
+  }
+
+  private async processProduct(
+    productPayload: any,
+    tx: PrismaClient
+  ): Promise<string> {
+    const { name } = productPayload.data;
+    const existingProduct = await tx.product.findUnique({
+      where: { name },
+    });
+
+    if (existingProduct) {
+      return existingProduct.product_id;
+    }
+
+    const newProductId = uuidv4();
+    const newProduct = await tx.product.create({
+      data: {
+        product_id: newProductId,
+        name,
+        en_name: productPayload.data.en_name,
+        macro: productPayload.data.macro
+          ? {
+              create: {
+                macro_id: uuidv4(),
+                calories: productPayload.data.macro.calories,
+                protein: productPayload.data.macro.protein,
+              },
             }
-          });
-
-          result = existing ? existing : await controller.create({ ...createData, unit_id: uuidv4() });
-        } else if (entityType === "unit") {
-          const existing = await prisma.unit.findFirst({
-            where: {
-              name: { equals: createData.name, mode: "insensitive" },
-            }
-          });
-
-          result = existing ? existing : await controller.create({ ...createData, unit_id: uuidv4() });
-        } else {
-          // logique standard avec nouvel id
-          const newId = uuidv4();
-          // remplacer le champ id spécifique (comme avant)
-          result = await controller.create({ ...createData, [this.getIdField(entityType as keyof ControllerMap)]: newId });
-
-          if (payload.id) {
-            entityMap[entityType][payload.id] = newId;
-          }
-        }
-        break;
-      }
-
-
-        case "read":
-          if (!payload.id) throw new Error(`ID required for read action on ${entityType}`);
-          result = await controller.findById(payload.id);
-          break;
-
-        case "readAll":
-          result = await controller.findAll(payload.data as any);
-          break;
-
-          case "update": {
-            const payloadData = payload.data;
-
-            if (!payload.id) {
-              // Handle upsert logic for entities with unique fields
-              if (entityType === "product") {
-                result = await prisma.product.upsert({
-                  where: {
-                    name: payloadData.name.toLowerCase()
-                  },
-                  update: payloadData,
-                  create: {
-                    ...payloadData,
-                    product_id: uuidv4()
-                  }
-                });
-              } else if (entityType === "category") {
-                result = await prisma.category.upsert({
-                  where: {
-                    str_value_type: { // Make sure this is a unique composite index in your schema
-                      str_value: payloadData.str_value.toLowerCase(),
-                      type: payloadData.type.toLowerCase()
-                    }
-                  },
-                  update: payloadData,
-                  create: {
-                    ...payloadData,
-                    category_id: uuidv4()
-                  }
-                });
-              } else if (entityType === "unit") {
-                result = await prisma.unit.upsert({
-                  where: {
-                    name: payloadData.name.toLowerCase()
-                  },
-                  update: payloadData,
-                  create: {
-                    ...payloadData,
-                    unit_id: uuidv4()
-                  }
-                });
-              } else {
-                // Standard update for entities that require an ID
-                throw new Error(`ID is required for the update action on ${entityType}`);
-              }
-            } else {
-              // Standard update using the provided ID
-              const controller = this.controllers[entityType as keyof ControllerMap];
-              result = await controller.update(payload.id, payloadData);
-            }
-            break;
-          }
-
-
-        case "delete":
-          if (!payload.id) throw new Error(`ID required for delete action on ${entityType}`);
-          result = await controller.delete(payload.id);
-          break;
-
-        default:
-          throw new Error(`Unknown action: ${action}`);
-      }
-
-      results[entityType].push(result);
-    }
+          : undefined,
+      },
+    });
+    return newProduct.product_id;
   }
 
-  private async processJunctions(entityMap: Record<string, Record<string, string>>): Promise<void> {
-    for (const junctionType of this.junctionOrder) {
-      const tableName = this.junctionTableMap[junctionType];
-      if (!tableName) continue;
+  private async processIngredient(
+    ingredientPayload: any,
+    tx: PrismaClient
+  ): Promise<string> {
+    // Process nested product
+    const productId = await this.processProduct(
+      ingredientPayload.product,
+      tx
+    );
 
-      switch (junctionType) {
-        case "contentIngredients":
-          await this.insertContentIngredients(entityMap);
-          break;
-        case "contentPrepTimes":
-          await this.insertContentPrepTimes(entityMap);
-          break;
-        case "contentSegments":
-          await this.insertContentSegments(entityMap);
-          break;
-        case "segmentPrepTimes":
-          await this.insertSegmentPrepTimes(entityMap);
-          break;
-        case "ingredientUnits":
-          await this.insertIngredientUnits(entityMap);
-          break;
-        case "productCategories":
-          await this.insertProductCategories(entityMap);
-          break;
-        case "publicationTags":
-          await this.insertPublicationTags(entityMap);
-          break;
-      }
-    }
-  }
+    const ingredientId = ingredientPayload.ingredient_id || uuidv4();
+    const ingredient = await tx.ingredient.upsert({
+      where: { ingredient_id: ingredientId },
+      update: {
+        quantity: ingredientPayload.data.quantity,
+        multiply_factor: ingredientPayload.data.multiply_factor,
+        product_id: productId,
+      },
+      create: {
+        ingredient_id: ingredientId,
+        quantity: ingredientPayload.data.quantity,
+        multiply_factor: ingredientPayload.data.multiply_factor,
+        product_id: productId,
+      },
+    });
 
-  private async insertContentIngredients(entityMap: Record<string, Record<string, string>>): Promise<void> {
-    const contentIds = Object.values(entityMap.contents || {});
-    const ingredientIds = Object.values(entityMap.ingredients || {});
-
-    for (const contentId of contentIds) {
-      for (const ingredientId of ingredientIds) {
-        await prisma.content_ingredient.create({
-          data: { content_id: contentId, ingredient_id: ingredientId }
+    // Process nested units
+    if (ingredientPayload.ingredient_units) {
+      for (const unitPayload of ingredientPayload.ingredient_units) {
+        const unitId = await this.processUnit(
+          unitPayload,
+          tx
+        );
+        await tx.ingredient_unit.create({
+          data: {
+            ingredient_id: ingredient.ingredient_id,
+            unit_id: unitId,
+          },
         });
       }
     }
+
+    return ingredient.ingredient_id;
   }
 
-  private async insertContentPrepTimes(entityMap: Record<string, Record<string, string>>): Promise<void> {
-    const contentIds = Object.values(entityMap.contents || {});
-    const prepTimeIds = Object.values(entityMap.prepTimes || {});
+  private async processUnit(
+    unitPayload: any,
+    tx: PrismaClient
+  ): Promise<string> {
+    const { name } = unitPayload.data;
+    const existingUnit = await tx.unit.findUnique({
+      where: { name },
+    });
 
-    for (const contentId of contentIds) {
-      for (const prepTimeId of prepTimeIds) {
-        await prisma.content_prep_time.create({
-          data: { content_id: contentId, prep_time_id: prepTimeId }
-        });
-      }
+    if (existingUnit) {
+      return existingUnit.unit_id;
     }
+
+    const newUnitId = uuidv4();
+    const newUnit = await tx.unit.create({
+      data: {
+        unit_id: newUnitId,
+        name,
+      },
+    });
+    return newUnit.unit_id;
   }
 
-  private async insertContentSegments(entityMap: Record<string, Record<string, string>>): Promise<void> {
-    const contentIds = Object.values(entityMap.contents || {});
-    const segmentIds = Object.values(entityMap.segments || {});
+  private async processPrepTime(
+    prepTimePayload: any,
+    tx: PrismaClient
+  ): Promise<string> {
+    const styleId = prepTimePayload.style?.data?.str_value
+      ? await this.processCategory(prepTimePayload.style, "Cook", tx)
+      : null;
+      
+    const prepTimeId = prepTimePayload.prep_time_id || uuidv4();
+    const prepTime = await tx.prep_time.upsert({
+      where: { prep_time_id: prepTimeId },
+      update: {
+        duration: prepTimePayload.data.duration,
+        style_id: styleId,
+      },
+      create: {
+        prep_time_id: prepTimeId,
+        duration: prepTimePayload.data.duration,
+        style_id: styleId,
+      },
+    });
 
-    for (const contentId of contentIds) {
-      for (const segmentId of segmentIds) {
-        await prisma.content_segment.create({
-          data: { content_id: contentId, segment_id: segmentId, position: null }
-        });
-      }
-    }
-  }
-
-  private async insertSegmentPrepTimes(entityMap: Record<string, Record<string, string>>): Promise<void> {
-    const segmentIds = Object.values(entityMap.segments || {});
-    const prepTimeIds = Object.values(entityMap.prepTimes || {});
-
-    for (const segmentId of segmentIds) {
-      for (const prepTimeId of prepTimeIds) {
-        await prisma.segment_prep_time.create({
-          data: { segment_id: segmentId, prep_time_id: prepTimeId }
-        });
-      }
-    }
-  }
-
-  private async insertIngredientUnits(entityMap: Record<string, Record<string, string>>): Promise<void> {
-    const ingredientIds = Object.values(entityMap.ingredients || {});
-    const unitIds = Object.values(entityMap.units || {});
-
-    for (const ingredientId of ingredientIds) {
-      for (const unitId of unitIds) {
-        await prisma.ingredient_unit.create({
-          data: { ingredient_id: ingredientId, unit_id: unitId }
-        });
-      }
-    }
-  }
-
-  private async insertProductCategories(entityMap: Record<string, Record<string, string>>): Promise<void> {
-    const productIds = Object.values(entityMap.products || {});
-    const categoryIds = Object.values(entityMap.categories || {});
-
-    for (const productId of productIds) {
-      for (const categoryId of categoryIds) {
-        await prisma.product_category.create({
-          data: { product_id: productId, category_id: categoryId }
-        });
-      }
-    }
-  }
-
-  private async insertPublicationTags(entityMap: Record<string, Record<string, string>>): Promise<void> {
-    const publicationIds = Object.values(entityMap.publications || {});
-    const categoryIds = Object.values(entityMap.categories || {});
-
-    for (const publicationId of publicationIds) {
-      for (const categoryId of categoryIds) {
-        await prisma.publication_tag.create({
-          data: { publication_id: publicationId, category_id: categoryId }
-        });
-      }
-    }
-  }
-
-  async createEntity<T extends keyof ControllerMap>(entityName: T, payload: any): Promise<any> {
-    const controller = this.controllers[entityName] as GenericController<any, any, any>;
-    return await controller.create(payload);
+    return prepTime.prep_time_id;
   }
 }

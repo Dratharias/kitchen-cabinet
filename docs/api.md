@@ -1,10 +1,19 @@
 # API Routes Documentation
 
-## Authentication
+This document outlines the API endpoints for the **kitchen-cabinet** application. The API is divided into public, protected, and orchestrator routes.
 
-### POST /api/auth/login
+---
+
+## 1. Authentication
+
+All protected routes require a Bearer token.
+
+### `POST /api/auth/login`
+
+Authenticate a user.
 
 **Payload:**
+
 ```json
 {
   "username": "string",
@@ -13,6 +22,7 @@
 ```
 
 **Response:**
+
 ```json
 {
   "username": "string",
@@ -21,395 +31,276 @@
 }
 ```
 
-**Error Responses:**
-- `400`: Missing credentials
-- `401`: Invalid username or password
-- `429`: Too many attempts, get lost!
-- `500`: Internal server error
+**Error Codes:**
+
+* 400: Missing credentials
+* 401: Invalid username or password
+* 429: Too many attempts
+* 500: Internal server error
 
 ---
 
-## Reviews (Public)
+## 2. Public Routes
 
-### GET /api/reviews
+Accessible without authentication.
 
-**Query Parameters:**
-```
-?page=number&limit=number&sortBy=string&order=asc|desc&filter=object
-```
+### `GET /api/publications`
 
-**Response:**
-```json
-[
-  {
-    "review_id": "string",
-    "product_id": "string | null",
-    "publication_id": "string | null", 
-    "rating": "number | null",
-    "comment": "string[]",
-    "description": "string[]",
-    "buy_again": "Y" | "N" | "M" | "D" | null,
-    "date_review": "string",
-    "product": "ProductData | null",
-    "publication": "PublicationData | null"
-  }
-]
-```
-
-### GET /api/reviews/:id
-
-**Response:**
-```json
-{
-  "review_id": "string",
-  "product_id": "string | null",
-  "publication_id": "string | null",
-  "rating": "number | null", 
-  "comment": "string[]",
-  "description": "string[]",
-  "buy_again": "Y" | "N" | "M" | "D" | null,
-  "date_review": "string",
-  "product": "ProductData | null",
-  "publication": "PublicationData | null"
-}
-```
-
-**Error Response:**
-- `404`: Not found
-
----
-
-## Publications (Public)
-
-### GET /api/publications
+Retrieve a paginated list of public publications.
 
 **Query Parameters:**
+
 ```
-?page=number&limit=number&sortBy=string&order=asc|desc&filter=object
+?page=number
+&limit=number
+&sortBy=string
+&order=asc|desc
+&filter=object
 ```
 
 **Response:**
+
 ```json
 {
   "items": [
     {
       "publication_id": "string",
       "title": "string",
-      "description": "string[]",
-      "note": "string[]",
-      "public": "boolean",
-      "published": "boolean",
-      "thumbnail": "string | null",
-      "type_id": "string | null",
-      "style_id": "string | null",
-      "author_id": "string | null",
-      "type": "CategoryCore | null",
-      "style": "CategoryCore | null", 
-      "author": "CategoryCore | null",
-      "contents": "ContentData[] | null",
-      "ingredientsRef": "IngredientData[] | null",
-      "reviews": "ReviewData[] | null",
-      "tags": "PublicationTagData[] | null"
-    }
-  ],
-  "total": "number",
-  "page": "number",
-  "limit": "number",
-  "totalPages": "number"
-}
-```
-
-### GET /api/publications/:id
-
-**Response:**
-```json
-{
-  "publication_id": "string",
-  "title": "string", 
-  "description": "string[]",
-  "note": "string[]",
-  "public": "boolean",
-  "published": "boolean",
-  "thumbnail": "string | null",
-  "type_id": "string | null",
-  "style_id": "string | null",
-  "author_id": "string | null",
-  "type": "CategoryCore | null",
-  "style": "CategoryCore | null",
-  "author": "CategoryCore | null", 
-  "contents": "ContentData[] | null",
-  "ingredientsRef": "IngredientData[] | null",
-  "reviews": "ReviewData[] | null",
-  "tags": "PublicationTagData[] | null"
-}
-```
-
-**Error Response:**
-- `404`: Not found
-
----
-
-## Orchestrator (Protected)
-
-### POST /api/publicate
-
-**Authentication Required:** Bearer token
-
-**Payload Examples:**
-
-#### Create Publication with Related Entities
-```json
-{
-  "action": "create",
-  "publications": {
-    "id?": "temp-publication-1",
-    "data": {
-      "title": "string",
       "description": ["string"],
-      "note": ["string"], 
-      "public": "boolean",
-      "published": "boolean",
-      "thumbnail": "string | null",
-      "type_id": "string | null",
-      "style_id": "string | null",
-      "author_id": "string | null"
-    }
-  },
-  "contents": [
-    {
-      "id?": "temp-content-1",
-      "data": {
-        "publication_id": "string",
-        "total_prep_time": "number",
-        "servings": "number | null"
-      }
-    }
-  ],
-  "segments": [
-    {
-      "id?": "temp-segment-1", 
-      "data": {
-        "title": "string | null",
-        "paragraph": "string",
-        "order_num": "number | null"
-      }
-    }
-  ],
-  "ingredients": [
-    {
-      "id?": "temp-ingredient-1",
-      "data": {
-        "quantity": "number | null",
-        "is_recipe_id": "string | null",
-        "product_id": "string",
-        "multiply_factor": "number"
-      }
-    }
-  ],
-  "products": [
-    {
-      "id?": "temp-product-1",
-      "data": {
-        "name": "string",
-        "en_name": "string | null",
-        "macro_id": "string | null"
-      }
-    }
-  ],
-  "categories": [
-    {
-      "id?": "temp-categorie-1",
-      "data": {
+      "reviewCount": number,
+      "reviewAverageScore": number,
+      "type": {
         "str_value": "string",
         "type": "string"
       }
     }
   ],
-  "units": [
-    {
-      "id?": "temp-unit-1",
-      "data": {
-        "name": "string"
-      }
-    }
-  ],
-  "prepTimes": [
-    {
-      "id?": "temp-preptime-1",
-      "data": {
-        "duration": "number",
-        "style_id": "string | null"
-      }
-    }
-  ],
-  "macros": [
-    {
-      "id?": "temp-macro-1",
-      "data": {
-        "calories": "number | null",
-        "protein": "number | null",
-        "fiber": "number | null",
-        "sugar": "number | null",
-        "saturated": "number | null",
-        "trans": "number | null",
-        "caffein": "number | null"
-      }
-    }
-  ]
+  "total": number,
+  "page": number,
+  "limit": number,
+  "totalPages": number
 }
 ```
 
-#### Create Review for Product
-```json
-{
-  "action": "create",
-  "reviews": {
-    "id?": "temp-review-1",
-    "data": {
-      "rating": "number | null",
-      "comment": ["string"],
-      "description": ["string"],
-      "buy_again": "Y" | "N" | "M" | "D" | null,
-      "date_review": "string",
-      "product_id": "string",
-      "publication_id": null
-    }
-  },
-  "products": [
-    {
-      "id?": "temp-product",
-      "data": {
-        "name": "string",
-        "en_name": "string | null",
-        "macro_id": "string | null"
-      }
-    }
-  ]
-}
-```
+### `GET /api/publications/:id`
 
-#### Create Review for Publication
-```json
-{
-  "action": "create",
-  "reviews": {
-    "id?": "temp-review-1",
-    "data": {
-      "rating": "number | null",
-      "comment": ["string"], 
-      "description": ["string"],
-      "buy_again": "Y" | "N" | "M" | "D" | null,
-      "date_review": "string",
-      "product_id": null,
-      "publication_id": "string"
-    }
-  },
-  "publications": {
-    "id?": "temp-publication",
-    "data": {
-      "title": "string",
-      "description": ["string"],
-      "note": ["string"],
-      "public": "boolean",
-      "published": "boolean",
-      "thumbnail": "string | null",
-      "type_id": "string | null",
-      "style_id": "string | null",
-      "author_id": "string | null"
-    }
-  }
-}
-```
+Retrieve a single public publication by ID.
 
 **Response:**
+
 ```json
 {
-  "success": true,
-  "results": {
-    "publications": ["Publication[]"],
-    "contents": ["Content[]"],
-    "segments": ["Segment[]"],
-    "ingredients": ["Ingredient[]"],
-    "products": ["Product[]"],
-    "categories": ["Category[]"],
-    "units": ["Unit[]"],
-    "prepTimes": ["PrepTime[]"],
-    "reviews": ["Review[]"],
-    "macros": ["Macro[]"],
-    "users": ["User[]"]
-  }
+  "publication_id": "string",
+  "title": "string",
+  "description": ["string"],
+  "note": ["string"],
+  "contents": [
+    {
+      "content_id": "string",
+      "servings": number,
+      "total_prep_time": number,
+      "content_segments": "ContentSegment[]",
+      "content_ingredients": "ContentIngredient[]",
+      "content_prep_times": "ContentPrepTime[]"
+    }
+  ],
+  "tags": "Category[]",
+  "type": "Category",
+  "style": "Category",
+  "author": "Category"
 }
 ```
-
-**Error Response:**
-```json
-{
-  "success": false,
-  "error": "string"
-}
-```
-
-**Error Responses:**
-- `401`: Various funny messages (Unauthorized)
-- `429`: Too many attempts, get lost!
 
 ---
 
-## Data Types Reference
+## 3. Protected CRUD Routes
 
-### CategoryCore
+Require a Bearer token.
+
+### `POST /api/private/publications`
+
+Create a new publication.
+
+**Payload:**
+
 ```json
 {
-  "category_id": "string | undefined",
-  "str_value": "string",
-  "type": "string"
+  "title": "string",
+  "description": ["string"],
+  "note": ["string"],
+  "public": boolean,
+  "published": boolean,
+  "thumbnail": "string | null"
 }
 ```
 
-### ContentData
+### `GET /api/private/publications/:id`
+
+Retrieve a single publication by ID (admin/owner only).
+
+### `PUT /api/private/publications/:id`
+
+Update a publication. Only provided fields will be updated.
+
+**Payload:**
+
+```json
+{
+  "title": "string",
+  "note": ["string"]
+}
+```
+
+### `DELETE /api/private/publications/:id`
+
+Delete a publication by ID.
+
+---
+
+## 4. Orchestrator Route
+
+Single endpoint for nested creation with upsert.
+
+### `POST /api/publicate`
+
+**Exhaustive Publication Creation Example:**
+
+```json
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Exhaustive Recipe Example",
+      "description": ["A complete example showing all nested relationships in a single request."],
+      "note": ["This is for testing all the nested joins."],
+      "public": true,
+      "published": true,
+      "type": { "data": { "str_value": "Recipe", "type": "Type" } },
+      "style": { "data": { "str_value": "Cocktail", "type": "Style" } },
+      "author": { "data": { "str_value": "Jane Doe", "type": "Author" } },
+      "contents": [
+        {
+          "data": { "total_prep_time": 10, "servings": 4 },
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": { "paragraph": "This is a segment with a prep time.", "title": "Prep Segment" },
+                "segment_prep_time": [
+                  {
+                    "prep_time": {
+                      "data": { "duration": 5 },
+                      "style": { "data": { "str_value": "Prep", "type": "PrepTimeStyle" } }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "content_ingredients": [
+            {
+              "data": { "quantity": 1, "multiply_factor": 1.0 },
+              "product": {
+                "data": {
+                  "name": "Super Product",
+                  "en_name": "Super Product",
+                  "macro": { "data": { "calories": 200, "protein": 10 } }
+                },
+                "product_categories": [
+                  { "category": { "data": { "str_value": "Healthy", "type": "ProductCategory" } } }
+                ]
+              },
+              "ingredient_units": [
+                { "unit": { "data": { "name": "grams" } } }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            { "prep_time": { "data": { "duration": 5 } } }
+          ]
+        }
+      ],
+      "tags": [
+        { "data": { "str_value": "Fast", "type": "Tag" } },
+        { "data": { "str_value": "Easy", "type": "Tag" } }
+      ]
+    }
+  }
+}
+```
+
+---
+
+## 5. Data Models
+
+### Publication
+
+```json
+{
+  "publication_id": "string",
+  "title": "string",
+  "description": ["string"],
+  "note": ["string"],
+  "public": boolean,
+  "published": boolean,
+  "thumbnail": "string | null",
+  "type_id": "string | null",
+  "style_id": "string | null",
+  "author_id": "string | null",
+  "type": "Category | null",
+  "style": "Category | null",
+  "author": "Category | null",
+  "contents": "Content[] | null",
+  "publication_tags": "PublicationTag[] | null"
+}
+```
+
+### Content
+
 ```json
 {
   "content_id": "string",
-  "publication_id": "string", 
-  "total_prep_time": "number",
+  "publication_id": "string",
+  "total_prep_time": "number | null",
   "servings": "number | null",
-  "publication": "PublicationData | null",
-  "content_segments": "ContentSegmentData[] | null",
-  "content_ingredients": "ContentIngredientData[] | null",
-  "content_prep_times": "ContentPrepTimeData[] | null"
+  "contents": "Publication | null",
+  "content_segments": "ContentSegment[] | null",
+  "content_ingredients": "ContentIngredient[] | null",
+  "content_prep_times": "ContentPrepTime[] | null"
 }
 ```
 
-### IngredientData
+### Ingredient
+
 ```json
 {
   "ingredient_id": "string",
-  "quantity": "number | null",
-  "is_recipe_id": "string | null",
   "product_id": "string",
-  "multiply_factor": "number",
-  "product": "ProductData | null",
-  "isRecipe": "PublicationData | null",
-  "content_ingredients": "ContentIngredientData[] | null",
-  "ingredient_units": "IngredientUnitData[] | null"
+  "quantity": "number | null",
+  "multiply_factor": number,
+  "product": "Product | null",
+  "content_ingredients": "ContentIngredient[] | null",
+  "ingredient_units": "IngredientUnit[] | null"
 }
 ```
 
-### ProductData
+### Product
+
 ```json
 {
   "product_id": "string",
-  "name": "string", 
+  "name": "string",
   "en_name": "string | null",
   "macro_id": "string | null",
-  "macro": "MacroData | null",
-  "ingredients": "IngredientData[] | null",
-  "reviews": "ReviewData[] | null",
-  "product_categories": "ProductCategoryData[] | null"
+  "macro": "Macro | null",
+  "ingredients": "Ingredient[] | null",
+  "reviews": "Review[] | null",
+  "product_categories": "ProductCategory[] | null"
 }
 ```
 
-### MacroData
+### Macro
+
 ```json
 {
   "macro_id": "string",
@@ -420,39 +311,169 @@
   "saturated": "number | null",
   "trans": "number | null",
   "caffein": "number | null",
-  "products": "ProductData[] | null"
+  "products": "Product[] | null"
 }
 ```
 
-### PrepTimeData
-```json
-{
-  "prep_time_id": "string",
-  "duration": "number",
-  "style_id": "string | null",
-  "style": "CategoryData | null",
-  "content_prep_times": "ContentPrepTimeData[] | null",
-  "segment_prep_time": "SegmentPrepTimeData[] | null"
-}
-```
+### Unit
 
-### UnitData
 ```json
 {
   "unit_id": "string",
   "name": "string",
-  "ingredient_units": "IngredientUnitData[] | null"
+  "ingredient_units": "IngredientUnit[] | null"
 }
 ```
 
-### SegmentData
+### PrepTime
+
+```json
+{
+  "prep_time_id": "string",
+  "duration": number,
+  "style_id": "string | null",
+  "style": "Category | null",
+  "content_prep_times": "ContentPrepTime[] | null",
+  "segment_prep_time": "SegmentPrepTime[] | null"
+}
+```
+
+### Review
+
+```json
+{
+  "review_id": "string",
+  "product_id": "string | null",
+  "publication_id": "string | null",
+  "rating": "number | null",
+  "comment": ["string"],
+  "description": ["string"],
+  "buy_again": "string | null",
+  "date_review": "string",
+  "product": "Product | null",
+  "publication": "Publication | null"
+}
+```
+
+### Segment
+
 ```json
 {
   "segment_id": "string",
   "title": "string | null",
-  "paragraph": "string",
-  "order_num": "number | null",
-  "content_segments": "ContentSegmentData[] | null",
-  "segment_prep_time": "SegmentPrepTimeData[] | null"
+  "paragraph": "string | null",
+  "content_segments": "ContentSegment[] | null",
+  "segment_prep_time": "SegmentPrepTime[] | null"
+}
+```
+
+### Category
+
+```json
+{
+  "category_id": "string",
+  "str_value": "string",
+  "type": "string",
+  "publications_type": "Publication[] | null",
+  "publications_style": "Publication[] | null",
+  "publications_author": "Publication[] | null",
+  "prep_time": "PrepTime[] | null",
+  "publication_tags": "PublicationTag[] | null",
+  "product_categories": "ProductCategory[] | null"
+}
+```
+
+### AppUser
+
+```json
+{
+  "user_id": "string",
+  "username": "string",
+  "password": "string",
+  "role": "string",
+  "updated": "string",
+  "created": "string"
+}
+```
+
+---
+
+## Jointure Tables
+
+### PublicationTag
+
+```json
+{
+  "publication_id": "string",
+  "category_id": "string",
+  "publication": "Publication | null",
+  "category": "Category | null"
+}
+```
+
+### ContentIngredient
+
+```json
+{
+  "content_id": "string",
+  "ingredient_id": "string",
+  "content": "Content | null",
+  "ingredient": "Ingredient | null"
+}
+```
+
+### ContentSegment
+
+```json
+{
+  "content_id": "string",
+  "segment_id": "string",
+  "position": "number | null",
+  "content": "Content | null",
+  "segment": "Segment | null"
+}
+```
+
+### ContentPrepTime
+
+```json
+{
+  "content_id": "string",
+  "prep_time_id": "string",
+  "content": "Content | null",
+  "prep_time": "PrepTime | null"
+}
+```
+
+### IngredientUnit
+
+```json
+{
+  "ingredient_id": "string",
+  "unit_id": "string",
+  "ingredient": "Ingredient | null",
+  "unit": "Unit | null"
+}
+```
+
+### ProductCategory
+
+```json
+{
+  "product_id": "string",
+  "category_id": "string",
+  "product": "Product | null",
+  "category": "Category | null"
+}
+```
+
+### SegmentPrepTime
+
+```json
+{
+  "segment_id": "string",
+  "prep_time_id": "string",
+  "segment": "Segment | null",
+  "prep_time": "PrepTime | null"
 }
 ```

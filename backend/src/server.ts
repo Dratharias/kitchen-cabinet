@@ -6,7 +6,7 @@ import createRoutes from "./routes/index.js";
 const fastify = Fastify({ logger: true });
 
 fastify.register(fastifyCors, {
-  origin: "localhost:3000",
+  origin: ["http://localhost:3000", "http://172.18.0.2:3000"],
 });
 await fastify.register(createRoutes);
 

@@ -1,5 +1,5 @@
-import Navbar from "../../components/navbar/Navbar";
-import SearchBar from "../../components/navbar/SearchBar";
+import Navbar from "@/components/navbar/Navbar";
+import SearchBar from "@/components/navbar/SearchBar";
 
 export function DesktopLayout(props) {
   return (

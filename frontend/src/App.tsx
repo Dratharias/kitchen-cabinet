@@ -2,9 +2,7 @@ import { Router, Route } from "@solidjs/router";
 import { Layout } from "./views/layout/Layout";
 import { ToastProvider } from "./components/ToastProvider";
 import { LoginForm } from "./pages/forms/Login";
-import { PublicationPage } from "./pages/publication/[id]";
 import { ContentBrowser } from "./pages/ContentBrowser";
-import { ReviewPage } from "./pages/publication/[id]/reviews";
 
 function App() {
   return (
@@ -44,43 +42,6 @@ function App() {
           component={() => (
             <Layout>
               <LoginForm />
-            </Layout>
-          )}
-        />
-
-        {/* Publication detail */}
-        <Route
-          path="/feeds/:id"
-          component={() => (
-            <Layout>
-              <PublicationPage category="feeds" />
-            </Layout>
-          )}
-        />
-
-        <Route
-          path="/reviews/:id"
-          component={() => (
-            <Layout>
-              <PublicationPage category="reviews" />
-            </Layout>
-          )}
-        />
-
-        {/* Reviews */}
-        <Route
-          path="/reviews/:id/reviews"
-          component={() => (
-            <Layout>
-              <ReviewPage />
-            </Layout>
-          )}
-        />
-        <Route
-          path="/feeds/:id/reviews"
-          component={() => (
-            <Layout>
-              <ReviewPage />
             </Layout>
           )}
         />

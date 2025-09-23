@@ -9,10 +9,7 @@
     "skipLibCheck": true,
     "rootDir": "src",
     "outDir": "dist",
-    "baseUrl": "src",
-    "paths": {
-      "@shared-types/*": ["shared-types/*"]
-    }
+    "baseUrl": "src"
   },
   "include": ["src/**/*.ts"]
 }

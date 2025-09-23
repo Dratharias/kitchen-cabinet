@@ -1,44 +1,35 @@
 import { useNavigate } from "@solidjs/router";
-import { List, ListItem } from "../ui/atoms/List";
-import RequireAuth from "../ui/utilities/RequireAuth";
-import type { MenuItem } from "../../types/menu";
+import { isAuthenticated } from "@/stores/authStore";
+import { useAuth } from "@/hooks/useAuth";
+import { ListItem, List } from "../ui/molecules/List";
+import { MenuItem } from "./Navbar";
 
 type NavbarMenuProps = {
-  open?: boolean;
   onClose: () => void;
   items: MenuItem[];
 };
 
-// Fonction pour générer le fallback (Login)
-const renderLoginFallback = (onClose: () => void) => {
-  const navigate = useNavigate();
-  const listItems: ListItem[] = [
-    {
-      label: "Login",
-      onClick: () => {
-        navigate("/login", { replace: true });
-        onClose();
-      },
-    },
-  ];
-  return <List items={listItems} />;
-};
-
 const NavbarMenu = (props: NavbarMenuProps) => {
+  const navigate = useNavigate();
+  const { logout } = useAuth();
 
-  const listItems: ListItem[] = props.items.map((item) => ({
-    label: typeof item.label === "function" ? item.label() : item.label,
-    onClick: () => {
-      item.action();
-      props.onClose();
-    },
-  }));
+  // ajoute Login/Logout minimal
+  const authItem: ListItem = isAuthenticated()
+    ? { label: "Logout", onClick: () => { logout(); props.onClose(); } }
+    : { label: "Login", onClick: () => { navigate("/login", { replace: true }); props.onClose(); } };
 
-  return (
-    <RequireAuth fallback={renderLoginFallback(props.onClose)}>
-      <List items={listItems} />
-    </RequireAuth>
-  );
+  const listItems: ListItem[] = [
+    ...props.items.map((item) => ({
+      label: typeof item.label === "function" ? item.label() : item.label,
+      onClick: () => {
+        item.action();
+        props.onClose();
+      },
+    })),
+    authItem,
+  ];
+
+  return <List items={listItems} />;
 };
 
 export default NavbarMenu;

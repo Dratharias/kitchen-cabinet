@@ -1,48 +1,64 @@
-import { LoginRequest, LoginResponse } from '@/types';
-import { setIsAuthenticated } from '@/stores/authStore';
+import type { LoginRequest, LoginResponse } from "@/types/auth";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
+const TOKEN_KEY = "auth_token";
+const USER_KEY = "auth_user";
+
+function decodeJwt(token: string): Record<string, any> | null {
+  try {
+    const payload = token.split(".")[1];
+    const decoded = atob(payload);
+    return JSON.parse(decoded);
+  } catch (err) {
+    console.error("JWT decode error:", err);
+    return null;
+  }
+}
 
 export class AuthService {
-  static async login(credentials: LoginRequest): Promise<LoginResponse> {
-    const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(credentials),
-    });
+  static async login(credentials: LoginRequest): Promise<LoginResponse | null> {
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(credentials),
+      });
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.message || `Login failed: ${response.status}`);
+      if (!res.ok) throw new Error("Login failed");
+
+      const data: LoginResponse = await res.json();
+      if (data?.token) {
+        localStorage.setItem(TOKEN_KEY, data.token);
+        localStorage.setItem(USER_KEY, JSON.stringify({ username: data.username, role: data.role }));
+      }
+      return data;
+    } catch (err) {
+      console.error("AuthService.login error:", err);
+      return null;
     }
-
-    const data = await response.json();
-    this.setToken(data.token);
-    setIsAuthenticated(true);
-    return data;
   }
 
-  static getAuthHeader(): HeadersInit {
-    const token = localStorage.getItem('auth_token');
-    return token ? { Authorization: `Bearer ${token}` } : {};
-  }
-
-  static setToken(token: string): void {
-    localStorage.setItem('auth_token', token);
-  }
-
-  static removeToken(): void {
-    localStorage.removeItem('auth_token');
-    setIsAuthenticated(false);
-  }
-
-  static getToken(): string | null {
-    return localStorage.getItem('auth_token');
+  static logout(): void {
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(USER_KEY);
   }
 
   static isTokenValid(): boolean {
-    return !!this.getToken();
+    const token = localStorage.getItem(TOKEN_KEY);
+    if (!token) return false;
+
+    const payload = decodeJwt(token);
+    if (!payload?.exp) return false;
+
+    const now = Math.floor(Date.now() / 1000);
+    return payload.exp > now;
+  }
+
+  static getToken(): string | null {
+    return localStorage.getItem(TOKEN_KEY);
+  }
+
+  static getUser(): { username: string; role: string } | null {
+    const user = localStorage.getItem(USER_KEY);
+    return user ? JSON.parse(user) : null;
   }
 }

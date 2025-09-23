@@ -1,25 +1,22 @@
-import { useNavigate } from "@solidjs/router";
-import { toast } from "solid-toast";
-import { AuthService } from '@/services/auth';
+import { setIsAuthenticated, setCurrentUser } from "@/stores/authStore";
+import { AuthService } from "@/services/auth";
+import type { LoginRequest } from "@/types/auth";
 
 export function useAuth() {
-  const navigate = useNavigate();
+  const login = async (username: string, password: string) => {
+    const credentials: LoginRequest = { username, password };
+    const response = await AuthService.login(credentials);
 
-  const login = async (username: string, password: string): Promise<boolean> => {
-    try {
-      await AuthService.login({ username, password });
-      toast.success("Authentification réussie !");
-      return true;
-    } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Identifiants incorrects");
-      return false;
+    if (response?.token) {
+      setIsAuthenticated(true);
+      setCurrentUser({ username: response.username, role: response.role });
     }
   };
 
   const logout = () => {
-    AuthService.removeToken();
-    toast.success("Déconnexion réussie !");
-    navigate("/login", { replace: true });
+    AuthService.logout();
+    setIsAuthenticated(false);
+    setCurrentUser(null);
   };
 
   return { login, logout };

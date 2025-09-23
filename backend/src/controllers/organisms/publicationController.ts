@@ -1,37 +1,45 @@
-import { Publication, PublicationCore, PublicationRelations } from "types/controller.types";
+import { Publication, PublicationCore, PublicationRelations, PublicationTag } from "types/controller.types";
 import { GenericPaginatedController } from "types/crud.types";
-import { ReadAllParams, PaginatedResponse } from "types/db.types";
-import { PublicationConnect } from "types/dto.types";
+import { PublicationConnect, PublicationReadAllDto } from "types/dto.types";
 import { v4 as uuidv4 } from "uuid";
 import { prisma } from "../../config.js";
+import { shapePublicPublication } from "../../utils/shapePublication.js";
 
-export const normalizePublication = (pub: any): Publication => ({
-  publication_id: pub.publication_id,
-  title: pub.title,
-  description: pub.description ?? [],
-  note: pub.note ?? [],
-  public: pub.public,
-  published: pub.published,
-  thumbnail: pub.thumbnail ?? null,
-  type_id: pub.type_id ?? null,
-  style_id: pub.style_id ?? null,
-  author_id: pub.author_id ?? null,
+export const normalizePublication = (pub: any): Publication => {
+  const shaped = shapePublicPublication(pub);
 
-  type: pub.type ?? null,
-  style: pub.style ?? null,
-  author: pub.author ?? null,
-  contents: pub.contents ?? null,
-  ingredientsRef: pub.ingredientsRef ?? null,
-  reviews: pub.reviews ?? null,
-  tags: pub.tags ?? null,
-});
+  const reviewCount = shaped.reviews?.length ?? 0;
+  const reviewAverageScore =
+    reviewCount > 0
+      ? shaped.reviews.reduce((acc: number, r: any) => acc + (r.rating ?? 0), 0) /
+        reviewCount
+      : 0;
+
+  return {
+    publication_id: shaped.publication_id,
+    title: shaped.title,
+    description: shaped.description ?? [],
+    note: shaped.note ?? [],
+    public: shaped.public,
+    published: shaped.published,
+    thumbnail: shaped.thumbnail ?? null,
+    type: shaped.type ?? null,
+    style: shaped.style ?? null,
+    author: shaped.author ?? null,
+    contents: shaped.contents ?? null,
+    ingredientsRef: shaped.ingredientsRef ?? null,
+    reviewCount,
+    reviewAverageScore,
+    tags: shaped.tags?.map((tag: PublicationTag) => tag.category) ?? null,
+  };
+};
 
 export class PublicationController
   implements GenericPaginatedController<Publication, PublicationCore, PublicationRelations, PublicationConnect>
 {
   async create(payload: PublicationCore): Promise<Publication> {
     const newId = payload.publication_id ?? uuidv4();
-    
+
     const publication = await prisma.publication.create({
       data: {
         publication_id: newId,
@@ -41,19 +49,8 @@ export class PublicationController
         public: payload.public,
         published: payload.published,
         thumbnail: payload.thumbnail,
-        type_id: payload.type_id,
-        style_id: payload.style_id,
-        author_id: payload.author_id,
       },
-      include: {
-        type: true,
-        style: true,
-        author: true,
-        contents: true,
-        ingredientsRef: true,
-        reviews: true,
-        tags: true,
-      },
+      include: this.buildInclude(),
     });
 
     return normalizePublication(publication);
@@ -62,48 +59,69 @@ export class PublicationController
   async findById(id: string): Promise<Publication | null> {
     const publication = await prisma.publication.findUnique({
       where: { publication_id: id },
-      include: {
-        type: true,
-        style: true,
-        author: true,
-        contents: true,
-        ingredientsRef: true,
-        reviews: true,
-        tags: true,
-      },
+      include: this.buildInclude(),
     });
     return publication ? normalizePublication(publication) : null;
   }
 
-  async findAll(params?: ReadAllParams<Publication>): Promise<PaginatedResponse<Publication>> {
+  async findAll(params?: PublicationReadAllDto) {
     const where: any = {};
 
     if (params?.filter) {
-      Object.assign(where, params.filter);
+      let filter = params.filter;
+
+      if (typeof filter === "string") {
+        try {
+          filter = JSON.parse(filter);
+        } catch (error) {
+          console.error("Failed to parse filter:", error);
+          filter = {};
+        }
+      }
+
+      const { tagIds, contentIds, type, style, author, ...directFields } =
+        filter as any;
+
+      if (Array.isArray(type) && type.length) {
+        where.type = { str_value: { in: type } };
+      }
+      if (Array.isArray(style) && style.length) {
+        where.style = { str_value: { in: style } };
+      }
+      if (Array.isArray(author) && author.length) {
+        where.author = { str_value: { in: author } };
+      }
+
+      Object.keys(directFields).forEach((key) => {
+        const value = directFields[key as keyof typeof directFields];
+        if (
+          value !== undefined &&
+          value !== null &&
+          !Array.isArray(value) &&
+          typeof value !== "object"
+        ) {
+          where[key] = value;
+        }
+      });
+
+      if (tagIds?.length)
+        where.tags = { some: { category_id: { in: tagIds } } };
+      if (contentIds?.length)
+        where.contents = { some: { content_id: { in: contentIds } } };
     }
 
     const total = await prisma.publication.count({ where });
-
     const limit = params?.take ? Number(params.take) : 12;
     const skip = params?.skip ? Number(params.skip) : 0;
 
     const publications = await prisma.publication.findMany({
       where,
-      include: params?.includeRelations !== false ? {
-        type: true,
-        style: true,
-        author: true,
-        contents: true,
-        ingredientsRef: true,
-        reviews: true,
-        tags: true,
-      } : undefined,
+      include: this.buildInclude(),
       skip,
       take: limit,
     });
 
     const items = publications.map(normalizePublication);
-
     const page = Math.floor(skip / limit) + 1;
     const totalPages = Math.ceil(total / limit);
 
@@ -126,57 +144,40 @@ export class PublicationController
         public: payload.public,
         published: payload.published,
         thumbnail: payload.thumbnail,
-        type_id: payload.type_id,
-        style_id: payload.style_id,
-        author_id: payload.author_id,
 
         contents: payload.connect?.contents
-          ? { connect: payload.connect.contents.map((c: { content_id: string; }) => ({ content_id: c.content_id })) }
+          ? { connect: payload.connect.contents.map((c: { content_id: string }) => ({ content_id: c.content_id })) }
           : payload.set?.contents
-          ? { set: payload.set.contents.map((c: { content_id: string; }) => ({ content_id: c.content_id })) }
+          ? { set: payload.set.contents.map((c: { content_id: string }) => ({ content_id: c.content_id })) }
           : undefined,
 
         ingredientsRef: payload.connect?.ingredientsRef
-          ? { connect: payload.connect.ingredientsRef.map((i: { ingredient_id: string; }) => ({ ingredient_id: i.ingredient_id })) }
+          ? { connect: payload.connect.ingredientsRef.map((i: { ingredient_id: string }) => ({ ingredient_id: i.ingredient_id })) }
           : payload.set?.ingredientsRef
-          ? { set: payload.set.ingredientsRef.map((i: { ingredient_id: string; }) => ({ ingredient_id: i.ingredient_id })) }
+          ? { set: payload.set.ingredientsRef.map((i: { ingredient_id: string }) => ({ ingredient_id: i.ingredient_id })) }
           : undefined,
 
         reviews: payload.connect?.reviews
-          ? { connect: payload.connect.reviews.map((r: { review_id: string; }) => ({ review_id: r.review_id })) }
+          ? { connect: payload.connect.reviews.map((r: { review_id: string }) => ({ review_id: r.review_id })) }
           : payload.set?.reviews
-          ? { set: payload.set.reviews.map((r: { review_id: string; }) => ({ review_id: r.review_id })) }
+          ? { set: payload.set.reviews.map((r: { review_id: string }) => ({ review_id: r.review_id })) }
           : undefined,
 
         tags: payload.connect?.tags
           ? {
-              connect: payload.connect.tags.map((t: { category_id: string; }) => ({
-                publication_id_category_id: {
-                  publication_id: id,
-                  category_id: t.category_id,
-                },
+              connect: payload.connect.tags.map((t: { category_id: string }) => ({
+                publication_id_category_id: { publication_id: id, category_id: t.category_id },
               })),
             }
           : payload.set?.tags
           ? {
-              set: payload.set.tags.map((t: { category_id: string; }) => ({
-                publication_id_category_id: {
-                  publication_id: id,
-                  category_id: t.category_id,
-                },
+              set: payload.set.tags.map((t: { category_id: string }) => ({
+                publication_id_category_id: { publication_id: id, category_id: t.category_id },
               })),
             }
           : undefined,
       },
-      include: {
-        type: true,
-        style: true,
-        author: true,
-        contents: true,
-        ingredientsRef: true,
-        reviews: true,
-        tags: true,
-      },
+      include: this.buildInclude(),
     });
 
     return normalizePublication(publication);
@@ -185,5 +186,81 @@ export class PublicationController
   async delete(id: string): Promise<{ deleted: boolean }> {
     await prisma.publication.delete({ where: { publication_id: id } });
     return { deleted: true };
+  }
+
+  private buildInclude(): any {
+    return {
+      type: true,
+      style: true,
+      author: true,
+      contents: {
+        include: {
+          content_segments: {
+            include: {
+              segment: {
+                select: {
+                  segment_id: true,
+                  title: true,
+                  paragraph: true,
+                  order_num: true,
+                },
+              },
+            },
+          },
+          content_ingredients: {
+            include: {
+              ingredient: {
+                select: {
+                  ingredient_id: true,
+                  quantity: true,
+                  product: {
+                    select: {
+                      product_id: true,
+                      name: true,
+                      en_name: true,
+                      macro: { select: { calories: true, protein: true } },
+                    },
+                  },
+                  ingredient_units: {
+                    include: {
+                      unit: { select: { unit_id: true, name: true } },
+                    },
+                  },
+                },
+              },
+            },
+          },
+          content_prep_times: {
+            include: {
+              prep_time: {
+                select: {
+                  prep_time_id: true,
+                  duration: true,
+                  style: { select: { category_id: true, str_value: true } },
+                },
+              },
+            },
+          },
+        },
+      },
+      ingredientsRef: {
+        include: {
+          product: {
+            select: {
+              product_id: true,
+              name: true,
+              macro: { select: { calories: true, protein: true } },
+            },
+          },
+          ingredient_units: {
+            include: {
+              unit: { select: { unit_id: true, name: true } },
+            },
+          },
+        },
+      },
+      reviews: true,
+      tags: { include: { category: true } },
+    };
   }
 }

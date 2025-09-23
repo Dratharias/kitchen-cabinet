@@ -33,7 +33,7 @@ export default async function createRoutes(fastify: FastifyInstance) {
   };
 
   const controllerMap: ControllerMap = baseControllers as any;
-  const orchestrator = new OrchestratorController(controllerMap);
+  const orchestrator = new OrchestratorController();
   
   const registry = new RouteRegistry(fastify, authGuard, orchestrator);
 
@@ -51,6 +51,12 @@ export default async function createRoutes(fastify: FastifyInstance) {
     path: '/api/publications',
     methods: ['findAll', 'findById'],
     protected: false
+  });
+
+  // 👇 ADDED THIS NEW BLOCK
+  registry.registerCrud(new PublicationController(), {
+    path: '/api/private/publications',
+    protected: true,
   });
 
   registry.registerOrchestratorRoute('/api/publicate', true);

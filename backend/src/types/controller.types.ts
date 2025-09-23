@@ -24,9 +24,11 @@ export type CategoryRelations = Partial<Omit<CategoryData, "str_value" | "type" 
 /* ============================================================
    Publication
    ============================================================ */
-export type Publication = PublicationCore & PublicationRelations & { publication_id: string };
-export type PublicationCore = Required<Omit<PublicationData, "publication_id" | "contents" | "ingredientsRef" | "reviews" | "tags">> & { publication_id?: string };
-export type PublicationRelations = Required<Pick<PublicationData, "contents" | "ingredientsRef" | "reviews" | "tags" | "type" | "style" | "author">>;
+export type Publication = PublicationCore & PublicationRelations & { publication_id: string, reviewCount: number, reviewAverageScore:number };
+export type PublicPublication = PublicPublicationCore & PublicationRelations & { publication_id: string, reviewCount: number, reviewAverageScore:number };
+export type PublicationCore = Required<Omit<PublicationData, "publication_id" | "contents" | "ingredientsRef" | "reviews" | "tags" | "style_id" | "type_id" | "author_id">> & { publication_id?: string };
+export type PublicPublicationCore = Required<Omit<PublicationData, "publication_id" | "contents" | "ingredientsRef" | "reviews" | "tags" | "style_id" | "type_id" | "author_id" | "published" | "public">> & { publication_id?: string };
+export type PublicationRelations = Required<Pick<PublicationData, "contents" | "ingredientsRef" | "tags" | "type" | "style" | "author">>;
 
 /* ============================================================
    Contenu
