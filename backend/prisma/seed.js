@@ -1,26 +1,4 @@
-/**
- * Prisma Mass Seed Script (Plain JS, ES6)
- * ---------------------------------------
- * Generates ~100 publications across types:
- * - Book (~10%)
- * - Cookbook (~15%)
- * - Article (~20%)
- * - FoodPost (~15%)
- * - Recipe (~20%)
- * - Review (~20%)
- *
- * Rules:
- * - Reviews attach to either a product OR a publication (not both).
- * - Publications may have reviews created right after creation.
- * - Books & Cookbooks = multiple chapters/contents.
- * - Recipes = ingredients + prep times.
- * - Articles & FoodPosts = segment-heavy, text-focused.
- * - Users: exactly one admin.
- * - Categories are idempotent (no duplicates).
- * - Publications now include random tags (1-4 tags per publication).
- */
-
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Prisma } from "@prisma/client";
 import { faker } from "@faker-js/faker";
 import { v4 as uuidv4 } from "uuid";
 import bcrypt from "bcryptjs";
@@ -43,7 +21,6 @@ async function ensureUser(username, password, role = "user") {
   if (found) return found;
 
   const hashed = await bcrypt.hash(password, 10);
-
   return prisma.app_user.create({
     data: {
       user_id: uuidv4(),
@@ -54,7 +31,7 @@ async function ensureUser(username, password, role = "user") {
   });
 }
 
-async function createProduct() {
+async function createProduct(existingNames = new Set()) {
   const macroId = uuidv4();
   await prisma.macro.create({
     data: {
@@ -69,10 +46,17 @@ async function createProduct() {
     },
   });
 
+  // éviter doublons sur product.name (unique)
+  let name = faker.commerce.productName();
+  while (existingNames.has(name)) {
+    name = faker.commerce.productName();
+  }
+  existingNames.add(name);
+
   return prisma.product.create({
     data: {
       product_id: uuidv4(),
-      name: faker.commerce.productName(),
+      name,
       en_name: faker.commerce.product(),
       macro_id: macroId,
     },
@@ -92,7 +76,9 @@ async function createIngredient(product) {
       ingredient_id: ingredientId,
       quantity: faker.number.int({ min: 1, max: 500 }),
       product_id: product.product_id,
-      multiply_factor: faker.number.float({ min: 0.01, max: 1.0, precision: 0.01 }).toFixed(2)
+      multiply_factor: new Prisma.Decimal(
+        faker.number.float({ min: 0.01, max: 1.0, precision: 0.01 })
+      ),
     },
   });
 
@@ -106,13 +92,10 @@ async function createIngredient(product) {
 async function addTagsToPublication(publicationId, availableTags) {
   const tagCount = faker.number.int({ min: 1, max: 4 });
   const selectedTags = faker.helpers.arrayElements(availableTags, tagCount);
-  
+
   for (const tag of selectedTags) {
     await prisma.publication_tag.create({
-      data: {
-        publication_id: publicationId,
-        category_id: tag.category_id,
-      },
+      data: { publication_id: publicationId, category_id: tag.category_id },
     });
   }
 }
@@ -163,7 +146,7 @@ async function createBookOrCookbook(typeName, style, author, availableTags) {
       note: [faker.lorem.sentence()],
       public: true,
       published: true,
-      thumbnail: faker.image.url({ width: 640, height: 480, category: 'food' }),
+      thumbnail: faker.image.url({ width: 640, height: 480, category: "food" }),
       type_id: type.category_id,
       style_id: style.category_id,
       author_id: author.category_id,
@@ -176,17 +159,18 @@ async function createBookOrCookbook(typeName, style, author, availableTags) {
   for (let i = 1; i <= chapters; i++) {
     const contentId = uuidv4();
     await prisma.content.create({
-      data: { content_id: contentId, publication_id: pubId, servings: null, servings: 4, total_prep_time: 0 },
+      data: { content_id: contentId, publication_id: pubId, servings: 4, total_prep_time: 0 },
     });
 
     const segments = faker.number.int({ min: 2, max: 6 });
     for (let s = 1; s <= segments; s++) {
       const segId = uuidv4();
+      // paragraph doit être unique
       await prisma.segment.create({
         data: {
           segment_id: segId,
           title: `${typeName} Chapter ${i} - Section ${s}`,
-          paragraph: faker.lorem.paragraph(),
+          paragraph: `${faker.lorem.paragraph()} [${segId}]`,
           order_num: s,
         },
       });
@@ -204,11 +188,10 @@ async function createBookOrCookbook(typeName, style, author, availableTags) {
   return pub;
 }
 
-async function createRecipe(style, author, product, availableTags, prepTimeCategories) {
+async function createRecipe(style, author, products, availableTags, prepTimeCategories) {
   const pubId = uuidv4();
   const type = await prisma.category.findFirst({ where: { str_value: "Recipe", type: "Type" } });
 
-  // Création de la publication
   const pub = await prisma.publication.create({
     data: {
       publication_id: pubId,
@@ -217,30 +200,27 @@ async function createRecipe(style, author, product, availableTags, prepTimeCateg
       note: [faker.lorem.sentence()],
       public: true,
       published: true,
-      thumbnail: faker.image.url({ width: 640, height: 480, category: 'food' }),
+      thumbnail: faker.image.url({ width: 640, height: 480, category: "food" }),
       type_id: type.category_id,
       style_id: style.category_id,
       author_id: author.category_id,
     },
   });
 
-  // Ajout des tags
   await addTagsToPublication(pubId, availableTags);
 
-  // Création du contenu principal
   const contentId = uuidv4();
   await prisma.content.create({
     data: {
       content_id: contentId,
       publication_id: pubId,
       servings: faker.number.int({ min: 1, max: 8 }),
-      total_prep_time: 0, // sera recalculé après création des prep times
+      total_prep_time: 0,
     },
   });
 
-  // Ajout de plusieurs prep_times avec catégories
-  const prepTimesCount = faker.number.int({ min: 1, max: 4 });
   let totalPrepTime = 0;
+  const prepTimesCount = faker.number.int({ min: 1, max: 4 });
   for (let i = 0; i < prepTimesCount; i++) {
     const prepDuration = faker.number.int({ min: 10, max: 90 });
     const prepCategory = faker.helpers.arrayElement(prepTimeCategories);
@@ -249,39 +229,37 @@ async function createRecipe(style, author, product, availableTags, prepTimeCateg
       data: {
         prep_time_id: uuidv4(),
         duration: prepDuration,
-        style_id: prepCategory.category_id, // lien un à un
+        style_id: prepCategory.category_id,
       },
     });
 
     await prisma.content_prep_time.create({
-      data: {
-        content_id: contentId,
-        prep_time_id: prepTime.prep_time_id,
-      },
+      data: { content_id: contentId, prep_time_id: prepTime.prep_time_id },
     });
 
     totalPrepTime += prepDuration;
   }
 
-  // Mise à jour du temps total de préparation
   await prisma.content.update({
     where: { content_id: contentId },
     data: { total_prep_time: totalPrepTime },
   });
 
-  // Création des ingrédients
   const ingredientsCount = faker.number.int({ min: 2, max: 6 });
   for (let i = 0; i < ingredientsCount; i++) {
+    const product = faker.helpers.arrayElement(products);
     const ingredient = await createIngredient(product);
     await prisma.content_ingredient.create({
-      data: {
-        content_id: contentId,
-        ingredient_id: ingredient.ingredient_id,
-      },
+      data: { content_id: contentId, ingredient_id: ingredient.ingredient_id },
+    });
+
+    // Lien produit → recette
+    await prisma.product.update({
+      where: { product_id: product.product_id },
+      data: { is_recipe_id: pubId },
     });
   }
 
-  // Création de segments textuels (étapes)
   const segmentsCount = faker.number.int({ min: 1, max: 3 });
   for (let i = 1; i <= segmentsCount; i++) {
     const segId = uuidv4();
@@ -289,7 +267,7 @@ async function createRecipe(style, author, product, availableTags, prepTimeCateg
       data: {
         segment_id: segId,
         title: `Step ${i}`,
-        paragraph: faker.lorem.sentences({ min: 2, max: 5 }),
+        paragraph: `${faker.lorem.sentences({ min: 2, max: 5 })} [${segId}]`,
         order_num: i,
       },
     });
@@ -298,7 +276,6 @@ async function createRecipe(style, author, product, availableTags, prepTimeCateg
     });
   }
 
-  // Création de quelques reviews
   if (Math.random() < 0.7) {
     const reviewsCount = faker.number.int({ min: 1, max: 5 });
     for (let i = 0; i < reviewsCount; i++) await createReviewForPublication(pub);
@@ -306,7 +283,6 @@ async function createRecipe(style, author, product, availableTags, prepTimeCateg
 
   return pub;
 }
-
 
 async function createArticleOrFoodPost(typeName, style, author, availableTags) {
   const pubId = uuidv4();
@@ -320,7 +296,7 @@ async function createArticleOrFoodPost(typeName, style, author, availableTags) {
       note: [],
       public: true,
       published: true,
-      thumbnail: faker.image.url({ width: 640, height: 480, category: 'food' }),
+      thumbnail: faker.image.url({ width: 640, height: 480, category: "food" }),
       type_id: type.category_id,
       style_id: style.category_id,
       author_id: author.category_id,
@@ -332,7 +308,9 @@ async function createArticleOrFoodPost(typeName, style, author, availableTags) {
   const contents = faker.number.int({ min: 1, max: 2 });
   for (let i = 0; i < contents; i++) {
     const contentId = uuidv4();
-    await prisma.content.create({ data: { content_id: contentId, publication_id: pubId, servings: null, total_prep_time: 0 } });
+    await prisma.content.create({
+      data: { content_id: contentId, publication_id: pubId, servings: null, total_prep_time: 0 },
+    });
 
     const segments = faker.number.int({ min: 3, max: 7 });
     for (let s = 1; s <= segments; s++) {
@@ -341,11 +319,13 @@ async function createArticleOrFoodPost(typeName, style, author, availableTags) {
         data: {
           segment_id: segId,
           title: faker.lorem.words({ min: 2, max: 4 }),
-          paragraph: faker.lorem.paragraph(),
+          paragraph: `${faker.lorem.paragraph()} [${segId}]`,
           order_num: s,
         },
       });
-      await prisma.content_segment.create({ data: { content_id: contentId, segment_id: segId, position: s } });
+      await prisma.content_segment.create({
+        data: { content_id: contentId, segment_id: segId, position: s },
+      });
     }
   }
 
@@ -360,9 +340,6 @@ async function createArticleOrFoodPost(typeName, style, author, availableTags) {
 // ---------------------------
 // Main
 // ---------------------------
-// ---------------------------
-// Main
-// ---------------------------
 async function main() {
   await ensureUser("admin", "admin123", "admin");
 
@@ -374,39 +351,30 @@ async function main() {
   const styleBreakfast = await ensureCategory("Breakfast", "Style");
   const authorJulia = await ensureCategory("Julia Child", "Author");
 
-  // Create tag categories
   const tagNames = [
-    "Healthy", "Quick", "Vegetarian", "Vegan", "Gluten-Free", 
+    "Healthy", "Quick", "Vegetarian", "Vegan", "Gluten-Free",
     "Low-Carb", "High-Protein", "Comfort Food", "Spicy", "Sweet",
     "Savory", "Mediterranean", "Asian", "Mexican", "Italian",
     "American", "French", "Indian", "Thai", "Chinese"
   ];
-  
-  const availableTags = [];
-  for (const tagName of tagNames) {
-    const tag = await ensureCategory(tagName, "Tag");
-    availableTags.push(tag);
-  }
 
-  // Create prep time categories
+  const availableTags = [];
+  for (const tagName of tagNames) availableTags.push(await ensureCategory(tagName, "Tag"));
+
   const prepTimeCategoryNames = ["Prep", "Cook", "Rest", "Chill"];
   const prepTimeCategories = [];
-  for (const name of prepTimeCategoryNames) {
-    prepTimeCategories.push(await ensureCategory(name, "PrepTime"));
-  }
+  for (const name of prepTimeCategoryNames) prepTimeCategories.push(await ensureCategory(name, "PrepTime"));
 
-  // Create products
   const products = [];
-  for (let i = 0; i < 20; i++) {
-    products.push(await createProduct());
-  }
+  const existingNames = new Set();
+  for (let i = 0; i < 20; i++) products.push(await createProduct(existingNames));
 
   const pubs = [];
+  const recipes = [];
   const total = 100;
 
   for (let i = 0; i < total; i++) {
     const r = Math.random();
-    const product = faker.helpers.arrayElement(products);
 
     if (r < 0.10) {
       pubs.push(await createBookOrCookbook("Book", styleBreakfast, authorJulia, availableTags));
@@ -417,9 +385,18 @@ async function main() {
     } else if (r < 0.60) {
       pubs.push(await createArticleOrFoodPost("FoodPost", styleBreakfast, authorJulia, availableTags));
     } else if (r < 0.80) {
-      pubs.push(await createRecipe(styleBreakfast, authorJulia, product, availableTags, prepTimeCategories));
+      const recipe = await createRecipe(
+        styleBreakfast,
+        authorJulia,
+        products,
+        availableTags,
+        prepTimeCategories
+      );
+      pubs.push(recipe);
+      recipes.push(recipe);
     } else {
       if (Math.random() < 0.5) {
+        const product = faker.helpers.arrayElement(products);
         await createReviewForProduct(product);
       } else if (pubs.length) {
         const pub = faker.helpers.arrayElement(pubs);
@@ -428,7 +405,23 @@ async function main() {
     }
   }
 
-  console.log("✅ Mass seed completed with tags and prep times!");
+  // ---------------------------------
+  // Lier quelques produits → recettes
+  // ---------------------------------
+  if (recipes.length > 0) {
+    const sampleRecipes = faker.helpers.arrayElements(recipes, Math.min(3, recipes.length));
+    for (const recipe of sampleRecipes) {
+      const sampleProducts = faker.helpers.arrayElements(products, faker.number.int({ min: 2, max: 5 }));
+      for (const product of sampleProducts) {
+        await prisma.product.update({
+          where: { product_id: product.product_id },
+          data: { is_recipe_id: recipe.publication_id },
+        });
+      }
+    }
+  }
+
+  console.log("✅ Mass seed completed with multi-product recipe references!");
 }
 
 

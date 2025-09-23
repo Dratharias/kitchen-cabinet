@@ -23,7 +23,7 @@ export function normalizeCategory(cat: any): Category {
       style: pub.style ?? null,
       author: pub.author ?? null,
       contents: pub.contents ?? null,
-      ingredientsRef: pub.ingredientsRef ?? null,
+      productsRef: pub.productsRef ?? null,
       reviews: pub.reviews ?? null,
       tags: pub.tags ?? null,
     })),

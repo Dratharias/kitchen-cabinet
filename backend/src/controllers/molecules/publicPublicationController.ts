@@ -24,7 +24,7 @@ export const normalizePublication = (pub: any): PublicPublication => {
     style: shaped.style ?? null,
     author: shaped.author ?? null,
     contents: shaped.contents ?? null,
-    ingredientsRef: shaped.ingredientsRef ?? null,
+    productsRef: shaped.productsRef ?? null,
     reviewCount,
     reviewAverageScore,
     tags: shaped.tags?.map((t: any) => t.category) ?? null,
@@ -107,7 +107,7 @@ export class PublicPublicationController extends PublicationController {
       : null;
   }
 
-  private buildPublicInclude() {
+  private buildPublicInclude(): any {
     return {
       type: true,
       style: true,
@@ -158,22 +158,6 @@ export class PublicPublicationController extends PublicationController {
                   style: { select: { category_id: true, str_value: true } },
                 },
               },
-            },
-          },
-        },
-      },
-      ingredientsRef: {
-        include: {
-          product: {
-            select: {
-              product_id: true,
-              name: true,
-              macro: { select: { calories: true, protein: true } },
-            },
-          },
-          ingredient_units: {
-            include: {
-              unit: { select: { unit_id: true, name: true } },
             },
           },
         },

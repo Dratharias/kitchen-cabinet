@@ -7,12 +7,10 @@ import { v4 as uuidv4 } from "uuid";
 export const normalizeIngredient = (ingredient: any): Ingredient => ({
   ingredient_id: ingredient.ingredient_id,
   quantity: ingredient.quantity,
-  is_recipe_id: ingredient.is_recipe_id,
   product_id: ingredient.product_id,
   multiply_factor: ingredient.multiply_factor,
 
   product: ingredient.product ?? null,
-  isRecipe: ingredient.isRecipe ?? null,
   content_ingredients: ingredient.content_ingredients ?? null,
   ingredient_units: ingredient.ingredient_units ?? null,
 });
@@ -26,7 +24,6 @@ export class IngredientController
       data: {
         ingredient_id: newId,
         quantity: payload.quantity,
-        is_recipe_id: payload.is_recipe_id,
         product_id: payload.product_id,
         multiply_factor: payload.multiply_factor ?? 1,
 
@@ -54,7 +51,6 @@ export class IngredientController
       },
       include: {
         product: true,
-        isRecipe: true,
         content_ingredients: true,
         ingredient_units: true,
       },
@@ -68,7 +64,6 @@ export class IngredientController
       where: { ingredient_id: id },
       include: {
         product: true,
-        isRecipe: true,
         content_ingredients: true,
         ingredient_units: true,
       },
@@ -80,7 +75,6 @@ export class IngredientController
     const ingredients = await prisma.ingredient.findMany({
       include: {
         product: true,
-        isRecipe: false,
         content_ingredients: false,
         ingredient_units: true,
       },
@@ -93,7 +87,6 @@ export class IngredientController
         where: { ingredient_id: id },
         data: {
           quantity: payload.quantity,
-          is_recipe_id: payload.is_recipe_id,
           product_id: payload.product_id,
           multiply_factor: payload.multiply_factor,
 
@@ -126,12 +119,11 @@ export class IngredientController
               : undefined,
         },
         include: {
-        product: true,
-        isRecipe: true,
-        content_ingredients: true,
-        ingredient_units: true,
-      },
-    });
+          product: true,
+          content_ingredients: true,
+          ingredient_units: true,
+        },
+      });
 
     return normalizeIngredient(ingredient);
     }

@@ -52,6 +52,7 @@ function compactIngredients(contentIngredients: any[] = []) {
             name: ci.ingredient.product.name,
             en_name: ci.ingredient.product.en_name ?? null,
             macro: ci.ingredient.product.macro ?? null,
+            isRecipe: ci.ingredient.product.isRecipe ?? null
           }
         : null,
       ingredient_units: deduplicateBy(
@@ -91,9 +92,6 @@ function compactContents(contents: any[] = []) {
 export function shapePublicPublication(pub: any) {
   return {
     ...pub,
-    // Nettoyage des collections imbriquées
     contents: compactContents(pub.contents || []),
-    // ingredientsRef et tags ne dupliquent pas l'ID avec un enfant portant le même ID,
-    // donc pas de changement structurel requis ici.
   };
 }

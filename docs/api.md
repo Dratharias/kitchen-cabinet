@@ -111,6 +111,66 @@ Retrieve a single public publication by ID.
 }
 ```
 
+### `GET /api/reviews`
+
+Retrieve a paginated list of all reviews. Includes product and publication references.
+
+**Query Parameters:**
+
+```
+?page=number
+&limit=number
+&sortBy=string
+&order=asc|desc
+&filter=object
+```
+
+**Response:**
+
+```json
+{
+  "items": [
+    {
+      "review_id": "string",
+      "product_id": "string | null",
+      "publication_id": "string | null",
+      "rating": "number | null",
+      "comment": ["string"],
+      "description": ["string"],
+      "buy_again": "string | null",
+      "date_review": "string",
+      "product": "Product | null",
+      "publication": "Publication | null"
+    }
+  ],
+  "total": number,
+  "page": number,
+  "limit": number,
+  "totalPages": number
+}
+```
+
+### `GET /api/reviews/:id`
+
+Retrieve a single review by ID with product and publication details.
+
+**Response:**
+
+```json
+{
+  "review_id": "string",
+  "product_id": "string | null",
+  "publication_id": "string | null",
+  "rating": "number | null",
+  "comment": ["string"],
+  "description": ["string"],
+  "buy_again": "string | null",
+  "date_review": "string",
+  "product": "Product | null",
+  "publication": "Publication | null"
+}
+```
+
 ---
 
 ## 3. Protected CRUD Routes
@@ -136,7 +196,7 @@ Create a new publication.
 
 ### `GET /api/private/publications/:id`
 
-Retrieve a single publication by ID (admin/owner only).
+Retrieve a publication by ID (admin/owner only).
 
 ### `PUT /api/private/publications/:id`
 
@@ -163,7 +223,7 @@ Single endpoint for nested creation with upsert.
 
 ### `POST /api/publicate`
 
-**Exhaustive Publication Creation Example:**
+#### Exhaustive Publication Creation Example
 
 ```json
 {
@@ -204,11 +264,11 @@ Single endpoint for nested creation with upsert.
                 "data": {
                   "name": "Super Product",
                   "en_name": "Super Product",
-                  "macro": { "data": { "calories": 200, "protein": 10 } }
-                },
-                "product_categories": [
-                  { "category": { "data": { "str_value": "Healthy", "type": "ProductCategory" } } }
-                ]
+                  "publication": {
+                    "id": "existing-publication-id",
+                    "data": {}
+                  }
+                }
               },
               "ingredient_units": [
                 { "unit": { "data": { "name": "grams" } } }
@@ -224,6 +284,50 @@ Single endpoint for nested creation with upsert.
         { "data": { "str_value": "Fast", "type": "Tag" } },
         { "data": { "str_value": "Easy", "type": "Tag" } }
       ]
+    }
+  }
+}
+```
+
+#### Review Creation Examples
+
+Reviews must link to either a **publication** or a **product**, not both.
+
+**1. Review a Publication:**
+
+```json
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "rating": 5,
+      "comment": ["This recipe was fantastic!"],
+      "description": ["Easy to follow and delicious."],
+      "buy_again": "Y",
+      "publication": {
+        "id": "existing-publication-id",
+        "data": {}
+      }
+    }
+  }
+}
+```
+
+**2. Review a Product:**
+
+```json
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "rating": 4,
+      "comment": ["The product was great for baking."],
+      "description": ["High quality and worth the price."],
+      "buy_again": "Y",
+      "product": {
+        "id": "existing-product-id",
+        "data": {}
+      }
     }
   }
 }
@@ -293,7 +397,7 @@ Single endpoint for nested creation with upsert.
   "en_name": "string | null",
   "macro_id": "string | null",
   "macro": "Macro | null",
-  "ingredients": "Ingredient[] | null",
+  "publication": "Publication | null",
   "reviews": "Review[] | null",
   "product_categories": "ProductCategory[] | null"
 }

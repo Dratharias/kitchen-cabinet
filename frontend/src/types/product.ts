@@ -6,6 +6,7 @@ export interface ProductPayload {
   name: string;
   en_name?: string;
   macro_id?: UUID | null;
+  is_recipe_id: string | null;
   connect?: {
     macro?: Macro[];
     product_categories?: Category[];

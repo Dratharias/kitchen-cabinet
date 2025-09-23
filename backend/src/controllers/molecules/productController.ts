@@ -8,8 +8,9 @@ export const normalizeProduct = (product: any): Product => ({
   product_id: product.product_id,
   name: product.name,
   en_name: product.en_name,
+  is_recipe_id: product.is_recipe_id,
   macro_id: product.macro_id,
-
+  isRecipe: product.isRecipe ?? null,
   macro: product.macro ?? null,
   ingredients: product.ingredients ?? null,
   reviews: product.reviews ?? null,
@@ -26,9 +27,16 @@ export class ProductController
         product_id: newId,
         name: payload.name,
         en_name: payload.en_name,
-        macro_id: payload.macro_id,
+        // Correction: Remove `macro_id` and use the `macro` relation.
+        macro: payload.connect?.macro
+          ? { connect: { macro_id: payload.connect.macro.macro_id } }
+          : undefined,
+        // Correction: Remove `is_recipe_id` and use the `isRecipe` relation.
+        isRecipe: payload.connect?.isRecipe
+          ? { connect: { publication_id: payload.connect.isRecipe.publication_id } }
+          : undefined,
 
-        ingredients: payload.connect?.ingredients 
+        ingredients: payload.connect?.ingredients
           ? { connect: payload.connect.ingredients }
           : undefined,
 
@@ -46,20 +54,18 @@ export class ProductController
               })),
             }
           : undefined,
-
-
       },
       include: {
         macro: true,
         ingredients: true,
         reviews: true,
+        isRecipe: true,
         product_categories: true,
       },
     });
 
     return normalizeProduct(product);
   }
-
   async findById(id: string): Promise<Product | null> {
     const product = await prisma.product.findUnique({
       where: { product_id: id },
@@ -67,6 +73,7 @@ export class ProductController
         macro: true,
         ingredients: true,
         reviews: true,
+        isRecipe: true,
         product_categories: true,
       },
     });
@@ -79,6 +86,7 @@ export class ProductController
         macro: true,
         ingredients: false,
         reviews: false,
+        isRecipe: true,
         product_categories: true,
       },
     });
@@ -91,7 +99,14 @@ export class ProductController
       data: {
         name: payload.name,
         en_name: payload.en_name,
-        macro_id: payload.macro_id,
+        // Correction: Remove `macro_id` and use the `macro` relation.
+        macro: payload.connect?.macro
+          ? { connect: { macro_id: payload.connect.macro.macro_id } }
+          : undefined,
+        // Correction: Remove `is_recipe_id` and use the `isRecipe` relation.
+        isRecipe: payload.connect?.isRecipe
+          ? { connect: { publication_id: payload.connect.isRecipe.publication_id } }
+          : undefined,
 
         ingredients: payload.connect?.ingredients
           ? { connect: payload.connect.ingredients }
@@ -124,13 +139,12 @@ export class ProductController
               })),
             }
           : undefined,
-
-
       },
       include: {
         macro: true,
         ingredients: true,
         reviews: true,
+        isRecipe: true,
         product_categories: true,
       },
     });

@@ -26,9 +26,9 @@ export type CategoryRelations = Partial<Omit<CategoryData, "str_value" | "type" 
    ============================================================ */
 export type Publication = PublicationCore & PublicationRelations & { publication_id: string, reviewCount: number, reviewAverageScore:number };
 export type PublicPublication = PublicPublicationCore & PublicationRelations & { publication_id: string, reviewCount: number, reviewAverageScore:number };
-export type PublicationCore = Required<Omit<PublicationData, "publication_id" | "contents" | "ingredientsRef" | "reviews" | "tags" | "style_id" | "type_id" | "author_id">> & { publication_id?: string };
-export type PublicPublicationCore = Required<Omit<PublicationData, "publication_id" | "contents" | "ingredientsRef" | "reviews" | "tags" | "style_id" | "type_id" | "author_id" | "published" | "public">> & { publication_id?: string };
-export type PublicationRelations = Required<Pick<PublicationData, "contents" | "ingredientsRef" | "tags" | "type" | "style" | "author">>;
+export type PublicationCore = Required<Omit<PublicationData, "publication_id" | "contents" | "productsRef" | "reviews" | "tags" | "style_id" | "type_id" | "author_id">> & { publication_id?: string };
+export type PublicPublicationCore = Required<Omit<PublicationData, "publication_id" | "contents" | "productsRef" | "reviews" | "tags" | "style_id" | "type_id" | "author_id" | "published" | "public">> & { publication_id?: string };
+export type PublicationRelations = Required<Pick<PublicationData, "contents" | "productsRef" | "tags" | "type" | "style" | "author">>;
 
 /* ============================================================
    Contenu
@@ -48,8 +48,8 @@ export type SegmentRelations = Required<Pick<SegmentData, "content_segments" | "
    Produit
    ============================================================ */
 export type Product = ProductCore & ProductRelations & { product_id: string };
-export type ProductCore = Required<Omit<ProductData, "product_id" | "ingredients" | "reviews" | "product_categories" | "macro">> & { product_id?: string };
-export type ProductRelations = Required<Pick<ProductData, "ingredients" | "reviews" | "product_categories" | "macro">>;
+export type ProductCore = Required<Omit<ProductData, "product_id" | "isRecipe" | "macro" | "ingredients" | "reviews" | "product_categories">> & { product_id?: string };
+export type ProductRelations = Required<Pick<ProductData, "ingredients" | "reviews" | "product_categories" | "macro" | "isRecipe">>;
 
 /* ============================================================
    Macro nutritionnel
@@ -62,8 +62,8 @@ export type MacroRelations = { products: Product[] | null };
    Ingrédient
    ============================================================ */
 export type Ingredient = IngredientCore & IngredientRelations & { ingredient_id: string };
-export type IngredientCore = Required<Omit<IngredientData, "ingredient_id" | "product" | "isRecipe" | "content_ingredients" | "ingredient_units">> & { ingredient_id?: string };
-export type IngredientRelations = Required<Pick<IngredientData, "product" | "isRecipe" | "content_ingredients" | "ingredient_units">>;
+export type IngredientCore = Required<Omit<IngredientData, "ingredient_id" | "product" | "content_ingredients" | "ingredient_units">> & { ingredient_id?: string };
+export type IngredientRelations = Required<Pick<IngredientData, "product" | "content_ingredients" | "ingredient_units">>;
 
 /* ============================================================
    Unité de mesure

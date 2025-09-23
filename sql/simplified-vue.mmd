@@ -161,7 +161,7 @@ erDiagram
     Ingredient ||--|| Product : "has product"
     Ingredient ||--o{ IngredientUnit : ""
     IngredientUnit }o--|| Unit : ""
-    Ingredient }o--o| Publication : "isRecipe (optional)"
+    Product }o--o| Publication : "isRecipe (optional)"
     
     %% Product relations
     Product ||--o| Macro : "has macros"

@@ -127,18 +127,18 @@ CREATE TABLE product (
     product_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     name       VARCHAR(255) NOT NULL UNIQUE,
     en_name    VARCHAR(255),
+    is_recipe_id  UUID,
     macro_id   UUID,
-    FOREIGN KEY (macro_id) REFERENCES macro(macro_id) ON DELETE SET NULL
+    FOREIGN KEY (macro_id) REFERENCES macro(macro_id) ON DELETE SET NULL,
+    FOREIGN KEY (is_recipe_id) REFERENCES publication(publication_id) ON DELETE SET NULL
 );
 
 CREATE TABLE ingredient (
     ingredient_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     quantity      SMALLINT,
-    is_recipe_id  UUID,
     product_id    UUID NOT NULL,
     multiply_factor DECIMAL(10,2) DEFAULT 1.00,
     FOREIGN KEY (product_id)   REFERENCES product(product_id) ON DELETE CASCADE,
-    FOREIGN KEY (is_recipe_id) REFERENCES publication(publication_id) ON DELETE SET NULL
 );
 
 CREATE TABLE prep_time (

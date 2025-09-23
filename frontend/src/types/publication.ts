@@ -2,6 +2,7 @@ import { Category } from "./category";
 import { PaginatedRequest, PaginatedResponse, UUID } from "./common";
 import { Content } from "./content";
 import { Ingredient } from "./ingredient";
+import { Product } from "./product";
 
 export interface PublicationPayload {
   title: string;
@@ -32,7 +33,7 @@ export interface Publication extends PublicationPayload {
   style?: Category;
   author?: Category;
   contents?: Content[];
-  ingredientsRef?: Ingredient[];
+  productsRef?: Product[];
   tags?: Category[];
 }
 

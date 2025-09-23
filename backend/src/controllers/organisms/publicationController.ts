@@ -27,7 +27,7 @@ export const normalizePublication = (pub: any): Publication => {
     style: shaped.style ?? null,
     author: shaped.author ?? null,
     contents: shaped.contents ?? null,
-    ingredientsRef: shaped.ingredientsRef ?? null,
+    productsRef: shaped.productsRef ?? null,
     reviewCount,
     reviewAverageScore,
     tags: shaped.tags?.map((tag: PublicationTag) => tag.category) ?? null,
@@ -151,12 +151,6 @@ export class PublicationController
           ? { set: payload.set.contents.map((c: { content_id: string }) => ({ content_id: c.content_id })) }
           : undefined,
 
-        ingredientsRef: payload.connect?.ingredientsRef
-          ? { connect: payload.connect.ingredientsRef.map((i: { ingredient_id: string }) => ({ ingredient_id: i.ingredient_id })) }
-          : payload.set?.ingredientsRef
-          ? { set: payload.set.ingredientsRef.map((i: { ingredient_id: string }) => ({ ingredient_id: i.ingredient_id })) }
-          : undefined,
-
         reviews: payload.connect?.reviews
           ? { connect: payload.connect.reviews.map((r: { review_id: string }) => ({ review_id: r.review_id })) }
           : payload.set?.reviews
@@ -239,22 +233,6 @@ export class PublicationController
                   style: { select: { category_id: true, str_value: true } },
                 },
               },
-            },
-          },
-        },
-      },
-      ingredientsRef: {
-        include: {
-          product: {
-            select: {
-              product_id: true,
-              name: true,
-              macro: { select: { calories: true, protein: true } },
-            },
-          },
-          ingredient_units: {
-            include: {
-              unit: { select: { unit_id: true, name: true } },
             },
           },
         },

@@ -54,7 +54,7 @@ model publication {
   author category? @relation("PublicationAuthor", fields: [author_id], references: [category_id])
 
   contents       content[]
-  ingredientsRef ingredient[] @relation("RecipeReference")
+  productRef     product[] @relation("RecipeReference")
   reviews        review[]
   tags           publication_tag[]
 
@@ -123,6 +123,8 @@ model product {
   name       String  @unique
   en_name    String?
   macro_id   String?
+  is_recipe_id String?
+  isRecipe          publication? @relation("RecipeReference", fields: [is_recipe_id], references: [publication_id])
 
   macro             macro? @relation(fields: [macro_id], references: [macro_id])
   ingredients       ingredient[]
@@ -133,12 +135,10 @@ model product {
 model ingredient {
   ingredient_id String  @id @default(uuid())
   quantity     Int?    @db.SmallInt
-  is_recipe_id String?
   product_id   String
   multiply_factor Decimal @db.Decimal(10, 2) @default(1.00)
 
   product           product @relation(fields: [product_id], references: [product_id], onDelete: Cascade)
-  isRecipe          publication? @relation("RecipeReference", fields: [is_recipe_id], references: [publication_id])
   content_ingredients content_ingredient[]
   ingredient_units   ingredient_unit[]
 }

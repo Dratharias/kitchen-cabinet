@@ -89,7 +89,7 @@ export interface PublicationData {
 
   // Relations 1-N et N-N
   contents: ContentData[] | null;          // 1-N
-  ingredientsRef: IngredientData[] | null; // N-N (RecipeReference)
+  productsRef: IngredientData[] | null; // N-N (RecipeReference)
   reviews: ReviewData[] | null;            // 1-N
   tags: PublicationTagData[] | null;       // N-N
 }
@@ -180,9 +180,11 @@ export interface ProductData {
   name: string;
   en_name: string | null;
   macro_id: string | null;
+  is_recipe_id: string | null;
 
   // Relations N-1
   macro: MacroData | null; // N-1
+  isRecipe: PublicationData | null;  // N-1
 
   // Relations 1-N
   ingredients: IngredientData[] | null; // 1-N
@@ -224,13 +226,11 @@ export interface MacroData {
 export interface IngredientData {
   ingredient_id: string;
   quantity: number | null;
-  is_recipe_id: string | null;
   product_id: string;
   multiply_factor: number;
 
   // Relations N-1
   product: ProductData | null;       // N-1
-  isRecipe: PublicationData | null;  // N-1
 
   // Relations N-N
   content_ingredients: ContentIngredientData[] | null; // N-N

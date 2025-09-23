@@ -32,7 +32,6 @@ export default async function createRoutes(fastify: FastifyInstance) {
     publications: new PublicationController()
   };
 
-  const controllerMap: ControllerMap = baseControllers as any;
   const orchestrator = new OrchestratorController();
   
   const registry = new RouteRegistry(fastify, authGuard, orchestrator);
@@ -43,9 +42,16 @@ export default async function createRoutes(fastify: FastifyInstance) {
 
   registry.registerCrud(reviewController, {
     path: '/api/reviews',
-    methods: ['findAll', 'findById'],
+    methods: ['findAll', 'findById', 'search'],
     protected: false
   });
+
+  registry.registerCrud(reviewController, {
+    path: '/api/reviews',
+    methods: ['create', 'update', 'delete'],
+    protected: true
+  });
+
 
   registry.registerCrud(new PublicPublicationController(), {
     path: '/api/publications',
@@ -53,7 +59,6 @@ export default async function createRoutes(fastify: FastifyInstance) {
     protected: false
   });
 
-  // 👇 ADDED THIS NEW BLOCK
   registry.registerCrud(new PublicationController(), {
     path: '/api/private/publications',
     protected: true,

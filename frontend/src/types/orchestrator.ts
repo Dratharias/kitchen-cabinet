@@ -31,8 +31,8 @@ export interface SegmentCreate {
 
 export interface IngredientCreate {
   quantity: number | null;
-  is_recipe_id: string | null;
   product_id: string;
+  is_recipe_id: string | null;
   multiply_factor: number;
 }
 

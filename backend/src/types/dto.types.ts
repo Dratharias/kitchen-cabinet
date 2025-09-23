@@ -46,7 +46,7 @@ export type CategoryUpdateDto = Partial<CategoryCore & CategoryRelations> & {
    ============================================================ */
 export type PublicationConnect = {
   contents?: { content_id: string }[];
-  ingredientsRef?: { ingredient_id: string }[];
+  productsRef?: { product_id: string }[];
   reviews?: { review_id: string }[];
   tags?: { category_id: string }[];
   type?: { category_id: string }[];
@@ -116,19 +116,27 @@ export type SegmentUpdateDto = Partial<SegmentCore & SegmentRelations> & {
    Produit / Product
    ============================================================ */
 export type ProductConnect = {
+  isRecipe?: { publication_id: string };
+  macro?: { macro_id: string };
   ingredients?: { ingredient_id: string }[];
   reviews?: { review_id: string }[];
   product_categories?: { category_id: string }[];
-  macro?: { macro_id: string }[];
 };
 
-export type ProductCreateDto = ProductCore & Partial<ProductRelations> & {
-  connect?: ProductConnect;
+export type ProductSet = {
+  macro?: { macro_id: string };
+  ingredients?: { ingredient_id: string }[];
+  reviews?: { review_id: string }[];
+  product_categories?: { category_id: string }[];
 };
 
 export type ProductUpdateDto = Partial<ProductCore & ProductRelations> & {
   connect?: ProductConnect;
-  set?: ProductConnect;
+  set?: ProductSet;
+};
+
+export type ProductCreateDto = ProductCore & Partial<ProductRelations> & {
+  connect?: ProductConnect;
 };
 
 /* ============================================================

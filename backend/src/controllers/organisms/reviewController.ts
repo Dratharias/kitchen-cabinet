@@ -15,6 +15,7 @@ export const normalizeReview = (review: any): Review => ({
   buy_again: review.buy_again ?? null,
   date_review: review.date_review,
 
+  // Only include product or publication if they exist
   product: review.product ?? null,
   publication: review.publication ?? null,
 });
@@ -39,7 +40,16 @@ export class ReviewController implements GenericPaginatedController<
         publication_id: payload.connect?.publication?.[0]?.publication_id ?? payload.publication_id ?? undefined,
       },
       include: {
-        product: true,
+        product: {
+          include: {
+            macro: true,
+            product_categories: {
+              include: {
+                category: true,
+              },
+            },
+          },
+        },
         publication: true,
       },
     });
@@ -50,7 +60,16 @@ export class ReviewController implements GenericPaginatedController<
     const review = await prisma.review.findUnique({
       where: { review_id: id },
       include: {
-        product: true,
+        product: {
+          include: {
+            macro: true,
+            product_categories: {
+              include: {
+                category: true,
+              },
+            },
+          },
+        },
         publication: true,
       },
     });
@@ -79,7 +98,16 @@ export class ReviewController implements GenericPaginatedController<
     const reviews = await prisma.review.findMany({
       where,
       include: {
-        product: true,
+        product: {
+          include: {
+            macro: true,
+            product_categories: {
+              include: {
+                category: true,
+              },
+            },
+          },
+        },
         publication: true,
       },
       skip,
@@ -107,7 +135,16 @@ export class ReviewController implements GenericPaginatedController<
         publication_id: payload.connect?.publication?.[0]?.publication_id ?? payload.set?.publication?.[0]?.publication_id ?? payload.publication_id ?? undefined,
       },
       include: {
-        product: true,
+        product: {
+          include: {
+            macro: true,
+            product_categories: {
+              include: {
+                category: true,
+              },
+            },
+          },
+        },
         publication: true,
       },
     });

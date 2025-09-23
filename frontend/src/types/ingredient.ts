@@ -4,7 +4,6 @@ import { Unit } from "./unit";
 
 export interface IngredientPayload {
   quantity?: number;
-  is_recipe_id?: UUID | null;
   product_id?: UUID;
   multiply_factor?: number;
   connect?: {
