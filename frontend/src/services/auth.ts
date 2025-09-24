@@ -4,17 +4,6 @@ const TOKEN_KEY = "auth_token";
 const USER_KEY = "auth_user";
 const API_URL = import.meta.env.VITE_API_URL;
 
-function decodeJwt(token: string): Record<string, any> | null {
-  try {
-    const payload = token.split(".")[1];
-    const decoded = atob(payload);
-    return JSON.parse(decoded);
-  } catch (err) {
-    console.error("JWT decode error:", err);
-    return null;
-  }
-}
-
 export class AuthService {
   static async login(credentials: LoginRequest): Promise<LoginResponse | null> {
     try {
@@ -29,7 +18,10 @@ export class AuthService {
       const data: LoginResponse = await res.json();
       if (data?.token) {
         localStorage.setItem(TOKEN_KEY, data.token);
-        localStorage.setItem(USER_KEY, JSON.stringify({ username: data.username, role: data.role }));
+        localStorage.setItem(
+          USER_KEY,
+          JSON.stringify({ username: data.username, role: data.role })
+        );
       }
       return data;
     } catch (err) {
@@ -47,11 +39,14 @@ export class AuthService {
     const token = localStorage.getItem(TOKEN_KEY);
     if (!token) return false;
 
-    const payload = decodeJwt(token);
-    if (!payload?.exp) return false;
-
-    const now = Math.floor(Date.now() / 1000);
-    return payload.exp > now;
+    try {
+      const payload = JSON.parse(atob(token.split(".")[1]));
+      if (!payload.exp) return false;
+      const exp = payload.exp * 1000;
+      return Date.now() < exp;
+    } catch {
+      return false;
+    }
   }
 
   static getToken(): string | null {

@@ -1,30 +1,30 @@
-import { OrchestratorRequest, OrchestratorResponse } from '@/types';
+import { OrchestratorPayload, OrchestratorResponse } from '@/types';
 import { CommonService } from './common';
 
 export class OrchestratorService {
-  static async publicate(payload: OrchestratorRequest): Promise<OrchestratorResponse> {
+  static async publicate(payload: OrchestratorPayload): Promise<OrchestratorResponse> {
     return CommonService.post<OrchestratorResponse>('/api/publicate', payload, true);
   }
 
   static createPublicationRequest(
-    publicationData: OrchestratorRequest['publications'],
-    relatedData?: Omit<OrchestratorRequest, 'action' | 'publications'>
-  ): OrchestratorRequest {
+    publicationData: { [key: string]: import('@/types').PublicationData },
+    relatedData?: any
+  ): OrchestratorPayload {
     return {
       action: 'create',
-      publications: publicationData,
-      ...relatedData
+      payload: {
+        ...publicationData,
+        ...relatedData
+      }
     };
   }
 
   static createReviewRequest(
-    reviewData: OrchestratorRequest['reviews'],
-    targetData?: Pick<OrchestratorRequest, 'products' | 'publications'>
-  ): OrchestratorRequest {
+    reviewData: { [key: string]: import('@/types').ReviewData }
+  ): OrchestratorPayload {
     return {
       action: 'create',
-      reviews: reviewData,
-      ...targetData
+      payload: reviewData
     };
   }
 }

@@ -1,77 +1,57 @@
 import type {
-  OrchestratorRequest,
-  PublicationCreate,
-  ReviewCreate,
-  ContentCreate,
-  SegmentCreate,
-  IngredientCreate,
-  ProductCreate,
-  CategoryCreate,
-  UnitCreate,
-  PrepTimeCreate,
-  MacroCreate,
-} from "@/types/orchestrator";
-
-// Utilitaire générique pour builder les entités
-function mapEntities<T>(
-  items: (T & { id?: string })[] | undefined,
-  action: "create" | "update"
-) {
-  return items?.map((item) => {
-    const { id, ...rest } = item as any;
-    return action === "update" ? { id, data: rest } : { data: rest };
-  });
-}
+  OrchestratorPayload,
+  PublicationData,
+  ReviewData,
+  ContentWithRelations,
+} from "@/types";
 
 export function usePayloadBuilder() {
   function buildPublicationPayload(
     action: "create" | "update",
-    data: {
-      publication: PublicationCreate & { id?: string };
-      contents?: (ContentCreate & { id?: string })[];
-      segments?: (SegmentCreate & { id?: string })[];
-      ingredients?: (IngredientCreate & { id?: string })[];
-      products?: (ProductCreate & { id?: string })[];
-      categories?: (CategoryCreate & { id?: string })[];
-      units?: (UnitCreate & { id?: string })[];
-      prepTimes?: (PrepTimeCreate & { id?: string })[];
-      macros?: (MacroCreate & { id?: string })[];
-    }
-  ): OrchestratorRequest {
-    const { publication, ...rest } = data;
-    const { id, ...pubData } = publication as any;
-
+    publicationKey: string,
+    data: PublicationData
+  ): OrchestratorPayload {
     return {
       action,
-      publications:
-        action === "update" ? { id, data: pubData } : { data: pubData },
-      contents: mapEntities(rest.contents, action),
-      segments: mapEntities(rest.segments, action),
-      ingredients: mapEntities(rest.ingredients, action),
-      products: mapEntities(rest.products, action),
-      categories: mapEntities(rest.categories, action),
-      units: mapEntities(rest.units, action),
-      prepTimes: mapEntities(rest.prepTimes, action),
-      macros: mapEntities(rest.macros, action),
+      payload: {
+        [publicationKey]: data
+      }
     };
   }
 
   function buildReviewPayload(
     action: "create" | "update",
-    review: ReviewCreate & { id?: string },
-    target: { product_id?: string; publication_id?: string }
-  ): OrchestratorRequest {
-    if (!target.product_id && !target.publication_id) {
-      throw new Error("Review must reference either product_id or publication_id");
-    }
-
-    const { id, ...reviewData } = review as any;
-
+    reviewKey: string,
+    data: ReviewData
+  ): OrchestratorPayload {
     return {
       action,
-      reviews: action === "update" ? { id, data: { ...reviewData, ...target } } : { data: { ...reviewData, ...target } },
+      payload: {
+        [reviewKey]: data
+      }
     };
   }
 
-  return { buildPublicationPayload, buildReviewPayload };
+  function buildComplexPublicationPayload(
+    action: "create" | "update",
+    publicationKey: string,
+    publicationData: PublicationData,
+    contents?: ContentWithRelations[]
+  ): OrchestratorPayload {
+    return {
+      action,
+      payload: {
+        [publicationKey]: {
+          ...publicationData,
+          contents
+        }
+      }
+    };
+  }
+
+  return { 
+    buildPublicationPayload, 
+    buildReviewPayload, 
+    buildComplexPublicationPayload 
+  };
 }

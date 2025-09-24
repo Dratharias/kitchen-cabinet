@@ -33,7 +33,26 @@ export class OrchestratorController {
         console.error("Orchestrator transaction failed:", error);
         return { success: false, error: error.message };
       }
-    } else {
+    } else if (action === "readAll") {
+      try {
+        const [categories, products, units] = await prisma.$transaction([
+          prisma.category.findMany(),
+          prisma.product.findMany(),
+          prisma.unit.findMany(),
+        ]);
+
+        return {
+          success: true,
+          results: {
+            categories,
+            products,
+            units,
+          },
+        };
+      } catch (error: any) {
+        return { success: false, error: error.message };
+      }
+    }else {
       return {
         success: false,
         error: `Action '${action}' not supported yet.`,

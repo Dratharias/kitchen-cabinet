@@ -17,14 +17,9 @@ const RequireAuth = (props: RequireAuthProps) => {
       when={isAuthenticated()}
       fallback={
         props.fallback ?? (
-          <div class={`text-center p-4`}>
-            <Span>
-              Vous devez être connecté.
-            </Span>
-            <Button
-              class={`mt-2 underline`}
-              onClick={() => navigate("/login")}
-            >
+          <div class="text-center p-4">
+            <Span>Vous devez être connecté.</Span>
+            <Button class="mt-2 underline" onClick={() => navigate("/login")}>
               Se connecter
             </Button>
           </div>

@@ -5,89 +5,109 @@ export interface OrchestratorEntity<T> {
   data: T;
 }
 
-export interface PublicationCreate {
+export interface CategoryData {
+  str_value: string;
+  type: string;
+}
+
+export interface UnitData {
+  name: string;
+}
+
+export interface PrepTimeData {
+  duration: number;
+}
+
+export interface ProductData {
+  name: string;
+  en_name: string;
+  publication?: {
+    id: string;
+    data: {};
+  };
+}
+
+export interface SegmentData {
+  paragraph: string;
+  title?: string;
+}
+
+export interface IngredientData {
+  quantity: number;
+  multiply_factor: number;
+}
+
+export interface ContentData {
+  total_prep_time: number;
+  servings: number | null;
+}
+
+export interface PublicationData {
   title: string;
   description: string[];
   note: string[];
   public: boolean;
   published: boolean;
-  thumbnail: string | null;
-  type_id: string | null;
-  style_id: string | null;
-  author_id: string | null;
+  thumbnail?: string;
+  type?: OrchestratorEntity<CategoryData>;
+  style?: OrchestratorEntity<CategoryData>;
+  author?: OrchestratorEntity<CategoryData>;
+  tags?: OrchestratorEntity<CategoryData>[];
+  contents?: ContentWithRelations[];
 }
 
-export interface ContentCreate {
-  publication_id: string;
-  total_prep_time: number;
-  servings: number | null;
-}
-
-export interface SegmentCreate {
-  title: string | null;
-  paragraph: string;
-  order_num: number | null;
-}
-
-export interface IngredientCreate {
-  quantity: number | null;
-  product_id: string;
-  is_recipe_id: string | null;
-  multiply_factor: number;
-}
-
-export interface ProductCreate {
-  name: string;
-  en_name: string | null;
-  macro_id: string | null;
-}
-
-export interface CategoryCreate {
-  str_value: string;
-  type: string;
-}
-
-export interface UnitCreate {
-  name: string;
-}
-
-export interface PrepTimeCreate {
-  duration: number;
-  style_id: string | null;
-}
-
-export interface MacroCreate {
-  calories: number | null;
-  protein: number | null;
-  fiber: number | null;
-  sugar: number | null;
-  saturated: number | null;
-  trans: number | null;
-  caffein: number | null;
-}
-
-export interface ReviewCreate {
+export interface ReviewData {
   rating: number | null;
   comment: string[];
   description: string[];
   buy_again: 'Y' | 'N' | 'M' | 'D' | null;
-  date_review: string;
-  product_id: string | null;
-  publication_id: string | null;
+  product?: {
+    id: string;
+    data: {};
+  };
+  publication?: {
+    id: string;
+    data: {};
+  };
 }
 
-export interface OrchestratorRequest {
+export interface ContentWithRelations {
+  data: ContentData;
+  content_segments?: {
+    position: number;
+    segment: SegmentWithRelations;
+  }[];
+  content_ingredients?: IngredientWithRelations[];
+  content_prep_times?: {
+    prep_time: OrchestratorEntity<PrepTimeData>;
+  }[];
+}
+
+export interface SegmentWithRelations {
+  data: SegmentData;
+  segment_prep_time?: {
+    prep_time: PrepTimeWithStyle;
+  }[];
+}
+
+export interface PrepTimeWithStyle {
+  data: PrepTimeData;
+  style?: OrchestratorEntity<CategoryData>;
+}
+
+export interface IngredientWithRelations {
+  data: IngredientData;
+  product: OrchestratorEntity<ProductData>;
+  ingredient_units?: {
+    unit: OrchestratorEntity<UnitData>;
+  }[];
+}
+
+export interface OrchestratorPayload {
   action: 'create' | 'update';
-  publications?: OrchestratorEntity<PublicationCreate>;
-  contents?: OrchestratorEntity<ContentCreate>[];
-  segments?: OrchestratorEntity<SegmentCreate>[];
-  ingredients?: OrchestratorEntity<IngredientCreate>[];
-  products?: OrchestratorEntity<ProductCreate>[];
-  categories?: OrchestratorEntity<CategoryCreate>[];
-  units?: OrchestratorEntity<UnitCreate>[];
-  prepTimes?: OrchestratorEntity<PrepTimeCreate>[];
-  macros?: OrchestratorEntity<MacroCreate>[];
-  reviews?: OrchestratorEntity<ReviewCreate>;
+  payload: {
+    [key: string]: PublicationData | ReviewData;
+  };
 }
 
 export interface OrchestratorResponse {

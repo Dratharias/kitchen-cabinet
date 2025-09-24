@@ -3,6 +3,7 @@ import { Layout } from "./views/layout/Layout";
 import { ToastProvider } from "./components/ToastProvider";
 import { LoginForm } from "./pages/forms/Login";
 import { ContentBrowser } from "./pages/ContentBrowser";
+import { PublicationPage } from "./pages/forms/Publication";
 
 function App() {
   return (
@@ -42,6 +43,14 @@ function App() {
           component={() => (
             <Layout>
               <LoginForm />
+            </Layout>
+          )}
+        />
+        <Route
+          path="/create"
+          component={() => (
+            <Layout>
+              <PublicationPage />
             </Layout>
           )}
         />

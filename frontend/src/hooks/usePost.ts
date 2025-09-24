@@ -1,16 +1,10 @@
 import { createSignal } from "solid-js";
-import type { OrchestratorRequest, OrchestratorResponse } from "../types/orchestrator";
+import type { OrchestratorPayload, OrchestratorResponse } from "../types";
 
 export function usePost() {
   const [loading, setLoading] = createSignal(false);
   const [error, setError] = createSignal<string | null>(null);
 
-  /**
-   * Generic API call
-   * @param url API endpoint
-   * @param method HTTP method
-   * @param body optional request body
-   */
   const request = async <T>(
     url: string,
     method: "POST" | "PATCH" | "PUT" | "DELETE",
@@ -42,29 +36,10 @@ export function usePost() {
     }
   };
 
-  /**
-   * Post publication or review to /api/publicate
-   */
   const postPublicate = async (
-    payload: OrchestratorRequest,
-    isReview: boolean
+    payload: OrchestratorPayload
   ): Promise<OrchestratorResponse | null> => {
-    return request<OrchestratorResponse>("/api/publicate", "POST", {
-      action: "create",
-      ...(isReview
-        ? { reviews: payload.reviews, products: payload.products, publications: payload.publications }
-        : {
-            publications: payload.publications,
-            contents: payload.contents,
-            segments: payload.segments,
-            ingredients: payload.ingredients,
-            products: payload.products,
-            categories: payload.categories,
-            units: payload.units,
-            prepTimes: payload.prepTimes,
-            macros: payload.macros,
-          }),
-    });
+    return request<OrchestratorResponse>("/api/publicate", "POST", payload);
   };
 
   return { request, postPublicate, loading, error };
