@@ -7,7 +7,7 @@ export type ButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
   reverse?: boolean;
 };
 
-const Button = (props: ButtonProps): JSX.Element => {
+export const Button = (props: ButtonProps): JSX.Element => {
   // Split props into those we care about vs rest
   const [local, rest] = splitProps(props, [
     "variant",
@@ -68,5 +68,3 @@ const Button = (props: ButtonProps): JSX.Element => {
     </button>
   );
 };
-
-export default Button;

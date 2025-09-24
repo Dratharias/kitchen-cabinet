@@ -1,4 +1,4 @@
-import { Publication, PublicationCore, PublicationRelations, PublicationTag } from "types/controller.types";
+import { Publication, PublicationCore, PublicationRelations, PublicationTag, Review } from "types/controller.types";
 import { GenericPaginatedController } from "types/crud.types";
 import { PublicationConnect, PublicationReadAllDto } from "types/dto.types";
 import { v4 as uuidv4 } from "uuid";
@@ -11,7 +11,7 @@ export const normalizePublication = (pub: any): Publication => {
   const reviewCount = shaped.reviews?.length ?? 0;
   const reviewAverageScore =
     reviewCount > 0
-      ? shaped.reviews.reduce((acc: number, r: any) => acc + (r.rating ?? 0), 0) /
+      ? shaped.reviews.reduce((acc: number, r: Review) => acc + (r.rating ?? 0), 0) /
         reviewCount
       : 0;
 
@@ -30,7 +30,7 @@ export const normalizePublication = (pub: any): Publication => {
     productsRef: shaped.productsRef ?? null,
     reviewCount,
     reviewAverageScore,
-    tags: shaped.tags?.map((tag: PublicationTag) => tag.category) ?? null,
+    tags: shaped.tags?.map((tag: PublicationTag) => tag.category?.str_value) ?? [],
   };
 };
 
@@ -111,8 +111,9 @@ export class PublicationController
     }
 
     const total = await prisma.publication.count({ where });
-    const limit = params?.take ? Number(params.take) : 12;
-    const skip = params?.skip ? Number(params.skip) : 0;
+    const limit = params?.limit ? Number(params.limit) : params?.take ? Number(params.take) : 12;
+    const page = params?.page ? Number(params.page) : 1;
+    const skip = params?.skip ? Number(params.skip) : (page - 1) * limit;
 
     const publications = await prisma.publication.findMany({
       where,
@@ -122,7 +123,6 @@ export class PublicationController
     });
 
     const items = publications.map(normalizePublication);
-    const page = Math.floor(skip / limit) + 1;
     const totalPages = Math.ceil(total / limit);
 
     return { items, total, page, limit, totalPages };

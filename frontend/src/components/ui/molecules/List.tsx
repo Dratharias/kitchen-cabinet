@@ -1,5 +1,5 @@
 import { JSX, ParentProps, For, createMemo } from "solid-js";
-import Button from "../atoms/Button";
+import { Button } from "../atoms/Button";
 import { Checklist } from "../atoms/Checklist";
 import { Span } from "../atoms/Span";
 

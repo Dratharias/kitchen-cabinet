@@ -13,7 +13,7 @@ function App() {
           path="/"
           component={() => (
             <Layout>
-              <ContentBrowser reviews />
+              <ContentBrowser feeds />
             </Layout>
           )}
         />

@@ -6,7 +6,7 @@ export type InputProps = JSX.InputHTMLAttributes<HTMLInputElement> & {
   icon?: JSX.Element;
 };
 
-const Input = (props: InputProps): JSX.Element => {
+export const Input = (props: InputProps): JSX.Element => {
   const [local, rest] = splitProps(props, ["class", "error", "icon", "disabled"]);
 
   const [focused, setFocused] = createSignal(false);
@@ -47,5 +47,3 @@ const Input = (props: InputProps): JSX.Element => {
     </div>
   );
 };
-
-export default Input;

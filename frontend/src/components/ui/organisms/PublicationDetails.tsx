@@ -1,13 +1,13 @@
 import { Component, createSignal, createMemo } from "solid-js";
 import { useNavigate } from "@solidjs/router";
-import type { ContentDetails } from "../../../shared-types/publication";
-import Image from "../atoms/Image";
+import { Image } from "../atoms/Image";
 import NumberSpinner from "../utilities/NumberSpinner";
 import { Span } from "../atoms/Span";
 import { AccordionList } from "../utilities/AccordionList";
 import { IngredientPrepToggler } from "../utilities/IngredientPrepToggler";
 import { Checklist } from "../atoms/Checklist";
-import Button from "../atoms/Button";
+import { Button } from "../atoms/Button";
+import { Content } from "@/types";
 
 interface Ingredient {
   ingredientId?: string;
@@ -25,13 +25,13 @@ interface PublicationDetailsProps {
   title: string;
   thumbnail?: string;
   prepTime?: string | number;
-  selectedContent?: ContentDetails & { servings?: number; ingredients?: Ingredient[] };
+  selectedContent?: Content & { servings?: number; ingredients?: Ingredient[] };
   ingredients?: Ingredient[];
   preparation?: string[];
   description?: string[];
   note?: string[];
   isReview?: boolean;
-  category?: "foods" | "feeds" | "unknown";
+  category?: "reviews" | "feeds" | "unknown";
 }
 
 export const PublicationDetails: Component<PublicationDetailsProps> = (props) => {
@@ -73,7 +73,7 @@ export const PublicationDetails: Component<PublicationDetailsProps> = (props) =>
   }
 
   const effectivePrep = createMemo(() => {
-    const pubPrep = Number(props.selectedContent?.totalPrepTime ?? 0);
+    const pubPrep = Number(props.selectedContent?.total_prep_time ?? 0);
     const content = props.selectedContent ?? ({} as any);
     const segments = content.segments ?? [];
 

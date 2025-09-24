@@ -1,4 +1,4 @@
-import Button, { ButtonProps } from "../atoms/Button";
+import { Button, ButtonProps } from "../atoms/Button";
 import { ArrowIcon } from "../atoms/Icons";
 
 export const PrevPageButton = (props: Omit<ButtonProps, "icon">) => (

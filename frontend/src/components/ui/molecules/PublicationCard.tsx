@@ -1,13 +1,13 @@
 import { Component, For, Show } from "solid-js";
 import { useNavigate } from "@solidjs/router";
-import Button from "../atoms/Button";
+import { Button } from "../atoms/Button";
 import { Span } from "../atoms/Span";
-import Image from "../atoms/Image";
-import Stars from "./Stars";
+import { Image } from "../atoms/Image";
+import { Stars } from "./Stars";
 
 export interface CardProps {
   publication: any;
-  pathPrefix: "feeds" | "foods";
+  pathPrefix: "feeds" | "reviews";
 }
 
 const Card: Component<CardProps> = (props) => {

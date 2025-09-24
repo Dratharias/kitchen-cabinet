@@ -7,7 +7,7 @@ interface ImageProps extends JSX.ImgHTMLAttributes<HTMLImageElement> {
   fallbackSrc?: string; // URL de fallback
 }
 
-const Image: Component<ImageProps> = (props) => {
+export const Image: Component<ImageProps> = (props) => {
   const [src, setSrc] = createSignal(props.src);
 
   return (
@@ -23,5 +23,3 @@ const Image: Component<ImageProps> = (props) => {
     />
   );
 };
-
-export default Image;

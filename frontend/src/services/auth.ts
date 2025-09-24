@@ -2,6 +2,7 @@ import type { LoginRequest, LoginResponse } from "@/types/auth";
 
 const TOKEN_KEY = "auth_token";
 const USER_KEY = "auth_user";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function decodeJwt(token: string): Record<string, any> | null {
   try {
@@ -17,7 +18,7 @@ function decodeJwt(token: string): Record<string, any> | null {
 export class AuthService {
   static async login(credentials: LoginRequest): Promise<LoginResponse | null> {
     try {
-      const res = await fetch("/api/auth/login", {
+      const res = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials),

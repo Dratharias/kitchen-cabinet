@@ -1,8 +1,10 @@
 import { createSignal } from "solid-js";
 import { isAuthenticated } from "@/stores/authStore";
 import { useAuth } from "@/hooks/useAuth";
-import Button from "@/components/ui/atoms/Button";
-import Input from "@/components/ui/atoms/Input";
+import { Button } from "@/components/ui/atoms/Button";
+import { Input } from "@/components/ui/atoms/Input";
+import { AuthService } from "@/services/auth";
+import { Span } from "@/components/ui/atoms/Span";
 
 export function LoginForm() {
   const [username, setUsername] = createSignal("");
@@ -21,9 +23,16 @@ export function LoginForm() {
   return (
     <div class="flex items-center justify-center min-h-[70vh] w-full text-prim-txt dark:text-prim-txt-d">
       {isAuthenticated() ? (
-        <Button class="mx-auto" onClick={logout}>
-          Logout
-        </Button>
+        <div class="flex flex-col items-center space-y-4">
+          <p class="text-lg font-semibold">
+            <Span class="text-primary">
+              Bienvenue {AuthService.getUser()?.username ?? "Utilisateur"}
+            </Span>
+          </p>
+          <Button onClick={logout}>
+            Logout
+          </Button>
+        </div>
       ) : (
         <form onSubmit={handleSubmit} class="w-full max-w-sm space-y-4">
           <h2 class="text-xl font-bold mb-4">Login</h2>

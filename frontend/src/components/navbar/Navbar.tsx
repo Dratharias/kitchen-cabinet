@@ -1,9 +1,10 @@
 import { useLocation, useNavigate } from "@solidjs/router";
-import { createSignal, createEffect } from "solid-js";
+import { createSignal, createEffect, createMemo } from "solid-js";
 import NavButtons from "./NavButtons";
 import { useNavState } from "./NavContext";
 import NavbarMenu from "./NavbarMenu";
 import ClickOutsideContainer from "../ui/utilities/ClickOutsideContainer";
+import { isAuthenticated } from "@/stores/authStore";
 
 export interface MenuItem {
   label: string | (() => string);
@@ -12,14 +13,12 @@ export interface MenuItem {
 
 const Navbar = () => {
   const { searchOpen, toggleSearch } = useNavState();
-  const [isEditor] = createSignal(true);
   const [open, setOpen] = createSignal(false);
   const [activeKey, setActiveKey] = createSignal<string>(
-    localStorage.getItem("activeNav") || "foods"
+    localStorage.getItem("activeNav") || "feeds"
   );
 
   const location = useLocation();
-  const currentId = location.pathname.split("/").pop() || "";
   const navigate = useNavigate();
 
   // Persist navigation
@@ -30,11 +29,11 @@ const Navbar = () => {
   const activate = (key: string) => {
     setActiveKey(key);
     switch (key) {
+      case "reviews":
+        navigate("/reviews");
+        break;
       case "feeds":
         navigate("/feeds");
-        break;
-      case "foods":
-        navigate("/foods");
         break;
       default:
         console.warn("Unknown nav key:", key);
@@ -42,25 +41,19 @@ const Navbar = () => {
   };
 
   const isActive = (key: string) => {
-    if (key === "foods") return location.pathname === "/" || location.pathname.startsWith("/foods");
+    if (key === "reviews") return location.pathname === "/" || location.pathname.startsWith("/reviews");
     if (key === "feeds") return location.pathname.startsWith("/feeds");
     return false;
   };
 
-  // Items communs (hors login/logout, gérés par NavbarMenu)
+  // Items communs (uniquement si connecté)
   const commonItems: MenuItem[] = [
-    { label: "Create", action: () => console.log("Create", currentId) },
-    { label: "Review", action: () => activate("review") },
+    { label: "Create", action: () => {} },
+    { label: "Review", action: () => activate("reviews") },
   ];
 
-  const editorItems: MenuItem[] = [
-    { label: "Modify", action: () => console.log("Modify", currentId) },
-    { label: "Publish/Unpublish", action: () => console.log("Publish", currentId) },
-    { label: "Restrict/Public", action: () => console.log("Restrict", currentId) },
-    { label: "Delete", action: () => console.log("Delete", currentId) },
-  ];
-
-  const menuItems = isEditor() ? [...commonItems, ...editorItems] : commonItems;
+  // menuItems devient réactif
+  const menuItems = createMemo(() => (isAuthenticated() ? commonItems : []));
 
   return (
     <nav class="w-full">
@@ -68,16 +61,16 @@ const Navbar = () => {
         {/* Primary buttons */}
         <div class="flex items-center text-nowrap justify-evenly h-16 space-x-2 text-center">
           <NavButtons.LibraryButton
-            active={isActive("feeds")}
-            onClick={() => activate("feeds")}
+            active={isActive("reviews")}
+            onClick={() => activate("reviews")}
           />
           <NavButtons.SearchButton
             open={searchOpen()}
             onClick={toggleSearch}
           />
           <NavButtons.FeedButton
-            active={isActive("foods")}
-            onClick={() => activate("foods")}
+            active={isActive("feeds")}
+            onClick={() => activate("feeds")}
           />
         </div>
 
@@ -90,7 +83,7 @@ const Navbar = () => {
           />
           {open() && (
             <div class="fixed right-6 top-16 mt-2 w-56 z-50 animate-fade-in">
-              <NavbarMenu items={menuItems} onClose={() => setOpen(false)} />
+              <NavbarMenu items={menuItems()} onClose={() => setOpen(false)} />
             </div>
           )}
         </ClickOutsideContainer>

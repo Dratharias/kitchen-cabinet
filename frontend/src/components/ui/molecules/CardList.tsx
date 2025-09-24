@@ -1,4 +1,4 @@
-import { Component, For, Show } from "solid-js";
+import { Component, For, Show, createEffect } from "solid-js";
 import Card, { CardProps } from "./PublicationCard";
 import { PaginationNavigator } from "../utilities/PaginationNavigator";
 
@@ -26,7 +26,6 @@ const CardList: Component<CardListProps> = (props) => {
           {(card) => <Card {...card} />}
         </For>
       </div>
-
       {/* Pagination */}
       <Show when={props.pagination}>
         <PaginationNavigator pagination={props.pagination} />

@@ -1,14 +1,14 @@
 import { Component, For, Show } from "solid-js";
 import { useNavigate } from "@solidjs/router";
-import Button from "../atoms/Button";
+import { Button } from "../atoms/Button";
 import { Span } from "../atoms/Span";
-import Image from "../atoms/Image";
-import Stars from "./Stars";
+import { Image } from "../atoms/Image";
+import { Stars } from "./Stars";
 import { MappedPublicationData } from "../../../shared-types/publication";
 
 export interface CardProps {
   publication: MappedPublicationData;
-  pathPrefix: "feeds" | "foods";
+  pathPrefix: "feeds" | "reviews";
 }
 
 const Card: Component<CardProps> = (props) => {
@@ -17,8 +17,6 @@ const Card: Component<CardProps> = (props) => {
   const handleClick = () => {
     navigate(`/${props.pathPrefix}/${props.publication.publicationId}`);
   };
-
-  console.log(props.publication)
 
   return (
     <Button

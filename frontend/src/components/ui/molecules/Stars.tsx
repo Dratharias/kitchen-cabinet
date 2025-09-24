@@ -8,7 +8,7 @@ export interface StarsProps {
   size?: number; // px
 }
 
-const Stars: Component<StarsProps> = (props) => {
+export const Stars: Component<StarsProps> = (props) => {
   const [currentScore, setCurrentScore] = createSignal(props.score ?? 0);
 
   const handleClick = (starIndex: number, isHalf: boolean) => {
@@ -67,5 +67,3 @@ const Stars: Component<StarsProps> = (props) => {
     </div>
   );
 };
-
-export default Stars;

@@ -1,4 +1,4 @@
-import Button, { ButtonProps } from "../ui/atoms/Button";
+import { Button, ButtonProps } from "../ui/atoms/Button";
 import { Span } from "../ui/atoms/Span";
 import { FeedIcon, HamburgerIcon, LibraryIcon, SearchIcon } from "../ui/atoms/Icons";
 

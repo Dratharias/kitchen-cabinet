@@ -75,6 +75,8 @@ export type PublicationReadAllDto = {
   };
   skip?: number;
   take?: number;
+  page?: number;
+  limit?: number;
 };
 
 /* ============================================================

@@ -1,9 +1,7 @@
 import { Component, createSignal, createResource, createEffect } from "solid-js";
 import { PublicationsService } from "@/services/publications";
 import CardList from "@/components/ui/molecules/CardList";
-import type { PaginatedResponse } from "@/types";
 
-// Helper pour déterminer les types par catégorie
 const getTypesByCategory = (category: "feeds" | "reviews"): string[] => {
   if (category === "feeds") {
     return ["Review", "Article", "Guide"];
@@ -21,19 +19,22 @@ export const ContentBrowser: Component<{ feeds?: boolean; reviews?: boolean }> =
   const types = () =>
     props.feeds ? getTypesByCategory("feeds") : props.reviews ? getTypesByCategory("reviews") : [];
 
-  createEffect(() => setPage(1));
+  createEffect(() => {
+    setPage(1);
+  });
 
-  const [publications] = createResource<
-    PaginatedResponse<any>,
-    { page: number; limit: number; types: string[] }
-  >(
-    () => ({ page: page(), limit, types: types() }),
+  const [publications,] = createResource(
+    () => {
+      const params = { page: page(), limit, types: types() };
+      return params;
+    },
     async ({ page, limit, types }) => {
       if (!types.length) {
         return { items: [], total: 0, page: 1, limit, totalPages: 1 };
       }
       const filter = types.length > 0 ? { type: types } : undefined;
-      return PublicationsService.getPublications({ page, limit, filter });
+      const result = await PublicationsService.getPublications({ page, limit, filter });
+      return result;
     }
   );
 
@@ -43,12 +44,14 @@ export const ContentBrowser: Component<{ feeds?: boolean; reviews?: boolean }> =
       ? "reviews"
       : (() => { throw new Error("No category selected"); })();
 
-  // Pas de mapping → envoie directement les items
-  const cards = () =>
-    (publications()?.items || []).map((pub: any) => ({
+  const cards = () => {
+    const pubs = publications();
+    if (!pubs?.items) return [];
+    return pubs.items.map((pub: any) => ({
       publication: pub,
       pathPrefix: category,
     }));
+  };
 
   return (
     <div class="flex-1 flex flex-col w-full">

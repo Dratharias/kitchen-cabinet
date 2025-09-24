@@ -1,5 +1,5 @@
 import { Component } from "solid-js";
-import Button from "../atoms/Button";
+import { Button } from "../atoms/Button";
 import { Span } from "../atoms/Span";
 import { MinusIcon, PlusIcon } from "../atoms/Icons";
 
