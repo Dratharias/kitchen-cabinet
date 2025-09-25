@@ -1,0 +1,69 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Recette orchestrateur",
+      "description": ["Une description courte"],
+      "note": ["Quelques notes utiles"],
+      "public": true,
+      "published": true,
+      "type": { "data": { "str_value": "Recipe", "type": "Type" } },
+      "style": { "data": { "str_value": "Italian", "type": "Style" } },
+      "author": { "data": { "str_value": "Julia Child", "type": "Author" } },
+      "tags": [
+        { "data": { "str_value": "rapide", "type": "Tag" } },
+        { "data": { "str_value": "facile", "type": "Tag" } }
+      ],
+      "contents": [
+        {
+          "data": { "total_prep_time": 15, "servings": 4 },
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": { "title": "Préparation", "paragraph": "Couper les légumes." },
+                "segment_prep_time": []
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": { "title": "Cuisson", "paragraph": "Faire revenir à la poêle." },
+                "segment_prep_time": []
+              }
+            }
+          ],
+          "content_ingredients": [
+            {
+              "data": { "quantity": 2, "multiply_factor": 1 },
+              "product": {
+                "data": {
+                  "name": "Tomate",
+                  "en_name": "Tomato"
+                }
+              },
+              "ingredient_units": [
+                { "unit": { "data": { "name": "pieces" } } }
+              ]
+            },
+            {
+              "data": { "quantity": 200, "multiply_factor": 1 },
+              "product": {
+                "data": {
+                  "name": "Spaghetti",
+                  "en_name": "Spaghetti"
+                }
+              },
+              "ingredient_units": [
+                { "unit": { "data": { "name": "grams" } } }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            { "prep_time": { "data": { "duration": 10 } } }
+          ]
+        }
+      ]
+    }
+  }
+}

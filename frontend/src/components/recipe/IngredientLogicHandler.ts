@@ -9,6 +9,7 @@ export type FormIngredient = {
   product_en_name: string;
   unit: string;
   isNewProduct: boolean;
+  isNewUnit: boolean;
   publication_id: string;
   macro: MacroPayload;
 };
@@ -19,6 +20,7 @@ export type IngredientFormActions = {
   updateUnit: (index: number, unit: string) => void;
   selectProduct: (index: number, productId: string) => void;
   createNewProduct: (index: number) => void;
+  updateIsNewUnit: (index: number, isNew: boolean) => void;
   updateProductName: (index: number, name: string) => void;
   updateProductEnName: (index: number, enName: string) => void;
   updatePublicationId: (index: number, publicationId: string) => void;
@@ -58,6 +60,9 @@ export const createIngredientFormActions = (
 
   updateUnit: (index, unit) =>
     setForm("contents", contentIndex, "ingredients", index, "unit", unit),
+
+  updateIsNewUnit: (index, isNew) =>
+    setForm("contents", contentIndex, "ingredients", index, "isNewUnit", isNew),
 
   selectProduct: (index, productId) =>
     setForm("contents", contentIndex, "ingredients", index, {
@@ -127,6 +132,7 @@ export const createIngredientFormActions = (
           product_name: "",
           product_en_name: "",
           unit: "",
+          isNewUnit: false,
           isNewProduct: false,
           publication_id: "",
           macro: {

@@ -5,7 +5,7 @@ import { Span } from "@/components/ui/atoms/Span";
 export function UnitSelector(props: {
   ing: any;
   index: number;
-  options: any[];
+  options: { unit_id: string; name: string }[];
   setLoadUnits: (v: boolean) => void;
   actions: any;
 }) {
@@ -14,21 +14,27 @@ export function UnitSelector(props: {
       <Span class="text-sm font-medium">Unité</Span>
       <select
         class="w-full px-3 py-2 border rounded-md"
-        value={props.ing.unit}
+        value={props.ing.isNewUnit ? "new" : props.ing.unit}
         onClick={() => props.setLoadUnits(true)}
-        onChange={(e) =>
-          props.actions.updateUnit(props.index, e.currentTarget.value)
-        }
+        onChange={(e) => {
+          const val = e.currentTarget.value;
+          if (val === "new") {
+            props.actions.updateUnit(props.index, "");
+            props.actions.updateIsNewUnit(props.index, true);
+          } else {
+            props.actions.updateUnit(props.index, val);
+            props.actions.updateIsNewUnit(props.index, false);
+          }
+        }}
       >
         <option value="">Sélectionner une unité</option>
-        <Show when={props.options}>
-          <For each={props.options}>
-            {(o) => <option value={o.str_value}>{o.str_value}</option>}
-          </For>
-        </Show>
+        <For each={props.options}>
+          {(o) => <option value={o.name}>{o.name}</option>}
+        </For>
         <option value="new">+ Nouvelle unité</option>
       </select>
-      <Show when={props.ing.unit === "new"}>
+
+      <Show when={props.ing.isNewUnit}>
         <Input
           placeholder="Nouvelle unité"
           value={props.ing.unit}

@@ -9,24 +9,21 @@ type Product = {
   en_name: string;
 };
 
-type SelectOption = {
-  str_value: string;
-  id?: string;
-};
-
-export const transformUnitsToOptions = (units: Unit[]): SelectOption[] => {
+export const transformUnitsToOptions = (
+  units: Unit[],
+): { unit_id: string; name: string }[] => {
   return units.map((unit) => ({
-    str_value: unit.name,
-    id: unit.unit_id,
+    unit_id: unit.unit_id,
+    name: unit.name,
   }));
 };
 
 export const transformProductsToOptions = (
   products: Product[],
-): SelectOption[] => {
+): { product_id: string; name: string }[] => {
   return products.map((product) => ({
-    str_value: product.name,
-    id: product.product_id,
+    product_id: product.product_id,
+    name: product.name,
   }));
 };
 

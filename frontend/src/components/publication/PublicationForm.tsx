@@ -1,7 +1,7 @@
 import { createSignal, Show, onMount } from "solid-js";
 import { createStore } from "solid-js/store";
 import { usePost } from "@/hooks/usePost";
-import { usePayloadBuilder } from "@/hooks/usePayloadBuilder";
+import { usePayloadBuilder, FormContent } from "@/hooks/usePayloadBuilder";
 import { Button } from "@/components/ui/atoms/Button";
 import { Span } from "@/components/ui/atoms/Span";
 import { PublicationMetaFields } from "./PublicationMetaFields";
@@ -63,7 +63,7 @@ interface PublicationFormProps {
 
 export function PublicationForm(props: PublicationFormProps) {
   const { postPublicate, loading, error } = usePost();
-  const { buildPublicationPayload } = usePayloadBuilder();
+  const { buildComplexPublicationPayload } = usePayloadBuilder();
   const [message, setMessage] = createSignal("");
   const [isEdit] = createSignal(Boolean(props.publicationId));
 
@@ -85,7 +85,7 @@ export function PublicationForm(props: PublicationFormProps) {
     style: "",
     author: "",
     tags: [] as string[],
-    contents: [] as any[],
+    contents: [] as FormContent[], // typé clairement
   });
 
   // --- Load publication if edit mode ---
@@ -104,7 +104,7 @@ export function PublicationForm(props: PublicationFormProps) {
           style: publication.style?.str_value || "",
           author: publication.author?.str_value || "",
           tags: publication.tags?.map((t: any) => t.str_value) || [],
-          contents: publication.contents || [],
+          contents: publication.contents || [], // ⚠️ si API renvoie pas FormContent -> adapter
         });
       }
     }
@@ -119,7 +119,7 @@ export function PublicationForm(props: PublicationFormProps) {
     const finalType = form.type === "new" ? newInputs.type : form.type;
     const finalStyle = form.style === "new" ? newInputs.style : form.style;
 
-    const payload = buildPublicationPayload(
+    const payload = buildComplexPublicationPayload(
       isEdit() ? "update" : "create",
       props.publicationId ?? "1",
       {
@@ -139,50 +139,17 @@ export function PublicationForm(props: PublicationFormProps) {
           ? { data: { str_value: finalAuthor, type: "Author" } }
           : undefined,
         tags: form.tags.map((t) => ({ data: { str_value: t, type: "Tag" } })),
-        contents: form.contents.map((c, idx) => ({
-          data: {
-            total_prep_time: c.total_prep_time || 0,
-            servings: c.servings,
-          },
-          content_segments: c.segments?.map((s: any, si: number) => ({
-            position: si + 1,
-            segment: {
-              data: { title: s.title, paragraph: s.paragraph },
-              segment_prep_time: s.prepTimes?.map((p: any) => ({
-                prep_time: {
-                  data: { duration: p.duration },
-                  style: p.style
-                    ? { data: { str_value: p.style, type: "PrepTimeStyle" } }
-                    : undefined,
-                },
-              })),
-            },
-          })),
-          content_ingredients: c.ingredients?.map((i: any) => ({
-            data: { quantity: i.quantity, multiply_factor: i.multiply_factor },
-            product: i.isNewProduct
-              ? {
-                  data: {
-                    name: i.product_name,
-                    en_name: i.product_en_name || i.product_name,
-                    publication: i.publication_id
-                      ? { id: i.publication_id, data: {} }
-                      : undefined,
-                  },
-                }
-              : { id: i.product_id, data: {} },
-            ingredient_units: i.unit
-              ? [{ unit: { data: { name: i.unit } } }]
-              : [],
-          })),
-          content_prep_times: c.prepTimes?.map((p: any) => ({
-            prep_time: { data: { duration: p.duration } },
-          })),
-        })),
       },
+      form.contents,
+    );
+
+    console.log(
+      "Payload envoyé à /api/publicate :",
+      JSON.stringify(payload, null, 2),
     );
 
     const res = await postPublicate(payload);
+
     if (res) {
       setMessage(
         isEdit()
@@ -241,6 +208,7 @@ export function PublicationForm(props: PublicationFormProps) {
             </Show>
           </div>
         </Show>
+
         <Show when={message()}>
           <p
             class={
@@ -250,6 +218,7 @@ export function PublicationForm(props: PublicationFormProps) {
             <Span>{message()}</Span>
           </p>
         </Show>
+
         <Show when={error()}>
           <p class="text-red-500">
             <Span>{error()}</Span>

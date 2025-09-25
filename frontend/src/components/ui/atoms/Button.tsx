@@ -5,6 +5,7 @@ export type ButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
   active?: boolean | null;
   icon?: JSX.Element;
   reverse?: boolean;
+  type?: "submit" | "button";
 };
 
 export const Button = (props: ButtonProps): JSX.Element => {
@@ -69,7 +70,12 @@ export const Button = (props: ButtonProps): JSX.Element => {
   });
 
   return (
-    <button {...rest} disabled={local.disabled} class={classes()} type="button">
+    <button
+      {...rest}
+      disabled={local.disabled}
+      class={classes()}
+      type={props.type ?? "button"}
+    >
       {local.reverse ? (
         <>
           {local.children}

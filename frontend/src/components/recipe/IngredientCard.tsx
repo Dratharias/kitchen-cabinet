@@ -36,14 +36,19 @@ export function IngredientCard(props: {
         <div class="w-full flex-col">
           <Span class="text-lg font-medium">
             {getDisplayedProductName(productsOptions(), props.ing) ||
-                `Ingrédient ${props.index + 1}`}
-            </Span>
+              `Ingrédient ${props.index + 1}`}
+          </Span>
 
-            <Show when={props.ing.quantity > 0 && getDisplayedUnitName(unitsOptions(), props.ing.unit)}>
+          <Show
+            when={
+              props.ing.quantity > 0 &&
+              getDisplayedUnitName(unitsOptions(), props.ing.unit)
+            }
+          >
             <Span class="text-sm">
-                {`${props.ing.quantity} ${getDisplayedUnitName(unitsOptions(), props.ing.unit)}`}
+              {`${props.ing.quantity} ${getDisplayedUnitName(unitsOptions(), props.ing.unit)}`}
             </Span>
-            </Show>
+          </Show>
         </div>
         <Button
           type="button"

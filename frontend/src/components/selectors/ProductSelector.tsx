@@ -4,7 +4,7 @@ import { Span } from "@/components/ui/atoms/Span";
 export function ProductSelector(props: {
   ing: any;
   index: number;
-  options: any[];
+  options: { product_id: string; name: string }[];
   setLoadProducts: (v: boolean) => void;
   actions: any;
 }) {
@@ -18,13 +18,13 @@ export function ProductSelector(props: {
         onChange={(e) => {
           const val = e.currentTarget.value;
           if (val === "new") props.actions.createNewProduct(props.index);
-          else props.actions.selectProduct(props.index, val);
+          else props.actions.selectProduct(props.index, val); // val = UUID
         }}
       >
         <option value="">Sélectionner un produit</option>
         <Show when={props.options}>
           <For each={props.options}>
-            {(o) => <option value={o.str_value}>{o.str_value}</option>}
+            {(o) => <option value={o.product_id}>{o.name}</option>}
           </For>
         </Show>
         <option value="new">+ Nouveau produit</option>
