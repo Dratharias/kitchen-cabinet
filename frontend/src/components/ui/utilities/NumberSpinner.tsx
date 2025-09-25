@@ -32,7 +32,9 @@ export const NumberSpinner: Component<NumberSpinnerProps> = (props) => {
   const buttonStyle = "border-none !px-1 !py-1 text-inherit bg-transparent";
 
   const textColorClass =
-    color === "primary" ? "text-prim-txt dark:text-prim-txt-d" : "text-sec-txt dark:text-sec-txt-d";
+    color === "primary"
+      ? "text-prim-txt dark:text-prim-txt-d"
+      : "text-sec-txt dark:text-sec-txt-d";
 
   return (
     <div

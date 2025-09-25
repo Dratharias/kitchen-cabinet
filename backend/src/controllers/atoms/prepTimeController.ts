@@ -14,13 +14,24 @@ export const normalizePrepTime = (prepTime: any): PrepTime => ({
   segment_prep_time: prepTime.segment_prep_time ?? null,
 });
 
-export class PrepTimeController implements GenericController<
-  PrepTime,
-  Omit<PrepTime, "style" | "content_prep_times" | "segment_prep_time">,
-  { style: Category | null; content_prep_times: any[] | null; segment_prep_time: any[] | null }
-> {
-
-  async create(payload: Omit<PrepTime, "style" | "content_prep_times" | "segment_prep_time"> & { connect?: PrepTimeCreateDto["connect"] }): Promise<PrepTime> {
+export class PrepTimeController
+  implements
+    GenericController<
+      PrepTime,
+      Omit<PrepTime, "style" | "content_prep_times" | "segment_prep_time">,
+      {
+        style: Category | null;
+        content_prep_times: any[] | null;
+        segment_prep_time: any[] | null;
+      }
+    >
+{
+  async create(
+    payload: Omit<
+      PrepTime,
+      "style" | "content_prep_times" | "segment_prep_time"
+    > & { connect?: PrepTimeCreateDto["connect"] },
+  ): Promise<PrepTime> {
     const newId = uuidv4();
     const prepTime = await prisma.prep_time.create({
       data: {
@@ -30,13 +41,23 @@ export class PrepTimeController implements GenericController<
 
         content_prep_times: payload.connect?.content_prep_times
           ? {
-              connect: payload.connect.content_prep_times.map(c => ({ content_id_prep_time_id: { prep_time_id: newId, content_id: c.content_id } })),
+              connect: payload.connect.content_prep_times.map((c) => ({
+                content_id_prep_time_id: {
+                  prep_time_id: newId,
+                  content_id: c.content_id,
+                },
+              })),
             }
           : undefined,
 
         segment_prep_time: payload.connect?.segment_prep_time
           ? {
-              connect: payload.connect.segment_prep_time.map(s => ({ segment_id_prep_time_id: { prep_time_id: newId, segment_id: s.segment_id } })),
+              connect: payload.connect.segment_prep_time.map((s) => ({
+                segment_id_prep_time_id: {
+                  prep_time_id: newId,
+                  segment_id: s.segment_id,
+                },
+              })),
             }
           : undefined,
       },
@@ -81,16 +102,44 @@ export class PrepTimeController implements GenericController<
         style_id: payload.style_id ?? undefined,
 
         content_prep_times: payload.connect?.content_prep_times
-          ? { connect: payload.connect.content_prep_times.map(c => ({ content_id_prep_time_id: { prep_time_id: id, content_id: c.content_id } })) }
+          ? {
+              connect: payload.connect.content_prep_times.map((c) => ({
+                content_id_prep_time_id: {
+                  prep_time_id: id,
+                  content_id: c.content_id,
+                },
+              })),
+            }
           : payload.set?.content_prep_times
-          ? { set: payload.set.content_prep_times.map(c => ({ content_id_prep_time_id: { prep_time_id: id, content_id: c.content_id } })) }
-          : undefined,
+            ? {
+                set: payload.set.content_prep_times.map((c) => ({
+                  content_id_prep_time_id: {
+                    prep_time_id: id,
+                    content_id: c.content_id,
+                  },
+                })),
+              }
+            : undefined,
 
         segment_prep_time: payload.connect?.segment_prep_time
-          ? { connect: payload.connect.segment_prep_time.map(s => ({ segment_id_prep_time_id: { prep_time_id: id, segment_id: s.segment_id } })) }
+          ? {
+              connect: payload.connect.segment_prep_time.map((s) => ({
+                segment_id_prep_time_id: {
+                  prep_time_id: id,
+                  segment_id: s.segment_id,
+                },
+              })),
+            }
           : payload.set?.segment_prep_time
-          ? { set: payload.set.segment_prep_time.map(s => ({ segment_id_prep_time_id: { prep_time_id: id, segment_id: s.segment_id } })) }
-          : undefined,
+            ? {
+                set: payload.set.segment_prep_time.map((s) => ({
+                  segment_id_prep_time_id: {
+                    prep_time_id: id,
+                    segment_id: s.segment_id,
+                  },
+                })),
+              }
+            : undefined,
       },
       include: {
         style: true,

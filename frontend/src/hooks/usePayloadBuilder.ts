@@ -9,26 +9,26 @@ export function usePayloadBuilder() {
   function buildPublicationPayload(
     action: "create" | "update",
     publicationKey: string,
-    data: PublicationData
+    data: PublicationData,
   ): OrchestratorPayload {
     return {
       action,
       payload: {
-        [publicationKey]: data
-      }
+        [publicationKey]: data,
+      },
     };
   }
 
   function buildReviewPayload(
     action: "create" | "update",
     reviewKey: string,
-    data: ReviewData
+    data: ReviewData,
   ): OrchestratorPayload {
     return {
       action,
       payload: {
-        [reviewKey]: data
-      }
+        [reviewKey]: data,
+      },
     };
   }
 
@@ -36,22 +36,22 @@ export function usePayloadBuilder() {
     action: "create" | "update",
     publicationKey: string,
     publicationData: PublicationData,
-    contents?: ContentWithRelations[]
+    contents?: ContentWithRelations[],
   ): OrchestratorPayload {
     return {
       action,
       payload: {
         [publicationKey]: {
           ...publicationData,
-          contents
-        }
-      }
+          contents,
+        },
+      },
     };
   }
 
-  return { 
-    buildPublicationPayload, 
-    buildReviewPayload, 
-    buildComplexPublicationPayload 
+  return {
+    buildPublicationPayload,
+    buildReviewPayload,
+    buildComplexPublicationPayload,
   };
 }

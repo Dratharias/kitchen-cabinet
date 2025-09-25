@@ -6,7 +6,11 @@ type InputEditorProps<T> = {
   save: () => void;
 };
 
-const InputEditor = <T extends unknown>({ draft, setDraft, save }: InputEditorProps<T>) => {
+const InputEditor = <T extends unknown>({
+  draft,
+  setDraft,
+  save,
+}: InputEditorProps<T>) => {
   return (
     <Input
       value={String(draft ?? "")}

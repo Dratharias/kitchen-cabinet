@@ -3,7 +3,7 @@ import { Layout } from "./views/layout/Layout";
 import { ToastProvider } from "./components/ToastProvider";
 import { LoginForm } from "./pages/forms/Login";
 import { ContentBrowser } from "./pages/ContentBrowser";
-import { PublicationPage } from "./pages/forms/Publication";
+import { PublicationPage } from "./pages/forms/[id]/Publication";
 
 function App() {
   return (
@@ -48,6 +48,14 @@ function App() {
         />
         <Route
           path="/create"
+          component={() => (
+            <Layout>
+              <PublicationPage />
+            </Layout>
+          )}
+        />
+        <Route
+          path="/:id/edit"
           component={() => (
             <Layout>
               <PublicationPage />

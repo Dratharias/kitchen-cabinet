@@ -17,4 +17,13 @@
   --color-sec-txt-act-d: var(--color-cherry-50);
   --color-sec-txt-dis: var(--color-cherry-500);
   --color-sec-txt-dis-d: var(--color-cherry-500);
+
+  --color-ter-txt: var(--color-cherry-500);
+  --color-ter-txt-d: var(--color-cherry-100);
+  --color-ter-txt-hov: var(--color-cherry-800);
+  --color-ter-txt-hov-d: var(--color-cherry-400);
+  --color-ter-txt-act: var(--color-cherry-400);
+  --color-ter-txt-act-d: var(--color-cherry-50);
+  --color-ter-txt-dis: var(--color-cherry-500);
+  --color-ter-txt-dis-d: var(--color-cherry-500);
 }

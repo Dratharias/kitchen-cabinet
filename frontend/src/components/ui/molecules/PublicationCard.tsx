@@ -17,7 +17,6 @@ const Card: Component<CardProps> = (props) => {
     navigate(`/${props.pathPrefix}/${props.publication.publicationId}`);
   };
 
-
   return (
     <Button
       class="flex text-left !px-0 !py-0 max-h-48 w-full overflow-hidden border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
@@ -32,10 +31,17 @@ const Card: Component<CardProps> = (props) => {
             class="w-full h-full object-cover"
           />
           <Show
-            when={props.publication.averageRating != null && props.publication.averageRating > 0}
+            when={
+              props.publication.averageRating != null &&
+              props.publication.averageRating > 0
+            }
           >
             <div class="absolute bottom-1 left-0 w-full flex justify-center p-1">
-              <Stars score={props.publication.averageRating * 2} readonly size={14} />
+              <Stars
+                score={props.publication.averageRating * 2}
+                readonly
+                size={14}
+              />
             </div>
           </Show>
         </div>
@@ -45,7 +51,9 @@ const Card: Component<CardProps> = (props) => {
       <div class="flex-1 flex flex-col p-1 md:p-2 justify-between">
         <div>
           {/* Title */}
-          <h3 class="line-clamp-2 font-semibold text-sm">{props.publication.title}</h3>
+          <h3 class="line-clamp-2 font-semibold text-sm">
+            {props.publication.title}
+          </h3>
 
           {/* Description */}
           <For each={props.publication.description}>
@@ -56,7 +64,9 @@ const Card: Component<CardProps> = (props) => {
           <Show when={props.publication.tags?.length}>
             <div class="flex flex-wrap gap-1 mt-1">
               <For each={props.publication.tags}>
-                {(tag) => <Span class="text-[9px] rounded px-1 py-0.5">{tag}</Span>}
+                {(tag) => (
+                  <Span class="text-[9px] rounded px-1 py-0.5">{tag}</Span>
+                )}
               </For>
             </div>
           </Show>
@@ -64,11 +74,21 @@ const Card: Component<CardProps> = (props) => {
 
         {/* Bottom: totalPrepTime & servings */}
         <div class="flex items-center gap-3 text-xs text-gray-600 mt-2">
-          <Show when={props.publication.prepTime && props.publication.prepTime != "N/A"}>
-            <span class="flex items-center gap-1">⏱ {props.publication.prepTime}</span>
+          <Show
+            when={
+              props.publication.prepTime && props.publication.prepTime != "N/A"
+            }
+          >
+            <span class="flex items-center gap-1">
+              ⏱ {props.publication.prepTime}
+            </span>
           </Show>
-          <Show when={props.publication.servings && props.publication.servings > 0}>
-            <span class="flex items-center gap-1">🍽 {props.publication.servings}</span>
+          <Show
+            when={props.publication.servings && props.publication.servings > 0}
+          >
+            <span class="flex items-center gap-1">
+              🍽 {props.publication.servings}
+            </span>
           </Show>
         </div>
       </div>

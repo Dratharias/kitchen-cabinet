@@ -4,7 +4,7 @@ export interface PaginatedRequest {
   page?: number;
   limit?: number;
   sortBy?: string;
-  order?: 'asc' | 'desc';
+  order?: "asc" | "desc";
   filter?: Record<string, any>;
 }
 

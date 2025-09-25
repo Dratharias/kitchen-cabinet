@@ -15,6 +15,14 @@
   --color-btn-sec-act: var(--color-cherry-300);
   --color-btn-sec-act-d: var(--color-cherry-600);
 
+  /* Terniary */
+  --color-btn-ter: var(--color-cherry-75);
+  --color-btn-ter-d: var(--color-cherry-700);
+  --color-btn-ter-hov: var(--color-cherry-50);
+  --color-btn-ter-hov-d: var(--color-cherry-900);
+  --color-btn-ter-act: var(--color-cherry-300);
+  --color-btn-ter-act-d: var(--color-cherry-600);
+
   /* Disabled */
   --color-btn-dis: var(--color-cherry-50);
   --color-btn-dis-d: var(--color-cherry-900);

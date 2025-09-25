@@ -22,7 +22,7 @@ export const Stars: Component<StarsProps> = (props) => {
   const renderStar = (index: number) => {
     const score = currentScore();
     if (score >= (index + 1) * 2) return "full";
-    if (score === (index * 2 + 1)) return "half";
+    if (score === index * 2 + 1) return "half";
     return "empty";
   };
 
@@ -32,7 +32,13 @@ export const Stars: Component<StarsProps> = (props) => {
         {(i) => {
           const type = renderStar(i);
           return (
-            <div class="relative inline-block cursor-pointer" style={{ width: `${props.size ?? 20}px`, height: `${props.size ?? 20}px` }}>
+            <div
+              class="relative inline-block cursor-pointer"
+              style={{
+                width: `${props.size ?? 20}px`,
+                height: `${props.size ?? 20}px`,
+              }}
+            >
               {/* Full star background */}
               <Span
                 class={`absolute top-0 left-0 text-gray-300`}
@@ -47,7 +53,8 @@ export const Stars: Component<StarsProps> = (props) => {
                   class={`absolute top-0 left-0 text-yellow-400 overflow-hidden`}
                   style={{
                     "font-size": `${props.size ?? 20}px`,
-                    width: type === "half" ? `${(props.size ?? 20) / 2}px` : "100%",
+                    width:
+                      type === "half" ? `${(props.size ?? 20) / 2}px` : "100%",
                   }}
                 >
                   ★

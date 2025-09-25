@@ -1,7 +1,7 @@
 import { JSX, splitProps, createMemo } from "solid-js";
 
 export type ButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "terniary" | "noDecoration";
   active?: boolean | null;
   icon?: JSX.Element;
   reverse?: boolean;
@@ -27,22 +27,38 @@ export const Button = (props: ButtonProps): JSX.Element => {
     Record<"base" | "active" | "disabled", string>
   > = {
     primary: {
-      base:
-        "bg-btn-prim text-prim-txt hover:bg-btn-prim-hov hover:text-prim-txt-hov dark:bg-btn-prim-d dark:text-prim-txt-d dark:hover:bg-btn-prim-hov-d dark:hover:text-prim-txt-hov-d",
-      active: "bg-btn-prim-act text-prim-txt-act dark:bg-btn-prim-act-d dark:text-prim-txt-act-d",
-      disabled: "bg-btn-dis text-prim-txt-dis dark:bg-btn-dis-d dark:text-prim-txt-dis-d",
+      base: "bg-btn-prim text-prim-txt hover:bg-btn-prim-hov hover:text-prim-txt-hov dark:bg-btn-prim-d dark:text-prim-txt-d dark:hover:bg-btn-prim-hov-d dark:hover:text-prim-txt-hov-d",
+      active:
+        "bg-btn-prim-act text-prim-txt-act dark:bg-btn-prim-act-d dark:text-prim-txt-act-d",
+      disabled:
+        "bg-btn-dis text-prim-txt-dis dark:bg-btn-dis-d dark:text-prim-txt-dis-d",
     },
     secondary: {
-      base:
-        "bg-btn-sec text-sec-txt hover:bg-btn-sec-hov hover:text-sec-txt-hov dark:bg-btn-sec-d dark:text-sec-txt-d dark:hover:bg-btn-sec-hov-d dark:hover:text-sec-txt-hov-d",
-      active: "bg-btn-sec-act text-sec-txt-act dark:bg-btn-sec-act-d dark:text-sec-txt-act-d",
-      disabled: "bg-btn-dis text-sec-txt-dis dark:bg-btn-dis-d dark:text-sec-txt-dis-d",
+      base: "bg-btn-sec text-sec-txt hover:bg-btn-sec-hov hover:text-sec-txt-hov dark:bg-btn-sec-d dark:text-sec-txt-d dark:hover:bg-btn-sec-hov-d dark:hover:text-sec-txt-hov-d",
+      active:
+        "bg-btn-sec-act text-sec-txt-act dark:bg-btn-sec-act-d dark:text-sec-txt-act-d",
+      disabled:
+        "bg-btn-dis text-sec-txt-dis dark:bg-btn-dis-d dark:text-sec-txt-dis-d",
+    },
+    terniary: {
+      base: "bg-btn-ter text-ter-txt hover:bg-btn-ter-hov hover:text-ter-txt-hov dark:bg-btn-ter-d dark:text-ter-txt-d dark:hover:bg-btn-ter-hov-d dark:hover:text-ter-txt-hov-d",
+      active:
+        "bg-btn-ter-act text-ter-txt-act dark:bg-btn-ter-act-d dark:text-ter-txt-act-d",
+      disabled:
+        "bg-btn-dis text-ter-txt-dis dark:bg-btn-dis-d dark:text-ter-txt-dis-d",
+    },
+    noDecoration: {
+      base: "text-prim-txt hover:text-prim-txt-hov dark:text-prim-txt-d",
+      active:
+        "bg-btn-ter-act text-ter-txt-act dark:bg-btn-ter-act-d dark:text-ter-txt-act-d",
+      disabled:
+        "bg-btn-dis text-ter-txt-dis dark:bg-btn-dis-d dark:text-ter-txt-dis-d",
     },
   };
 
   // Compute state reactively
   const state = createMemo<"active" | "disabled" | "base">(() =>
-    local.disabled ? "disabled" : local.active ? "active" : "base"
+    local.disabled ? "disabled" : local.active ? "active" : "base",
   );
 
   // Compute final classes reactively
@@ -53,7 +69,7 @@ export const Button = (props: ButtonProps): JSX.Element => {
   });
 
   return (
-    <button {...rest} disabled={local.disabled} class={classes()}>
+    <button {...rest} disabled={local.disabled} class={classes()} type="button">
       {local.reverse ? (
         <>
           {local.children}

@@ -1,10 +1,13 @@
 import {
-  CategoryCore, CategoryRelations,
-  ProductCore, ProductRelations,
-  UnitCore, UnitRelations,
-  SegmentCore, SegmentRelations 
-  } from "./controller.types.js";
-
+  CategoryCore,
+  CategoryRelations,
+  ProductCore,
+  ProductRelations,
+  UnitCore,
+  UnitRelations,
+  SegmentCore,
+  SegmentRelations,
+} from "./controller.types.js";
 
 export type CrudAction = "create" | "read" | "readAll" | "update" | "delete";
 
@@ -20,13 +23,29 @@ interface NestedPublicationRequest {
   description?: string[];
   note?: string[];
   thumbnail?: string;
-  type?: NestedEntityPayload<CategoryRelations, CategoryCore, CategoryRelations>;
-  style?: NestedEntityPayload<CategoryRelations, CategoryCore, CategoryRelations>;
-  author?: NestedEntityPayload<CategoryRelations, CategoryCore, CategoryRelations>;
+  type?: NestedEntityPayload<
+    CategoryRelations,
+    CategoryCore,
+    CategoryRelations
+  >;
+  style?: NestedEntityPayload<
+    CategoryRelations,
+    CategoryCore,
+    CategoryRelations
+  >;
+  author?: NestedEntityPayload<
+    CategoryRelations,
+    CategoryCore,
+    CategoryRelations
+  >;
   contents?: NestedContentRequest[];
   reviewCount?: number;
   reviewAverageScore?: number;
-  tags?: NestedEntityPayload<CategoryRelations, CategoryCore, CategoryRelations>[];
+  tags?: NestedEntityPayload<
+    CategoryRelations,
+    CategoryCore,
+    CategoryRelations
+  >[];
 }
 
 interface NestedContentRequest {
@@ -40,20 +59,36 @@ interface NestedContentRequest {
 
 interface NestedContentSegmentRequest {
   position?: number;
-  segment?: NestedEntityPayload<SegmentRelations, SegmentCore, SegmentRelations>;
+  segment?: NestedEntityPayload<
+    SegmentRelations,
+    SegmentCore,
+    SegmentRelations
+  >;
 }
 
 interface NestedContentIngredientRequest {
   ingredient_id?: string;
   quantity?: number;
-  product?: NestedEntityPayload<ProductRelations, ProductCore, ProductRelations>;
-  ingredient_units?: NestedEntityPayload<UnitRelations, UnitCore, UnitRelations>[];
+  product?: NestedEntityPayload<
+    ProductRelations,
+    ProductCore,
+    ProductRelations
+  >;
+  ingredient_units?: NestedEntityPayload<
+    UnitRelations,
+    UnitCore,
+    UnitRelations
+  >[];
 }
 
 interface NestedContentPrepTimeRequest {
   prep_time_id?: string;
   duration?: number;
-  style?: NestedEntityPayload<CategoryRelations, CategoryCore, CategoryRelations>;
+  style?: NestedEntityPayload<
+    CategoryRelations,
+    CategoryCore,
+    CategoryRelations
+  >;
 }
 
 export interface OrchestratorRequest {

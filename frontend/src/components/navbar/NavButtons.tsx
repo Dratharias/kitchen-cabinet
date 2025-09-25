@@ -1,6 +1,11 @@
 import { Button, ButtonProps } from "../ui/atoms/Button";
 import { Span } from "../ui/atoms/Span";
-import { FeedIcon, HamburgerIcon, LibraryIcon, SearchIcon } from "../ui/atoms/Icons";
+import {
+  FeedIcon,
+  HamburgerIcon,
+  LibraryIcon,
+  SearchIcon,
+} from "../ui/atoms/Icons";
 
 export const FeedButton = (props: Omit<ButtonProps, "icon">) => (
   <Button {...props} icon={<FeedIcon class="w-5 h-5" />}>
@@ -14,14 +19,22 @@ export const LibraryButton = (props: Omit<ButtonProps, "icon">) => (
   </Button>
 );
 
-export const SearchButton = (props: Omit<ButtonProps, "icon"> & { open?: boolean }) => (
+export const SearchButton = (
+  props: Omit<ButtonProps, "icon"> & { open?: boolean },
+) => (
   <Button {...props} icon={<SearchIcon class="w-5 h-5" />} active={props.open}>
     <Span hideOnSmall>Recherche</Span>
   </Button>
 );
 
-export const HamburgerButton = (props: Omit<ButtonProps, "icon"> & { open?: boolean }) => (
-  <Button {...props} icon={<HamburgerIcon class="w-5 h-5" />} active={props.open}/>
+export const HamburgerButton = (
+  props: Omit<ButtonProps, "icon"> & { open?: boolean },
+) => (
+  <Button
+    {...props}
+    icon={<HamburgerIcon class="w-5 h-5" />}
+    active={props.open}
+  />
 );
 
 const NavButtons = {

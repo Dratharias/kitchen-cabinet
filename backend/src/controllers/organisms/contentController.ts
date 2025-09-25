@@ -1,6 +1,10 @@
 import { prisma } from "../../config.js";
 import { GenericController } from "types/crud.types.js";
-import { ContentCore, ContentRelations, Content } from "types/controller.types.js";
+import {
+  ContentCore,
+  ContentRelations,
+  Content,
+} from "types/controller.types.js";
 import { ContentCreateDto, ContentUpdateDto } from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
 
@@ -19,7 +23,9 @@ export const normalizeContent = (content: any): Content => ({
 export class ContentController
   implements GenericController<Content, ContentCore, ContentRelations>
 {
-  async create(payload: ContentCore & { connect?: ContentCreateDto["connect"] }): Promise<Content> {
+  async create(
+    payload: ContentCore & { connect?: ContentCreateDto["connect"] },
+  ): Promise<Content> {
     const newId = uuidv4();
     const content = await prisma.content.create({
       data: {
@@ -28,7 +34,7 @@ export class ContentController
         total_prep_time: payload.total_prep_time,
         servings: payload.servings,
 
-        content_segments: payload.connect?.content_segments 
+        content_segments: payload.connect?.content_segments
           ? {
               connect: payload.connect.content_segments.map((s) => ({
                 content_id_segment_id: {
@@ -115,15 +121,15 @@ export class ContentController
               })),
             }
           : payload.set?.content_segments
-          ? {
-              set: payload.set.content_segments.map((s) => ({
-                content_id_segment_id: {
-                  content_id: id,
-                  segment_id: s.segment_id,
-                },
-              })),
-            }
-          : undefined,
+            ? {
+                set: payload.set.content_segments.map((s) => ({
+                  content_id_segment_id: {
+                    content_id: id,
+                    segment_id: s.segment_id,
+                  },
+                })),
+              }
+            : undefined,
 
         content_ingredients: payload.connect?.content_ingredients
           ? {
@@ -135,15 +141,15 @@ export class ContentController
               })),
             }
           : payload.set?.content_ingredients
-          ? {
-              set: payload.set.content_ingredients.map((i) => ({
-                content_id_ingredient_id: {
-                  content_id: id,
-                  ingredient_id: i.ingredient_id,
-                },
-              })),
-            }
-          : undefined,
+            ? {
+                set: payload.set.content_ingredients.map((i) => ({
+                  content_id_ingredient_id: {
+                    content_id: id,
+                    ingredient_id: i.ingredient_id,
+                  },
+                })),
+              }
+            : undefined,
 
         content_prep_times: payload.connect?.content_prep_times
           ? {
@@ -155,15 +161,15 @@ export class ContentController
               })),
             }
           : payload.set?.content_prep_times
-          ? {
-              set: payload.set.content_prep_times.map((p) => ({
-                content_id_prep_time_id: {
-                  content_id: id,
-                  prep_time_id: p.prep_time_id,
-                },
-              })),
-            }
-          : undefined,
+            ? {
+                set: payload.set.content_prep_times.map((p) => ({
+                  content_id_prep_time_id: {
+                    content_id: id,
+                    prep_time_id: p.prep_time_id,
+                  },
+                })),
+              }
+            : undefined,
       },
       include: {
         publication: true,

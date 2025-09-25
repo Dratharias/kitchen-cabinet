@@ -1,25 +1,27 @@
-import { PaginatedRequest } from '@/types';
+import { PaginatedRequest } from "@/types";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '';
+const API_BASE_URL = import.meta.env.VITE_API_URL || "";
 
 export class ApiError extends Error {
   constructor(
     message: string,
     public status: number,
-    public response?: any
+    public response?: any,
   ) {
     super(message);
-    this.name = 'ApiError';
+    this.name = "ApiError";
   }
 }
 
 export class CommonService {
-  static buildQueryParams(params: Partial<PaginatedRequest> & Record<string, any>): string {
+  static buildQueryParams(
+    params: Partial<PaginatedRequest> & Record<string, any>,
+  ): string {
     const searchParams = new URLSearchParams();
-    
+
     Object.entries(params).forEach(([key, value]) => {
       if (value !== undefined && value !== null) {
-        if (typeof value === 'object') {
+        if (typeof value === "object") {
           searchParams.append(key, JSON.stringify(value));
         } else {
           searchParams.append(key, String(value));
@@ -36,7 +38,7 @@ export class CommonService {
       throw new ApiError(
         errorData.message || `Request failed: ${response.status}`,
         response.status,
-        errorData
+        errorData,
       );
     }
 
@@ -45,11 +47,11 @@ export class CommonService {
 
   static getDefaultHeaders(includeAuth = false): HeadersInit {
     const headers: HeadersInit = {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     };
 
     if (includeAuth) {
-      const token = localStorage.getItem('auth_token');
+      const token = localStorage.getItem("auth_token");
       if (token) {
         headers.Authorization = `Bearer ${token}`;
       }
@@ -59,13 +61,13 @@ export class CommonService {
   }
 
   static async get<T>(
-    endpoint: string, 
-    params?: Record<string, any>, 
-    includeAuth = false
+    endpoint: string,
+    params?: Record<string, any>,
+    includeAuth = false,
   ): Promise<T> {
-    const queryString = params ? `?${this.buildQueryParams(params)}` : '';
+    const queryString = params ? `?${this.buildQueryParams(params)}` : "";
     const response = await fetch(`${API_BASE_URL}${endpoint}${queryString}`, {
-      method: 'GET',
+      method: "GET",
       headers: this.getDefaultHeaders(includeAuth),
     });
 
@@ -73,12 +75,12 @@ export class CommonService {
   }
 
   static async post<T>(
-    endpoint: string, 
-    data: any, 
-    includeAuth = false
+    endpoint: string,
+    data: any,
+    includeAuth = false,
   ): Promise<T> {
     const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-      method: 'POST',
+      method: "POST",
       headers: this.getDefaultHeaders(includeAuth),
       body: JSON.stringify(data),
     });

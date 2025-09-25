@@ -33,10 +33,10 @@ Authenticate a user.
 
 **Error Codes:**
 
-* 400: Missing credentials
-* 401: Invalid username or password
-* 429: Too many attempts
-* 500: Internal server error
+- 400: Missing credentials
+- 401: Invalid username or password
+- 429: Too many attempts
+- 500: Internal server error
 
 ---
 
@@ -231,7 +231,9 @@ Single endpoint for nested creation with upsert.
   "payload": {
     "1": {
       "title": "Exhaustive Recipe Example",
-      "description": ["A complete example showing all nested relationships in a single request."],
+      "description": [
+        "A complete example showing all nested relationships in a single request."
+      ],
       "note": ["This is for testing all the nested joins."],
       "public": true,
       "published": true,
@@ -245,12 +247,17 @@ Single endpoint for nested creation with upsert.
             {
               "position": 1,
               "segment": {
-                "data": { "paragraph": "This is a segment with a prep time.", "title": "Prep Segment" },
+                "data": {
+                  "paragraph": "This is a segment with a prep time.",
+                  "title": "Prep Segment"
+                },
                 "segment_prep_time": [
                   {
                     "prep_time": {
                       "data": { "duration": 5 },
-                      "style": { "data": { "str_value": "Prep", "type": "PrepTimeStyle" } }
+                      "style": {
+                        "data": { "str_value": "Prep", "type": "PrepTimeStyle" }
+                      }
                     }
                   }
                 ]
@@ -270,14 +277,10 @@ Single endpoint for nested creation with upsert.
                   }
                 }
               },
-              "ingredient_units": [
-                { "unit": { "data": { "name": "grams" } } }
-              ]
+              "ingredient_units": [{ "unit": { "data": { "name": "grams" } } }]
             }
           ],
-          "content_prep_times": [
-            { "prep_time": { "data": { "duration": 5 } } }
-          ]
+          "content_prep_times": [{ "prep_time": { "data": { "duration": 5 } } }]
         }
       ],
       "tags": [

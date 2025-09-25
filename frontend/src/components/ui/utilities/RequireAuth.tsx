@@ -1,4 +1,4 @@
-import { JSX, Show } from "solid-js";
+import { JSX, Show, createResource } from "solid-js";
 import { useNavigate } from "@solidjs/router";
 import { Button } from "../atoms/Button";
 import { Span } from "../atoms/Span";
@@ -9,8 +9,20 @@ type RequireAuthProps = {
   children: JSX.Element;
 };
 
-const RequireAuth = (props: RequireAuthProps) => {
+type Blague = {
+  blague: string;
+  reponse: string;
+};
+
+async function fetchBlague(mode: string = "global"): Promise<Blague> {
+  const res = await fetch(`https://blague-api.vercel.app/api?mode=${mode}`);
+  if (!res.ok) throw new Error("Erreur API Blagues");
+  return res.json();
+}
+
+export const RequireAuth = (props: RequireAuthProps) => {
   const navigate = useNavigate();
+  const [blague] = createResource<Blague>(() => fetchBlague("dev"));
 
   return (
     <Show
@@ -18,8 +30,19 @@ const RequireAuth = (props: RequireAuthProps) => {
       fallback={
         props.fallback ?? (
           <div class="text-center p-4">
-            <Span>Vous devez être connecté.</Span>
-            <Button class="mt-2 underline" onClick={() => navigate("/login")}>
+            <Show
+              when={blague()}
+              fallback={<Span>Chargement de la blague...</Span>}
+            >
+              {(data) => (
+                <>
+                  <Span>{data().blague}</Span>
+                  <br />
+                  <Span class="font-bold">{data().reponse}</Span>
+                </>
+              )}
+            </Show>
+            <Button class="mt-8 mx-auto" onClick={() => navigate("/login")}>
               Se connecter
             </Button>
           </div>
@@ -30,5 +53,3 @@ const RequireAuth = (props: RequireAuthProps) => {
     </Show>
   );
 };
-
-export default RequireAuth;

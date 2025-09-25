@@ -3,7 +3,10 @@
 // - Supprimer les FKs redondantes au niveau parent quand l'objet enfant est présent
 // - Garder une forme compacte pour l'API publique
 
-export function deduplicateBy<T>(arr: T[] = [], keyFn: (item: T) => string): T[] {
+export function deduplicateBy<T>(
+  arr: T[] = [],
+  keyFn: (item: T) => string,
+): T[] {
   const seen = new Set<string>();
   const out: T[] = [];
   for (const item of arr) {
@@ -52,15 +55,15 @@ function compactIngredients(contentIngredients: any[] = []) {
             name: ci.ingredient.product.name,
             en_name: ci.ingredient.product.en_name ?? null,
             macro: ci.ingredient.product.macro ?? null,
-            isRecipe: ci.ingredient.product.isRecipe ?? null
+            isRecipe: ci.ingredient.product.isRecipe ?? null,
           }
         : null,
       ingredient_units: deduplicateBy(
         (ci.ingredient.ingredient_units || []).map((iu: any) => iu.unit),
-        (u: any) => u.unit_id
+        (u: any) => u.unit_id,
       ),
     })),
-    (x) => x.ingredient_id
+    (x) => x.ingredient_id,
   );
 }
 
@@ -73,7 +76,7 @@ function compactPrepTimes(contentPrepTimes: any[] = []) {
       duration: cp.prep_time.duration,
       style: cp.prep_time.style ?? null,
     })),
-    (x) => x.prep_time_id
+    (x) => x.prep_time_id,
   );
 }
 

@@ -6,9 +6,13 @@ interface IngredientPrepTogglerProps {
   toggleContent: (toggle: "ingredient" | "preparation") => void;
 }
 
-export const IngredientPrepToggler: Component<IngredientPrepTogglerProps> = (props) => {
+export const IngredientPrepToggler: Component<IngredientPrepTogglerProps> = (
+  props,
+) => {
   // Toujours sélectionner "ingredient" par défaut
-  const [activeKey, setActiveKey] = createSignal<"ingredient" | "preparation">("ingredient");
+  const [activeKey, setActiveKey] = createSignal<"ingredient" | "preparation">(
+    "ingredient",
+  );
 
   // Persistance dans localStorage (optionnelle)
   createEffect(() => {
@@ -45,4 +49,3 @@ export const IngredientPrepToggler: Component<IngredientPrepTogglerProps> = (pro
     </nav>
   );
 };
-

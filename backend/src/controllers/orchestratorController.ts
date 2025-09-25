@@ -8,7 +8,7 @@ import { PrismaClient } from "@prisma/client";
 
 export class OrchestratorController {
   public async processRequest(
-    request: OrchestratorRequest
+    request: OrchestratorRequest,
   ): Promise<OrchestratorResponse> {
     const { action, payload } = request;
 
@@ -21,7 +21,7 @@ export class OrchestratorController {
             const publicationData = payload[key];
             const processedResult = await this.processPublication(
               publicationData,
-              tx as any
+              tx as any,
             );
             resultsMap[key] = processedResult;
           }
@@ -52,7 +52,7 @@ export class OrchestratorController {
       } catch (error: any) {
         return { success: false, error: error.message };
       }
-    }else {
+    } else {
       return {
         success: false,
         error: `Action '${action}' not supported yet.`,
@@ -62,7 +62,7 @@ export class OrchestratorController {
 
   private async processPublication(
     publicationData: any,
-    tx: PrismaClient
+    tx: PrismaClient,
   ): Promise<any> {
     // Process Categories (Type, Style, Author)
     const typeId = publicationData.type?.data?.str_value
@@ -105,11 +105,7 @@ export class OrchestratorController {
     // Process Tags
     if (publicationData.tags) {
       for (const tagPayload of publicationData.tags) {
-        const categoryId = await this.processCategory(
-          tagPayload,
-          "Tag",
-          tx
-        );
+        const categoryId = await this.processCategory(tagPayload, "Tag", tx);
         await tx.publication_tag.create({
           data: {
             publication_id: publication.publication_id,
@@ -122,7 +118,11 @@ export class OrchestratorController {
     // Process Contents
     if (publicationData.contents) {
       for (const contentPayload of publicationData.contents) {
-        await this.processContent(contentPayload, publication.publication_id, tx);
+        await this.processContent(
+          contentPayload,
+          publication.publication_id,
+          tx,
+        );
       }
     }
 
@@ -132,7 +132,7 @@ export class OrchestratorController {
   private async processContent(
     contentPayload: any,
     publicationId: string,
-    tx: PrismaClient
+    tx: PrismaClient,
   ): Promise<void> {
     const contentId = contentPayload.content_id || uuidv4();
     const content = await tx.content.upsert({
@@ -153,10 +153,7 @@ export class OrchestratorController {
     // Process Segments
     if (contentPayload.content_segments) {
       for (const segmentPayload of contentPayload.content_segments) {
-        const segmentId = await this.processSegment(
-          segmentPayload.segment,
-          tx
-        );
+        const segmentId = await this.processSegment(segmentPayload.segment, tx);
         await tx.content_segment.create({
           data: {
             content_id: content.content_id,
@@ -172,7 +169,7 @@ export class OrchestratorController {
       for (const ingredientPayload of contentPayload.content_ingredients) {
         const ingredientId = await this.processIngredient(
           ingredientPayload,
-          tx
+          tx,
         );
         await tx.content_ingredient.create({
           data: {
@@ -186,10 +183,7 @@ export class OrchestratorController {
     // Process PrepTimes
     if (contentPayload.content_prep_times) {
       for (const prepTimePayload of contentPayload.content_prep_times) {
-        await this.processPrepTime(
-          prepTimePayload,
-          tx
-        );
+        await this.processPrepTime(prepTimePayload, tx);
       }
     }
   }
@@ -197,7 +191,7 @@ export class OrchestratorController {
   private async processCategory(
     categoryPayload: any,
     type: string,
-    tx: PrismaClient
+    tx: PrismaClient,
   ): Promise<string> {
     const { str_value } = categoryPayload.data;
     const existingCategory = await tx.category.findUnique({
@@ -221,7 +215,7 @@ export class OrchestratorController {
 
   private async processSegment(
     segmentPayload: any,
-    tx: PrismaClient
+    tx: PrismaClient,
   ): Promise<string> {
     const { paragraph } = segmentPayload.data;
     const existingSegment = await tx.segment.findUnique({
@@ -246,7 +240,7 @@ export class OrchestratorController {
 
   private async processProduct(
     productPayload: any,
-    tx: PrismaClient
+    tx: PrismaClient,
   ): Promise<string> {
     const { name } = productPayload.data;
     const existingProduct = await tx.product.findUnique({
@@ -279,13 +273,10 @@ export class OrchestratorController {
 
   private async processIngredient(
     ingredientPayload: any,
-    tx: PrismaClient
+    tx: PrismaClient,
   ): Promise<string> {
     // Process nested product
-    const productId = await this.processProduct(
-      ingredientPayload.product,
-      tx
-    );
+    const productId = await this.processProduct(ingredientPayload.product, tx);
 
     const ingredientId = ingredientPayload.ingredient_id || uuidv4();
     const ingredient = await tx.ingredient.upsert({
@@ -306,10 +297,7 @@ export class OrchestratorController {
     // Process nested units
     if (ingredientPayload.ingredient_units) {
       for (const unitPayload of ingredientPayload.ingredient_units) {
-        const unitId = await this.processUnit(
-          unitPayload,
-          tx
-        );
+        const unitId = await this.processUnit(unitPayload, tx);
         await tx.ingredient_unit.create({
           data: {
             ingredient_id: ingredient.ingredient_id,
@@ -324,7 +312,7 @@ export class OrchestratorController {
 
   private async processUnit(
     unitPayload: any,
-    tx: PrismaClient
+    tx: PrismaClient,
   ): Promise<string> {
     const { name } = unitPayload.data;
     const existingUnit = await tx.unit.findUnique({
@@ -347,12 +335,12 @@ export class OrchestratorController {
 
   private async processPrepTime(
     prepTimePayload: any,
-    tx: PrismaClient
+    tx: PrismaClient,
   ): Promise<string> {
     const styleId = prepTimePayload.style?.data?.str_value
       ? await this.processCategory(prepTimePayload.style, "Cook", tx)
       : null;
-      
+
     const prepTimeId = prepTimePayload.prep_time_id || uuidv4();
     const prepTime = await tx.prep_time.upsert({
       where: { prep_time_id: prepTimeId },

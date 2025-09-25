@@ -1,5 +1,8 @@
 import { FastifyInstance } from "fastify";
-import { authGuard, loginHandler } from "../controllers/organisms/authController.js";
+import {
+  authGuard,
+  loginHandler,
+} from "../controllers/organisms/authController.js";
 import { RouteRegistry } from "./routeRegistry.js";
 
 import { PublicationController } from "../controllers/organisms/publicationController.js";
@@ -90,8 +93,15 @@ export default async function createRoutes(fastify: FastifyInstance) {
   registry.registerOrchestratorRoute("/api/publicate", true);
 
   // GET distinct pour readAll
-  fastify.get("/api/publicate/readAll", { preHandler: authGuard }, async (req, reply) => {
-    const result = await orchestrator.processRequest({ action: "readAll", payload: {} });
-    reply.send(result);
-  });
+  fastify.get(
+    "/api/publicate/readAll",
+    { preHandler: authGuard },
+    async (req, reply) => {
+      const result = await orchestrator.processRequest({
+        action: "readAll",
+        payload: {},
+      });
+      reply.send(result);
+    },
+  );
 }

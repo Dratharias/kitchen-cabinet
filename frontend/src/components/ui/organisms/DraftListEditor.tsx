@@ -33,15 +33,15 @@ const DraftList = <T extends unknown>(props: DraftListProps<T>) => {
         <Button
           class="bg-green-500 text-white"
           onClick={() =>
-            props.setDraft(() => [...(props.draft() as unknown as string[]), ""] as unknown as T)
+            props.setDraft(
+              () =>
+                [...(props.draft() as unknown as string[]), ""] as unknown as T,
+            )
           }
         >
           + Ajouter
         </Button>
-        <Button
-          class="bg-blue-500 text-white"
-          onClick={props.save}
-        >
+        <Button class="bg-blue-500 text-white" onClick={props.save}>
           Sauvegarder
         </Button>
       </div>

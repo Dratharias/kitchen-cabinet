@@ -1,4 +1,16 @@
-import { Category, Content, Ingredient, Macro, PrepTime, Product, Publication, Review, Segment, Unit, User } from '.';
+import {
+  Category,
+  Content,
+  Ingredient,
+  Macro,
+  PrepTime,
+  Product,
+  Publication,
+  Review,
+  Segment,
+  Unit,
+  User,
+} from ".";
 
 export interface OrchestratorEntity<T> {
   id?: string;
@@ -60,7 +72,7 @@ export interface ReviewData {
   rating: number | null;
   comment: string[];
   description: string[];
-  buy_again: 'Y' | 'N' | 'M' | 'D' | null;
+  buy_again: "Y" | "N" | "M" | "D" | null;
   product?: {
     id: string;
     data: {};
@@ -104,7 +116,7 @@ export interface IngredientWithRelations {
 }
 
 export interface OrchestratorPayload {
-  action: 'create' | 'update';
+  action: "create" | "update";
   payload: {
     [key: string]: PublicationData | ReviewData;
   };

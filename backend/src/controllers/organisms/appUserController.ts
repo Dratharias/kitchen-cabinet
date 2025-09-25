@@ -24,17 +24,22 @@ export class AppUserController
   // Find est optionnel mais ici fourni pour compléter l'interface
   async findById(id: string): Promise<UserUpdateDto | null> {
     const user = await prisma.app_user.findUnique({ where: { user_id: id } });
-    return user ? { username: user.username, role: user.role as UserRoleData } : null;
+    return user
+      ? { username: user.username, role: user.role as UserRoleData }
+      : null;
   }
 
   async findAll(): Promise<UserUpdateDto[]> {
     const users = await prisma.app_user.findMany();
-    return users.map((u) => ({ username: u.username, role: u.role as UserRoleData }));
+    return users.map((u) => ({
+      username: u.username,
+      role: u.role as UserRoleData,
+    }));
   }
 
   async update(
     id: string,
-    payload: Partial<UserCreateDto & UserUpdateDto>
+    payload: Partial<UserCreateDto & UserUpdateDto>,
   ): Promise<UserUpdateDto> {
     const user = await prisma.app_user.update({
       where: { user_id: id },

@@ -1,4 +1,10 @@
-import { Publication, PublicationCore, PublicationRelations, PublicationTag, Review } from "types/controller.types";
+import {
+  Publication,
+  PublicationCore,
+  PublicationRelations,
+  PublicationTag,
+  Review,
+} from "types/controller.types";
 import { GenericPaginatedController } from "types/crud.types";
 import { PublicationConnect, PublicationReadAllDto } from "types/dto.types";
 import { v4 as uuidv4 } from "uuid";
@@ -11,8 +17,10 @@ export const normalizePublication = (pub: any): Publication => {
   const reviewCount = shaped.reviews?.length ?? 0;
   const reviewAverageScore =
     reviewCount > 0
-      ? shaped.reviews.reduce((acc: number, r: Review) => acc + (r.rating ?? 0), 0) /
-        reviewCount
+      ? shaped.reviews.reduce(
+          (acc: number, r: Review) => acc + (r.rating ?? 0),
+          0,
+        ) / reviewCount
       : 0;
 
   return {
@@ -30,12 +38,19 @@ export const normalizePublication = (pub: any): Publication => {
     productsRef: shaped.productsRef ?? null,
     reviewCount,
     reviewAverageScore,
-    tags: shaped.tags?.map((tag: PublicationTag) => tag.category?.str_value) ?? [],
+    tags:
+      shaped.tags?.map((tag: PublicationTag) => tag.category?.str_value) ?? [],
   };
 };
 
 export class PublicationController
-  implements GenericPaginatedController<Publication, PublicationCore, PublicationRelations, PublicationConnect>
+  implements
+    GenericPaginatedController<
+      Publication,
+      PublicationCore,
+      PublicationRelations,
+      PublicationConnect
+    >
 {
   async create(payload: PublicationCore): Promise<Publication> {
     const newId = payload.publication_id ?? uuidv4();
@@ -111,7 +126,11 @@ export class PublicationController
     }
 
     const total = await prisma.publication.count({ where });
-    const limit = params?.limit ? Number(params.limit) : params?.take ? Number(params.take) : 12;
+    const limit = params?.limit
+      ? Number(params.limit)
+      : params?.take
+        ? Number(params.take)
+        : 12;
     const page = params?.page ? Number(params.page) : 1;
     const skip = params?.skip ? Number(params.skip) : (page - 1) * limit;
 
@@ -133,7 +152,7 @@ export class PublicationController
     payload: Partial<PublicationCore & PublicationRelations> & {
       connect?: Partial<PublicationConnect>;
       set?: Partial<PublicationConnect>;
-    }
+    },
   ): Promise<Publication> {
     const publication = await prisma.publication.update({
       where: { publication_id: id },
@@ -146,30 +165,54 @@ export class PublicationController
         thumbnail: payload.thumbnail,
 
         contents: payload.connect?.contents
-          ? { connect: payload.connect.contents.map((c: { content_id: string }) => ({ content_id: c.content_id })) }
+          ? {
+              connect: payload.connect.contents.map(
+                (c: { content_id: string }) => ({ content_id: c.content_id }),
+              ),
+            }
           : payload.set?.contents
-          ? { set: payload.set.contents.map((c: { content_id: string }) => ({ content_id: c.content_id })) }
-          : undefined,
+            ? {
+                set: payload.set.contents.map((c: { content_id: string }) => ({
+                  content_id: c.content_id,
+                })),
+              }
+            : undefined,
 
         reviews: payload.connect?.reviews
-          ? { connect: payload.connect.reviews.map((r: { review_id: string }) => ({ review_id: r.review_id })) }
+          ? {
+              connect: payload.connect.reviews.map(
+                (r: { review_id: string }) => ({ review_id: r.review_id }),
+              ),
+            }
           : payload.set?.reviews
-          ? { set: payload.set.reviews.map((r: { review_id: string }) => ({ review_id: r.review_id })) }
-          : undefined,
+            ? {
+                set: payload.set.reviews.map((r: { review_id: string }) => ({
+                  review_id: r.review_id,
+                })),
+              }
+            : undefined,
 
         tags: payload.connect?.tags
           ? {
-              connect: payload.connect.tags.map((t: { category_id: string }) => ({
-                publication_id_category_id: { publication_id: id, category_id: t.category_id },
-              })),
+              connect: payload.connect.tags.map(
+                (t: { category_id: string }) => ({
+                  publication_id_category_id: {
+                    publication_id: id,
+                    category_id: t.category_id,
+                  },
+                }),
+              ),
             }
           : payload.set?.tags
-          ? {
-              set: payload.set.tags.map((t: { category_id: string }) => ({
-                publication_id_category_id: { publication_id: id, category_id: t.category_id },
-              })),
-            }
-          : undefined,
+            ? {
+                set: payload.set.tags.map((t: { category_id: string }) => ({
+                  publication_id_category_id: {
+                    publication_id: id,
+                    category_id: t.category_id,
+                  },
+                })),
+              }
+            : undefined,
       },
       include: this.buildInclude(),
     });

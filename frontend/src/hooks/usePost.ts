@@ -8,7 +8,7 @@ export function usePost() {
   const request = async <T>(
     url: string,
     method: "POST" | "PATCH" | "PUT" | "DELETE",
-    body?: any
+    body?: any,
   ): Promise<T | null> => {
     setLoading(true);
     setError(null);
@@ -37,7 +37,7 @@ export function usePost() {
   };
 
   const postPublicate = async (
-    payload: OrchestratorPayload
+    payload: OrchestratorPayload,
   ): Promise<OrchestratorResponse | null> => {
     return request<OrchestratorResponse>("/api/publicate", "POST", payload);
   };

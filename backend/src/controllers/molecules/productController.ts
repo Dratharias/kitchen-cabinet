@@ -1,6 +1,10 @@
 import { prisma } from "../../config.js";
 import { GenericController } from "types/crud.types.js";
-import { ProductCore, ProductRelations, Product } from "types/controller.types.js";
+import {
+  ProductCore,
+  ProductRelations,
+  Product,
+} from "types/controller.types.js";
 import { ProductCreateDto, ProductUpdateDto } from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
 
@@ -20,7 +24,9 @@ export const normalizeProduct = (product: any): Product => ({
 export class ProductController
   implements GenericController<Product, ProductCore, ProductRelations>
 {
-  async create(payload: ProductCore & { connect?: ProductCreateDto["connect"] }): Promise<Product> {
+  async create(
+    payload: ProductCore & { connect?: ProductCreateDto["connect"] },
+  ): Promise<Product> {
     const newId = uuidv4();
     const product = await prisma.product.create({
       data: {
@@ -33,7 +39,11 @@ export class ProductController
           : undefined,
         // Correction: Remove `is_recipe_id` and use the `isRecipe` relation.
         isRecipe: payload.connect?.isRecipe
-          ? { connect: { publication_id: payload.connect.isRecipe.publication_id } }
+          ? {
+              connect: {
+                publication_id: payload.connect.isRecipe.publication_id,
+              },
+            }
           : undefined,
 
         ingredients: payload.connect?.ingredients
@@ -105,20 +115,24 @@ export class ProductController
           : undefined,
         // Correction: Remove `is_recipe_id` and use the `isRecipe` relation.
         isRecipe: payload.connect?.isRecipe
-          ? { connect: { publication_id: payload.connect.isRecipe.publication_id } }
+          ? {
+              connect: {
+                publication_id: payload.connect.isRecipe.publication_id,
+              },
+            }
           : undefined,
 
         ingredients: payload.connect?.ingredients
           ? { connect: payload.connect.ingredients }
           : payload.set?.ingredients
-          ? { set: payload.set.ingredients }
-          : undefined,
+            ? { set: payload.set.ingredients }
+            : undefined,
 
         reviews: payload.connect?.reviews
           ? { connect: payload.connect.reviews }
           : payload.set?.reviews
-          ? { set: payload.set.reviews }
-          : undefined,
+            ? { set: payload.set.reviews }
+            : undefined,
 
         product_categories: payload.connect?.product_categories
           ? {
@@ -130,15 +144,15 @@ export class ProductController
               })),
             }
           : payload.set?.product_categories
-          ? {
-              set: payload.set.product_categories.map((c) => ({
-                product_id_category_id: {
-                  product_id: id,
-                  category_id: c.category_id,
-                },
-              })),
-            }
-          : undefined,
+            ? {
+                set: payload.set.product_categories.map((c) => ({
+                  product_id_category_id: {
+                    product_id: id,
+                    category_id: c.category_id,
+                  },
+                })),
+              }
+            : undefined,
       },
       include: {
         macro: true,

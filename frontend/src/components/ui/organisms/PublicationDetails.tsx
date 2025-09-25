@@ -34,23 +34,33 @@ interface PublicationDetailsProps {
   category?: "reviews" | "feeds" | "unknown";
 }
 
-export const PublicationDetails: Component<PublicationDetailsProps> = (props) => {
+export const PublicationDetails: Component<PublicationDetailsProps> = (
+  props,
+) => {
   const fallbackThumbnail = "https://picsum.photos/640/480?random=42";
 
   const baseYield = props.selectedContent?.servings ?? 1;
-  const [activeTab, setActiveTab] = createSignal<"ingredient" | "preparation">("ingredient");
+  const [activeTab, setActiveTab] = createSignal<"ingredient" | "preparation">(
+    "ingredient",
+  );
   const [servings, setServings] = createSignal<number>(baseYield);
   const navigate = useNavigate();
 
-  function getAdjustedQuantity(ingredient: Ingredient, servings: number, baseYield: number) {
+  function getAdjustedQuantity(
+    ingredient: Ingredient,
+    servings: number,
+    baseYield: number,
+  ) {
     const quantity = Number(ingredient.quantity ?? 0);
     const multiply = Number(ingredient.multiplyFactor ?? 1);
     const ratio = baseYield > 0 ? servings / baseYield : 1;
     return quantity * ratio * multiply;
   }
 
-  const ingredients = createMemo(() => props.selectedContent?.ingredients ?? []);
-  
+  const ingredients = createMemo(
+    () => props.selectedContent?.ingredients ?? [],
+  );
+
   const adjustedIngredients = createMemo(() => {
     return ingredients().map((ing) => ({
       ...ing,
@@ -88,18 +98,27 @@ export const PublicationDetails: Component<PublicationDetailsProps> = (props) =>
     const total = Number(content.totalPrepTime ?? 0);
     const segmentPrepTimes = segments.flatMap((s: any) => s.prepTimes ?? []);
     const allSegmentsHavePrep =
-      segments.length > 0 ? segments.every((s: any) => (s.prepTimes?.length ?? 0) > 0) : true;
+      segments.length > 0
+        ? segments.every((s: any) => (s.prepTimes?.length ?? 0) > 0)
+        : true;
 
     if (total > 0) {
       return {
-        label: allSegmentsHavePrep ? "Temps de préparation :" : "Temps minimum de préparation :",
+        label: allSegmentsHavePrep
+          ? "Temps de préparation :"
+          : "Temps minimum de préparation :",
         value: formatDuration(total),
         details: content.prepTimes ?? [],
       };
     } else if (segmentPrepTimes.length > 0) {
-      const sum = segmentPrepTimes.reduce((acc, pt) => acc + (Number(pt?.duration ?? 0)), 0);
+      const sum = segmentPrepTimes.reduce(
+        (acc, pt) => acc + Number(pt?.duration ?? 0),
+        0,
+      );
       return {
-        label: allSegmentsHavePrep ? "Temps de préparation :" : "Temps minimum de préparation :",
+        label: allSegmentsHavePrep
+          ? "Temps de préparation :"
+          : "Temps minimum de préparation :",
         value: formatDuration(sum),
         details: segmentPrepTimes,
       };
@@ -109,11 +128,11 @@ export const PublicationDetails: Component<PublicationDetailsProps> = (props) =>
   });
 
   const [ingredientChecked, setIngredientChecked] = createSignal(
-    ingredients().map(() => false)
+    ingredients().map(() => false),
   );
-  
+
   const [prepChecked, setPrepChecked] = createSignal(
-    (props.selectedContent?.segments ?? []).map(() => false)
+    (props.selectedContent?.segments ?? []).map(() => false),
   );
 
   function getIngredientDisplayName(ingredient: Ingredient): string {
@@ -133,18 +152,21 @@ export const PublicationDetails: Component<PublicationDetailsProps> = (props) =>
     if (baseYield <= 0) return "";
     const ratio = servings() / baseYield;
     const multiplyFactor = ingredient?.multiplyFactor ?? 1;
-    const adjustedRatio = 1 + ((ratio - 1) * multiplyFactor);
+    const adjustedRatio = 1 + (ratio - 1) * multiplyFactor;
     const percentage = Math.round((adjustedRatio - 1) * 100);
-    
+
     if (percentage === 0) return "";
     const sign = percentage > 0 ? "+" : "";
     return ` (${sign}${percentage}%)`;
   }
 
-  const preparationSteps = createMemo(() => 
-    props.selectedContent?.segments?.map(segment => segment.paragraph).filter(Boolean) ?? 
-    props.preparation ?? 
-    []
+  const preparationSteps = createMemo(
+    () =>
+      props.selectedContent?.segments
+        ?.map((segment) => segment.paragraph)
+        .filter(Boolean) ??
+      props.preparation ??
+      [],
   );
 
   const renderStars = (rating: number) => {
@@ -174,8 +196,7 @@ export const PublicationDetails: Component<PublicationDetailsProps> = (props) =>
         <h1>{props.title}</h1>
       </Span>
       <div class="flex items-center gap-2 px-4 mt-4">
-        
-      <div>
+        <div>
           <Button
             class="bg-layout border-none dark:bg-layout-d"
             onClick={() => {
@@ -195,9 +216,8 @@ export const PublicationDetails: Component<PublicationDetailsProps> = (props) =>
               ({props.reviewsCount ?? 0} avis)
             </span>
           </Button>
+        </div>
       </div>
-        
-    </div>
 
       <div class="grid grid-cols-2 gap-4 px-4 mt-8">
         <AccordionList
@@ -208,24 +228,40 @@ export const PublicationDetails: Component<PublicationDetailsProps> = (props) =>
               ? effectivePrep().details.map(
                   (p: any, i: number) =>
                     `${p?.category?.strValue ?? `Étape ${i + 1}`} : ${formatDuration(
-                      Number(p?.duration ?? 0)
-                    )}`
+                      Number(p?.duration ?? 0),
+                    )}`,
                 )
               : []
           }
         />
         <div class="flex items-center h-10">
           <Span class="mr-4 text-lg font-medium">Rendement:</Span>
-          <NumberSpinner value={servings()} min={1} max={20} onChange={setServings} />
+          <NumberSpinner
+            value={servings()}
+            min={1}
+            max={20}
+            onChange={setServings}
+          />
         </div>
       </div>
 
       <div class="block sm:grid sm:grid-cols-2 gap-4 px-4 mt-4">
-        <AccordionList class="text-left mb-4" title="Description" items={props.description} />
-        <AccordionList class="text-left mb-4" title="Notes" items={props.note} />
+        <AccordionList
+          class="text-left mb-4"
+          title="Description"
+          items={props.description}
+        />
+        <AccordionList
+          class="text-left mb-4"
+          title="Notes"
+          items={props.note}
+        />
       </div>
 
-      <IngredientPrepToggler active={activeTab()} toggleContent={setActiveTab} />
+      <IngredientPrepToggler
+        active={activeTab()}
+        toggleContent={setActiveTab}
+      />
 
       <div class="mt-4 px-4">
         {activeTab() === "ingredient" ? (
@@ -233,7 +269,10 @@ export const PublicationDetails: Component<PublicationDetailsProps> = (props) =>
             items={adjustedIngredients().map((ingredient) => {
               const name = getIngredientDisplayName(ingredient);
               const unit = getIngredientUnit(ingredient);
-              const quantity = formatIngredientQuantity(ingredient.adjustedQuantity, unit);
+              const quantity = formatIngredientQuantity(
+                ingredient.adjustedQuantity,
+                unit,
+              );
               const percentage = getServingsPercentage(ingredient);
               return `${name} – ${quantity}${percentage}`;
             })}

@@ -1,6 +1,10 @@
 import { prisma } from "../../config.js";
 import { GenericController } from "types/crud.types.js";
-import { SegmentCore, SegmentRelations, Segment } from "types/controller.types.js";
+import {
+  SegmentCore,
+  SegmentRelations,
+  Segment,
+} from "types/controller.types.js";
 import { SegmentCreateDto, SegmentUpdateDto } from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
 
@@ -17,7 +21,9 @@ export const normalizeSegment = (segment: any): Segment => ({
 export class SegmentController
   implements GenericController<Segment, SegmentCore, SegmentRelations>
 {
-  async create(payload: SegmentCore & { connect?: SegmentCreateDto["connect"] }): Promise<Segment> {
+  async create(
+    payload: SegmentCore & { connect?: SegmentCreateDto["connect"] },
+  ): Promise<Segment> {
     const newId = uuidv4();
     const segment = await prisma.segment.create({
       data: {
@@ -26,7 +32,7 @@ export class SegmentController
         paragraph: payload.paragraph,
         order_num: payload.order_num,
 
-        content_segments: payload.connect?.content_segments 
+        content_segments: payload.connect?.content_segments
           ? {
               connect: payload.connect.content_segments.map((c) => ({
                 content_id_segment_id: {
@@ -96,15 +102,15 @@ export class SegmentController
               })),
             }
           : payload.set?.content_segments
-          ? {
-              set: payload.set.content_segments.map((c) => ({
-                content_id_segment_id: {
-                  content_id: c.content_id,
-                  segment_id: id,
-                },
-              })),
-            }
-          : undefined,
+            ? {
+                set: payload.set.content_segments.map((c) => ({
+                  content_id_segment_id: {
+                    content_id: c.content_id,
+                    segment_id: id,
+                  },
+                })),
+              }
+            : undefined,
 
         segment_prep_time: payload.connect?.segment_prep_time
           ? {
@@ -116,15 +122,15 @@ export class SegmentController
               })),
             }
           : payload.set?.segment_prep_time
-          ? {
-              set: payload.set.segment_prep_time.map((p) => ({
-                segment_id_prep_time_id: {
-                  segment_id: id,
-                  prep_time_id: p.prep_time_id,
-                },
-              })),
-            }
-          : undefined,
+            ? {
+                set: payload.set.segment_prep_time.map((p) => ({
+                  segment_id_prep_time_id: {
+                    segment_id: id,
+                    prep_time_id: p.prep_time_id,
+                  },
+                })),
+              }
+            : undefined,
       },
       include: {
         content_segments: true,

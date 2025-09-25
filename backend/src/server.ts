@@ -12,5 +12,5 @@ await fastify.register(createRoutes);
 
 console.log(fastify.printRoutes());
 
-await fastify.listen({ port: PORT, host: '0.0.0.0' });
+await fastify.listen({ port: PORT, host: "0.0.0.0" });
 console.log(`🚀 Fastify server running at http://localhost:${PORT}`);

@@ -5,8 +5,7 @@ export function MobileLayout(props) {
   return (
     <div class="flex flex-col min-h-screen w-full bg-layout dark:bg-layout-d">
       {/* Header sticky */}
-      <div class="sticky top-0 z-50 flex min-h-18 min-w-full bg-layout dark:bg-layout-d">
-      </div>
+      <div class="sticky top-0 z-50 flex min-h-18 min-w-full bg-layout dark:bg-layout-d"></div>
 
       {/* Contenu */}
       <main class="flex-1 w-full mx-auto p-2 pb-24 pt-2 bg-layout dark:bg-layout-d">

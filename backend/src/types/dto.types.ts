@@ -1,23 +1,36 @@
 import { AppUserData } from "./db.types.js";
 
-import { 
-  CategoryCore, CategoryRelations,
-  PublicationCore, PublicationRelations,
-  ContentCore, ContentRelations,
-  SegmentCore, SegmentRelations,
-  ProductCore, ProductRelations,
-  MacroCore, MacroRelations,
-  IngredientCore, IngredientRelations,
-  UnitCore, UnitRelations,
-  PrepTimeCore, PrepTimeRelations,
-  ReviewCore, ReviewRelations,
-  Publication, Review
+import {
+  CategoryCore,
+  CategoryRelations,
+  PublicationCore,
+  PublicationRelations,
+  ContentCore,
+  ContentRelations,
+  SegmentCore,
+  SegmentRelations,
+  ProductCore,
+  ProductRelations,
+  MacroCore,
+  MacroRelations,
+  IngredientCore,
+  IngredientRelations,
+  UnitCore,
+  UnitRelations,
+  PrepTimeCore,
+  PrepTimeRelations,
+  ReviewCore,
+  ReviewRelations,
+  Publication,
+  Review,
 } from "./controller.types.js";
 
 /* ============================================================
    Utilisateur / User
    ============================================================ */
-export type UserCreateDto = Required<Pick<AppUserData, "username" | "role" | "password">>;
+export type UserCreateDto = Required<
+  Pick<AppUserData, "username" | "role" | "password">
+>;
 export type UserUpdateDto = Required<Pick<AppUserData, "username" | "role">>;
 
 /* ============================================================
@@ -32,9 +45,10 @@ export type CategoryConnect = {
   product_categories?: { category_id: string; product_id: string }[];
 };
 
-export type CategoryCreateDto = CategoryCore & Partial<CategoryRelations> & {
-  connect?: CategoryConnect;
-};
+export type CategoryCreateDto = CategoryCore &
+  Partial<CategoryRelations> & {
+    connect?: CategoryConnect;
+  };
 
 export type CategoryUpdateDto = Partial<CategoryCore & CategoryRelations> & {
   connect?: CategoryConnect;
@@ -54,11 +68,14 @@ export type PublicationConnect = {
   author?: { user_id: string }[];
 };
 
-export type PublicationCreateDto = PublicationCore & Partial<PublicationRelations> & {
-  connect?: PublicationConnect;
-};
+export type PublicationCreateDto = PublicationCore &
+  Partial<PublicationRelations> & {
+    connect?: PublicationConnect;
+  };
 
-export type PublicationUpdateDto = Partial<PublicationCore & PublicationRelations> & {
+export type PublicationUpdateDto = Partial<
+  PublicationCore & PublicationRelations
+> & {
   connect?: PublicationConnect;
   set?: PublicationConnect;
 };
@@ -88,9 +105,10 @@ export type ContentConnect = {
   content_prep_times?: { prep_time_id: string }[];
 };
 
-export type ContentCreateDto = ContentCore & Partial<ContentRelations> & {
-  connect?: ContentConnect;
-};
+export type ContentCreateDto = ContentCore &
+  Partial<ContentRelations> & {
+    connect?: ContentConnect;
+  };
 
 export type ContentUpdateDto = Partial<ContentCore & ContentRelations> & {
   connect?: ContentConnect;
@@ -105,9 +123,10 @@ export type SegmentConnect = {
   segment_prep_time?: { prep_time_id: string }[];
 };
 
-export type SegmentCreateDto = SegmentCore & Partial<SegmentRelations> & {
-  connect?: SegmentConnect;
-};
+export type SegmentCreateDto = SegmentCore &
+  Partial<SegmentRelations> & {
+    connect?: SegmentConnect;
+  };
 
 export type SegmentUpdateDto = Partial<SegmentCore & SegmentRelations> & {
   connect?: SegmentConnect;
@@ -137,16 +156,18 @@ export type ProductUpdateDto = Partial<ProductCore & ProductRelations> & {
   set?: ProductSet;
 };
 
-export type ProductCreateDto = ProductCore & Partial<ProductRelations> & {
-  connect?: ProductConnect;
-};
+export type ProductCreateDto = ProductCore &
+  Partial<ProductRelations> & {
+    connect?: ProductConnect;
+  };
 
 /* ============================================================
    Macro / Macro
    ============================================================ */
-export type MacroCreateDto = MacroCore & Partial<MacroRelations> & {
-  connect?: { products?: { product_id: string }[] };
-};
+export type MacroCreateDto = MacroCore &
+  Partial<MacroRelations> & {
+    connect?: { products?: { product_id: string }[] };
+  };
 
 export type MacroUpdateDto = Partial<MacroCore & MacroRelations> & {
   connect?: { products?: { product_id: string }[] };
@@ -162,11 +183,14 @@ export type IngredientConnect = {
   ingredient_units?: { unit_id: string }[];
 };
 
-export type IngredientCreateDto = IngredientCore & Partial<IngredientRelations> & {
-  connect?: IngredientConnect;
-};
+export type IngredientCreateDto = IngredientCore &
+  Partial<IngredientRelations> & {
+    connect?: IngredientConnect;
+  };
 
-export type IngredientUpdateDto = Partial<IngredientCore & IngredientRelations> & {
+export type IngredientUpdateDto = Partial<
+  IngredientCore & IngredientRelations
+> & {
   connect?: IngredientConnect;
   set?: IngredientConnect;
 };
@@ -178,8 +202,12 @@ export type UnitConnect = {
   ingredient_units?: { ingredient_id: string }[];
 };
 
-export type UnitCreateDto = UnitCore & Partial<UnitRelations> & { connect?: UnitConnect };
-export type UnitUpdateDto = Partial<UnitCore & UnitRelations> & { connect?: UnitConnect; set?: UnitConnect };
+export type UnitCreateDto = UnitCore &
+  Partial<UnitRelations> & { connect?: UnitConnect };
+export type UnitUpdateDto = Partial<UnitCore & UnitRelations> & {
+  connect?: UnitConnect;
+  set?: UnitConnect;
+};
 
 /* ============================================================
    Temps de préparation / PrepTime
@@ -190,8 +218,12 @@ export type PrepTimeConnect = {
   segment_prep_time?: { segment_id: string }[];
 };
 
-export type PrepTimeCreateDto = PrepTimeCore & Partial<PrepTimeRelations> & { connect?: PrepTimeConnect };
-export type PrepTimeUpdateDto = Partial<PrepTimeCore & PrepTimeRelations> & { connect?: PrepTimeConnect; set?: PrepTimeConnect };
+export type PrepTimeCreateDto = PrepTimeCore &
+  Partial<PrepTimeRelations> & { connect?: PrepTimeConnect };
+export type PrepTimeUpdateDto = Partial<PrepTimeCore & PrepTimeRelations> & {
+  connect?: PrepTimeConnect;
+  set?: PrepTimeConnect;
+};
 
 /* ============================================================
    Avis / Review
@@ -201,8 +233,12 @@ export type ReviewConnect = {
   publication?: { publication_id: string }[];
 };
 
-export type ReviewCreateDto = ReviewCore & Partial<ReviewRelations> & { connect?: ReviewConnect };
-export type ReviewUpdateDto = Partial<ReviewCore & ReviewRelations> & { connect?: ReviewConnect; set?: ReviewConnect };
+export type ReviewCreateDto = ReviewCore &
+  Partial<ReviewRelations> & { connect?: ReviewConnect };
+export type ReviewUpdateDto = Partial<ReviewCore & ReviewRelations> & {
+  connect?: ReviewConnect;
+  set?: ReviewConnect;
+};
 export type ReviewReadAllDto = {
   filter?: Partial<Omit<Review, "product" | "publication">> & {
     publicationId?: string;

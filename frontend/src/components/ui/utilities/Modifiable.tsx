@@ -11,7 +11,9 @@ interface ModifiableProps<T> {
   updatePath: string; // API endpoint
 }
 
-export function Modifiable<T extends string | number | string[] | number[]>(props: ModifiableProps<T>) {
+export function Modifiable<T extends string | number | string[] | number[]>(
+  props: ModifiableProps<T>,
+) {
   const [editing, setEditing] = createSignal(false);
   const [draft, setDraft] = createSignal<T>(props.value);
   const { request } = usePost();
@@ -31,7 +33,9 @@ export function Modifiable<T extends string | number | string[] | number[]>(prop
       case "description":
         return <InputEditor draft={draft} setDraft={setDraft} save={save} />;
       case "list":
-        return <DraftListEditor draft={draft} setDraft={setDraft} save={save} />;
+        return (
+          <DraftListEditor draft={draft} setDraft={setDraft} save={save} />
+        );
       case "stars":
         return <StarsEditor draft={draft} setDraft={setDraft} />;
       default:

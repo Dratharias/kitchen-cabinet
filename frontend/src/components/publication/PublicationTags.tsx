@@ -1,10 +1,14 @@
 import { For } from "solid-js";
 import { Input } from "@/components/ui/atoms/Input";
 import { Button } from "@/components/ui/atoms/Button";
+import { Span } from "@/components/ui/atoms/Span";
+import { CloseIcon } from "@/components/ui/atoms/Icons";
 
 export function PublicationTags({ form, setForm }) {
   const addTag = () => {
-    const input = document.querySelector('[data-tag-input]') as HTMLInputElement;
+    const input = document.querySelector(
+      "[data-tag-input]",
+    ) as HTMLInputElement;
     if (input && input.value.trim()) {
       setForm("tags", [...form.tags, input.value.trim()]);
       input.value = "";
@@ -12,7 +16,10 @@ export function PublicationTags({ form, setForm }) {
   };
 
   const removeTag = (index: number) => {
-    setForm("tags", form.tags.filter((_: any, i: number) => i !== index));
+    setForm(
+      "tags",
+      form.tags.filter((_: any, i: number) => i !== index),
+    );
   };
 
   return (
@@ -21,16 +28,15 @@ export function PublicationTags({ form, setForm }) {
       <div class="flex flex-wrap gap-2 mb-2">
         <For each={form.tags}>
           {(tag: string, index) => (
-            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-md text-sm flex items-center">
+            <Button
+              variant="noDecoration"
+              onClick={() => removeTag(index())}
+              class="max-w-fit !px-2 !py-1 bg-blue-100 text-blue-800 rounded-md text-sm"
+              icon={<CloseIcon />}
+              reverse
+            >
               {tag}
-              <button
-                type="button"
-                onClick={() => removeTag(index())}
-                class="ml-1 text-blue-600 hover:text-blue-800"
-              >
-                ×
-              </button>
-            </span>
+            </Button>
           )}
         </For>
       </div>
@@ -45,7 +51,9 @@ export function PublicationTags({ form, setForm }) {
             }
           }}
         />
-        <Button type="button" onClick={addTag}>Ajouter</Button>
+        <Button type="button" onClick={addTag}>
+          Ajouter
+        </Button>
       </div>
     </div>
   );

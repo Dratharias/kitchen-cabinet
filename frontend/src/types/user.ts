@@ -9,7 +9,11 @@ export interface User {
 
 export type ListUsersResponse = PaginatedResponse<User>;
 export type GetUserResponse = User;
-export type CreateUserRequest = { username: string; password: string; role?: string };
+export type CreateUserRequest = {
+  username: string;
+  password: string;
+  role?: string;
+};
 export type CreateUserResponse = User;
 export type UpdateUserRequest = Partial<Omit<User, "user_id" | "created_at">>;
 export type UpdateUserResponse = User;

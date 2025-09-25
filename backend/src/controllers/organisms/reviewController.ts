@@ -1,5 +1,9 @@
 import { Product, Publication, Review } from "types/controller.types.js";
-import { ReviewCreateDto, ReviewReadAllDto, ReviewUpdateDto } from "types/dto.types.js";
+import {
+  ReviewCreateDto,
+  ReviewReadAllDto,
+  ReviewUpdateDto,
+} from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
 import { PaginatedResponse } from "types/db.types.js";
 import { GenericPaginatedController } from "types/crud.types.js";
@@ -20,13 +24,19 @@ export const normalizeReview = (review: any): Review => ({
   publication: review.publication ?? null,
 });
 
-export class ReviewController implements GenericPaginatedController<
-  Review,
-  Omit<Review, "product" | "publication">,
-  { product: Product | null; publication: Publication | null }
-> {
-
-  async create(payload: Omit<Review, "product" | "publication"> & { connect?: ReviewCreateDto["connect"] }): Promise<Review> {
+export class ReviewController
+  implements
+    GenericPaginatedController<
+      Review,
+      Omit<Review, "product" | "publication">,
+      { product: Product | null; publication: Publication | null }
+    >
+{
+  async create(
+    payload: Omit<Review, "product" | "publication"> & {
+      connect?: ReviewCreateDto["connect"];
+    },
+  ): Promise<Review> {
     const newId = uuidv4();
     const review = await prisma.review.create({
       data: {
@@ -36,8 +46,14 @@ export class ReviewController implements GenericPaginatedController<
         description: payload.description,
         buy_again: payload.buy_again,
         date_review: payload.date_review,
-        product_id: payload.connect?.product?.[0]?.product_id ?? payload.product_id ?? undefined,
-        publication_id: payload.connect?.publication?.[0]?.publication_id ?? payload.publication_id ?? undefined,
+        product_id:
+          payload.connect?.product?.[0]?.product_id ??
+          payload.product_id ??
+          undefined,
+        publication_id:
+          payload.connect?.publication?.[0]?.publication_id ??
+          payload.publication_id ??
+          undefined,
       },
       include: {
         product: {
@@ -131,8 +147,16 @@ export class ReviewController implements GenericPaginatedController<
         description: payload.description,
         buy_again: payload.buy_again,
         date_review: payload.date_review,
-        product_id: payload.connect?.product?.[0]?.product_id ?? payload.set?.product?.[0]?.product_id ?? payload.product_id ?? undefined,
-        publication_id: payload.connect?.publication?.[0]?.publication_id ?? payload.set?.publication?.[0]?.publication_id ?? payload.publication_id ?? undefined,
+        product_id:
+          payload.connect?.product?.[0]?.product_id ??
+          payload.set?.product?.[0]?.product_id ??
+          payload.product_id ??
+          undefined,
+        publication_id:
+          payload.connect?.publication?.[0]?.publication_id ??
+          payload.set?.publication?.[0]?.publication_id ??
+          payload.publication_id ??
+          undefined,
       },
       include: {
         product: {

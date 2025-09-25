@@ -20,7 +20,7 @@ export class AuthService {
         localStorage.setItem(TOKEN_KEY, data.token);
         localStorage.setItem(
           USER_KEY,
-          JSON.stringify({ username: data.username, role: data.role })
+          JSON.stringify({ username: data.username, role: data.role }),
         );
       }
       return data;

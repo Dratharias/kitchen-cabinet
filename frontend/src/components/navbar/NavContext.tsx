@@ -36,5 +36,4 @@ export const NavProvider = (props: { children: any }) => {
   );
 };
 
-
 export const useNavState = () => useContext(NavContext)!;

@@ -10,13 +10,9 @@ export const Span = (props: SpanProps): JSX.Element => {
   const baseClass = "transition-colors duration-200";
 
   const classes = createMemo(() =>
-    [
-      baseClass,
-      local.hideOnSmall ? "hidden sm:inline" : "",
-      local.class,
-    ]
+    [baseClass, local.hideOnSmall ? "hidden sm:inline" : "", local.class]
       .filter(Boolean)
-      .join(" ")
+      .join(" "),
   );
 
   return (

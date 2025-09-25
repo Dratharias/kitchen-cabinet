@@ -7,7 +7,12 @@ export type InputProps = JSX.InputHTMLAttributes<HTMLInputElement> & {
 };
 
 export const Input = (props: InputProps): JSX.Element => {
-  const [local, rest] = splitProps(props, ["class", "error", "icon", "disabled"]);
+  const [local, rest] = splitProps(props, [
+    "class",
+    "error",
+    "icon",
+    "disabled",
+  ]);
 
   const [focused, setFocused] = createSignal(false);
 
@@ -27,14 +32,18 @@ export const Input = (props: InputProps): JSX.Element => {
     return "border-input-border text-input-txt bg-input-bg dark:border-input-border-d dark:text-input-txt-d dark:bg-input-bg-d";
   });
 
-  const classes = createMemo(() => [baseClass, stateClasses(), local.class].filter(Boolean).join(" "));
+  const classes = createMemo(() =>
+    [baseClass, stateClasses(), local.class].filter(Boolean).join(" "),
+  );
 
   return (
     <div
       class={`flex items-center gap-2 w-full rounded-md transition-shadow duration-200 shadow-md
-        ${focused() 
-          ? 'shadow-container-focus dark:shadow-container-focus-d'
-          : 'shadow-container dark:shadow-container-d'}`}
+        ${
+          focused()
+            ? "shadow-container-focus dark:shadow-container-focus-d"
+            : "shadow-container dark:shadow-container-d"
+        }`}
     >
       {local.icon && <Span class="flex items-center">{local.icon}</Span>}
       <input

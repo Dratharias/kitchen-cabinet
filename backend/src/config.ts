@@ -1,15 +1,17 @@
-import { PrismaClient } from '@prisma/client';
-import dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import { PrismaClient } from "@prisma/client";
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-dotenv.config({ path: path.resolve(__dirname, '../.env') });
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
-export const PORT: number = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001;
-export const DATABASE_URL: string = process.env.DATABASE_URL || '';
+export const PORT: number = process.env.PORT
+  ? parseInt(process.env.PORT, 10)
+  : 3001;
+export const DATABASE_URL: string = process.env.DATABASE_URL || "";
 
 class DatabaseClient {
   private static instance: PrismaClient | null = null;
@@ -19,9 +21,9 @@ class DatabaseClient {
       DatabaseClient.instance = new PrismaClient({
         datasources: {
           db: {
-            url: DATABASE_URL
-          }
-        }
+            url: DATABASE_URL,
+          },
+        },
       });
     }
     return DatabaseClient.instance;

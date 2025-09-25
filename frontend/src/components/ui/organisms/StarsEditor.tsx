@@ -5,7 +5,10 @@ type StarsEditorProps<T> = {
   setDraft: (updater: () => T) => void;
 };
 
-const StarsEditor = <T extends unknown>({ draft, setDraft }: StarsEditorProps<T>) => {
+const StarsEditor = <T extends unknown>({
+  draft,
+  setDraft,
+}: StarsEditorProps<T>) => {
   return (
     <Stars
       score={(draft as unknown as number) ?? 0}

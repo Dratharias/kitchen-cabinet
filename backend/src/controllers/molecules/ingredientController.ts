@@ -1,6 +1,10 @@
 import { prisma } from "../../config.js";
 import { GenericController } from "types/crud.types.js";
-import { IngredientCore, IngredientRelations, Ingredient } from "types/controller.types.js";
+import {
+  IngredientCore,
+  IngredientRelations,
+  Ingredient,
+} from "types/controller.types.js";
 import { IngredientCreateDto, IngredientUpdateDto } from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
 
@@ -18,7 +22,9 @@ export const normalizeIngredient = (ingredient: any): Ingredient => ({
 export class IngredientController
   implements GenericController<Ingredient, IngredientCore, IngredientRelations>
 {
-  async create(payload: IngredientCore & { connect?: IngredientCreateDto["connect"] }): Promise<Ingredient> {
+  async create(
+    payload: IngredientCore & { connect?: IngredientCreateDto["connect"] },
+  ): Promise<Ingredient> {
     const newId = uuidv4();
     const ingredient = await prisma.ingredient.create({
       data: {
@@ -84,50 +90,61 @@ export class IngredientController
 
   async update(id: string, payload: IngredientUpdateDto): Promise<Ingredient> {
     const ingredient = await prisma.ingredient.update({
-        where: { ingredient_id: id },
-        data: {
-          quantity: payload.quantity,
-          product_id: payload.product_id,
-          multiply_factor: payload.multiply_factor,
+      where: { ingredient_id: id },
+      data: {
+        quantity: payload.quantity,
+        product_id: payload.product_id,
+        multiply_factor: payload.multiply_factor,
 
-          content_ingredients: payload.connect?.content_ingredients
-              ? {
-                  connect: payload.connect.content_ingredients.map((c) => ({
-                  content_id_ingredient_id: { ingredient_id: id, content_id: c.content_id },
-                  })),
+        content_ingredients: payload.connect?.content_ingredients
+          ? {
+              connect: payload.connect.content_ingredients.map((c) => ({
+                content_id_ingredient_id: {
+                  ingredient_id: id,
+                  content_id: c.content_id,
+                },
+              })),
+            }
+          : payload.set?.content_ingredients
+            ? {
+                set: payload.set.content_ingredients.map((c) => ({
+                  content_id_ingredient_id: {
+                    ingredient_id: id,
+                    content_id: c.content_id,
+                  },
+                })),
               }
-              : payload.set?.content_ingredients
-              ? {
-                  set: payload.set.content_ingredients.map((c) => ({
-                  content_id_ingredient_id: { ingredient_id: id, content_id: c.content_id },
-                  })),
-              }
-              : undefined,
+            : undefined,
 
-          ingredient_units: payload.connect?.ingredient_units
-              ? {
-                  connect: payload.connect.ingredient_units.map((u) => ({
-                  ingredient_id_unit_id: { ingredient_id: id, unit_id: u.unit_id },
-                  })),
+        ingredient_units: payload.connect?.ingredient_units
+          ? {
+              connect: payload.connect.ingredient_units.map((u) => ({
+                ingredient_id_unit_id: {
+                  ingredient_id: id,
+                  unit_id: u.unit_id,
+                },
+              })),
+            }
+          : payload.set?.ingredient_units
+            ? {
+                set: payload.set.ingredient_units.map((u) => ({
+                  ingredient_id_unit_id: {
+                    ingredient_id: id,
+                    unit_id: u.unit_id,
+                  },
+                })),
               }
-              : payload.set?.ingredient_units
-              ? {
-                  set: payload.set.ingredient_units.map((u) => ({
-                  ingredient_id_unit_id: { ingredient_id: id, unit_id: u.unit_id },
-                  })),
-              }
-              : undefined,
-        },
-        include: {
-          product: true,
-          content_ingredients: true,
-          ingredient_units: true,
-        },
-      });
+            : undefined,
+      },
+      include: {
+        product: true,
+        content_ingredients: true,
+        ingredient_units: true,
+      },
+    });
 
     return normalizeIngredient(ingredient);
-    }
-
+  }
 
   async delete(id: string): Promise<{ deleted: boolean }> {
     await prisma.ingredient.delete({ where: { ingredient_id: id } });

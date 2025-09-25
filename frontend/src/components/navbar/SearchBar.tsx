@@ -8,7 +8,7 @@ const SearchBar = (): JSX.Element => {
   const placeholder = createMemo(() =>
     activeItem() === "feed"
       ? "Rechercher parmi les recettes et articles..."
-      : "Rechercher parmi les livres et critiques..."
+      : "Rechercher parmi les livres et critiques...",
   );
 
   return (
@@ -21,11 +21,7 @@ const SearchBar = (): JSX.Element => {
             dark:bg-forest-400 dark:hover:bg-harmony-700
           `}
         >
-          <Input
-            type="text"
-            placeholder={placeholder()}
-            autofocus
-          />
+          <Input type="text" placeholder={placeholder()} autofocus />
         </div>
       </div>
     </Show>

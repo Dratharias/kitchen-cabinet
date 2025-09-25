@@ -16,9 +16,7 @@ export const AccordionList: Component<AccordionListProps> = (props) => {
 
   // Normalisation des items
   const normalizedItems: ListItem[] = props.items.map((item, i) =>
-    typeof item === "string"
-      ? { id: `toggle-item-${i}`, label: item }
-      : item
+    typeof item === "string" ? { id: `toggle-item-${i}`, label: item } : item,
   );
 
   const isEmpty = normalizedItems.length === 0;
@@ -28,14 +26,14 @@ export const AccordionList: Component<AccordionListProps> = (props) => {
       {isEmpty ? (
         // Pas de bouton ni chevron si vide
         <Button
-            type="button"
-            disabled
-            class="flex items-center !text-sec-txt dark:!text-sec-txt-d justify-between w-full px-2 py-1 font-medium rounded"
-          >
-            <Span class="flex items-center w-full font-medium">
+          type="button"
+          disabled
+          class="flex items-center !text-sec-txt dark:!text-sec-txt-d justify-between w-full px-2 py-1 font-medium rounded"
+        >
+          <Span class="flex items-center w-full font-medium">
             {props.title}
-            </Span>
-          </Button>
+          </Span>
+        </Button>
       ) : (
         <>
           <Button

@@ -15,7 +15,7 @@ const Navbar = () => {
   const { searchOpen, toggleSearch } = useNavState();
   const [open, setOpen] = createSignal(false);
   const [activeKey, setActiveKey] = createSignal<string>(
-    localStorage.getItem("activeNav") || "feeds"
+    localStorage.getItem("activeNav") || "feeds",
   );
 
   const location = useLocation();
@@ -41,15 +41,18 @@ const Navbar = () => {
   };
 
   const isActive = (key: string) => {
-    if (key === "reviews") return location.pathname === "/" || location.pathname.startsWith("/reviews");
+    if (key === "reviews")
+      return (
+        location.pathname === "/" || location.pathname.startsWith("/reviews")
+      );
     if (key === "feeds") return location.pathname.startsWith("/feeds");
     return false;
   };
 
   // Items communs (uniquement si connecté)
   const commonItems: MenuItem[] = [
-    { label: "Create", action: () => {} },
-    { label: "Review", action: () => activate("reviews") },
+    { label: "Create", action: () => navigate("/create") },
+    { label: "Review", action: () => activate("/create") },
   ];
 
   // menuItems devient réactif
@@ -64,10 +67,7 @@ const Navbar = () => {
             active={isActive("reviews")}
             onClick={() => activate("reviews")}
           />
-          <NavButtons.SearchButton
-            open={searchOpen()}
-            onClick={toggleSearch}
-          />
+          <NavButtons.SearchButton open={searchOpen()} onClick={toggleSearch} />
           <NavButtons.FeedButton
             active={isActive("feeds")}
             onClick={() => activate("feeds")}

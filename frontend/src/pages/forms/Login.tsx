@@ -29,9 +29,7 @@ export function LoginForm() {
               Bienvenue {AuthService.getUser()?.username ?? "Utilisateur"}
             </Span>
           </p>
-          <Button onClick={logout}>
-            Logout
-          </Button>
+          <Button onClick={logout}>Logout</Button>
         </div>
       ) : (
         <form onSubmit={handleSubmit} class="w-full max-w-sm space-y-4">

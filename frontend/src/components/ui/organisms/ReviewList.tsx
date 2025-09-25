@@ -29,12 +29,9 @@ const ReviewList: Component<ReviewListProps> = (props) => {
     <div class={`flex flex-col w-full ${props.class ?? ""}`}>
       <For each={props.reviews}>
         {(review) => (
-            <ReviewCard
-              {...review}
-              publicationTitle={review.publicationTitle}
-            />
+          <ReviewCard {...review} publicationTitle={review.publicationTitle} />
         )}
-        </For>
+      </For>
 
       <Show when={props.pagination}>
         <div class="flex justify-center items-center mt-4 gap-4">

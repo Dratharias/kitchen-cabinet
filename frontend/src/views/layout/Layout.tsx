@@ -1,6 +1,6 @@
 import { DesktopLayout } from "./DesktopLayout";
 import { MobileLayout } from "./MobileLayout";
-import { NavProvider } from '../../components/navbar/NavContext'; 
+import { NavProvider } from "../../components/navbar/NavContext";
 import { createSignal, onMount, onCleanup } from "solid-js";
 
 export function Layout(props) {
@@ -18,9 +18,11 @@ export function Layout(props) {
 
   return (
     <NavProvider>
-      {isMobile()
-        ? <MobileLayout>{props.children}</MobileLayout>
-        : <DesktopLayout>{props.children}</DesktopLayout>}
+      {isMobile() ? (
+        <MobileLayout>{props.children}</MobileLayout>
+      ) : (
+        <DesktopLayout>{props.children}</DesktopLayout>
+      )}
     </NavProvider>
   );
 }

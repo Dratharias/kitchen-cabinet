@@ -13,7 +13,9 @@ interface PaginationNavigatorProps {
   class?: string;
 }
 
-export const PaginationNavigator: Component<PaginationNavigatorProps> = (props) => {
+export const PaginationNavigator: Component<PaginationNavigatorProps> = (
+  props,
+) => {
   const handlePrev = () => {
     if (props.pagination.page > 1) {
       props.pagination.onPageChange(props.pagination.page - 1);
@@ -27,7 +29,9 @@ export const PaginationNavigator: Component<PaginationNavigatorProps> = (props) 
   };
 
   return (
-    <div class={`flex justify-evenly items-center mt-6 gap-4 ${props.class ?? ""}`}>
+    <div
+      class={`flex justify-evenly items-center mt-6 gap-4 ${props.class ?? ""}`}
+    >
       <PrevPageButton
         onClick={handlePrev}
         disabled={props.pagination.page <= 1}

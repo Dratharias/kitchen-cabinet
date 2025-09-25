@@ -10,9 +10,19 @@ export const normalizeUnit = (unit: any): Unit => ({
   ingredient_units: unit.ingredient_units ?? null,
 });
 
-export class UnitController implements GenericController<Unit, Omit<Unit, "ingredient_units">, { ingredient_units: IngredientUnit[] | null }> {
-
-  async create(payload: Omit<Unit, "ingredient_units"> & { connect?: UnitCreateDto["connect"] }): Promise<Unit> {
+export class UnitController
+  implements
+    GenericController<
+      Unit,
+      Omit<Unit, "ingredient_units">,
+      { ingredient_units: IngredientUnit[] | null }
+    >
+{
+  async create(
+    payload: Omit<Unit, "ingredient_units"> & {
+      connect?: UnitCreateDto["connect"];
+    },
+  ): Promise<Unit> {
     const newId = uuidv4();
     const unit = await prisma.unit.create({
       data: {
@@ -20,8 +30,11 @@ export class UnitController implements GenericController<Unit, Omit<Unit, "ingre
         name: payload.name,
         ingredient_units: payload.connect?.ingredient_units
           ? {
-              connect: payload.connect.ingredient_units.map(iu => ({
-                ingredient_id_unit_id: { unit_id: newId, ingredient_id: iu.ingredient_id },
+              connect: payload.connect.ingredient_units.map((iu) => ({
+                ingredient_id_unit_id: {
+                  unit_id: newId,
+                  ingredient_id: iu.ingredient_id,
+                },
               })),
             }
           : undefined,
@@ -54,10 +67,24 @@ export class UnitController implements GenericController<Unit, Omit<Unit, "ingre
       data: {
         name: payload.name,
         ingredient_units: payload.connect?.ingredient_units
-          ? { connect: payload.connect.ingredient_units.map(iu => ({ ingredient_id_unit_id: { unit_id: id, ingredient_id: iu.ingredient_id } })) }
+          ? {
+              connect: payload.connect.ingredient_units.map((iu) => ({
+                ingredient_id_unit_id: {
+                  unit_id: id,
+                  ingredient_id: iu.ingredient_id,
+                },
+              })),
+            }
           : payload.set?.ingredient_units
-          ? { set: payload.set.ingredient_units.map(iu => ({ ingredient_id_unit_id: { unit_id: id, ingredient_id: iu.ingredient_id } })) }
-          : undefined,
+            ? {
+                set: payload.set.ingredient_units.map((iu) => ({
+                  ingredient_id_unit_id: {
+                    unit_id: id,
+                    ingredient_id: iu.ingredient_id,
+                  },
+                })),
+              }
+            : undefined,
       },
       include: { ingredient_units: true },
     });

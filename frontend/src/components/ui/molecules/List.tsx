@@ -42,8 +42,10 @@ export const List = (props: ListProps) => {
   > = {
     primary: {
       base: "border-primary-500 dark:border-primary-600 text-prim-txt dark:text-prim-txt-d",
-      active: "ring-2 ring-primary-400 text-prim-txt-ac dark:text-prim-txt-ac-d",
-      disabled: "opacity-50 cursor-not-allowed text-prim-txt-dis dark:text-prim-txt-dis-d",
+      active:
+        "ring-2 ring-primary-400 text-prim-txt-ac dark:text-prim-txt-ac-d",
+      disabled:
+        "opacity-50 cursor-not-allowed text-prim-txt-dis dark:text-prim-txt-dis-d",
     },
     secondary: {
       base: "border-secondary-500 dark:border-secondary-600 text-sec-txt dark:text-sec-txt-d",
@@ -66,18 +68,23 @@ export const List = (props: ListProps) => {
           if (!isListItem(item)) return null; // TypeScript safe
 
           const state = createMemo<"active" | "disabled" | "base">(() =>
-            item.disabled ? "disabled" : item.active ? "active" : "base"
+            item.disabled ? "disabled" : item.active ? "active" : "base",
           );
 
           const liClasses = createMemo(() => {
             const itemBase = "w-full text-left rounded-md";
-            const itemState =
-              item.disabled
-                ? "opacity-50 cursor-not-allowed"
-                : item.active
+            const itemState = item.disabled
+              ? "opacity-50 cursor-not-allowed"
+              : item.active
                 ? "bg-gray-200 dark:bg-gray-700"
                 : "";
-            return [baseItemClass, itemBase, itemState, props.itemClass, item.class]
+            return [
+              baseItemClass,
+              itemBase,
+              itemState,
+              props.itemClass,
+              item.class,
+            ]
               .filter(Boolean)
               .join(" ");
           });

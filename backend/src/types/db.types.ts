@@ -13,7 +13,7 @@ export interface BaseQuery {
   page: number;
   limit: number;
   sortBy: string;
-  order: 'asc' | 'desc';
+  order: "asc" | "desc";
 }
 
 export interface PaginatedResponse<T> {
@@ -30,7 +30,6 @@ export interface ReadAllParams<T> {
   skip?: number;
   take?: number;
 }
-
 
 /* ============================================================
    Types simples
@@ -59,10 +58,10 @@ export interface CategoryData {
   type: string;
 
   // Relations 1-N et N-N
-  publications_type: PublicationData[] | null;   // 1-N
-  publications_style: PublicationData[] | null;  // 1-N
+  publications_type: PublicationData[] | null; // 1-N
+  publications_style: PublicationData[] | null; // 1-N
   publications_author: PublicationData[] | null; // 1-N
-  prep_time: PrepTimeData[] | null;              // 1-N
+  prep_time: PrepTimeData[] | null; // 1-N
   publication_tags: PublicationTagData[] | null; // N-N
   product_categories: ProductCategoryData[] | null; // N-N
 }
@@ -83,15 +82,15 @@ export interface PublicationData {
   author_id: string | null;
 
   // Relations N-1 (références directes)
-  type: CategoryCore | null;   // N-1
-  style: CategoryCore | null;  // N-1
+  type: CategoryCore | null; // N-1
+  style: CategoryCore | null; // N-1
   author: CategoryCore | null; // N-1
 
   // Relations 1-N et N-N
-  contents: ContentData[] | null;          // 1-N
+  contents: ContentData[] | null; // 1-N
   productsRef: IngredientData[] | null; // N-N (RecipeReference)
-  reviews: ReviewData[] | null;            // 1-N
-  tags: PublicationTagData[] | null;       // N-N
+  reviews: ReviewData[] | null; // 1-N
+  tags: PublicationTagData[] | null; // N-N
 }
 
 export interface PublicationTagData {
@@ -100,7 +99,7 @@ export interface PublicationTagData {
 
   // Relations N-N
   publication: PublicationData | null; // N-N
-  category: CategoryData | null;       // N-N
+  category: CategoryData | null; // N-N
 }
 
 /* ============================================================
@@ -116,9 +115,9 @@ export interface ContentData {
   publication: PublicationData | null; // N-1
 
   // Relations N-N
-  content_segments: ContentSegmentData[] | null;       // N-N
+  content_segments: ContentSegmentData[] | null; // N-N
   content_ingredients: ContentIngredientData[] | null; // N-N
-  content_prep_times: ContentPrepTimeData[] | null;    // N-N
+  content_prep_times: ContentPrepTimeData[] | null; // N-N
 }
 
 export interface ContentSegmentData {
@@ -136,7 +135,7 @@ export interface ContentIngredientData {
   ingredient_id: string;
 
   // Relations N-N
-  content: ContentData | null;    // N-N
+  content: ContentData | null; // N-N
   ingredient: IngredientData | null; // N-N
 }
 
@@ -145,7 +144,7 @@ export interface ContentPrepTimeData {
   prep_time_id: string;
 
   // Relations N-N
-  content: ContentData | null;   // N-N
+  content: ContentData | null; // N-N
   prep_time: PrepTimeData | null; // N-N
 }
 
@@ -168,7 +167,7 @@ export interface SegmentPrepTimeData {
   prep_time_id: string;
 
   // Relations N-N
-  segment: SegmentData | null;  // N-N
+  segment: SegmentData | null; // N-N
   prep_time: PrepTimeData | null; // N-N
 }
 
@@ -184,11 +183,11 @@ export interface ProductData {
 
   // Relations N-1
   macro: MacroData | null; // N-1
-  isRecipe: PublicationData | null;  // N-1
+  isRecipe: PublicationData | null; // N-1
 
   // Relations 1-N
   ingredients: IngredientData[] | null; // 1-N
-  reviews: ReviewData[] | null;         // 1-N
+  reviews: ReviewData[] | null; // 1-N
 
   // Relations N-N
   product_categories: ProductCategoryData[] | null; // N-N
@@ -199,7 +198,7 @@ export interface ProductCategoryData {
   category_id: string;
 
   // Relations N-N
-  product: ProductData | null;  // N-N
+  product: ProductData | null; // N-N
   category: CategoryData | null; // N-N
 }
 
@@ -230,11 +229,11 @@ export interface IngredientData {
   multiply_factor: number;
 
   // Relations N-1
-  product: ProductData | null;       // N-1
+  product: ProductData | null; // N-1
 
   // Relations N-N
   content_ingredients: ContentIngredientData[] | null; // N-N
-  ingredient_units: IngredientUnitData[] | null;       // N-N
+  ingredient_units: IngredientUnitData[] | null; // N-N
 }
 
 export interface IngredientUnitData {
@@ -243,7 +242,7 @@ export interface IngredientUnitData {
 
   // Relations N-N
   ingredient: IngredientData | null; // N-N
-  unit: UnitData | null;             // N-N
+  unit: UnitData | null; // N-N
 }
 
 /* ============================================================
@@ -270,7 +269,7 @@ export interface PrepTimeData {
 
   // Relations N-N
   content_prep_times: ContentPrepTimeData[] | null; // N-N
-  segment_prep_time: SegmentPrepTimeData[] | null;  // N-N
+  segment_prep_time: SegmentPrepTimeData[] | null; // N-N
 }
 
 /* ============================================================
@@ -287,6 +286,6 @@ export interface ReviewData {
   date_review: string;
 
   // Relations N-1
-  product: ProductData | null;     // N-1
+  product: ProductData | null; // N-1
   publication: PublicationData | null; // N-1
 }

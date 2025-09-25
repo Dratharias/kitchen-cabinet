@@ -30,7 +30,7 @@ const NavbarMenu = (props: NavbarMenuProps) => {
             navigate("/login", { replace: true });
             props.onClose();
           },
-        }
+        },
   );
 
   const listItems = createMemo<ListItem[]>(() => [

@@ -18,9 +18,18 @@ export const normalizeMacro = (macro: any): Macro => ({
 });
 
 export class MacroController
-  implements GenericController<Macro, Omit<Macro, "macro_id" | "products">, Partial<Pick<Macro, "products">>>
+  implements
+    GenericController<
+      Macro,
+      Omit<Macro, "macro_id" | "products">,
+      Partial<Pick<Macro, "products">>
+    >
 {
-  async create(payload: Omit<Macro, "macro_id" | "products"> & { connect?: MacroCreateDto["connect"] }): Promise<Macro> {
+  async create(
+    payload: Omit<Macro, "macro_id" | "products"> & {
+      connect?: MacroCreateDto["connect"];
+    },
+  ): Promise<Macro> {
     const newId = uuidv4();
     const macro = await prisma.macro.create({
       data: {
@@ -79,8 +88,8 @@ export class MacroController
         products: payload.connect?.products
           ? { connect: payload.connect.products }
           : payload.set?.products
-          ? { set: payload.set.products }
-          : undefined,
+            ? { set: payload.set.products }
+            : undefined,
       },
       include: {
         products: true,
