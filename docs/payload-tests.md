@@ -153,6 +153,47 @@ TOKEN=$(curl -s -X POST http://127.0.0.1:3001/api/auth/login \
 
 ---
 
+## Cheat Sheet
+
+```bash
+# Products
+curl -s -X GET http://127.0.0.1:3001/api/products \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" | grep -o '"product_id":"[^"]*"' | sort -u | head -n 3
+
+# Units
+curl -s -X GET http://127.0.0.1:3001/api/units \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" | grep -o '"unit_id":"[^"]*"' | sort -u | head -n 3
+
+# Publications
+curl -s -X GET http://127.0.0.1:3001/api/publications \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" | grep -o '"publication_id":"[^"]*"' | sort -u | head -n 3
+
+# Ingredients
+curl -s -X GET http://127.0.0.1:3001/api/ingredients \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" | grep -o '"ingredient_id":"[^"]*"' | sort -u | head -n 3
+
+# PrepTimes
+curl -s -X GET http://127.0.0.1:3001/api/prepTimes \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" | grep -o '"prep_time_id":"[^"]*"' | sort -u | head -n 3
+
+# Segments
+curl -s -X GET http://127.0.0.1:3001/api/segments \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" | grep -o '"segment_id":"[^"]*"' | sort -u | head -n 3
+
+# Contents
+curl -s -X GET http://127.0.0.1:3001/api/contents \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" | grep -o '"content_id":"[^"]*"' | sort -u | head -n 3
+```
+
+---
+
 ## 1. Publication minimale
 
 ```bash
@@ -291,8 +332,10 @@ curl -X POST http://127.0.0.1:3001/api/publicate \
             "content_ingredients": [
               {
                 "data": { "quantity": 1, "multiply_factor": 1 },
-                "product": { "id": "EXISTING-PRODUCT-ID", "data": { "name": "Unknown" } },
-                "ingredient_units": [ { "unit": { "data": { "name": "grams" } } } ]
+                "product": { "id": "7f953dc4-ea40-4714-8978-6a0cc2188f77" },
+                "ingredient_units": [
+                  { "unit": { "data": { "name": "grams" } } }
+                ]
               }
             ]
           }
@@ -300,6 +343,7 @@ curl -X POST http://127.0.0.1:3001/api/publicate \
       }
     }
   }'
+
 ```
 
 ## 7. Avec nouveaux ingrédients
@@ -378,7 +422,7 @@ curl -X POST http://127.0.0.1:3001/api/publicate \
   }'
 ```
 
-## 10. Payload TRÈS complet
+## 10. Payload complet
 
 ```bash
 curl -X POST http://127.0.0.1:3001/api/publicate \
@@ -415,4 +459,140 @@ curl -X POST http://127.0.0.1:3001/api/publicate \
       }
     }
   }'
+```
+
+## 10. Monsieur payload
+
+```bash
+curl -X POST http://127.0.0.1:3001/api/publicate \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "action": "create",
+    "payload": {
+      "11": {
+        "publication_id": "056bd3b2-eedd-4a86-b2e1-87f24e9248b9",
+        "title": "Payload Monstrueux de Test",
+        "description": ["Recette de test ultra complète avec toutes les variations possibles."],
+        "note": ["À utiliser uniquement pour stress-test l’orchestrateur."],
+        "public": true,
+        "published": true,
+        "thumbnail": "https://picsum.photos/seed/orchestrator/640/480",
+
+        "type": { "data": { "str_value": "Recipe", "type": "Type" } },
+        "style": { "data": { "str_value": "Fusion", "type": "Style" } },
+        "author": { "data": { "str_value": "Admin Testeur", "type": "Author" } },
+
+        "tags": [
+          { "data": { "str_value": "stress", "type": "Tag" } },
+          { "data": { "str_value": "full", "type": "Tag" } },
+          { "data": { "str_value": "debug", "type": "Tag" } }
+        ],
+
+        "contents": [
+          {
+            "content_id": "39761e9b-59a8-421d-ae38-d1320337c7ab",
+            "data": { "total_prep_time": 45, "servings": 6 },
+
+            "content_segments": [
+              {
+                "position": 1,
+                "segment": {
+                  "segment_id": "daa33f98-9f6e-4db3-81ff-096ba9710736",
+                  "data": { "title": "Préparation", "paragraph": "Couper et émincer les légumes." },
+                  "segment_prep_time": [
+                    { "prep_time": { "prep_time_id": "47b3df4d-ad40-4220-82f1-466ea51dbe5b", "data": { "duration": 15 }, "style": { "data": { "str_value": "Cook", "type": "Cook" } } } }
+                  ]
+                }
+              },
+              {
+                "position": 2,
+                "segment": {
+                  "segment_id": "daa33f98-9f6e-4db3-81ff-096ba9710736",
+                  "data": { "title": "Cuisson", "paragraph": "Cuire à feu doux en remuant.", "order_num": 2 },
+                  "segment_prep_time": [
+                    { "prep_time": { "data": { "duration": 20 } } },
+                    { "prep_time": { "data": { "duration": 5 }, "style": { "data": { "str_value": "Slow", "type": "Cook" } } } }
+                  ]
+                }
+              }
+            ],
+
+            "content_ingredients": [
+              {
+                "ingredient_id": "45cf91d9-d98e-4794-97c8-5d00232c6e00",
+                "data": { "quantity": 2, "multiply_factor": 1 },
+                "product": { "id": "564e4d1d-697d-4a84-a441-9556da8590bb", "data": { "name": "Unknown" } },
+                "ingredient_units": [
+                  { "unit": { "unit_id": "1ba5d3cd-714f-4712-a64a-0681c574b9f2", "data": { "name": "grams" } } }
+                ]
+              },
+              {
+                "data": { "quantity": 1, "multiply_factor": 2 },
+                "product": {
+                  "data": {
+                    "name": "Ail",
+                    "en_name": "Garlic"
+                  }
+                },
+                "ingredient_units": [
+                  { "unit": { "data": { "name": "cloves" } } }
+                ]
+              },
+              {
+                "data": { "quantity": 500, "multiply_factor": 1 },
+                "product": {
+                  "data": {
+                    "name": "Lasagnes maison",
+                    "en_name": "Homemade Lasagna",
+                    "publication": { "id": "062ca5ff-b549-4e5e-8b38-3ee1d96e0a7e", "data": {} }
+                  }
+                },
+                "ingredient_units": [
+                  { "unit": { "data": { "name": "grams" } } }
+                ]
+              }
+            ],
+
+            "content_prep_times": [
+              { "prep_time_id": "47b3df4d-ad40-4220-82f1-466ea51dbe5b", "data": { "duration": 10 } },
+              { "prep_time": { "data": { "duration": 5 }, "style": { "data": { "str_value": "Finishing", "type": "Cook" } } } }
+            ]
+          },
+
+          {
+            "content_id": "39761e9b-59a8-421d-ae38-d1320337c7ab",
+            "data": { "total_prep_time": 15, "servings": 2 },
+
+            "content_segments": [
+              {
+                "position": 1,
+                "segment": {
+                  "data": { "paragraph": "Mélanger tous les ingrédients secs." }
+                }
+              }
+            ],
+
+            "content_ingredients": [
+              {
+                "data": { "quantity": 100, "multiply_factor": 1 },
+                "product": { "data": { "name": "Farine", "en_name": "Flour" } },
+                "ingredient_units": [
+                  { "unit": { "data": { "name": "grams" } } }
+                ]
+              },
+              {
+                "data": { "quantity": 50, "multiply_factor": 1 },
+                "product": { "data": { "name": "Sucre", "en_name": "Sugar" } },
+                "ingredient_units": [
+                  { "unit": { "data": { "name": "grams" } } }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }'
+
 ```

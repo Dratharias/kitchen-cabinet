@@ -82,8 +82,8 @@ export function usePayloadBuilder() {
               position: si + 1,
               segment: {
                 data: {
-                  title: s.title || null,
-                  paragraph: s.paragraph || null,
+                  title: s.title || undefined,
+                  paragraph: s.paragraph || "",
                 },
                 segment_prep_time: s.prepTimes?.map((p) => ({
                   prep_time: {
