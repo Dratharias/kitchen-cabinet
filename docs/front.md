@@ -1,15 +1,15 @@
 {
-  "action": "create" | "update",   // obligatoire
-  "payload": {
-    "<clé_publi>": {               // clé libre, ex: "1", "myPub", etc.
-      // --- Champs principaux Publication ---
-      "publication_id": "uuid",    // optionnel (généré si absent, utile en update)
-      "title": "string",           // obligatoire
-      "description": ["string"],   // obligatoire (au moins un élément, peut être vide "")
-      "note": ["string"],          // obligatoire (idem)
-      "public": true | false,      // obligatoire
-      "published": true | false,   // obligatoire
-      "thumbnail": "url",          // optionnel
+"action": "create" | "update", // obligatoire
+"payload": {
+"<clé_publi>": { // clé libre, ex: "1", "myPub", etc.
+// --- Champs principaux Publication ---
+"publication_id": "uuid", // optionnel (généré si absent, utile en update)
+"title": "string", // obligatoire
+"description": ["string"], // obligatoire (au moins un élément, peut être vide "")
+"note": ["string"], // obligatoire (idem)
+"public": true | false, // obligatoire
+"published": true | false, // obligatoire
+"thumbnail": "url", // optionnel
 
       // --- Relations catégories ---
       "type": {                    // optionnel
@@ -43,9 +43,8 @@
               "segment": {
                 "segment_id": "uuid",  // optionnel
                 "data": {
-                  "title": "string",   // optionnel
+                  "title?": "string",   // optionnel
                   "paragraph": "string", // obligatoire
-                  "order_num": 1       // optionnel
                 },
                 "segment_prep_time": [ // optionnel
                   {
@@ -112,5 +111,6 @@
         }
       ]
     }
-  }
+
+}
 }

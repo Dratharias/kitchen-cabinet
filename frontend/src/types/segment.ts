@@ -4,7 +4,6 @@ import { PrepTime } from "./prepTime";
 export interface SegmentPayload {
   title?: string;
   paragraph: string;
-  order_num?: number;
   connect?: {
     segment_prep_time?: PrepTime[];
   };

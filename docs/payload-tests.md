@@ -80,7 +80,6 @@ TOKEN=$(curl -s -X POST http://127.0.0.1:3001/api/auth/login \
                 "data": {
                   "title": "string",   // optionnel
                   "paragraph": "string", // obligatoire
-                  "order_num": 1       // optionnel
                 },
                 "segment_prep_time": [ // optionnel
                   {
@@ -509,7 +508,7 @@ curl -X POST http://127.0.0.1:3001/api/publicate \
                 "position": 2,
                 "segment": {
                   "segment_id": "daa33f98-9f6e-4db3-81ff-096ba9710736",
-                  "data": { "title": "Cuisson", "paragraph": "Cuire à feu doux en remuant.", "order_num": 2 },
+                  "data": { "title": "Cuisson", "paragraph": "Cuire à feu doux en remuant." },
                   "segment_prep_time": [
                     { "prep_time": { "data": { "duration": 20 } } },
                     { "prep_time": { "data": { "duration": 5 }, "style": { "data": { "str_value": "Slow", "type": "Cook" } } } }

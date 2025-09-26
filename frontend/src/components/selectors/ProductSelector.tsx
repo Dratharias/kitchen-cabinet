@@ -1,34 +1,43 @@
-import { Show, For } from "solid-js";
-import { Span } from "@/components/ui/atoms/Span";
+import { SearchSelect } from "./SearchSelect";
 
-export function ProductSelector(props: {
+type ProductSelectorProps = {
   ing: any;
   index: number;
-  options: { product_id: string; name: string }[];
-  setLoadProducts: (v: boolean) => void;
-  actions: any;
-}) {
+  options: { value: string; label: string }[];
+  actions: {
+    selectProduct: (index: number, id: string) => void;
+    createNewProduct: (index: number) => void;
+    updateProductName: (index: number, name: string) => void;
+    clearProduct?: (index: number) => void;
+  };
+};
+
+export function ProductSelector(props: ProductSelectorProps) {
   return (
-    <div class="space-y-2">
-      <Span class="text-sm font-medium">Produit</Span>
-      <select
-        class="w-full px-3 py-2 border rounded-md"
-        value={props.ing.isNewProduct ? "new" : props.ing.product_id}
-        onClick={() => props.setLoadProducts(true)}
-        onChange={(e) => {
-          const val = e.currentTarget.value;
-          if (val === "new") props.actions.createNewProduct(props.index);
-          else props.actions.selectProduct(props.index, val); // val = UUID
+    <div class="flex space-y-2 text-nowrap">
+      <SearchSelect
+        value={props.ing.product_id}
+        options={[
+          ...props.options,
+          { value: "new", label: "+ Nouveau produit" },
+        ]}
+        placeholder="Rechercher un produit..."
+        displayLabel={
+          props.options.find((o) => o.value === props.ing.product_id)?.label ??
+          props.ing.product_name ??
+          props.ing.name ??
+          props.ing.product_id
+        }
+        onSelect={(val) =>
+          val === "new"
+            ? props.actions.createNewProduct(props.index)
+            : props.actions.selectProduct(props.index, val)
+        }
+        onCreate={(label) => {
+          props.actions.createNewProduct(props.index);
+          props.actions.updateProductName(props.index, label);
         }}
-      >
-        <option value="">Sélectionner un produit</option>
-        <Show when={props.options}>
-          <For each={props.options}>
-            {(o) => <option value={o.product_id}>{o.name}</option>}
-          </For>
-        </Show>
-        <option value="new">+ Nouveau produit</option>
-      </select>
+      />
     </div>
   );
 }

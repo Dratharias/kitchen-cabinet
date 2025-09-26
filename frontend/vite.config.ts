@@ -15,7 +15,9 @@ export default defineConfig({
     port: Number(process.env.MEALTICKET_FRONTEND_PORT) || 3000,
     proxy: {
       "/api": {
-        target: process.env.VITE_API_URL,
+        target:
+          process.env.VITE_API_URL ||
+          `http://localhost:${process.env.VITE_API_PORT}`,
         changeOrigin: true,
         secure: false,
       },

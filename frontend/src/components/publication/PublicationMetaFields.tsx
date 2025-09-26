@@ -33,7 +33,7 @@ export function PublicationMetaFields({
         />
       </div>
 
-      <Show when={form.title}>
+      <Show when={() => form.title}>
         <SelectWithNewInput
           label="Auteur"
           value={form.author}

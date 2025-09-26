@@ -1,4 +1,4 @@
-import { createSignal } from "solid-js";
+import { createSignal, createEffect } from "solid-js";
 import { AuthService } from "@/services/auth";
 
 export const [isAuthenticated, setIsAuthenticated] = createSignal(
@@ -10,8 +10,21 @@ export const [currentUser, setCurrentUser] = createSignal<{
   role: string;
 } | null>(AuthService.getUser());
 
-// helper pour resynchroniser avec localStorage
+// Keep store synced with localStorage + token state
 export function refreshAuthState() {
-  setIsAuthenticated(AuthService.isTokenValid());
-  setCurrentUser(AuthService.getUser());
+  const valid = AuthService.isTokenValid();
+  setIsAuthenticated(valid);
+  setCurrentUser(valid ? AuthService.getUser() : null);
 }
+
+// Auto-check token validity on every render cycle
+createEffect(() => {
+  const valid = AuthService.isTokenValid();
+  if (!valid && isAuthenticated()) {
+    // Auto logout if token expired/invalid
+    localStorage.removeItem("auth_token");
+    localStorage.removeItem("auth_user");
+    setIsAuthenticated(false);
+    setCurrentUser(null);
+  }
+});

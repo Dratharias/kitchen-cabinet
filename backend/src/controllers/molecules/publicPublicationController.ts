@@ -130,7 +130,6 @@ export class PublicPublicationController extends PublicationController {
                   segment_id: true,
                   title: true,
                   paragraph: true,
-                  order_num: true,
                 },
               },
             },

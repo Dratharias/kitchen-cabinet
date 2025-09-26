@@ -12,8 +12,6 @@ export const normalizeSegment = (segment: any): Segment => ({
   segment_id: segment.segment_id,
   title: segment.title,
   paragraph: segment.paragraph,
-  order_num: segment.order_num,
-
   content_segments: segment.content_segments ?? null,
   segment_prep_time: segment.segment_prep_time ?? null,
 });
@@ -30,7 +28,6 @@ export class SegmentController
         segment_id: newId,
         title: payload.title,
         paragraph: payload.paragraph,
-        order_num: payload.order_num,
 
         content_segments: payload.connect?.content_segments
           ? {
@@ -90,7 +87,6 @@ export class SegmentController
       data: {
         title: payload.title,
         paragraph: payload.paragraph,
-        order_num: payload.order_num,
 
         content_segments: payload.connect?.content_segments
           ? {

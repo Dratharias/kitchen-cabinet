@@ -103,8 +103,7 @@ CREATE INDEX idx_content_publication_id ON content(publication_id);
 CREATE TABLE segment (
     segment_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     title      TEXT,
-    paragraph  TEXT UNIQUE NOT NULL,
-    order_num  SMALLINT CHECK (order_num >= 0)
+    paragraph  TEXT UNIQUE NOT NULL
 );
 
 CREATE TABLE unit (

@@ -14,7 +14,7 @@ import {
 
 export interface OrchestratorEntity<T> {
   id?: string;
-  data: T;
+  data?: T;
 }
 
 export interface CategoryData {
@@ -33,10 +33,7 @@ export interface PrepTimeData {
 export interface ProductData {
   name: string;
   en_name?: string;
-  publication?: {
-    id: string;
-    data: {};
-  };
+  publication?: OrchestratorEntity<{}>;
 }
 
 export interface SegmentData {
@@ -56,8 +53,8 @@ export interface ContentData {
 
 export interface PublicationData {
   title: string;
-  description: string[];
-  note: string[];
+  description?: string[];
+  note?: string[];
   public: boolean;
   published: boolean;
   thumbnail?: string;
@@ -73,14 +70,8 @@ export interface ReviewData {
   comment: string[];
   description: string[];
   buy_again: "Y" | "N" | "M" | "D" | null;
-  product?: {
-    id: string;
-    data: {};
-  };
-  publication?: {
-    id: string;
-    data: {};
-  };
+  product?: OrchestratorEntity<Product>;
+  publication?: OrchestratorEntity<Publication>;
 }
 
 export interface ContentWithRelations {

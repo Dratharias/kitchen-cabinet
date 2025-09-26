@@ -5,6 +5,9 @@ import {
 } from "../types/crud.types.js";
 import { OrchestratorController } from "../controllers/orchestratorController.js";
 import { OrchestratorRequest } from "../types/orchestrator.types.js";
+import { ReadAllParams } from "types/db.types.js";
+
+const DEV_MODE = process.env.NODE_ENV !== "production";
 
 // Defines the CRUD methods a controller can have.
 type CrudMethods =
@@ -15,7 +18,6 @@ type CrudMethods =
   | "delete"
   | "search";
 
-// Options for registering a standard CRUD controller.
 interface RegisterCrudOptions {
   path: string;
   protected?: boolean;
@@ -32,11 +34,6 @@ export class RouteRegistry {
     private orchestrator?: OrchestratorController,
   ) {}
 
-  /**
-   * Registers standard CRUD routes for a given controller.
-   * @param controller The controller instance to use for handling requests.
-   * @param options The registration options, including path, protection, and methods.
-   */
   registerCrud<T, C, U>(
     controller:
       | GenericController<T, C, U>
@@ -92,7 +89,32 @@ export class RouteRegistry {
       this.fastify.get(
         `${basePath}`,
         handler(async (req: any, reply: FastifyReply) => {
-          const result = await controller.findAll(req.query);
+          const query = req.query || {};
+          const params: ReadAllParams<any> = {};
+
+          if (query.filter) {
+            try {
+              params.filter =
+                typeof query.filter === "string"
+                  ? JSON.parse(query.filter)
+                  : query.filter;
+            } catch {
+              params.filter = {};
+            }
+          }
+
+          if (query.type) {
+            params.filter = { ...(params.filter || {}), type: query.type };
+          }
+
+          if (query.skip) params.skip = Number(query.skip);
+          if (query.take) params.take = Number(query.take);
+
+          if (query.includeRelations !== undefined) {
+            params.includeRelations = query.includeRelations === "true";
+          }
+
+          const result = await controller.findAll(params);
           reply.send(result);
         }),
       );
@@ -120,9 +142,7 @@ export class RouteRegistry {
   }
 
   /**
-   * Registers a single route for the orchestrator, which handles a complex, nested payload.
-   * @param path The URL path for the orchestrator route.
-   * @param authRequired Flag to indicate if the route requires authentication.
+   * Registers a single route for the orchestrator with detailed error handling.
    */
   registerOrchestratorRoute(path: string, authRequired: boolean = true) {
     if (!this.orchestrator) {
@@ -136,28 +156,40 @@ export class RouteRegistry {
         ? async (req: FastifyRequest, reply: FastifyReply) => {
             await this.authGuard!(req, reply);
             if (reply.sent) return;
-
-            const orchestratorRequest = req.body as OrchestratorRequest;
-            const result =
-              await this.orchestrator!.processRequest(orchestratorRequest);
-            reply.send(result);
+            await this.handleOrchestrator(req, reply);
           }
         : async (req: FastifyRequest, reply: FastifyReply) => {
-            const orchestratorRequest = req.body as OrchestratorRequest;
-            const result =
-              await this.orchestrator!.processRequest(orchestratorRequest);
-            reply.send(result);
+            await this.handleOrchestrator(req, reply);
           };
 
     this.fastify.post(path, handler);
   }
 
-  /**
-   * Registers a custom, standalone route.
-   * @param method The HTTP method ('GET', 'POST', etc.).
-   * @param path The URL path.
-   * @param handlerFn The function to handle the request.
-   */
+  private async handleOrchestrator(req: FastifyRequest, reply: FastifyReply) {
+    try {
+      const orchestratorRequest = req.body as OrchestratorRequest;
+      console.log(
+        "[/api/publicate] Incoming payload:",
+        JSON.stringify(orchestratorRequest, null, 2),
+      );
+
+      const result =
+        await this.orchestrator!.processRequest(orchestratorRequest);
+      reply.send(result);
+    } catch (err: any) {
+      console.error("[/api/publicate] Orchestrator failed:", err);
+
+      reply.status(500).send({
+        success: false,
+        error: err.message || "Internal server error",
+        ...(DEV_MODE && {
+          stack: err.stack,
+          payload: req.body,
+        }),
+      });
+    }
+  }
+
   registerCustomRoute(
     method: "GET" | "POST" | "PUT" | "DELETE",
     path: string,

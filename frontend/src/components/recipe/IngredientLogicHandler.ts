@@ -1,6 +1,7 @@
-import { MacroPayload } from "@/types";
 import { SetStoreFunction } from "solid-js/store";
+import { MacroPayload } from "@/types";
 
+// --- Types ---
 export type FormIngredient = {
   quantity: number;
   multiply_factor: number;
@@ -15,15 +16,15 @@ export type FormIngredient = {
 };
 
 export type IngredientFormActions = {
-  updateQuantity: (index: number, quantity: number) => void;
-  updateMultiplyFactor: (index: number, factor: number) => void;
-  updateUnit: (index: number, unit: string) => void;
+  updateQuantity: (index: number, value: number) => void;
+  updateMultiplyFactor: (index: number, value: number) => void;
+  updateUnit: (index: number, unitId: string) => void;
+  updateIsNewUnit: (index: number, isNew: boolean) => void;
   selectProduct: (index: number, productId: string) => void;
   createNewProduct: (index: number) => void;
-  updateIsNewUnit: (index: number, isNew: boolean) => void;
   updateProductName: (index: number, name: string) => void;
-  updateProductEnName: (index: number, enName: string) => void;
-  updatePublicationId: (index: number, publicationId: string) => void;
+  updateProductEnName: (index: number, name: string) => void;
+  updatePublicationId: (index: number, pubId: string) => void;
   updateMacroField: (
     index: number,
     field: keyof MacroPayload,
@@ -33,90 +34,62 @@ export type IngredientFormActions = {
   removeIngredient: (index: number) => void;
 };
 
+// --- Actions factory ---
 export const createIngredientFormActions = (
   contentIndex: number,
-  ingredients: FormIngredient[],
+  _ingredients: FormIngredient[],
   setForm: SetStoreFunction<any>,
 ): IngredientFormActions => ({
-  updateQuantity: (index, quantity) =>
-    setForm(
-      "contents",
-      contentIndex,
-      "ingredients",
-      index,
-      "quantity",
-      quantity,
-    ),
+  updateQuantity: (i, v) =>
+    setForm("contents", contentIndex, "ingredients", i, "quantity", v),
 
-  updateMultiplyFactor: (index, factor) =>
-    setForm(
-      "contents",
-      contentIndex,
-      "ingredients",
-      index,
-      "multiply_factor",
-      factor,
-    ),
+  updateMultiplyFactor: (i, v) =>
+    setForm("contents", contentIndex, "ingredients", i, "multiply_factor", v),
 
-  updateUnit: (index, unit) =>
-    setForm("contents", contentIndex, "ingredients", index, "unit", unit),
+  updateUnit: (i, unitId) =>
+    setForm("contents", contentIndex, "ingredients", i, "unit", unitId),
 
-  updateIsNewUnit: (index, isNew) =>
-    setForm("contents", contentIndex, "ingredients", index, "isNewUnit", isNew),
+  updateIsNewUnit: (i, isNew) =>
+    setForm("contents", contentIndex, "ingredients", i, "isNewUnit", isNew),
 
-  selectProduct: (index, productId) =>
-    setForm("contents", contentIndex, "ingredients", index, {
+  selectProduct: (i, productId) =>
+    setForm("contents", contentIndex, "ingredients", i, {
       product_id: productId,
       isNewProduct: false,
     }),
 
-  createNewProduct: (index) =>
-    setForm("contents", contentIndex, "ingredients", index, {
+  createNewProduct: (i) =>
+    setForm("contents", contentIndex, "ingredients", i, {
       isNewProduct: true,
       product_id: "",
       product_name: "",
     }),
 
-  updateProductName: (index, name) =>
+  updateProductName: (i, name) =>
+    setForm("contents", contentIndex, "ingredients", i, "product_name", name),
+
+  updateProductEnName: (i, name) =>
     setForm(
       "contents",
       contentIndex,
       "ingredients",
-      index,
-      "product_name",
+      i,
+      "product_en_name",
       name,
     ),
 
-  updateProductEnName: (index, enName) =>
+  updatePublicationId: (i, pubId) =>
     setForm(
       "contents",
       contentIndex,
       "ingredients",
-      index,
-      "product_en_name",
-      enName,
-    ),
-
-  updatePublicationId: (index, publicationId) =>
-    setForm(
-      "contents",
-      contentIndex,
-      "ingredients",
-      index,
+      i,
       "publication_id",
-      publicationId,
+      pubId,
     ),
 
-  updateMacroField: (index, field, value) =>
-    setForm(
-      "contents",
-      contentIndex,
-      "ingredients",
-      index,
-      "macro",
-      field,
-      value,
-    ),
+  updateMacroField: (i, field, value) =>
+    setForm("contents", contentIndex, "ingredients", i, "macro", field, value),
 
   addIngredient: () =>
     setForm(
@@ -132,8 +105,8 @@ export const createIngredientFormActions = (
           product_name: "",
           product_en_name: "",
           unit: "",
-          isNewUnit: false,
           isNewProduct: false,
+          isNewUnit: false,
           publication_id: "",
           macro: {
             calories: 0,
@@ -148,13 +121,8 @@ export const createIngredientFormActions = (
       ],
     ),
 
-  removeIngredient: (index: number) => {
-    setForm(
-      "contents",
-      contentIndex,
-      "ingredients",
-      (ingredients: FormIngredient[]) =>
-        ingredients.filter((_, i) => i !== index),
-    );
-  },
+  removeIngredient: (i) =>
+    setForm("contents", contentIndex, "ingredients", (arr: FormIngredient[]) =>
+      arr.filter((_, idx) => idx !== i),
+    ),
 });

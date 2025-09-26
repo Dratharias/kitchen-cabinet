@@ -1,20 +1,23 @@
-import { createSignal, Show, onMount } from "solid-js";
-import { createStore } from "solid-js/store";
-import { usePost } from "@/hooks/usePost";
 import { usePayloadBuilder, FormContent } from "@/hooks/usePayloadBuilder";
-import { Button } from "@/components/ui/atoms/Button";
-import { Span } from "@/components/ui/atoms/Span";
-import { PublicationMetaFields } from "./PublicationMetaFields";
-import { PublicationDescription } from "./PublicationDescription";
-import { PublicationTags } from "./PublicationTags";
-import { PublicationContents } from "./PublicationContents";
+import { usePost } from "@/hooks/usePost";
 import { isAuthenticated } from "@/stores/authStore";
+import {
+  fetchProducts,
+  fetchUnits,
+  fetchPublications,
+} from "@/utils/fetchTransformers";
+import { createSignal, onMount, Show } from "solid-js";
+import { createStore } from "solid-js/store";
+import { Button } from "../ui/atoms/Button";
+import { Span } from "../ui/atoms/Span";
+import { FormDescription, FormNote } from "./DescriptionLogicHandler";
+import { PublicationContents } from "./PublicationContents";
+import { PublicationDescription } from "./PublicationDescription";
+import { PublicationMetaFields } from "./PublicationMetaFields";
+import { PublicationTags } from "./PublicationTags";
+import { API_BASE } from "@/config/api";
 
-const API_BASE =
-  import.meta.env.VITE_API_URL ||
-  `http://localhost:${import.meta.env.VITE_API_PORT}`;
-
-// --- Fetchers granulaire ---
+// --- Category fetcher ---
 async function fetchCategoriesByType(type: string) {
   const token = localStorage.getItem("auth_token");
   if (!token) return [];
@@ -25,26 +28,7 @@ async function fetchCategoriesByType(type: string) {
   return res.json();
 }
 
-async function fetchProducts() {
-  const token = localStorage.getItem("auth_token");
-  if (!token) return [];
-  const res = await fetch(`${API_BASE}/api/products`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  if (!res.ok) return [];
-  return res.json();
-}
-
-async function fetchUnits() {
-  const token = localStorage.getItem("auth_token");
-  if (!token) return [];
-  const res = await fetch(`${API_BASE}/api/units`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  if (!res.ok) return [];
-  return res.json();
-}
-
+// --- Single publication fetch ---
 async function fetchPublicationById(id: string) {
   const token = localStorage.getItem("auth_token");
   if (!token) return null;
@@ -67,17 +51,18 @@ export function PublicationForm(props: PublicationFormProps) {
   const [message, setMessage] = createSignal("");
   const [isEdit] = createSignal(Boolean(props.publicationId));
 
-  // --- Form store ---
+  // --- New inputs store ---
   const [newInputs, setNewInputs] = createStore({
     author: "",
     type: "",
     style: "",
   });
 
+  // --- Form store ---
   const [form, setForm] = createStore({
     title: "",
-    description: "",
-    note: "",
+    descriptions: [] as FormDescription[],
+    notes: [] as FormNote[],
     public: true,
     published: true,
     thumbnail: "",
@@ -85,7 +70,7 @@ export function PublicationForm(props: PublicationFormProps) {
     style: "",
     author: "",
     tags: [] as string[],
-    contents: [] as FormContent[], // typé clairement
+    contents: [] as FormContent[],
   });
 
   // --- Load publication if edit mode ---
@@ -95,8 +80,16 @@ export function PublicationForm(props: PublicationFormProps) {
       if (publication) {
         setForm({
           title: publication.title || "",
-          description: publication.description?.[0] || "",
-          note: publication.note?.[0] || "",
+          descriptions:
+            publication.description?.map((desc: string) => ({
+              text: desc,
+              id: crypto.randomUUID(),
+            })) || [],
+          notes:
+            publication.note?.map((note: string) => ({
+              text: note,
+              id: crypto.randomUUID(),
+            })) || [],
           public: publication.public || false,
           published: publication.published || false,
           thumbnail: publication.thumbnail || "",
@@ -104,7 +97,7 @@ export function PublicationForm(props: PublicationFormProps) {
           style: publication.style?.str_value || "",
           author: publication.author?.str_value || "",
           tags: publication.tags?.map((t: any) => t.str_value) || [],
-          contents: publication.contents || [], // ⚠️ si API renvoie pas FormContent -> adapter
+          contents: publication.contents || [],
         });
       }
     }
@@ -124,8 +117,8 @@ export function PublicationForm(props: PublicationFormProps) {
       props.publicationId ?? "1",
       {
         title: form.title,
-        description: [form.description],
-        note: [form.note],
+        description: form.descriptions.map((d) => d.text),
+        note: form.notes.map((n) => n.text),
         public: form.public,
         published: form.published,
         thumbnail: form.thumbnail || undefined,
@@ -143,19 +136,10 @@ export function PublicationForm(props: PublicationFormProps) {
       form.contents,
     );
 
-    console.log(
-      "Payload envoyé à /api/publicate :",
-      JSON.stringify(payload, null, 2),
-    );
-
     const res = await postPublicate(payload);
 
     if (res) {
-      setMessage(
-        isEdit()
-          ? "Publication mise à jour avec succès"
-          : "Publication créée avec succès",
-      );
+      setMessage(isEdit() ? "Publication mise à jour" : "Publication créée");
       props.onSuccess?.(res);
     } else {
       setMessage("Erreur lors de l'opération");
@@ -164,8 +148,11 @@ export function PublicationForm(props: PublicationFormProps) {
 
   return (
     <div class="mx-auto p-6 w-full max-w-4xl border-prim-txt dark:border-prim-txt-d">
+      <div class="min-w-screen opacity-0">
+        Invisible div for width adjustment
+      </div>
       <div class="flex justify-center items-center mb-6">
-        <Span class="text-2xl font-bold min-w-screen text-center">
+        <Span class="text-2xl font-bold text-center w-full">
           {isEdit() ? "Modifier la publication" : "Nouvelle publication"}
         </Span>
       </div>
@@ -191,6 +178,7 @@ export function PublicationForm(props: PublicationFormProps) {
             setForm={setForm}
             productsFetcher={fetchProducts}
             unitsFetcher={fetchUnits}
+            publicationsFetcher={fetchPublications}
           />
 
           <div class="flex gap-4 pt-4">
@@ -212,7 +200,9 @@ export function PublicationForm(props: PublicationFormProps) {
         <Show when={message()}>
           <p
             class={
-              message().includes("succès") ? "text-green-600" : "text-red-600"
+              message().includes("mise") || message().includes("créée")
+                ? "text-green-600"
+                : "text-red-600"
             }
           >
             <Span>{message()}</Span>

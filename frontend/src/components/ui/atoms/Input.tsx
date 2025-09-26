@@ -7,11 +7,13 @@ export type InputProps = JSX.InputHTMLAttributes<HTMLInputElement> & {
 };
 
 export const Input = (props: InputProps): JSX.Element => {
-  const [local, rest] = splitProps(props, [
+  const [local, others] = splitProps(props, [
     "class",
     "error",
     "icon",
     "disabled",
+    "value",
+    "onInput",
   ]);
 
   const [focused, setFocused] = createSignal(false);
@@ -38,18 +40,21 @@ export const Input = (props: InputProps): JSX.Element => {
 
   return (
     <div
-      class={`flex items-center gap-2 w-full rounded-md transition-shadow duration-200 shadow-md
-        ${
-          focused()
-            ? "shadow-container-focus dark:shadow-container-focus-d"
-            : "shadow-container dark:shadow-container-d"
-        }`}
+      class={`flex items-center gap-2 w-full rounded-md transition-shadow duration-200 shadow-md ${
+        focused()
+          ? "shadow-container-focus dark:shadow-container-focus-d"
+          : "shadow-container dark:shadow-container-d"
+      }`}
     >
       {local.icon && <Span class="flex items-center">{local.icon}</Span>}
       <input
-        {...rest}
+        {...others} // only stable props go here
         disabled={local.disabled}
-        class={`${classes()} flex-1 w-full ring-1`}
+        class={`${classes()} flex-1 w-full ring-1 ring-prim-txt/40 dark:ring-prim-txt-d-40`}
+        value={local.value ?? ""}
+        onInput={(e) => {
+          if (typeof local.onInput === "function") local.onInput(e);
+        }}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
       />

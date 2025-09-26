@@ -1,42 +1,33 @@
-import { createSignal, createResource } from "solid-js";
-import {
-  transformedUnitsFetcher,
-  transformedProductsFetcher,
-  transformedPublicationsFetcher,
-} from "@/utils/fetchers";
+import { createSignal, onMount } from "solid-js";
+
+type Option = { value: string; label: string };
 
 export function useIngredientResources(
-  unitsFetcher: () => Promise<any[]>,
-  productsFetcher: () => Promise<any[]>,
+  unitsFetcher: () => Promise<Option[]>,
+  productsFetcher: () => Promise<Option[]>,
 ) {
-  // Units
-  const [loadUnits, setLoadUnits] = createSignal(false);
-  const [unitsOptions] = createResource(loadUnits, () =>
-    transformedUnitsFetcher(unitsFetcher),
-  );
+  const [unitsOptions, setUnitsOptions] = createSignal<Option[]>([]);
+  const [productsOptions, setProductsOptions] = createSignal<Option[]>([]);
 
-  // Products
-  const [loadProducts, setLoadProducts] = createSignal(false);
-  const [productsOptions] = createResource(loadProducts, () =>
-    transformedProductsFetcher(productsFetcher),
-  );
+  // Fetch both on mount (you can also defer if you prefer lazy loading)
+  onMount(async () => {
+    try {
+      const units = await unitsFetcher();
+      setUnitsOptions(units);
+    } catch (err) {
+      console.error("Failed to load units", err);
+    }
 
-  // Publications
-  const [loadPublications, setLoadPublications] = createSignal(false);
-  const [publicationsOptions] = createResource(
-    loadPublications,
-    transformedPublicationsFetcher,
-  );
+    try {
+      const products = await productsFetcher();
+      setProductsOptions(products);
+    } catch (err) {
+      console.error("Failed to load products", err);
+    }
+  });
 
   return {
-    // Units
     unitsOptions,
-    setLoadUnits,
-    // Products
     productsOptions,
-    setLoadProducts,
-    // Publications
-    publicationsOptions,
-    setLoadPublications,
   };
 }

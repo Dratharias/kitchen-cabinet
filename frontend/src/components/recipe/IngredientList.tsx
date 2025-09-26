@@ -12,8 +12,9 @@ type IngredientListProps = {
   contentIndex: number;
   ingredients: FormIngredient[];
   setForm: (...args: any[]) => void;
-  productsFetcher: () => Promise<any[]>;
-  unitsFetcher: () => Promise<any[]>;
+  productsFetcher: () => Promise<{ value: string; label: string }[]>;
+  unitsFetcher: () => Promise<{ value: string; label: string }[]>;
+  publicationsFetcher: () => Promise<{ value: string; label: string }[]>;
 };
 
 export function IngredientList(props: IngredientListProps) {
@@ -25,7 +26,8 @@ export function IngredientList(props: IngredientListProps) {
 
   return (
     <div class="space-y-6">
-      <div class="rounded-lg border p-6 shadow-sm">
+      <div class="mb-8 rounded-xl p-4 pb-8">
+        {/* Header */}
         <div class="flex items-center justify-between mb-6">
           <Span class="text-xl font-semibold">Ingrédients</Span>
           <Span class="text-sm">
@@ -34,6 +36,7 @@ export function IngredientList(props: IngredientListProps) {
           </Span>
         </div>
 
+        {/* Ingredient cards */}
         <div class="space-y-4">
           <For each={props.ingredients}>
             {(ing, i) => (
@@ -41,24 +44,31 @@ export function IngredientList(props: IngredientListProps) {
                 index={i()}
                 ing={ing}
                 actions={actions}
-                productsFetcher={props.productsFetcher}
                 unitsFetcher={props.unitsFetcher}
+                productsFetcher={props.productsFetcher}
+                publicationsFetcher={props.publicationsFetcher}
               />
             )}
           </For>
 
-          <div class="flex justify-center pt-4">
+          {/* Add button */}
+          {props.ingredients.length === 0 ? (
             <Button
+              class="mx-auto mt-2"
               icon={<PlusIcon class="w-4 h-4" />}
-              variant={props.ingredients.length === 0 ? "primary" : "secondary"}
+              variant="primary"
               onClick={actions.addIngredient}
-              class="flex items-center gap-2"
             >
-              {props.ingredients.length === 0
-                ? "Ajouter le premier ingrédient"
-                : "Ajouter un ingrédient"}
+              Ajouter le premier ingrédient
             </Button>
-          </div>
+          ) : (
+            <Button
+              class="mx-auto mt-2"
+              icon={<PlusIcon class="w-4 h-4" />}
+              variant="terniary"
+              onClick={actions.addIngredient}
+            />
+          )}
         </div>
       </div>
     </div>

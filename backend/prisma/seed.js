@@ -178,7 +178,6 @@ async function createBookOrCookbook(typeName, style, author, availableTags) {
           segment_id: segId,
           title: `${typeName} Chapter ${i} - Section ${s}`,
           paragraph: `${faker.lorem.paragraph()} [${segId}]`,
-          order_num: s,
         },
       });
       await prisma.content_segment.create({
@@ -283,7 +282,6 @@ async function createRecipe(
         segment_id: segId,
         title: `Step ${i}`,
         paragraph: `${faker.lorem.sentences({ min: 2, max: 5 })} [${segId}]`,
-        order_num: i,
       },
     });
     await prisma.content_segment.create({
@@ -343,7 +341,6 @@ async function createArticleOrFoodPost(typeName, style, author, availableTags) {
           segment_id: segId,
           title: faker.lorem.words({ min: 2, max: 4 }),
           paragraph: `${faker.lorem.paragraph()} [${segId}]`,
-          order_num: s,
         },
       });
       await prisma.content_segment.create({

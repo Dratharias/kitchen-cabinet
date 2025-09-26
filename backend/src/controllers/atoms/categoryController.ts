@@ -6,36 +6,21 @@ import {
   CategoryRelations,
 } from "types/controller.types.js";
 import { v4 as uuidv4 } from "uuid";
-import { PublicationData } from "types/db.types.js";
 import { CategoryCreateDto, CategoryUpdateDto } from "types/dto.types.js";
+import { ReadAllParams } from "types/db.types.js";
 
 export function normalizeCategory(cat: any): Category {
   return {
-    ...cat,
-    publications_type: cat.publications_type?.map((pub: PublicationData) => ({
-      publication_id: pub.publication_id,
-      title: pub.title,
-      description: pub.description,
-      note: pub.note,
-      public: pub.public,
-      published: pub.published,
-      thumbnail: pub.thumbnail,
-      type_id: pub.type_id,
-      style_id: pub.style_id,
-      author_id: pub.author_id,
-      type: pub.type ?? null,
-      style: pub.style ?? null,
-      author: pub.author ?? null,
-      contents: pub.contents ?? null,
-      productsRef: pub.productsRef ?? null,
-      reviews: pub.reviews ?? null,
-      tags: pub.tags ?? null,
-    })),
-    publications_style: cat.publications_style ?? null,
-    publications_author: cat.publications_author ?? null,
-    prep_time: cat.prep_time ?? null,
-    publication_tags: cat.publication_tags ?? null,
-    product_categories: cat.product_categories ?? null,
+    category_id: cat.category_id,
+    str_value: cat.str_value,
+    type: cat.type,
+    // pas de relations incluses
+    publications_type: null,
+    publications_style: null,
+    publications_author: null,
+    prep_time: null,
+    publication_tags: null,
+    product_categories: null,
   };
 }
 
@@ -91,14 +76,6 @@ export class CategoryController
             }
           : undefined,
       },
-      include: {
-        publications_type: true,
-        publications_style: true,
-        publications_author: true,
-        prep_time: true,
-        publication_tags: true,
-        product_categories: true,
-      },
     });
 
     return normalizeCategory(category);
@@ -107,29 +84,35 @@ export class CategoryController
   async findById(id: string): Promise<Category | null> {
     const category = await prisma.category.findUnique({
       where: { category_id: id },
-      include: {
-        publications_type: true,
-        publications_style: true,
-        publications_author: true,
-        prep_time: true,
-        publication_tags: true,
-        product_categories: true,
-      },
     });
     return category ? normalizeCategory(category) : null;
   }
 
-  async findAll(): Promise<Category[]> {
+  async findAll(params?: ReadAllParams<Category>): Promise<Category[]> {
+    const where: any = {};
+
+    if (params?.filter) {
+      const filter = params.filter as any;
+
+      if (filter.type) {
+        where.type = Array.isArray(filter.type)
+          ? { in: filter.type }
+          : filter.type;
+      }
+
+      if (filter.str_value) {
+        where.str_value = Array.isArray(filter.str_value)
+          ? { in: filter.str_value }
+          : filter.str_value;
+      }
+    }
+
     const categories = await prisma.category.findMany({
-      include: {
-        publications_type: true,
-        publications_style: true,
-        publications_author: true,
-        prep_time: true,
-        publication_tags: true,
-        product_categories: true,
-      },
+      where,
+      skip: params?.skip,
+      take: params?.take,
     });
+
     return categories.map(normalizeCategory);
   }
 
@@ -197,14 +180,6 @@ export class CategoryController
                 })),
               }
             : undefined,
-      },
-      include: {
-        publications_type: true,
-        publications_style: true,
-        publications_author: true,
-        prep_time: true,
-        publication_tags: true,
-        product_categories: true,
       },
     });
 

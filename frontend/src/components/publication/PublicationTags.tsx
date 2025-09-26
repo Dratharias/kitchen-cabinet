@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/atoms/Input";
 import { Button } from "@/components/ui/atoms/Button";
 import { Span } from "@/components/ui/atoms/Span";
 import { CloseIcon } from "@/components/ui/atoms/Icons";
+import { SelectedItem } from "../selectors/SelectedItem";
 
 export function PublicationTags({ form, setForm }) {
   const addTag = () => {
@@ -28,15 +29,7 @@ export function PublicationTags({ form, setForm }) {
       <div class="flex flex-wrap gap-2 mb-2">
         <For each={form.tags}>
           {(tag: string, index) => (
-            <Button
-              variant="noDecoration"
-              onClick={() => removeTag(index())}
-              class="max-w-fit !px-2 !py-1 bg-blue-100 text-blue-800 rounded-md text-sm"
-              icon={<CloseIcon />}
-              reverse
-            >
-              {tag}
-            </Button>
+            <SelectedItem label={tag} onRemove={() => removeTag(index())} />
           )}
         </For>
       </div>

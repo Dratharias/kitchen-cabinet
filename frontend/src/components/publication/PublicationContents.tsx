@@ -1,36 +1,38 @@
 import { For } from "solid-js";
-import { Button } from "@/components/ui/atoms/Button";
+import { Button } from "../ui/atoms/Button";
+import { PlusIcon } from "../ui/atoms/Icons";
 import { ContentBlock } from "../content/ContentBlock";
-import { PlusIcon } from "@/components/ui/atoms/Icons";
 
 type PublicationContentsProps = {
   contents: any[];
   setForm: any;
-  productsFetcher: () => Promise<any[]>;
-  unitsFetcher: () => Promise<any[]>;
+  productsFetcher: () => Promise<{ value: string; label: string }[]>;
+  unitsFetcher: () => Promise<{ value: string; label: string }[]>;
+  publicationsFetcher: () => Promise<{ value: string; label: string }[]>;
 };
 
 const newContent = () => ({
-  _rid: globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random()}`,
+  _rid: crypto.randomUUID?.() ?? `${Date.now()}-${Math.random()}`,
   total_prep_time: null,
   servings: null,
   segments: [],
   ingredients: [],
   prepTimes: [],
+  publication_id: "",
 });
 
 export function PublicationContents(props: PublicationContentsProps) {
   const addContent = () =>
     props.setForm("contents", (prev: any[]) => [...prev, newContent()]);
 
-  const removeContent = (index: number) =>
+  const removeContent = (i: number) =>
     props.setForm("contents", (prev: any[]) =>
-      prev.filter((_, i) => i !== index),
+      prev.filter((_, idx) => idx !== i),
     );
 
   return (
-    <div>
-      <div class="flex justify-between items-center mb-4">
+    <div class="py-8">
+      <div class="flex justify-between items-center mt-4">
         <h3 class="text-lg font-semibold">Contenu de la publication</h3>
       </div>
 
@@ -44,17 +46,19 @@ export function PublicationContents(props: PublicationContentsProps) {
               removeContent={removeContent}
               productsFetcher={props.productsFetcher}
               unitsFetcher={props.unitsFetcher}
+              publicationsFetcher={props.publicationsFetcher}
             />
           </div>
         )}
       </For>
+
       <Button
         class="mx-auto"
         icon={<PlusIcon class="w-4 h-4" />}
         variant="primary"
         onClick={addContent}
       >
-        Ajouter un contenu
+        Ajouter du contenu
       </Button>
     </div>
   );

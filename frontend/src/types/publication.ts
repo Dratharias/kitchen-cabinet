@@ -1,7 +1,6 @@
 import { Category } from "./category";
 import { PaginatedRequest, PaginatedResponse, UUID } from "./common";
 import { Content } from "./content";
-import { Ingredient } from "./ingredient";
 import { Product } from "./product";
 
 export interface PublicationPayload {

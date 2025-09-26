@@ -21,14 +21,20 @@
             {
               "position": 1,
               "segment": {
-                "data": { "title": "Préparation", "paragraph": "Couper les légumes." },
+                "data": {
+                  "title": "Préparation",
+                  "paragraph": "Couper les légumes."
+                },
                 "segment_prep_time": []
               }
             },
             {
               "position": 2,
               "segment": {
-                "data": { "title": "Cuisson", "paragraph": "Faire revenir à la poêle." },
+                "data": {
+                  "title": "Cuisson",
+                  "paragraph": "Faire revenir à la poêle."
+                },
                 "segment_prep_time": []
               }
             }
@@ -42,9 +48,7 @@
                   "en_name": "Tomato"
                 }
               },
-              "ingredient_units": [
-                { "unit": { "data": { "name": "pieces" } } }
-              ]
+              "ingredient_units": [{ "unit": { "data": { "name": "pieces" } } }]
             },
             {
               "data": { "quantity": 200, "multiply_factor": 1 },
@@ -54,9 +58,7 @@
                   "en_name": "Spaghetti"
                 }
               },
-              "ingredient_units": [
-                { "unit": { "data": { "name": "grams" } } }
-              ]
+              "ingredient_units": [{ "unit": { "data": { "name": "grams" } } }]
             }
           ],
           "content_prep_times": [

@@ -153,9 +153,8 @@ export interface ContentPrepTimeData {
    ============================================================ */
 export interface SegmentData {
   segment_id: string;
-  title: string | null;
+  title?: string | null;
   paragraph: string;
-  order_num: number | null;
 
   // Relations N-N
   content_segments: ContentSegmentData[] | null; // N-N

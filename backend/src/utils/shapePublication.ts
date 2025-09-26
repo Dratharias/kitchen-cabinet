@@ -21,9 +21,9 @@ export function deduplicateBy<T>(
 
 function compactSegments(contentSegments: any[] = []) {
   // Input item shape (Prisma include):
-  // { content_id, segment_id, position, segment: { segment_id, title, paragraph, order_num } }
+  // { content_id, segment_id, position, segment: { segment_id, title, paragraph } }
   // Output:
-  // { position, segment: { segment_id, title, paragraph, order_num } }
+  // { position, segment: { segment_id, title, paragraph } }
   return contentSegments.map((cs) => ({
     position: cs.position ?? null,
     segment: cs.segment
@@ -31,14 +31,12 @@ function compactSegments(contentSegments: any[] = []) {
           segment_id: cs.segment.segment_id,
           title: cs.segment.title ?? null,
           paragraph: cs.segment.paragraph,
-          order_num: cs.segment.order_num ?? null,
         }
       : {
           // fallback si 'segment' n'est pas peuplé
           segment_id: cs.segment_id,
           title: null,
           paragraph: "",
-          order_num: null,
         },
   }));
 }

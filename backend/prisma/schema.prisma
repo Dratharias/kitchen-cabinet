@@ -92,7 +92,6 @@ model segment {
   segment_id String @id @default(uuid())
   title      String?
   paragraph  String @unique
-  order_num  Int?   @db.SmallInt
 
   content_segments content_segment[]
   segment_prep_time segment_prep_time[]

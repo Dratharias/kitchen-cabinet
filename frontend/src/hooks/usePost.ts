@@ -1,9 +1,17 @@
 import { createSignal } from "solid-js";
 import type { OrchestratorPayload, OrchestratorResponse } from "../types";
+import { API_BASE } from "@/config/api";
+
+const TOKEN_KEY = "auth_token";
 
 export function usePost() {
   const [loading, setLoading] = createSignal(false);
   const [error, setError] = createSignal<string | null>(null);
+
+  const logoutAndRedirect = () => {
+    localStorage.removeItem(TOKEN_KEY);
+    window.location.href = "/login";
+  };
 
   const request = async <T>(
     url: string,
@@ -17,10 +25,15 @@ export function usePost() {
         method,
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
+          Authorization: `Bearer ${localStorage.getItem(TOKEN_KEY) || ""}`,
         },
         body: body ? JSON.stringify(body) : undefined,
       });
+
+      if (res.status === 401) {
+        logoutAndRedirect();
+        return null;
+      }
 
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
@@ -39,7 +52,11 @@ export function usePost() {
   const postPublicate = async (
     payload: OrchestratorPayload,
   ): Promise<OrchestratorResponse | null> => {
-    return request<OrchestratorResponse>("/api/publicate", "POST", payload);
+    return request<OrchestratorResponse>(
+      `${API_BASE}/api/publicate`,
+      "POST",
+      payload,
+    );
   };
 
   return { request, postPublicate, loading, error };

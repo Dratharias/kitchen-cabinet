@@ -1,6 +1,5 @@
+import { API_BASE } from "@/config/api";
 import { PaginatedRequest } from "@/types";
-
-const API_BASE_URL = import.meta.env.VITE_API_URL || "";
 
 export class ApiError extends Error {
   constructor(
@@ -66,7 +65,7 @@ export class CommonService {
     includeAuth = false,
   ): Promise<T> {
     const queryString = params ? `?${this.buildQueryParams(params)}` : "";
-    const response = await fetch(`${API_BASE_URL}${endpoint}${queryString}`, {
+    const response = await fetch(`${API_BASE}${endpoint}${queryString}`, {
       method: "GET",
       headers: this.getDefaultHeaders(includeAuth),
     });
@@ -79,7 +78,7 @@ export class CommonService {
     data: any,
     includeAuth = false,
   ): Promise<T> {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    const response = await fetch(`${API_BASE}${endpoint}`, {
       method: "POST",
       headers: this.getDefaultHeaders(includeAuth),
       body: JSON.stringify(data),
