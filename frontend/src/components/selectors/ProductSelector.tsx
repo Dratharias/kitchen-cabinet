@@ -1,29 +1,36 @@
+import { JSX } from "solid-js";
 import { SearchSelect } from "./SearchSelect";
+import { useFormCache, Option, dedupe } from "@/hooks/useFormCache";
 
 type ProductSelectorProps = {
   ing: any;
   index: number;
-  options: { value: string; label: string }[];
+  options?: Option[];
   actions: {
     selectProduct: (index: number, id: string) => void;
     createNewProduct: (index: number) => void;
     updateProductName: (index: number, name: string) => void;
-    clearProduct?: (index: number) => void;
   };
+  productsFetcher?: () => Promise<Option[]>;
 };
 
-export function ProductSelector(props: ProductSelectorProps) {
+export function ProductSelector(props: ProductSelectorProps): JSX.Element {
+  const { options, ensureLoaded, prime } = useFormCache(
+    "Product",
+    props.productsFetcher,
+  );
+  prime(props.options);
+
+  const merged = () => dedupe([...(props.options ?? []), ...options()]);
+
   return (
-    <div class="flex space-y-2 text-nowrap">
+    <div class="flex space-y-2 text-nowrap w-full" onClick={ensureLoaded}>
       <SearchSelect
         value={props.ing.product_id}
-        options={[
-          ...props.options,
-          { value: "new", label: "+ Nouveau produit" },
-        ]}
+        options={[...merged(), { value: "new", label: "+ Nouveau produit" }]}
         placeholder="Rechercher un produit..."
         displayLabel={
-          props.options.find((o) => o.value === props.ing.product_id)?.label ??
+          merged().find((o) => o.value === props.ing.product_id)?.label ??
           props.ing.product_name ??
           props.ing.name ??
           props.ing.product_id

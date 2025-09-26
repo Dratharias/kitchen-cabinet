@@ -1,4 +1,4 @@
-import { Show } from "solid-js";
+import { Show, JSX } from "solid-js";
 import { IngredientList } from "../recipe/IngredientList";
 import { Button } from "../ui/atoms/Button";
 import { TrashIcon } from "../ui/atoms/Icons";
@@ -7,22 +7,25 @@ import { ContentMetaFields } from "./ContentMetaFields";
 import { StepList } from "./StepList";
 import { PublicationSearchSelect } from "../selectors/PublicationSearchSelect";
 
+type Option = { value: string; label: string };
+
 type ContentBlockProps = {
   content: any;
   index: number;
-  setForm: any;
+  setForm: (key: string, index: number, field: string, value: unknown) => void;
   removeContent: (index: number) => void;
-  productsFetcher: () => Promise<{ value: string; label: string }[]>;
-  unitsFetcher: () => Promise<{ value: string; label: string }[]>;
-  publicationsFetcher: () => Promise<{ value: string; label: string }[]>;
+  productsFetcher: () => Promise<Option[]>;
+  unitsFetcher: () => Promise<Option[]>;
+  publicationsFetcher: () => Promise<Option[]>;
 };
 
-export function ContentBlock(props: ContentBlockProps) {
+export function ContentBlock(props: ContentBlockProps): JSX.Element {
   const handlePublicationSelect = (publicationId: string) => {
     props.setForm("contents", props.index, "publication_id", publicationId);
   };
 
-  const publicationId = () => props.content.publication_id;
+  const publicationId = () =>
+    props.content.publication_id as string | undefined;
 
   return (
     <div class="py-4 border-b border-dashed">

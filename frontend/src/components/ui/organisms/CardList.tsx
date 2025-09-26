@@ -1,5 +1,5 @@
 import { Component, For, Show } from "solid-js";
-import Card, { CardProps } from "../molecules/PublicationCard";
+import { CardProps, Card } from "../molecules/PublicationCard";
 import { PaginationNavigator } from "../utilities/PaginationNavigator";
 
 export interface PaginationProps {

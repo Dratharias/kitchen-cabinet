@@ -1,30 +1,38 @@
+import { JSX } from "solid-js";
 import { SearchSelect } from "./SearchSelect";
+import { useFormCache, Option, dedupe } from "@/hooks/useFormCache";
 
 type UnitSelectorProps = {
   ing: any;
   index: number;
-  options: { value: string; label: string }[];
+  options?: Option[];
   actions: {
     updateUnit: (index: number, id: string) => void;
     updateIsNewUnit: (index: number, isNew: boolean) => void;
   };
+  unitsFetcher?: () => Promise<Option[]>;
 };
 
-export function UnitSelector(props: UnitSelectorProps) {
+export function UnitSelector(props: UnitSelectorProps): JSX.Element {
+  const { options, ensureLoaded, prime } = useFormCache(
+    "Unit",
+    props.unitsFetcher,
+  );
+  prime(props.options); // seed local si fourni
+
+  const merged = () => dedupe([...(props.options ?? []), ...options()]);
+
   return (
-    <div class="flex space-y-2 text-nowrap">
+    <div class="flex space-y-2 text-nowrap w-full" onClick={ensureLoaded}>
       <SearchSelect
-        value={props.ing.unit} // id ou label
-        options={[
-          ...props.options,
-          { value: "new", label: "+ Nouvelle unité" },
-        ]}
+        value={props.ing.unit}
+        options={[...merged(), { value: "new", label: "+ Nouvelle unité" }]}
         placeholder="Rechercher une unité..."
         displayLabel={
-          // 1) si id connu -> label d'option
-          props.options.find((o) => o.value === props.ing.unit)?.label ??
-          // 2) sinon fallback sur nom brut (ex. .name si présent sur l'ingrédient)
-          (props.ing.unit_name || props.ing.name || props.ing.unit)
+          merged().find((o) => o.value === props.ing.unit)?.label ??
+          props.ing.unit_name ??
+          props.ing.name ??
+          props.ing.unit
         }
         onSelect={(val) => {
           if (val === "new") props.actions.updateIsNewUnit(props.index, true);

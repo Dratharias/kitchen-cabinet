@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/atoms/Button";
 import { Span } from "@/components/ui/atoms/Span";
 import { PlusIcon } from "@/components/ui/atoms/Icons";
 import { StepEditor } from "./StepEditor";
-import { Step, createStep } from "./Segment.types";
+import { Step, createStep } from "./segment.types";
 
 type StepListProps = {
   contentIndex: number;

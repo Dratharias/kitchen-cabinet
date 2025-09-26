@@ -1,5 +1,5 @@
 import type { OrchestratorPayload, PublicationData, ReviewData } from "@/types";
-import type { Step } from "@/components/content/Segment.types";
+import type { Step } from "@/components/content/segment.types";
 import { mapStepsToSegments } from "@/utils/stepSegmentMapper";
 
 /**
@@ -21,12 +21,69 @@ export interface FormContent {
     publication_id?: string;
     isNewUnit: boolean;
   }[];
-  prepTimes: { duration: number; style?: string }[];
+  prepTimes: {
+    duration: number;
+    style?: string;
+    isNewStyle?: boolean;
+    style_name?: string;
+  }[];
 }
+
+/**
+ * Utilitaire commun pour transformer un ou plusieurs prepTimes
+ */
+function mapPrepTimes(
+  prepTimes?:
+    | {
+        duration: number;
+        style?: string | number;
+        isNewStyle?: boolean;
+        style_name?: string;
+      }
+    | {
+        duration: number;
+        style?: string | number;
+        isNewStyle?: boolean;
+        style_name?: string;
+      }[],
+) {
+  if (!prepTimes) return undefined;
+
+  const arr = Array.isArray(prepTimes) ? prepTimes : [prepTimes];
+
+  const valid = arr.filter(
+    (p) =>
+      p.duration > 0 &&
+      (p.style || (p.isNewStyle && p.style_name && p.style_name.trim() !== "")),
+  );
+
+  if (valid.length === 0) return undefined;
+
+  return valid.map((p) => {
+    const base = { data: { duration: p.duration } };
+
+    if (p.isNewStyle && p.style_name) {
+      return {
+        prep_time: {
+          ...base,
+          style: { data: { str_value: p.style_name, type: "PrepStyle" } },
+        },
+      };
+    }
+
+    return {
+      prep_time: {
+        ...base,
+        style: { id: String(p.style) },
+      },
+    };
+  });
+}
+
 
 export function usePayloadBuilder() {
   /**
-   * Payload Review (exploite OrchestratorEntity).
+   * Payload Review
    */
   function buildReviewPayload(
     action: "create" | "update",
@@ -34,17 +91,11 @@ export function usePayloadBuilder() {
     data: ReviewData,
   ): OrchestratorPayload {
     const product = data.product
-      ? {
-          id: data.product.id,
-          data: data.product.data,
-        }
+      ? { id: data.product.id, data: data.product.data }
       : undefined;
 
     const publication = data.publication
-      ? {
-          id: data.publication.id,
-          data: data.publication.data,
-        }
+      ? { id: data.publication.id, data: data.publication.data }
       : undefined;
 
     return {
@@ -63,7 +114,7 @@ export function usePayloadBuilder() {
   }
 
   /**
-   * Payload Publication complet (avec contenus, segments, ingrédients, etc.).
+   * Payload Publication complet
    */
   function buildComplexPublicationPayload(
     action: "create" | "update",
@@ -93,22 +144,12 @@ export function usePayloadBuilder() {
                     title: s.title ?? undefined,
                     paragraph: s.paragraph ?? "",
                   },
-                  segment_prep_time: s.prepTimes?.map((p) => ({
-                    prep_time: {
-                      data: { duration: p.duration },
-                      style: p.style
-                        ? {
-                            data: { str_value: p.style, type: "PrepTimeStyle" },
-                          }
-                        : undefined,
-                    },
-                  })),
+                  segment_prep_time: mapPrepTimes(s.prepTime),
                 },
               })),
 
               // --- Ingrédients ---
               content_ingredients: c.ingredients?.map((i) => {
-                // Produit : publication est sortie de data
                 const product = i.isNewProduct
                   ? {
                       data: {
@@ -140,9 +181,7 @@ export function usePayloadBuilder() {
               }),
 
               // --- Temps de préparation globaux ---
-              content_prep_times: c.prepTimes?.map((p) => ({
-                prep_time: { data: { duration: p.duration } },
-              })),
+              content_prep_times: mapPrepTimes(c.prepTimes),
             };
           }),
         },

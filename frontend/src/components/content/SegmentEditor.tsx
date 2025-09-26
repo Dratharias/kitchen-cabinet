@@ -1,7 +1,7 @@
 import { JSX } from "solid-js";
 import { Button } from "@/components/ui/atoms/Button";
 import { TrashIcon } from "@/components/ui/atoms/Icons";
-import { Segment } from "./Segment.types";
+import { Segment } from "./segment.types";
 
 type SegmentEditorProps = {
   segment: Segment;

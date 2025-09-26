@@ -1,5 +1,6 @@
-import { createSignal, onCleanup } from "solid-js";
+import { JSX, onMount } from "solid-js";
 import { SearchSelect } from "./SearchSelect";
+import { useFormCache } from "@/hooks/useFormCache";
 
 type PublicationSearchSelectProps = {
   value?: string;
@@ -9,28 +10,17 @@ type PublicationSearchSelectProps = {
   disabled?: boolean;
 };
 
-export function PublicationSearchSelect(props: PublicationSearchSelectProps) {
-  const [options, setOptions] = createSignal<
-    { value: string; label: string }[]
-  >([]);
-  const [loaded, setLoaded] = createSignal(false);
+export function PublicationSearchSelect(
+  props: PublicationSearchSelectProps,
+): JSX.Element {
+  const { options, ensureLoaded } = useFormCache("Publication", props.fetcher);
 
-  onCleanup(() => {
-    setOptions([]);
-    setLoaded(false);
-  });
-
-  const ensureFetched = async () => {
-    if (!loaded()) {
-      const pubs = await props.fetcher();
-      setOptions(pubs);
-      setLoaded(true);
-    }
-  };
+  // Charger une fois au montage
+  onMount(ensureLoaded);
 
   return (
     <div class="flex w-full px-4">
-      <div class="space-y-2 w-full" onClick={ensureFetched}>
+      <div class="space-y-2 w-full">
         <SearchSelect
           value={props.value}
           options={options()}

@@ -60,5 +60,3 @@ export const NumberSpinner: Component<NumberSpinnerProps> = (props) => {
     </div>
   );
 };
-
-export default NumberSpinner;

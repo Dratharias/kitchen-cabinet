@@ -1,21 +1,29 @@
 import { Component, createSignal, createMemo } from "solid-js";
 import { useNavigate } from "@solidjs/router";
 import { Image } from "../atoms/Image";
-import NumberSpinner from "../utilities/NumberSpinner";
+import { NumberSpinner } from "../utilities/NumberSpinner";
 import { Span } from "../atoms/Span";
 import { AccordionList } from "../utilities/AccordionList";
 import { IngredientPrepToggler } from "../utilities/IngredientPrepToggler";
 import { Checklist } from "../atoms/Checklist";
 import { Button } from "../atoms/Button";
-import { Content } from "@/types";
+import type { Content } from "@/types";
 
 interface Ingredient {
-  ingredientId?: string;
-  product?: { productId: string; name: string };
+  ingredient_id?: string;
+  product_id?: string;
+  product_name?: string;
   name?: string;
   quantity?: number;
-  multiplyFactor?: number;
-  units?: Array<{ name: string }>;
+  multiply_factor?: number;
+  unit?: string;
+}
+
+interface ExtendedContent extends Content {
+  segments?: {
+    paragraph: string;
+    prepTimes?: { duration: number; style?: string; style_name?: string }[];
+  }[];
 }
 
 interface PublicationDetailsProps {
@@ -25,7 +33,11 @@ interface PublicationDetailsProps {
   title: string;
   thumbnail?: string;
   prepTime?: string | number;
-  selectedContent?: Content & { servings?: number; ingredients?: Ingredient[] };
+  selectedContent?: ExtendedContent & {
+    servings?: number;
+    ingredients?: Ingredient[];
+    prepTimes?: { duration: number; style?: string; style_name?: string }[];
+  };
   ingredients?: Ingredient[];
   preparation?: string[];
   description?: string[];
@@ -33,6 +45,7 @@ interface PublicationDetailsProps {
   isReview?: boolean;
   category?: "reviews" | "feeds" | "unknown";
 }
+
 
 export const PublicationDetails: Component<PublicationDetailsProps> = (
   props,
@@ -52,7 +65,7 @@ export const PublicationDetails: Component<PublicationDetailsProps> = (
     baseYield: number,
   ) {
     const quantity = Number(ingredient.quantity ?? 0);
-    const multiply = Number(ingredient.multiplyFactor ?? 1);
+    const multiply = Number(ingredient.multiply_factor ?? 1);
     const ratio = baseYield > 0 ? servings / baseYield : 1;
     return quantity * ratio * multiply;
   }
@@ -83,8 +96,8 @@ export const PublicationDetails: Component<PublicationDetailsProps> = (
   }
 
   const effectivePrep = createMemo(() => {
-    const pubPrep = Number(props.selectedContent?.total_prep_time ?? 0);
     const content = props.selectedContent ?? ({} as any);
+    const pubPrep = Number(content.total_prep_time ?? 0);
     const segments = content.segments ?? [];
 
     if (pubPrep > 0) {
@@ -95,24 +108,15 @@ export const PublicationDetails: Component<PublicationDetailsProps> = (
       };
     }
 
-    const total = Number(content.totalPrepTime ?? 0);
     const segmentPrepTimes = segments.flatMap((s: any) => s.prepTimes ?? []);
     const allSegmentsHavePrep =
       segments.length > 0
         ? segments.every((s: any) => (s.prepTimes?.length ?? 0) > 0)
         : true;
 
-    if (total > 0) {
-      return {
-        label: allSegmentsHavePrep
-          ? "Temps de préparation :"
-          : "Temps minimum de préparation :",
-        value: formatDuration(total),
-        details: content.prepTimes ?? [],
-      };
-    } else if (segmentPrepTimes.length > 0) {
+    if (segmentPrepTimes.length > 0) {
       const sum = segmentPrepTimes.reduce(
-        (acc, pt) => acc + Number(pt?.duration ?? 0),
+        (acc: number, pt: any) => acc + Number(pt?.duration ?? 0),
         0,
       );
       return {
@@ -136,11 +140,15 @@ export const PublicationDetails: Component<PublicationDetailsProps> = (
   );
 
   function getIngredientDisplayName(ingredient: Ingredient): string {
-    return ingredient.product?.name ?? ingredient.name ?? "Ingrédient inconnu";
+    return (
+      ingredient.product_name ??
+      ingredient.name ??
+      "Ingrédient inconnu"
+    );
   }
 
   function getIngredientUnit(ingredient: Ingredient): string {
-    return ingredient.units?.[0]?.name ?? "";
+    return ingredient.unit ?? "";
   }
 
   function formatIngredientQuantity(quantity: number, unit: string): string {
@@ -151,7 +159,7 @@ export const PublicationDetails: Component<PublicationDetailsProps> = (
   function getServingsPercentage(ingredient?: Ingredient): string {
     if (baseYield <= 0) return "";
     const ratio = servings() / baseYield;
-    const multiplyFactor = ingredient?.multiplyFactor ?? 1;
+    const multiplyFactor = ingredient?.multiply_factor ?? 1;
     const adjustedRatio = 1 + (ratio - 1) * multiplyFactor;
     const percentage = Math.round((adjustedRatio - 1) * 100);
 
@@ -227,7 +235,7 @@ export const PublicationDetails: Component<PublicationDetailsProps> = (
             effectivePrep().details.length > 0
               ? effectivePrep().details.map(
                   (p: any, i: number) =>
-                    `${p?.category?.strValue ?? `Étape ${i + 1}`} : ${formatDuration(
+                    `${p?.style_name ?? p?.style ?? `Étape ${i + 1}`} : ${formatDuration(
                       Number(p?.duration ?? 0),
                     )}`,
                 )

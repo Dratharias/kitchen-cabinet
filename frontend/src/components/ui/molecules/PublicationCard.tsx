@@ -10,7 +10,7 @@ export interface CardProps {
   pathPrefix: "feeds" | "reviews";
 }
 
-const Card: Component<CardProps> = (props) => {
+export const Card: Component<CardProps> = (props) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -95,5 +95,3 @@ const Card: Component<CardProps> = (props) => {
     </Button>
   );
 };
-
-export default Card;

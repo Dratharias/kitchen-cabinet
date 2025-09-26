@@ -1,9 +1,10 @@
-import type { Step } from "@/components/content/Segment.types";
+import type { Step } from "@/components/content/segment.types";
+import type { PrepTime } from "@/components/content/segment.types";
 
 export interface MappedSegment {
   title?: string;
   paragraph: string;
-  prepTimes: { duration: number; style?: string }[];
+  prepTime?: PrepTime;
 }
 
 /**
@@ -11,19 +12,26 @@ export interface MappedSegment {
  * for payload builder compatibility
  */
 export function mapStepsToSegments(steps: Step[]): MappedSegment[] {
-  const mappedSegments: MappedSegment[] = [];
+  const mapped: MappedSegment[] = [];
 
   steps.forEach((step) => {
     step.segments.forEach((segment, segmentIndex) => {
-      mappedSegments.push({
+      mapped.push({
         title: segmentIndex === 0 ? step.title : undefined,
         paragraph: segment.paragraph,
-        prepTimes: segment.prepTimes || [],
+        prepTime:
+          segmentIndex === 0 &&
+          step.prepTime &&
+          step.prepTime.duration > 0 &&
+          (step.prepTime.style ||
+            (step.prepTime.isNewStyle && step.prepTime.style_name))
+            ? step.prepTime
+            : undefined,
       });
     });
   });
 
-  return mappedSegments;
+  return mapped;
 }
 
 /**
@@ -36,9 +44,9 @@ export function mapSegmentsToSteps(segments: MappedSegment[]): Step[] {
 
   segments.forEach((segment) => {
     if (segment.title) {
-      if (currentStep) {
-        steps.push(currentStep);
-      }
+      // Push l’éventuel step courant avant de démarrer un nouveau
+      if (currentStep) steps.push(currentStep);
+
       currentStep = {
         id: `step_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
         title: segment.title,
@@ -46,22 +54,24 @@ export function mapSegmentsToSteps(segments: MappedSegment[]): Step[] {
           {
             id: `seg_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
             paragraph: segment.paragraph,
-            prepTimes: segment.prepTimes,
           },
         ],
+        prepTime: segment.prepTime ?? {
+          duration: 0,
+          style: "",
+          isNewStyle: false,
+          style_name: undefined,
+        },
       };
     } else if (currentStep) {
       currentStep.segments.push({
         id: `seg_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
         paragraph: segment.paragraph,
-        prepTimes: segment.prepTimes,
       });
     }
   });
 
-  if (currentStep) {
-    steps.push(currentStep);
-  }
+  if (currentStep) steps.push(currentStep);
 
   return steps;
 }
