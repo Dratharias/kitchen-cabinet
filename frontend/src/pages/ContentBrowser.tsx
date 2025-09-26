@@ -5,7 +5,7 @@ import {
   createEffect,
 } from "solid-js";
 import { PublicationsService } from "@/services/publications";
-import CardList from "@/components/ui/molecules/CardList";
+import { CardList } from "@/components/ui/molecules/CardList";
 
 const getTypesByCategory = (category: "feeds" | "reviews"): string[] => {
   if (category === "feeds") {

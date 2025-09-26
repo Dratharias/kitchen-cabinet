@@ -1,5 +1,5 @@
-import { Component, For, Show, createEffect } from "solid-js";
-import Card, { CardProps } from "./PublicationCard";
+import { Component, For, Show } from "solid-js";
+import { Card, CardProps } from "./PublicationCard";
 import { PaginationNavigator } from "../utilities/PaginationNavigator";
 
 export interface PaginationProps {
@@ -14,7 +14,7 @@ export interface CardListProps {
   class?: string;
 }
 
-const CardList: Component<CardListProps> = (props) => {
+export const CardList: Component<CardListProps> = (props) => {
   return (
     <div
       class="flex flex-col w-full min-h-full"
@@ -33,5 +33,3 @@ const CardList: Component<CardListProps> = (props) => {
     </div>
   );
 };
-
-export default CardList;
