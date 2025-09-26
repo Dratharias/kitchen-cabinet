@@ -111,9 +111,7 @@ export function DescriptionList(props: DescriptionListProps) {
               ) : (
                 <Button
                   icon={<PlusIcon class="w-4 h-4" />}
-                  variant={
-                    props.notes.length === 0 ? "primary" : "secondary"
-                  }
+                  variant={props.notes.length === 0 ? "primary" : "secondary"}
                   onClick={actions().addNote}
                 />
               )}
