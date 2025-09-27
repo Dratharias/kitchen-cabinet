@@ -226,6 +226,7 @@ export interface IngredientData {
   quantity: number | null;
   product_id: string;
   multiply_factor: number;
+  title: string | null;
 
   // Relations N-1
   product: ProductData | null; // N-1

@@ -7,7 +7,12 @@ interface ContentMetaFieldsProps {
   content: {
     total_prep_time?: number;
     servings?: number;
-    prep_times?: { duration: number; style: string | number; isNewStyle?: boolean; style_name?: string }[];
+    prep_times?: {
+      duration: number;
+      style: string | number;
+      isNewStyle?: boolean;
+      style_name?: string;
+    }[];
   };
   index: number;
   setForm: (

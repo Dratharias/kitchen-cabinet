@@ -28,13 +28,23 @@ export function PrepTimeTable(props: PrepTimeTableProps) {
 
   const updateStyle = (idx: number, val: string | number) => {
     const next = [...props.values];
-    next[idx] = { ...next[idx], style: val, isNewStyle: false, style_name: undefined };
+    next[idx] = {
+      ...next[idx],
+      style: val,
+      isNewStyle: false,
+      style_name: undefined,
+    };
     props.onChange(next);
   };
 
   const createNewStyle = (idx: number, label: string) => {
     const next = [...props.values];
-    next[idx] = { ...next[idx], style: label, isNewStyle: true, style_name: label };
+    next[idx] = {
+      ...next[idx],
+      style: label,
+      isNewStyle: true,
+      style_name: label,
+    };
     props.onChange(next);
     queueMicrotask(() => styleRefs[idx]?.focus());
   };
@@ -50,14 +60,22 @@ export function PrepTimeTable(props: PrepTimeTableProps) {
   };
 
   const addRow = () => {
-    props.onChange([...props.values, { duration: 0, style: "", isNewStyle: false }]);
+    props.onChange([
+      ...props.values,
+      { duration: 0, style: "", isNewStyle: false },
+    ]);
   };
 
   return (
     <div class="space-y-2 pt-8">
       <div class="flex items-center justify-between">
         <Span class="font-medium w-full">Temps de préparation</Span>
-        <Button variant="secondary" icon={<PlusIcon />} onClick={addRow} class="!px-2 !py-1">
+        <Button
+          variant="secondary"
+          icon={<PlusIcon />}
+          onClick={addRow}
+          class="!px-2 !py-1"
+        >
           Ajouter
         </Button>
       </div>
@@ -71,7 +89,9 @@ export function PrepTimeTable(props: PrepTimeTableProps) {
                   type="number"
                   placeholder="Durée (min)"
                   value={pt.duration}
-                  onInput={(e) => updateDuration(idx(), Number(e.currentTarget.value))}
+                  onInput={(e) =>
+                    updateDuration(idx(), Number(e.currentTarget.value))
+                  }
                 />
               </div>
 
@@ -88,7 +108,9 @@ export function PrepTimeTable(props: PrepTimeTableProps) {
                     ref={(el) => (styleRefs[idx()] = el)}
                     placeholder="Nom du nouveau style"
                     value={pt.style_name ?? ""}
-                    onInput={(e) => updateStyleName(idx(), e.currentTarget.value)}
+                    onInput={(e) =>
+                      updateStyleName(idx(), e.currentTarget.value)
+                    }
                     class="w-full"
                   />
                 </Show>

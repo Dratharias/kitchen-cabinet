@@ -133,8 +133,9 @@ model product {
 
 model ingredient {
   ingredient_id String  @id @default(uuid())
-  quantity     Int?    @db.SmallInt
+  quantity     Decimal? @db.Decimal(10, 2)
   product_id   String
+  title        String?
   multiply_factor Decimal @db.Decimal(10, 2) @default(1.00)
 
   product           product @relation(fields: [product_id], references: [product_id], onDelete: Cascade)

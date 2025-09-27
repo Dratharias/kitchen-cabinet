@@ -12,7 +12,10 @@ type PrepStyleSelectorProps = {
 };
 
 export function PrepStyleSelector(props: PrepStyleSelectorProps): JSX.Element {
-  const { options, ensureLoaded, prime } = useFormCache("PrepStyle", props.stylesFetcher);
+  const { options, ensureLoaded, prime } = useFormCache(
+    "PrepStyle",
+    props.stylesFetcher,
+  );
   prime(props.options);
 
   const merged = () => dedupe([...(props.options ?? []), ...options()]);

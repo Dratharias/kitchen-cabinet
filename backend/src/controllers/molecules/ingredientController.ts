@@ -13,6 +13,7 @@ export const normalizeIngredient = (ingredient: any): Ingredient => ({
   quantity: ingredient.quantity,
   product_id: ingredient.product_id,
   multiply_factor: ingredient.multiply_factor,
+  title: ingredient.title ?? null,
 
   product: ingredient.product ?? null,
   content_ingredients: ingredient.content_ingredients ?? null,
@@ -32,6 +33,7 @@ export class IngredientController
         quantity: payload.quantity,
         product_id: payload.product_id,
         multiply_factor: payload.multiply_factor ?? 1,
+        title: payload.title,
 
         content_ingredients: payload.connect?.content_ingredients
           ? {
@@ -95,6 +97,7 @@ export class IngredientController
         quantity: payload.quantity,
         product_id: payload.product_id,
         multiply_factor: payload.multiply_factor,
+        title: payload.title,
 
         content_ingredients: payload.connect?.content_ingredients
           ? {

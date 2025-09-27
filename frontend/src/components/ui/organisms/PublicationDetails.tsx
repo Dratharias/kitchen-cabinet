@@ -46,7 +46,6 @@ interface PublicationDetailsProps {
   category?: "reviews" | "feeds" | "unknown";
 }
 
-
 export const PublicationDetails: Component<PublicationDetailsProps> = (
   props,
 ) => {
@@ -140,11 +139,7 @@ export const PublicationDetails: Component<PublicationDetailsProps> = (
   );
 
   function getIngredientDisplayName(ingredient: Ingredient): string {
-    return (
-      ingredient.product_name ??
-      ingredient.name ??
-      "Ingrédient inconnu"
-    );
+    return ingredient.product_name ?? ingredient.name ?? "Ingrédient inconnu";
   }
 
   function getIngredientUnit(ingredient: Ingredient): string {

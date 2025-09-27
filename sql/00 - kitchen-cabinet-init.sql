@@ -134,8 +134,9 @@ CREATE TABLE product (
 
 CREATE TABLE ingredient (
     ingredient_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    quantity      SMALLINT,
+    quantity      DECIMAL(10,2),
     product_id    UUID NOT NULL,
+    title         TEXT,
     multiply_factor DECIMAL(10,2) DEFAULT 1.00,
     FOREIGN KEY (product_id)   REFERENCES product(product_id) ON DELETE CASCADE,
 );
