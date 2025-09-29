@@ -110,6 +110,7 @@ export interface ContentData {
   publication_id: string;
   total_prep_time: number;
   servings: number | null;
+  subtitle: string | null;
 
   // Relations N-1
   publication: PublicationData | null; // N-1

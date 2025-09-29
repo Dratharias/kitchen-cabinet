@@ -95,6 +95,7 @@ CREATE TABLE content (
     publication_id UUID NOT NULL,
     total_prep_time SMALLINT DEFAULT 0,
     servings       SMALLINT,
+    subtitle       TEXT,
     FOREIGN KEY (publication_id) REFERENCES publication(publication_id) ON DELETE CASCADE
 );
 
