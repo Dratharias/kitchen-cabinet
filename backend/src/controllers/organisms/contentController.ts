@@ -114,8 +114,8 @@ export class ContentController
         publication_id: payload.publication_id,
         total_prep_time: payload.total_prep_time,
         servings: payload.servings,
-        subtitle: payload.subtitle,
-        is_ingredient: payload.is_ingredient,
+        subtitle: payload.subtitle, 
+        is_ingredient: payload.is_ingredient ?? null,
 
         content_segments: payload.connect?.content_segments
           ? {
