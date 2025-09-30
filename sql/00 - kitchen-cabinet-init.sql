@@ -96,6 +96,7 @@ CREATE TABLE content (
     total_prep_time SMALLINT DEFAULT 0,
     servings       SMALLINT,
     subtitle       TEXT,
+    is_ingredient   BOOLEAN,
     FOREIGN KEY (publication_id) REFERENCES publication(publication_id) ON DELETE CASCADE
 );
 

@@ -111,6 +111,7 @@ export interface ContentData {
   total_prep_time: number;
   servings: number | null;
   subtitle: string | null;
+  is_ingredient: boolean | null;
 
   // Relations N-1
   publication: PublicationData | null; // N-1

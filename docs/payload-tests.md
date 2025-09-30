@@ -491,8 +491,7 @@ curl -X POST http://127.0.0.1:3001/api/publicate \
         "contents": [
           {
             "content_id": "39761e9b-59a8-421d-ae38-d1320337c7ab",
-            "data": { "total_prep_time": 45, "servings": 6 },
-
+            "data": { "total_prep_time": 45, "servings": 6, "is_ingredient": false, "subtitle": "Garniture" },
             "content_segments": [
               {
                 "position": 1,

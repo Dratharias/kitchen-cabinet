@@ -9,6 +9,8 @@ import { mapStepsToSegments } from "@/utils/stepSegmentMapper";
 export interface FormContent {
   total_prep_time: number;
   servings: number | null;
+  is_ingredient?: boolean | null;
+  subtitle?: string | null;
   steps: Step[];
   ingredients: {
     quantity: number;
@@ -133,6 +135,8 @@ export function usePayloadBuilder() {
               data: {
                 total_prep_time: c.total_prep_time ?? 0,
                 servings: c.servings ?? null,
+                is_ingredient: c.is_ingredient ?? null,
+                subtitle: c.subtitle ?? null
               },
 
               // --- Segments ---

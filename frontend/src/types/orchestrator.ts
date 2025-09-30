@@ -49,6 +49,8 @@ export interface IngredientData {
 export interface ContentData {
   total_prep_time: number;
   servings: number | null;
+  is_ingredient?: boolean | null;
+  subtitle?: string | null; 
 }
 
 export interface PublicationData {

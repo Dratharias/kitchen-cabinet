@@ -14,6 +14,7 @@ export const normalizeContent = (content: any): Content => ({
   total_prep_time: content.total_prep_time,
   servings: content.servings,
   subtitle: content.subtitle,
+  is_ingredient: content.is_ingredient,
 
   publication: content.publication ?? null,
   content_segments: content.content_segments ?? null,
@@ -35,6 +36,7 @@ export class ContentController
         total_prep_time: payload.total_prep_time,
         servings: payload.servings,
         subtitle: payload.subtitle,
+        is_ingredient: payload.is_ingredient,
 
         content_segments: payload.connect?.content_segments
           ? {
@@ -113,6 +115,7 @@ export class ContentController
         total_prep_time: payload.total_prep_time,
         servings: payload.servings,
         subtitle: payload.subtitle,
+        is_ingredient: payload.is_ingredient,
 
         content_segments: payload.connect?.content_segments
           ? {
