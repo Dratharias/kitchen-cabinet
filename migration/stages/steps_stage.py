@@ -2,28 +2,24 @@ from __future__ import annotations
 from typing import Any, Dict, List
 import json
 import re
-from ..mistral_client import MistralClient
+from ..utils.group_matcher import best_match
 
 class StepsStage:
     def __init__(self, model: str = "mistral-nemo:12b"):
-        self.client = MistralClient(model=model)
+        # modèle non utilisé, conservé pour compatibilité
+        self.model = model
 
     def process(self, md_text: str, groups: List[Dict[str, Any]]) -> Dict[str, Any]:
         raw = self._extract_raw(md_text, groups)
         mapped = self._map_to_canonical(raw, groups)
-        
-        return {
-            "raw": raw,
-            "mapped": mapped
-        }
+        return {"raw": raw, "mapped": mapped}
 
     def _extract_raw(self, md_text: str, groups: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         items = self._read_array(md_text, "steps")
-        
         raw_blocks = []
         current = None
         default_group = groups[0]["group"] if groups else "Default"
-        
+
         for item in items:
             if item.strip().startswith("**"):
                 if current:
@@ -36,37 +32,27 @@ class StepsStage:
                 if not current:
                     current = {"group": default_group, "steps": []}
                 current["steps"].append(item)
-        
+
         if current:
             raw_blocks.append(current)
-        
         return raw_blocks
 
     def _map_to_canonical(self, raw: List[Dict[str, Any]], groups: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         canonical_names = [g["group"] for g in groups]
         mapped = []
-        
         for block in raw:
-            prompt = f"Map ce groupe vers le plus proche: {block['group']}\nOptions: {json.dumps(canonical_names, ensure_ascii=False)}\nFormat: {{\"mapped_group\": \"...\"}}"
-            try:
-                result = self.client.generate_json(prompt)
-                canonical = result.get("mapped_group", block["group"])
-            except Exception as e:
-                print(f"[STEPS] Erreur map: {e}")
-                canonical = block["group"]
-            
+            canonical = best_match(block["group"], canonical_names, threshold=0.7)
             mapped.append({
                 "group": canonical,
                 "steps": block["steps"]
             })
-        
         return mapped
 
     def _read_array(self, md_text: str, key: str) -> List[str]:
         lines = md_text.splitlines()
         capture = False
         buf = []
-        
+
         for line in lines:
             low = line.strip().lower()
             if not capture and low.startswith(f"{key}:"):
@@ -78,11 +64,11 @@ class StepsStage:
                 raw = " ".join(buf)
                 if '[' in raw and ']' in raw:
                     break
-        
+
         raw = " ".join(buf)
         if '[' not in raw or ']' not in raw:
             return []
-        
+
         inner = raw.split('[', 1)[1].rsplit(']', 1)[0]
         try:
             arr = json.loads('[' + inner + ']')

@@ -1,7 +1,21 @@
 from __future__ import annotations
+import re
 import requests
 import json
 from typing import Any, Dict
+
+def coerce_json(s: str) -> dict:
+    text = s.strip()
+    if "{" in text and "}" in text:
+        text = text[text.find("{"):text.rfind("}")+1]
+    # corrige clés non-quotées
+    text = re.sub(r'([{\s,])([A-Za-z_][A-Za-z0-9_]*)\s*:', r'\1"\2":', text)
+    # quotes simples -> doubles
+    text = re.sub(r"'", '"', text)
+    # supprime virgules traînantes
+    text = re.sub(r",\s*([}\]])", r"\1", text)
+    return json.loads(text)
+
 
 class MistralClient:
     """Client pour appeler Mistral via API Ollama locale."""
@@ -34,4 +48,7 @@ class MistralClient:
         if response_text.startswith("```"):
             lines = response_text.split("\n")
             response_text = "\n".join(lines[1:-1]) if len(lines) > 2 else response_text
-        return json.loads(response_text)
+        try:
+            return json.loads(response_text)
+        except Exception:
+            return coerce_json(response_text)

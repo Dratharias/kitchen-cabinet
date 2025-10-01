@@ -38,15 +38,18 @@ class PayloadStage:
             for ing in ing_block.get("ingredients", []):
                 if not ing.get("product"):
                     continue
+
+                units = []
+                if ing.get("unit"):
+                    units.append({"unit": {"data": {"name": ing.get("unit", "")}}})
                 
                 content_ingredients.append({
                     "data": {
                         "quantity": ing.get("quantity"),
-                        "multiply_factor": 1,
-                        "title": gname
+                        "multiply_factor": 1
                     },
                     "product": {"data": {"name": ing.get("product", "")}},
-                    "ingredient_units": [{"unit": {"data": {"name": ing.get("unit", "")}}}]
+                    "ingredient_units": units
                 })
             
             content_segments = []
@@ -55,13 +58,11 @@ class PayloadStage:
                     "position": pos,
                     "segment": {
                         "data": {
-                            "title": gname,
                             "paragraph": step
                         }
                     }
                 })
             
-            # Skip groups with no ingredients AND no steps
             if not content_ingredients and not content_segments:
                 continue
             
@@ -69,11 +70,12 @@ class PayloadStage:
                 "data": {
                     "total_prep_time": metadata.get("prep_time", 0) or 0,
                     "servings": metadata.get("servings"),
-                    "subtitle": ing_block.get("subtitle"),
+                    "subtitle": gname,  # <-- subtitle = group name
                     "is_ingredient": ing_block.get("is_ingredient", False)
                 },
                 "content_ingredients": content_ingredients,
                 "content_segments": content_segments
             })
+        
         payload["payload"]["1"] = publication
         return payload

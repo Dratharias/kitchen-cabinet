@@ -8,6 +8,7 @@ from .stages.groups_stage import GroupsStage
 from .stages.ingredients_stage import IngredientsStage
 from .stages.steps_stage import StepsStage
 from .stages.payload_stage import PayloadStage
+from .stages.payload_exporter import PayloadExporter
 
 class RecipePipeline:
     def __init__(self, work_dir: Path, model: str = "mistral-nemo:12b"):
@@ -44,12 +45,25 @@ class RecipePipeline:
         payload = payload_stage.build(metadata, groups, ingredients["enriched"], steps["mapped"])
         self._write_json("final_payload.json", payload)
 
+        # Stage 6: Export migrated/<slug>.json
+        slug = self._slugify(metadata.get("title", "untitled"))
+        exporter = PayloadExporter("migrated")
+        exporter.export(payload, slug)
+
         return payload
 
     def _write_json(self, filename: str, data: Any) -> None:
         path = self.work_dir / filename
         with path.open("w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
+
+    def _slugify(self, text: str) -> str:
+        return (
+            text.lower()
+            .replace(" ", "-")
+            .replace("/", "-")
+            .replace(".", "")
+        )
 
 if __name__ == "__main__":
     import sys
