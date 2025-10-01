@@ -3,39 +3,9 @@ from typing import Any, Dict, List
 import json
 import re
 import unicodedata
+import difflib
 from ..mistral_client import MistralClient
-from ..utils.group_matcher import best_match
-
-# --- Helpers JSON ---
-
-MOJIBAKE_FIXES = {
-    "√©": "é",
-    "√¨": "è",
-    "√®": "ê",
-    "√¢": "â",
-    "√´": "ô",
-    "√º": "ù",
-    "√ª": "à",
-    "√±": "ç",
-}
-
-def fix_mojibake(text: str) -> str:
-    if not text:
-        return text
-    out = str(text)
-    for bad, good in MOJIBAKE_FIXES.items():
-        out = out.replace(bad, good)
-    return unicodedata.normalize("NFC", out)
-
-def coerce_json(s: str) -> dict:
-    text = s.strip()
-    if "{" in text and "}" in text:
-        text = text[text.find("{"): text.rfind("}") + 1]
-    text = re.sub(r'([{",])([A-Za-z_][A-Za-z0-9_]*)\s*:', r'\1"\2":', text)
-    text = re.sub(r"'", '"', text)
-    text = re.sub(r",\s*([}\]])", r"\1", text)
-    text = re.sub(r'\\(?!["\\/bfnrtu])', r'\\\\', text)
-    return json.loads(text)
+from ..utils.group_matcher import best_match, normalize, standardize_group
 
 # --- Helpers texte ---
 
@@ -51,6 +21,14 @@ def clean_product(product: str) -> str:
     product = strip_accents(product)
     return product.strip()
 
+def _norm(text: str) -> str:
+    if text is None:
+        return ""
+    t = unicodedata.normalize("NFKD", str(text)).lower()
+    t = "".join(c for c in t if not unicodedata.combining(c))
+    t = re.sub(r"[^a-z0-9]+", "", t)
+    return t
+
 # --- Stage principal ---
 
 class IngredientsStage:
@@ -58,47 +36,105 @@ class IngredientsStage:
         self.client = MistralClient(model=model)
 
     def process(self, md_text: str, groups: List[Dict[str, Any]]) -> Dict[str, Any]:
-        raw = self._extract_raw(md_text, groups)
-        mapped = self._map_to_canonical(raw, groups)
+        """Lit UNIQUEMENT la métadonnée `ingredients` et découpe les sous-groupes `**Titre`.
+        Retourne des blocs par groupe, prêts pour PayloadStage.
+        """
+        raw_blocks = self._extract_grouped(md_text, groups)
+        mapped = self._map_to_canonical(raw_blocks, groups)
         enriched = self._enrich_ingredients(mapped)
         enriched = self._detect_ingredient_groups(enriched)
-        return {"raw": raw, "mapped": mapped, "enriched": enriched}
+        return {"raw": raw_blocks, "mapped": mapped, "enriched": enriched}
 
-    def _extract_raw(self, md_text: str, groups: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        items = self._read_array(md_text, "ingredients")
-        raw_blocks = []
-        current = None
+    # --- Extraction groupée ---
+    def _extract_grouped(self, md_text: str, groups: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        items = self._read_metadata_array(md_text, "ingredients")
+        raw_blocks: List[Dict[str, Any]] = []
+        current: Dict[str, Any] | None = None
         default_group = groups[0]["group"] if groups else "Default"
 
         for item in items:
-            if item.strip().startswith("**"):
+            s = str(item).strip()
+            if s.startswith("**"):
+                # nouveau sous-groupe
                 if current:
                     raw_blocks.append(current)
-                header = item.strip().lstrip("*").rstrip("*").strip()
-                current = {"group": header, "ingredients": []}
-            elif current is not None:
-                current["ingredients"].append(item)
+                header = s.lstrip("*").rstrip("*").strip()
+                current = {"group": standardize_group(header), "ingredients": []}
             else:
-                if not current:
+                if current is None:
                     current = {"group": default_group, "ingredients": []}
                 current["ingredients"].append(item)
-
         if current:
             raw_blocks.append(current)
         return raw_blocks
 
+    # --- Mapping ---
     def _map_to_canonical(self, raw: List[Dict[str, Any]], groups: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         canonical_names = [g["group"] for g in groups]
-        mapped = []
+        mapped: List[Dict[str, Any]] = []
         for block in raw:
-            canonical = best_match(block["group"], canonical_names, threshold=0.7)
-            mapped.append({
-                "group": canonical,
-                "ingredients": block["ingredients"]
-            })
+            if canonical_names:
+                # d’abord matcher normalement
+                canonical = best_match(block["group"], canonical_names, threshold=0.7)
+                if canonical == block["group"]:
+                    # fallback plus permissif: comparaison lower/normalize
+                    bn = normalize(block["group"])
+                    for cand in canonical_names:
+                        if normalize(cand) in bn or bn in normalize(cand):
+                            canonical = cand
+                            break
+            else:
+                canonical = block["group"]
+            mapped.append({"group": canonical, "ingredients": block["ingredients"]})
         return mapped
 
-    # --- Extraction en 3 passes ---
+    # --- Enrichissement ---
+    def _enrich_ingredients(self, mapped: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        enriched: List[Dict[str, Any]] = []
+        for block in mapped:
+            out_block = {"group": block["group"], "ingredients": []}
+            for ing_str in block["ingredients"]:
+                unit = self._extract_unit(ing_str)
+                qty = self._extract_quantity(ing_str)
+                product = self._extract_product(ing_str)
+                out_block["ingredients"].append({
+                    "quantity": qty,
+                    "unit": unit,
+                    "product": product,
+                })
+            enriched.append(out_block)
+        return enriched
+
+    # --- Détection groupe ingredient par CROSS-MATCH ---
+    def _detect_ingredient_groups(self, enriched: List[Dict[str, Any]], threshold: float = 0.85) -> List[Dict[str, Any]]:
+        # Produits normalisés par groupe
+        per_group_products: List[List[str]] = []
+        for block in enriched:
+            prods = [_norm(ing.get("product")) for ing in block.get("ingredients", []) if ing.get("product")]
+            per_group_products.append([p for p in prods if p])
+
+        for i, block in enumerate(enriched):
+            gnorm = _norm(block.get("group"))
+            other_products = {p for j, prods in enumerate(per_group_products) if j != i for p in prods}
+
+            is_ing = False
+            if gnorm and other_products:
+                # similarité ou inclusion
+                for p in other_products:
+                    if not p:
+                        continue
+                    if gnorm in p or p in gnorm:
+                        is_ing = True
+                        break
+                    if difflib.SequenceMatcher(None, gnorm, p).ratio() >= threshold:
+                        is_ing = True
+                        break
+
+            block["is_ingredient"] = bool(is_ing)
+            block["subtitle"] = block["group"] if is_ing else None
+        return enriched
+
+    # --- Extraction AI ---
     def _extract_unit(self, ing_str: str) -> str:
         prompt = f"""
 Extrait uniquement l'unité de mesure SI ou culinaire de la ligne suivante.
@@ -111,8 +147,7 @@ Réponds uniquement en JSON: {{ "unit": "..." }} ou {{ "unit": null }}
         try:
             result = self.client.generate_json(prompt)
             return result.get("unit") or ""
-        except Exception as e:
-            print(f"[ING-unit] Erreur: {e}")
+        except Exception:
             return ""
 
     def _extract_quantity(self, ing_str: str) -> float | None:
@@ -129,13 +164,11 @@ Réponds uniquement en JSON: {{ "quantity": nombre|null }}
         try:
             result = self.client.generate_json(prompt)
             return result.get("quantity")
-        except Exception as e:
-            print(f"[ING-qty] Erreur: {e}")
+        except Exception:
             return None
 
     def _extract_product(self, ing_str: str) -> str:
-        ing_str = strip_accents(ing_str).replace("\u00a0", " ").strip()
-
+        s = strip_accents(str(ing_str)).replace("\u00a0", " ").strip()
         prompt = f"""
 Extrait uniquement le produit alimentaire et ses qualificatifs de la ligne suivante.
 - Ne répète pas la quantité ni l’unité dans le champ "product".
@@ -144,106 +177,27 @@ Extrait uniquement le produit alimentaire et ses qualificatifs de la ligne suiva
 - Garde les adjectifs (presse, rape, seche, filtre).
 - Ne retourne que le produit, pas la quantité ni l’unité.
 
-Ligne: "{ing_str}"
+Ligne: "{s}"
 
 Réponds uniquement en JSON: {{ "product": "..." }}
 """
         try:
             result = self.client.generate_json(prompt)
             product = result.get("product", "")
-        except Exception as e:
-            print(f"[ING-prod] Erreur: {e}")
-            product = ing_str.strip()
-
+        except Exception:
+            product = s
         return clean_product(product)
 
-    def _fix_product_text(self, product: str) -> str:
-        if not product:
-            return product
-        return fix_mojibake(product)
-
-    def _enrich_ingredients(self, mapped: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        enriched = []
-        for block in mapped:
-            enriched_block = {"group": block["group"], "ingredients": []}
-            for ing_str in block["ingredients"]:
-                if ing_str.strip().startswith("**"):
-                    continue
-
-                unit = self._extract_unit(ing_str)
-                qty = self._extract_quantity(ing_str)
-                product = self._extract_product(ing_str)
-                product = self._fix_product_text(product)
-
-                enriched_block["ingredients"].append({
-                    "quantity": qty,
-                    "unit": unit,
-                    "product": product
-                })
-            enriched.append(enriched_block)
-        return enriched
-
-    def _detect_ingredient_groups(self, enriched: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        all_products = set()
-        for block in enriched:
-            for ing in block["ingredients"]:
-                product = self._normalize(ing.get("product", ""))
-                if product:
-                    all_products.add(product)
-
-        for block in enriched:
-            gname = block["group"]
-            gnorm = self._normalize(gname)
-
-            match = best_match(gnorm, list(all_products), threshold=0.7)
-
-            is_ing = False
-            if match and match != gnorm:
-                is_ing = True
-            else:
-                for p in all_products:
-                    if gnorm in p:
-                        is_ing = True
-                        break
-
-            block["is_ingredient"] = is_ing
-            block["subtitle"] = block["group"] if is_ing else None
-        return enriched
-
-    @staticmethod
-    def _normalize(text: str) -> str:
-        if not isinstance(text, str):
-            text = str(text) if text else ""
-        t = text.lower().strip()
-        t = unicodedata.normalize("NFKD", t)
-        t = "".join(c for c in t if not unicodedata.combining(c))
-        t = re.sub(r"[^a-z0-9]+", "", t)
-        return t
-
-    def _read_array(self, md_text: str, key: str) -> List[str]:
-        lines = md_text.splitlines()
-        capture = False
-        buf = []
-
-        for line in lines:
-            low = line.strip().lower()
-            if not capture and low.startswith(f"{key}:"):
-                capture = True
-                buf.append(line.split(':', 1)[1])
-                continue
-            if capture:
-                buf.append(line)
-                raw = " ".join(buf)
-                if '[' in raw and ']' in raw:
-                    break
-
-        raw = " ".join(buf)
-        if '[' not in raw or ']' not in raw:
+    # --- Lecture de la métadonnée ingredients ---
+    def _read_metadata_array(self, md_text: str, key: str) -> List[str]:
+        # Capture la valeur JSON-like sur une seule ou plusieurs lignes
+        pattern = re.compile(rf"^{key}:\s*\[(.*?)\]", re.IGNORECASE | re.MULTILINE | re.DOTALL)
+        m = pattern.search(md_text)
+        if not m:
             return []
-
-        inner = raw.split('[', 1)[1].rsplit(']', 1)[0]
+        inner = m.group(1)
         try:
-            arr = json.loads('[' + inner + ']')
+            arr = json.loads("[" + inner + "]")
             return [str(v) for v in arr]
         except Exception:
             return re.findall(r'"([^"\\]*(?:\\.[^"\\]*)*)"', inner)
