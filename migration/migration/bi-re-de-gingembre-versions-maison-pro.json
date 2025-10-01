@@ -1,0 +1,1287 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Bière de gingembre (versions maison & pro)",
+      "description": [
+        "Découvrez notre bière de gingembre maison ou professionnelle, prête en moins de 10 minutes avec une fermentation rapide de 2 à 8 jours et contenant moins de 1% d'alcool."
+      ],
+      "note": [
+        "Les versions maison utilisent un levain sauvage (gingembre ou fruit), tandis que les versions pro emploient des levures commerciales pour plus de constance. En été, si la température dépasse 24°C, fermenter la nuit ou en cave fraîche. Les boissons florales ou au thé sont excellentes pour varier les goûts et utiliser des restes."
+      ],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recipe",
+          "type": "Type"
+        }
+      },
+      "style": {
+        "data": {
+          "str_value": "",
+          "type": "Style"
+        }
+      },
+      "author": {
+        "data": {
+          "str_value": "",
+          "type": "Author"
+        }
+      },
+      "tags": [
+        {
+          "data": {
+            "str_value": "fermentation",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "levain",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "boissons",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 5,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [],
+          "content_segments": []
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Levain de gingembre"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Levain de gingembre",
+                  "paragraph": "Dans un pot propre, mélanger eau, sucre et gingembre."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Levain de gingembre",
+                  "paragraph": "Laisser à température pièce (21–30°C), à l’abri de la lumière."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Levain de gingembre",
+                  "paragraph": "Chaque jour, pendant 3 à 5 jours, ajouter 10g de gingembre et 10g de sucre."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Levain de gingembre",
+                  "paragraph": "Quand ça mousse et sent bon, c'est prêt. Filtrer avant usage."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Levain de fruits"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Levain de fruits",
+                  "paragraph": "Écraser le fruit dans un bocal avec l’eau et le sucre."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Levain de fruits",
+                  "paragraph": "Couvrir d’un tissu, remuer 2 fois par jour."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Levain de fruits",
+                  "paragraph": "En 3 à 6 jours, filtrer quand ça pétille et sent bon."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Bière de gingembre maison"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Bière de gingembre maison",
+                  "paragraph": "Faire mijoter eau, gingembre, sucre 5 minutes. Filtrer."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Bière de gingembre maison",
+                  "paragraph": "Refroidir à température ambiante."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Bière de gingembre maison",
+                  "paragraph": "Ajouter le levain de gingembre filtré."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Bière de gingembre maison",
+                  "paragraph": "Mettre en bouteille (résistante à la pression) et fermenter 2 à 4 jours à température pièce."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Bière de gingembre maison",
+                  "paragraph": "Réfrigérer. Ouvrir avec précaution."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Bière de gingembre pro"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Bière de gingembre pro",
+                  "paragraph": "Même procédé d’infusion, mais ajouter la levure commerciale une fois refroidi (20–22°C)."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Bière de gingembre pro",
+                  "paragraph": "Fermenter en bouteille 2 à 3 jours, puis réfrigérer."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Limonade florale ou thé maison"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Limonade florale ou thé maison",
+                  "paragraph": "Infuser les fleurs ou le thé dans l’eau chaude (5–10 minutes)."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Limonade florale ou thé maison",
+                  "paragraph": "Ajouter le sucre et refroidir."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Limonade florale ou thé maison",
+                  "paragraph": "Incorporer le levain de fruit, embouteiller, fermenter 2 à 3 jours."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Limonade florale ou thé maison",
+                  "paragraph": "Réfrigérer."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Limonade florale ou thé maison",
+                  "paragraph": "Infuser les fleurs ou le thé dans l’eau chaude (5–10 minutes)."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Limonade florale ou thé maison",
+                  "paragraph": "Ajouter le sucre et refroidir."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Limonade florale ou thé maison",
+                  "paragraph": "Incorporer le levain de fruit, embouteiller, fermenter 2 à 3 jours."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Limonade florale ou thé maison",
+                  "paragraph": "Réfrigérer."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Limonade florale ou thé pro"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Limonade florale ou thé pro",
+                  "paragraph": "Même infusion, puis ajout de la levure (US-05) à 20–22°C."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Limonade florale ou thé pro",
+                  "paragraph": "Fermenter en bouteille 2 à 3 jours, puis réfrigérer."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Limonade florale ou thé pro",
+                  "paragraph": "Même infusion, puis ajout de la levure (US-05) à 20–22°C."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Limonade florale ou thé pro",
+                  "paragraph": "Fermenter en bouteille 2 à 3 jours, puis réfrigérer."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Soda à la fraise-citron maison"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Soda à la fraise-citron maison",
+                  "paragraph": "Mélanger les fraises, le jus de citron, l’eau et le sucre."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Soda à la fraise-citron maison",
+                  "paragraph": "Refroidir, ajouter le levain."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Soda à la fraise-citron maison",
+                  "paragraph": "Fermenter 2 à 3 jours en bouteille, puis réfrigérer."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Soda à la fraise-citron maison",
+                  "paragraph": "Mélanger les fraises, le jus de citron, l’eau et le sucre."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Soda à la fraise-citron maison",
+                  "paragraph": "Refroidir, ajouter le levain."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Soda à la fraise-citron maison",
+                  "paragraph": "Fermenter 2 à 3 jours en bouteille, puis réfrigérer."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Soda à la fraise-citron pro"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Soda à la fraise-citron pro",
+                  "paragraph": "Même mélange, refroidi, ajouter levure US-05."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Soda à la fraise-citron pro",
+                  "paragraph": "Fermenter 2 à 3 jours, réfrigérer."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Soda à la fraise-citron pro",
+                  "paragraph": "Même mélange, refroidi, ajouter levure US-05."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Soda à la fraise-citron pro",
+                  "paragraph": "Fermenter 2 à 3 jours, réfrigérer."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Soda aux bleuets maison"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": []
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Soda aux bleuets pro"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": []
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Cidre doux maison"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Cidre doux maison",
+                  "paragraph": "Laisser fermenter le jus cru 5 à 10 jours à température ambiante."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Cidre doux maison",
+                  "paragraph": "Réfrigérer une fois le goût et la pétillance désirés atteints."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Cidre doux pro"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Cidre doux pro",
+                  "paragraph": "Ajouter levure au jus pasteurisé à 20–22°C."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Cidre doux pro",
+                  "paragraph": "Fermenter 2 à 5 jours, réfrigérer."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Soda à la cerise maison"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Soda à la cerise maison",
+                  "paragraph": "Mélanger les cerises, l'eau et le sucre."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Soda à la cerise maison",
+                  "paragraph": "Ajouter le levain de cerise, fermenter 2 à 3 jours, réfrigérer."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Soda à la cerise pro"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Soda à la cerise pro",
+                  "paragraph": "Même mélange, refroidi, ajouter levure US-05."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Soda à la cerise pro",
+                  "paragraph": "Fermenter 2 à 3 jours, réfrigérer."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Soda aux bleuets et basilic maison"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Soda aux bleuets et basilic maison",
+                  "paragraph": "Mélanger les bleuets, l'eau, le sucre et les feuilles de basilic."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Soda aux bleuets et basilic maison",
+                  "paragraph": "Ajouter le levain de bleuet, fermenter 2 à 3 jours, réfrigérer."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Soda aux bleuets et basilic pro"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Soda aux bleuets et basilic pro",
+                  "paragraph": "Même mélange, refroidi, ajouter levure US-05."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Soda aux bleuets et basilic pro",
+                  "paragraph": "Fermenter 2 à 3 jours, réfrigérer."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Soda à la rhubarbe et fraise maison"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Soda à la rhubarbe et fraise maison",
+                  "paragraph": "Mélanger rhubarbe, fraises, sucre et levain de rhubarbe."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Soda à la rhubarbe et fraise maison",
+                  "paragraph": "Fermenter 2 à 3 jours, réfrigérer."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Soda à la rhubarbe et fraise pro"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Soda à la rhubarbe et fraise pro",
+                  "paragraph": "Même base, ajouter levure à 20–22°C."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Soda à la rhubarbe et fraise pro",
+                  "paragraph": "Fermenter 2 à 3 jours, réfrigérer."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Limonade à la lavande et miel maison"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Limonade à la lavande et miel maison",
+                  "paragraph": "Infuser lavande, sucre et eau chaude."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Limonade à la lavande et miel maison",
+                  "paragraph": "Ajouter le levain, fermenter 2 à 3 jours, réfrigérer."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Limonade à la lavande et miel pro"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": ""
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Limonade à la lavande et miel pro",
+                  "paragraph": "Même infusion, ajouter levure US-05."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Limonade à la lavande et miel pro",
+                  "paragraph": "Fermenter 2 à 3 jours, réfrigérer."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Soda bleuet maison",
+                  "paragraph": "Écraser les bleuets, mélanger avec l’eau et le sucre."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Soda bleuet maison",
+                  "paragraph": "Ajouter levain, fermenter 2–3 jours, réfrigérer."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": null,
+            "is_ingredient": false
+          },
+          "content_ingredients": [],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Soda bleuet pro",
+                  "paragraph": "Même base, ajouter levure à 20–22°C."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Soda bleuet pro",
+                  "paragraph": "Fermenter 2–3 jours, réfrigérer."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

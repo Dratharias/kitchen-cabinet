@@ -5,7 +5,7 @@ Avant de lancer les tests, générer un token d'authentification :
 ```bash
 TOKEN=$(curl -s -X POST http://127.0.0.1:3001/api/auth/login \
   -H 'Content-Type: application/json' \
-  -d '{"username":"admin","password":"admin123"}' | jq -r '.token')
+  -d '{"username":"dratharias","password":"Ch4ng3m3!"}' | jq -r '.token')
 ```
 
 ---

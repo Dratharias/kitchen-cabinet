@@ -8,11 +8,11 @@ import { PublicationsService } from "@/services/publications";
 import { CardList } from "@/components/ui/molecules/CardList";
 
 const getTypesByCategory = (category: "feeds" | "reviews"): string[] => {
-  if (category === "feeds") {
+  if (category === "reviews") {
     return ["Review", "Article", "Guide"];
   }
-  if (category === "reviews") {
-    return ["Recipe", "Ingredient"];
+  if (category === "feeds") {
+    return ["Recette", "Ingredient"];
   }
   return [];
 };

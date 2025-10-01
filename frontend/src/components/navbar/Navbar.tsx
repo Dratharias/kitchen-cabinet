@@ -41,11 +41,11 @@ const Navbar = () => {
   };
 
   const isActive = (key: string) => {
-    if (key === "reviews")
+    if (key === "feeds")
       return (
-        location.pathname === "/" || location.pathname.startsWith("/reviews")
+        location.pathname === "/" || location.pathname.startsWith("/feeds")
       );
-    if (key === "feeds") return location.pathname.startsWith("/feeds");
+    if (key === "reviews") return location.pathname.startsWith("/reviews");
     return false;
   };
 
