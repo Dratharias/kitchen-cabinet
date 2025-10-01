@@ -6,6 +6,8 @@ dist
 .vinxi
 app.config.timestamp_*.js
 package-lock.json
+__pycache__
+output
 
 # Environment
 .env
