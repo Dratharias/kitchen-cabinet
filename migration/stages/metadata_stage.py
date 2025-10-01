@@ -86,7 +86,7 @@ Format: {{"prep_time": number|null, "servings": number|null}}"""
         return meta
 
     def _normalize_title(self, meta: Dict[str, Any]) -> Dict[str, Any]:
-        prompt = f"Reformule ce titre en version claire et vendeuse: {meta['title']}"
+        prompt = f"Nettoie uniquement la mise en forme de ce titre (supprime markdown, espaces inutiles, parenthèses): {meta['title']}\nRéponds UNIQUEMENT avec le titre nettoyé, sans le reformuler."
         try:
             meta["title"] = self.client.generate(prompt).strip().strip('"')
         except Exception as e:

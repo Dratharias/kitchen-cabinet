@@ -50,7 +50,7 @@ class IngredientsStage:
         mapped = []
         
         for block in raw:
-            prompt = f"Map ce groupe vers le plus proche: {block['group']}\nOptions: {json.dumps(canonical_names, ensure_ascii=False)}\nFormat: {{\"mapped_group\": \"...\"}}"
+            prompt = f"Map ce groupe vers le plus proche, attention aux variantes pro et maison: {block['group']}\nOptions: {json.dumps(canonical_names, ensure_ascii=False)}\nFormat: {{\"mapped_group\": \"...\"}}"
             try:
                 result = self.client.generate_json(prompt)
                 canonical = result.get("mapped_group", block["group"])
