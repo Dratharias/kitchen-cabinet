@@ -17,39 +17,39 @@ class RecipePipeline:
         self.model = model
 
     def process(self, md_text: str) -> Dict[str, Any]:
-        # Stage 1: Extract and enrich metadata
+        # Stage 1: metadata
         metadata_stage = MetadataStage(self.model)
         metadata = metadata_stage.process(md_text)
         self._write_json("01_metadata.json", metadata)
 
-        # Stage 2: Extract and classify groups
+        # Stage 2: groups
         groups_stage = GroupsStage(self.model)
         groups = groups_stage.process(md_text, metadata["title"])
         self._write_json("01_groups.json", groups)
 
-        # Stage 3: Extract and map ingredients
+        # Stage 3.x: ingredients
         ingredients_stage = IngredientsStage(self.model)
         ingredients = ingredients_stage.process(md_text, groups)
-        self._write_json("01_ingredients.json", ingredients["raw"])
-        self._write_json("02_ingredients.json", ingredients["mapped"])
-        self._write_json("03_ingredients.json", ingredients["enriched"])
+        self._write_json("01_ingredients.json", ingredients["raw"])        # raw
+        self._write_json("02_ingredients.json", ingredients["mapped"])     # mapped
+        self._write_json("03_ingredients.json", ingredients["enriched"])   # enriched
+        self._write_json("04_ingredients.json", ingredients["classified"]) # classified with flags
 
-        # Stage 4: Extract and map steps
+        # Stage 4: steps
         steps_stage = StepsStage(self.model)
         steps = steps_stage.process(md_text, groups)
-        self._write_json("01_steps.json", steps["raw"])
-        self._write_json("02_steps.json", steps["mapped"])
+        self._write_json("01_steps.json", steps["raw"])        
+        self._write_json("02_steps.json", steps["mapped"])     
 
-        # Stage 5: Build final payload
+        # Stage 5: payload from classified ingredients
         payload_stage = PayloadStage()
-        payload = payload_stage.build(metadata, groups, ingredients["enriched"], steps["mapped"])
+        payload = payload_stage.build(metadata, groups, ingredients["classified"], steps["mapped"]) 
         self._write_json("final_payload.json", payload)
 
-        # Stage 6: Export migrated/<slug>.json
+        # Stage 6: export
         slug = self._slugify(metadata.get("title", "untitled"))
         exporter = PayloadExporter("migrated")
         exporter.export(payload, slug)
-
         return payload
 
     def _write_json(self, filename: str, data: Any) -> None:
