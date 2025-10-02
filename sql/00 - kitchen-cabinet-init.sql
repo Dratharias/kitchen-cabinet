@@ -139,6 +139,7 @@ CREATE TABLE ingredient (
     quantity      DECIMAL(10,2),
     product_id    UUID NOT NULL,
     title         TEXT,
+    cut           TEXT,
     multiply_factor DECIMAL(10,2) DEFAULT 1.00,
     FOREIGN KEY (product_id)   REFERENCES product(product_id) ON DELETE CASCADE,
 );

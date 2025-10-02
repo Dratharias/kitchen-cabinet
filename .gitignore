@@ -9,7 +9,8 @@ package-lock.json
 __pycache__
 output
 migrated
-
+.venv
+venv
 # Environment
 .env
 .env*.local

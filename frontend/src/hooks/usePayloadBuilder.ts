@@ -19,6 +19,8 @@ export interface FormContent {
     product_name: string;
     product_en_name: string;
     unit: string;
+    cut?: string;
+    title?: string;
     isNewProduct: boolean;
     publication_id?: string;
     isNewUnit: boolean;
@@ -177,6 +179,8 @@ export function usePayloadBuilder() {
                   data: {
                     quantity: i.quantity,
                     multiply_factor: i.multiply_factor,
+                    cut: i.cut,
+                    title: i.title,
                   },
                   product,
                   ingredient_units: units,

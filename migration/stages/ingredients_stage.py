@@ -13,6 +13,39 @@ STOPWORDS_FR = {
     "maison","pro"
 }
 
+UNIT_WORDS = {
+    "gousse", "paquet", "sachet", "pincée", "tranche", "feuille", "botte",
+    "cuil.", "cuil", "cuil. à soupe", "cuil. à thé",
+    "cuillère", "cuillère à soupe", "cuillère à thé",
+    "tbsp", "tbs", "tablespoon", "tsp", "teaspoon",
+    "tasse", "cup", "cups",
+    "litre", "litres", "l", "ml",
+    "g", "gramme", "grammes", "kg", "kilogramme", "kilogrammes",
+    "oz", "ounce", "ounces", "lb", "lbs", "pound", "pounds"
+}
+
+CUT_WORDS = {
+    "haché", "hache",
+    "émincé", "emince",
+    "ciselé", "cisele",
+    "concassé", "concasse",
+    "râpé", "rape",
+    "coupé", "coupe",
+    "tranché", "tranche",
+    "effiloché", "effiloche",
+    "découpé", "decoupe",
+    "taillé", "taille",
+    "en dés", "dés",
+    "en rondelles", "rondelles",
+    "julienne",
+    "lamelles",
+    "brunoise",
+    "écrasé", "ecrase",
+    "pressé", "presse",
+    "séché", "seche",
+    "grillé", "grille"
+}
+
 def strip_accents(text: str) -> str:
     if not text:
         return text
@@ -22,6 +55,7 @@ def strip_accents(text: str) -> str:
 def clean_product(product: str) -> str:
     product = product.strip()
     product = re.sub(r"^\d+[.,]?\d*\s*\w*\s+", "", product)
+    product = re.sub(r"\([^)]*\)", "", product)  # retirer parenthèses
     product = strip_accents(product)
     return product.strip()
 
@@ -44,26 +78,17 @@ def _tokens(text: str) -> list[str]:
     return toks
 
 def _product_group_match(group_name: str, product: str) -> bool:
-    """Match strict proposé:
-    - Tokenise et retire stopwords.
-    - Ne garde que les tokens de longueur >= 3.
-    - Chaque token du groupe doit trouver dans le produit un token à distance d'édition <= 1.
-    """
     if not group_name or not product:
         return False
 
     def lev_dist_leq1(a: str, b: str) -> bool:
-        # optimisation pour seuil 1
         if a == b:
             return True
         if abs(len(a) - len(b)) > 1:
             return False
-        # substitution
         if len(a) == len(b):
             diff = sum(1 for x, y in zip(a, b) if x != y)
             return diff <= 1
-        # insertion/suppression
-        # garantir a la plus longue
         if len(a) < len(b):
             a, b = b, a
         i = j = diff = 0
@@ -74,22 +99,18 @@ def _product_group_match(group_name: str, product: str) -> bool:
                 diff += 1
                 if diff > 1:
                     return False
-                i += 1  # sauter un char dans la plus longue
-        # si il reste un char en plus
+                i += 1
         diff += (len(a) - i)
         return diff <= 1
 
     gt_all = _tokens(group_name)
     pt_all = _tokens(product)
-
-    # garder tokens pertinents
     gt = [t for t in gt_all if len(t) >= 3]
     pt = [t for t in pt_all if len(t) >= 3]
 
     if not gt or not pt:
         return False
 
-    # chaque token du groupe doit être couvert par un token produit avec dist <=1
     for g in gt:
         matched = False
         for p in pt:
@@ -99,25 +120,6 @@ def _product_group_match(group_name: str, product: str) -> bool:
         if not matched:
             return False
     return True
-    gnorm = _norm(group_name)
-    pnorm = _norm(product)
-    if difflib.SequenceMatcher(None, gnorm, pnorm).ratio() >= 0.72:
-        return True
-    gt = set(_tokens(group_name))
-    pt = set(_tokens(product))
-    if not gt or not pt:
-        return False
-    inter = gt & pt
-    union = gt | pt
-    # garde-fou: éviter faux positifs si un seul mot commun pour un groupe multi-mots
-    if len(inter) == 1 and len(gt) > 2:
-        return False
-    jaccard = len(inter) / len(union)
-    if jaccard >= 0.45:
-        return True
-    if len(inter) >= max(1, int(0.6 * len(gt))):
-        return True
-    return False
 
 class IngredientsStage:
     def __init__(self, model: str = "mistral-nemo:12b"):
@@ -150,7 +152,8 @@ class IngredientsStage:
             else:
                 if current is None:
                     current = {"group": default_group, "ingredients": []}
-                current["ingredients"].append(item)
+                s = re.sub(r"\([^)]*\)", "", s).strip()  # retirer contenu entre parenthèses
+                current["ingredients"].append(s)
         if current:
             raw_blocks.append(current)
         return raw_blocks
@@ -168,13 +171,14 @@ class IngredientsStage:
         for block in mapped:
             out_block = {"group": block["group"], "ingredients": []}
             for ing_str in block["ingredients"]:
+                ing_str = re.sub(r"\([^)]*\)", "", ing_str).strip()
                 unit = self._extract_unit(ing_str)
                 qty = self._extract_quantity(ing_str)
-                product = self._extract_product(ing_str)
+                product_info = self._extract_product(ing_str, unit)
                 out_block["ingredients"].append({
                     "quantity": qty,
                     "unit": unit,
-                    "product": product,
+                    "product": product_info,
                 })
             enriched.append(out_block)
         return enriched
@@ -182,7 +186,7 @@ class IngredientsStage:
     def _classify_ingredient_groups(self, enriched: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         per_group_products: List[List[str]] = []
         for block in enriched:
-            prods = [str(ing.get("product") or "") for ing in block.get("ingredients", [])]
+            prods = [str(ing.get("product", {}).get("name") or "") for ing in block.get("ingredients", [])]
             per_group_products.append([p for p in prods if p.strip()])
         classified: List[Dict[str, Any]] = []
         for i, block in enumerate(enriched):
@@ -199,11 +203,12 @@ class IngredientsStage:
         return classified
 
     def _extract_unit(self, ing_str: str) -> str:
+        s = re.sub(r"\([^)]*\)", "", ing_str).strip()
         prompt = f"""
 Extrait uniquement l'unité de mesure SI ou culinaire de la ligne suivante.
 Si aucune unité standard n’est trouvée, retourne null.
 
-Ligne: "{ing_str}"
+Ligne: "{s}"
 
 Réponds uniquement en JSON: {{ "unit": "..." }} ou {{ "unit": null }}
 """
@@ -214,13 +219,14 @@ Réponds uniquement en JSON: {{ "unit": "..." }} ou {{ "unit": null }}
             return ""
 
     def _extract_quantity(self, ing_str: str) -> float | None:
+        s = re.sub(r"\([^)]*\)", "", ing_str).strip()
         prompt = f"""
 Extrait uniquement la quantité minimale de la ligne suivante.
 - Si c'est une fraction (ex: 1/8), calcule la valeur décimale.
 - Si c'est une plage (10-15 ou 80 à 100), prends la valeur min.
 - Si aucune quantité n’est trouvée, retourne null.
 
-Ligne: "{ing_str}"
+Ligne: "{s}"
 
 Réponds uniquement en JSON: {{ "quantity": nombre|null }}
 """
@@ -230,26 +236,35 @@ Réponds uniquement en JSON: {{ "quantity": nombre|null }}
         except Exception:
             return None
 
-    def _extract_product(self, ing_str: str) -> str:
+    def _extract_product(self, ing_str: str, unit: str = "") -> Dict[str, Any]:
         s = strip_accents(str(ing_str)).replace("\u00a0", " ").strip()
+        s = re.sub(r"\([^)]*\)", "", s).strip()
         prompt = f"""
-Extrait uniquement le produit alimentaire et ses qualificatifs de la ligne suivante.
-- Ne répète pas la quantité ni l’unité dans le champ "product".
-- Garde les mots comme "fruit", "tranche", "gousse" dans le produit.
-- Retire seulement les préfixes "de", "d'", "du", "des", et "au gout".
-- Garde les adjectifs (presse, rape, seche, filtre).
-- Ne retourne que le produit, pas la quantité ni l’unité.
+Analyse cette ligne d'ingrédient et sépare le produit et la coupe éventuelle.
+- Le champ name contient l'aliment de base (ail, carotte, oignon, etc.).
+- Le champ cut contient la préparation: {', '.join(sorted(CUT_WORDS))}.
+- Retire toute unité comme gousse, paquet, sachet, etc. du champ name.
+- Si aucune coupe n'est trouvée, cut = null.
 
 Ligne: "{s}"
 
-Réponds uniquement en JSON: {{ "product": "..." }}
+Réponds uniquement en JSON: {{ "name": "...", "cut": "..."|null }}
 """
         try:
             result = self.client.generate_json(prompt)
-            product = result.get("product", "")
+            name = clean_product(result.get("name", ""))
+            cut = result.get("cut")
         except Exception:
-            product = s
-        return clean_product(product)
+            name = clean_product(s)
+            cut = None
+
+        if unit and unit in name.lower():
+            parts = [w for w in name.split() if w.lower() != unit.lower()]
+            name = " ".join(parts)
+        if any(u in name.lower() for u in UNIT_WORDS):
+            for u in UNIT_WORDS:
+                name = re.sub(rf"\\b{u}\\b", "", name, flags=re.I).strip()
+        return {"name": name, "cut": cut}
 
     def _read_metadata_array(self, md_text: str, key: str) -> List[str]:
         lines = md_text.splitlines()
@@ -259,19 +274,21 @@ Réponds uniquement en JSON: {{ "product": "..." }}
             low = line.strip().lower()
             if not capture and low.startswith(f"{key}:"):
                 capture = True
-                buf.append(line.split(':', 1)[1])
+                buf.append(line.split(":", 1)[1])
                 continue
             if capture:
+                if low.startswith("steps:"):
+                    break
                 buf.append(line)
-                raw = " ".join(buf)
-                if '[' in raw and ']' in raw:
+                if "]" in line:
                     break
         raw = " ".join(buf)
-        if '[' not in raw or ']' not in raw:
+        if "[" not in raw or "]" not in raw:
             return []
-        inner = raw.split('[', 1)[1].rsplit(']', 1)[0]
+        inner = raw.split("[", 1)[1].rsplit("]", 1)[0]
         try:
-            arr = json.loads('[' + inner + ']')
-            return [str(v) for v in arr]
+            arr = json.loads("[" + inner + "]")
+            return [re.sub(r"\([^)]*\)", "", str(v)).strip() for v in arr]
         except Exception:
-            return re.findall(r'"([^"\\]*(?:\\.[^"\\]*)*)"', inner)
+            matches = re.findall(r'"([^"\\]*(?:\\.[^"\\]*)*)"', inner)
+            return [re.sub(r"\([^)]*\)", "", m).strip() for m in matches]

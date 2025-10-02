@@ -9,9 +9,9 @@ class PayloadStage:
         ingredients: List[Dict[str, Any]],
         steps: List[Dict[str, Any]]
     ) -> Dict[str, Any]:
-        
+
         payload = {"action": "create", "payload": {}}
-        
+
         publication = {
             "title": metadata.get("title", "Untitled"),
             "description": metadata.get("description", []),
@@ -25,33 +25,38 @@ class PayloadStage:
             "tags": [{"data": {"str_value": t, "type": "Tag"}} for t in metadata.get("tags", [])],
             "contents": []
         }
-        
+
         ing_by_group = {b["group"]: b for b in ingredients}
         steps_by_group = {b["group"]: b for b in steps}
-        
+
         for group in groups:
             gname = group["group"]
             ing_block = ing_by_group.get(gname, {})
             steps_block = steps_by_group.get(gname, {})
-            
+
             content_ingredients = []
             for ing in ing_block.get("ingredients", []):
-                if not ing.get("product"):
-                    continue
+                prod = ing.get("product") or {}
+                prod_name = prod["name"] if isinstance(prod, dict) else str(prod)
+                prod_cut = prod.get("cut") if isinstance(prod, dict) else None
 
                 units = []
                 if ing.get("unit"):
                     units.append({"unit": {"data": {"name": ing.get("unit", "")}}})
-                
+
+                data_block = {
+                    "quantity": ing.get("quantity"),
+                    "multiply_factor": 1
+                }
+                if prod_cut:
+                    data_block["cut"] = prod_cut
+
                 content_ingredients.append({
-                    "data": {
-                        "quantity": ing.get("quantity"),
-                        "multiply_factor": 1
-                    },
-                    "product": {"data": {"name": ing.get("product", "")}},
+                    "data": data_block,
+                    "product": {"data": {"name": prod_name}},
                     "ingredient_units": units
                 })
-            
+
             content_segments = []
             for pos, step in enumerate(steps_block.get("steps", []), 1):
                 content_segments.append({
@@ -62,20 +67,20 @@ class PayloadStage:
                         }
                     }
                 })
-            
+
             if not content_ingredients and not content_segments:
                 continue
-            
+
             publication["contents"].append({
                 "data": {
                     "total_prep_time": metadata.get("prep_time", 0) or 0,
                     "servings": metadata.get("servings"),
-                    "subtitle": gname,  # <-- subtitle = group name
+                    "subtitle": gname,
                     "is_ingredient": ing_block.get("is_ingredient", False)
                 },
                 "content_ingredients": content_ingredients,
                 "content_segments": content_segments
             })
-        
+
         payload["payload"]["1"] = publication
         return payload
