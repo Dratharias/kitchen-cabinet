@@ -1,0 +1,270 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Sauce De Badigeonnage De Base",
+      "description": [
+        "Temps: 5 min",
+        "Rendement: 2 tasses"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/0f7HzTZ/Sauce-De-Badigeonnage-De-Base.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "sauce barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "badigeonnage",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Sauce De Badigeonnage De Base",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "title": "Sauce De Badigeonnage De Base"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Sauce De Badigeonnage De Base"
+              },
+              "product": {
+                "data": {
+                  "name": "bouillon de bêuf ou de poulet"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Sauce De Badigeonnage De Base"
+              },
+              "product": {
+                "data": {
+                  "name": "Worcestershire"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Sauce De Badigeonnage De Base"
+              },
+              "product": {
+                "data": {
+                  "name": "whisky"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Sauce De Badigeonnage De Base"
+              },
+              "product": {
+                "data": {
+                  "name": "soja"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Sauce De Badigeonnage De Base"
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Arômes Optionnels"
+              },
+              "product": {
+                "data": {
+                  "name": "jus de pomme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Arômes Optionnels"
+              },
+              "product": {
+                "data": {
+                  "name": "tomate"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Arômes Optionnels"
+              },
+              "product": {
+                "data": {
+                  "name": "cafe"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Arômes Optionnels"
+              },
+              "product": {
+                "data": {
+                  "name": "gros"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Sauce De Badigeonnage De Base",
+                  "paragraph": "Faites fondre le beurre dans une casserole à feu moyen. Ajoutez le bouillon, la sauce Worcestershire, le whisky, la sauce soja, le poivre et l'un des arômes optionnels, et fouettez pour mélanger. Laissez mijoter les ingrédients pour mélanger les saveurs pendant 5 minutes. Ajoutez du sel si nécessaire."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Sauce De Badigeonnage De Base",
+                  "paragraph": "Appliquez la sauce de badigeonnage pendant le fumage avec un balai de barbecue, un pinceau à badigeonner ou un vaporisateur. Commencez à l'appliquer après la première heure de fumage pour que l'extérieur de la viande soit partiellement cuit. Cela évite de contaminer la sauce de badigeonnage avec des jus de viande crue. Une fois la viande cuite, faites bouillir la sauce de badigeonnage restante pendant 3 minutes pour la stériliser, puis conservez-la dans un bocal couvert au réfrigérateur. Elle se conservera pendant au moins 3 jours. Réchauffez-la avant de la réutiliser."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,351 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Mousse au chocolat à la menthe et terre au chocolat",
+      "description": [
+        "Temps: 10 min",
+        "Portions: 6"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/y0pDV8k/Mousse-au-chocolat-la-menthe-et-terre-au-chocolat.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Mousse Au Chocolat À La Menthe Et",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Mousse"
+              },
+              "product": {
+                "data": {
+                  "name": "tofu"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Mousse"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Mousse"
+              },
+              "product": {
+                "data": {
+                  "name": "vanille"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Mousse"
+              },
+              "product": {
+                "data": {
+                  "name": "sirop d'erable"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Mousse"
+              },
+              "product": {
+                "data": {
+                  "name": "menthe verte"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "title": "Mousse"
+              },
+              "product": {
+                "data": {
+                  "name": "cacao"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1,
+                "title": "Mousse"
+              },
+              "product": {
+                "data": {
+                  "name": "chocolat noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Crumble Sol"
+              },
+              "product": {
+                "data": {
+                  "name": "vos biscuits/chocolats vegetaliens preferes"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "decortiquées",
+                "title": "Crumble Sol"
+              },
+              "product": {
+                "data": {
+                  "name": "pistaches"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "title": "Crumble Sol"
+              },
+              "product": {
+                "data": {
+                  "name": "cacao"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Crumble Sol"
+              },
+              "product": {
+                "data": {
+                  "name": "pincee"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "title": "Crumble Sol"
+              },
+              "product": {
+                "data": {
+                  "name": "feves de cacao"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "chocolat noir"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "Menthe"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "cerises"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Mousse Au Chocolat À La Menthe Et",
+                  "paragraph": "Pour la mousse, ajoutez tous les ingrédients sauf le chocolat fondu dans votre mixeur et mixez jusqu'à consistance lisse. Mettez le mixeur à basse vitesse puis versez lentement le chocolat fondu."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Mousse Au Chocolat À La Menthe Et",
+                  "paragraph": "Une fois lisse et crémeuse, transférez la mousse dans un bol et placez-la au réfrigérateur pendant quelques minutes pour qu'elle prenne."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Mousse Au Chocolat À La Menthe Et",
+                  "paragraph": "Pendant ce temps, nettoyez votre mixeur, ajoutez les ingrédients du crumble et mixez en miettes."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Mousse Au Chocolat À La Menthe Et",
+                  "paragraph": "Servir la mousse garnie de compote de cerises ou de baies fraîches de votre choix, du crumble au chocolat et d'un brin de menthe."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

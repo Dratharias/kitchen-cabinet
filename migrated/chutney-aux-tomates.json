@@ -1,0 +1,259 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Chutney Aux Tomates",
+      "description": [
+        "Temps: 10 min",
+        "Rendement: 1 1/2 tasses, pour 4 à 6 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/1G4gzZn/Chutney-Aux-Tomates.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "chutney",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "tomates",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "Inde",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Chutney Aux Tomates",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "oignon rouge"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "glacee"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "tomate"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "gros sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "jus de citron"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "feuilles de coriandre fraiche"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Coupez finement l'oignon et placez-le dans un bol avec de l'eau glacée pour couvrir. Laissez tremper pendant 1 heure, en changeant l'eau 2 ou 3 fois. Égouttez les oignons dans une passoire et pressez-les doucement pour les sécher avec vos doigts."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Pendant ce temps, préparez un gril pour la cuisson directe et préchauffez à feu vif. Pour de meilleurs résultats, faites un feu de bois. Brossez et huilez la grille du gril."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Grillez les tomates jusqu'à ce qu'elles soient carbonisées de tous les côtés, environ 2 minutes par côté (6 à 8 minutes en tout). Transférez-les sur une assiette pour refroidir. Grattez les peaux brûlées (vous n'avez pas besoin d'enlever chaque dernier morceau; quelques morceaux noirs ajoutent du caractère). Hachez finement les tomates."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez l'ail, le gingembre, le sel et le sucre dans un bol et écrasez en une pâte avec le dos d'une cuillère. Placez ce mélange dans une casserole non réactive et incorporez les tomates et le jus de citron. Faites cuire, à découvert, à feu moyen jusqu'à ce que le mélange soit épais et parfumé, environ 4 minutes. Ajoutez la coriandre et faites cuire pendant 1 minute de plus. Retirez la casserole du feu et incorporez les oignons. Rectifiez l'assaisonnement en ajoutant du sel ou du poivre. Laissez refroidir complètement, puis transférez dans des petits bols de service individuels ou dans un grand bocal. Couvrez et réfrigérez. Le chutney se conservera pendant plusieurs jours."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

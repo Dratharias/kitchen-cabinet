@@ -1,0 +1,162 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "5 épices chinois",
+      "description": [
+        "Temps: 5 minutes"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "5 Épices Chinois",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poivre de Sichuan"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "graines de fenouil"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "clou de girofle"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "cannelle"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "anis"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Mélangez toutes les épices dans un bol."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Utilisez un moulin à épices ou un mortier pour moudre les graines de fenouil si elles ne sont pas déjà moulues."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Assurez-vous que le mélange est bien homogène."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Conservez le mélange dans un récipient hermétique à l'abri de la lumière."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

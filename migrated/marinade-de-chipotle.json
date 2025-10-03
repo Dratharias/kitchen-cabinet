@@ -1,0 +1,305 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Marinade de Chipotle",
+      "description": [
+        "Temps: 10 min",
+        "Rendement: 2 tasses (suffisant pour mariner 2 à 3 livres de viande ou fruits de mer)"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "marinade chipotle",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "porc",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue mexicain",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "adobo",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Marinade De Chipotle",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "grains de poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "tomate"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "mûres"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "coupe en deux"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.333,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "jus d'orange"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "piment chipotle"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "jus de piment chipotle"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "the"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "gros sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Chauffez une poêle sèche à feu moyen. Ajoutez le cumin et les grains de poivre et faites-les griller jusqu'à ce qu'ils soient parfumés, environ 2 minutes. Transférez les épices dans un mixeur ou un moulin à épices et broyez-les en une fine poudre. Laissez les épices dans le mixeur."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez les tomates, l'ail et l'oignon dans la poêle et faites cuire jusqu'à ce qu'ils soient bien dorés de tous les côtés. Hachez grossièrement les légumes et transférez-les dans le mixeur avec les épices."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajoutez le jus de lime et d'orange, le vinaigre, les piments chipotle et leur jus, l'origan et le sel. Mixez par impulsions pour réduire les ingrédients en une purée épaisse. Transférez dans un grand bocal, couvrez et réfrigérez. Utilisez dans les quelques heures suivant la préparation."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

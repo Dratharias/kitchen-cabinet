@@ -1,0 +1,360 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Crevettes Koliwada",
+      "description": [
+        "Temps:",
+        "Crevettes frites et marinées",
+        "Rendement:4 personnes comme entrée ou collation"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/ZSkNRph/Prawn-koliwada.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Crevettes Koliwada",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1,
+                "title": "Crevettes Koliwada"
+              },
+              "product": {
+                "data": {
+                  "name": "farine de riz"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1,
+                "title": "Crevettes Koliwada"
+              },
+              "product": {
+                "data": {
+                  "name": "farine de pois chiches"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2.5,
+                "multiply_factor": 1,
+                "title": "Crevettes Koliwada"
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de piment deggi mirch"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Crevettes Koliwada"
+              },
+              "product": {
+                "data": {
+                  "name": "garam masala"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1,
+                "title": "Crevettes Koliwada"
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.6667,
+                "multiply_factor": 1,
+                "title": "Crevettes Koliwada"
+              },
+              "product": {
+                "data": {
+                  "name": "curcuma"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.6667,
+                "multiply_factor": 1,
+                "title": "Crevettes Koliwada"
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Crevettes Koliwada"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Crevettes Koliwada"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "très finement hachées",
+                "title": "Crevettes Koliwada"
+              },
+              "product": {
+                "data": {
+                  "name": "feuilles de curry"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 40,
+                "multiply_factor": 1,
+                "title": "Crevettes Koliwada"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 300,
+                "multiply_factor": 1,
+                "title": "Crevettes Koliwada"
+              },
+              "product": {
+                "data": {
+                  "name": "crevette"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Crevettes Koliwada"
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "À Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "À Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "tamarin"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Crevettes Koliwada",
+                  "paragraph": "Mélanger les farines, les épices et le sel dans un bol."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Crevettes Koliwada",
+                  "paragraph": "Ajouter les pâtes de gingembre et d'ail, les feuilles de curry hachées et le jus de lime, puis mélanger jusqu'à obtenir une pâte lisse et épaisse."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Crevettes Koliwada",
+                  "paragraph": "Éponger les crevettes aussi bien que possible à l'aide de papier absorbant. Étaler la pâte d'épices sur les crevettes et masser pour s'assurer qu'elles sont uniformément enrobées. Couvrir et laisser mariner au réfrigérateur pendant 6 à 24 heures."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Crevettes Koliwada",
+                  "paragraph": "Chauffer l'huile dans une friteuse ou une poêle à fond épais adaptée à la friture à 180°C (350°F). Frire les crevettes, en plusieurs lots si nécessaire, pendant 2 à 3 minutes, jusqu'à ce qu'elles soient dorées et bien cuites à l'intérieur."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Crevettes Koliwada",
+                  "paragraph": "Servir avec des quartiers de lime à presser et du chutney de tamarin et/ou de coriandre et menthe pour tremper."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

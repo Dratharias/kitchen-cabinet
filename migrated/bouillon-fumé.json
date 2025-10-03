@@ -1,0 +1,286 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Bouillon Fumé",
+      "description": [
+        "Temps: N/A",
+        "Rendement: 2 à 4 litres"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/gMyxjw7/Bouillon-Fum.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "bouillon fumé",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "base de cuisine",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Bouillon Fumé",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Viande"
+              },
+              "product": {
+                "data": {
+                  "name": "carcasse"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Viande"
+              },
+              "product": {
+                "data": {
+                  "name": "Os de bêuf, de vêau ou de porc"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "quarters",
+                "title": "Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pièce"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "morceaux",
+                "title": "Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "carotte"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pouce"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "en morceaux",
+                "title": "Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "cote de celeri"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pouce"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "morceaux",
+                "title": "Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "poireau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pouce"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "écrasé",
+                "title": "Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Herbes Et Épices"
+              },
+              "product": {
+                "data": {
+                  "name": "Feuille de laurier"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Herbes Et Épices"
+              },
+              "product": {
+                "data": {
+                  "name": "thym"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Herbes Et Épices"
+              },
+              "product": {
+                "data": {
+                  "name": "persil"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Herbes Et Épices"
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Herbes Et Épices"
+              },
+              "product": {
+                "data": {
+                  "name": "clou de girofle"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cl"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Bouillon Fumé",
+                  "paragraph": "Placez tous les ingrédients dans une grande marmite et ajoutez de l'eau pour couvrir d'un pouce. Portez le mélange à ébullition à feu moyen-élevé. C'est important pour faire monter les impuretés à la surface. Réduisez immédiatement le feu à un frémissement doux (les bulles doivent à peine casser la surface). Écumez soigneusement et souvent toute mousse ou graisse à la surface du bouillon et jetez-la. Ne laissez pas le bouillon bouillir à nouveau ou il deviendra trouble."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Bouillon Fumé",
+                  "paragraph": "Laissez mijoter le bouillon jusqu'à ce qu'il soit réduit au niveau des os et riche en saveur : 1 heure pour une seule carcasse de poulet, 1 1/2 à 2 heures pour plusieurs oiseaux ou une grande carcasse de dinde. Encore une fois, écumez souvent le bouillon et faites-le cuire à feu doux : c'est le secret d'un bouillon clair et appétissant."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Bouillon Fumé",
+                  "paragraph": "Filtrez le bouillon à travers une passoire fine dans des contenants en plastique (pour un bouillon plus clair, filtrez à travers un filtre à café). Jetez les solides. Laissez refroidir à température ambiante, puis réfrigérez. Le bouillon se conservera au moins 3 jours au réfrigérateur ou 6 mois au congélateur."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

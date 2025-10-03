@@ -1,0 +1,325 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Granola",
+      "description": [
+        "Granola déjeuner ou pour yogourt."
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/Mf4ZG8n/Granola.jpg",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "déjeuner",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "céréales",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "colation",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "prep",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Granola",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Granola"
+              },
+              "product": {
+                "data": {
+                  "name": "avoine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Granola"
+              },
+              "product": {
+                "data": {
+                  "name": "miel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Granola"
+              },
+              "product": {
+                "data": {
+                  "name": "amandes"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Granola"
+              },
+              "product": {
+                "data": {
+                  "name": "noisettes"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Granola"
+              },
+              "product": {
+                "data": {
+                  "name": "sarrasin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Granola"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de citrouilles"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "ecaillees",
+                "title": "Granola"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de tournesol"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "sechee",
+                "title": "Granola"
+              },
+              "product": {
+                "data": {
+                  "name": "canneberge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Miel",
+                  "paragraph": "Préchauffer le four à 400°F."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Miel",
+                  "paragraph": "Mélanger dans un grand bol les ingrédients."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Miel",
+                  "paragraph": "Enfourner sur une plaque de cuisson le mélange et cuire 8 minutes, mélanger."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Miel",
+                  "paragraph": "Réenfourner pour un 4 à 8 minutes supplémentaire, dépendant de la couleur désirée."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Miel",
+                  "paragraph": "Laisser refroidir."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Sirop D Érable",
+                  "paragraph": "Préchauffer le four à 400°F."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Sirop D Érable",
+                  "paragraph": "Mélanger dans un grand bol les ingrédients."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Sirop D Érable",
+                  "paragraph": "Enfourner sur une plaque de cuisson le mélange et cuire 10 minutes, mélanger."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Sirop D Érable",
+                  "paragraph": "Réenfourner pour un 10 minutes supplémentaire."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Sirop D Érable",
+                  "paragraph": "Laisser refroidir."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Rub Pastrami",
+      "description": [
+        "Temps: 10 min",
+        "Rendement: 1 1/4 tasses"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Rub Pastrami",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "graines de coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poivre blanc"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "graines de moutarde jaune"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "gros sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "cassonade"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "paprika"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Écrasez grossièrement les graines de coriandre et les grains de poivre noir et blanc dans un mortier avec un pilon ou dans un moulin à épices ou dans un sac en plastique à l'aide d'un maillet lourd. L'idée est de les concasser plutôt que de les pulvériser."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez-les dans un bol et ajoutez l'ail, les graines de moutarde, le sel, le sucre et le paprika. Utilisez vos doigts pour bien mélanger."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Transférez dans un bocal, couvrez et réfrigérez. Le rub se conservera au moins une semaine."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,268 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Puri Daal Peethi",
+      "description": [
+        "Temps: 2h30",
+        "Rendement: 8 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "dishoom",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "daal peethi",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "puri",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "cuisine indienne",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "friture",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "pain indien",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Puri Daal Peethi",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 60,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "urad daal"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "graines de fenouil"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de piment deggi mirch"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "garam masala"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.6667,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "asafoetida"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "bicarbonate de soude"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Huile vegetale"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Pendant que la pâte à puri repose, préparez la daal peethi. Égouttez la daal trempée. Utilisez un mortier et un pilon pour moudre les graines de fenouil en une poudre grossière. Mélangez la daal avec le fenouil moulu et tous les autres ingrédients."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Mixez la préparation avec un mini robot culinaire ou un mixeur plongeant pour obtenir une pâte grossière; ne la rendez pas trop lisse. Pesez la daal peethi en morceaux de 16 g, puis façonnez-les en boules dans la paume de votre main."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Avec des mains huilées, prenez 50 g de pâte à puri et roulez-la en boule (photo 1). Aplatissez-la en un disque dans la paume de votre main (photo 2) et placez une boule de farce au centre (photo 3). Ramenez les bords de la pâte (photo 4) et pincez-les pour sceller (photo 5). Travaillez la pâte en boule, en lissant la partie scellée du mieux que vous pouvez. Placez la boule sur une surface huilée, partie scellée vers le bas, et aplatissez légèrement en un disque (photo 6). Assurez-vous que la surface est enduite d'huile. Répétez avec le reste de la pâte."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Avec un rouleau à pâtisserie huilé, étalez un disque de pâte en une rondelle de 2-3 mm d'épaisseur (photos 7 et 8). Mettez de côté sur une surface huilée pendant que vous roulez le reste. Les pains roulés et huilés peuvent être empilés les uns sur les autres, intercalés avec du papier parchemin huilé, et conservés au réfrigérateur pendant 3-4 heures si vous souhaitez les préparer à l'avance."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Faites chauffer l'huile dans une friteuse ou une autre casserole profonde et lourde à 180°F. Pour tester la température de l'huile, déposez un petit morceau de pâte; il doit immédiatement commencer à bouillonner."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Pour frire les pains, glissez-en un soigneusement dans l'huile. Lorsqu'il remonte à la surface, poussez-le légèrement sous l'huile avec une série de petites tapes douces. Il devrait se gonfler comme un coussin. Laissez-le frire pendant 20 secondes une fois gonflé, puis retournez-le et faites cuire pendant encore 20-30 secondes. Le pain doit être d'un joli brun clair partout et garder sa forme croustillante. Retirez et égouttez sur du papier absorbant pendant que vous faites frire le reste. Servez chaud."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

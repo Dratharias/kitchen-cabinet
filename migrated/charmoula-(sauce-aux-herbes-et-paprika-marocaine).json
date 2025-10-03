@@ -1,0 +1,315 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Charmoula (Sauce aux Herbes et Paprika Marocaine)",
+      "description": [
+        "Temps : 10 min",
+        "Rendement : 250 ml (1 tasse)"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/9YxCxjW/Charmoula-Sauce-aux-Herbes-et-Paprika-Marocaine.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "marocain",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sauce",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "épicée",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "herbes",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "paprika",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Charmoula Sauce Aux Herbes Et Paprika Marocaine",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 125,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "persil"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 125,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "feuilles de coriandre fraiche"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel de mer"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "paprika"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "flocons de piment rouge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 60,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 180,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive extra vierge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 45,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Combiner le persil, la coriandre et l'ail dans un robot culinaire et hacher finement."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajouter le sel, le paprika, le poivre, le cumin, les flocons de piment rouge, le jus de citron, l'huile et l'eau, et réduire en purée grossière en utilisant des pulsations courtes. Rectifier l'assaisonnement, en ajoutant du sel et/ou du jus de citron; la charmoula doit être bien assaisonnée."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Comme la plupart des sauces faites avec des herbes fraîches, la charmoula est meilleure lorsqu'elle est servie dans les quelques heures suivant sa préparation."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

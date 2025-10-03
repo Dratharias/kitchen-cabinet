@@ -1,0 +1,276 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Mojo",
+      "description": [
+        "Temps: 15 min",
+        "Rendement: 375 ml (1 1/2 tasses)"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/J28wrm5/Mojo.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sauce",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "cubain",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "agrumes",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "ail",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Mojo",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Mojo"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Mojo"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.6667,
+                "multiply_factor": 1,
+                "title": "Mojo"
+              },
+              "product": {
+                "data": {
+                  "name": "orange"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.3333,
+                "multiply_factor": 1,
+                "title": "Mojo"
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Mojo"
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Mojo"
+              },
+              "product": {
+                "data": {
+                  "name": "origan"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Mojo"
+              },
+              "product": {
+                "data": {
+                  "name": "sel gros"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Mojo"
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Mojo"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre fraiche"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Variation"
+              },
+              "product": {
+                "data": {
+                  "name": "Mojo Pamplemousse-Menthe : Remplacez le jus d'orange amer par du jus de pamplemousse frais et la coriandre par de la menthe fraiche hachee."
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Mojo",
+                  "paragraph": "Faites chauffer l'huile d'olive dans une casserole profonde à feu moyen. Ajoutez l'ail et faites cuire jusqu'à ce qu'il soit parfumé et doré pâle, 2 à 3 minutes. Ne laissez pas l'ail brûler. Ajoutez le jus d'orange amer, l'eau, le cumin, l'origan, le sel et le poivre. Reculez : la sauce peut éclabousser. Portez la sauce à ébullition, puis retirez-la du feu et laissez refroidir à température ambiante. Ajoutez la coriandre. Corrigez l'assaisonnement en ajoutant du sel et du poivre au goût."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Mojo",
+                  "paragraph": "Pour savourer ce mojo au mieux, servez-le dans les heures qui suivent sa préparation."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

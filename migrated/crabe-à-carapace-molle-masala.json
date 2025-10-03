@@ -1,0 +1,578 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Crabe à carapace molle masala",
+      "description": [
+        "Temps:",
+        "Rendement: 4 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/bXGBydh/Crabe-carapace-molle-masala.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Crabe À Carapace Molle Masala",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1,
+                "title": "Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin de mer"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "curcuma"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1,
+                "title": "Crabe Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "crabe"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 170,
+                "multiply_factor": 1,
+                "title": "Crabe Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 500,
+                "multiply_factor": 1,
+                "cut": "finement coupé",
+                "title": "Crabe Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 12,
+                "multiply_factor": 1,
+                "title": "Crabe Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "feuille"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 25,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Crabe Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 25,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Crabe Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Crabe Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de piment"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Crabe Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Crabe Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "curcuma"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Crabe Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin de mer"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 250,
+                "multiply_factor": 1,
+                "cut": "d├ęs",
+                "title": "Crabe Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "tomates"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Crabe Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "Huile vegetale"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "laniere",
+                "title": "Crabe Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "piment vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 150,
+                "multiply_factor": 1,
+                "title": "Crabe Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Crabe Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "tamarin"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 40,
+                "multiply_factor": 1,
+                "title": "Crabe Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Crabe Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "garam masala"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Crabe À Carapace Molle Masala",
+                  "paragraph": "Mélanger les ingrédients de la marinade dans un grand bol. Tamponner les crabes avec du papier absorbant puis, à l'aide d'un grand couteau bien aiguisé, les couper en deux, droit le long du corps. Mélanger dans la marinade pour enrober. Couvrir et réfrigérer pendant que vous préparez le masala."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Crabe À Carapace Molle Masala",
+                  "paragraph": "Verser 90ml d'huile dans une grande casserole et chauffer à feu moyen-élevé. Avoir un bol d'eau froide prêt à côté de la cuisinière. Ajouter les oignons dans l'huile et faire sauter jusqu'à ce qu'ils soient très dorés foncé ; cela devrait prendre environ 25 minutes et produire une pâte foncée. Si cela commence à coller au fond de la casserole, ajouter un petit filet d'eau. Mettre de côté."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Crabe À Carapace Molle Masala",
+                  "paragraph": "Verser les 80ml d'huile restants dans une poêle et chauffer à feu moyen. Ajouter les feuilles de curry et les laisser crépiter pendant 30 secondes. Ajouter l'ail et le gingembre et faire frire pendant 4 à 5 minutes, jusqu'à ce qu'ils soient dorés."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Crabe À Carapace Molle Masala",
+                  "paragraph": "Ajouter la poudre de piment, la coriandre moulue, le curcuma et le sel et faire frire, en remuant constamment, pendant 6 à 7 minutes. Ajouter 1 cuillère à soupe d'eau si le mélange devient un peu collant."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Crabe À Carapace Molle Masala",
+                  "paragraph": "Ajouter les tomates et cuire pendant 12 à 15 minutes, ou jusqu'à ce qu'elles soient désintégrées. Ajouter 1 à 2 cuillères à soupe d'eau si le mélange s'assèche avant que les tomates ne soient complètement décomposées."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Crabe À Carapace Molle Masala",
+                  "paragraph": "Ajouter les oignons dorés, le piment tranché et le lait de coco dans la poêle, bien mélanger et laisser mijoter pendant 5 minutes, puis ajouter le chutney de tamarin, le jus de lime et le garam masala. Baisser le feu très bas (ou même l'éteindre) pendant que vous faites cuire les crabes."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Crabe À Carapace Molle Masala",
+                  "paragraph": "Chauffer l'huile dans une friteuse ou dans une autre casserole profonde et lourde à 320°F."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Crabe À Carapace Molle Masala",
+                  "paragraph": "Secouer légèrement les crabes, puis les abaisser soigneusement dans l'huile chaude et les faire frire pendant 3 à 4 minutes jusqu'à ce qu'ils soient croustillants, dorés et cuits. Faites attention lorsqu'ils entrent dans l'huile, car ils peuvent éclabousser. Si les pattes commencent à brûler, votre huile est trop chaude."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Crabe À Carapace Molle Masala",
+                  "paragraph": "Retirer les crabes à carapace molle de l'huile et égoutter. Ajouter au masala et mélanger pour bien enrober. Servir garni de coriandre et de gingembre, avec des quartiers de lime à côté."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Note",
+                  "paragraph": "Si vous servez ce plat avec du pain, cuisez-le à feu légèrement plus élevé, jusqu'à ce que le lait de coco soit totalement cuit. Cela donnera légèrement plus de sauce, qui pourra alors être absorbée avec le pain."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

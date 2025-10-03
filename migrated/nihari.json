@@ -1,0 +1,766 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Nihari",
+      "description": [
+        "Temps: 3h",
+        "Ragoût d'agneau",
+        "Rendement: 4 à 6 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/D7hN020/Nihari.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Nihari",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 170,
+                "multiply_factor": 1,
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "huile"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 700,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "jarret d'agneau"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "cotelette"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pièces"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 500,
+                "multiply_factor": 1,
+                "cut": "en morceaux",
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "gigot d'agneau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de piment"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "curcuma"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1,
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "sel marin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 200,
+                "multiply_factor": 1,
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "yogourt grec"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "bouillon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "infusee",
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "brins de safran"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "jus de lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1,
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "eau de rose"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "kewda"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "garam masala"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "cardamome"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "macis"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Nihari"
+              },
+              "product": {
+                "data": {
+                  "name": "farine de pois chiches"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "seche",
+                "title": "Potli"
+              },
+              "product": {
+                "data": {
+                  "name": "petales de rose"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Potli"
+              },
+              "product": {
+                "data": {
+                  "name": "grains de poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "title": "Potli"
+              },
+              "product": {
+                "data": {
+                  "name": "clou de girofle"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Potli"
+              },
+              "product": {
+                "data": {
+                  "name": "feuille de laurier"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "title": "Potli"
+              },
+              "product": {
+                "data": {
+                  "name": "cardamome verte"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "gousses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "morceaux",
+                "title": "Potli"
+              },
+              "product": {
+                "data": {
+                  "name": "cannelle"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Potli"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de fenouil"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Potli"
+              },
+              "product": {
+                "data": {
+                  "name": "pathar ke phool"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Potli"
+              },
+              "product": {
+                "data": {
+                  "name": "paan ki jad"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "menthe"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "batonnets",
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "piment vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "Naan"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Nihari",
+                  "paragraph": "Placez une grande casserole large sur feu moyen-fort et ajoutez l'huile de moutarde. Ajoutez un quart des oignons et faites-les revenir pendant 15 à 20 minutes ou jusqu'à ce qu'ils soient dorés foncés, en remuant régulièrement. Ajoutez un peu d'eau s'ils commencent à coller."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Nihari",
+                  "paragraph": "Pour le potli (bouquet d'épices), mettez les ingrédients dans un morceau de mousseline et attachez avec de la ficelle de cuisine."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Nihari",
+                  "paragraph": "Ajoutez toute la viande d'agneau aux oignons et faites sauter jusqu'à ce qu'elle soit légèrement dorée, environ 3 à 4 minutes. Baissez le feu à moyen."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Nihari",
+                  "paragraph": "Combinez les pâtes d'ail et de gingembre et diluez avec 100ml d'eau, puis ajoutez au mélange. Bien mélanger et faire sauter pendant 5 minutes, puis ajoutez le potli."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Nihari",
+                  "paragraph": "Parsemez le reste des oignons sur la viande pour former une couche, puis saupoudrez de poudre de piment, de curcuma et de sel à la surface; ne pas mélanger. Baissez le feu pour laisser mijoter, couvrez et laissez les oignons commencer à cuire à la vapeur. Après 5 minutes, remuez et replacez le couvercle. Laissez cuire les oignons, couverts, pendant 45 minutes, en remuant régulièrement. La vapeur des oignons devrait être suffisante pour éviter de brûler, bien que vous puissiez ajouter un peu de bouillon (de la quantité indiquée) si nécessaire."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Nihari",
+                  "paragraph": "Lorsque les oignons se sont désintégrés, ajoutez le yogourt et faites cuire jusqu'à ce que l'huile se sépare, puis ajoutez le bouillon d'agneau. Laissez mijoter doucement pendant 1 heure, en remuant de temps en temps. L'agneau doit être complètement tendre."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Nihari",
+                  "paragraph": "Éteignez le feu et transférez l'agneau dans une assiette avec une écumoire, en laissant la plupart des oignons derrière. Retirez et jetez le potli. Passez la sauce à travers un tamis dans un grand bol ou un pichet, en appuyant fermement sur les solides dans le tamis, pour extraire autant de saveur que possible; jetez le résidu. Laissez la sauce reposer environ 15 minutes, puis écrémez la graisse et placez-la dans un petit bol; réservez cela."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Nihari",
+                  "paragraph": "Versez la sauce dans la casserole et portez à ébullition à feu vif. Laissez mijoter rapidement pendant 10 minutes, en écumant les impuretés éventuelles à la surface."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Nihari",
+                  "paragraph": "Ajoutez l'eau de safran, le jus de lime, l'eau de rose, l'eau de kewda, le garam masala, la cardamome moulue et le macis, mélangez bien, puis baissez le feu."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Nihari",
+                  "paragraph": "Chauffez une petite casserole à feu moyen-fort et ajoutez 2 cuillères à soupe de graisse réservée. Saupoudrez de farine de pois chiches et faites cuire en remuant pendant 2 minutes pour faire un roux mince. Laissez refroidir pendant 1 minute, puis fouettez dans le bouillon sur le feu et faites cuire en fouettant pendant quelques minutes pour épaissir légèrement. (Faites attention car cela peut produire de la vapeur et éclabousser.)"
+                }
+              }
+            },
+            {
+              "position": 11,
+              "segment": {
+                "data": {
+                  "title": "Nihari",
+                  "paragraph": "Remettez l'agneau dans la sauce et réchauffez doucement, puis transférez dans un plat de service chaud. Servez avec l'assiette de garnitures sur le côté et du naan aux graines de sésame et d'oignon chaud."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

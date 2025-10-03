@@ -1,0 +1,307 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Salsa Criolla",
+      "description": [
+        "Temps: 15 min",
+        "Rendement: 375 ml (1 1/2 tasses)"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/dJx2gYd/Salsa-Criolla.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sauce",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "colombien",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "créole",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "tomate",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Salsa Criolla",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Salsa Criolla"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive extra-vierge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Salsa Criolla"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Salsa Criolla"
+              },
+              "product": {
+                "data": {
+                  "name": "echalote"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Salsa Criolla"
+              },
+              "product": {
+                "data": {
+                  "name": "poivron vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Salsa Criolla"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Salsa Criolla"
+              },
+              "product": {
+                "data": {
+                  "name": "origan"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Salsa Criolla"
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Salsa Criolla"
+              },
+              "product": {
+                "data": {
+                  "name": "flocons de piment rouge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Salsa Criolla"
+              },
+              "product": {
+                "data": {
+                  "name": "tomate"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Salsa Criolla"
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre de vin rouge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Salsa Criolla"
+              },
+              "product": {
+                "data": {
+                  "name": "persil plat"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Salsa Criolla"
+              },
+              "product": {
+                "data": {
+                  "name": "Sel gros"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Salsa Criolla",
+                  "paragraph": "Faites chauffer l'huile dans une poêle antiadhésive à feu moyen. Ajoutez l'oignon, les échalotes, le poivron, l'ail, l'origan, le cumin et les flocons de piment rouge et faites cuire jusqu'à ce qu'ils soient tendres et translucides mais non bruns, environ 4 minutes."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Salsa Criolla",
+                  "paragraph": "Augmentez le feu à vif. Ajoutez les tomates et le vinaigre et faites cuire jusqu'à ce que les morceaux de tomate soient tendres et que la plupart du liquide de la tomate se soit évaporé, environ 5 minutes. Réduisez le feu à moyen et incorporez le persil. Faites cuire pendant 1 minute et ajoutez du sel et du poivre. Servez chaud, idéalement dans les quelques heures suivant la préparation."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Variation",
+                  "paragraph": "Salsa Criolla Fresca (Sauce Créole Colombienne Fraîche) : Placez les ingrédients ci-dessus dans un bol à mélanger et remuez pour mélanger. La vertu de cette sauce réside dans sa spontanéité. Servez-la immédiatement."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

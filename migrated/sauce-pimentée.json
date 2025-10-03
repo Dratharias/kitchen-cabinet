@@ -1,0 +1,241 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Sauce Pimentée",
+      "description": [
+        "Temps: 25 min",
+        "Rendement: 300 ml"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "dishoom",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "chutney",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sauce épicée",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "vinaigre de xérès",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "coriandre",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "piment",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Sauce Pimentée",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 300,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 30,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "jaggery"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de piment deggi mirch"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "seche"
+              },
+              "product": {
+                "data": {
+                  "name": "flocons de piment"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "jus de lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 150,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "graines de coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Mettez tous les ingrédients, à l'exception des graines de coriandre, dans une petite casserole. Ajoutez 60 ml d'eau et chauffez en remuant jusqu'à ce que le mélange soit bien combiné. Ensuite, faites cuire à feu vif jusqu'à réduction de moitié, environ 15-20 minutes."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Pendant ce temps, faites chauffer une poêle sèche à feu moyen. Ajoutez les graines de coriandre et faites-les griller pendant 2 minutes, puis transférez-les dans un bol et laissez-les refroidir."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Versez les graines de coriandre grillées dans la sauce et mélangez bien. Versez le tout dans un bocal propre et laissez refroidir. Couvrez et réfrigérez jusqu'au moment de servir. Pour une conservation plus longue (voir ci-dessus), utilisez une bouteille ou un bocal stérilisé."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

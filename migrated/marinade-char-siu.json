@@ -1,0 +1,232 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Marinade Char Siu",
+      "description": [
+        "Temps: 10 min",
+        "Rendement: 1 1/2 tasse (suffisant pour 2 à 3 livres de viande ou fruits de mer)"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "char siu",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "porc",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "marinade asiatique",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "cinq-épices",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Marinade Char Siu",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 0.333,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "miel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.3333,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sauce soja"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huitre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "vin de riz ou sake"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sauce hoisin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de cinq-epices chinoises"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poivre blanc"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez le miel, la sauce soja, la sauce aux huîtres, le vin de riz, l'huile de sésame, la sauce hoisin, la poudre de cinq-épices et le poivre dans un grand bol et fouettez pour mélanger. Utilisez dans les quelques heures suivant la préparation."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

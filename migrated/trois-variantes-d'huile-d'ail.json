@@ -1,0 +1,119 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Trois Variantes D'Huile D'Ail",
+      "description": [
+        "Temps: N/A",
+        "Rendement: Environ 1 tasse chacune"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/SVRBT3w/Trois-Variantes-D-Huile-D-Ail.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "huile d'ail",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "frais",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "frit",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "rôti",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Huile D Ail Rôti",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "decomposee"
+              },
+              "product": {
+                "data": {
+                  "name": "tete d'ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive extra vierge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez l'ail et l'huile dans une casserole lourde à feu moyen-doux. Laissez mijoter doucement jusqu'à ce que les gousses d'ail soient tendres et dorées, 10 à 15 minutes. Ne laissez pas brûler. Transférez l'ail et l'huile dans un bol résistant à la chaleur et laissez refroidir à température ambiante."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Utilisez immédiatement ou transférez les gousses d'ail et l'huile dans un bocal, couvrez et conservez au réfrigérateur. L'huile se conservera au moins 3 jours. Ramenez à température ambiante avant utilisation."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

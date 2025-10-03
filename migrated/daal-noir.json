@@ -1,0 +1,279 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Daal Noir",
+      "description": [
+        "Temps: 5h (voir note)",
+        "Daal de haricots noirs",
+        "Rendement: 8 à 10 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/ygVmDhj/Daal-noir.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Daal Noir",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 300,
+                "multiply_factor": 1,
+                "title": "Daal Noir"
+              },
+              "product": {
+                "data": {
+                  "name": "daal urad"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Daal Noir"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Daal Noir"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 70,
+                "multiply_factor": 1,
+                "title": "Daal Noir"
+              },
+              "product": {
+                "data": {
+                  "name": "puree"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1,
+                "title": "Daal Noir"
+              },
+              "product": {
+                "data": {
+                  "name": "sel marin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.6667,
+                "multiply_factor": 1,
+                "title": "Daal Noir"
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de piment deggi mirch"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Daal Noir"
+              },
+              "product": {
+                "data": {
+                  "name": "garam masala"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 90,
+                "multiply_factor": 1,
+                "title": "Daal Noir"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 90,
+                "multiply_factor": 1,
+                "title": "Daal Noir"
+              },
+              "product": {
+                "data": {
+                  "name": "creme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "chapatis"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Daal Noir",
+                  "paragraph": "Mettez le daal dans un grand bol, couvrez-le d'eau et fouettez pendant 10 secondes. Laissez reposer le daal, puis versez l'eau. Répétez 3 ou 4 fois, jusqu'à ce que l'eau soit claire."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Daal Noir",
+                  "paragraph": "Versez le daal dans une grande casserole et versez au moins 4 litres d'eau froide. Portez à ébullition et faites cuire régulièrement pendant 2 à 3 heures. Écumez toutes les impuretés qui remontent à la surface et ajoutez de l'eau bouillante si nécessaire pour maintenir les grains bien couverts. Les grains de daal doivent devenir complètement tendres, avec les pellicules se détachant du grain blanc. Lorsqu'on appuie dessus, la partie blanche doit être crémeuse, plutôt que friable. Une fois cuits, éteignez le feu et laissez la casserole reposer pendant 15 minutes."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Daal Noir",
+                  "paragraph": "Dans un bol, mélangez les purées d'ail et de gingembre, la purée de tomates, le sel, la poudre de piment et le garam masala jusqu'à obtention d'une pâte."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Daal Noir",
+                  "paragraph": "Versez soigneusement l'eau de cuisson du daal, puis versez suffisamment d'eau bouillante fraîche pour couvrir le daal de 3 à 4 cm. Portez à ébullition à feu moyen-élevé et ajoutez la pâte aromatique et le beurre. Faites cuire rapidement pendant 30 minutes, en remuant régulièrement pour éviter que le mélange ne colle."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Daal Noir",
+                  "paragraph": "Baissez le feu et laissez mijoter pendant 1 à 1 1/2 heures, en remuant très régulièrement pour éviter que cela ne colle, et en ajoutant un peu d'eau bouillante si le niveau de liquide se rapproche du niveau des grains. Finalement, il deviendra épais et crémeux. La crémosité doit provenir de la désintégration des grains dans le liquide et de son enrichissement, et non du fait que l'eau s'évapore en ne laissant que les grains derrière."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Daal Noir",
+                  "paragraph": "Ajoutez la crème et laissez cuire encore 15 minutes. Servez avec des chapatis ou d'autres pains indiens."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

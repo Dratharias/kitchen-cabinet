@@ -1,0 +1,136 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Sel Au Sésame",
+      "description": [
+        "Temps: 10 min",
+        "Rendement: 1 3/4 tasses"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Sel Au Sésame",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "graines de sesame blanc"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "graines de sesame noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.75,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "gros sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "concasse"
+              },
+              "product": {
+                "data": {
+                  "name": "grains de poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Chauffez une poêle sèche à feu moyen. Ajoutez les graines de sésame blanc et faites-les griller, en remuant de temps en temps, jusqu'à ce qu'elles soient parfumées et dorées, environ 2 à 4 minutes. Transférez les graines de sésame dans un bol et laissez refroidir."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajoutez les graines de sésame noir, le sel et le poivre. Transférez dans un bocal, couvrez et conservez à l'abri de la chaleur et de la lumière. Le sel se conservera plusieurs semaines."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,407 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Joues de porc braisées aux pommes",
+      "description": [
+        "Cuisson: 210 min",
+        "Saumurage: 480 min",
+        "Préparation: 35 min"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/xMtPv6P/joue-de-porc-brais-aux-pommes.jpg",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "téléquébec",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "copyright",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Joues De Porc Braisées Aux Pommes",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "joues"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 7.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "gros sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 45,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "farine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 60,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "emince"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 15,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 250,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "cidre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 500,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "fond"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "thym"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "feuille de laurier"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sauge"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "d├ęs"
+              },
+              "product": {
+                "data": {
+                  "name": "pomme"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Sel et poivre"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Baisser le feu à moyen et y faire revenir l'oignon pendant 5 minutes en remuant constamment."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Parer les joues de porc, les parsemer de gros sel, les déposer côte à côte dans un plat en verre ou en Inox, puis les laisser reposer au frigo pendant au moins 6 heures (8 c'est mieux)."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Rincer les joues à l'eau claire et les essuyer à l'aide d'un linge propre ou d'un essuie-tout."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Déposer la farine dans un petite soucoupe, saler et poivrer et bien mélanger."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Fariner les joues de tous les côtés et les déposer au fur et à mesure sur une assiette propre."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Faire chauffer un faitout à feu moyen-vif, verser un bon filet d'huile et y faire fondre la moitié du beurre, jusqu'à ce qu'il soit moussant."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "paragraph": "Saisir les joues jusqu'à belle coloration de chaque côté."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "paragraph": "Retirer les joues et les déposer sur une assiette propre."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "paragraph": "Saupoudrer avec le sucre d'érable et poursuivre la cuisson jusqu'à légère caramélisation."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "paragraph": "Déglacer avec le cidre et réduire de moitié."
+                }
+              }
+            },
+            {
+              "position": 11,
+              "segment": {
+                "data": {
+                  "paragraph": "Verser le fond de porc, porter à frémissement puis y déposer les joues."
+                }
+              }
+            },
+            {
+              "position": 12,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajouter le thym, le laurier et la sauge, saler et poivrer, couvrir et enfourner."
+                }
+              }
+            },
+            {
+              "position": 13,
+              "segment": {
+                "data": {
+                  "paragraph": "Régler le four à 150 °C (300°F) et cuire pendant 2h30."
+                }
+              }
+            },
+            {
+              "position": 14,
+              "segment": {
+                "data": {
+                  "paragraph": "Le temps de cuisson écoulé, fondre le reste du beurre dans une poêle en Inox et y faire sauter les dés de pommes jusqu'à légère coloration."
+                }
+              }
+            },
+            {
+              "position": 15,
+              "segment": {
+                "data": {
+                  "paragraph": "Incorporer les pommes aux joues de porc, couvrir et poursuivre la cuisson encore 30 minutes."
+                }
+              }
+            },
+            {
+              "position": 16,
+              "segment": {
+                "data": {
+                  "paragraph": "Les viandes braisées sont souvent meilleures lorsqu'elles ont été préparées la veille. Dans ce cas, arrêter la cuisson après 2h30 et laisser refroidir le tout complètement avant de réfrigérer."
+                }
+              }
+            },
+            {
+              "position": 17,
+              "segment": {
+                "data": {
+                  "paragraph": "Le lendemain, préchauffer le four à 150 °C (300°F), faire sauter les pommes et les ajouter dans le faitout encore froid. Couvrir, enfourner et cuire pendant 40 minutes."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

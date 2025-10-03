@@ -1,0 +1,233 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Salade De Bœuf Grillé Thaï",
+      "description": [
+        "Temps: N/A",
+        "Rendement: 4 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/q09YBrQ/Salade-De-B-uf-Grill-Tha.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "salade",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "bœuf grillé",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "thaï",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "légumes frais",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Salade De B Uf Grillé Thaï",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "B Uf"
+              },
+              "product": {
+                "data": {
+                  "name": "bifteck"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "B Uf"
+              },
+              "product": {
+                "data": {
+                  "name": "gros sel et poivre noir"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "B Uf"
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "en feuilles",
+                "title": "Salade"
+              },
+              "product": {
+                "data": {
+                  "name": "laitue Boston ou Bibb"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Salade"
+              },
+              "product": {
+                "data": {
+                  "name": "concombre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "coupees en deux",
+                "title": "Salade"
+              },
+              "product": {
+                "data": {
+                  "name": "tomates cerises"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pinte"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Salade"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Salade"
+              },
+              "product": {
+                "data": {
+                  "name": "Apres-Marinade Saveur Thai"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Salade De B Uf Grillé Thaï",
+                  "paragraph": "Assaisonnez généreusement le bifteck avec du sel et du poivre des deux côtés. Arrosez d'huile et frottez-la dans la viande."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Salade De B Uf Grillé Thaï",
+                  "paragraph": "Préparez un gril pour une cuisson directe et préchauffez à feu vif. Brossez et huilez la grille du gril."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Salade De B Uf Grillé Thaï",
+                  "paragraph": "Grillez le bifteck jusqu'à la cuisson désirée, 3 à 4 minutes par côté pour une cuisson mi-saignante, en le retournant avec des pinces. Transférez le bifteck sur une planche à découper et laissez reposer pendant 1 minute."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Salade De B Uf Grillé Thaï",
+                  "paragraph": "Pendant ce temps, disposez les feuilles de laitue sur un plat. Ajoutez le concombre, les tomates et l'oignon sur le dessus."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Salade De B Uf Grillé Thaï",
+                  "paragraph": "Tranchez finement le bifteck en diagonale et ajoutez les tranches chaudes dans le bol avec l'ail et la première après-marinade. Mélangez pour mélanger. Utilisez des pinces pour disposer les tranches de bifteck avec les deux tiers de l'après-marinade sur la salade. Saupoudrez la couche de finition (la menthe, le basilic, la coriandre et les jalapeños) sur le bifteck. Saupoudrez de quelques cacahuètes et servez avec un bol de l'après-marinade restante mélangée aux cacahuètes restantes."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

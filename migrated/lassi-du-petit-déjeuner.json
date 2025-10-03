@@ -1,0 +1,218 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Lassi du petit-déjeuner",
+      "description": [
+        "Temps: 10 min",
+        "Rendement: 2 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/VHt6PMP/Lassi-du-petit-d-jeuner.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Lassi Du Petit Déjeuner",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "banane"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 200,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 280,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "yaourt grec"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 100,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "mangue"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "flocons d'avoine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "miel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "graines de cumin"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "glacon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "glaçons"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Mettre tous les ingrédients dans un blender, ajouter 320ml d'eau et mixer jusqu'à obtenir une texture parfaitement lisse."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Verser dans des verres et servir avec des pailles."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

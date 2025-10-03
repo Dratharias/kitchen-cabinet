@@ -1,0 +1,235 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Vinaigrette à la Lime et au Piment",
+      "description": [
+        "Temps: 10 min",
+        "Rendement: 175ml"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Vinaigrette À La Lime Et Au Piment",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 50,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "piment vert"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 30,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 25,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 60,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 35,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "menthe"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "À l'aide d'un mini robot culinaire ou d'un mixeur plongeant, mixer tous les ingrédients jusqu'à ce qu'ils soient complètement homogènes."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Transférer dans un bol et réfrigérer jusqu'au moment de servir. Elle se conservera au réfrigérateur pendant 3 à 4 jours."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

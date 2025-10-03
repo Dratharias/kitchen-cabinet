@@ -1,0 +1,241 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Harissa",
+      "description": [
+        "Temps: 20 min",
+        "Rendement: 2 tasses"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/rs62VPs/Harissa.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Tunisie",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "Épices",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "Piment",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "Viande",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Harissa",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1,
+                "cut": "seche"
+              },
+              "product": {
+                "data": {
+                  "name": "piment rouge"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "carvi"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "jus de citron"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel gros"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Faites tremper les piments dans de l'eau chaude jusqu'à ce qu'ils soient ramollis, environ 30 minutes. Égouttez bien."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez les piments ramollis, l'ail, la coriandre, le cumin, le carvi, le jus de citron et le sel dans un robot culinaire et mixez jusqu'à obtenir une pâte lisse."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Avec le robot en marche, ajoutez lentement l'huile d'olive jusqu'à ce que la pâte soit bien mélangée et émulsionnée."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Transférez la harissa dans un pot propre et couvrez d'une fine couche d'huile d'olive. Conservez au réfrigérateur jusqu'à un mois."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

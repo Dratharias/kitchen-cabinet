@@ -1,0 +1,246 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Salsa Fumée Aux Deux Piments",
+      "description": [
+        "Temps: 30 min de trempage + 6-8 min de grillage",
+        "Rendement: 2 tasses, suffisant pour 6 à 8 personnes"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/FzVRsNT/Salsa-Fum-e-Aux-Deux-Piments.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "salsa",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "piments",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "fumée",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Salsa Fumée Aux Deux Piments",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "piment"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "coupe en deux"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pièce"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "piment chipotle"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "jus de chipotle"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "feuilles de coriandre fraiche"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "jus de lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "gros sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez les guajillos dans un bol, ajoutez l'eau chaude et laissez tremper jusqu'à ce qu'ils soient souples et flexibles, environ 30 minutes. Égouttez les piments, en réservant le liquide de trempage, déchirez-les en deux et retirez toutes les graines."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Chauffez un comal ou une poêle en fonte à feu moyen. Ajoutez l'oignon et l'ail et faites-les griller, en les retournant avec des pinces, jusqu'à ce que les légumes soient bien dorés. L'ail prendra 2 à 4 minutes, l'oignon 6 à 8 minutes. Vous pouvez également griller les légumes."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Combinez les guajillos, 1 tasse du liquide de trempage, l'oignon, l'ail, les chipotles, le jus de chipotle, la coriandre, le jus de lime et le sel dans un mélangeur et réduisez en purée jusqu'à ce que le mélange soit lisse. Ajoutez du liquide de trempage au besoin pour obtenir une salsa épaisse mais coulante; elle doit avoir la consistance de la crème épaisse. Corrigez l'assaisonnement, en ajoutant du jus de lime ou du sel au goût. Utilisez immédiatement ou transférez dans un grand bocal, couvrez et réfrigérez. La salsa est meilleure servie dans les quelques heures suivant sa préparation, mais se conservera pendant au moins une semaine au réfrigérateur."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

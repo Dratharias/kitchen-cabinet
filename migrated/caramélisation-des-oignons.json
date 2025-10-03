@@ -1,0 +1,116 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Caramélisation des Oignons",
+      "description": [
+        "Temps: 30 min",
+        ""
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "article",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Caramélisation Des Oignons",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Huile vegetale"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Chauffez une poêle à feu moyen-élevé."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajoutez une quantité généreuse d'huile."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajoutez les oignons finement coupés."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Faites cuire les oignons en remuant fréquemment pendant 15 à 20 minutes."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Si les oignons commencent à coller ou à brûler, ajoutez une cuillère à soupe d'eau et détachez les morceaux collés pour assurer une caramélisation uniforme."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

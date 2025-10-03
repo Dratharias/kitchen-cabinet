@@ -1,0 +1,443 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Boti Kabab d'agneau",
+      "description": [
+        "Temps: 1h",
+        "Marinade: 24h",
+        "Rendement: 4 à 6 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/Ybjn2HD/Boti-Kabab-d-039-agneau.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Boti Kabab D Agneau",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 500,
+                "multiply_factor": 1,
+                "title": "Boti Kabab D Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "steak"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 100,
+                "multiply_factor": 1,
+                "title": "Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "yogourt grec"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "papaye"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de piment Deggi Mirch"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "jus de lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "garam masala"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "emiettees",
+                "title": "Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de cumin"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1.25,
+                "multiply_factor": 1,
+                "title": "Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1,
+                "title": "Griller"
+              },
+              "product": {
+                "data": {
+                  "name": "kabab masala"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 25,
+                "multiply_factor": 1,
+                "title": "Griller"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1,
+                "title": "Griller"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "emincé",
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "menthe"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "Kachumber"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Boti Kabab D Agneau",
+                  "paragraph": "Placer une passoire sur un bol et la recouvrir d'une mousseline. Verser le yogourt dans le tissu en mousseline et laisser égoutter pendant au moins 3 heures (voir note)."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Boti Kabab D Agneau",
+                  "paragraph": "Pendant ce temps, tailler l'agneau pour éliminer tout excès de gras et le couper en morceaux de 3 cm. Éponger autant que possible avec du papier absorbant. Placer dans un bol, ajouter la pâte de papaye et mélanger pour enrober les morceaux d'agneau. Couvrir et laisser reposer pendant 30 minutes."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Boti Kabab D Agneau",
+                  "paragraph": "Dans un grand bol, mélanger le yogourt égoutté avec les ingrédients restants de la marinade."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Boti Kabab D Agneau",
+                  "paragraph": "Lorsque les 30 minutes sont écoulées, transférer l'agneau dans une passoire pour égoutter le liquide et secouer la passoire pour éliminer l'excès d'humidité. Mélanger la viande dans la marinade au yogourt, couvrir et réfrigérer pendant 24 heures."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Boti Kabab D Agneau",
+                  "paragraph": "Sortir l'agneau du réfrigérateur 30 minutes avant la cuisson. (Si vous utilisez des brochettes en bois, les faire tremper maintenant.) Préchauffer le gril à feu moyen-élevé."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Boti Kabab D Agneau",
+                  "paragraph": "Enfiler la viande sur vos brochettes, en prenant soin de ne pas la tasser trop fermement."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Boti Kabab D Agneau",
+                  "paragraph": "Griller les kababs pendant 6 à 8 minutes, en les retournant régulièrement, jusqu'à ce qu'ils soient légèrement grillés et cuits à point mais pas trop cuits. Saupoudrer de masala de kabab, de beurre fondu et de jus de lime, en retournant les kababs pour les enrober uniformément. Terminer avec une pincée de menthe émincée. Servir immédiatement, avec du kachumber et des quartiers de lime à presser."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Note",
+                  "paragraph": "Égoutter le yogourt pendant 3 heures réduit la teneur en eau afin que la marinade adhère à la viande ; c'est encore mieux si vous parvenez à le laisser égoutter toute la nuit au réfrigérateur."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

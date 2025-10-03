@@ -1,0 +1,210 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Pain naan sans levure",
+      "description": [
+        "Une recette facile de pain naan à 3 ingrédients, sans levure, sans yaourt, sans huile, 100% végétalien.",
+        "Temps total : 20 mins"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/8b1cCJp/Easy-Vegan-Naan-Bread-Yeast-Free.jpg",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "pain",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "végétalien",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "végétarien",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Pain Naan Sans Levure",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1.75,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "farine tout usage"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "yogourt"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "levure chimique"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel de mer"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Dans un grand bol de mélange, mélanger la farine, la poudre à pâte et le sel faire un puits au centre de la farine et incorporer le yaourt non laitier."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Mélangez avec une spatule puis mettez vos mains dans la pâte pour la pétrir pendant quelques secondes jusqu'à ce que la pâte soit combinée et qu'elle forme une pâte légèrement collante. Ajoutez 1 à 4 cuillères à soupe supplémentaires de farine si nécessaire jusqu'à ce que la pâte soit souple, non collante et que vous puissiez former une boule."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Retournez la boule de pâte dans le bol de mélange, couvrez le bol d'une serviette et mettez-le de côté à température ambiante pendant environ 15 à 30 minutes."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Sprayez la surface de travail avec de la farine puis placez la boule de pâte sur la surface, saupoudrez davantage de farine sur la boule et pétrissez pendant 30 secondes jusqu'à ce que la pâte soit lisse."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Dépoussiérer le plan de travail avec plus de farine, couper la boule de pâte en 4 portions, rouler chaque portion en boules, puis rouler avec un rouleau à pâtisserie en une forme ronde/ovale de 1/4″ / 0,6 cm d'épaisseur."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Préchauffez une casserole antiadhésive à feu moyen-élevé pendant 1 minute, n'ajoutez pas d'huile."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "paragraph": "Une fois chaude, ajoutez la pâte roulée et faites-la cuire pendant 3 minutes d'un côté, puis retournez-la et faites-la cuire pendant 1 à 2 minutes supplémentaires de l'autre côté"
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "paragraph": "Répétez ces étapes jusqu'à ce que tous les pains naan soient cuits."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "paragraph": "Optionnel: Balayez chaque pain cuit avec du beurre végétalien ou de l'huile de coco."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

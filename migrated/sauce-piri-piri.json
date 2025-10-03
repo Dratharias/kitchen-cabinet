@@ -1,0 +1,186 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Sauce Piri-Piri",
+      "description": [
+        "Temps: N/A",
+        "Rendement: 1 tasse"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/Z1JPnZm/Sauce-Piri-Piri.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "sauce piquante",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "piri-piri",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "piments",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Sauce Piri Piri",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "gros sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "piments rouges frais"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "moutarde"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre de vin blanc"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.75,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive extra-vierge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez l'ail et le sel dans un bol et écrasez-les en une pâte avec le dos d'une cuillère. Ajoutez les piments et continuez à écraser. Ajoutez la moutarde. Incorporez le vinaigre en un mince filet, puis l'huile; la sauce doit légèrement épaissir. Ou combinez tous les ingrédients dans un bocal et secouez pour mélanger."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Si elle n'est pas mélangée dans un bocal, transférez-la dans un bocal, en plaçant une feuille de plastique entre le haut du bocal et le couvercle, couvrez et réfrigérez. La sauce Piri-Piri se conservera plusieurs jours à température ambiante. Remuez avant de servir."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

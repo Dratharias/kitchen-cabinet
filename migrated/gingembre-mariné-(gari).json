@@ -1,0 +1,243 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Gingembre mariné (Gari)",
+      "description": [
+        "Temps: 4 heures 20 minutes"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/CmBbf0J/gari.webp",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "condiment",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "conserve",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "japon",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Gingembre Mariné Gari",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Amazu"
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Amazu"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Amazu"
+              },
+              "product": {
+                "data": {
+                  "name": "gros sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 224,
+                "multiply_factor": 1,
+                "title": "Gingembre"
+              },
+              "product": {
+                "data": {
+                  "name": "jeune gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "gr"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Gingembre"
+              },
+              "product": {
+                "data": {
+                  "name": "gros sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Gingembre",
+                  "paragraph": "Paré et couper finement le gingembre avec un éplucheur."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Gingembre",
+                  "paragraph": "Saupoudrer de sel et mettre de côté 5 minutes pour le dégorger. Ça l'aidera a mieux absorber la solution de marinage."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Gingembre",
+                  "paragraph": "Préparer une casserole d'eau et porter a ébullition."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Gingembre",
+                  "paragraph": "Blanchir les tranches de gingembre 1-2 minutes. Pour le gingembre régulier, 2-3 minutes."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Gingembre",
+                  "paragraph": "Drainer et laisser refroidir."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Gingembre",
+                  "paragraph": "Répartir sur du papier, linge, etc. Laisser refroidir complètement et sécher."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Vinaigre",
+                  "paragraph": "Dans une casserole, mélanger le vinaigre de riz, sucre et sel."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Vinaigre",
+                  "paragraph": "Mélanger et amener la solution à ébullition jusqu'à ce que l'odeur forte de vinaigre s'évapore et que le sucre soit complètement dissout."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Vinaigre",
+                  "paragraph": "Lorsque le vinaigre à refroidit, mettre le gingembre dans un pot stérile et verser le vinaigre."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

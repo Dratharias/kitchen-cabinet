@@ -1,0 +1,296 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Carpaccio de pétoncles avec vinaigrette aux agrumes",
+      "description": [
+        "Portions : 4",
+        "Préparation et cuisson : 20 minutes environ"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Jonathan Garnier",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "Guilde culinaire",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "copyright",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Carpaccio",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "petoncles"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "U10"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "cubes"
+              },
+              "product": {
+                "data": {
+                  "name": "mangue"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "fleur de sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "roquette"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez chaque noix de pétoncle sur le plan de travail entre deux longues piques en bois. À l'aide d'un couteau taillez la pétoncle sur son épaisseur en faisant glisser le couteau sur les piques de bois. Reproduisez le geste autant de fois que possible."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez ensuite les tranches de pétoncle directement sur une assiette ou, si vous ne le servez pas de suite, sur une feuille de papier parchemin légèrement huilée ou sur un tapis en silicone. Vous aurez simplement à retourner le support sur l'assiette au moment de servir."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Sur chaque assiette, répartissez le carpaccio, versez dessus une cuillère de vinaigrette aux agrumes, un peu de fleur de sel et quelques cubes de mangue."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajoutez un peu de salade de roquette assaisonnée de vinaigrette aux agrumes. Servez aussitôt."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Vinaigrette Aux Agrumes",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 625,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "jus d'agrumes"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 15,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "moutarde"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "cut": "rape"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "piment d'espelette"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 220,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Dans une casserole, réduisez sans ébullition le jus d'agrumes à 80 ml (1/3 de tasse). Laissez refroidir."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajoutez la moutarde, le gingembre, le sel, le piment d'Espelette et à l'aide du mélangeur à main, émulsionnez le tout."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Montez progressivement à l'huile d'olive en filet. Réservez en pipette au réfrigérateur."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

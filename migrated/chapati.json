@@ -1,0 +1,264 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Chapati",
+      "description": [
+        "Temps: 1h10 min",
+        "Rendement: 10 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "dishoom",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "chapati",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "pain",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "grillades",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "curry",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "wraps",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Chapati",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 125,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "farine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 375,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "farine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel de mer"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 125,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "œuf"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Tamisez les farines et le sel dans un grand bol. Mélangez avec le sucre et faites un puits au centre."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Mélangez le lait, l'œuf, l'huile et 120 ml d'eau dans un pichet et fouettez avec une fourchette pour combiner. Versez dans le puits au centre du mélange de farine et incorporez progressivement la farine avec un couteau à lame ronde, puis pétrissez avec vos mains pendant 8 minutes pour créer une pâte molle."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Couvrez avec un linge propre et humide et laissez reposer pendant 30 minutes."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Une fois le temps de repos écoulé, pétrissez la pâte de chapati pendant encore 2 minutes, puis pesez des portions de 70 g et roulez chacune en une boule nette."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Faites chauffer votre plus grande poêle à feu vif. Elle doit être très chaude. Prenez un torchon propre et pliez-le en un rectangle épais."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Prenez une boule de pâte et, sur une surface de travail farinée, étalez-la aussi finement que possible, à une épaisseur d'environ 1 mm."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez le chapati dans la poêle et faites cuire pendant 1 à 2 minutes de chaque côté. Pendant la cuisson, utilisez soigneusement le torchon plié pour appuyer sur le pain par petites touches rapides, en vous déplaçant sur toute la surface. Vous devriez obtenir un pain doux, légèrement carbonisé, parfait pour absorber la sauce ou faire des wraps. Répétez l'opération pour façonner et cuire le reste. Servez chaud."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

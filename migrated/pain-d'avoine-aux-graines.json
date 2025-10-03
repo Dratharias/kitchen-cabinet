@@ -1,0 +1,505 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Pain d'avoine aux graines",
+      "description": [
+        "Temps: 5h à 77h"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/1qqQ2bm/super-seeded-oat-bread.jpg",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Pain D Avoine Aux Graines",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Pain D Avoine Aux Graines"
+              },
+              "product": {
+                "data": {
+                  "name": "farine a pain"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pain D Avoine Aux Graines"
+              },
+              "product": {
+                "data": {
+                  "name": "levure instantanee"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Pain D Avoine Aux Graines"
+              },
+              "product": {
+                "data": {
+                  "name": "flocons d'avoine entiers"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Pain D Avoine Aux Graines"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de citrouille"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Pain D Avoine Aux Graines"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de tournesol"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pain D Avoine Aux Graines"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de lin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Pain D Avoine Aux Graines"
+              },
+              "product": {
+                "data": {
+                  "name": "sel gros"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pain D Avoine Aux Graines"
+              },
+              "product": {
+                "data": {
+                  "name": "miel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1,
+                "title": "Pain D Avoine Aux Graines"
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pain D Avoine Aux Graines"
+              },
+              "product": {
+                "data": {
+                  "name": "semoule de mais"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "flocons d'avoine entiers"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de citrouille"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de tournesol"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de lin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Préparation De La Pâte 3 Heures Temps",
+                  "paragraph": "Mélangez la farine, la levure, les flocons d'avoine, les graines et le sel dans un grand bol."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Préparation De La Pâte 3 Heures Temps",
+                  "paragraph": "Mélangez le miel et l'eau, puis versez sur les ingrédients secs."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Préparation De La Pâte 3 Heures Temps",
+                  "paragraph": "Mélangez avec une spatule jusqu'à ce que toute la farine soit humidifiée."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Préparation De La Pâte 3 Heures Temps",
+                  "paragraph": "Façonnez la pâte en boule et couvrez le bol d'un film plastique."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Préparation De La Pâte 3 Heures Temps",
+                  "paragraph": "Laissez lever à température ambiante pendant 3 heures."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Préparation De La Pâte 3 Heures Temps",
+                  "paragraph": "Placez la pâte au réfrigérateur pendant 12 heures à 3 jours."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Façonnage Et Cuisson Du Pain 1 Heure",
+                  "paragraph": "Préchauffez le four à 425°F (218°C)."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Façonnage Et Cuisson Du Pain 1 Heure",
+                  "paragraph": "Saupoudrez une plaque à pâtisserie de farine et/ou de semoule de maïs."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Façonnage Et Cuisson Du Pain 1 Heure",
+                  "paragraph": "Façonnez la pâte levée en boule et placez-la sur la plaque."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Façonnage Et Cuisson Du Pain 1 Heure",
+                  "paragraph": "Mélangez les ingrédients de la garniture et saupoudrez-les sur la pâte."
+                }
+              }
+            },
+            {
+              "position": 11,
+              "segment": {
+                "data": {
+                  "title": "Façonnage Et Cuisson Du Pain 1 Heure",
+                  "paragraph": "Couvrez légèrement et laissez reposer 45 minutes."
+                }
+              }
+            },
+            {
+              "position": 12,
+              "segment": {
+                "data": {
+                  "title": "Façonnage Et Cuisson Du Pain 1 Heure",
+                  "paragraph": "Incisez la pâte avec un couteau tranchant."
+                }
+              }
+            },
+            {
+              "position": 13,
+              "segment": {
+                "data": {
+                  "title": "Façonnage Et Cuisson Du Pain 1 Heure",
+                  "paragraph": "Placez la plaque à pâtisserie dans le four préchauffé."
+                }
+              }
+            },
+            {
+              "position": 14,
+              "segment": {
+                "data": {
+                  "title": "Façonnage Et Cuisson Du Pain 1 Heure",
+                  "paragraph": "Facultatif : Versez de l'eau bouillante dans une poêle sur la grille inférieure pour créer de la vapeur."
+                }
+              }
+            },
+            {
+              "position": 15,
+              "segment": {
+                "data": {
+                  "title": "Façonnage Et Cuisson Du Pain 1 Heure",
+                  "paragraph": "Cuisez pendant 40 minutes, ou jusqu'à ce que la croûte soit dorée."
+                }
+              }
+            },
+            {
+              "position": 16,
+              "segment": {
+                "data": {
+                  "title": "Façonnage Et Cuisson Du Pain 1 Heure",
+                  "paragraph": "Laissez refroidir le pain avant de le trancher et de le servir."
+                }
+              }
+            },
+            {
+              "position": 17,
+              "segment": {
+                "data": {
+                  "title": "Conseils",
+                  "paragraph": "Utilisez une farine de bonne qualité pour obtenir un meilleur résultat."
+                }
+              }
+            },
+            {
+              "position": 18,
+              "segment": {
+                "data": {
+                  "title": "Conseils",
+                  "paragraph": "Si la pâte est trop collante, ajoutez un peu de farine."
+                }
+              }
+            },
+            {
+              "position": 19,
+              "segment": {
+                "data": {
+                  "title": "Conseils",
+                  "paragraph": "Vous pouvez remplacer les graines par d'autres types de graines que vous aimez."
+                }
+              }
+            },
+            {
+              "position": 20,
+              "segment": {
+                "data": {
+                  "title": "Conseils",
+                  "paragraph": "Pour une croûte plus croustillante, faites cuire le pain sur une pierre à pizza ou dans une cocotte en fonte."
+                }
+              }
+            },
+            {
+              "position": 21,
+              "segment": {
+                "data": {
+                  "title": "Conseils",
+                  "paragraph": "Le pain peut être conservé à température ambiante pendant 3 jours ou au réfrigérateur pendant 10 jours."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

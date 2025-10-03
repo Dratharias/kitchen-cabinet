@@ -1,0 +1,452 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Assaisonnement des Îles",
+      "description": [
+        "Temps de préparation : 20 minutes",
+        "Rendement : 2 1/2 à 3 tasses, suffisant pour 3 à 4 livres de viande, volaille ou fruits de mer"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/VmCHPjT/Assaisonnement-des-les.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "aribéen",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "poivrons",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "jalapeños",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "céleri",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "ail",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "oignons",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "chives",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "persil",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "thym",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "origan",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "marjolaine",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "huile végétale",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "lime",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sauce soja",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sel",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "poivre",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "piment de la Jamaïque",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Assaisonnement Des Îles",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "poivron vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "poivron rouge"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "piment jalapeno"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "celeri"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "ciboulette"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "persil"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.625,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "thym"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "origan"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère à soupe"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "marjolaine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.3333,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.333,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "soja"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel de mer ou kasher"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère à soupe"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "piment de la Jamaique"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Mélangez les poivrons verts et rouges, les piments jalapeño, le céleri, l'oignon, l'ail, la ciboulette, le persil, le thym, l'origan et la marjolaine dans un robot culinaire jusqu'à obtenir une pâte grossière."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajoutez l'huile, le jus de lime, la sauce soja, le sel, le poivre et le piment de la Jamaïque et mixez jusqu'à obtenir une pâte lisse."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Utilisez immédiatement ou transférez dans un bocal, couvrez et réfrigérez. L'assaisonnement est meilleur s'il est utilisé dans les quelques heures suivant sa préparation."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

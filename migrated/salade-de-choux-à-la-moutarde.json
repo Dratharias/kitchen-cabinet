@@ -1,0 +1,276 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Salade De Choux À La Moutarde",
+      "description": [
+        "Temps: N/A",
+        "Rendement: Environ 1 tasse de vinaigrette"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/bH1GGTg/Salade-De-Choux-La-Moutarde.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "salade de choux",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "moutarde",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "salade",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Salade De Choux À La Moutarde",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Ingrédients Du Mélange De Base"
+              },
+              "product": {
+                "data": {
+                  "name": "chou vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "rape",
+                "title": "Ingrédients Du Mélange De Base"
+              },
+              "product": {
+                "data": {
+                  "name": "carotte"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "grossièrement râpée",
+                "title": "Ingrédients Du Mélange De Base"
+              },
+              "product": {
+                "data": {
+                  "name": "pomme"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.3333,
+                "multiply_factor": 1,
+                "title": "Ingrédients Du Mélange De Base"
+              },
+              "product": {
+                "data": {
+                  "name": "raisin sec"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.3333,
+                "multiply_factor": 1,
+                "title": "Ingrédients De La Vinaigrette À La Moutarde"
+              },
+              "product": {
+                "data": {
+                  "name": "moutarde"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Ingrédients De La Vinaigrette À La Moutarde"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Ingrédients De La Vinaigrette À La Moutarde"
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Ingrédients De La Vinaigrette À La Moutarde"
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre blanc"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Ingrédients De La Vinaigrette À La Moutarde"
+              },
+              "product": {
+                "data": {
+                  "name": "a"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Ingrédients De La Vinaigrette À La Moutarde"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de celeri"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Ingrédients De La Vinaigrette À La Moutarde"
+              },
+              "product": {
+                "data": {
+                  "name": "gros sel et poivre noir"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Salade De Choux À La Moutarde",
+                  "paragraph": "Placez la moutarde dans un bol. Incorporez le sucre, le vinaigre, l'huile, la sauce piquante, les graines de céleri, le sel et le poivre. Fouettez jusqu'à ce que le sucre et le sel soient dissous. Corrigez l'assaisonnement, en ajoutant du sucre, du vinaigre, du sel ou de la sauce piquante au goût; la vinaigrette doit être fortement assaisonnée."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Salade De Choux À La Moutarde",
+                  "paragraph": "Placez le chou, la carotte, la pomme et les raisins secs (si vous en utilisez) dans un grand bol de mélange et remuez pour mélanger. Ajoutez la vinaigrette à la moutarde et mélangez bien."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

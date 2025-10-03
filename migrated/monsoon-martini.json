@@ -1,0 +1,251 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Monsoon Martini",
+      "description": [
+        "Temps: 5 min",
+        "Rendement: 1 portion"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/BLtyzMk/Monsoon-Martini.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "dishoom",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "martini",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "cocktail",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "espresso",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "ancho reyes",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "vodka",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "bitters",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "cacao",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Monsoon Martini",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Ingrédients"
+              },
+              "product": {
+                "data": {
+                  "name": "miel solide"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 30,
+                "multiply_factor": 1,
+                "title": "Ingrédients"
+              },
+              "product": {
+                "data": {
+                  "name": "espresso"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 25,
+                "multiply_factor": 1,
+                "title": "Ingrédients"
+              },
+              "product": {
+                "data": {
+                  "name": "vodka"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 15,
+                "multiply_factor": 1,
+                "title": "Ingrédients"
+              },
+              "product": {
+                "data": {
+                  "name": "Ancho Reyes"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "title": "Ingrédients"
+              },
+              "product": {
+                "data": {
+                  "name": "noix noires"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Ingrédients"
+              },
+              "product": {
+                "data": {
+                  "name": "Glacon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour Garnir"
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de cacao"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour Garnir"
+              },
+              "product": {
+                "data": {
+                  "name": "cafe"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Monsoon Martini",
+                  "paragraph": "Mélangez le miel avec 2 cuil. à thé d'eau bouillante. Versez dans votre shaker à cocktail."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Monsoon Martini",
+                  "paragraph": "Ajoutez l'espresso, la vodka, la liqueur et les bitters aux noix. Remplissez avec beaucoup de glaçons et secouez vigoureusement pendant au moins 30 secondes."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Monsoon Martini",
+                  "paragraph": "Filtrez dans un verre à martini. Saupoudrez d'une légère pincée de cacao tamisé, garnissez d'un grain de café rôti si vous en avez un, et servez immédiatement."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

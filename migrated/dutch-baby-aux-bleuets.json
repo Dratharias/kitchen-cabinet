@@ -1,0 +1,390 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Dutch baby aux bleuets",
+      "description": [
+        "Temps: 30 min"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/vLXJTTX/deutch-pan-muffin-blueberry.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Dutch Baby Aux Bleuets",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Dutch Baby Aux Bleuets"
+              },
+              "product": {
+                "data": {
+                  "name": "bleuets"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Dutch Baby Aux Bleuets"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Dutch Baby Aux Bleuets"
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Dutch Baby Aux Bleuets"
+              },
+              "product": {
+                "data": {
+                  "name": "myrtilles"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Dutch Baby Aux Bleuets"
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.6667,
+                "multiply_factor": 1,
+                "title": "Dutch Baby"
+              },
+              "product": {
+                "data": {
+                  "name": "farine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.6667,
+                "multiply_factor": 1,
+                "title": "Dutch Baby"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Dutch Baby"
+              },
+              "product": {
+                "data": {
+                  "name": "oeuf"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Dutch Baby"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Dutch Baby"
+              },
+              "product": {
+                "data": {
+                  "name": "vanille"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Dutch Baby"
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Dutch Baby"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "yogourt"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Dutch Baby Aux Bleuets",
+                  "paragraph": "Placez une poêle de 10 pouces allant au four dans le four, puis préchauffez-le à 425°F (220°C)."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Préparez Les Bleuets",
+                  "paragraph": "Mélangez le sucre granulé et le zeste de citron dans un bol moyen jusqu'à ce que cela devienne parfumé. Ajoutez les bleuets et mélangez."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Dutch Baby",
+                  "paragraph": "Dans un bol moyen, mélangez la farine, le lait, les œufs, le sucre granulé, la vanille et le sel, et fouettez vigoureusement jusqu'à ce que le mélange soit complètement lisse, environ 1 minute."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Dutch Baby",
+                  "paragraph": "Lorsque le four est prêt, retirez soigneusement la poêle chaude."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Dutch Baby",
+                  "paragraph": "Ajoutez le beurre et tourbillonnez pour faire fondre et enrober uniformément la poêle."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Dutch Baby",
+                  "paragraph": "Ajoutez la moitié des bleuets (environ 1 tasse) et secouez pour les répartir uniformément. Versez lentement et soigneusement la pâte pour que les baies restent uniformément dispersées."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Dutch Baby",
+                  "paragraph": "Faites cuire le Dutch baby jusqu'à ce qu'il soit gonflé, doré par endroits et croustillant sur les bords, pendant 15 à 18 minutes."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Dutch Baby",
+                  "paragraph": "Pendant ce temps, pressez le jus de citron sur les bleuets restants."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Dutch Baby",
+                  "paragraph": "Retirez le Dutch baby du four et saupoudrez-le de sucre de cane."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Dutch Baby",
+                  "paragraph": "Coupez-le en tranches et servez-le avec des cuillerées de yogourt et les bleuets macérées."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

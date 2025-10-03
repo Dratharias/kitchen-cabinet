@@ -1,0 +1,337 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Crabe à l'Ail et au Beurre",
+      "description": [
+        "Temps: 30 min",
+        "Rendement: 2 portions en plat principal, 4 en entrée"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/58NC23J/Crabe-l-Ail-et-au-Beurre.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Crabe À L Ail Et Au Beurre",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 75,
+                "multiply_factor": 1,
+                "title": "Crabe À L Ail Et Au Beurre"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 25,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Crabe À L Ail Et Au Beurre"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Crabe À L Ail Et Au Beurre"
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Crabe À L Ail Et Au Beurre"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Crabe À L Ail Et Au Beurre"
+              },
+              "product": {
+                "data": {
+                  "name": "piment vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Crabe À L Ail Et Au Beurre"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 300,
+                "multiply_factor": 1,
+                "title": "Crabe À L Ail Et Au Beurre"
+              },
+              "product": {
+                "data": {
+                  "name": "crabe"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Crabe À L Ail Et Au Beurre"
+              },
+              "product": {
+                "data": {
+                  "name": "aneth"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Crabe À L Ail Et Au Beurre"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre fraiche"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Crabe À L Ail Et Au Beurre"
+              },
+              "product": {
+                "data": {
+                  "name": "jus de lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "en deux",
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "petits pains blancs moelleux"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Crabe À L Ail Et Au Beurre",
+                  "paragraph": "Placer une poêle moyenne sur feu moyen. Ajouter le beurre et le laisser fondre, puis ajouter l'ail haché et faire frire jusqu'à ce qu'il soit légèrement doré, environ 8 minutes."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Crabe À L Ail Et Au Beurre",
+                  "paragraph": "Ajouter le poivre noir, le gingembre, le piment et les oignons verts, augmenter le feu à vif et faire sauter pendant 1 minute."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Crabe À L Ail Et Au Beurre",
+                  "paragraph": "Ajouter la chair de crabe avec 2 cuil. à soupe d'eau et faire sauter pendant 2 à 3 minutes. Ajouter tous les autres ingrédients et faire sauter pendant 1 minute."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Crabe À L Ail Et Au Beurre",
+                  "paragraph": "Servir immédiatement, garni de feuilles de coriandre et d'oignon vert. Accompagner de quartiers de citron à presser et de petits pains toastés et beurrés."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Note",
+                  "paragraph": "Si vous utilisez un crabe entier cuit, tournez et retirez les pattes du corps. Poussez le corps vers le haut pour le détacher de la carapace principale du crabe et retirez les branchies plumeuses (doigts d'homme mort) du corps. Divisez les pinces en deux et cassez-les, puis divisez le corps en 4 morceaux. Retirez et jetez tout fragment de coquille lâche avant d'ajouter à la poêle à l'étape 3, et ajoutez 100 ml d'eau au lieu de 2 cuil. à soupe. Cuire à feu vif pendant 3 à 4 minutes."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

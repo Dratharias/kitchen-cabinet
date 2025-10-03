@@ -1,0 +1,266 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Chai masala",
+      "description": [
+        "Temps: 30 min",
+        "Rendement: 4 verres"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/dccDRwL/chai-masala.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Chai Masala",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Chai Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "the Assam"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 12,
+                "multiply_factor": 1,
+                "cut": "tranche",
+                "title": "Chai Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1,
+                "title": "Chai Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "grains de poivre noir"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 12,
+                "multiply_factor": 1,
+                "title": "Chai Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "cardamome"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Chai Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "canelle"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "bâtons"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "title": "Chai Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "clou de girofle"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 50,
+                "multiply_factor": 1,
+                "title": "Chai Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Chai Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "litre"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Chai Masala",
+                  "paragraph": "Mettez le thé, le gingembre et les épices dans une casserole, versez 1 litre d'eau bouillante et portez à ébullition. Baissez le feu et laissez mijoter jusqu'à ce que vous puissiez sentir les épices, environ 10 minutes."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Chai Masala",
+                  "paragraph": "Ajoutez le sucre et le lait, augmentez le feu et portez à ébullition. Laissez cuire 10 minutes en remuant de temps en temps. (Une peau se formera, mais elle sera filtrée à la fin.) Goûtez pour voir si le chai vous convient ; faites bouillir un peu plus si vous souhaitez un goût plus fort. La patience sera récompensée !"
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Chai Masala",
+                  "paragraph": "Filtrez, jetez les solides, et servez immédiatement."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Quelques Unes Des Nombreuses Façons De Déguster",
+                  "paragraph": "Chai iranien : Utilise du lait concentré. Sucré et laiteux, il est parfait pour tremper du pain beurré et des pâtisseries."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Quelques Unes Des Nombreuses Façons De Déguster",
+                  "paragraph": "Chai Badshahi : Une portion digne d'un roi, servie dans un verre beaucoup plus grand et utilisant une proportion plus élevée de lait."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Quelques Unes Des Nombreuses Façons De Déguster",
+                  "paragraph": "Chai Doodhpati : Pas d'eau, juste du lait."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Quelques Unes Des Nombreuses Façons De Déguster",
+                  "paragraph": "Chai Noon : Avec une pincée de sel supplémentaire."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Quelques Unes Des Nombreuses Façons De Déguster",
+                  "paragraph": "Chai Kali : Noir (sans lait)."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Quelques Unes Des Nombreuses Façons De Déguster",
+                  "paragraph": "Chai de cuisine : Très fort, très sucré (bu par litres par les chefs de Dishoom)."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Quelques Unes Des Nombreuses Façons De Déguster",
+                  "paragraph": "Khada chamuch : Tellement sucré que la cuillère tient debout dans la tasse."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

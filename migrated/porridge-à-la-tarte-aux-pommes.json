@@ -1,0 +1,254 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Porridge à la tarte aux pommes",
+      "description": [
+        "Temps: 10 min",
+        "Portions: 2-4"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/6DnrrQx/Porridge-la-tarte-aux-pommes.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Porridge À La Tarte Aux Pommes",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "d├ęs",
+                "title": "Pommes Compotées"
+              },
+              "product": {
+                "data": {
+                  "name": "pomme"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pommes Compotées"
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pommes Compotées"
+              },
+              "product": {
+                "data": {
+                  "name": "cannelle"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "title": "Pommes Compotées"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Porridge"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Porridge"
+              },
+              "product": {
+                "data": {
+                  "name": "cannelle"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Porridge"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Porridge"
+              },
+              "product": {
+                "data": {
+                  "name": "noix de muscade"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "culinaire"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Porridge"
+              },
+              "product": {
+                "data": {
+                  "name": "flocons d'avoine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Porridge"
+              },
+              "product": {
+                "data": {
+                  "name": "Noix et graines"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Porridge À La Tarte Aux Pommes",
+                  "paragraph": "Mettez les pommes en cubes dans une casserole avec l'eau, la cannelle et le sucre de coco. Placez la poêle sur feu moyen et faites mijoter pendant 5 à 6 minutes."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Porridge À La Tarte Aux Pommes",
+                  "paragraph": "Pendant ce temps, dans une autre casserole, ajoutez le lait végétal et les épices. Placez la casserole sur feu doux pour infuser pendant 4 à 5 minutes, puis incorporez les flocons d'avoine. Continuez à remuer jusqu'à ce que le mélange soit épais et crémeux."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Porridge À La Tarte Aux Pommes",
+                  "paragraph": "Garnir le porridge avec la compote de pommes, les noix et les graines."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Porridge À La Tarte Aux Pommes",
+                  "paragraph": "La compote de pommes se conserve 4 à 5 jours dans un récipient fermé au réfrigérateur."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

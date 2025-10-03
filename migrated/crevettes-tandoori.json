@@ -1,0 +1,265 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Crevettes Tandoori",
+      "description": [
+        "Temps: 2h30 à 4h30",
+        "Rendement: 6 portions en apéritif ; 4 portions en plat principal"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/k2PFhWr/Crevettes-Tandoori.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "crevettes tandoori",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "marinade indienne",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "grillade",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "cuisine indienne",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Crevettes Tandoori",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1,
+                "title": "Matériel Nécessaire"
+              },
+              "product": {
+                "data": {
+                  "name": "Brochettes de bambou"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pouces"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Matériel Nécessaire"
+              },
+              "product": {
+                "data": {
+                  "name": "crevettes"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "livres"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Matériel Nécessaire"
+              },
+              "product": {
+                "data": {
+                  "name": "Marinade"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "title": "Matériel Nécessaire"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Matériel Nécessaire"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon rouge"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "brins",
+                "title": "Matériel Nécessaire"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "quarters",
+                "title": "Matériel Nécessaire"
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Matériel Nécessaire"
+              },
+              "product": {
+                "data": {
+                  "name": "Raita"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Matériel Nécessaire"
+              },
+              "product": {
+                "data": {
+                  "name": "Tomate"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Matériel Nécessaire"
+              },
+              "product": {
+                "data": {
+                  "name": "Mangue Fraiche"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Crevettes Tandoori",
+                  "paragraph": "Placez les crevettes dans un plat de cuisson en verre et versez la marinade dessus. Couvrez avec du film plastique et laissez mariner pendant 2 à 4 heures au réfrigérateur. Remuez plusieurs fois pour bien enrober."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Crevettes Tandoori",
+                  "paragraph": "Préparez un gril pour une cuisson directe et préchauffez-le à feu vif. Brossez et huilez la grille du gril."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Crevettes Tandoori",
+                  "paragraph": "Retirez les crevettes de la marinade et enfilez-les sur des brochettes. Placez-les sur la grille et faites griller jusqu'à ce qu'elles soient fermes, roses et bien cuites, environ 2 à 3 minutes de chaque côté, en badigeonnant de beurre fondu."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Crevettes Tandoori",
+                  "paragraph": "Transférez les crevettes sur un plat et saupoudrez des tranches d'oignon et des brins de coriandre. Servez avec des quartiers de citron et des bols de raita et des chutneys."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

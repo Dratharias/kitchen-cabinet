@@ -1,0 +1,457 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Döner kebab",
+      "description": [
+        "Temps: 45 min"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Döner Kebab",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Viande"
+              },
+              "product": {
+                "data": {
+                  "name": "viande de boeuf"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "kg"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Viande"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.75,
+                "multiply_factor": 1,
+                "title": "Viande"
+              },
+              "product": {
+                "data": {
+                  "name": "yaourt"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.333,
+                "multiply_factor": 1,
+                "title": "Viande"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Viande"
+              },
+              "product": {
+                "data": {
+                  "name": "paprika"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Viande"
+              },
+              "product": {
+                "data": {
+                  "name": "thym"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Viande"
+              },
+              "product": {
+                "data": {
+                  "name": "Sel et poivre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "yaourt"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1,
+                "title": "Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "mayonnaise"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "pressé",
+                "title": "Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "aneth"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "persil"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "Sel et poivre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garnitures"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "oignon"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garnitures"
+              },
+              "product": {
+                "data": {
+                  "name": "persil"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garnitures"
+              },
+              "product": {
+                "data": {
+                  "name": "sumac"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Garnitures"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garnitures"
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garnitures"
+              },
+              "product": {
+                "data": {
+                  "name": "Tomates"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garnitures"
+              },
+              "product": {
+                "data": {
+                  "name": "Cornichons"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Döner Kebab",
+                  "paragraph": "Commencez par râper l'oignon en essayant de conserver autant de jus que possible. Dans un bol, ajoutez la viande hachée, l'oignon, le yaourt, le lait, le paprika, le thym, le sel et le poivre. Mélangez bien, puis façonnez en une très grosse saucisse. Enveloppez-la étroitement dans du papier sulfurisé et du film plastique, puis laissez-la au congélateur toute la nuit."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Döner Kebab",
+                  "paragraph": "Pour la sauce, hachez le persil et l'aneth et mélangez-les avec le yaourt et la mayonnaise. Pressez le jus de citron, râpez l'ail et assaisonnez de sel et de poivre. Mélangez bien et laissez reposer au réfrigérateur pendant que vous préparez les garnitures."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Döner Kebab",
+                  "paragraph": "Tranchez les oignons et hachez grossièrement le persil. Mélangez le tout dans un bol et ajoutez le sumac, le sel et l'huile d'olive. Remuez bien."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Döner Kebab",
+                  "paragraph": "Coupez les tomates et les cornichons."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Döner Kebab",
+                  "paragraph": "Ensuite, sortez le kebab du congélateur et, avec un couteau très tranchant, découpez la viande en fines lanières. Une fois que vous en avez assez, remettez le kebab au congélateur et réutilisez-le quand vous voulez."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Döner Kebab",
+                  "paragraph": "Chauffez une poêle à feu vif, ajoutez du beurre et faites cuire les lanières de viande jusqu'à ce qu'elles soient bien grillées des deux côtés. Retirez-les, puis faites tremper le pain dans les sucs."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,324 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Potage aux carottes et coriandre",
+      "description": [
+        "Temps: 55 min",
+        "Portions: 6"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/xGnZ1h2/potage-carottes-coriandre.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Potage Aux Carottes Et Coriandre",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Potage Aux Carottes Et Coriandre"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Potage Aux Carottes Et Coriandre"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "c. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Potage Aux Carottes Et Coriandre"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 800,
+                "multiply_factor": 1,
+                "cut": "petits morceaux",
+                "title": "Potage Aux Carottes Et Coriandre"
+              },
+              "product": {
+                "data": {
+                  "name": "carottes"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Potage Aux Carottes Et Coriandre"
+              },
+              "product": {
+                "data": {
+                  "name": "bouillon de legumes"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "litre"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.4,
+                "multiply_factor": 1,
+                "title": "Potage Aux Carottes Et Coriandre"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché grossièrement",
+                "title": "Potage Aux Carottes Et Coriandre"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pièce"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "cut": "tranche",
+                "title": "Croûtons"
+              },
+              "product": {
+                "data": {
+                  "name": "pain"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Croûtons"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Croûtons"
+              },
+              "product": {
+                "data": {
+                  "name": "herbes melangees sechees"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Potage Aux Carottes Et Coriandre",
+                  "paragraph": "Préchauffez votre four à 180°C."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Potage Aux Carottes Et Coriandre",
+                  "paragraph": "Faire suer les oignons et l'ail dans une grande casserole jusqu'à ce qu'ils soient translucides à feu moyen."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Potage Aux Carottes Et Coriandre",
+                  "paragraph": "Ajoutez la coriandre moulue puis laissez cuire encore une minute."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Potage Aux Carottes Et Coriandre",
+                  "paragraph": "Salez et poivrez puis ajoutez les carottes."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Potage Aux Carottes Et Coriandre",
+                  "paragraph": "Baissez le feu très doux et couvrez la casserole. Laissez les carottes cuire jusqu'à ce qu'elles soient presque tendres, en remuant souvent. Ajoutez ensuite votre bouillon et votre lait puis portez à ébullition."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Potage Aux Carottes Et Coriandre",
+                  "paragraph": "Pendant ce temps, ajoutez les cubes de pain sur une plaque à pâtisserie et arrosez d'huile d'olive, d'herbes et d'une pincée de sel et de poivre. Placez la plaque dans votre four pour cuire pendant 10 minutes ou jusqu'à ce qu'elle soit dorée et croustillante."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Potage Aux Carottes Et Coriandre",
+                  "paragraph": "Incorporez la coriandre fraîche à la soupe, puis ajoutez délicatement le mélange dans votre mixeur et mixez. Une fois lisse, remettez la soupe dans votre casserole et vérifiez l'assaisonnement."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Potage Aux Carottes Et Coriandre",
+                  "paragraph": "Ajoutez du sel, du poivre et du jus de citron pour faire ressortir les saveurs."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Potage Aux Carottes Et Coriandre",
+                  "paragraph": "Servez votre soupe avec des croûtons & quelques feuilles de coriandre."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

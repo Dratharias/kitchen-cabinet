@@ -1,0 +1,421 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Boeuf Stroganoff",
+      "description": [
+        "6 heures 30 minutes",
+        "4 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/5kJp90r/stroganoff.jpg",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "prep",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "mealprep",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "congelé",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Boeuf Stroganoff",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 500,
+                "multiply_factor": 1,
+                "title": "Boeuf Stroganoff"
+              },
+              "product": {
+                "data": {
+                  "name": "nouilles aux oeufs"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Boeuf"
+              },
+              "product": {
+                "data": {
+                  "name": "farine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 500,
+                "multiply_factor": 1,
+                "cut": "en lanieres ou en petit cubes",
+                "title": "Boeuf"
+              },
+              "product": {
+                "data": {
+                  "name": "surlonge de boeuf"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Boeuf"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "emincé",
+                "title": "Boeuf"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 500,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Boeuf"
+              },
+              "product": {
+                "data": {
+                  "name": "champignon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Boeuf"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Boeuf"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "gousses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 125,
+                "multiply_factor": 1,
+                "title": "Boeuf"
+              },
+              "product": {
+                "data": {
+                  "name": "vin rouge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 250,
+                "multiply_factor": 1,
+                "title": "Boeuf"
+              },
+              "product": {
+                "data": {
+                  "name": "bouillon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Boeuf"
+              },
+              "product": {
+                "data": {
+                  "name": "moutarde"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Boeuf"
+              },
+              "product": {
+                "data": {
+                  "name": "paprika"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Boeuf"
+              },
+              "product": {
+                "data": {
+                  "name": "Sel et poivre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "ciselé",
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "persil"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "Ciboulette"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "yogourt"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "%"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Boeuf Stroganoff",
+                  "paragraph": "Dans un bol, fariner la viande."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Boeuf Stroganoff",
+                  "paragraph": "Dans une grande poêle à feu vif, dorer la viande, une petite quantité à la fois, dans l'huile. Saler et poivrer. Transvider la viande dans la mijoteuse au fur et à mesure."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Boeuf Stroganoff",
+                  "paragraph": "Dans la même poêle, dorer les oignons et les champignons dans le beurre. Saler et poivrer. Ajouter l'ail et poursuivre la cuisson une minute."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Boeuf Stroganoff",
+                  "paragraph": "Déglacer avec le vin et transvider dans la mijoteuse. Ajouter le reste des ingrédients et mélanger."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Boeuf Stroganoff",
+                  "paragraph": "Cuire à Low pendant 6 heures."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Boeuf Stroganoff",
+                  "paragraph": "Servir sur des nouilles aux oeufs et garnir."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

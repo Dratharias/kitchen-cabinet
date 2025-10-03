@@ -1,0 +1,200 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Ananas Grillé Aux Épices Avec Crème Fouettée Fumée",
+      "description": [
+        "Temps: 20 min",
+        "Rendement: 4 à 8 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/4Y8kRCc/Ananas-Grill-Aux-pices-Avec-Cr-me-Fouett-e-Fum-e.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Ananas Grillé Aux Épices Avec Crème Fouettée",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Crème Fouettée Épicée Et Fumée"
+              },
+              "product": {
+                "data": {
+                  "name": "creme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Crème Fouettée Épicée Et Fumée"
+              },
+              "product": {
+                "data": {
+                  "name": "Rub"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Crème Fouettée Épicée Et Fumée"
+              },
+              "product": {
+                "data": {
+                  "name": "mezcal"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Ananas"
+              },
+              "product": {
+                "data": {
+                  "name": "Rub"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "tranche",
+                "title": "Ananas"
+              },
+              "product": {
+                "data": {
+                  "name": "ananas"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pouce"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Ananas"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "rape",
+                "title": "Ananas"
+              },
+              "product": {
+                "data": {
+                  "name": "cannelle"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Ananas Grillé Aux Épices Avec Crème Fouettée",
+                  "paragraph": "Préparez la crème fouettée : placez la crème et le Rub Dessert dans un bol en métal réfrigéré. Battez en pics mous avec un batteur électrique. Ajoutez le mezcal ou la fumée liquide et continuez à battre jusqu'à ce que des pics fermes se forment. Gardez au frais."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Ananas Grillé Aux Épices Avec Crème Fouettée",
+                  "paragraph": "Préparez un gril pour une cuisson directe et préchauffez à haute température. Brossez et huilez la grille du gril."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Ananas Grillé Aux Épices Avec Crème Fouettée",
+                  "paragraph": "Placez le Rub Dessert dans un bol peu profond à côté du gril. Badigeonnez chaque tranche d'ananas des deux côtés avec du lait de coco, puis enrobez complètement dans le rub, en secouant l'excès."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Ananas Grillé Aux Épices Avec Crème Fouettée",
+                  "paragraph": "Disposez les tranches d'ananas sur le feu vif et grillez jusqu'à ce qu'elles soient bien dorées (le sucre devrait commencer à caraméliser) des deux côtés, environ 2 minutes par côté. Transférez sur un plat ou des assiettes. Garnissez chaque tranche d'une cuillerée de crème fouettée et saupoudrez un peu de cannelle moulue ou de muscade râpée sur le dessus."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

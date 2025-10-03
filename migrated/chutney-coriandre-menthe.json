@@ -1,0 +1,221 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Chutney Coriandre-Menthe",
+      "description": [
+        "Temps: 10 min",
+        "Rendement: 70 g"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/SJXzsQb/chutney-cornichons-et-vinaigrettes.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "dishoom",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "chutney",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "coriandre",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "menthe",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "indien",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "épicé",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Chutney Coriandre Menthe",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "feuilles et tiges de coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "menthe"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "piment vert"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 25,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Chauffer une poêle sèche à feu moyen-vif. Ajouter les graines de cumin, les faire griller pendant 2-3 minutes, puis les transférer dans une assiette et laisser refroidir."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "À l'aide d'un mini robot culinaire ou d'un mixeur plongeant, mixer tous les ingrédients avec 25 ml d'eau jusqu'à obtenir une texture lisse. Transférer dans un bocal, à moins de servir immédiatement."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Le chutney se conserve 1 à 2 jours au réfrigérateur, bien qu'il perde de sa couleur en s'oxydant – presser un film plastique sur la surface avant de mettre le couvercle pour réduire l'oxydation."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

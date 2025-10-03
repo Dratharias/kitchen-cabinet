@@ -1,0 +1,187 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Beurre À L'Estragon Et Au Citron",
+      "description": [
+        "Temps: N/A",
+        "Rendement: 1/2 tasse, suffisant pour 8 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/QQPqV3s/Beurre-L-Estragon-Et-Au-Citron.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "beurre à l'estragon",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "citron",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "beurre composé",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Beurre À L Estragon Et Au Citron",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1,
+                "title": "Beurre À L Estragon Et Au Citron"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Beurre À L Estragon Et Au Citron"
+              },
+              "product": {
+                "data": {
+                  "name": "feuilles d'estragon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Beurre À L Estragon Et Au Citron"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "rape",
+                "title": "Beurre À L Estragon Et Au Citron"
+              },
+              "product": {
+                "data": {
+                  "name": "zeste de citron"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Beurre À L Estragon Et Au Citron"
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Beurre À L Estragon Et Au Citron"
+              },
+              "product": {
+                "data": {
+                  "name": "poivre"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Beurre À L Estragon Et Au Citron",
+                  "paragraph": "Placez le beurre, l'estragon, l'ail, le zeste de citron, le jus de citron et le poivre dans un bol à mélanger et remuez ou fouettez jusqu'à ce que le mélange soit léger et mousseux. Vous pouvez également faire le mélange avec un batteur ou dans un robot culinaire."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Pour Faire Et Conserver Les Beurres Composés",
+                  "paragraph": "Disposez un carré de 12 pouces de film plastique ou de papier parchemin sur votre surface de travail et amoncelez le beurre au centre. Roulez-le en un cylindre de 1 1/2 pouce de diamètre, en tordant les extrémités de l'emballage pour compacter le beurre. Conservez le beurre au réfrigérateur jusqu'à 5 jours ou au congélateur jusqu'à 3 mois."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

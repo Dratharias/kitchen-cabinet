@@ -1,0 +1,334 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Mayonnaise végane 3 façons",
+      "description": [
+        "Temps: 5 min",
+        "Portions: 10-12"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/XJMX8WV/Mayonnaise-v-gane-3-fa-ons.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Mayonnaise Végane 3 Façons",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Mayonnaise Classique"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Mayonnaise Classique"
+              },
+              "product": {
+                "data": {
+                  "name": "jus de citron"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Mayonnaise Classique"
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre de vin blanc"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.4,
+                "multiply_factor": 1,
+                "title": "Mayonnaise Classique"
+              },
+              "product": {
+                "data": {
+                  "name": "huile de pepins de raisin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Mayonnaise Classique"
+              },
+              "product": {
+                "data": {
+                  "name": "sel de mer"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Baconaise"
+              },
+              "product": {
+                "data": {
+                  "name": "soja"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Baconaise"
+              },
+              "product": {
+                "data": {
+                  "name": "paprika"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Baconaise"
+              },
+              "product": {
+                "data": {
+                  "name": "sirop d'erable"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Baconaise"
+              },
+              "product": {
+                "data": {
+                  "name": "the"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Baconaise"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Ail De Style Boîte À Pizza"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Ail De Style Boîte À Pizza"
+              },
+              "product": {
+                "data": {
+                  "name": "herbes melangees"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Ail De Style Boîte À Pizza"
+              },
+              "product": {
+                "data": {
+                  "name": "sel de mer"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pièce"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Mayonnaise Végane 3 Façons",
+                  "paragraph": "Pour cette recette, je recommande fortement d'utiliser un mixeur plongeant. Mélangez simplement le lait, le vinaigre et le jus de citron dans un grand pichet circulaire. Maintenant, tout en mélangeant, ajoutez progressivement l'huile. Continuez à mélanger jusqu'à ce que vous ayez ajouté toute l'huile et que cela se transforme en une consistance crémeuse semblable à celle d'une mayonnaise."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Mayonnaise Végane 3 Façons",
+                  "paragraph": "Assaisonner avec du sel au goût."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Mayonnaise Végane 3 Façons",
+                  "paragraph": "pour faire la baconaise, mélangez simplement les arômes de baconaise à un lot de mayonnaise et idem pour l'ail et les herbes."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Mayonnaise Végane 3 Façons",
+                  "paragraph": "La mayonnaise peut être conservée au réfrigérateur dans des récipients fermés pendant environ une semaine. Regardez la vidéo du didacticiel ci-dessous pour des conseils supplémentaires."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

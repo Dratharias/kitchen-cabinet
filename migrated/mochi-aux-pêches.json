@@ -1,0 +1,336 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Mochi aux pêches",
+      "description": [
+        "Temps: 2h"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/VqSdDsM/peach-mochi.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Mochi Aux Pêches",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 100,
+                "multiply_factor": 1,
+                "title": "Pâte Mochi"
+              },
+              "product": {
+                "data": {
+                  "name": "farine de riz gluant"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 30,
+                "multiply_factor": 1,
+                "title": "Pâte Mochi"
+              },
+              "product": {
+                "data": {
+                  "name": "fecule de mais"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 45,
+                "multiply_factor": 1,
+                "title": "Pâte Mochi"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 180,
+                "multiply_factor": 1,
+                "title": "Pâte Mochi"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1,
+                "title": "Pâte Mochi"
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pâte Mochi"
+              },
+              "product": {
+                "data": {
+                  "name": "colorant alimentaire"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 500,
+                "multiply_factor": 1,
+                "title": "Garniture À La Pêche"
+              },
+              "product": {
+                "data": {
+                  "name": "peches"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 150,
+                "multiply_factor": 1,
+                "title": "Garniture À La Pêche"
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 100,
+                "multiply_factor": 1,
+                "title": "Garniture À La Pêche"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1,
+                "title": "Garniture À La Pêche"
+              },
+              "product": {
+                "data": {
+                  "name": "jus de citron"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 200,
+                "multiply_factor": 1,
+                "title": "Garniture À La Pêche"
+              },
+              "product": {
+                "data": {
+                  "name": "creme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1,
+                "title": "Garniture À La Pêche"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Mochi Aux Pêches",
+                  "paragraph": "Lavez soigneusement les pêches. Pelez et dénoyautez les pêches, conservez les peaux de pêche, coupez-les en petits cubes, transférez-les dans un bol propre et mélangez-les bien avec le sucre. Couvrez d'une pellicule plastique et laissez reposer au réfrigérateur pendant 30 minutes."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Mochi Aux Pêches",
+                  "paragraph": "Prenez une casserole, mettez-y les peaux de pêche et l'eau, laissez cuire et bouillir pendant 5 minutes. Filtrez les peaux de pêche. Ajoutez les cubes de pêche, laissez cuire à feu moyen, en remuant et en mélangeant jusqu'à ce qu'ils ramollissent et épaississent. Ajoutez le jus de citron, mélangez et remuez à feu moyen jusqu'à ce que le mélange épaississe. Mettez de côté pour laisser refroidir."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Mochi Aux Pêches",
+                  "paragraph": "Dans un bol propre, mélangez bien la farine de riz gluant, la fécule de maïs, le sucre granulé et le lait. Ajoutez un peu de colorant alimentaire (une toute petite goutte suffira), mélangez bien. Ajoutez l'huile végétale et mélangez bien."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Mochi Aux Pêches",
+                  "paragraph": "Prenez une poêle antiadhésive, versez la pâte, à feu moyen, continuez à mélanger et remuer et la pâte commencera à former une boule de pâte. La boule de pâte ne collera pas à la poêle, et la texture est assez translucide et élastique. Portez des gants, pétrissez, pliez et tirez la pâte jusqu'à ce qu'elle devienne très élastique."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Mochi Aux Pêches",
+                  "paragraph": "Dans un bol propre, rassemblez la crème liquide et le sucre, battez jusqu'à ce qu'elle forme des pics fermes. Transférez-les dans une poche à douille, mettez au réfrigérateur pour les garder au frais."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Mochi Aux Pêches",
+                  "paragraph": "Saupoudrez le tapis de pétrissage, le rouleau à pâtisserie, la pâte mochi avec un peu de farine. Roulez la pâte mochi en un long boudin fin, et divisez-le en 8 morceaux égaux. Roulez chaque morceau en cercles ronds ; ajoutez de la crème fouettée et de la sauce à la pêche, enveloppez-les et mettez-les dans un moule à cupcakes et servez. Vous pouvez aussi les façonner comme de vraies pêches et les garnir de feuilles de menthe."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

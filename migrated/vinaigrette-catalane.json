@@ -1,0 +1,256 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Vinaigrette Catalane",
+      "description": [
+        "Temps: N/A",
+        "Rendement: 2 tasses, assez pour 6 à 8 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/10r3Gf1/Vinaigrette-Catalane.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "vinaigrette",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "catalane",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "légumes",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Vinaigrette Catalane",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Vinaigrette Catalane"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Vinaigrette Catalane"
+              },
+              "product": {
+                "data": {
+                  "name": "sel grossier"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Vinaigrette Catalane"
+              },
+              "product": {
+                "data": {
+                  "name": "moutarde"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Vinaigrette Catalane"
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre de vin rouge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Vinaigrette Catalane"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive extra-vierge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Vinaigrette Catalane"
+              },
+              "product": {
+                "data": {
+                  "name": "echalote"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Vinaigrette Catalane"
+              },
+              "product": {
+                "data": {
+                  "name": "capres"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Vinaigrette Catalane"
+              },
+              "product": {
+                "data": {
+                  "name": "cornichon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Vinaigrette Catalane"
+              },
+              "product": {
+                "data": {
+                  "name": "tomate"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Vinaigrette Catalane"
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Vinaigrette Catalane",
+                  "paragraph": "Placez l'ail et le sel dans un grand bol et écrasez-les en pâte avec le dos d'une cuillère. Ajoutez la moutarde et le vinaigre et fouettez jusqu'à ce que les cristaux de sel soient complètement dissous. Incorporez progressivement l'huile en un filet fin; la sauce doit s'émulsifier. Incorporez les échalotes, les câpres, les cornichons et la tomate. Corrigez l'assaisonnement, en ajoutant du sel, du poivre et plus de vinaigre si nécessaire au goût. Couvrez et réfrigérez. La vinaigrette est meilleure servie à température ambiante et utilisée dans les quelques heures suivant sa préparation. Fouettez bien avant de servir."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Variation",
+                  "paragraph": "Certains cuisiniers espagnols enrichissent leur vinaigrette avec du persil plat et des œufs durs hachés finement."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

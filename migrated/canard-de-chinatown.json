@@ -1,0 +1,195 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Canard De Chinatown",
+      "description": [
+        "Temps: 1-1 1/2 heures",
+        "Rendement: 2 à 4 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/GPhvkjt/Canard-De-Chinatown.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "canard",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "asiatique",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "Pékin",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Canard De Chinatown",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "coupe en deux"
+              },
+              "product": {
+                "data": {
+                  "name": "canard"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile de sesame asiatique"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "marinade"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "tranché"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Sauce Barbecue"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez les moitiés de canard dans un plat de cuisson. Piquez la peau (mais pas la viande en dessous) sur tous les côtés avec une aiguille fixée dans un bouchon de liège (cela aide à libérer la graisse). Badigeonnez le canard sur tous les côtés avec de l'huile de sésame. Saupoudrez partout avec la marinade sèche. Faites mariner au réfrigérateur pendant au moins 4 heures ou jusqu'à une nuit, à découvert."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Préparez un gril pour une cuisson indirecte et préchauffez à feu moyen-élevé (375°F). Brossez et huilez la grille du gril."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Disposez les moitiés de canard, côtés coupés vers le bas, sur la grille au-dessus du bac d'égouttage, loin de la chaleur. Grillez indirectement le canard jusqu'à ce que la peau soit croustillante et dorée et que la viande soit bien cuite, 1 à 1 1/2 heures. Badigeonnez le canard plusieurs fois avec de l'huile de sésame. La température interne dans la cuisse sera d'environ 180°F lorsqu'elle est lue avec un thermomètre instantané."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Transférez le canard sur un plat ou des assiettes et saupoudrez de coriandre et d'oignons verts. Servez la sauce barbecue à part."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

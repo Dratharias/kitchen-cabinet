@@ -1,0 +1,335 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Recado de Bistec",
+      "description": [
+        "Temps de préparation : 30 minutes",
+        "Rendement : Environ 1 tasse, suffisant pour 2 à 4 cuillères à soupe par livre de viande"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Yucatán",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "recado",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "épices",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "marinade",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "viande",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "grillades",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Recado De Bistec",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "quarters"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pièce"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "decomposees"
+              },
+              "product": {
+                "data": {
+                  "name": "tetes d'ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "origan"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.125,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "clou de girofle"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "persil"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillères"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "masa harina"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel de mer ou de sel casher"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère à café"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre blanc"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "jus d'orange acide"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Chauffez un comal ou une poêle en fonte à feu moyen. Ajoutez l'oignon et l'ail et faites cuire en tournant avec des pinces jusqu'à ce qu'ils soient dorés de tous les côtés et tendres, 4 à 6 minutes pour l'ail, 10 à 12 minutes pour les morceaux d'oignon. Ne laissez pas les légumes brûler. Transférez l'oignon et l'ail dans une assiette pour les laisser refroidir."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Mélangez l'origan, les grains de poivre, le cumin et les clous de girofle dans un moulin à épices et réduisez-les en poudre fine."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez le persil, la masa harina, le sel, le vinaigre, le jus d'orange acide, l'huile, l'oignon, l'ail et les épices dans un robot culinaire ou un mixeur. Réduisez en purée lisse, en arrêtant le robot et en raclant les parois du bol avec une spatule plusieurs fois. Utilisez immédiatement ou transférez dans un grand bocal, couvrez et réfrigérez. Le recado se conserve au moins une semaine."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

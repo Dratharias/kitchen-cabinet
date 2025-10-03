@@ -1,0 +1,398 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Poulet Rubis",
+      "description": [
+        "Temps: 30 min",
+        "Rendement: 4 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/Jj3GhQG/Poulet-Rubis.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Poulet Rubis",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 700,
+                "multiply_factor": 1,
+                "title": "Poulet Rubis"
+              },
+              "product": {
+                "data": {
+                  "name": "cuisses de poulet"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1,
+                "title": "Poulet Rubis"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Poulet Rubis"
+              },
+              "product": {
+                "data": {
+                  "name": "sauce"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 50,
+                "multiply_factor": 1,
+                "title": "Poulet Rubis"
+              },
+              "product": {
+                "data": {
+                  "name": "creme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Pour La Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Pour La Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "title": "Pour La Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Pour La Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de piment"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1,
+                "title": "Pour La Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour La Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "garam masala"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour La Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "jus de lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour La Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 75,
+                "multiply_factor": 1,
+                "title": "Pour La Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "yogourt grec"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour La Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Pour La Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "Feuilles de coriandre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour La Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "graines"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Poulet Rubis",
+                  "paragraph": "Pour la marinade, mélanger les ingrédients ensemble dans un mixeur jusqu'à obtenir une pâte lisse. Transférer dans un bol."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Poulet Rubis",
+                  "paragraph": "Couper le poulet en morceaux de 4 cm. Ajouter à la marinade et retourner pour enrober. Couvrir et laisser mariner au réfrigérateur pendant 6 à 24 heures."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Poulet Rubis",
+                  "paragraph": "Préchauffer le gril à feu moyen-élevé. Placer le poulet mariné sur une grille dans le plat du gril, badigeonner de beurre fondu et griller pendant 8 à 10 minutes, jusqu'à ce qu'il soit cuit à travers et bien grillé."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Poulet Rubis",
+                  "paragraph": "Chauffer une grande casserole à feu moyen-doux. Ajouter la sauce makhani, la crème et le poulet grillé et laisser mijoter très doucement pendant 10 minutes."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Poulet Rubis",
+                  "paragraph": "Servir le curry garni d'allumettes de gingembre, de coriandre hachée et de graines de grenade, avec un bol de riz cuit à la vapeur à côté."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Dashi",
+      "description": [
+        "Recette du Iron Chef Masaharu Morimoto.",
+        "Fait environ 7 tasses."
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/GWktcq8/dashi.jpg",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Dashi",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "cut": "morceaux"
+              },
+              "product": {
+                "data": {
+                  "name": "kombu"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 42,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "flocons"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Essuyer légèrement l'algue kombu avec un linge humide pour retirer la terre ou saleté, mais ne pas retirer la poudre blanche."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Combiner la kombu et l'eau dans une casserole, à chaleur moyenne sans couvrir."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Lorsque l'eau fait de petites bulles qui se rendent à la surface de l'eau, 10 à 12 minutes. Retirer de la chaleur."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Retirer l'algue kombu, puis ajouter la bonite et mélanger délicatement pour distribuer les flocons dans tout le liquide."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Laisser reposer 1 minute et retirer avec une cuillère la mousse blanche à la surface du liquide. Laissez reposer 2 minutes de plus."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Dans un tamis ou une passoire avec un cotton à fromage, filtrer le bouillon dans un bol en prenant soin de récupérer le liquide en pressant légèrement les flocons dans le tamis."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

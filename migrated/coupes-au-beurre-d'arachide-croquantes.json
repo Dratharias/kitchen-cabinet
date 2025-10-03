@@ -1,0 +1,186 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Coupes au beurre d'arachide croquantes",
+      "description": [
+        "Temps: 1h10"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Coupes Au Beurre D Arachide Croquantes",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 200,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "chocolat"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 200,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "beurre d'arachide"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 40,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile de coco"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 75,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Rice Krispies"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 50,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "flocons d'avoine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Préparez un moule à muffins de 12 trous, utilisez des caissettes en papier si vous le souhaitez."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Faites fondre le chocolat et l'huile de coco ensemble au micro-ondes ou dans un bol au-dessus d'une casserole d'eau frémissante."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Mélangez le beurre de cacahuète, si le beurre de cacahuète est grumeleux, chauffez-le encore 30 secondes au micro-ondes."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Incorporez les Rice Krispies et les flocons d'avoine."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Répartissez dans le moule à muffins."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Mettez au réfrigérateur pendant 1 heure."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Sauce Barbecue Miso",
+      "description": [
+        "Temps: 6-10 min",
+        "Rendement: 2 tasses, pour 6 à 8 personnes"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/tqzBtSr/Sauce-Barbecue-Miso.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "sauce barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "miso",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "japonais",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "tofu",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Sauce Barbecue Miso",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "miso blanc"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "eau bouillante"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "oeuf"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sake"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "mirin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "rape"
+              },
+              "product": {
+                "data": {
+                  "name": "zeste de citron"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Versez de l'eau à une profondeur de 2 pouces dans le fond d'un bain-marie ou d'une casserole et portez à ébullition à feu moyen-élevé. Placez le miso et l'eau bouillante dans la partie supérieure du bain-marie ou dans une petite casserole et fouettez pour mélanger."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Pendant ce temps, fouettez le sucre, les jaunes d'œufs (ou la mayonnaise, si utilisée), le saké, le mirin et le zeste de citron dans le mélange de miso."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez la casserole avec le mélange de miso sur l'eau frémissante. Faites cuire la sauce miso au-dessus de l'eau frémissante jusqu'à ce qu'elle soit épaisse et crémeuse, environ 6 à 10 minutes, en fouettant constamment. Ajustez la chaleur pour maintenir l'eau à frémissement."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Retirez la casserole du feu et laissez refroidir à température ambiante. Transférez la sauce miso dans des bols de service si vous la servez immédiatement. Ou transférez-la dans un grand bocal, couvrez et réfrigérez. La sauce miso se conservera pendant au moins 3 jours."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,286 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Gruau au bleuets et citron",
+      "description": [
+        "Temps: 8h",
+        "Portions: 2"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Gruau Au Bleuets Et Citron",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Gruau Au Bleuets Et Citron"
+              },
+              "product": {
+                "data": {
+                  "name": "flocons d'avoine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Gruau Au Bleuets Et Citron"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Gruau Au Bleuets Et Citron"
+              },
+              "product": {
+                "data": {
+                  "name": "yaourt grec vegetalien"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "c. à soupe"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Gruau Au Bleuets Et Citron"
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Gruau Au Bleuets Et Citron"
+              },
+              "product": {
+                "data": {
+                  "name": "zeste de citron"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Gruau Au Bleuets Et Citron"
+              },
+              "product": {
+                "data": {
+                  "name": "extrait de vanille"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Gruau Au Bleuets Et Citron"
+              },
+              "product": {
+                "data": {
+                  "name": "jus de citron"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "c. à soupe"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Gruau Au Bleuets Et Citron"
+              },
+              "product": {
+                "data": {
+                  "name": "the"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 300,
+                "multiply_factor": 1,
+                "title": "Pour La Confiture De Chia Aux Bleuets"
+              },
+              "product": {
+                "data": {
+                  "name": "bleuets"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "pressé",
+                "title": "Pour La Confiture De Chia Aux Bleuets"
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Pour La Confiture De Chia Aux Bleuets"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de chia"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Pour La Confiture De Chia Aux Bleuets"
+              },
+              "product": {
+                "data": {
+                  "name": "sirop d'erable"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Gruau Au Bleuets Et Citron",
+                  "paragraph": "Préparez les flocons d'avoine pour le lendemain en mélangeant tout dans un grand bol - goûtez et ajoutez plus de sirop d'érable ou de citron selon votre goût - puis couvrez et laissez reposer pendant 2 heures (ou toute la nuit)."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Gruau Au Bleuets Et Citron",
+                  "paragraph": "Préparez la confiture de chia en ajoutant les myrtilles dans une casserole à feu doux, avec le jus de citron et le sirop d'érable. Écrasez les myrtilles avec un presse-purée ou le dos d'une fourchette. Laissez mijoter pendant 5 à 10 minutes jusqu'à ce que les jus se libèrent et prennent une couleur violet foncé. Retirez du feu et ajoutez les graines de chia, laissez prendre pour obtenir une texture de confiture plus épaisse. Vous pouvez conserver cela dans un pot au réfrigérateur pendant une semaine."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

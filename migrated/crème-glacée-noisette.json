@@ -1,0 +1,208 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Crème glacée noisette",
+      "description": [
+        "Rendement: 500 ml",
+        "Temps: 20 minutes"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "dessert",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sucré",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "congèle",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "prep",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Crème Glacée Noisette",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 460,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 140,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "creme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "jaunes d'oeufs"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "miel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 80,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "praline"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poudre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Faites chauffer le lait et la crème jusqu'à frémissement puis incorporez le praliné noisette et mélangez pour le diluer (au besoin n'hésitez pas à utiliser le mixer à bras)."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Fouettez les jaunes d'œufs avec le miel, versez le mélange lait-praliné par dessus, mélangez et reversez le tout dans la casserole, faites chauffer à feu moyen sans cesser de remuer jusqu'à ce que la crème épaississe et nappe la cuillère. Laissez refroidir complètement avant de placer au frais pour la nuit."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Le lendemain, mixez la crème au mixer à bras en prenant soin d'incorporer le plus d'air possible, ainsi la crème glacée sera plus onctueuse et moins dure à la sortie du congélateur. Versez la crème dans la sorbetière et turbinez pendant 15 minutes en incorporant la poudre pralinée à la fin du turbinage."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Versez la crème glacée dans une boite hermétique et réservez au congélateur."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

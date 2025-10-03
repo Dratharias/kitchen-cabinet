@@ -1,0 +1,808 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Tofu katsu au curry",
+      "description": [
+        "Temps: 90 min",
+        "Portions: 4"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/MRRqj8p/Tofu-katsu-au-curry.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Tofu Katsu Au Curry",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Katsu"
+              },
+              "product": {
+                "data": {
+                  "name": "tofu"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "farine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1,
+                "title": "Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Chapelure"
+              },
+              "product": {
+                "data": {
+                  "name": "chapelure"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Chapelure"
+              },
+              "product": {
+                "data": {
+                  "name": "Gochugaru"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Chapelure"
+              },
+              "product": {
+                "data": {
+                  "name": "granules d'ail"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Chapelure"
+              },
+              "product": {
+                "data": {
+                  "name": "farine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.4,
+                "multiply_factor": 1,
+                "title": "Chapelure"
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Sauce Au Curry"
+              },
+              "product": {
+                "data": {
+                  "name": "huile"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Sauce Au Curry"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Sauce Au Curry"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Sauce Au Curry"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Sauce Au Curry"
+              },
+              "product": {
+                "data": {
+                  "name": "carotte"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 200,
+                "multiply_factor": 1,
+                "title": "Sauce Au Curry"
+              },
+              "product": {
+                "data": {
+                  "name": "champignon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "morceaux",
+                "title": "Sauce Au Curry"
+              },
+              "product": {
+                "data": {
+                  "name": "branches de celeri"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cm"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "coupee",
+                "title": "Sauce Au Curry"
+              },
+              "product": {
+                "data": {
+                  "name": "banane"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 400,
+                "multiply_factor": 1,
+                "title": "Sauce Au Curry"
+              },
+              "product": {
+                "data": {
+                  "name": "pommes de terre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Sauce Au Curry"
+              },
+              "product": {
+                "data": {
+                  "name": "piment"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Sauce Au Curry"
+              },
+              "product": {
+                "data": {
+                  "name": "sel de mer"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Sauce Au Curry"
+              },
+              "product": {
+                "data": {
+                  "name": "puree"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Sauce Au Curry"
+              },
+              "product": {
+                "data": {
+                  "name": "curry japonais"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Sauce Au Curry"
+              },
+              "product": {
+                "data": {
+                  "name": "bouillon de legumes"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Sauce Au Curry"
+              },
+              "product": {
+                "data": {
+                  "name": "lait de coco"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Sauce Au Curry"
+              },
+              "product": {
+                "data": {
+                  "name": "soja"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.0416666667,
+                "multiply_factor": 1,
+                "title": "Radis Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Radis Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "radis"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "rondelles fines",
+                "title": "Radis Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon rouge"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "title": "Radis Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "baies"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Radis Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Radis Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de moutarde"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Radis Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de fenouil"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "riz"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "Salade"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "graines"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Tofu Katsu Au Curry",
+                  "paragraph": "Tout d'abord, préparez le curry. Dans une grande casserole placée sur feu moyen, ajoutez l'huile de sésame suivie de l'oignon, de l'ail, du gingembre, de la carotte, du céleri et des champignons."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Tofu Katsu Au Curry",
+                  "paragraph": "Faire revenir le mélange avec une pincée de sel pendant 4 à 5 minutes avant d'incorporer la banane, les pommes de terre, le piment et la purée de tomates."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Tofu Katsu Au Curry",
+                  "paragraph": "Faites cuire le mélange encore quelques minutes puis ajoutez le bloc de curry coupé en petits morceaux."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Tofu Katsu Au Curry",
+                  "paragraph": "Si vous n'avez pas de bloc de curry, utilisez plutôt 1 cuillère à soupe de poudre de curry, 2 cuillères à café de Garam Masala et 2 cuillères à soupe de farine nature."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Tofu Katsu Au Curry",
+                  "paragraph": "Déglacer la poêle avec le bouillon de légumes, le lait de coco et la sauce soja. Mélangez bien, puis mettez un couvercle et laissez le curry bouillonner et épaissir pendant au moins 30 à 35 minutes, en remuant de temps en temps."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Tofu Katsu Au Curry",
+                  "paragraph": "Préchauffez votre four à 350°F (180°C)."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Tofu Katsu Au Curry",
+                  "paragraph": "Pendant ce temps, pour préparer les cornichons, ajoutez le vinaigre de vin de riz dans une casserole avec les grains de poivre, les graines de fenouil, les graines de moutarde et le sucre. Portez le mélange à ébullition puis ajoutez le radis et l'oignon rouge. Éteignez le feu puis transférez le contenu dans un bocal ou un bol pour qu'il refroidisse complètement. Une fois que le cornichon a refroidi, il est prêt à être consommé, mais sa saveur s'améliorera plus vous le laisserez longtemps. Pour conserver le cornichon, je recommande de le conserver dans un bocal en verre scellé stérilisé au réfrigérateur."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Tofu Katsu Au Curry",
+                  "paragraph": "Enrobez ensuite les filets de tofu. Tout d'abord, préparez la pâte, mélangez la farine dans un bol avec suffisamment d'eau pour obtenir une consistance de type pâte à crêpes, puis ajoutez l'huile."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Tofu Katsu Au Curry",
+                  "paragraph": "Dans un autre bol, ajoutez la chapelure panko, les flocons de piment et la poudre d'ail. Puis un troisième bol juste de la farine nature."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Tofu Katsu Au Curry",
+                  "paragraph": "Tremper individuellement le tofu dans la farine puis la pâte puis enfin dans la chapelure. Assurez-vous que le tofu soit bien enrobé, puis placez-le sur une plaque à pâtisserie recouverte de papier sulfurisé."
+                }
+              }
+            },
+            {
+              "position": 11,
+              "segment": {
+                "data": {
+                  "title": "Tofu Katsu Au Curry",
+                  "paragraph": "Pour cuire le tofu katsu, préchauffez une grande poêle à feu moyen et ajoutez l'huile végétale. Retirer les filets lorsque l'huile est chaude pendant environ 2-3 minutes de chaque côté – ou jusqu'à ce que la chapelure soit dorée. Une fois cuits, remettez les katsu sur la plaque à pâtisserie tapissée puis au four pendant 10 minutes."
+                }
+              }
+            },
+            {
+              "position": 12,
+              "segment": {
+                "data": {
+                  "title": "Tofu Katsu Au Curry",
+                  "paragraph": "Vérifiez que le curry est prêt en vérifiant si les pommes de terre sont tendres, si elles sont encore insuffisamment cuites, laissez le curry cuire un peu plus longtemps si le curry commence à devenir trop épais, ajoutez simplement du bouillon de légumes supplémentaire pour le desserrer."
+                }
+              }
+            },
+            {
+              "position": 13,
+              "segment": {
+                "data": {
+                  "title": "Tofu Katsu Au Curry",
+                  "paragraph": "Pour servir, tranchez les filets de tofu katsu, puis garnissez de riz gluant, beaucoup de sauce au curry, de salade et de cornichons. J'ai également garni mon plat d'oignons croustillants et de graines de sésame."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

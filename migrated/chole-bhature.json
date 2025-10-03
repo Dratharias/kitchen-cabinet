@@ -1,0 +1,373 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Chole Bhature",
+      "description": [
+        "Temps: 1h20",
+        "Cari de pois chiches.",
+        "Rendement: 4 portions",
+        "Trempage: 8 à 24 heures"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/FztB149/Chole-Bhature.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Chole Bhature",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 800,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "pois chiches"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "the English Breakfast"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "coupee"
+              },
+              "product": {
+                "data": {
+                  "name": "pomme de terre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 70,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "puree"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "melange d'epices"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "cardamome noire"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "feuille de laurier"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "canelle"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "bâtons"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "garam masala"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "pate de tamarin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "jus de lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Versez les pois chiches et leur liquide dans une petite casserole et ajoutez un peu plus d'eau. Placez sur feu moyen, ajoutez les sachets de thé (ne les laissez pas éclater) et portez à frémissement. Laissez cuire pendant 5 minutes, puis retirez du feu. Couvrez et laissez reposer pendant 8 à 24 heures."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Faites cuire la pomme de terre dans une petite casserole d'eau salée jusqu'à ce qu'elle soit juste tendre. Égouttez et laissez refroidir."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Mettez la purée de tomates, le mélange d'épices pour chana masala, le cumin et le sel dans un petit bol et mélangez bien; mettez de côté. À l'aide d'un pilon et d'un mortier, écrasez fermement les gousses de cardamome."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Faites chauffer une grande casserole à feu moyen-vif et ajoutez l'huile. Ajoutez la feuille de laurier, la gousse de cardamome écrasée et le bâton de cannelle dans la casserole et laissez-les crépiter pendant 1 minute, en remuant souvent (faites attention, cela pourrait éclabousser un peu)."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajoutez le mélange de purée de tomates, remuez bien pendant 1 minute, puis baissez le feu et ajoutez le mélange oignon-tomate. Faites revenir, en remuant souvent, jusqu'à ce que vous voyiez l'huile commencer à former une pâte autour des bords, environ 5 à 7 minutes."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Égouttez les pois chiches, en réservant le liquide de cuisson; jetez les sachets de thé. Ajoutez les pois chiches dans la casserole avec 300ml de liquide. Portez à frémissement et ajoutez le garam masala, la pâte de tamarin et le jus de lime. Laissez mijoter pendant 5 minutes en remuant régulièrement."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "paragraph": "Coupez la pomme de terre (en morceaux de la taille des pois chiches) et ajoutez-les à la casserole. Remuez doucement, couvrez et éteignez le feu. Laissez la pomme de terre se réchauffer."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "paragraph": "Pour les piments frits, chauffez l'huile dans une poêle à feu moyen-vif. Ajoutez les piments et le sel, et faites sauter pendant 2 à 3 minutes jusqu'à ce qu'ils soient tendres et légèrement grillés."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "paragraph": "Servez le chole dans un bol profond, garni d'oignon rouge, de coriandre et de gingembre, avec les piments frits, les quartiers de citron vert et le raita sur le côté, et des bhature pour tout accompagner."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

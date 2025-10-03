@@ -1,0 +1,87 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Poivre Citron",
+      "description": [
+        "Temps: 10 min",
+        "Rendement: 3/4 tasse"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Poivre Citron",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.75,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Râpez le zeste (la peau externe riche en huile) des citrons à l'aide d'une râpe Microplane ou d'une râpe à boîte. Vous avez besoin d'environ 2 cuil. à soupe."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez le zeste de citron et les grains de poivre dans un moulin à épices. (Ne surchargez pas le moulin à épices - travaillez en plusieurs fois si nécessaire.) Broyez le zeste et les grains de poivre en une poudre grossière. Transférez dans un bocal, couvrez et conservez au réfrigérateur. Le poivre citron se conservera plusieurs semaines."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

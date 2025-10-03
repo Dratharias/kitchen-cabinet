@@ -1,0 +1,190 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Marmelade d'orange et d'anis étoilé",
+      "description": [
+        "Temps: 2h",
+        "Rendement: 900g"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/YbgGrvG/Confiture-et-marmelade.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Marmelade D Orange Et D Anis Étoilé",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "orange"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pièces"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "etoile"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 450,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 50,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Mettez quelques petites assiettes au réfrigérateur pour les refroidir ; elles serviront à tester le point de gélification de votre marmelade."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Roulez légèrement les oranges ; cela vous aidera à les presser une fois pelées."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "À l'aide d'un éplucheur standard, retirez l'écorce des oranges (en prenant un peu de la partie blanche avec l'écorce) ; vous aurez besoin de 250g. Coupez l'écorce en fines lanières, d'environ 3cm de long."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Pressez les oranges dans un verre doseur ; vous aurez besoin de 450ml de jus."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "À l'aide d'un mortier et d'un pilon, écrasez légèrement les étoiles d'anis afin que certains des pointes se détachent des étoiles."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez les lanières d'écorce d'orange, les 450ml de jus d'orange et l'anis étoilé dans une casserole moyenne et ajoutez de l'eau jusqu'à ce que le liquide dépasse de 2cm l'écorce. Vous aurez besoin d'une casserole suffisamment grande pour accommoder le sucre (lorsqu'il sera ajouté plus tard) avec de la place pour bouillir."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez la casserole sur feu vif, portez à ébullition, puis baissez le feu et laissez mijoter les morceaux d'orange pendant 45 minutes, jusqu'à ce qu'ils soient assez tendres. Ajoutez un peu plus d'eau ou de jus d'orange si le liquide descend en dessous du niveau des morceaux d'orange."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajoutez le sucre et le jus de citron, portez à ébullition et laissez mijoter jusqu'à ce que le point de gélification soit atteint. Pour tester cela, prenez une assiette du réfrigérateur et déposez une cuillerée à café dessus. Laissez reposer quelques secondes, puis passez votre doigt sur la surface ; si elle forme des ondulations et a une texture gélifiée, votre marmelade est prête. Si ce n'est pas encore le cas, laissez mijoter un peu plus longtemps et utilisez la deuxième assiette pour tester."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "paragraph": "Remplissez un bocal stérilisé chaud tant que la marmelade est encore chaude, essuyez le bord du bocal pour vous assurer qu'il est propre, puis fermez le couvercle hermétiquement. Conservez la marmelade dans un endroit frais et sombre, elle se conservera jusqu'à 6 mois."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

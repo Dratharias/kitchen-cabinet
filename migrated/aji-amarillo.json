@@ -1,0 +1,303 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Aji Amarillo",
+      "description": [
+        "Temps: 15 min",
+        "Rendement: 375 ml (1 1/2 tasses)"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/fS4W68j/Aji-Amarillo.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sauce",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "péruvien",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "poivron jaune",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "piment",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Aji Amarillo",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1,
+                "title": "Aji Amarillo"
+              },
+              "product": {
+                "data": {
+                  "name": "aji amarillo"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Aji Amarillo"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre de cacahuete"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "emiette",
+                "title": "Aji Amarillo"
+              },
+              "product": {
+                "data": {
+                  "name": "queso fresco"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "onces"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.3333,
+                "multiply_factor": 1,
+                "title": "Aji Amarillo"
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "hache",
+                "title": "Aji Amarillo"
+              },
+              "product": {
+                "data": {
+                  "name": "huacatay"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Aji Amarillo"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive extra-vierge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Aji Amarillo"
+              },
+              "product": {
+                "data": {
+                  "name": "jus de lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Aji Amarillo"
+              },
+              "product": {
+                "data": {
+                  "name": "Sel gros"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "en dés",
+                "title": "Note"
+              },
+              "product": {
+                "data": {
+                  "name": "poivron jaune"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Note"
+              },
+              "product": {
+                "data": {
+                  "name": "huacatay"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Aji Amarillo",
+                  "paragraph": "Si vous utilisez des piments surgelés, laissez-les décongeler à température ambiante. Si vous utilisez des piments séchés, faites-les tremper dans de l'eau pendant 2 heures, puis égouttez-les."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Aji Amarillo",
+                  "paragraph": "Équeutez les piments et, si vous désirez une sauce plus douce, retirez les graines. Placez les piments, le beurre de cacahuète, le fromage et l'eau dans un mixeur et réduisez en purée lisse. Ajoutez le huacatay en mixant par impulsions."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Aji Amarillo",
+                  "paragraph": "Faites chauffer l'huile d'olive dans une petite casserole à feu moyen-doux. Ajoutez la purée de piment et de beurre de cacahuète et faites cuire en remuant souvent jusqu'à ce qu'elle soit épaisse, crémeuse et riche en saveur, environ 5 à 8 minutes. Réduisez le feu si nécessaire; la sauce doit mijoter doucement, non bouillir."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Aji Amarillo",
+                  "paragraph": "Ajoutez 1 cuil. à soupe de jus de lime, ou au goût, et du sel : le mélange doit être bien assaisonné et épicé. Servez chaud ou à température ambiante."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

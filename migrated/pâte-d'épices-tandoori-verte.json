@@ -1,0 +1,394 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Pâte d'Épices Tandoori Verte",
+      "description": [
+        "Temps de préparation : 30 minutes",
+        "Rendement : 1 tasse, suffisant pour un poulet coupé en morceaux ou 2 livres d'agneau ou de fruits de mer"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Tandoori",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "épices",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "marinade",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "viande",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "grillades",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "Inde",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Pâte D Épices Tandoori Verte",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel de mer ou de sel casher"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillères"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "epinards"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "onces"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillères"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "d├ęs"
+              },
+              "product": {
+                "data": {
+                  "name": "piment poblano"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "cut": "dés"
+              },
+              "product": {
+                "data": {
+                  "name": "piment jalapeno"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "feuilles de coriandre fraiches"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "yaourt grec"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "jus de citron"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillères"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "curcuma"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Portez l'eau et 1/2 cuillère à café de sel à ébullition dans une casserole. Ajoutez les épinards et faites cuire jusqu'à ce qu'ils soient flétris, environ 2 minutes. Égouttez dans une passoire, rincez à l'eau froide et égouttez à nouveau. Pressez les épinards entre vos doigts pour extraire l'eau. Transférez les épinards dans un robot culinaire."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Faites fondre le beurre dans l'huile dans une poêle à feu moyen. Ajoutez l'oignon et faites cuire jusqu'à ce qu'il soit ramolli, environ 2 minutes, en remuant avec une cuillère en bois. Ajoutez l'ail et le gingembre et faites cuire jusqu'à ce que les oignons soient dorés, 2 à 4 minutes de plus. Réduisez le feu si nécessaire pour éviter que les légumes ne brûlent. Transférez le mélange d'oignons dans le robot culinaire."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajoutez les ingrédients restants (y compris le sel restant) au robot et réduisez en une pâte lisse. Ajustez l'assaisonnement, en ajoutant du sel ou du jus de citron ; la pâte doit être très assaisonnée. Utilisez immédiatement ou transférez dans un bocal, couvrez et réfrigérez. Cette pâte d'épices est meilleure si elle est utilisée dans les quelques heures suivant sa préparation."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

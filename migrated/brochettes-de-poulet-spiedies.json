@@ -1,0 +1,270 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Brochettes De Poulet Spiedies",
+      "description": [
+        "Temps: N/A",
+        "Rendement: 6 à 8 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/ZB0Hq85/Brochettes-De-Poulet-Spiedies.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "brochettes",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "spiedies",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "poulet",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "italien",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Brochettes De Poulet Spiedies",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Brochettes"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Brochettes"
+              },
+              "product": {
+                "data": {
+                  "name": "poulet"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "livres"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "coupé en carrés",
+                "title": "Brochettes"
+              },
+              "product": {
+                "data": {
+                  "name": "poivron rouge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pouce"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Brochettes"
+              },
+              "product": {
+                "data": {
+                  "name": "Vinaigrette Italienne"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Brochettes"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive extra-vierge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1,
+                "title": "Pour Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "pains pita"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Pour Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "yogourt"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "d├ęs",
+                "title": "Pour Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "tomate"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "d├ęs",
+                "title": "Pour Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "concombre"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Brochettes De Poulet Spiedies",
+                  "paragraph": "Coupez l'oignon en deux dans le sens de la largeur et coupez chaque moitié en 4 quartiers. Séparez chaque quartier en couches individuelles. Hachez finement les petits morceaux pour les saupoudrer sur les spiedies à la fin."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Brochettes De Poulet Spiedies",
+                  "paragraph": "Enfilez les morceaux de poulet sur des brochettes en bambou, en alternant avec des morceaux d'oignon et de poivron rouge. Disposez les brochettes dans un plat de cuisson en verre juste assez grand pour les contenir en une seule couche. Versez la vinaigrette italienne dessus. Faites mariner les spiedies au réfrigérateur pendant au moins 4 heures ou jusqu'à une nuit (plus ils marinent longtemps, plus la saveur est riche)."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Brochettes De Poulet Spiedies",
+                  "paragraph": "Préparez un gril pour une cuisson directe et préchauffez à haute température. Brossez et huilez la grille du gril."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Brochettes De Poulet Spiedies",
+                  "paragraph": "Égouttez les spiedies, jetez la marinade et disposez les brochettes sur la grille du gril, en glissant un écran en aluminium sous la partie exposée des brochettes en bambou pour éviter qu'elles ne brûlent. Grillez jusqu'à ce qu'ils soient dorés à l'extérieur et cuits à l'intérieur, 2 à 3 minutes par côté, 8 à 12 minutes au total. Commencez à badigeonner d'huile d'olive après 4 minutes. Transférez les spiedies sur un plat ou des assiettes."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Brochettes De Poulet Spiedies",
+                  "paragraph": "Badigeonnez légèrement les pains pita d'huile d'olive. Grillez jusqu'à ce qu'ils soient chauds et pliables, 1 minute par côté."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Brochettes De Poulet Spiedies",
+                  "paragraph": "Pour servir, placez un spiedie sur un pain pita. Pliez le pain autour pour tenir la viande et retirez la brochette. Garnissez de yogourt et de dés de tomate, concombre et oignon haché, si vous en utilisez. Roulez-le et mangez-le comme un burrito."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

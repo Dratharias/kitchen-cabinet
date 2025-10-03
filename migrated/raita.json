@@ -1,0 +1,347 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Raita",
+      "description": [
+        "Temps: 2 min (plus 10-15 min de repos)",
+        "Rendement: 3 1/2 tasses, pour 6 à 8 personnes"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/8sZTcyG/Raita.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "raita",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "yogourt",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "concombre",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sauce indienne",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Raita",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Raita"
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Raita"
+              },
+              "product": {
+                "data": {
+                  "name": "yogourt grec"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Raita"
+              },
+              "product": {
+                "data": {
+                  "name": "creme sure"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "cut": "dés",
+                "title": "Raita"
+              },
+              "product": {
+                "data": {
+                  "name": "concombre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pouce"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "cut": "d├ęs",
+                "title": "Raita"
+              },
+              "product": {
+                "data": {
+                  "name": "tomate"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pouce"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Raita"
+              },
+              "product": {
+                "data": {
+                  "name": "menthe"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Raita"
+              },
+              "product": {
+                "data": {
+                  "name": "piment jalapeno"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Raita"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Raita"
+              },
+              "product": {
+                "data": {
+                  "name": "gros sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Raita"
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "des",
+                "title": "Raita À La Banane"
+              },
+              "product": {
+                "data": {
+                  "name": "banane"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.125,
+                "multiply_factor": 1,
+                "cut": "des",
+                "title": "Raita À L Ananas"
+              },
+              "product": {
+                "data": {
+                  "name": "tomate"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Raita De Carottes De Goa"
+              },
+              "product": {
+                "data": {
+                  "name": "carotte"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Raita",
+                  "paragraph": "Chauffez une poêle sèche à feu moyen. Ajoutez les graines de cumin et faites-les griller jusqu'à ce qu'elles soient parfumées, environ 2 minutes. Laissez refroidir."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Raita",
+                  "paragraph": "Broyez le cumin dans un moulin à épices, puis transférez-le dans un bol. Ajoutez le yogourt et la crème sure et remuez pour mélanger. Incorporez le concombre, la tomate, la menthe, le jalapeño (si utilisé), l'ail, le sel et le poivre. Vous pouvez servir le raita immédiatement, mais il aura meilleur goût si vous laissez les saveurs se mêler au réfrigérateur pendant 10 à 15 minutes. Servez le même jour que vous le préparez."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,301 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Basmati Kheer",
+      "description": [
+        "Temps: 3h",
+        "Pudding au riz basmati, compote de bleuets et caramel craquant",
+        "Rendement: 6 portions",
+        ""
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/8sNpPtY/Basmati-Kheer.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Basmati Kheer",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 110,
+                "multiply_factor": 1,
+                "title": "Pudding Basmati"
+              },
+              "product": {
+                "data": {
+                  "name": "riz basmati"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Pudding Basmati"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "litres"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Pudding Basmati"
+              },
+              "product": {
+                "data": {
+                  "name": "cardamome"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "gousses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Pudding Basmati"
+              },
+              "product": {
+                "data": {
+                  "name": "vanille"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 100,
+                "multiply_factor": 1,
+                "title": "Pudding Basmati"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 90,
+                "multiply_factor": 1,
+                "title": "Pudding Basmati"
+              },
+              "product": {
+                "data": {
+                  "name": "creme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 125,
+                "multiply_factor": 1,
+                "title": "Compote De Bleuets"
+              },
+              "product": {
+                "data": {
+                  "name": "bleuets"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 100,
+                "multiply_factor": 1,
+                "title": "Compote De Bleuets"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Caramel"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Basmati Kheer",
+                  "paragraph": "Verser le riz basmati dans un bol, couvrir généreusement d'eau froide et laisser tremper pendant 2 heures. Égoutter soigneusement, étaler sur une plaque à pâtisserie et laisser sécher toute la nuit."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Basmati Kheer",
+                  "paragraph": "Transférer le riz sec dans un robot culinaire et pulser jusqu'à ce qu'il soit grossièrement moulu (pas en poudre)."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Basmati Kheer",
+                  "paragraph": "Verser le lait dans une casserole. Donner un coup sec aux gousses de cardamome avec un rouleau à pâtisserie pour les ouvrir, puis ajouter au lait. Si vous utilisez une gousse de vanille, la diviser en deux, passer un couteau sur la longueur pour en retirer les graines et ajouter les graines et la gousse au lait. Si vous utilisez de l'extrait de vanille, l'ajouter au lait. Porter à ébullition à feu moyen."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Basmati Kheer",
+                  "paragraph": "Ajouter le riz et porter à frémissement régulier. Laisser mijoter pendant 30 à 40 minutes en remuant régulièrement. Il faudra surveiller la casserole pour éviter qu'elle ne déborde. Le riz doit commencer à se décomposer complètement."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Basmati Kheer",
+                  "paragraph": "Pendant ce temps, pour la compote, mettre 100g de bleuets dans une petite casserole et ajouter 200ml d'eau bouillante. Porter à ébullition et cuire jusqu'à obtenir une sauce épaisse, environ 15 minutes. Ajouter le sucre, le laisser fondre, puis ajouter les bleuets restants et cuire pendant 5 minutes supplémentaires."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Basmati Kheer",
+                  "paragraph": "Lorsque le riz a commencé à se décomposer, augmenter le feu et laisser mijoter à gros bouillons, en remuant presque constamment, pendant 15 à 30 minutes jusqu'à ce qu'il soit réduit en un pudding épais (il doit être suffisamment épais pour se solidifier une fois refroidi). Retirer les gousses de cardamome et de vanille, puis ajouter le sucre et cuire encore 10 minutes, jusqu'à ce que le kheer soit très épais. Retirer du feu et incorporer la crème."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Basmati Kheer",
+                  "paragraph": "Répartir le kheer entre 6 ramequins. Laisser refroidir, puis couvrir et réfrigérer pendant au moins 2 heures (jusqu'à 24 heures)."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Basmati Kheer",
+                  "paragraph": "Au moment de servir, sortir les puddings du réfrigérateur et saupoudrer uniformément de sucre. Passer un chalumeau de cuisine sur la surface pour faire fondre le sucre et former une couche de caramel. Laisser refroidir et prendre pendant quelques minutes. Servir avec la compote de bleuets sur le dessus."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Choucroute Maison",
+      "description": [
+        "Temps: N/A",
+        "Rendement: Environ 2 litres"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/2KzSVPd/Choucroute-Maison.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "choucroute",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "maison",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "fermentation",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Choucroute Maison",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "chou"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "livres"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "graines"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "écrasé"
+              },
+              "product": {
+                "data": {
+                  "name": "baies de genievre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Eau"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Coupez chaque chou en quartiers de haut en bas à l'aide d'un grand couteau de chef. Enlevez le cœur. Émincez finement le chou à la main, sur une mandoline ou dans un robot culinaire équipé d'un disque tranchant."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez le chou émincé dans un grand bol et saupoudrez de sel, de graines de carvi (si vous en utilisez) et de baies de genièvre (si vous en utilisez). Mélangez bien, en pétrissant (ou même en pilant) le chou avec vos mains. L'idée est de meurtrir le chou pour qu'il libère son liquide plus rapidement. Placez une assiette lourde ou une casserole sur le dessus pour presser le chou. Laissez le mélange macérer à température ambiante pendant 3 heures. Le chou doit être humide et spongieux."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Transférez le chou salé dans une cruche propre et tassez-le aussi fermement que possible. Placez un poids propre, comme une cruche en verre ou un sac en plastique refermable rempli d'eau, sur le dessus. Ce poids aide à extraire l'eau du chou et le maintient submergé sous la saumure (liquide salé du chou). Si après une nuit le chou n'est pas complètement submergé, ajoutez suffisamment d'eau de source pour couvrir le chou (l'eau du robinet peut contenir des produits chimiques comme le chlore qui interfèrent avec le processus de fermentation). Couvrez la cruche avec un chiffon en coton propre pour éviter les débris aériens."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Laissez le chou fermenter dans un placard frais et sombre ou dans le sous-sol pendant 2 à 4 semaines. La durée exacte de la fermentation dépend de la période de l'année et des conditions de stockage précises. Vérifiez la choucroute tous les quelques jours. Parfois, de la moisissure apparaît à la surface de la saumure. Écumez autant que vous pouvez de la surface - elle peut se briser et vous ne pourrez pas tout enlever. Ne vous inquiétez pas - c'est juste un phénomène de surface. La choucroute elle-même est protégée par la saumure."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Goûtez le chou à intervalles de 1 semaine. Il commencera à avoir le goût de la choucroute après environ une semaine. La saveur continuera à s'approfondir avec le temps. Une fois que vous obtenez la quantité de funk que vous aimez, retirez le poids et égouttez la choucroute avant de la servir. À ce stade, elle est prête à être consommée et pleine de probiotiques sains. Conservez-la, couverte, au réfrigérateur; elle se conservera pendant au moins 1 mois."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

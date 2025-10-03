@@ -1,0 +1,287 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Crumble Ananas Et Poivre Noir",
+      "description": [
+        "Temps: 1h10",
+        "Rendement: 4 à 6 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/25yP2ks/Crumble-Ananas-Et-Poivre-Noir.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "dishoom",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "dessert",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sucré",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Crumble Ananas Et Poivre Noir",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour La Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "ananas"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Pour La Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "vanille"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 100,
+                "multiply_factor": 1,
+                "title": "Pour La Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour La Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 100,
+                "multiply_factor": 1,
+                "title": "Pour Le Crumble"
+              },
+              "product": {
+                "data": {
+                  "name": "farine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 100,
+                "multiply_factor": 1,
+                "title": "Pour Le Crumble"
+              },
+              "product": {
+                "data": {
+                  "name": "avoine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 100,
+                "multiply_factor": 1,
+                "title": "Pour Le Crumble"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 100,
+                "multiply_factor": 1,
+                "cut": "d├ęs",
+                "title": "Pour Le Crumble"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "glace"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Crumble Ananas Et Poivre Noir",
+                  "paragraph": "Épluchez l'ananas, enlevez les 'yeux' et coupez-le en morceaux de 2 cm, en jetant le cœur dur."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Crumble Ananas Et Poivre Noir",
+                  "paragraph": "Placez les morceaux d'ananas dans une casserole et ajoutez 200ml d'eau. Si vous utilisez une gousse de vanille, coupez-la en deux, grattez les graines avec un couteau et ajoutez les graines et la gousse à la casserole. (Si vous utilisez de l'extrait, il sera ajouté plus tard.) Faites mijoter à feu moyen-doux pendant 20 à 25 minutes, ou jusqu'à ce que l'ananas soit tendre, en remuant de temps en temps. Si la casserole commence à se dessécher, ajoutez un peu plus d'eau."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Crumble Ananas Et Poivre Noir",
+                  "paragraph": "Pendant ce temps, préparez le crumble. Mélangez les ingrédients secs dans un grand bol. Ajoutez le beurre et incorporez-le avec vos mains jusqu'à ce qu'il soit complètement incorporé; il ne doit plus rester de farine sèche."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Crumble Ananas Et Poivre Noir",
+                  "paragraph": "Préchauffez le four à 400°F."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Crumble Ananas Et Poivre Noir",
+                  "paragraph": "Une fois que l'ananas est tendre, ajoutez le sucre et laissez mijoter encore 5 minutes. Ajoutez le poivre noir et l'extrait de vanille, si utilisé. Éteignez le feu et mettez de côté."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Crumble Ananas Et Poivre Noir",
+                  "paragraph": "Étalez le mélange d'ananas dans un plat de cuisson moyen et recouvrez avec le mélange crumble. Faites cuire au four pendant 30 à 40 minutes, jusqu'à ce que la garniture forme une belle croûte dorée."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Crumble Ananas Et Poivre Noir",
+                  "paragraph": "Laissez reposer pendant 5 minutes puis servez, avec de la glace à la vanille ou de la crème anglaise."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

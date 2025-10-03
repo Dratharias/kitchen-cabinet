@@ -1,0 +1,370 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Salli Boti",
+      "description": [
+        "Temps: 3h",
+        "Agneau/Chèvre braisé dans une sauce",
+        "Rendement: 4 à 6 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/86wsrGD/Salli-Boti.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Salli Boti",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 150,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "cannelle"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "feuille de laurier"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 500,
+                "multiply_factor": 1,
+                "cut": "d├ęs"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "en morceaux"
+              },
+              "product": {
+                "data": {
+                  "name": "gigot d'agneau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "kg"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 50,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "puree"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 35,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de piment deggi mirch"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "curcuma"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 400,
+                "multiply_factor": 1,
+                "cut": "concasse"
+              },
+              "product": {
+                "data": {
+                  "name": "tomates"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 40,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre blanc"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 35,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "jaggery"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "garam masala"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Chauffer une grande casserole ou une cocotte allant au feu à feu moyen-vif et ajouter l'huile. Ajouter le bâton de cannelle et les feuilles de laurier et faire sauter pendant 1 minute ; ils devraient grésiller."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajouter les oignons rouges et cuire jusqu'à ce qu'ils soient bien caramélisés, mais encore tendres. Cela prendra environ 25 minutes et doit être fait à feu assez vif, en remuant très régulièrement, plutôt que à feu doux et lent."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajouter les morceaux d'agneau et bien mélanger. Baisser un peu le feu et laisser cuire pendant 5 minutes, pour que la viande commence à libérer un peu d'humidité."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Incorporer les purées d'ail et de gingembre et faire sauter pendant 4 à 5 minutes, en veillant à ne pas laisser brûler l'ail (ajouter un peu d'eau si nécessaire). Ajouter la poudre de piment, le curcuma et le sel et cuire pendant 2 minutes."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajouter les tomates concassées et cuire jusqu'à ce qu'elles soient complètement réduites et que vous voyiez l'huile se séparer de la sauce ; cela devrait prendre environ 15 minutes. Si la poêle commence à devenir sèche avant que les tomates ne se soient complètement défaites, ajouter un filet d'eau."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajouter 150 à 200ml d'eau, juste assez pour recouvrir l'agneau, et baisser le feu. Mettre le couvercle en place, légèrement incliné pour laisser échapper un peu de chaleur, et laisser mijoter doucement pendant 1½ heure, ou jusqu'à ce que l'agneau soit très tendre, en remuant de temps en temps. Ajouter un peu d'eau si l'agneau dépasse le niveau du liquide, mais n'en ajoutez pas plus que nécessaire, car cela diluerait la saveur."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "paragraph": "Une fois que l'agneau est tendre, ajouter le vinaigre, le jaggery et le garam masala et cuire doucement pendant 15 minutes supplémentaires. Servir garni d'une grosse poignée de salli, avec le pain et le kachumber à côté."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

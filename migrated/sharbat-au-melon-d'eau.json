@@ -1,0 +1,228 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Sharbat au melon d'eau",
+      "description": [
+        "Temps: 10 min",
+        "Rendement: 1 portion"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/9n9CMMn/Sharbat-au-melon-d-eau.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Sharbat Au Melon D Eau",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Sharbat Au Melon D Eau"
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "flocons"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 25,
+                "multiply_factor": 1,
+                "title": "Sharbat Au Melon D Eau"
+              },
+              "product": {
+                "data": {
+                  "name": "citron vert"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Sharbat Au Melon D Eau"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 50,
+                "multiply_factor": 1,
+                "title": "Sharbat Au Melon D Eau"
+              },
+              "product": {
+                "data": {
+                  "name": "melon d'eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Sharbat Au Melon D Eau"
+              },
+              "product": {
+                "data": {
+                  "name": "menthe"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Sharbat Au Melon D Eau"
+              },
+              "product": {
+                "data": {
+                  "name": "glacon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 100,
+                "multiply_factor": 1,
+                "title": "Sharbat Au Melon D Eau"
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "quartier",
+                "title": "Garnir"
+              },
+              "product": {
+                "data": {
+                  "name": "melon d'eau"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Sharbat Au Melon D Eau",
+                  "paragraph": "Émietter le sel dans un verre haut, ajouter le jus de lime et laisser reposer pendant 30 secondes."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Sharbat Au Melon D Eau",
+                  "paragraph": "Ajouter le sirop de sucre et la purée de pastèque."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Sharbat Au Melon D Eau",
+                  "paragraph": "Prenez le brin de menthe, posez-le sur une paume et donnez-lui un coup sec avec votre autre main. La pression brève et la chaleur de vos mains feront ressortir les huiles. Ajoutez-les au verre."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Sharbat Au Melon D Eau",
+                  "paragraph": "Ajoutez autant de glaçons que possible dans le verre, puis complétez avec de l'eau gazeuse. Remuez et servez immédiatement, garni d'un petit morceau de pastèque."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Sharbat À La Passion",
+                  "paragraph": "Remplacez la purée de pastèque par de la purée de fruit de la passion. Utilisez soit une marque de bonne qualité, comme Boiron (qui peut être conservée au congélateur après ouverture), soit passez de la pulpe de fruit de la passion fraîche à travers un tamis, en utilisant 1 fruit de la passion par portion. Utilisez des feuilles de géranium odorant si vous en avez, au lieu de la menthe, et garnissez avec un quartier de lime."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

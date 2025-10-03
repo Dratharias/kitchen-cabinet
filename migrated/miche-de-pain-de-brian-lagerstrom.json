@@ -1,0 +1,462 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Miche de pain de Brian Lagerstrom",
+      "description": [
+        "Temps: 28 heures"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/ssyHbcR/michedepain.jpg",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Miche De Pain De Brian Lagerstrom",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 250,
+                "multiply_factor": 1,
+                "title": "Miche De Pain"
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Miche De Pain"
+              },
+              "product": {
+                "data": {
+                  "name": "levure"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 300,
+                "multiply_factor": 1,
+                "title": "Miche De Pain"
+              },
+              "product": {
+                "data": {
+                  "name": "Poolish"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 12,
+                "multiply_factor": 1,
+                "title": "Miche De Pain"
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 50,
+                "multiply_factor": 1,
+                "title": "Miche De Pain"
+              },
+              "product": {
+                "data": {
+                  "name": "farine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 400,
+                "multiply_factor": 1,
+                "title": "Miche De Pain"
+              },
+              "product": {
+                "data": {
+                  "name": "farine a pain"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 150,
+                "multiply_factor": 1,
+                "title": "Poolish Fermenté"
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Poolish Fermenté"
+              },
+              "product": {
+                "data": {
+                  "name": "levure instantanee"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 150,
+                "multiply_factor": 1,
+                "title": "Poolish Fermenté"
+              },
+              "product": {
+                "data": {
+                  "name": "farine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Poolish Fermenté",
+                  "paragraph": "Mélanger dans un grand contenant 150g d'eau, une minuscule pincée de levure instantané (30-50 granules), 150g de farine et laisser reposer température pièce 4 à 24 heures."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Pâte",
+                  "paragraph": "Ajouter dans un grand bol la poolish, l'eau et la levure."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Pâte",
+                  "paragraph": "Ajouter le reste des ingrédients et combiner avec une cuillère dure, terminer avec une main mouillée le mixte. Elle est censée être molle et collante."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Pâte",
+                  "paragraph": "Couvrir le bol avec un couvercle et laisser fermenté 30 minutes."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Pâte",
+                  "paragraph": "Effectuez un pli de renforcement en retirant une poignée de pâte d'un côté et en la repliant de l'autre côté de la pâte. Faites légèrement pivoter le bol et répétez environ 7 fois supplémentaires, en tournant le bol après chaque pli."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Pâte",
+                  "paragraph": "Après les plis, saisissez la boule de pâte, par son côté/bas, ramassez la boule, arrondissez-la et faites-la tourner, puis reposez-la pour la tendre sur le dessus et arrondissez-la pour former une boule. Faites cela plusieurs fois."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Pâte",
+                  "paragraph": "Couvrir et laisser fermenter à nouveau à température ambiante pendant 30 minutes supplémentaires. Après 30 minutes, répétez les étapes de renforcement."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Pâte",
+                  "paragraph": "Couvrir et laisser fermenter la pâte à température ambiante pendant encore 60 minutes. À ce stade, vous avez fermenté pendant 2 heures au total. Lorsque vous revenez cette fois, la pâte devrait avoir doublé de volume."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Miche",
+                  "paragraph": "Farinez votre plan de travail et retournez délicatement la pâte dessus."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Miche",
+                  "paragraph": "Faites éclater les grosses bulles et façonnez la pâte."
+                }
+              }
+            },
+            {
+              "position": 11,
+              "segment": {
+                "data": {
+                  "title": "Miche",
+                  "paragraph": "Pour façonner la pâte, prenez un coin/un morceau de côté de la pâte et tirez-le de l'autre côté de la pâte, à environ 60 % de la longueur de l'autre côté de la pâte. Prenez un autre côté/coin de la pâte à côté du premier et pliez-le à environ 60 % de l'autre côté. Répétez tout autour de la pâte. Vous ferez cela entre 7 et 9 fois au total, en faisant éclater les grosses bulles qui se forment en cours de route."
+                }
+              }
+            },
+            {
+              "position": 12,
+              "segment": {
+                "data": {
+                  "title": "Miche",
+                  "paragraph": "Retournez la boule de pâte de manière à ce que le côté couture soit contre la surface de travail. Avec vos mains de chaque côté de la pâte, roulez la pâte sur le côté couture pour la sceller et créer une tension sur le dessus de la pâte."
+                }
+              }
+            },
+            {
+              "position": 13,
+              "segment": {
+                "data": {
+                  "title": "Miche",
+                  "paragraph": "Prenez un bol de taille moyenne qui est juste plus grand que la pâte que vous venez de préparer (j'utilise le même bol moyen en acier inoxydable dans lequel j'ai mélangé la pâte). Tapisser le bol d'un fin torchon et saupoudrer le torchon d'un mélange de blé et de farine tout usage. Transférez la boule de pâte dans le bol à torchon fariné, couture vers le haut, en rentrant à nouveau la couture pour mieux sceller."
+                }
+              }
+            },
+            {
+              "position": 14,
+              "segment": {
+                "data": {
+                  "title": "Miche",
+                  "paragraph": "Pliez le torchon sur la pâte et laissez-la lever à température ambiante pendant 45 à 80 minutes (selon la température de votre maison) jusqu'à ce qu'elle ait doublé de volume. Lorsque vous piquez la pâte, elle doit s'enfoncer puis rebondir lentement."
+                }
+              }
+            },
+            {
+              "position": 15,
+              "segment": {
+                "data": {
+                  "title": "À La Cocotte",
+                  "paragraph": "Préchauffer le four à 480°F (250°C) avec une cocotte à l'intérieur pendant 30 minutes"
+                }
+              }
+            },
+            {
+              "position": 16,
+              "segment": {
+                "data": {
+                  "title": "À La Cocotte",
+                  "paragraph": "Placez une généreuse couche de farine de semoule ou de semoule de maïs fine dans la cocotte pour éviter qu'elle ne colle."
+                }
+              }
+            },
+            {
+              "position": 17,
+              "segment": {
+                "data": {
+                  "title": "À La Cocotte",
+                  "paragraph": "Retournez délicatement le pain façonné dans la cocotte (le côté de la couture sera maintenant vers le BAS) et marquez le dessus avec quelques coupes ou tranches."
+                }
+              }
+            },
+            {
+              "position": 18,
+              "segment": {
+                "data": {
+                  "title": "À La Cocotte",
+                  "paragraph": "Couvrir la cocotte avec le couvercle et cuire au four pendant 18 minutes."
+                }
+              }
+            },
+            {
+              "position": 19,
+              "segment": {
+                "data": {
+                  "title": "À La Cocotte",
+                  "paragraph": "Retirez le couvercle et poursuivez la cuisson pendant encore 20 à 25 minutes, en réduisant la température du four à 465°F/240°C."
+                }
+              }
+            },
+            {
+              "position": 20,
+              "segment": {
+                "data": {
+                  "title": "À La Cocotte",
+                  "paragraph": "Une fois cuit, transférez le pain sur une grille pour qu'il refroidisse."
+                }
+              }
+            },
+            {
+              "position": 21,
+              "segment": {
+                "data": {
+                  "title": "À La Poêle En Fonte Ou Aluminium",
+                  "paragraph": "Préchauffer le four à 480°F (250°C) avec une cocotte à l'intérieur pendant 30 minutes."
+                }
+              }
+            },
+            {
+              "position": 22,
+              "segment": {
+                "data": {
+                  "title": "À La Poêle En Fonte Ou Aluminium",
+                  "paragraph": "Bouillir de l'eau et mettre dans une plaque qui peut aller au four. Mettre sur l'étage du bas."
+                }
+              }
+            },
+            {
+              "position": 23,
+              "segment": {
+                "data": {
+                  "title": "À La Poêle En Fonte Ou Aluminium",
+                  "paragraph": "Placez une généreuse couche de farine de semoule ou de semoule de maïs fine dans la cocotte pour éviter qu'elle ne colle."
+                }
+              }
+            },
+            {
+              "position": 24,
+              "segment": {
+                "data": {
+                  "title": "À La Poêle En Fonte Ou Aluminium",
+                  "paragraph": "Retournez délicatement le pain façonné dans la cocotte (le côté de la couture sera maintenant vers le BAS) et marquez le dessus avec quelques coupes ou tranches."
+                }
+              }
+            },
+            {
+              "position": 25,
+              "segment": {
+                "data": {
+                  "title": "À La Poêle En Fonte Ou Aluminium",
+                  "paragraph": "Cuire au four pendant 15 minutes, puis  réduire la température du four à 465°F/240°C."
+                }
+              }
+            },
+            {
+              "position": 26,
+              "segment": {
+                "data": {
+                  "title": "À La Poêle En Fonte Ou Aluminium",
+                  "paragraph": "Poursuivez la cuisson pendant encore 15 à 22 minutes."
+                }
+              }
+            },
+            {
+              "position": 27,
+              "segment": {
+                "data": {
+                  "title": "À La Poêle En Fonte Ou Aluminium",
+                  "paragraph": "Une fois cuit, transférez le pain sur une grille pour qu'il refroidisse."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

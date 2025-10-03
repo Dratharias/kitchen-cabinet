@@ -1,0 +1,377 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Soupe cajun à la citrouille",
+      "description": [
+        "Temps: 90 min",
+        "Portions: 5-6"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/1qs0dJD/Soupe-cajun-la-citrouille.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Soupe Cajun À La Citrouille",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "cubes",
+                "title": "Soupe"
+              },
+              "product": {
+                "data": {
+                  "name": "citrouille"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Soupe"
+              },
+              "product": {
+                "data": {
+                  "name": "melange d'epices cajun"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère à soupe"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Soupe"
+              },
+              "product": {
+                "data": {
+                  "name": "sauge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Soupe"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Soupe"
+              },
+              "product": {
+                "data": {
+                  "name": "sel marin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère à café"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "concasse",
+                "title": "Soupe"
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère à café"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Soupe"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Soupe"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "gousses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 480,
+                "multiply_factor": 1,
+                "title": "Soupe"
+              },
+              "product": {
+                "data": {
+                  "name": "lait vegetal"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 720,
+                "multiply_factor": 1,
+                "title": "Soupe"
+              },
+              "product": {
+                "data": {
+                  "name": "bouillon de legumes"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "pressé",
+                "title": "Soupe"
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garnir"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de citrouille"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garnir"
+              },
+              "product": {
+                "data": {
+                  "name": "creme vegetalienne"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "seche",
+                "title": "Garnir"
+              },
+              "product": {
+                "data": {
+                  "name": "piment"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garnir"
+              },
+              "product": {
+                "data": {
+                  "name": "Cream Cheese Vegan"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Soupe Cajun À La Citrouille",
+                  "paragraph": "Préchauffez votre four à 180°C."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Soupe Cajun À La Citrouille",
+                  "paragraph": "Placez la citrouille dans une plaque à rôtir avec le cajun, la sauge, l'assaisonnement et l'huile. Mélangez le tout avec vos mains."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Soupe Cajun À La Citrouille",
+                  "paragraph": "Faites rôtir la citrouille dans votre four pendant environ 45 minutes à une heure – ou jusqu'à ce qu'elle soit tendre."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Soupe Cajun À La Citrouille",
+                  "paragraph": "Quand le potiron est cuit. Placez une grande casserole sur feu moyen et une goutte d'huile ou d'eau si vous gardez cette recette sans huile, oignon et ail. Faire revenir le mélange avec une pincée de sel pendant 4 minutes."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Soupe Cajun À La Citrouille",
+                  "paragraph": "Ajoutez le potiron dans la casserole, suivi du bouillon de lait et de légumes."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Soupe Cajun À La Citrouille",
+                  "paragraph": "Laissez la soupe mijoter pendant 10 minutes avant de la mélanger jusqu'à ce qu'elle soit très lisse."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Soupe Cajun À La Citrouille",
+                  "paragraph": "Mélangez la soupe quelques louches à la fois et si elle est trop épaisse, ajoutez du bouillon de légumes."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Soupe Cajun À La Citrouille",
+                  "paragraph": "Vérifiez que la soupe est bien assaisonnée avant de servir avec les garnitures."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Soupe Cajun À La Citrouille",
+                  "paragraph": "La soupe peut être conservée au réfrigérateur jusqu'à 4 jours."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

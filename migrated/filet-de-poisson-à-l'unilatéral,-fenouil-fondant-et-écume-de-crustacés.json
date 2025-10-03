@@ -1,0 +1,327 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Filet de poisson à l'unilatéral, fenouil fondant et écume de crustacés",
+      "description": [
+        "Portions : 4",
+        "Préparation et cuisson : 30 minutes environ"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Jonathan Garnier",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "Guilde culinaire",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "copyright",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Filet De Poisson À L Unilatéral Fenouil",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "fenouil"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Sel"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 60,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 250,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "vin blanc"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "écrasé"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "anis"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "thym"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 250,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "bouillon de legumes"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "filet"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Piment d'Espelette"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 60,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "fond de crustaces"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "L"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "lecithine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Coupez le talon des fenouils pour créer une assise stable et horizontale. Puis taillez des tranches d'environ 1 cm d'épaisseur, de haut en bas sur leur longueur. Salez et poivrez."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Dans une poêle antiadhésive chaude, à feu vif, faites colorer de chaque côté les tranches de fenouil, dans un filet d'huile d'olive. Ajoutez le vin blanc, l'ail, l'anis étoilé, le thum et laissez réduire de moitié."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajoutez le bouillon de légumes et laissez cuire à couvert et à feu doux pendant environ 10 minutes. Cette étape peut être remplacée par une cuisson au four, à 350°F pendant 10 à 15 minutes. Pour vérifier la cuisson des fenouils, plantez la pointe d'un couteau à la base, le couteau doit pénétrer sans résistance et être fondant."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Assaisonnez et badigeonnez les filets de poisson de sel, d'huile et de piment."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Dans une poêle chaude et sans gras, faites cuire les filets de poisson côté peau."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Dans une casserole, faites réchauffer le fond de crustacés et rectifiez l'assaisonnement au goût. Versez-le dans un récipient carré, laissez-le refroidir légèrement, incorporez la lécithine de soja et émulsionnez à l'aide du mélangeur à main."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "paragraph": "Dans chaque assiette, disposez 3 tranches de fenouil, un filet de poisson et ajoutez dessus le fumet de crustacés (l'écume de crustacés, si on mets de la lécithine de soja)."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "paragraph": "Servez aussitôt."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

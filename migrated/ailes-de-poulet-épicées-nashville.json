@@ -1,0 +1,277 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Ailes De Poulet Épicées Nashville",
+      "description": [
+        "Temps : 1h",
+        "Rendement : 32 pièces, pour 6 à 8 portions en entrée"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/FbCcJ0G/Ailes-De-Poulet-pic-es-Nashville.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "ailes de poulet",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "épicé",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "Nashville",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Ailes De Poulet Épicées Nashville",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 16,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "ailes de poulet"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel de mer"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "the"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "piment rouge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive extra-vierge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Beurre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "ciboulette fraiche"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Rincez les ailes de poulet sous l'eau froide, puis séchez-les avec du papier absorbant. Coupez les extrémités des ailes et jetez-les ou conservez-les pour faire du bouillon. Coupez chaque aile en 2 morceaux à l'articulation—le pilon et le plat."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez les ailes de poulet dans un grand bol et saupoudrez-les de sel, poivre, poudre d'oignon, origan et flocons de piment rouge. Remuez pour que les épices enrobent uniformément les ailes. Incorporez l'huile d'olive. Vous pouvez griller les ailes immédiatement, mais elles auront meilleur goût si vous les laissez mariner pendant 2 heures au réfrigérateur avant de les fumer."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Préparez votre gril pour une cuisson indirecte et construisez un feu moyen-chaud (400°F). Brossez et huilez la grille du gril."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Disposez les ailes côté peau vers le haut sur la grille, à l'écart de la chaleur, au-dessus de la lèchefrite. Si vous voulez une saveur de fumée, ajoutez des copeaux de bois aux braises si vous utilisez un gril au charbon ou placez-les dans la boîte à fumoir de votre gril à gaz. Réservez 1/4 tasse de beurre épicé."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Grillez indirectement jusqu'à ce que la peau soit dorée et la viande bien cuite, environ 30 minutes. Après 15 minutes, commencez à badigeonner les ailes avec 3/4 tasse de beurre épicé. Continuez à badigeonner toutes les 5 minutes. Pour vérifier la cuisson, faites une incision dans la partie la plus épaisse de la viande de la plus grande aile. Il ne doit y avoir aucune trace de rouge ou de rose près de l'os."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Disposez les ailes sur un plat. Versez les 1/4 tasse de beurre épicé dessus et saupoudrez de ciboulette ou de coriandre. Servez avec beaucoup de serviettes."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

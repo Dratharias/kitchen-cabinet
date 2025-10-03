@@ -1,0 +1,279 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Mousse Au Chocolat",
+      "description": [
+        "Temps: 40 min",
+        "Rendement: 8 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/X7Cj7VT/Mousse-au-chocolat.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "dishoom",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "dessert",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sucré",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Mousse Au Chocolat",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 100,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "oeuf"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "œufs"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "cacao"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de piment rouge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel marin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pincée"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 200,
+                "multiply_factor": 1,
+                "cut": "en morceaux"
+              },
+              "product": {
+                "data": {
+                  "name": "chocolat noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 200,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "creme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Mettez le sucre et 40 ml d'eau dans une petite casserole à feu très doux et laissez fondre lentement pour former un sirop clair. Vérifiez la température avec un thermomètre à sucre si vous en avez un; elle ne doit pas dépasser 248 degrés Fahrenheit."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Séparez 4 œufs, en plaçant les jaunes dans un grand bol (ou le bol d'un batteur sur socle équipé du fouet) et les blancs dans un autre grand bol très propre."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajoutez les 2 œufs entiers, le cacao en poudre, la poudre de piment et le sel aux jaunes d'œufs et fouettez pendant 2 minutes. Vous n'avez pas besoin d'incorporer de l'air à ce stade, mais le mélange doit être crémeux et léger."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": ""
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Lorsque le sucre a fondu en un liquide clair, laissez mijoter pendant 2 minutes, puis ajoutez lentement au mélange de cacao, en fouettant pendant que vous le faites. Continuez à fouetter vigoureusement jusqu'à ce que le mélange soit complètement refroidi et que vous ayez une sauce lisse et aérée; cela prendra environ 5 minutes."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Faites fondre le chocolat dans un bol résistant à la chaleur au-dessus d'une casserole d'eau frémissante, en vous assurant que le fond du bol ne touche pas l'eau. Une fois fondu, retirez le bol du feu et laissez refroidir légèrement."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "paragraph": "Dans un autre bol, fouettez la crème jusqu'à ce qu'elle forme des pics mous. Dans un autre bol très propre, fouettez les blancs d'œufs en pics moyens-fermes."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "paragraph": "Battez le chocolat fondu dans le mélange d'œufs et de cacao. Incorporez 1 cuil. à soupe de crème fouettée et 1 cuil. à soupe de blancs d'œufs; cela aide à alléger le mélange. Maintenant, incorporez délicatement le reste de la crème fouettée et des blancs d'œufs, afin de conserver le plus d'air possible."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "paragraph": "Transférez la mousse dans un récipient propre, couvrez hermétiquement avec deux couches de film plastique et réfrigérez jusqu'au moment de servir. (Elle se conservera jusqu'à 3 jours au réfrigérateur.)"
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "paragraph": "Pour servir, placez une boule nette dans chaque petit bol de service et saupoudrez d'une pincée de sel marin en flocons."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

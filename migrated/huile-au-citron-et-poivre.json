@@ -1,0 +1,169 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Huile Au Citron Et Poivre",
+      "description": [
+        "Temps: 3-5 min",
+        "Rendement: 2 tasses"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/RpcdkS1/Huile-Au-Citron-Et-Poivre.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "huile au citron",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "poivre",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "marinade",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Huile Au Citron Et Poivre",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "frottes",
+                "title": "Huile Au Citron Et Poivre"
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "casses",
+                "title": "Huile Au Citron Et Poivre"
+              },
+              "product": {
+                "data": {
+                  "name": "grains de poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Huile Au Citron Et Poivre"
+              },
+              "product": {
+                "data": {
+                  "name": "huile de pepins de raisin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Huile Au Citron Et Poivre"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive extra-vierge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Huile Au Citron Et Poivre",
+                  "paragraph": "À l'aide d'un économe, retirez le zeste (peau extérieure riche en huile) des citrons en larges bandes fines. Placez ces bandes dans une petite poêle avec les grains de poivre et l'huile de pépins de raisin. Placez la poêle à feu moyen-doux et faites cuire jusqu'à ce que les grains de poivre grésillent et que les bandes de zeste de citron commencent juste à brunir, 3 à 5 minutes. Transférez le mélange dans un bol résistant à la chaleur et laissez refroidir à température ambiante."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Huile Au Citron Et Poivre",
+                  "paragraph": "Ajoutez l'huile d'olive, puis mélangez le mélange dans un blender. Laissez reposer à température ambiante pendant 4 heures. Filtrez l'huile à travers une passoire fine dans un grand bocal. Utilisez immédiatement ou couvrez et conservez à l'abri de la chaleur et de la lumière. L'huile se conservera au moins une semaine. Amenez à température ambiante avant d'utiliser."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Variante",
+                  "paragraph": "Combinez les ingrédients non cuits dans un blender et mélangez bien. Infusez et filtrez comme décrit ci-dessus. Cela vous donne une huile au citron et poivre au goût excellent sans aucune cuisson. Réfrigérez comme décrit ci-dessus."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Taj Ballroom Toddy",
+      "description": [
+        "Temps: 15 min",
+        "Rendement: 8 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "dishoom",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "cocktail",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "whisky",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "cidre",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "épices",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Taj Ballroom Toddy",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 320,
+                "multiply_factor": 1,
+                "title": "Taj Ballroom Toddy"
+              },
+              "product": {
+                "data": {
+                  "name": "cidre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 200,
+                "multiply_factor": 1,
+                "title": "Taj Ballroom Toddy"
+              },
+              "product": {
+                "data": {
+                  "name": "pomme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 40,
+                "multiply_factor": 1,
+                "title": "Taj Ballroom Toddy"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Taj Ballroom Toddy"
+              },
+              "product": {
+                "data": {
+                  "name": "cannelle"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Taj Ballroom Toddy"
+              },
+              "product": {
+                "data": {
+                  "name": "cardamome verte"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Taj Ballroom Toddy"
+              },
+              "product": {
+                "data": {
+                  "name": "clou de girofle"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 120,
+                "multiply_factor": 1,
+                "title": "Taj Ballroom Toddy"
+              },
+              "product": {
+                "data": {
+                  "name": "sirop d'agave"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 200,
+                "multiply_factor": 1,
+                "title": "Taj Ballroom Toddy"
+              },
+              "product": {
+                "data": {
+                  "name": "whisky"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Taj Ballroom Toddy"
+              },
+              "product": {
+                "data": {
+                  "name": "orange"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Taj Ballroom Toddy",
+                  "paragraph": "Mettez le cidre, le jus de pomme, le jus de gingembre et les épices dans une casserole. Chauffez à feu moyen-doux, en remuant de temps en temps, jusqu'à ce que le liquide atteigne le point de frémissement. Laissez frémir très doucement pendant 2 minutes."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Taj Ballroom Toddy",
+                  "paragraph": "Ajoutez le sirop d'agave et mélangez bien."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Taj Ballroom Toddy",
+                  "paragraph": "Mesurez 25 ml de whisky dans chaque tasse ou petit verre résistant à la chaleur."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Taj Ballroom Toddy",
+                  "paragraph": "Versez 100 ml de cidre chaud dans chaque tasse."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Taj Ballroom Toddy",
+                  "paragraph": "Garnissez avec la tranche d'orange séchée ou la bande de zeste d'orange et servez immédiatement."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Jus De Gingembre",
+                  "paragraph": "Pour faire ceci, râpez du gingembre pelé dans un carré de mousseline placé dans un bol. Rassemblez les bords de la mousseline et pressez le jus. Vous aurez besoin d'environ 8 cm de racine de gingembre pour obtenir 40 ml de jus (c'est-à-dire 1 cm pour 5 ml)."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

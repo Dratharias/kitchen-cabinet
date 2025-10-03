@@ -1,0 +1,284 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Sauce Aux Groseilles Rouges et au Porto",
+      "description": [
+        "Temps: 20 min",
+        "Rendement: 500 ml"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/SwxkF0B/Sauce-Aux-Groseilles-Rouges-et-au-Porto.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Sauce",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "gibier",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "volaille",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "porto",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "groseilles rouges",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Sauce Aux Groseilles Rouges Et Au Porto",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "frottee"
+              },
+              "product": {
+                "data": {
+                  "name": "orange"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "frotte"
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "clou de girofle"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "cannelle"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 80,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "gelee"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 250,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "bouillon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "porto"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 80,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "marmelade"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "fecule de mais"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.125,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poivre de Cayenne"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Sel de mer ou kasher"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "À l'aide d'un économe, retirez 2 bandes de zeste de l'orange et 2 bandes de zeste du citron. Piquez chaque morceau de zeste avec 1 clou de girofle."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Pressez l'orange et le citron et filtrez le jus dans une casserole moyenne non réactive. Ajoutez les zestes, le bâton de cannelle, la gelée de groseilles et le bouillon, puis portez progressivement à ébullition à feu vif. Réduisez le feu à moyen et laissez mijoter, à découvert, jusqu'à ce que la gelée soit fondue et que le mélange ait réduit d'un quart, environ 10 minutes. Retirez et jetez les zestes d'orange et de citron et le bâton de cannelle."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajoutez les 125 ml de porto et la marmelade d'orange et laissez mijoter, à découvert, jusqu'à ce que la marmelade soit fondue et que la sauce soit richement parfumée, environ 5 minutes."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Dissolvez la fécule de maïs dans la cuil. à soupe de porto restante. Incorporez ce mélange à la sauce et laissez mijoter pendant 15 secondes ; la sauce épaissira. Rectifiez l'assaisonnement en ajoutant le poivre de Cayenne, le sel et le poivre. Servez la sauce chaude ou à température ambiante, ou transférez-la dans un grand pot, couvrez et réfrigérez. La sauce se conservera au moins 3 jours. Réchauffez à température ambiante avant de servir."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

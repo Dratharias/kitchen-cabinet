@@ -1,0 +1,180 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Sauce Buffalo De Badigeonnage",
+      "description": [
+        "Temps: 5 min",
+        "Rendement: 1 1/2 tasses, suffisant pour 2 livres de viande"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/grkF8BT/Sauce-Buffalo-De-Badigeonnage.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "sauce buffalo",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "badigeonnage",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "ailes de poulet",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Sauce Buffalo De Badigeonnage",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1,
+                "cut": "morceaux"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "pate de tomate"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "vin blanc sec"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre blanc"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "votre sauce piquante preferee"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Faites fondre 2 cuil. à soupe de beurre dans une casserole à feu moyen. Ajoutez l'ail et faites cuire jusqu'à ce qu'il soit doré, environ 3 minutes. Incorporez la pâte de tomate et faites cuire pendant 1 minute. Ajoutez le vin et le vinaigre et portez à ébullition, en fouettant pour dissoudre la pâte de tomate. Ajoutez la sauce piquante et le reste du beurre et laissez mijoter pendant 2 minutes."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

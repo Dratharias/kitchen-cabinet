@@ -1,0 +1,184 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Bol de légumes verts",
+      "description": [
+        "Temps: 20 min",
+        "Rendement: 4 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/6ZrhVsG/Bol-de-l-gumes-verts.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Bol De Légumes Verts",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 300,
+                "multiply_factor": 1,
+                "cut": "en fleurettes"
+              },
+              "product": {
+                "data": {
+                  "name": "brocoli"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 150,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "mange-tout"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 50,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "epinards"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigrette"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "masala"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Préchauffez votre grill à feu vif et tapissez un large plateau de cuisson de papier aluminium."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Portez une grande casserole d'eau légèrement salée à ébullition. Ajoutez les fleurettes de brocoli, faites revenir à ébullition et faites cuire pendant 3 minutes. Retirez avec une écumoire et épongez avec du papier absorbant."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajoutez les mange-tout dans l'eau, blanchissez pendant 1 minute, puis retirez avec une écumoire et épongez."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Mettez le brocoli et les mange-tout dans un bol, ajoutez le beurre fondu et mélangez bien pour enrober, puis étalez sur le plateau de cuisson préparé. Faites griller les légumes jusqu'à ce qu'ils soient légèrement carbonisés, environ 5 à 7 minutes, en les retournant une fois."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Mettez les légumes grillés dans un grand bol, ajoutez les épinards bébé, la vinaigrette au citron vert et piment et le masala kabab, et mélangez bien pour enrober le tout dans la vinaigrette. Servez immédiatement."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

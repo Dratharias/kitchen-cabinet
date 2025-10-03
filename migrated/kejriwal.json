@@ -1,0 +1,222 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Kejriwal",
+      "description": [
+        "Temps: 25 min",
+        "Rendement: 2 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/CwfhSwW/kejriwal.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Kejriwal",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 160,
+                "multiply_factor": 1,
+                "cut": "rape"
+              },
+              "product": {
+                "data": {
+                  "name": "cheddar fort"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "tranche"
+              },
+              "product": {
+                "data": {
+                  "name": "pain blanc"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "piment vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "oeuf"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Laissez le fromage râpé atteindre la température ambiante ; il doit être assez mou et malléable."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Préchauffez le four à 465°F/Four à chaleur tournante à 425°F/Gaz 9. Placez une plaque à pâtisserie à l'intérieur pour la réchauffer."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Faites griller le pain jusqu'à ce qu'il soit très légèrement doré des deux côtés. Mettez de côté pour refroidir légèrement pendant que vous préparez la garniture."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Mettez de côté une petite poignée de fromage râpé (environ 20g), 2 cuil. à thé d'oignon vert haché et une pincée de piment vert, à utiliser lorsque vous ferez frire les œufs."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Cassez les œufs dans une tasse ou un petit bol, en veillant à conserver les jaunes intacts."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Mettez le reste du fromage, des oignons verts et du piment vert dans un bol, ajoutez beaucoup de poivre noir et mélangez bien. À l'aide du dos d'une cuillère (ou de vos doigts), travaillez le mélange de fromage en une pâte en le pressant fermement contre le côté du bol."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "paragraph": "Étalez le mélange de fromage uniformément sur le pain et appuyez dessus, à l'aide du dos de la cuillère, pour créer une couche ferme et uniforme qui va jusqu'aux bords du pain. Placez sur la plaque dans le four et faites cuire pendant 6 à 8 minutes, jusqu'à ce qu'il soit bien doré et bouillonnant."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "paragraph": "Pendant que le pain grillé au fromage chili cuit, chauffez une poêle à feu vif et, si vous utilisez de l'huile, ajoutez-la. Versez doucement les œufs dans la poêle chaude et ajoutez un peu de poivre noir. Garnissez de fromage râpé, d'oignon vert et de piment vert réservés. Placez la poêle dans le four et faites cuire pendant 2 minutes, ou jusqu'à ce que le fromage soit fondu et que le blanc d'œuf soit cuit mais que le jaune soit encore coulant."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "paragraph": "Faites glisser délicatement les œufs sur le fromage sur le pain et servez immédiatement, avec beaucoup de ketchup."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

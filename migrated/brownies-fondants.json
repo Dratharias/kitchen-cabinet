@@ -1,0 +1,264 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Brownies fondants",
+      "description": [
+        "Temps: 45 minutes",
+        "9 portions et plus"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/DYvLFDx/brownies.jpg",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "chocolat",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sucré",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "dense",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "prep",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Brownies Fondants",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 50,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "chocolat"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 140,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 250,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "oeufs"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "vanille"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 95,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "farine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 30,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "cacao"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "gros sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Préchauffer le four à 350°F."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Hacher la moitié du chocolat et fondre le reste en intervales de 20 secondes au micro-ondes."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Dans un large bol, mélanger le beurre et le sucre au mélangeur à main, puis battre les oeufs et la vanille pour 1-2 minutes, jusqu'à ce que la mixture deviennes légère et pâle."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Fouetter le chocolat fondu dans le mélange liquide, puis incorporer en pliant à l'aide d'une spatule la farine et la poudre de cacao tamisée, puis un peu de sel en faisant attention à ne pas surmélanger pour qu'ils restent plus aériens."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajouter en pliant le mélange les morceaux de chocolat et transférer dans un plat de cuisson couvert d'un papier parchemin."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Cuire de 30 à 35 minutes pour 1 pouce d'épaisseur, dépendant d'à quel point vous le voulez fondant et laissez refroidir complètement (il doit figer). Ça peut prendre quelques heures s'il est très fondant."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

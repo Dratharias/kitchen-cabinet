@@ -1,0 +1,235 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Nankhatai",
+      "description": [
+        "Temps: 1h",
+        "Biscuits à la pistache",
+        "Rendement: 30 biscuits"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/WkJh96Q/Nankhatai.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Nankhatai",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 200,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 200,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 120,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "farine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 120,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "farine de pois chiche"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 120,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "semoule"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "bicarbonate de soude"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 40,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "graines de tournesol"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Préchauffez le four à 190°C (375°F). Tapissez une plaque à pâtisserie de papier parchemin."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Mettez le beurre dans un grand bol. Ajoutez le sucre et battez pendant 3 minutes, jusqu'à ce que le mélange soit léger, lisse et crémeux."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajoutez les farines, la semoule et le bicarbonate de soude et mélangez pour combiner, en rassemblant le mélange pour former une pâte ; veillez à ne pas trop travailler la pâte."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Divisez la pâte en boules de 25g. Placez chaque boule sur la plaque à pâtisserie préparée et aplatissez légèrement avec une pression très légère des doigts. Parsemez quelques graines de tournesol ou de pistaches sur le dessus de chaque biscuit, en les pressant légèrement."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Faites cuire au four pendant 18 à 20 minutes, en tournant la plaque à mi-cuisson. Les biscuits doivent être dorés et cuits à travers."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Laissez les biscuits sur la plaque pendant 10 minutes après la cuisson pour les raffermir, puis transférez-les sur une grille pour les laisser refroidir complètement. Ils se conserveront dans un contenant hermétique jusqu'à 2 jours."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

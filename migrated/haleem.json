@@ -1,0 +1,742 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Haleem",
+      "description": [
+        "Temps: 5h",
+        "Daal de haricots blancs et agneau",
+        "Rendement: 6 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/GtxpVbd/Haleem.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Haleem",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 18,
+                "multiply_factor": 1,
+                "title": "Haleem"
+              },
+              "product": {
+                "data": {
+                  "name": "daal urad"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1,
+                "cut": "concasse",
+                "title": "Haleem"
+              },
+              "product": {
+                "data": {
+                  "name": "ble"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1,
+                "title": "Haleem"
+              },
+              "product": {
+                "data": {
+                  "name": "orge perle"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 50,
+                "multiply_factor": 1,
+                "title": "Haleem"
+              },
+              "product": {
+                "data": {
+                  "name": "riz blanc"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 750,
+                "multiply_factor": 1,
+                "title": "Haleem"
+              },
+              "product": {
+                "data": {
+                  "name": "gigot d'agneau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 600,
+                "multiply_factor": 1,
+                "title": "Haleem"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Haleem"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Haleem"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Haleem"
+              },
+              "product": {
+                "data": {
+                  "name": "piments verts"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 75,
+                "multiply_factor": 1,
+                "title": "Haleem"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Haleem"
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin de mer"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1,
+                "title": "Haleem"
+              },
+              "product": {
+                "data": {
+                  "name": "feuilles de coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Haleem"
+              },
+              "product": {
+                "data": {
+                  "name": "menthe"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 125,
+                "multiply_factor": 1,
+                "title": "Haleem"
+              },
+              "product": {
+                "data": {
+                  "name": "creme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Haleem"
+              },
+              "product": {
+                "data": {
+                  "name": "cardamome"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Haleem"
+              },
+              "product": {
+                "data": {
+                  "name": "macis"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "seche",
+                "title": "Pour Le Potli"
+              },
+              "product": {
+                "data": {
+                  "name": "petales de rose"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour Le Potli"
+              },
+              "product": {
+                "data": {
+                  "name": "grains de poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "title": "Pour Le Potli"
+              },
+              "product": {
+                "data": {
+                  "name": "clou de girofle"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Pour Le Potli"
+              },
+              "product": {
+                "data": {
+                  "name": "feuille de laurier"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "title": "Pour Le Potli"
+              },
+              "product": {
+                "data": {
+                  "name": "cardamome verte"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "gousses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "morceaux",
+                "title": "Pour Le Potli"
+              },
+              "product": {
+                "data": {
+                  "name": "cannelle"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour Le Potli"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de fenouil"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Pour Le Potli"
+              },
+              "product": {
+                "data": {
+                  "name": "pathar ke phool"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Pour Le Potli"
+              },
+              "product": {
+                "data": {
+                  "name": "paan ki jad"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "safran"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "emincé",
+                "title": "Pour Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "menthe"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "tranches",
+                "title": "Pour Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "piments verts"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "Naan"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Haleem",
+                  "paragraph": "Verser le daal urad, le blé concassé et l'orge perlé dans un bol. Couvrir d'eau froide, bien mélanger, laisser reposer, puis verser l'eau. Couvrir généreusement d'eau froide fraîche et laisser tremper pendant 3 heures."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Haleem",
+                  "paragraph": "Pour le potli (bouquet d'épices), mettre tous les ingrédients dans un morceau de mousseline et attacher avec de la ficelle de cuisine."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Haleem",
+                  "paragraph": "Mettre le riz dans un petit bol et couvrir d'eau froide. Déplacer le riz dans l'eau pour le laver, puis égoutter. Répéter deux fois de plus."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Haleem",
+                  "paragraph": "Verser les grains trempés et le riz dans une petite casserole et ajouter 750 ml d'eau bouillante. Porter à frémissement à feu moyen. Cuire en remuant régulièrement jusqu'à ce qu'ils soient très tendres, environ 40 minutes. Les grains doivent se briser et former une bouillie épaisse. Ajouter un peu plus d'eau bouillante si la consistance devient trop épaisse vers la fin de la cuisson."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Haleem",
+                  "paragraph": "Pendant ce temps, couper l'agneau en cubes de 2 à 3 cm et placer dans une autre casserole. Couvrir d'eau bouillante, laisser reposer pendant 3 minutes, puis égoutter. Remettre la viande dans la casserole et ajouter le potli, le lait, les purées de gingembre et d'ail, et les piments verts. Cuire à feu moyen-doux jusqu'à ce qu'ils soient complètement tendres, environ 1 1/2 heure."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Haleem",
+                  "paragraph": "Ajouter le mélange de grains à la viande et laisser mijoter, en remuant souvent, jusqu'à ce que la viande commence à se détacher, 30 à 45 minutes. Ajouter un peu d'eau pendant la cuisson si elle devient très épaisse. Retirer et jeter le potli."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Haleem",
+                  "paragraph": "Transférer la moitié du haleem dans un mélangeur et mixer jusqu'à ce qu'il soit assez lisse. Avec l'autre moitié, utiliser une cuillère pour écraser un peu les morceaux de viande dans la casserole."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Haleem",
+                  "paragraph": "Remettre le haleem lisse dans la casserole. Ajouter 60g de beurre avec le sel, la coriandre et la menthe. Bien mélanger et laisser mijoter pendant 25 à 30 minutes, en remuant très régulièrement pour éviter qu'il ne brûle. Le mélange commencera à former une consistance épaisse, presque semblable à de la pâte, et à foncer légèrement."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Haleem",
+                  "paragraph": "Lorsque le mélange commence à se détacher des bords de la casserole, cuire pendant encore 5 minutes."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Haleem",
+                  "paragraph": "Verser la crème et laisser mijoter pendant 10 minutes jusqu'à ce qu'elle atteigne une consistance épaisse de bouillie. Ajouter les 15g de beurre restants, la cardamome moulue et le macis et bien mélanger."
+                }
+              }
+            },
+            {
+              "position": 11,
+              "segment": {
+                "data": {
+                  "title": "Haleem",
+                  "paragraph": "Pour servir, mettre le haleem dans des bols préchauffés et arroser d'une cuillère à thé d'eau de safran sur chaque portion. Garnir d'oignons frits croustillants, d'allumettes de gingembre, de coriandre, de menthe et de piments. Servir avec les quartiers de lime et du naan."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

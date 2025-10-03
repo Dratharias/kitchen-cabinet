@@ -1,0 +1,568 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Poulet masala",
+      "description": [
+        "Portions : 4",
+        "Temps : 45 minutes",
+        "À prévoir 1-2 jours d'avance."
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Poulet Masala",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pâte Tikka"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Pâte Tikka"
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pâte Tikka"
+              },
+              "product": {
+                "data": {
+                  "name": "garam masala"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pâte Tikka"
+              },
+              "product": {
+                "data": {
+                  "name": "curcuma"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 7,
+                "multiply_factor": 1,
+                "title": "Pâte Tikka"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "gousses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Pâte Tikka"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pièce"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Pâte Tikka"
+              },
+              "product": {
+                "data": {
+                  "name": "piment"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Pâte Tikka"
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pâte Tikka"
+              },
+              "product": {
+                "data": {
+                  "name": "huile"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Poulet Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "yogourt"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Poulet Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "poulet"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "livres"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Poulet Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "tikka"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Poulet Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 28,
+                "multiply_factor": 1,
+                "cut": "broye",
+                "title": "La Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "tomates"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "La Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "La Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1.25,
+                "multiply_factor": 1,
+                "title": "La Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "creme 35%"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "La Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "paprika"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "La Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de chili"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Poulet Masala",
+                  "paragraph": "Dans une petite casserole, ajouter toutes les épices et griller pendant 2 minutes. Retirer et refroidir."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Poulet Masala",
+                  "paragraph": "Ajouter les épices à un mélangeur et broyer le plus finemenent possible."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Poulet Masala",
+                  "paragraph": "Ajouter l'ail, le gingembre pelé, le garam masala, la poudre de curcuma et les piments fresno. Ajouter l'eau et l'huile et mélanger jusqu'à consistance lisse."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Poulet Masala",
+                  "paragraph": "Coupez le poulet en morceaux de la taille d'une bouchée."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Poulet Masala",
+                  "paragraph": "Dans un bol, mettre le yogourt, la pâte de tikka masala et du sel. Fouetter ensemble."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Poulet Masala",
+                  "paragraph": "Ajouter le poulet et mélanger pour enrober soigneusement. Couvrir d'une pellicule plastique et mariner pendant 20 minutes ou pendant la nuit au réfrigérateur."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Poulet Masala",
+                  "paragraph": "Laver et rincer le riz et commencer sa cuisson."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Poulet Masala",
+                  "paragraph": "(Canne de tomate) Ajoutez la boîte de tomates au mélangeur et mélangez jusqu'à consistance lisse. Passer à travers une passoire à mailles fines. Réserver."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Poulet Masala",
+                  "paragraph": "Dans une casserole à feu moyen-élevé, ajoutez assez d'huile pour couvrir le fond. Saisir le poulet 3-4 minutes de chaque côté. Réserver."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Poulet Masala",
+                  "paragraph": "Réduisez le feu à moyen et ajoutez du beurre pour fondre avant d'ajouter des oignons en dés et faire revenir jusqu'à ce qu'ils soient translucides."
+                }
+              }
+            },
+            {
+              "position": 11,
+              "segment": {
+                "data": {
+                  "title": "Poulet Masala",
+                  "paragraph": "Ajouter le reste de la pâte Tikka masala avec le paprika et la poudre de chili. Cuire et remuer souvent jusqu'à ce que la pâte commence à coller dans la casserole."
+                }
+              }
+            },
+            {
+              "position": 12,
+              "segment": {
+                "data": {
+                  "title": "Poulet Masala",
+                  "paragraph": "Ajouter les tomates et amener à mijoter en remuant occasionnellement à feu moyen pendant 10 minutes."
+                }
+              }
+            },
+            {
+              "position": 13,
+              "segment": {
+                "data": {
+                  "title": "Poulet Masala",
+                  "paragraph": "Ajouter la crème épaisse et mélanger jusqu'à ce qu'ils soient soigneusement combinés."
+                }
+              }
+            },
+            {
+              "position": 14,
+              "segment": {
+                "data": {
+                  "title": "Poulet Masala",
+                  "paragraph": "Ajouter le poulet à la casserole de sauce et amener à mijoter. Laisser cuire pendant 10 à 15 minutes supplémentaires."
+                }
+              }
+            },
+            {
+              "position": 15,
+              "segment": {
+                "data": {
+                  "title": "Poulet Masala",
+                  "paragraph": "Assaisonner au goût avec du sel et de servir avec du riz."
+                }
+              }
+            },
+            {
+              "position": 16,
+              "segment": {
+                "data": {
+                  "title": "Poulet Masala",
+                  "paragraph": "Garnir de coriandre et servir."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Sambal D'Échalotes",
+      "description": [
+        "Temps: N/A",
+        "Rendement: Environ 1 tasse, suffisant pour 4 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/R7pSn2J/Sambal-D-chalotes.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "sambal",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "échalotes",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "épicé",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "asiatique",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Sambal D Échalotes",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Sambal D Échalotes"
+              },
+              "product": {
+                "data": {
+                  "name": "huile de canola"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Sambal D Échalotes"
+              },
+              "product": {
+                "data": {
+                  "name": "pate de crevettes"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Sambal D Échalotes"
+              },
+              "product": {
+                "data": {
+                  "name": "echalote"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Sambal D Échalotes"
+              },
+              "product": {
+                "data": {
+                  "name": "piment"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Sambal D Échalotes"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Sambal D Échalotes"
+              },
+              "product": {
+                "data": {
+                  "name": "jus de lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Sambal D Échalotes"
+              },
+              "product": {
+                "data": {
+                  "name": "gros sel et poivre noir"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Note"
+              },
+              "product": {
+                "data": {
+                  "name": "pate de crevettes"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Sambal D Échalotes",
+                  "paragraph": "Chauffez l'huile dans un wok non réactif ou une petite poêle à feu moyen. Ajoutez la pâte de crevettes et faites cuire jusqu'à ce qu'elle soit parfumée, 30 secondes à 1 minute. Ajoutez les échalotes, les piments et l'ail et faites cuire jusqu'à ce qu'ils soient dorés, 6 à 8 minutes, en réduisant le feu si nécessaire pour éviter de brûler les échalotes."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Sambal D Échalotes",
+                  "paragraph": "Transférez le mélange dans un robot culinaire et hachez finement. Ajoutez le jus de lime, le sel et le poivre. Transférez dans un bocal, couvrez et réfrigérez. Le sambal se conservera presque indéfiniment."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Variation",
+                  "paragraph": "Pour un sambal plus audacieux, plus intense, faites cuire la moitié des piments, en laissant l'autre moitié crue. Ajoutez ces piments crus lorsque vous hachez le sambal."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

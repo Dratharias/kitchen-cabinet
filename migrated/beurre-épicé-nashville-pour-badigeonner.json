@@ -1,0 +1,210 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Beurre Épicé Nashville Pour Badigeonner",
+      "description": [
+        "Temps : 10 min",
+        "Rendement : 1 tasse (suffisant pour 2 à 3 livres de viande)"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/Ws5yMgh/Beurre-pic-Nashville-Pour-Badigeonner.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "beurre épicé",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "badigeonner",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "Nashville",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "marinade",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Beurre Épicé Nashville Pour Badigeonner",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poivre de cayenne"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "cassonade"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "paprika"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez le cayenne, le sucre, la poudre d'ail, le paprika et les sels dans une casserole épaisse et fouettez pour mélanger. Faites cuire à feu moyen jusqu'à ce que le sucre commence à fondre et que les épices soient parfumées, environ 3 minutes. Fouettez dans l'huile et laissez mijoter pendant 2 à 3 minutes. Retirez la casserole du feu et laissez le mélange refroidir à température ambiante. Utilisez immédiatement pour badigeonner ou transférez dans un récipient hermétique, couvrez et réfrigérez. Le beurre épicé Nashville se conserve jusqu'à 1 mois et ne fait que s'améliorer avec le temps."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

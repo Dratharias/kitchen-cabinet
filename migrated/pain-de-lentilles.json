@@ -1,0 +1,261 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Pain de lentilles",
+      "description": [
+        "Temps : 2h35",
+        "Rendement: 4 pains"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Pain De Lentilles",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 200,
+                "multiply_factor": 1,
+                "title": "Pain De Lentilles"
+              },
+              "product": {
+                "data": {
+                  "name": "lentilles rouges"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "grammes"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1,
+                "title": "Pain De Lentilles"
+              },
+              "product": {
+                "data": {
+                  "name": "teguments de psyllium entiers"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "grammes"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 60,
+                "multiply_factor": 1,
+                "title": "Pain De Lentilles"
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1,
+                "title": "Pain De Lentilles"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Pain De Lentilles"
+              },
+              "product": {
+                "data": {
+                  "name": "bicarbonate de soude"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Pain De Lentilles"
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Pain De Lentilles"
+              },
+              "product": {
+                "data": {
+                  "name": "jus de citron"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Garnitures"
+              },
+              "product": {
+                "data": {
+                  "name": "graines melangees"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillères"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Pain De Lentilles",
+                  "paragraph": "Faire tremper les lentilles rouges dans beaucoup d'eau tiède pendant au moins 2 heures ou toute la nuit, puis les égoutter."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Pain De Lentilles",
+                  "paragraph": "Préchauffer le four à 350°F/180°C et tapisser une plaque à pâtisserie de papier sulfurisé ou d'un tapis en silicone."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Pain De Lentilles",
+                  "paragraph": "Dans un robot culinaire, mélanger les lentilles trempées avec tous les ingrédients (à l'exception des garnitures). Ajouter le jus de citron ou le vinaigre en dernier, de préférence sur le bicarbonate de soude, car la réaction entre l'acide et le bicarbonate de soude est immédiate et vous souhaitez conserver l'effet levant. Mixer les ingrédients jusqu'à l'obtention d'une pâte."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Pain De Lentilles",
+                  "paragraph": "Ne laissez pas reposer la pâte. Façonnez rapidement les rouleaux à la main, en mouillant légèrement vos mains pour éviter qu'ils ne collent. Roulez le dessus de chaque rouleau dans le mélange de graines."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Pain De Lentilles",
+                  "paragraph": "Placer les rouleaux sur la plaque à pâtisserie préparée et cuire au four pendant 25 minutes, ou jusqu'à ce qu'ils soient dorés et croustillants."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Pain De Lentilles",
+                  "paragraph": "Retirer les rouleaux du four et les transférer sur une grille de refroidissement pour les laisser refroidir pendant au moins 15 minutes avant de les trancher et de les servir."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

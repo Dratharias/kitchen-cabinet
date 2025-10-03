@@ -1,0 +1,313 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Pudding au masque et aux petits pains",
+      "description": [
+        "Temps: 45 min",
+        "Rendement: 4 à 6 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/dP43GpM/Pudding-au-masque-et-aux-petits-pains.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Pudding Au Masque Et Aux Petits Pains",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 450,
+                "multiply_factor": 1,
+                "title": "Pudding Au Masque Et Aux Petits Pains"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Pudding Au Masque Et Aux Petits Pains"
+              },
+              "product": {
+                "data": {
+                  "name": "cardamome"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "rape",
+                "title": "Pudding Au Masque Et Aux Petits Pains"
+              },
+              "product": {
+                "data": {
+                  "name": "muscade"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1,
+                "title": "Pudding Au Masque Et Aux Petits Pains"
+              },
+              "product": {
+                "data": {
+                  "name": "graines"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 400,
+                "multiply_factor": 1,
+                "title": "Pudding Au Masque Et Aux Petits Pains"
+              },
+              "product": {
+                "data": {
+                  "name": "miche"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 50,
+                "multiply_factor": 1,
+                "title": "Pudding Au Masque Et Aux Petits Pains"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 35,
+                "multiply_factor": 1,
+                "title": "Pudding Au Masque Et Aux Petits Pains"
+              },
+              "product": {
+                "data": {
+                  "name": "raisins"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Pudding Au Masque Et Aux Petits Pains"
+              },
+              "product": {
+                "data": {
+                  "name": "oeuf"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "gros"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 300,
+                "multiply_factor": 1,
+                "title": "Pudding Au Masque Et Aux Petits Pains"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "Creme glacee"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Pudding Au Masque Et Aux Petits Pains",
+                  "paragraph": "Préchauffez le four à 375°F et graissez légèrement un plat allant au four suffisamment grand pour accommoder le pain."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Pudding Au Masque Et Aux Petits Pains",
+                  "paragraph": "Versez le lait dans une casserole et ajoutez la cardamome et la muscade. Portez à ébullition, mais ne laissez pas bouillir. Retirez du feu et laissez infuser pendant 10 minutes pendant que vous préparez le reste."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Pudding Au Masque Et Aux Petits Pains",
+                  "paragraph": "Mettez les graines de charoli dans une tasse, couvrez généreusement d'eau bouillante et laissez reposer pendant 2 minutes. Égouttez et mettez de côté."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Pudding Au Masque Et Aux Petits Pains",
+                  "paragraph": "Coupez ou cassez la brioche en cubes de 3 cm et placez-les dans un grand bol. Faites fondre le beurre, arrosez-en les cubes de pain, puis mélangez avec vos mains pour enrober le pain."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Pudding Au Masque Et Aux Petits Pains",
+                  "paragraph": "Transférez le pain dans le plat graissé et étalez-le uniformément. Saupoudrez les raisins secs et les graines de charoli, en les répartissant uniformément."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Pudding Au Masque Et Aux Petits Pains",
+                  "paragraph": "Dans le même bol, fouettez ensemble les œufs, les jaunes supplémentaires et le lait concentré. Remettez le lait à ébullition, puis versez-le lentement sur le mélange d'œufs, en fouettant pendant que vous le faites."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Pudding Au Masque Et Aux Petits Pains",
+                  "paragraph": "Versez soigneusement le mélange chaud sur le pain et placez au four. Faites cuire pendant 20 minutes, ou jusqu'à ce qu'il soit juste pris et doré."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Pudding Au Masque Et Aux Petits Pains",
+                  "paragraph": "Laissez le pudding reposer pendant 5 minutes avant de le couper en portions et de le servir, avec une boule de crème glacée si vous le souhaitez."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

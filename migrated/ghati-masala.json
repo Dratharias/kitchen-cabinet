@@ -1,0 +1,210 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Ghati Masala",
+      "description": [
+        "Temps: 20 min",
+        "Rendement: environ 90 g"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "dishoom",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "épices",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "masala",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "ail",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "coco",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "piment",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Ghati Masala",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 100,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 40,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 30,
+                "multiply_factor": 1,
+                "cut": "rape"
+              },
+              "product": {
+                "data": {
+                  "name": "noix de coco"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poudre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel marin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Chauffez l'huile dans une petite casserole à feu moyen et ajoutez l'ail haché. Faites frire jusqu'à ce qu'il soit très légèrement doré; ne le laissez pas trop colorer ou brûler, car il aura un goût amer. Retirez avec une écumoire et placez sur un plateau tapissé de papier absorbant pour refroidir et égoutter. L'ail doit être assez croustillant."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Chauffez une poêle à frire à feu moyen-doux. Ajoutez la noix de coco râpée et faites-la griller lentement, en remuant régulièrement, jusqu'à ce qu'elle soit légèrement dorée. Transférez sur une assiette et laissez refroidir complètement."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Combinez l'ail, la noix de coco grillée et la poudre de piment et réduisez en poudre relativement grossière à l'aide d'un moulin à épices. Le masala sera un peu grumeleux en raison de l'huile dans l'ail et la noix de coco."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Conservez sur une couche de papier absorbant dans un récipient hermétique et utilisez dans la semaine."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

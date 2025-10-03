@@ -1,0 +1,544 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Yakitori aux pleurotes king et au tofu",
+      "description": [
+        "Temps: 45 min",
+        "Portions: 4"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/Q9tWn5j/Yakitori-aux-pleurotes-royaux-et-au-tofu.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Yakitori Aux Pleurotes King Et Au Tofu",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 500,
+                "multiply_factor": 1,
+                "title": "Sauté"
+              },
+              "product": {
+                "data": {
+                  "name": "champignon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "dés",
+                "title": "Sauté"
+              },
+              "product": {
+                "data": {
+                  "name": "tofu"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cm"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "cut": "en 3",
+                "title": "Yakitori"
+              },
+              "product": {
+                "data": {
+                  "name": "champignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "en morceaux",
+                "title": "Yakitori"
+              },
+              "product": {
+                "data": {
+                  "name": "tofu"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.6,
+                "multiply_factor": 1,
+                "title": "Sauce Teriyaki"
+              },
+              "product": {
+                "data": {
+                  "name": "sauce soja"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Sauce Teriyaki"
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Sauce Teriyaki"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Sauce Teriyaki"
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre de riz"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Sauce Teriyaki"
+              },
+              "product": {
+                "data": {
+                  "name": "citron vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Sauce Teriyaki"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Sauce Teriyaki"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Sauce Teriyaki"
+              },
+              "product": {
+                "data": {
+                  "name": "flocon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Sauce Teriyaki"
+              },
+              "product": {
+                "data": {
+                  "name": "fecule de mais"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Salade De Concombre Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "concombre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Salade De Concombre Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "asperges"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Salade De Concombre Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "echalote"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Salade De Concombre Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre de vin de riz"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Salade De Concombre Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "sirop d'erable"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Salade De Concombre Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Salade De Concombre Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "pincee"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Salade De Concombre Mariné"
+              },
+              "product": {
+                "data": {
+                  "name": "flocons de piment"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "Noix de cajou"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "Menthe"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "Nouilles"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Yakitori Aux Pleurotes King Et Au Tofu",
+                  "paragraph": "Préchauffez votre four à 350°F/180°C."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Sauté",
+                  "paragraph": "Faire frire une dizaine de minutes dans une poêle très chaude avec un peu d'huile, ou dans un air fryer à 400°F. En même temps, dans une poêle très chaude, dorer les champignons."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Yakitori",
+                  "paragraph": "Placez les champignons et le tofu sur vos brochettes et réservez."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Teriyaki",
+                  "paragraph": "Pendant ce temps, à l'exception de la fécule, ajoutez tous les ingrédients de la sauce dans une casserole et placez sur feu moyen, portez le liquide à ébullition. Laisser mijoter 5 minutes avant d'incorporer le mélange de fécule de maïs."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Teriyaki",
+                  "paragraph": "Le liquide doit s'épaissir pour former un joli glaçage semblable à la consistance. S'il devient trop épais, ajoutez un peu d'eau, et s'il est trop liquide, ajoutez un peu plus de mélange fécule de maïs/eau ou laissez-le simplement réduire."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Cuisson",
+                  "paragraph": "Badigeonner le tofu et les champignons avec 1/4 de tasse de la sauce."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Cuisson",
+                  "paragraph": "Faites griller le tout dans une poêle bien chaude ou sur votre barbecue. Cuire 4 à 5 minutes de chaque côté avant de placer les brochettes ou le sauté sur une plaque à pâtisserie, ajouter de la sauce au goût (suggestion: 1 tasse) et de les mettre au four pendant 15 à 20 minutes."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Salade De Concombre Mariné",
+                  "paragraph": "Pendant ce temps, mélangez les ingrédients de la salade dans un petit bol à mélanger."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Servir",
+                  "paragraph": "Lorsque les brochettes sont cuites, servir avec des nouilles, de la salade et garnir de noix et d'herbes fraîches."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

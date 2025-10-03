@@ -1,0 +1,180 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Rouleau de naan au bacon",
+      "description": [
+        "Temps: 40 min",
+        "Naan: 2h",
+        "Rendement: 2 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/bX76rC5/bacon-naan-roll.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Rouleau De Naan Au Bacon",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Naan"
+              },
+              "product": {
+                "data": {
+                  "name": "pate a naan"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 16,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "bacon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "fromage a la creme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 16,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "piment vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "tomates"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Rouleau De Naan Au Bacon",
+                  "paragraph": "Suivez la recette du naan jusqu'à et y compris l'étape où vous étalez la pâte. (Si vous préparez plus d'un rouleau de naan, étalez autant de naans que nécessaire, en les gardant sur la surface huilée pendant que vous étalez les autres.)"
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Rouleau De Naan Au Bacon",
+                  "paragraph": "Faites griller ou frire le bacon jusqu'à ce que la graisse soit bien croustillante."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Rouleau De Naan Au Bacon",
+                  "paragraph": "Faites cuire les naans."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Rouleau De Naan Au Bacon",
+                  "paragraph": "Pour assembler, étalez le fromage à la crème sur le naan cuit et garnissez de feuilles de coriandre. Ajoutez les tranches de bacon cuites et parsemez de piment vert haché, si vous en utilisez."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Rouleau De Naan Au Bacon",
+                  "paragraph": "Arrosez de confiture de tomates et piments, pliez le naan en deux pour enfermer la garniture et mangez immédiatement, avec de la confiture de tomates et piments supplémentaire à côté pour tremper."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

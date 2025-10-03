@@ -1,0 +1,273 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Porc Effiloché Coréen",
+      "description": [
+        "Temps: 5-6 heures (plus 24-48 heures de marinade)",
+        "Rendement: 8 à 10 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/HCv962X/Porc-Effiloch-Cor-en.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "porc effiloché",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "coréen",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "gochujang",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Porc Effiloché Coréen",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Porc"
+              },
+              "product": {
+                "data": {
+                  "name": "Boston butt"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Porc"
+              },
+              "product": {
+                "data": {
+                  "name": "gochujang"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Porc"
+              },
+              "product": {
+                "data": {
+                  "name": "sauce"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "KB"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "title": "Porc"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 12,
+                "multiply_factor": 1,
+                "title": "Porc"
+              },
+              "product": {
+                "data": {
+                  "name": "pains a burger"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Arômes Optionnels"
+              },
+              "product": {
+                "data": {
+                  "name": "Kimchi"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Arômes Optionnels"
+              },
+              "product": {
+                "data": {
+                  "name": "Sriracha"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Arômes Optionnels"
+              },
+              "product": {
+                "data": {
+                  "name": "chili"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Porc Effiloché Coréen",
+                  "paragraph": "Placez le porc dans un plat de cuisson profond. Étalez le gochujang sur tous les côtés. Couvrez légèrement avec du film plastique et faites mariner au réfrigérateur pendant 24 à 48 heures; plus c'est long, plus la saveur est riche."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Porc Effiloché Coréen",
+                  "paragraph": "Préparez un fumeur en suivant les instructions du fabricant et préchauffez à 250°F. Ajoutez du bois comme spécifié par le fabricant."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Porc Effiloché Coréen",
+                  "paragraph": "Fumez l'épaule de porc jusqu'à ce qu'elle soit bien dorée et croustillante à l'extérieur et que la viande atteigne une température interne de 195°F, 5 à 6 heures. Un autre test pour vérifier la cuisson consiste à tirer sur les extrémités des os qui dépassent - ils devraient se détacher facilement. Remplissez le charbon de bois et le bois au besoin. Il ne sert à rien de précipiter le processus : si vous n'atteignez pas la température interne désirée, le porc ne se déchiquettera pas correctement."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Porc Effiloché Coréen",
+                  "paragraph": "Lorsque le porc est cuit, transférez-le sur une grande planche à découper ou un bloc de hachage. Couvrez légèrement avec du papier d'aluminium et laissez reposer pendant 15 minutes."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Porc Effiloché Coréen",
+                  "paragraph": "Retirez toute peau et grattez l'excès de graisse du porc cuit. Faites griller la peau sur un feu vif sur votre gril, côté viande vers le bas, ou dans un four chaud."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Porc Effiloché Coréen",
+                  "paragraph": "Retirez et jetez les os. Déchirez la viande en morceaux de la taille d'un poing, en jetant les gros morceaux de graisse. (Rappelez-vous, vous avez besoin de certaines graisses pour garder le porc humide.) À l'aide d'un couperet ou d'un grand couteau de chef, hachez grossièrement le porc - les morceaux doivent avoir une taille comprise entre 1/4 et 1/2 pouce. Alternativement, effilochez le porc en lambeaux à l'aide de griffes de viande ou de deux grandes fourchettes."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Porc Effiloché Coréen",
+                  "paragraph": "Transférez le porc dans un grand bol à mélanger et ajoutez suffisamment de sauce KB pour donner à la viande une saveur délicieuse et la rendre humide (mais pas soupeuse). Vous aurez besoin d'environ 1 tasse."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Porc Effiloché Coréen",
+                  "paragraph": "C'est le bon moment pour beurrer et griller ou griller les pains."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Porc Effiloché Coréen",
+                  "paragraph": "Pour servir, empilez la viande sur les pains - environ 1/4 livre ( 3/4 tasse) par sandwich. Garnissez de kimchi et arrosez de sriracha et de sauce chili douce thaïlandaise, si utilisé. Servez le reste de la sauce KB à part."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

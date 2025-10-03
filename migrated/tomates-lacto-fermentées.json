@@ -1,0 +1,103 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Tomates lacto-fermentées",
+      "description": [
+        "Fermentation: 7 jours",
+        "Salaison: 2 heures"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Tomates Lacto Fermentées",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "tomates"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Sel"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Coupez vos tomates en petits morceaux et pesez-les dans un grand bol à mélanger."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Déterminez ce que représentent 2 % du poids, puis ajoutez ce poids en sel marin dans le bol à mélanger. Bien mélanger le mélange et couvrir d'un torchon."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Laissez les tomates reposer au moins 2 heures pour que le liquide s'écoule."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Transférez-les ensuite dans un bocal propre en vous assurant que la saumure créée naturellement recouvre les tomates d'environ 1 cm. Utilisez un poids pour maintenir les tomates immergées. Vous pouvez même utiliser un caillou propre pour cela."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Laissez les tomates fermenter jusqu'à 7 jours, puis placez-les au réfrigérateur et dégustez-les à votre guise jusqu'à 6 semaines. Voir la vidéo ci-dessus pour le didacticiel."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

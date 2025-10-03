@@ -1,0 +1,258 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Le Burger Barbecue",
+      "description": [
+        "Temps: 20 min",
+        "Rendement: 4 énormes burgers"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/mH49L3M/Le-Burger-Barbecue.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "burger barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "fumé",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "viande hachée",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "bacon",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sauce barbecue",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Le Burger Barbecue",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "viande"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "livres"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "rub sucre et fume de Kansas City"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "feuille"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive extra vierge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "cut": "tranche"
+              },
+              "product": {
+                "data": {
+                  "name": "pain a hamburger"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "cut": "tranche"
+              },
+              "product": {
+                "data": {
+                  "name": "bacon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "cut": "tranche"
+              },
+              "product": {
+                "data": {
+                  "name": "tomate rouge"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sauce barbecue"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Formez la viande hachée en 4 galettes, chacune d'environ 3 1/2 pouces de large et 3/4 pouce d'épaisseur. Faites une légère dépression au centre. (Les burgers gonflent plus au centre qu'à la périphérie, donc la légère dépression aide à obtenir une épaisseur uniforme.) Assaisonnez généreusement les burgers des deux côtés avec le rub sucré et fumé de Kansas City et laissez mariner au réfrigérateur pendant que vous allumez votre grill."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Préparez le grill pour une cuisson directe et préchauffez à haute température. Brossez et huilez la grille du grill."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Brossez légèrement les feuilles de laitue romaine des deux côtés avec de l'huile d'olive (vous aurez besoin d'environ 1 cuil. à soupe). Brossez l'intérieur des petits pains à l'oignon avec le reste de l'huile."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Disposez les tranches de bacon sur la grille du grill et faites-les griller jusqu'à ce qu'elles soient dorées des deux côtés, environ 3 à 4 minutes par côté. (Déplacez-les si nécessaire pour éviter les flambées.)"
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Faites griller les hamburgers jusqu'à ce qu'ils soient cuits à votre goût, environ 4 minutes par côté pour une cuisson à point (160°F sur un thermomètre instantané)."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Faites griller les feuilles de laitue sur le feu chaud jusqu'à ce qu'elles soient légèrement dorées, 30 secondes par côté. Faites griller les petits pains à l'oignon, côté coupé vers le bas, sur le feu chaud, 1 à 2 minutes."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "paragraph": "Pour assembler, placez une feuille de romaine grillée sur la moitié inférieure de chaque petit pain à l'oignon. Ajoutez un burger, puis de la sauce barbecue, une tranche de tomate, du bacon et encore de la sauce barbecue. Ajoutez l'autre moitié du petit pain."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

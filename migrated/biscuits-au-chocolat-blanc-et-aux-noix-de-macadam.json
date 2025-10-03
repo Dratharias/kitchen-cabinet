@@ -1,0 +1,261 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Biscuits au chocolat blanc et aux noix de macadam",
+      "description": [
+        "Temps: 20 minutes",
+        "Rendement: 16 biscuits"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "biscuits",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "patisserie",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sucré",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "prep",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "mealprep",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "congelé",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Biscuits Au Chocolat Blanc Et Aux Noix",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 250,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "farine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "bicarbonate de soude"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "pincee"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 125,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 180,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "cassonade"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "oeuf"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 125,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "noix de macadam"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 115,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "chocolat blanc"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Préchauffer le four à 400°F. Tapisser deux plaques à biscuits de papier parchemin."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Dans un bol, mélanger la farine, le bicarbonate et le sel. Réserver."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Dans un autre bol, crémer le beurre et la cassonade au batteur électrique. Ajouter l'oeuf et fouetter jusqu'à ce que le mélange soit lisse et homogène. Incorporer les ingrédients secs, les noix et le chocolat"
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Former des boules de 30 ml de mélange de pâte pour biscuits. Mettre 8 biscuits par plaques."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Cuire au four, une plaque à la fois, environ 7 minutes ou jusqu'à ce qu'ils commencent à dorer légèrement autour. Les biscuits seront encore très mou au centre. Laisser refroidir complètement."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Poulet roti au four",
+      "description": [
+        "Temps: 2h30."
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Poulet Roti Au Four",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Poulet"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "poulet"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Poulet"
+              },
+              "product": {
+                "data": {
+                  "name": "patate"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Poulet"
+              },
+              "product": {
+                "data": {
+                  "name": "alcool"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 150,
+                "multiply_factor": 1,
+                "title": "Assaisonnement"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Assaisonnement"
+              },
+              "product": {
+                "data": {
+                  "name": "Paprika"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Assaisonnement"
+              },
+              "product": {
+                "data": {
+                  "name": "poivre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Assaisonnement"
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Assaisonnement"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Assaisonnement"
+              },
+              "product": {
+                "data": {
+                  "name": "thym"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Assaisonnement"
+              },
+              "product": {
+                "data": {
+                  "name": "romarin"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Poulet Roti Au Four",
+                  "paragraph": "Mélanger les ingrédients de l'assaisonnement."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Poulet Roti Au Four",
+                  "paragraph": "Soulever la peau du poulet et étendre le beurre entre le poulet et la peau."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Poulet Roti Au Four",
+                  "paragraph": "Ficeler les pattes du poulet."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Poulet Roti Au Four",
+                  "paragraph": "Avec le légume, faire des tranches d'une épaisseur d'environ un pouce et mettre le liquide, qui ne doit pas toucher au poulet."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Poulet Roti Au Four",
+                  "paragraph": "Cuire au four à 350°F à découvert pendant au moins 2 heures, en l'arrosant de son jus de cuisson toutes mes 20 minutes, jusqu'à 190+°F"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

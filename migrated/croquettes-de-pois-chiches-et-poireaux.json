@@ -1,0 +1,435 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Croquettes de pois chiches et poireaux",
+      "description": [
+        "Temps: 20 min",
+        "Portions: 4"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/Y3ssNmr/Croquettes-de-pois-chiches-et-poireaux.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Croquettes De Pois Chiches Et Poireaux",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Croquettes De Pois Chiches Et Poireaux"
+              },
+              "product": {
+                "data": {
+                  "name": "pois chiches"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Croquettes De Pois Chiches Et Poireaux"
+              },
+              "product": {
+                "data": {
+                  "name": "sel de mer"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Croquettes De Pois Chiches Et Poireaux"
+              },
+              "product": {
+                "data": {
+                  "name": "persil"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Croquettes De Pois Chiches Et Poireaux"
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Croquettes De Pois Chiches Et Poireaux"
+              },
+              "product": {
+                "data": {
+                  "name": "tahini"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.05,
+                "multiply_factor": 1,
+                "cut": "haché grossièrement",
+                "title": "Croquettes De Pois Chiches Et Poireaux"
+              },
+              "product": {
+                "data": {
+                  "name": "epinards"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.4,
+                "multiply_factor": 1,
+                "title": "Croquettes De Pois Chiches Et Poireaux"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1,
+                "title": "Croquettes De Pois Chiches Et Poireaux"
+              },
+              "product": {
+                "data": {
+                  "name": "farine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Croquettes De Pois Chiches Et Poireaux"
+              },
+              "product": {
+                "data": {
+                  "name": "levure chimique"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Croquettes De Pois Chiches Et Poireaux"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de chia"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil.à soupe"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Croquettes De Pois Chiches Et Poireaux"
+              },
+              "product": {
+                "data": {
+                  "name": "pincee"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Croquettes De Pois Chiches Et Poireaux"
+              },
+              "product": {
+                "data": {
+                  "name": "capres"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Croquettes De Pois Chiches Et Poireaux"
+              },
+              "product": {
+                "data": {
+                  "name": "piment"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Croquettes De Pois Chiches Et Poireaux"
+              },
+              "product": {
+                "data": {
+                  "name": "poireau"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Croquettes De Pois Chiches Et Poireaux"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garnitures Optionnelles"
+              },
+              "product": {
+                "data": {
+                  "name": "Salade"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garnitures Optionnelles"
+              },
+              "product": {
+                "data": {
+                  "name": "Herbes"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garnitures Optionnelles"
+              },
+              "product": {
+                "data": {
+                  "name": "houmous"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garnitures Optionnelles"
+              },
+              "product": {
+                "data": {
+                  "name": "jus de citron"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Croquettes De Pois Chiches Et Poireaux",
+                  "paragraph": "Prenez un grand bol à mélanger et ajoutez les pois chiches, le sel, le persil et le citron. A l'aide d'un presse-purée ou d'une fourchette, écrasez légèrement les pois chiches."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Croquettes De Pois Chiches Et Poireaux",
+                  "paragraph": "A côté du bol ajouter le reste des ingrédients (sauf le poireau) & bien mélanger à la spatule."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Croquettes De Pois Chiches Et Poireaux",
+                  "paragraph": "Placez une grande poêle antiadhésive sur feu moyen et ajoutez un peu d'huile d'olive. Lorsque la poêle est chaude, versez quelques cuillères à soupe de pâte dans la poêle et, à l'aide du dos de la cuillère, formez un cercle grossier avec la pâte. J'ai tendance à faire frire 3 beignets à la fois."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Croquettes De Pois Chiches Et Poireaux",
+                  "paragraph": "Faites frire chaque beignet pendant 3 à 4 minutes de chaque côté. Avant de retourner, je dépose quelques morceaux de poireau sur chaque beignet. Les poireaux caramélisent bien, mais c'est surtout pour leur donner un petit côté fantaisie."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Croquettes De Pois Chiches Et Poireaux",
+                  "paragraph": "Pendant la cuisson, les beignets doivent gonfler et doubler plus ou moins d'épaisseur."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Croquettes De Pois Chiches Et Poireaux",
+                  "paragraph": "Une fois frits et les beignets dorés, retirez-les de la poêle et poursuivez la cuisson jusqu'à épuisement de la pâte."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Croquettes De Pois Chiches Et Poireaux",
+                  "paragraph": "Alternativement, si vous ne voulez pas manger autant de beignets tout de suite, vous pouvez conserver la pâte dans un récipient hermétique jusqu'à 2 jours dans votre réfrigérateur."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Croquettes De Pois Chiches Et Poireaux",
+                  "paragraph": "Je recommande de servir les beignets avec de la salade et une trempette."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

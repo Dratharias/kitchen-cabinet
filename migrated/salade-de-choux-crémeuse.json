@@ -1,0 +1,276 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Salade de choux crémeuse",
+      "description": [
+        "Temps: N/A",
+        "Rendement: Environ 1 tasse de vinaigrette"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/z5c6f9f/Salade-de-choux-cr-meuse.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "coleslaw",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "crémeux",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "salade",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Salade De Choux Crémeuse",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Ingrédients Du Mélange De Base"
+              },
+              "product": {
+                "data": {
+                  "name": "chou vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "rape",
+                "title": "Ingrédients Du Mélange De Base"
+              },
+              "product": {
+                "data": {
+                  "name": "carotte"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "grossièrement râpée",
+                "title": "Ingrédients Du Mélange De Base"
+              },
+              "product": {
+                "data": {
+                  "name": "pomme"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.3333,
+                "multiply_factor": 1,
+                "title": "Ingrédients Du Mélange De Base"
+              },
+              "product": {
+                "data": {
+                  "name": "raisin sec"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.6667,
+                "multiply_factor": 1,
+                "title": "Ingrédients De La Vinaigrette Crémeuse"
+              },
+              "product": {
+                "data": {
+                  "name": "mayonnaise"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Ingrédients De La Vinaigrette Crémeuse"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Ingrédients De La Vinaigrette Crémeuse"
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Ingrédients De La Vinaigrette Crémeuse"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de pavot"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Ingrédients De La Vinaigrette Crémeuse"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de celeri"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Ingrédients De La Vinaigrette Crémeuse"
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Ingrédients De La Vinaigrette Crémeuse"
+              },
+              "product": {
+                "data": {
+                  "name": "Gros sel"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Salade De Choux Crémeuse",
+                  "paragraph": "Placez la mayonnaise dans un grand bol. Incorporez le sucre, le vinaigre, les graines de pavot et de céleri, et le poivre. Ajoutez du sel au goût : le coleslaw doit être fortement assaisonné."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Salade De Choux Crémeuse",
+                  "paragraph": "Placez le chou, la carotte, la pomme et les raisins secs (si vous en utilisez) dans un grand bol de mélange et remuez pour mélanger. Ajoutez la vinaigrette crémeuse et mélangez bien."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

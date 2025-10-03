@@ -1,0 +1,90 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Chutney À La Coriandre Et À La Menthe",
+      "description": [
+        "Temps: 5 min",
+        "Rendement: 1 tasse, pour 4 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/Bykq6q3/Chutney-La-Coriandre-Et-La-Menthe.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "chutney",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "coriandre",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "menthe",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "Inde",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Chutney À La Coriandre Et À La",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Afghans"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Combinez tous les ingrédients dans un mélangeur et réduisez en purée, en raclant les côtés du mélangeur plusieurs fois et en ajoutant de l'eau au besoin pour obtenir une sauce liquide. Rectifiez l'assaisonnement en ajoutant du sel ou du jus de citron; le chutney doit être savoureux et piquant. Ce chutney se conservera plusieurs jours, couvert, dans un bocal, au réfrigérateur, mais il est préférable de le servir dans les quelques heures suivant sa préparation."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

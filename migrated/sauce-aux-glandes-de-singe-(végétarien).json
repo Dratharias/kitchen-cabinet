@@ -1,0 +1,109 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Sauce Aux Glandes De Singe (Végétarien)",
+      "description": [
+        "Temps: 10 min",
+        "Rendement: 300 ml",
+        "Il y a pas de viande dans ça, c'est juste un nom étrange. C'est plus une salade de fruits."
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/WywVJnq/Sauce-Aux-Glandes-De-Singe-V-g-tarien.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Sauce barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "Sud-africaine",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "Chutney",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "Épicée",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Sauce Aux Glandes De Singe Tomatée",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "chutney"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Combinez tous les ingrédients dans une casserole non réactive et portez à ébullition à feu moyen-élevé."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Réduisez le feu à moyen et laissez mijoter, à découvert, en remuant souvent jusqu'à ce que le chutney soit fondu et que la sauce soit richement parfumée, environ 5 à 10 minutes."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Pour une sauce avec morceaux, servez telle quelle. Pour une sauce lisse, mixez au robot culinaire ou au mélangeur."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Utilisez immédiatement ou transférez dans un pot, couvrez et réfrigérez. La sauce se conservera plusieurs semaines. Ramenez à température ambiante avant de servir."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

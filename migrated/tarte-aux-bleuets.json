@@ -1,0 +1,377 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Tarte aux Bleuets",
+      "description": [
+        "Temps: 1h30",
+        "Rendement: 8 généreuses portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "dessert",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "copyright",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sucré",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Tarte Aux Bleuets",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 0.75,
+                "multiply_factor": 1,
+                "cut": "cubes",
+                "title": "Pour La Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Pour La Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "farine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour La Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1,
+                "title": "Pour La Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "bleuets"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.75,
+                "multiply_factor": 1,
+                "title": "Pour La Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour La Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "cannelle"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour La Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour La Finition"
+              },
+              "product": {
+                "data": {
+                  "name": "œuf"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour La Finition"
+              },
+              "product": {
+                "data": {
+                  "name": "Creme glacee"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Préparer La Pâte",
+                  "paragraph": "Dans un bol, mélanger la farine et le beurre froid."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Préparer La Pâte",
+                  "paragraph": "Utiliser un mélangeur à pâtisserie ou vos mains pour obtenir une texture sableuse."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Préparer La Pâte",
+                  "paragraph": "Ajouter l'eau glacée et mélanger jusqu'à ce que la pâte se forme."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Préparer La Pâte",
+                  "paragraph": "Façonner la pâte en un disque, l'envelopper dans du film plastique et réfrigérer pendant au moins 30 minutes."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Préparer La Garniture",
+                  "paragraph": "Dans un grand bol, mélanger les bleuets, le sucre, la cannelle, le jus et le zeste de citron."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Préparer La Garniture",
+                  "paragraph": "Mélanger délicatement pour enrober les bleuets uniformément."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Assembler La Tarte",
+                  "paragraph": "Préchauffer le four à 190°C (375°F)."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Assembler La Tarte",
+                  "paragraph": "Abaisser la moitié de la pâte sur une surface légèrement farinée pour qu'elle s'adapte à un moule à tarte de 23 cm (9 pouces)."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Assembler La Tarte",
+                  "paragraph": "Transférer la pâte dans le moule et couper l'excédent."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Assembler La Tarte",
+                  "paragraph": "Verser la garniture aux bleuets dans la croûte."
+                }
+              }
+            },
+            {
+              "position": 11,
+              "segment": {
+                "data": {
+                  "title": "Assembler La Tarte",
+                  "paragraph": "Abaisser l'autre moitié de la pâte et utiliser un coupe-pizza pour la couper en bandes."
+                }
+              }
+            },
+            {
+              "position": 12,
+              "segment": {
+                "data": {
+                  "title": "Assembler La Tarte",
+                  "paragraph": "Disposer les bandes en treillis sur la garniture."
+                }
+              }
+            },
+            {
+              "position": 13,
+              "segment": {
+                "data": {
+                  "title": "Assembler La Tarte",
+                  "paragraph": "Badigeonner le treillis de pâte avec l'œuf battu."
+                }
+              }
+            },
+            {
+              "position": 14,
+              "segment": {
+                "data": {
+                  "title": "Cuisson",
+                  "paragraph": "Cuire la tarte dans le four préchauffé pendant 1 heure, ou jusqu'à ce que la croûte soit dorée et que la garniture bouillonne."
+                }
+              }
+            },
+            {
+              "position": 15,
+              "segment": {
+                "data": {
+                  "title": "Cuisson",
+                  "paragraph": "Si la croûte commence à brunir trop rapidement, couvrir les bords avec du papier d'aluminium."
+                }
+              }
+            },
+            {
+              "position": 16,
+              "segment": {
+                "data": {
+                  "title": "Servir",
+                  "paragraph": "Laisser la tarte refroidir pendant au moins 30 minutes avant de servir."
+                }
+              }
+            },
+            {
+              "position": 17,
+              "segment": {
+                "data": {
+                  "title": "Servir",
+                  "paragraph": "Servir avec une boule de crème glacée à la vanille, si désiré."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

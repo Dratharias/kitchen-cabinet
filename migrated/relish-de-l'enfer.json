@@ -1,0 +1,124 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Relish De L'Enfer",
+      "description": [
+        "Temps: N/A",
+        "Rendement: 2 tasses, suffisant pour 8 à 10 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/KNLZHN1/Relish-De-L-Enfer.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "relish",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "épicé",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "habanero",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Relish Toscan",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "habaneros"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Préparez un gril pour une cuisson directe et préchauffez à feu vif."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Enfilez les quartiers d'oignon, les gousses d'ail et les piments habanero sur des brochettes séparées."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Brossez et huilez la grille du gril. Faites griller les légumes, y compris les poivrons (ils n'ont pas besoin d'être brochettés), jusqu'à ce qu'ils soient carbonisés de tous les côtés. Cela prendra 2 à 3 minutes par côté pour l'ail et les habaneros, 4 minutes par côté pour les oignons, et 4 à 6 minutes par côté pour les poivrons. Transférez les légumes dans une assiette et laissez refroidir. Une fois refroidis, retirez les légumes des brochettes."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Grattez les peaux brûlées des légumes. (Ne vous inquiétez pas de retirer chaque dernier morceau; quelques éclats de noir ajoutent du caractère.) Hachez finement les oignons et l'ail. Pour un relish plus doux, épépinez les habaneros et hachez-les finement; pour un vrai relish de l'enfer, hachez les habaneros, graines et tout. Équeutez et épépinez les poivrons et coupez-les en fines lanières ou en dés de 1/2 pouce."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez les légumes dans une casserole non réactive avec les ingrédients restants. Portez à ébullition à feu vif, réduisez le feu à moyen et laissez mijoter le relish, à découvert, jusqu'à ce qu'il soit épais et richement parfumé, environ 5 minutes. La plupart des jus doivent être absorbés par les légumes. Corrigez l'assaisonnement, en ajoutant du sel, du vinaigre ou du sucre au besoin. Transférez le relish dans des bocaux propres, couvrez, laissez refroidir à température ambiante et réfrigérez. Le relish se conservera pendant plusieurs semaines."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,420 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Gâteau mousse à la mangue",
+      "description": [
+        "Temps: 1h30"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/m8hLpSz/mango-mousse-cake.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Gâteau Mousse À La Mangue",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 120,
+                "multiply_factor": 1,
+                "cut": "écrasé",
+                "title": "La Croûte"
+              },
+              "product": {
+                "data": {
+                  "name": "biscuits Graham"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 45,
+                "multiply_factor": 1,
+                "title": "La Croûte"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 30,
+                "multiply_factor": 1,
+                "title": "Première Couche"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "title": "Première Couche"
+              },
+              "product": {
+                "data": {
+                  "name": "gelatine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 70,
+                "multiply_factor": 1,
+                "title": "Première Couche"
+              },
+              "product": {
+                "data": {
+                  "name": "creme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1,
+                "title": "Première Couche"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 120,
+                "multiply_factor": 1,
+                "title": "Première Couche"
+              },
+              "product": {
+                "data": {
+                  "name": "yogourt"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 70,
+                "multiply_factor": 1,
+                "title": "Deuxième Couche"
+              },
+              "product": {
+                "data": {
+                  "name": "creme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1,
+                "title": "Deuxième Couche"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 120,
+                "multiply_factor": 1,
+                "title": "Deuxième Couche"
+              },
+              "product": {
+                "data": {
+                  "name": "mangue"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 60,
+                "multiply_factor": 1,
+                "title": "Deuxième Couche"
+              },
+              "product": {
+                "data": {
+                  "name": "yogourt"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "title": "Deuxième Couche"
+              },
+              "product": {
+                "data": {
+                  "name": "gelatine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "title": "Deuxième Couche"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Couche Supérieure"
+              },
+              "product": {
+                "data": {
+                  "name": "gelatine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 40,
+                "multiply_factor": 1,
+                "title": "Couche Supérieure"
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 40,
+                "multiply_factor": 1,
+                "title": "Couche Supérieure"
+              },
+              "product": {
+                "data": {
+                  "name": "mangue"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Gâteau Mousse À La Mangue",
+                  "paragraph": "Enveloppez le fond de chaque moule à mousse de film plastique. Dans un bol propre, écrasez 120g de biscuits Graham en miettes fines, mélangez-les avec du beurre non salé fondu, versez-les dans les moules à mousse et pressez-les fermement au fond. Lissez et mettez au réfrigérateur pendant 20 minutes."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Gâteau Mousse À La Mangue",
+                  "paragraph": "Dans un bol propre, mélangez bien 30g de lait chaud avec 5g de gélatine ramollie, mettez de côté. Rassemblez 70g de crème épaisse et 8g de sucre en poudre et utilisez un mixeur à main pour battre jusqu'à épaississement. Incorporez 120g de yogourt et le mélange de gélatine. Remplissez les moules à mousse à moitié et mettez au réfrigérateur pendant 20 minutes."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Gâteau Mousse À La Mangue",
+                  "paragraph": "Dans un bol propre, pressez et écrasez 160g de mangue fraîche en purée de mangue. Dans un autre bol, mélangez bien 5g de gélatine ramollie et 5g de lait chaud, mettez de côté. Rassemblez 70g de crème épaisse et 8g de sucre, et utilisez un mixeur à main pour battre jusqu'à épaississement. Incorporez 60g de yogourt, 120g de purée de mangue et le mélange de gélatine. Versez dans chaque moule à mousse. Laissez de la place pour la couche supérieure. Mettez au réfrigérateur pendant 20 minutes."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Gâteau Mousse À La Mangue",
+                  "paragraph": "Mélangez bien 40g d'eau chaude et 3g de gélatine ramollie. Incorporez 40g de purée de mangue, tamisez une fois. Couvrez la surface de chaque mousse à la mangue avec ce mélange. Mettez au réfrigérateur pour refroidir jusqu'à ce que ce soit pris."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Gâteau Mousse À La Mangue",
+                  "paragraph": "Dégivrez un peu les côtés avec une serviette chaude pour pouvoir facilement retirer les moules à mousse. Laissez dégeler et servez."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

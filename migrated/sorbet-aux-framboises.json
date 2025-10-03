@@ -1,0 +1,103 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Sorbet aux framboises",
+      "description": [
+        "Préparation: 15 minutes",
+        "Framboise ou Framboise-citron"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Framboises",
+            "is_ingredient": true
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Porter à ébullition l'eau, le citron et le sucre sans mélanger."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Verser le sirop chaud dans un mixeur avec les fruits surgelés. Si les framboises sont fraîches, laisser le sirop tempérer."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Transformer en jus homogène."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Passer au tamis pour retirer les pépins."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Mettre dans la sorbetière ou mettre au congélateur en mélangeant aux heures."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

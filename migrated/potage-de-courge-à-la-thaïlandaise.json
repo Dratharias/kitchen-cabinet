@@ -1,0 +1,220 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Potage de courge à la Thaïlandaise",
+      "description": [
+        "Temps: 55 minutes",
+        ""
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Potage De Courge À La Thaïlandaise",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 30,
+                "multiply_factor": 1,
+                "cut": "grille"
+              },
+              "product": {
+                "data": {
+                  "name": "huile de sesame"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 15,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "cut": "cubes"
+              },
+              "product": {
+                "data": {
+                  "name": "carotte"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "en cubes"
+              },
+              "product": {
+                "data": {
+                  "name": "courge butternut"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cubes"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 800,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "piment"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 500,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "bouillon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Dans une casserole, chauffer la moitié de l'huile à feu moyen. Cuire l'oignon et l'ail de 1 à 2 minutes."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajouter les carottes et la courge dans la casserole. Cuire de 2 à 3 minutes. Saler."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajouter la pâte de cari rouge et cuire 30 secondes, jusqu'à ce que les arômes se libèrent."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajouter le bouillon et le lait de coco. Porter à ébullition, puis laisser mijoter de 25 à 30 minutes à feu doux-moyen."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Transférer la préparation à la courge dans le contenant du mélangeur électrique. Mélanger 1 minute, jusqu'à l'obtention d'une préparation lisse et onctueuse."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

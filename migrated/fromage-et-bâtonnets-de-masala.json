@@ -1,0 +1,212 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Fromage et bâtonnets de masala",
+      "description": [
+        "Temps: 45 min",
+        "Rendement: 16 à 20 bâtons"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/K2tr1L3/Fromage-et-b-tonnets-de-masala.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Fromage Et Bâtonnets De Masala",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Fromage Et Bâtonnets De Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "feuilletee"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Fromage Et Bâtonnets De Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "Farine"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Fromage Et Bâtonnets De Masala"
+              },
+              "product": {
+                "data": {
+                  "name": "blancs d'oeufs"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2.5,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "masala chaat"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 80,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "de Cheddar affine, finement rape"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "feuilles de coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Fromage Et Bâtonnets De Masala",
+                  "paragraph": "Sortez la pâte du réfrigérateur, retirez tout emballage et laissez-la reposer environ 20 minutes à température ambiante avant de l'utiliser."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Fromage Et Bâtonnets De Masala",
+                  "paragraph": "Préchauffez le four à 410°F/Fan 375°F/Gas 6–7 et tapissez une grande plaque de cuisson de papier sulfurisé."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Fromage Et Bâtonnets De Masala",
+                  "paragraph": "Déroulez la pâte et coupez-la horizontalement en deux (pour créer deux rectangles courts plutôt que deux longues bandes). Prenez un morceau de pâte et étalez-le à plat. Coupez-le en longues bandes de 1,5 à 2 cm de large, en laissant les bandes où elles sont au fur et à mesure (une roulette à pizza farinée est idéale pour cela). Vous devriez obtenir 8 à 10 bandes."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Fromage Et Bâtonnets De Masala",
+                  "paragraph": "Badigeonnez la pâte de blanc d'œuf, puis saupoudrez légèrement de masala chaat et de fromage râpé et parsemez de coriandre hachée (vous trouverez peut-être plus facile de râper le fromage directement sur la pâte). Passez légèrement un rouleau à pâtisserie sur la surface pour fixer le fromage et la coriandre, puis saupoudrez d'un peu plus de masala chaat pour la chance."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Fromage Et Bâtonnets De Masala",
+                  "paragraph": "En essayant de ne pas déloger la garniture, soulevez une bande de pâte par les deux extrémités, torsadez-la pour créer de jolis tourbillons dans la pâte, puis posez-la sur la plaque de cuisson et appuyez légèrement pour la faire tenir en place. Répétez avec le reste des bandes, puis avec l'autre moitié de la feuille de pâte."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Fromage Et Bâtonnets De Masala",
+                  "paragraph": "Faites cuire au four pendant 15 à 18 minutes, ou jusqu'à ce que la pâte soit dorée et assez croustillante. Mettez sur une grille pour refroidir. Servez les torsades de pâte une fois refroidies, avec beaucoup de thé."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Variante Au Sucre Et À La Cannelle",
+                  "paragraph": "Pour la garniture, mélangez 8 cuil. à thé de sucre granulé blanc avec 2 cuil. à thé de cannelle moulue. Étalez la pâte et coupez-la en bandes comme indiqué ci-dessus. Saupoudrez de sucre à la cannelle (il n'est pas nécessaire de le presser avec un rouleau à pâtisserie), puis torsadez et cuisez comme indiqué ci-dessus."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

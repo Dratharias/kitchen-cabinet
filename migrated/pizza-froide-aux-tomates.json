@@ -1,0 +1,574 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Pizza froide aux tomates",
+      "description": [
+        "Temps: 3h"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/nwMHxpP/pizza-froide.jpg",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Pizza Froide Aux Tomates",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Croûte"
+              },
+              "product": {
+                "data": {
+                  "name": "levure instantanee"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Croûte"
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Croûte"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 515,
+                "multiply_factor": 1,
+                "title": "Croûte"
+              },
+              "product": {
+                "data": {
+                  "name": "farine tout usage"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Croûte"
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 80,
+                "multiply_factor": 1,
+                "title": "Croûte"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "rape",
+                "title": "Croûte"
+              },
+              "product": {
+                "data": {
+                  "name": "Parmesan"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "coupe",
+                "title": "Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "tomate"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "poivron rouge"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 500,
+                "multiply_factor": 1,
+                "title": "Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "puree"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "pate de tomate"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "emincé",
+                "title": "Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "gousses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "balsamique"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "basilic"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "origan"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Sauce"
+              },
+              "product": {
+                "data": {
+                  "name": "Sel"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Idées De Garnitures"
+              },
+              "product": {
+                "data": {
+                  "name": "fromage"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Idées De Garnitures"
+              },
+              "product": {
+                "data": {
+                  "name": "cheddar"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Idées De Garnitures"
+              },
+              "product": {
+                "data": {
+                  "name": "fines herbes"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Idées De Garnitures"
+              },
+              "product": {
+                "data": {
+                  "name": "charcuteries"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Croûte",
+                  "paragraph": "Mélanger légèrement dans un bol avec un peu d'eau chaude et une cuil. à soupe de sucre avec la levure instantanée. Laisser reposer pendant 5 minutes."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Croûte",
+                  "paragraph": "Mélanger la farine, l'huile, le sel, le sucre. Ajouter la levure."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Croûte",
+                  "paragraph": "Pétrir la pâte jusqu'à ce qu'elle soit lisse et élastique en ajustant la densité avec l'eau supplémentaire, environ 8 à 10 minutes."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Croûte",
+                  "paragraph": "Mettre la pâte dans un grand bol huilé, couvrir d'un linge humide et laisser monter dans un endroit chaud pendant 1h30. Préparer la sauce."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Croûte",
+                  "paragraph": "Dans une grande plaque de cuisson couverte de papier parchemin, applatir la pâte avec les doigts jusqu'à ce qu'elle forme un large rectangle."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Croûte",
+                  "paragraph": "En utilisant une fourchette, piquer la pâte sur toute sa surface, couvrir de papier plastique et laisser reposer un autre 30 minutes."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Croûte",
+                  "paragraph": "Préchauffer le four à 500°F."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Croûte",
+                  "paragraph": "Lorsque la pâte a reposé et le four chauffer, retirer le plastique, baisser la température du four à 425°F."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Croûte",
+                  "paragraph": "Saupoudrer la pâte de fromage parmesan et gros sel, puis enfourner pour 15 minutes. Laisser tempérer quelques minutes."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Croûte",
+                  "paragraph": "Mettre la sauce sur la pâte et enfourner de nouveau pour un dernier 10 minutes. Attendre un peu avant de servir ou manger froid."
+                }
+              }
+            },
+            {
+              "position": 11,
+              "segment": {
+                "data": {
+                  "title": "Sauce",
+                  "paragraph": "Préchauffer le four à 350°F."
+                }
+              }
+            },
+            {
+              "position": 12,
+              "segment": {
+                "data": {
+                  "title": "Sauce",
+                  "paragraph": "Mettre les tomates et le poivron saupoudrées de sel, poivre et huile d'olive. Rotir au four 45 minutes."
+                }
+              }
+            },
+            {
+              "position": 13,
+              "segment": {
+                "data": {
+                  "title": "Sauce",
+                  "paragraph": "Combiner les ingrédients dans une casserole et laisser mijoter 30 minutes."
+                }
+              }
+            },
+            {
+              "position": 14,
+              "segment": {
+                "data": {
+                  "title": "Sauce",
+                  "paragraph": "Lorsque les légumes sont rotis, retirer leur peau."
+                }
+              }
+            },
+            {
+              "position": 15,
+              "segment": {
+                "data": {
+                  "title": "Sauce",
+                  "paragraph": "Pulser le tout avec un mélangeur et laisser mijoter jusqu'à une consistence épaisse. Réserver."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

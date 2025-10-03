@@ -1,0 +1,152 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Bar Rayé Grillé Avec Relish De Melon À La Menthe",
+      "description": [
+        "Temps: N/A",
+        "Rendement: 4 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/Dz9SWGk/Bar-Ray-Grill-Avec-Relish-De-Melon-La-Menthe.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "bar rayé",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "poisson grillé",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "relish",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "melon",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Bar Rayé Grillé Avec Relish De Melon",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "filets de bar"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "livres"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "gros sel et poivre noir"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Melon"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Préparez un gril pour une cuisson directe et préchauffez à feu vif."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Badigeonnez le poisson des deux côtés avec un peu de beurre à l'ail et à la coriandre ou de beurre au sésame et à la sauce soja. Assaisonnez le poisson des deux côtés avec du sel et du poivre. Placez le poisson dans le panier à gril huilé."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Grillez le poisson jusqu'à ce qu'il soit doré à l'extérieur et cuit à cœur (la température interne sera d'environ 140°F sur un thermomètre instantané), 4 à 6 minutes de chaque côté. Badigeonnez le poisson avec le reste du beurre pendant la cuisson."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Transférez le poisson dans un plat ou des assiettes. Garnissez avec le relish de melon à la menthe et dégustez!"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

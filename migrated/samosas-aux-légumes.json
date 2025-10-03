@@ -1,0 +1,496 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Samosas aux Légumes",
+      "description": [
+        "Temps: 1h30",
+        "Rendement: 24 samosas"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/BCRLXYh/Samosas-d-Agneau.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Samosas Aux Légumes",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 340,
+                "multiply_factor": 1,
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "pommes de terre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 100,
+                "multiply_factor": 1,
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "carottes"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 100,
+                "multiply_factor": 1,
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "petits pois"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 100,
+                "multiply_factor": 1,
+                "cut": "d├ęs",
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "piment vert"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "piment"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "curcuma"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "amchur"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 7,
+                "multiply_factor": 1,
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1,
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "cannelle"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "garam masala"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1,
+                "cut": "hachées",
+                "title": "Samosas Aux Légumes"
+              },
+              "product": {
+                "data": {
+                  "name": "feuilles de coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Samosas Aux Légumes",
+                  "paragraph": "Pour la garniture, portez une casserole d'eau salée à ébullition. Coupez les pommes de terre et les carottes en dés de 1 cm. Ajoutez-les à l'eau bouillante et faites cuire pendant 3 à 4 minutes, jusqu'à ce qu'ils soient juste tendres. Ajoutez les petits pois, comptez jusqu'à 10, puis égouttez. Placez les légumes dans un bol d'eau froide pendant 5 minutes pour les refroidir rapidement, puis égouttez à nouveau."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Samosas Aux Légumes",
+                  "paragraph": "Faites chauffer l'huile dans une casserole moyenne à feu moyen. Ajoutez les graines de cumin et laissez-les crépiter pendant 30 secondes. Baissez le feu, ajoutez l'oignon rouge et faites cuire jusqu'à ce qu'il soit translucide, environ 5 minutes ; ne le laissez pas colorer. Ajoutez les purées d'ail et de gingembre ainsi que le piment vert haché et faites revenir pendant 3 minutes."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Samosas Aux Légumes",
+                  "paragraph": "Ajoutez le piment en poudre, le cumin en poudre, le curcuma, le poivre, l'amchur et le sel. Bien mélanger et faire revenir pendant 2 minutes. Ajoutez le jus de lime, la cannelle, le garam masala et la coriandre hachée, et mélangez bien."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Samosas Aux Légumes",
+                  "paragraph": "Ajoutez les pommes de terre, les carottes et les petits pois dans la casserole, mélangez bien pour combiner, puis retirez du feu. Laissez refroidir, puis réfrigérez avant de préparer les samosas - le mélange est plus facile à travailler lorsqu'il est froid."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Samosas Aux Légumes",
+                  "paragraph": "Mélangez la farine avec assez d'eau froide (1 à 2 cuil. à soupe) pour obtenir une colle (elle doit être assez épaisse pour enrober les choses mais assez fine pour s'étaler facilement)."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Samosas Aux Légumes",
+                  "paragraph": "Pliez les samosas pour enfermer la garniture, en suivant l'une des deux méthodes présentées ici."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Samosas Aux Légumes",
+                  "paragraph": "Pour frire les samosas, chauffez l'huile dans une friteuse ou une autre casserole profonde adaptée à feu moyen à 320°F. Faites frire par lots pendant 4 à 5 minutes, en retournant les samosas de temps en temps, jusqu'à ce que la pâte soit dorée foncée. Égouttez bien sur du papier absorbant avant de servir."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Pliage",
+                  "paragraph": "[Voir la méthode des Samosas d'agneau]_:_[/dhishoom/samosasdagneau]"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

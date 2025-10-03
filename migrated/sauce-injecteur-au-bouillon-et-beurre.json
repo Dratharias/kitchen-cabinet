@@ -1,0 +1,178 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Sauce Injecteur Au Bouillon Et Beurre",
+      "description": [
+        "Temps: N/A",
+        "Rendement: 1 1/2 tasses, suffisant pour 3 poulets ou 1 à 2 dindes ou rôtis"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/dbVV6zh/Sauce-Injecteur-Au-Bouillon-Et-Beurre.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "sauce injecteur",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "bouillon",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "beurre",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Sauce Injecteur Au Bouillon Et Beurre",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "bouillon de poulet"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "jus de citron"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poudre d'ail"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poivre blanc"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Sel"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Combinez tous les ingrédients dans une casserole non réactive et chauffez à feu moyen jusqu'à ce que le beurre fonde. Corrigez l'assaisonnement, en ajoutant du sel si nécessaire. Laissez refroidir à température ambiante (le beurre doit rester liquide), puis remplissez l'injecteur et allez-y."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Note: Si votre injecteur a une aiguille fine, filtrez cette sauce à travers une passoire fine pour enlever tout morceau d'épice qui pourrait le boucher."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

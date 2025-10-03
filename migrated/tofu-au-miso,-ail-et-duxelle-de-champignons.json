@@ -1,0 +1,435 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Tofu au miso, ail et duxelle de champignons",
+      "description": [
+        "Temps: 40 minutes",
+        "6 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/Gs9CVJJ/tofu-Duxelle-Champignon.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Tofu Au Miso Ail Et Duxelle De",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "eau ou bouillon de legumes"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 15,
+                "multiply_factor": 1,
+                "cut": "seche"
+              },
+              "product": {
+                "data": {
+                  "name": "champignon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poivre de sichuan"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 12,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "echalotte"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 800,
+                "multiply_factor": 1,
+                "cut": "cubes"
+              },
+              "product": {
+                "data": {
+                  "name": "tofu"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "rondelles"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cm"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "piment"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "grille"
+              },
+              "product": {
+                "data": {
+                  "name": "huile de sesame"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "miso"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile neutre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 400,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "champignon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "fecule de mais"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "mirin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 50,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sauce soya"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Dans une grande casserole, chauffer l'eau, un peu de sel et les champignons séchés à couvert jusqu'à ce qu'il y ait de la vapeur. Environ 5 à 10 minutes."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Pendant ce temps, placer le poivre de sichuan dans un petit bol et mettre au micro-ondes jusqu'à ce qu'ils ait une fragrance, 15 à 30 secondes. Laisser refroidir complètement. Une fois refroidis, broyer avec un pilon et mortier. Il devrait rester un peu plus de 1 cuil. à thé."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Écraser la partie blanche des échalottes légèrement pour l'attendrir, puis couper les échalottes en morceaux d'environ 2cm. Retirer les champignons séchés de l'eau et les réservés."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Placer le tofu et l'échalotte dans la casserole d'eau et cuire à vapeur sans porter à ébullition de 5 à 7 minutes. Retirer la casserole de la chaleur."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Dans un mixeur, transformer en pâte l'ail, le gingembre, le miso; environ 1 à 2 minutes en râclant les côtés autant que nécessaire."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajouter ¼ tasse d'huile végétale, de la poudre de chili et 1 cuil. à thé de poivre de sichuan, et continuer de mélanger jusqu'à formation d'une pâte lisse, 1 à 2 minutes. Réserver dans un bol."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "paragraph": "Mettre les champignons trempés et frais dans le mixeur et pulser jusqu'à ce qu'ils soient finement hachés, 15 à 20 pulses (ne pas trop pulser)."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "paragraph": "Chauffer 1 cuil. à soupe d'huile et la mixture de champignon dans une grande poêle ou une poêle à rotisserie, à chaleur moyenne, jusqu'à ce qu'ils dorent et collent au fond de la poêle, 5 à 7 minutes."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "paragraph": "Faire un grand nid au centre de la poêle en poussant les champignons aux extrémités."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajouter les 1 cuil. à soupe d'huile de sésame grillé et la pâte dans le nid au centre de la poêle, et cuire en mélangeant fréquemment jusqu'à ce que la pâte noircisse et/ou que l'huile de sépare de la pâte, environ 2 à 3 minutes, tout en faisant attention à ne pas brûler les champignons sur les côtés."
+                }
+              }
+            },
+            {
+              "position": 11,
+              "segment": {
+                "data": {
+                  "paragraph": "Gentilment déposer le tofu avec l'eau de champignon dans la poêle, suivi de la sauce mirin, huile de sésame et la mixture de champignon en mélangeant doucement et fréquemment pour 2 à 3 minutes."
+                }
+              }
+            },
+            {
+              "position": 12,
+              "segment": {
+                "data": {
+                  "paragraph": "Fouetter la sauce soya et la fécule de maïs ensemble dans un petit bol et l'ajouter dans la poêle en mélangeant fréquemment jusqu'à épaississement pour 2 à 3 minutes."
+                }
+              }
+            },
+            {
+              "position": 13,
+              "segment": {
+                "data": {
+                  "paragraph": "Servir sur riz brun avec en garniture le poivre de sichuan restant s'il en reste."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

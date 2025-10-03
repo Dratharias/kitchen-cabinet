@@ -1,0 +1,352 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Sel Fumé",
+      "description": [
+        "Temps: 6h40",
+        "Rendement: 2 tasses"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sel fumé",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "fumoir",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "gril à charbon",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sciure de bois",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Sel Fumé",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Sel Fumé"
+              },
+              "product": {
+                "data": {
+                  "name": "gros sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasses"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Gril À Charbon",
+                  "paragraph": "Préparez le gril pour une cuisson indirecte."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Gril À Charbon",
+                  "paragraph": "Ajoutez 1 1/2 tasses de copeaux de bois aux charbons."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Gril À Charbon",
+                  "paragraph": "Étalez le sel en une couche mince dans un plat d'égouttement en aluminium."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Gril À Charbon",
+                  "paragraph": "Placez le plat d'égouttement sur la grille, loin du feu."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Gril À Charbon",
+                  "paragraph": "Couvrez le gril et ajustez les trous d'aération pour une chaleur moyenne (350°F)."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Gril À Charbon",
+                  "paragraph": "Fumez le sel pendant 30 à 40 minutes."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Gril À Charbon",
+                  "paragraph": "Ajoutez le reste des copeaux aux charbons."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Gril À Charbon",
+                  "paragraph": "Continuez à fumer jusqu'à ce que le sel soit bronzé par la fumée et intensément parfumé. Répétez si nécessaire."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Gril À Charbon",
+                  "paragraph": "Refroidissez le sel à température ambiante."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Gril À Charbon",
+                  "paragraph": "Transférez le sel dans un bocal, couvrez et conservez à l'abri de la chaleur et de la lumière."
+                }
+              }
+            },
+            {
+              "position": 11,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir",
+                  "paragraph": ""
+                }
+              }
+            },
+            {
+              "position": 12,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir",
+                  "paragraph": "Allumez votre fumoir et préchauffez à 250°F."
+                }
+              }
+            },
+            {
+              "position": 13,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir",
+                  "paragraph": "Ajoutez le bois comme spécifié par le fabricant."
+                }
+              }
+            },
+            {
+              "position": 14,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir",
+                  "paragraph": "Étalez le sel en une couche mince dans un plat d'égouttement en aluminium."
+                }
+              }
+            },
+            {
+              "position": 15,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir",
+                  "paragraph": "Placez le plat d'égouttement dans le fumoir."
+                }
+              }
+            },
+            {
+              "position": 16,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir",
+                  "paragraph": "Fumez le sel jusqu'à ce qu'il soit bronzé par la fumée et intensément parfumé, 4 à 6 heures."
+                }
+              }
+            },
+            {
+              "position": 17,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir",
+                  "paragraph": "Refroidissez le sel à température ambiante."
+                }
+              }
+            },
+            {
+              "position": 18,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir",
+                  "paragraph": "Transférez le sel dans un bocal, couvrez et conservez à l'abri de la chaleur et de la lumière."
+                }
+              }
+            },
+            {
+              "position": 19,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir De Cuisinière",
+                  "paragraph": ""
+                }
+              }
+            },
+            {
+              "position": 20,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir De Cuisinière",
+                  "paragraph": "Placez la sciure de bois au fond d'un fumoir de cuisinière, comme un de Camerons ou Nordicware, en suivant les instructions du fabricant."
+                }
+              }
+            },
+            {
+              "position": 21,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir De Cuisinière",
+                  "paragraph": "Placez le plat d'égouttement dans le fumoir."
+                }
+              }
+            },
+            {
+              "position": 22,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir De Cuisinière",
+                  "paragraph": "Placez la grille tapissée de papier aluminium par-dessus."
+                }
+              }
+            },
+            {
+              "position": 23,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir De Cuisinière",
+                  "paragraph": "Étalez le sel en une couche mince."
+                }
+              }
+            },
+            {
+              "position": 24,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir De Cuisinière",
+                  "paragraph": "Fermez le fumoir, en laissant un écart d'un pouce."
+                }
+              }
+            },
+            {
+              "position": 25,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir De Cuisinière",
+                  "paragraph": "Placez le fumoir à feu vif."
+                }
+              }
+            },
+            {
+              "position": 26,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir De Cuisinière",
+                  "paragraph": "Lorsque vous commencez à voir des volutes de fumée, réduisez le feu à moyen et fermez hermétiquement le couvercle."
+                }
+              }
+            },
+            {
+              "position": 27,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir De Cuisinière",
+                  "paragraph": "Fumez le sel pendant 20 minutes. Répétez si nécessaire jusqu'à ce que le sel soit bronzé par la fumée et intensément parfumé."
+                }
+              }
+            },
+            {
+              "position": 28,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir De Cuisinière",
+                  "paragraph": "Refroidissez le sel à température ambiante."
+                }
+              }
+            },
+            {
+              "position": 29,
+              "segment": {
+                "data": {
+                  "title": "Méthode Au Fumoir De Cuisinière",
+                  "paragraph": "Transférez le sel dans un bocal, couvrez et conservez à l'abri de la chaleur et de la lumière. Il se conservera plusieurs semaines."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

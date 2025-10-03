@@ -1,0 +1,178 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Kabab Masala",
+      "description": [
+        "Temps: 20 min",
+        "Rendement: environ 35 g"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "dishoom",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "épices",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "kabab",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "masala",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "cuisine indienne",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Kabab Masala",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "feuilles de fenugrec"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 22,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "chaat masala"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de piment"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "garam masala"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel marin fin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Préchauffez le four à 212°F. Saupoudrez les feuilles de fenugrec séchées sur une plaque de cuisson recouverte de papier d'aluminium et faites-les cuire pendant 20 minutes. Laissez-les refroidir complètement."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Mixez tous les ingrédients ensemble dans un moulin à épices et transférez dans un contenant hermétique ou un bocal. Conservez dans un placard frais et sombre et utilisez dans les 2 semaines."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

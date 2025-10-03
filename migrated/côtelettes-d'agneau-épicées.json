@@ -1,0 +1,554 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Côtelettes d'Agneau Épicées",
+      "description": [
+        "Temps: 1h",
+        "Marinade: 27h",
+        "Rendement: 4 portions en entrée"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/v1jbQ4t/C-telettes-d-Agneau-pic-es.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Côtelettes D Agneau Épicées",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1,
+                "title": "Côtelettes D Agneau Épicées"
+              },
+              "product": {
+                "data": {
+                  "name": "cotelette"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Première Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Première Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Première Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre de malt"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.333,
+                "multiply_factor": 1,
+                "title": "Première Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1,
+                "title": "Première Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "papaye"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.375,
+                "multiply_factor": 1,
+                "title": "Seconde Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Seconde Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Seconde Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "gousse"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Seconde Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "HP"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 25,
+                "multiply_factor": 1,
+                "title": "Seconde Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Seconde Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "garam masala"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Seconde Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Seconde Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.333,
+                "multiply_factor": 1,
+                "cut": "écrasé",
+                "title": "Seconde Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "grains de poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1,
+                "title": "Seconde Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "jaggery"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 35,
+                "multiply_factor": 1,
+                "title": "Seconde Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Seconde Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "piment rouge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Seconde Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "piment vert"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "title": "Seconde Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Seconde Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 25,
+                "multiply_factor": 1,
+                "title": "Griller Et Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Griller Et Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "menthe ou coriandre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Griller Et Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "graines"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Côtelettes D Agneau Épicées",
+                  "paragraph": "Placez les côtelettes d'agneau dans un plat peu profond. Pour la première marinade, mélangez tous les ingrédients dans un petit bol. Frottez la marinade sur les côtelettes, couvrez et réfrigérez pendant 2 heures."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Côtelettes D Agneau Épicées",
+                  "paragraph": "Pendant que les côtelettes sont au réfrigérateur, préparez la deuxième marinade. Chauffez une poêle à fond épais à feu moyen. Ajoutez les graines de cumin et de coriandre ainsi que la gousse et faites-les griller pendant 2 minutes, en secouant la poêle pour éviter qu'ils ne brûlent. Versez-les directement dans votre mortier et laissez refroidir."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Côtelettes D Agneau Épicées",
+                  "paragraph": "Mixez tous les autres ingrédients de la marinade jusqu'à obtenir une pâte, en utilisant un blender ou un mini robot culinaire."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Côtelettes D Agneau Épicées",
+                  "paragraph": "Moudre les épices grillées refroidies en une poudre grossière et ajoutez-la à la pâte."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Côtelettes D Agneau Épicées",
+                  "paragraph": "Lorsque le temps de la première marinade est écoulé, sortez les côtelettes du réfrigérateur et enrobez-les de la deuxième marinade. Couvrez et réfrigérez pendant 24 heures."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Côtelettes D Agneau Épicées",
+                  "paragraph": "Préchauffez le gril à feu vif et sortez les côtelettes du réfrigérateur. Secouez-les à nouveau pour assurer un enrobage uniforme de la marinade. Placez-les sur une plaque à pâtisserie recouverte de papier d'aluminium et badigeonnez-les de beurre fondu."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Côtelettes D Agneau Épicées",
+                  "paragraph": "Grillez les côtelettes pendant 2 à 3 minutes, jusqu'à ce qu'elles commencent à grésiller. Retournez-les, badigeonnez-les de beurre fondu et faites-les griller encore 2 à 3 minutes. Répétez l'opération jusqu'à ce qu'elles soient joliment caramélisées."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Côtelettes D Agneau Épicées",
+                  "paragraph": "Laissez reposer les côtelettes pendant 3 minutes avant de servir, parsemées de feuilles de menthe ou de coriandre et de graines de grenade, si vous le souhaitez."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

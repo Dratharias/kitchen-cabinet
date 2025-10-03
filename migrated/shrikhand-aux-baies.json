@@ -1,0 +1,214 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Shrikhand Aux Baies",
+      "description": [
+        "Temps: 8h15",
+        "Rendement: 6 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/Nn26q0c/Shrikhand-Aux-Baies.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Shrikhand Aux Baies",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 500,
+                "multiply_factor": 1,
+                "title": "Shrikhand Aux Baies"
+              },
+              "product": {
+                "data": {
+                  "name": "yogourt grec entier"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 90,
+                "multiply_factor": 1,
+                "title": "Shrikhand Aux Baies"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 25,
+                "multiply_factor": 1,
+                "title": "Shrikhand Aux Baies"
+              },
+              "product": {
+                "data": {
+                  "name": "mure"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 25,
+                "multiply_factor": 1,
+                "title": "Shrikhand Aux Baies"
+              },
+              "product": {
+                "data": {
+                  "name": "bleuets"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 25,
+                "multiply_factor": 1,
+                "title": "Shrikhand Aux Baies"
+              },
+              "product": {
+                "data": {
+                  "name": "framboise"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour Finir"
+              },
+              "product": {
+                "data": {
+                  "name": "Baies"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 300,
+                "multiply_factor": 1,
+                "title": "Note"
+              },
+              "product": {
+                "data": {
+                  "name": "labneh"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Shrikhand Aux Baies",
+                  "paragraph": "Placez une passoire sur un bol et tapissez-la de mousseline ou de papier essuie-tout épais. (Utilisez un kit de filtrage de confiture, si vous en avez un.) Versez le yogourt dans le tissu de mousseline, couvrez le dessus lâchement avec du film alimentaire et placez au réfrigérateur pour filtrer pendant 8 heures."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Shrikhand Aux Baies",
+                  "paragraph": "Versez le yogourt filtré dans un bol, ajoutez le sucre glace et mélangez bien."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Shrikhand Aux Baies",
+                  "paragraph": "Coupez les baies en deux ou en quartiers et incorporez-les délicatement dans le yogourt sucré et filtré pour créer un effet marbré. Couvrez et réfrigérez jusqu'au moment de servir. (Le shrikhand se conserve au moins 3 jours au réfrigérateur.)"
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Shrikhand Aux Baies",
+                  "paragraph": "Pour servir, répartissez le shrikhand dans des petits bols ou des verres et garnissez de baies supplémentaires."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

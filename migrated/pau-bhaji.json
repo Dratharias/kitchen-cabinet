@@ -1,0 +1,494 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Pau Bhaji",
+      "description": [
+        "Temps: 45 min",
+        "Légumes transformés en une purée savoureuse et beurrée",
+        "Rendement: 4 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/Tq1QqPN/Pau-Bhaji.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Pau Bhaji",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 350,
+                "multiply_factor": 1,
+                "title": "Pau Bhaji"
+              },
+              "product": {
+                "data": {
+                  "name": "pommes de terre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 35,
+                "multiply_factor": 1,
+                "title": "Pau Bhaji"
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 300,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Pau Bhaji"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 400,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Pau Bhaji"
+              },
+              "product": {
+                "data": {
+                  "name": "tomates"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1,
+                "title": "Pau Bhaji"
+              },
+              "product": {
+                "data": {
+                  "name": "puree"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.25,
+                "multiply_factor": 1,
+                "title": "Pau Bhaji"
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de piment deggi mirch"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.25,
+                "multiply_factor": 1,
+                "title": "Pau Bhaji"
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pau Bhaji"
+              },
+              "product": {
+                "data": {
+                  "name": "curcuma"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Pau Bhaji"
+              },
+              "product": {
+                "data": {
+                  "name": "masala pav bhaji"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 60,
+                "multiply_factor": 1,
+                "title": "Pau Bhaji"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pau Bhaji"
+              },
+              "product": {
+                "data": {
+                  "name": "Sel"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "d├ęs",
+                "title": "Base De Légumes Mous"
+              },
+              "product": {
+                "data": {
+                  "name": "chou-fleur"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Base De Légumes Mous"
+              },
+              "product": {
+                "data": {
+                  "name": "poivron vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 50,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Base De Légumes Mous"
+              },
+              "product": {
+                "data": {
+                  "name": "haricots verts"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 60,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Base De Légumes Mous"
+              },
+              "product": {
+                "data": {
+                  "name": "carotte"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 50,
+                "multiply_factor": 1,
+                "title": "Base De Légumes Mous"
+              },
+              "product": {
+                "data": {
+                  "name": "pois"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Base De Légumes Mous"
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin de mer"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "cut": "grilles",
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "petits pains blancs moelleux"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Pau Bhaji",
+                  "paragraph": "Coupez grossièrement les pommes de terre et faites-les bouillir dans de l'eau salée jusqu'à ce qu'elles soient juste tendres, puis égouttez-les."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Pau Bhaji",
+                  "paragraph": "Pendant ce temps, préparez la base de légumes mous. Pour la méthode authentique : chauffez une poêle large à fond épais sur feu moyen, ajoutez tous les ingrédients avec 300ml d'eau bouillante et laissez mijoter, en écrasant lorsque le mélange commence à devenir tendre. Continuez à écraser et à mijoter, en ajoutant plus d'eau chaque fois que le mélange sèche, jusqu'à obtenir une pâte molle et lâche. (Pour une version rapide, voir note.)"
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Pau Bhaji",
+                  "paragraph": "Placez une casserole large à fond épais sur feu moyen-fort et ajoutez l'huile. Ajoutez les oignons et faites-les revenir jusqu'à ce qu'ils soient dorés foncés, en remuant très régulièrement, environ 15 minutes. Ajoutez les tomates et la purée de tomates et faites-les revenir jusqu'à ce que l'huile se sépare, environ 10 minutes supplémentaires, en remuant régulièrement. Ajoutez toutes les épices et 1 cuil. à thé de sel et faites cuire, en remuant fréquemment, pendant 5 minutes."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Pau Bhaji",
+                  "paragraph": "Ajoutez le beurre, les pommes de terre et les légumes écrasés aux oignons et tomates et remuez pour bien mélanger. Ajoutez un filet d'eau, si nécessaire, pour maintenir le mélange à une belle consistance lâche, et mettez un couvercle sur la casserole. Faites cuire à feu moyen, en soulevant régulièrement le couvercle pour écraser le mélange avec un presse-purée, jusqu'à ce que tout soit bien mélangé. Cela devrait prendre environ 10 minutes (faites attention à la vapeur lorsque vous écrasez)."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Pau Bhaji",
+                  "paragraph": "Divisez le pau bhaji entre 4 bols larges et servez avec les petits pains grillés et beurrés et les garnitures sur le côté. Pour une finition vraiment riche, vous pouvez ajouter une cuillerée de beurre avant de servir."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Base De Légumes Rapide",
+                  "paragraph": "Portez 300ml d'eau à ébullition dans une casserole, ajoutez le sel et tous les légumes et faites cuire jusqu'à ce qu'ils soient tendres. Égouttez, en réservant un peu d'eau. À l'aide d'un mixeur plongeant ou d'un presse-purée manuel, travaillez les légumes jusqu'à obtenir une pâte lâche, en ajoutant autant d'eau que nécessaire."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

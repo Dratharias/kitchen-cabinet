@@ -1,0 +1,313 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Potage de panais et vanille",
+      "description": [
+        "Temps: 40 min",
+        "Portions: 6"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/vX6kbHc/Potage-de-panais-et-vanille.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Potage De Panais Et Vanille",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Potage De Panais Et Vanille"
+              },
+              "product": {
+                "data": {
+                  "name": "panais"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Potage De Panais Et Vanille"
+              },
+              "product": {
+                "data": {
+                  "name": "huile de colza"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "cut": "coupees",
+                "title": "Potage De Panais Et Vanille"
+              },
+              "product": {
+                "data": {
+                  "name": "echalote"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Potage De Panais Et Vanille"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Potage De Panais Et Vanille"
+              },
+              "product": {
+                "data": {
+                  "name": "thym"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Potage De Panais Et Vanille"
+              },
+              "product": {
+                "data": {
+                  "name": "Sel et poivre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Potage De Panais Et Vanille"
+              },
+              "product": {
+                "data": {
+                  "name": "jus de citron"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Potage De Panais Et Vanille"
+              },
+              "product": {
+                "data": {
+                  "name": "vanille"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 440,
+                "multiply_factor": 1,
+                "title": "Potage De Panais Et Vanille"
+              },
+              "product": {
+                "data": {
+                  "name": "bouillon de legumes"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 440,
+                "multiply_factor": 1,
+                "title": "Potage De Panais Et Vanille"
+              },
+              "product": {
+                "data": {
+                  "name": "lait vegetal"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 60,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Pour Garnir"
+              },
+              "product": {
+                "data": {
+                  "name": "noisettes"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 50,
+                "multiply_factor": 1,
+                "title": "Pour Garnir"
+              },
+              "product": {
+                "data": {
+                  "name": "canneberges"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour Garnir"
+              },
+              "product": {
+                "data": {
+                  "name": "thym ou romarin"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Potage De Panais Et Vanille",
+                  "paragraph": "Faites chauffer l'huile dans une casserole à feu moyen, puis faites suer les échalotes et l'ail jusqu'à ce qu'ils soient translucides. Assaisonner de sel et poivre puis ajouter les panais et le thym"
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Potage De Panais Et Vanille",
+                  "paragraph": "Baissez le feu très doux et couvrez la casserole. Laissez les panais cuire jusqu'à ce qu'ils soient presque tendres, en remuant souvent. Ajoutez ensuite votre bouillon et votre lait."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Potage De Panais Et Vanille",
+                  "paragraph": "Fendez votre gousse de vanille au milieu dans le sens de la longueur et à l'aide du dos de votre couteau, grattez les graines. Ajoutez les graines et la gousse dans la casserole."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Potage De Panais Et Vanille",
+                  "paragraph": "Portez la soupe à ébullition puis retirez du feu et récupérez également la gousse de vanille."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Potage De Panais Et Vanille",
+                  "paragraph": "Ajoutez délicatement le mélange dans votre mixeur et mixez. Une fois lisse, remettez la soupe dans votre casserole et vérifiez l'assaisonnement, ajoutez du sel, du poivre et le jus de citron pour faire ressortir les saveurs."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Potage De Panais Et Vanille",
+                  "paragraph": "Servir avec des noisettes, des herbes, des canneberges et un filet d'huile d'olive de bonne qualité."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

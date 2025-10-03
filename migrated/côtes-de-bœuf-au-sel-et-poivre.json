@@ -1,0 +1,175 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Côtes De Bœuf Au Sel Et Poivre",
+      "description": [
+        "Temps: 4h15",
+        "Rendement: 4 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/x69Pqnf/C-tes-De-B-uf-Au-Sel-Et-Poivre.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "rub dalmatian",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "newspaper rub",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "côtes de bœuf",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "fumage",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Côtes De B Uf Au Sel Et",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Côtes De B Uf Au Sel Et"
+              },
+              "product": {
+                "data": {
+                  "name": "bois"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "title": "Côtes De B Uf Au Sel Et"
+              },
+              "product": {
+                "data": {
+                  "name": "cotes courtes de boeuf"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "livres"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Côtes De B Uf Au Sel Et"
+              },
+              "product": {
+                "data": {
+                  "name": "Dalmatian"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Côtes De B Uf Au Sel Et"
+              },
+              "product": {
+                "data": {
+                  "name": "barbecue"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Côtes De B Uf Au Sel Et",
+                  "paragraph": "Préparez votre fumoir selon les instructions du fabricant et préchauffez à 250°F. Si vous utilisez un gril à charbon de bois, n'utilisez que la moitié d'une cheminée de charbon."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Côtes De B Uf Au Sel Et",
+                  "paragraph": "Assaisonnez généreusement les côtes courtes sur tous les côtés avec le Rub Dalmatian / Newspaper Rub. Placez les côtes côté viande vers le haut sur la grille du fumoir."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Côtes De B Uf Au Sel Et",
+                  "paragraph": "Fumez les côtes jusqu'à ce qu'elles soient brun foncé, cuites et tendres, environ 3 à 4 heures. Une fois cuites, la viande se sera rétractée des extrémités des os de 1/2 à 1 pouce et la température interne sera d'environ 200°F."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Côtes De B Uf Au Sel Et",
+                  "paragraph": "Transférez les côtes courtes sur un plat. Couvrez-les légèrement de papier aluminium et laissez reposer pendant 15 minutes. Servez avec la sauce barbecue Texas Lean-and-Mean."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Note",
+                  "paragraph": "Pour encore plus de saveur, préparez votre gril pour une cuisson directe et préchauffez à haute température. Brossez et huilez la grille du gril. Juste avant de servir, brossez les côtes courtes cuites sur tous les côtés avec la sauce barbecue et faites griller sur un feu vif pour faire grésiller la sauce dans la viande (2 à 4 minutes de chaque côté). Servez le reste de la sauce à part."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

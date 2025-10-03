@@ -1,0 +1,242 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Chutney de Tamarind",
+      "description": [
+        "Temps: 1h",
+        "Rendement: 350 ml"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/SJXzsQb/chutney-cornichons-et-vinaigrettes.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "dishoom",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "chutney",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "tamarin",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "épices",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "accompagnement",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Chutney De Tamarind",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 150,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "pate"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 55,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "dattes"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.6667,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 90,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "jaggery"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.333,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel de mer fin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poudre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Cassez le tamarin et hachez grossièrement les dattes. Placez-les dans un grand bol, versez 500 ml d'eau bouillante pour les couvrir, remuez bien et laissez reposer pendant 1 heure."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Pendant ce temps, faites chauffer une poêle sèche à feu vif. Ajoutez les graines de cumin et faites-les griller jusqu'à ce qu'elles crépitent. Versez les graines grillées dans un mortier et écrasez-les légèrement avec le pilon. Réservez."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Filtrez les dattes et le tamarin trempés à travers un tamis dans une casserole, en pressant autant de pulpe que possible avec le dos d'une cuillère en bois."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Ajoutez le jaggery, le sel, la poudre de piment et le gingembre moulu dans la casserole et laissez mijoter à feu doux jusqu'à réduction à une consistance épaisse et coulante, environ 1 heure. Le mélange deviendra plus visqueux en refroidissant."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Retirez du feu, ajoutez les graines de cumin écrasées et remuez bien. Versez le chutney dans un bocal stérilisé chaud, mettez le couvercle et laissez refroidir avant de sceller. Il se conservera jusqu'à une semaine au réfrigérateur."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

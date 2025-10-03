@@ -1,0 +1,539 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Aubergines grillées à la muhammara",
+      "description": [
+        "Préparation: 30 min",
+        "Cuisson: 60 min"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/FDj810w/Aubergines-grill-es-la-muhammara.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "téléquébec",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "copyright",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Aubergines Grillées À La Muhammara",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "cut": "coupe",
+                "title": "Aubergines Grillées À La Muhammara"
+              },
+              "product": {
+                "data": {
+                  "name": "aubergine"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 30,
+                "multiply_factor": 1,
+                "title": "Aubergines Grillées À La Muhammara"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1,
+                "title": "Aubergines Grillées À La Muhammara"
+              },
+              "product": {
+                "data": {
+                  "name": "thym"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 12,
+                "multiply_factor": 1,
+                "title": "Tomates À L Aneth"
+              },
+              "product": {
+                "data": {
+                  "name": "tomates cerises"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "effeuillees",
+                "title": "Tomates À L Aneth"
+              },
+              "product": {
+                "data": {
+                  "name": "thym"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Tomates À L Aneth"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Tomates À L Aneth"
+              },
+              "product": {
+                "data": {
+                  "name": "sirop d'erable"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 30,
+                "multiply_factor": 1,
+                "title": "Tomates À L Aneth"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 125,
+                "multiply_factor": 1,
+                "title": "Tomates À L Aneth"
+              },
+              "product": {
+                "data": {
+                  "name": "aneth"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 500,
+                "multiply_factor": 1,
+                "title": "Mélasse De Canneberges"
+              },
+              "product": {
+                "data": {
+                  "name": "jus de canneberges"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 125,
+                "multiply_factor": 1,
+                "title": "Mélasse De Canneberges"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 250,
+                "multiply_factor": 1,
+                "cut": "grillees",
+                "title": "Muhammara"
+              },
+              "product": {
+                "data": {
+                  "name": "noix de grenoble"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "grille",
+                "title": "Muhammara"
+              },
+              "product": {
+                "data": {
+                  "name": "poivron rouge"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "emincé",
+                "title": "Muhammara"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 60,
+                "multiply_factor": 1,
+                "title": "Muhammara"
+              },
+              "product": {
+                "data": {
+                  "name": "chapelure"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 45,
+                "multiply_factor": 1,
+                "title": "Muhammara"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 7.5,
+                "multiply_factor": 1,
+                "title": "Muhammara"
+              },
+              "product": {
+                "data": {
+                  "name": "sirop d'erable"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1,
+                "title": "Muhammara"
+              },
+              "product": {
+                "data": {
+                  "name": "melasse"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "title": "Muhammara"
+              },
+              "product": {
+                "data": {
+                  "name": "paprika"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "title": "Muhammara"
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Muhammara"
+              },
+              "product": {
+                "data": {
+                  "name": "Flocons de piment"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Muhammara"
+              },
+              "product": {
+                "data": {
+                  "name": "Sel"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Aubergines",
+                  "paragraph": "Préchauffer le four à 200 °C (400 °F)."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Aubergines",
+                  "paragraph": "Déposer les aubergines dans un plat allant au four, côté pelure en dessous. "
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Aubergines",
+                  "paragraph": "Quadriller les aubergines avec la pointe d'un petit couteau puis assaisonner, huiler et ajouter les branches de thym."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Aubergines",
+                  "paragraph": "Cuire de 45 minutes à 1 heure ou jusqu'à ce qu'elles soient bien tendres. "
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Tomates",
+                  "paragraph": "Mélanger tous les ingrédients des tomates à l'exception de l'aneth dans un plat allant au four, saler et poivrer. "
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Tomates",
+                  "paragraph": "Cuire 15 minutes à 200°C (400 °F). "
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Mélasse De Canneberges",
+                  "paragraph": "Dans une petite casserole, mélanger le jus de canneberge et le sucre."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Mélasse De Canneberges",
+                  "paragraph": "Amener à ébullition, baisser le feu et laisser réduire jusqu'à l'obtention d'un sirop. Réserver. "
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Muhammara",
+                  "paragraph": "Blanchir les noix de Grenoble à l'eau bouillante pendant 5 minutes, égoutter et sécher sur un linge."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Muhammara",
+                  "paragraph": "Verser tous les ingrédients du muhammara dans la cuve du mélangeur, assaisonner et broyer jusqu'à l'obtention d'une purée assez lisse. "
+                }
+              }
+            },
+            {
+              "position": 11,
+              "segment": {
+                "data": {
+                  "title": "Service",
+                  "paragraph": "Déposer le muhammara dans le fond d'une assiette de service, y déposer l'aubergine, garnir des tomates et d'aneth. "
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

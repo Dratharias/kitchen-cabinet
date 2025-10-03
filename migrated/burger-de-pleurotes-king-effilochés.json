@@ -1,0 +1,397 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Burger de pleurotes king effilochés",
+      "description": [
+        "Temps: 40 minutes",
+        "4 burgers"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/pJm5Cfw/burger-Pleurotte-King.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "hamburger",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "végétarien",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "champignon",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Burger De Pleurotes King Effilochés",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Pleurotes"
+              },
+              "product": {
+                "data": {
+                  "name": "pleurotes king"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "lbs"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.333,
+                "multiply_factor": 1,
+                "title": "Pleurotes"
+              },
+              "product": {
+                "data": {
+                  "name": "sauce bbq"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pleurotes"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pleurotes"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Pleurotes"
+              },
+              "product": {
+                "data": {
+                  "name": "paprika"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pleurotes"
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pleurotes"
+              },
+              "product": {
+                "data": {
+                  "name": "poivre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pleurotes"
+              },
+              "product": {
+                "data": {
+                  "name": "huile"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pleurotes"
+              },
+              "product": {
+                "data": {
+                  "name": "fines herbes"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Pleurotes"
+              },
+              "product": {
+                "data": {
+                  "name": "bierre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "tomate"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "Cheddar"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "Pomme"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "chou"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Burger De Pleurotes King Effilochés",
+                  "paragraph": "Effilocher à l'aide d'une fourchette les champignons. Le bout des pieds sont comestibles, mais un peu plus caoutchouteux et fibreux."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Burger De Pleurotes King Effilochés",
+                  "paragraph": "Mélanger les épices dans un bol avec les champignons et l'huile."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Burger De Pleurotes King Effilochés",
+                  "paragraph": "Préchauffer le four à 400F."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Burger De Pleurotes King Effilochés",
+                  "paragraph": "Dans une poêle qui peut supporter une température élevée préchauffée, dorer les champignons jusqu'à les avoirs vidés de leur eau et qu'ils aient une belle caramélisation. Pour se faire, on les étends dans le fond de la poêle et on les laisses cuire. Lorsqu'on les presses, on y voit l'eau s'échapper."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Burger De Pleurotes King Effilochés",
+                  "paragraph": "Lorsque la cuisson est terminée ou est jugée satisfaisante, remettre les champignons dans le bol."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Burger De Pleurotes King Effilochés",
+                  "paragraph": "Ajouter le reste des ingrédients et mélanger."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Burger De Pleurotes King Effilochés",
+                  "paragraph": "Étaler sur une plaque de cuisson couverte de papier parchemin le mélange de sauce et champignons, enfourner pour 10 à 12 minutes. Lorsque la sauce a suffisamment épaissis. Retirer et laisser reposer."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Burger De Pleurotes King Effilochés",
+                  "paragraph": "Monter le burger."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

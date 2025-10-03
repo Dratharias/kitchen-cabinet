@@ -1,0 +1,190 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Saumure à la Bière",
+      "description": [
+        "Temps de préparation : 15 minutes",
+        "Rendement : 6 tasses, suffisant pour 3 à 4 livres de viande"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/0YQsvFG/Saumure-la-Bi-re.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Saumure",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "bière",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "porc",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "bœuf",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "saumure aromatisée",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Saumure À La Bière",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "cassonade"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "grains de poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère à soupe"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "flocons de piment rouge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "biere preferee"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez l'eau, le sel, le sucre, les grains de poivre et les flocons de piment rouge dans une grande casserole et portez à ébullition en fouettant jusqu'à ce que le sel et le sucre se dissolvent. Retirez la casserole du feu et fouettez dans la bière. Laissez refroidir à température ambiante avant d'ajouter la viande ou les fruits de mer à la saumure. Couvrez et réfrigérez."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

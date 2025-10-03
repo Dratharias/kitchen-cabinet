@@ -1,0 +1,270 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Bouchées à la keema",
+      "description": [
+        "Temps: 1h20",
+        "Rendement: 10-12 bouchées",
+        "Nécessaire: Keema Pau"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/PFRdTJb/keema-puff.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Bouchées À La Keema",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Bouchées À La Keema"
+              },
+              "product": {
+                "data": {
+                  "name": "feuilletee"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Bouchées À La Keema"
+              },
+              "product": {
+                "data": {
+                  "name": "Farine"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Bouchées À La Keema"
+              },
+              "product": {
+                "data": {
+                  "name": "oeuf"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 500,
+                "multiply_factor": 1,
+                "title": "Garniture À L Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "keema"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 30,
+                "multiply_factor": 1,
+                "title": "Garniture À L Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "petits pois"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture À L Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Garniture À L Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Garniture À L Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "piment vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Garniture À L Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "feuilles de coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Bouchées À La Keema",
+                  "paragraph": "Sortez la pâte du réfrigérateur, retirez tout emballage extérieur et laissez reposer environ 20 minutes à température ambiante avant de l'utiliser."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Bouchées À La Keema",
+                  "paragraph": "Préchauffez le four à 410°F (chaleur tournante 375°F) et tapissez une grande plaque de cuisson de papier sulfurisé."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Bouchées À La Keema",
+                  "paragraph": "Pour la garniture, mettez le keema d'agneau dans un grand bol. Mettez les petits pois surgelés dans un petit bol, versez suffisamment d'eau bouillante pour les couvrir et laissez reposer 2 minutes, puis égouttez et ajoutez au keema, avec le sel, les oignons nouveaux, le piment et la coriandre. Mélangez bien et mettez de côté."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Bouchées À La Keema",
+                  "paragraph": "Déroulez la pâte et coupez-la en deux (pour obtenir deux rectangles plutôt que deux bandes longues). Posez un des morceaux sur une surface légèrement farinée. À l'aide d'un rouleau à pâtisserie fariné, étalez la pâte un peu plus mince, de sorte qu'elle soit environ 1 cm plus longue et plus large. Coupez 6 carrés réguliers."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Bouchées À La Keema",
+                  "paragraph": "Placez une cuillère à thé bien pleine de garniture vers un coin d'un carré, en laissant une marge claire autour du bord. Badigeonnez les bords de la pâte avec l'œuf battu. Repliez la pâte pour former un triangle renfermant la garniture, puis scellez délicatement les bords. Répétez l'opération avec les carrés de pâte restants, puis avec l'autre moitié de la feuille de pâte. Transférez sur la plaque de cuisson tapissée, en laissant 2 à 3 cm d'espace entre les bouchées."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Bouchées À La Keema",
+                  "paragraph": "Badigeonnez généreusement la pâte avec l'œuf battu, puis enfournez pendant 20 minutes, ou jusqu'à ce que la pâte soit gonflée et dorée et que la garniture soit bien chaude."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Variation Végétarienne",
+                  "paragraph": "Pour la garniture, mélangez 1/2 quantité de mélange de pommes de terre vada pau avec 1 1/2 cuillères à soupe de feuilles de coriandre hachées et 50g de petits pois surgelés, blanchis dans l'eau bouillante (comme ci-dessus) pendant 2 minutes et égouttés. Coupez la pâte en carrés et assemblez et cuisez les bouchées comme ci-dessus."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

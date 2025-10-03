@@ -1,0 +1,645 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Chana Dahl",
+      "description": [
+        "2 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/QMZSPTj/chana-dal.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Chana Dahl",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "sechees",
+                "title": "Chana Dahl"
+              },
+              "product": {
+                "data": {
+                  "name": "Chana Dahl"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Chana Dahl"
+              },
+              "product": {
+                "data": {
+                  "name": "Tofu extra ferme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "title": "Chana Dahl"
+              },
+              "product": {
+                "data": {
+                  "name": "maïs"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Chana Dahl"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Chana Dahl"
+              },
+              "product": {
+                "data": {
+                  "name": "Pac Choi"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "en deux",
+                "title": "Chana Dahl"
+              },
+              "product": {
+                "data": {
+                  "name": "mais miniature"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Chana Dahl"
+              },
+              "product": {
+                "data": {
+                  "name": "huile"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Chana Dahl"
+              },
+              "product": {
+                "data": {
+                  "name": "creme"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Chana Dahl"
+              },
+              "product": {
+                "data": {
+                  "name": "lait de coco"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "title": "Chana Dahl"
+              },
+              "product": {
+                "data": {
+                  "name": "mayonnaise vegetalienne/reguliere ou hummus"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "jusqu'au jus",
+                "title": "Chana Dahl"
+              },
+              "product": {
+                "data": {
+                  "name": "citron vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "d├ęs",
+                "title": "Chana Dahl"
+              },
+              "product": {
+                "data": {
+                  "name": "piment"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Chana Dahl"
+              },
+              "product": {
+                "data": {
+                  "name": "feuille de laurier"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Pâte De Curry Frais"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillères"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "cut": "grille",
+                "title": "Pâte De Curry Frais"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "cut": "grille",
+                "title": "Pâte De Curry Frais"
+              },
+              "product": {
+                "data": {
+                  "name": "piment"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pâte De Curry Frais"
+              },
+              "product": {
+                "data": {
+                  "name": "citron vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Pâte De Curry Frais"
+              },
+              "product": {
+                "data": {
+                  "name": "citronnelle"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Pâte De Curry Frais"
+              },
+              "product": {
+                "data": {
+                  "name": "curcuma"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pâte De Curry Frais"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "grille",
+                "title": "Pâte De Curry Frais"
+              },
+              "product": {
+                "data": {
+                  "name": "grains de poivre blanc"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "grille",
+                "title": "Pâte De Curry Frais"
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "grillees",
+                "title": "Pâte De Curry Frais"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pâte De Curry Frais"
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "menthe"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "feuilles de coriandre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "basilic"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "huile de sesame"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Chana Dahl",
+                  "paragraph": "Faites tremper les Chana Dahl (lentilles aux pois chiches concassés) pendant la nuit pour les ramollir si possible. Cuire dans une casserole moyenne, avec de l'eau pour couvrir, pendant 30 à 45 minutes jusqu'à ce qu'il soit tendre et comestible. Rincer, filtrer et conserver une fois terminé. Jetez le liquide de cuisson."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Maïs",
+                  "paragraph": "Retirez les grains de maïs de l'épi. Faire bouillir les grains et les épis avec 1 litre d'eau, filtrer et conserver le bouillon et les grains, jeter les épis."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Pâte Au Curry",
+                  "paragraph": "Dans une poêle en fonte, faites griller toutes les épices séchées, les piments (réhydratez-les dans l'eau chaude pendant 5 minutes après) et faites griller l'ail (avec la peau)."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Pâte Au Curry",
+                  "paragraph": "Dans le mortier et le pilon, ajoutez les épices sèches et les piments et pulvérisez d'abord. Ajoutez l'ail, la citronnelle hachée, le zeste de citron, le curcuma et le sucre avec une pincée de sel. Réduire en pâte et conserver. Réserver 1/2 cuil. à soupe pour faire le glaçage au tofu."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Pâte Au Curry",
+                  "paragraph": "Dans une casserole plus grande, ajoutez 1 cuillère à café d'huile, la pâte de curry et faites chauffer la casserole à feu moyen-vif pour faire frire lentement la pâte pendant 2 minutes afin d'éliminer une partie du crudité et d'activer les saveurs."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Pâte Au Curry",
+                  "paragraph": "Ajoutez une petite boîte de crème de coco et faites frire encore 2 minutes en remuant pendant la cuisson pour éviter les brûlures."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Pâte Au Curry",
+                  "paragraph": "Une fois cuit, ajoutez l'oignon haché, le Pac choi et le maïs miniature et faites revenir pendant 2 minutes."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Pâte Au Curry",
+                  "paragraph": "Ajouter le maïs avec le bouillon et le Chana Dahl cuit et porter à ébullition."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Pâte Au Curry",
+                  "paragraph": "Ajoutez le jus de citron vert et le lait de coco et poursuivez la cuisson en portant à léger frémissement pour conserver les saveurs."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Pâte Au Curry",
+                  "paragraph": "Ajuster l'assaisonnement."
+                }
+              }
+            },
+            {
+              "position": 11,
+              "segment": {
+                "data": {
+                  "title": "Tofu",
+                  "paragraph": "Préchauffer le four à 200 °C/400 °F (convection)."
+                }
+              }
+            },
+            {
+              "position": 12,
+              "segment": {
+                "data": {
+                  "title": "Tofu",
+                  "paragraph": "Faites chauffer une poêle en fonte avec 1 cuillère à café d'huile à feu moyen-vif. Égouttez et pressez légèrement le tofu pour éliminer l'excès d'eau, séchez-le avec du papier absorbant. Saisir les deux côtés pendant 2 minutes pour former une croûte croustillante."
+                }
+              }
+            },
+            {
+              "position": 13,
+              "segment": {
+                "data": {
+                  "title": "Tofu",
+                  "paragraph": "Mélangez 2 cuillères à soupe de mayonnaise végétalienne avec ¾ cuillère à café de pâte de curry pour former le glaçage. Appliquer uniformément sur le tofu. Rôtir dans la même poêle pendant 15 minutes."
+                }
+              }
+            },
+            {
+              "position": 14,
+              "segment": {
+                "data": {
+                  "title": "Tofu",
+                  "paragraph": "Servir le tofu avec du curry, du riz blanc et garnir d'herbes fraîches, de citrons verts hachés supplémentaires et de piments tranchés."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Gigot d'agneau Jerk",
+      "description": [
+        "Temps de préparation : 15 minutes",
+        "Temps de marinade : 12 à 24 heures",
+        "Temps de cuisson : 1 à 1 1/2 heure",
+        "Rendement : 8 à 10 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/Wc37Kqt/Gigot-d-039-agneau-Jerk.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Jamaïque",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "jerk",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "agneau",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "grillades",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "épices",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Gigot D Agneau Jerk",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "gigot d'agneau"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "rhum"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Assaisonnement Jerk Jamaicain"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "baies de piment de la Jamaique"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "À l'aide de la pointe d'un couteau d'office, faites 24 petits trous dans l'agneau, chacun d'environ 1/4 de pouce de profondeur. Placez l'agneau dans un plat à rôtir et rincez-le sur tous les côtés avec le rhum. Laissez mariner au réfrigérateur pendant 30 minutes. Versez et jetez le rhum, puis laissez l'agneau sécher à l'air pendant 5 minutes."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Enduisez l'agneau d'assaisonnement jerk sur tous les côtés à l'aide d'une spatule ou de vos doigts, en le forçant dans les trous de la viande. Couvrez de film plastique et laissez mariner au réfrigérateur pendant 12 à 24 heures."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Préparez le gril pour une cuisson indirecte et préchauffez à 350°F. Brossez et huilez la grille du gril. Si vous utilisez un gril au charbon de bois, ajoutez les copeaux de bois et les baies de piment de la Jamaïque sur les charbons. Si vous utilisez un gril à gaz, placez les copeaux de bois et les baies de piment de la Jamaïque dans la boîte de fumage et préchauffez jusqu'à ce que vous voyez de la fumée."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez l'agneau sur la grille et grillez indirectement jusqu'à ce qu'il soit cuit à votre goût, 1 à 1 1/2 heure pour une cuisson à point. Transférez l'agneau sur un plat, couvrez légèrement de papier aluminium, laissez reposer pendant 10 minutes, puis découpez et servez."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

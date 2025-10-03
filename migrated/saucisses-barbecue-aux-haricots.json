@@ -1,0 +1,602 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Saucisses barbecue aux haricots",
+      "description": [
+        "Temps: 1h",
+        "Portions: 4"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/F04VH0C/Saucisses-barbecue-aux-haricots.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Saucisses Barbecue Aux Haricots",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Saucisses Barbecue Aux Haricots"
+              },
+              "product": {
+                "data": {
+                  "name": "noix de coco"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Saucisses Barbecue Aux Haricots"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon rouge"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Saucisses Barbecue Aux Haricots"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "en petits morceaux",
+                "title": "Saucisses Barbecue Aux Haricots"
+              },
+              "product": {
+                "data": {
+                  "name": "poivron rouge"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Saucisses Barbecue Aux Haricots"
+              },
+              "product": {
+                "data": {
+                  "name": "champignon portobello"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Saucisses Barbecue Aux Haricots"
+              },
+              "product": {
+                "data": {
+                  "name": "paprika"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Saucisses Barbecue Aux Haricots"
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Saucisses Barbecue Aux Haricots"
+              },
+              "product": {
+                "data": {
+                  "name": "feuilles de thym citron"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Saucisses Barbecue Aux Haricots"
+              },
+              "product": {
+                "data": {
+                  "name": "romarin"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Saucisses Barbecue Aux Haricots"
+              },
+              "product": {
+                "data": {
+                  "name": "haricots rouges"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Saucisses Barbecue Aux Haricots"
+              },
+              "product": {
+                "data": {
+                  "name": "haricots blancs"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "title": "Saucisses Barbecue Aux Haricots"
+              },
+              "product": {
+                "data": {
+                  "name": "farine de sarrasin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "concassé",
+                "title": "Saucisses Barbecue Aux Haricots"
+              },
+              "product": {
+                "data": {
+                  "name": "noix"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Saucisses Barbecue Aux Haricots"
+              },
+              "product": {
+                "data": {
+                  "name": "sel de mer"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "concasse",
+                "title": "Saucisses Barbecue Aux Haricots"
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Salsa Verde"
+              },
+              "product": {
+                "data": {
+                  "name": "persil"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Salsa Verde"
+              },
+              "product": {
+                "data": {
+                  "name": "ciboulette"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Salsa Verde"
+              },
+              "product": {
+                "data": {
+                  "name": "basilic"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Salsa Verde"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Salsa Verde"
+              },
+              "product": {
+                "data": {
+                  "name": "capres"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Salsa Verde"
+              },
+              "product": {
+                "data": {
+                  "name": "cornichon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Salsa Verde"
+              },
+              "product": {
+                "data": {
+                  "name": "moutarde"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Salsa Verde"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Salsa Verde"
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre de vin rouge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Salsa Verde"
+              },
+              "product": {
+                "data": {
+                  "name": "Assaisonnement"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "grillee",
+                "title": "Servir Avec"
+              },
+              "product": {
+                "data": {
+                  "name": "chicoree"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir Avec"
+              },
+              "product": {
+                "data": {
+                  "name": "roquette"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir Avec"
+              },
+              "product": {
+                "data": {
+                  "name": "Tomates"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir Avec"
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Saucisses Barbecue Aux Haricots",
+                  "paragraph": "Faire revenir l'oignon, le poivron, les champignons, l'ail, les herbes et les épices à feu moyen."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Saucisses Barbecue Aux Haricots",
+                  "paragraph": "Ajoutez les haricots dans un bol à mélanger avec la farine et les noix."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Saucisses Barbecue Aux Haricots",
+                  "paragraph": "Une fois le mélange d'oignons ramolli, ajoutez-le dans le bol de mixage. À l'aide d'un presse-purée, écrasez le mélange jusqu'à ce qu'il commence à peine à se rassembler. N'écrasez pas trop le mélange, vous voulez de la texture."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Saucisses Barbecue Aux Haricots",
+                  "paragraph": "Farinez légèrement vos mains, puis façonnez le mélange en forme de saucisses. J'obtiens généralement 8 à 9 saucisses du mélange."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Saucisses Barbecue Aux Haricots",
+                  "paragraph": "Enveloppez les saucisses individuellement d'abord dans du papier sulfurisé, puis dans une feuille de papier d'aluminium, bien serrées."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Saucisses Barbecue Aux Haricots",
+                  "paragraph": "Une fois que vous avez emballé toutes les saucisses, placez-les dans une casserole d'eau frémissante. Laissez-les cuire 20 minutes."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Saucisses Barbecue Aux Haricots",
+                  "paragraph": "Retirez les saucisses de l'eau une fois cuites. Une fois suffisamment refroidi pour être manipulé, retirez l'emballage. Recyclez le papier d'aluminium."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Saucisses Barbecue Aux Haricots",
+                  "paragraph": "Pour la salsa verde, hachez enfin les herbes avec l'ail, les cornichons et les câpres. Une fois bien, ajoutez le mélange dans un bol et incorporez la moutarde, le vinaigre et l'huile. Assaisonner selon l'envie."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Saucisses Barbecue Aux Haricots",
+                  "paragraph": "Faites griller ou griller les saucisses pendant 4 à 5 minutes et servez-les avec la salsa."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Saucisses Barbecue Aux Haricots",
+                  "paragraph": "J'ai légèrement grillé de la chicorée pour accompagner les saucisses."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

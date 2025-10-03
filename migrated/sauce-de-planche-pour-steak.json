@@ -1,0 +1,189 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Sauce De Planche Pour Steak",
+      "description": [
+        "Temps: N/A",
+        "Rendement: Suffisant pour un steak de 1 1/2 à 2 livres"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/Jmy5pVB/Sauce-De-Planche-Pour-Steak.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "steak",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sauce de planche",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "barbecue",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "herbes fraîches",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Sauce De Planche Pour Steak",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sauge"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "feuilles de romarin ou de thym"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "oignon vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "piment"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.3333,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive extra-vierge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "gros sel et poivre noir"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "grille"
+              },
+              "product": {
+                "data": {
+                  "name": ""
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "steak"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Sur une grande planche à découper avec un puits (rainure autour de la périphérie), hachez finement la sauge, le romarin, les oignons verts et le piment. Assaisonnez de sel et de poivre et versez la moitié de l'huile d'olive sur le dessus. Mélangez avec la lame du couteau."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Retirez le steak chaud du gril et posez-le directement sur les herbes sur la planche à découper. Tranchez-le épais pour les steaks tendres, comme les steaks de strip, ou fin pour les steaks plus coriaces, comme le steak de flanc. Versez le reste de l'huile d'olive sur le steak et mélangez sur la planche avec une cuillère et la lame du couteau : l'idée est de recouvrir les tranches de steak d'herbes et d'huile et de les mélanger avec les jus de viande. Ajoutez du sel et du poivre au goût. Le processus entier de trancher, mélanger et servir ne devrait prendre que quelques minutes."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

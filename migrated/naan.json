@@ -1,0 +1,359 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Naan",
+      "description": [
+        "Temps: 3h40",
+        "Rendement: 10 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/cvTyC24/Naan.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "naan",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "pain",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "tandoor",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "grillade",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "curry",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "fromage",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "ail",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sésame",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Naan",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "feuilles de coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Roulez la pâte en ronds."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Saupoudrez chaque rond de 1/2 cuil. à thé d'ail finement haché et de 1 cuil. à thé de feuilles de coriandre finement hachées, en les pressant avec vos doigts."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Cuisez et servez comme dans la recette principale."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Naan Croustillant Aux Graines De Sésame Et",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "graines de sesame noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "graines d'oignon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Roulez la pâte aussi finement que possible."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Garnissez chaque naan roulé avec 1 cuil. à thé de graines de sésame noir et 1/2 cuil. à thé de graines d'oignon, en les pressant avec vos doigts."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Cuisez un peu plus longtemps que la recette principale, jusqu'à ce qu'il soit croustillant."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Naan Au Fromage",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 15,
+                "multiply_factor": 1,
+                "cut": "rape"
+              },
+              "product": {
+                "data": {
+                  "name": "cheddar"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "piment vert"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon vert"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Mélangez 15 g de cheddar râpé, 1/2 cuil. à thé de piment vert finement haché et 1 cuil. à thé d'oignon vert finement haché dans un bol."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Prenez une boule de pâte dans la paume de votre main. Avec l'autre main, aplatissez la pâte en un disque."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Pincez les bords, en utilisant votre index et votre pouce, pour créer un puits au centre entouré de bords légèrement plus fins."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Pressez la garniture au fromage dans le puits et pincez les bords de la pâte autour de la garniture pour la sceller, puis reformez délicatement en une boule. Laissez reposer 5 minutes."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Roulez la boule de pâte farcie en un pain plat rond de 3-4 mm d'épaisseur."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Cuisez comme dans la recette principale, mais laissez environ deux fois plus longtemps sous le gril; le naan devrait encore gonfler, même avec la garniture à l'intérieur. Enveloppez dans un torchon propre pendant 1 minute avant de servir."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

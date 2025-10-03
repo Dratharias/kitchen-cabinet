@@ -1,0 +1,168 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Lassi Salé",
+      "description": [
+        "Temps: 10 min",
+        "Rendement: 1 portion"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/wLgsSYv/lassi-sal.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Lassi Salé",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 135,
+                "multiply_factor": 1,
+                "title": "Lassi Salé"
+              },
+              "product": {
+                "data": {
+                  "name": "yogourt grec"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Lassi Salé"
+              },
+              "product": {
+                "data": {
+                  "name": "sel de mer"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pincée"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Lassi Salé"
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Lassi Salé"
+              },
+              "product": {
+                "data": {
+                  "name": "Glacon"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Lassi Salé",
+                  "paragraph": "Mettez tous les ingrédients dans un blender, ajoutez 65ml d'eau froide et mixez jusqu'à ce que le mélange soit léger et mousseux. Si vous préférez une boisson plus fraîche, ajoutez quelques glaçons avant de mixer."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Lassi Salé",
+                  "paragraph": "Versez le lassi dans un grand verre, garnissez d'un brin de menthe et servez immédiatement."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Variantes",
+                  "paragraph": "Pour chacune des variantes suivantes, omettez le sel et les graines de cumin."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Variantes",
+                  "paragraph": "Lassi Sucré : Mixez le yogourt et l'eau avec 50ml de [sirop de sucre]_:_[/dishoom]."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Variantes",
+                  "paragraph": "Lassi à la Mangue : Mixez le yogourt et l'eau avec 70ml de purée de mangue (fraîche ou en conserve), 20ml de [sirop de sucre]_:_[/dishoom] et une très petite pincée de graines de fenouil."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Variantes",
+                  "paragraph": "Lassi à la Rose & Cardamome : Mixez le yogourt et l'eau avec 50ml de [sirop de rose]_:_[/dishoom] et 1 gousse de cardamome verte légèrement écrasée."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

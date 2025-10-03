@@ -1,0 +1,156 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Bacon Pastrami",
+      "description": [
+        "Temps de préparation : 30 minutes de préparation active + 5 jours de cure + 4 à 5 heures de fumage",
+        "Rendement : 5 livres de bacon"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/Jz6mDgc/Bacon-Pastrami.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Bacon",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "pastrami",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "porc",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "fumage",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Bacon Pastrami",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "poitrine de porc"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Pastrami"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Pastrami"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Enlevez la peau de la poitrine de porc ou demandez à votre boucher de le faire. Placez la poitrine de porc dans une rôtissoire non réactive ou un grand sac de congélation en plastique résistant. À l'aide d'un injecteur de viande, injectez la poitrine de porc avec la saumure pastrami. (Vous utiliserez 1 à 2 tasses.) Versez le reste de la saumure sur la poitrine de porc (ou ajoutez-le au sac refermable). Si vous utilisez un sac en plastique, posez-le dans un plat pour attraper les fuites éventuelles. Faites saumurer la poitrine de porc au réfrigérateur pendant 5 jours, en la retournant tous les jours. Réinjectez-la avec la saumure après 3 jours."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Égouttez bien la poitrine de porc, rincez à l'eau froide et égouttez à nouveau. Placez la poitrine de porc sur une grille métallique au-dessus d'une plaque à pâtisserie et laissez sécher au réfrigérateur jusqu'à ce qu'elle soit collante, 1 à 2 heures."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Enrobez généreusement la poitrine de porc de frottement pastrami sur le dessus, le fond et les côtés."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Préparez votre fumeur selon les instructions du fabricant et préchauffez à 200°F. Ajoutez le bois spécifié par le fabricant."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Fumez la poitrine de porc (ancien côté peau vers le haut) jusqu'à ce qu'elle atteigne une température interne de 160°F, 4 à 5 heures, en ajoutant du bois au besoin."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "paragraph": "Transférez le bacon pastrami sur une grille métallique propre au-dessus d'une plaque à pâtisserie et laissez refroidir à température ambiante, puis réfrigérez jusqu'au moment de servir."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "paragraph": "Pour servir, tranchez le bacon pastrami en tranches épaisses ou fines selon vos préférences. (J'aime les tranches de 1/4 de pouce d'épaisseur.) Saisissez sur un gril chaud ou dans une poêle jusqu'à ce qu'elles soient dorées des deux côtés, 1 à 2 minutes de chaque côté."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,385 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Tarte Tatin Aux Mûres Et Aux Pommes",
+      "description": [
+        "Temps: 60 min",
+        "Portions: 6"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/NNZ77H5/Tarte-Tatin-Aux-M-res-Et-Aux-Pommes.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Tarte Tatin Aux Mûres Et Aux Pommes",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "farine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "culinaire"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "en dés",
+                "title": "Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre vegetalien"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 5,
+                "multiply_factor": 1,
+                "cut": "en quartiers",
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "pomme"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "mures"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.75,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre vegetalien"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.75,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "noix de muscade"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "culinaire"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "etoile"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "cannelle"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Tarte Tatin Aux Mûres Et Aux Pommes",
+                  "paragraph": "Préchauffez votre four à 200/400 degrés C/F."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Tarte Tatin Aux Mûres Et Aux Pommes",
+                  "paragraph": "Il est très important, lorsque vous préparez une tarte tatin, d'utiliser une très bonne poêle antiadhésive à fond épais, il est également important qu'elle résiste au four. Pour cette recette, votre poêle doit mesurer environ 12 pouces de diamètre"
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Tarte Tatin Aux Mûres Et Aux Pommes",
+                  "paragraph": "Préparez d'abord la pâte, placez toute la farine, le sel et le sucre dans un grand bol à mélanger. Frottez le beurre dans le mélange de farine avec vos mains jusqu'à ce qu'il ressemble à une consistance semblable à de la chapelure."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Tarte Tatin Aux Mûres Et Aux Pommes",
+                  "paragraph": "Versez suffisamment de lait pour former une boule de pâte. Pétrissez légèrement pendant 2 minutes, puis enveloppez la pâte et placez-la au réfrigérateur pour qu'elle repose pendant 20 minutes."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Tarte Tatin Aux Mûres Et Aux Pommes",
+                  "paragraph": "Pendant ce temps préparez les fruits."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Tarte Tatin Aux Mûres Et Aux Pommes",
+                  "paragraph": "Étalez la pâte sur environ 4 mm d'épaisseur sur une feuille de papier sulfurisé légèrement farinée, coupez la pâte en forme de cercle grossier du même diamètre que le moule, ne vous inquiétez pas, il n'est pas nécessaire qu'elle soit très soignée. Placez un torchon sur la pâte pendant que vous commencez à cuire la garniture."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Tarte Tatin Aux Mûres Et Aux Pommes",
+                  "paragraph": "Préchauffez la poêle à feu moyen et ajoutez la margarine, le sucre, l'anis étoilé et la muscade. Laissez fondre le tout avant d'y déposer les morceaux de pommes, puis les mûres. Il n'est pas nécessaire de les disposer soigneusement, assurez-vous simplement qu'il n'y a pas de grands espaces nulle part. La pomme rétrécit, alors emballez-en autant que vous le pouvez."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Tarte Tatin Aux Mûres Et Aux Pommes",
+                  "paragraph": "Saupoudrez d'un peu de sucre supplémentaire et de cannelle moulue, puis déposez délicatement la pâte sur le moule en utilisant le papier sulfurisé pour vous aider à la soulever. Rentrez rapidement et délicatement la pâte jusqu'aux bords, utilisez une cuillère en bois pour ne pas toucher la poêle chaude. Piquer la pâte plusieurs fois avec une fourchette ou un couteau, puis placer le moule au four pour cuire pendant 25 à 35 minutes ou jusqu'à ce que la pâte soit dorée et croustillante."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Tarte Tatin Aux Mûres Et Aux Pommes",
+                  "paragraph": "Alternativement, vous pouvez tenter de cuire votre tarte tatin sur un feu ouvert comme je l'ai fait (voir vidéo ci-dessus), mais je ne vous le recommande pas !"
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Tarte Tatin Aux Mûres Et Aux Pommes",
+                  "paragraph": "Une fois cuite, sortez la tarte du four et laissez-la refroidir pendant 2-3 minutes avant de placer votre plateau de service/assiette sur le dessus du moule (assurez-vous qu'il est plus grand que le moule)."
+                }
+              }
+            },
+            {
+              "position": 11,
+              "segment": {
+                "data": {
+                  "title": "Tarte Tatin Aux Mûres Et Aux Pommes",
+                  "paragraph": "Mettez un gant de cuisine pour protéger le bras qui tient la planche (un peu de caramel peut couler et il fait très chaud). Ensuite, démoulez-le rapidement, soigneusement et en toute confiance."
+                }
+              }
+            },
+            {
+              "position": 12,
+              "segment": {
+                "data": {
+                  "title": "Tarte Tatin Aux Mûres Et Aux Pommes",
+                  "paragraph": "Servir aussitôt, avec de la glace vegan et de la menthe fraîche."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

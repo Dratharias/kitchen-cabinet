@@ -1,0 +1,688 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Agneau Awadhi Biryani",
+      "description": [
+        "Temps: 2h30",
+        "Rendement: 4 à 6 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/wgfprd4/Agneau-Awadhi-Biryani.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "mealprep",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Agneau Awadhi Biryani",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 40,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "cardamome"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "gousses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "feuille de laurier"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "cannelle"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "bâton"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "en morceaux",
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "gigot d'agneau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.75,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.75,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de piment jaune"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "curcuma"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "garam masala"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 60,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "yogourt grec"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "bouillon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "cardamome"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "macis"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "batonnets",
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cm"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "eau de rose"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "kewda"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "creme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "longues bandes",
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "piment vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1,
+                "cut": "rubans",
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "menthe"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 25,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Agneau Awadhi Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 300,
+                "multiply_factor": 1,
+                "title": "Riz"
+              },
+              "product": {
+                "data": {
+                  "name": "riz basmati"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Riz"
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Riz"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 30,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "creme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "safran"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Agneau Awadhi Biryani",
+                  "paragraph": "Pour la base, chauffer l'huile dans une grande casserole à feu moyen-vif. Ajouter l'oignon rouge et cuire, en remuant régulièrement, jusqu'à ce qu'il soit brun doré foncé, environ 20 minutes. Ajouter un filet d'eau si cela commence à sécher ou à attacher."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Agneau Awadhi Biryani",
+                  "paragraph": "Ajouter les gousses de cardamome, les feuilles de laurier et le bâton de cannelle et les laisser crépiter pendant 1 minute."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Agneau Awadhi Biryani",
+                  "paragraph": "Ajouter l'agneau et cuire pendant 3 à 4 minutes, jusqu'à ce qu'il soit légèrement doré de tous côtés, en remuant très régulièrement pour éviter qu'il ne colle."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Agneau Awadhi Biryani",
+                  "paragraph": "Ajouter les pâtes de gingembre et d'ail dans la casserole et faire sauter pendant 4 minutes, en remuant presque constamment. Ajouter le sel, la poudre de piment, le curcuma et le garam masala et faire sauter pendant une minute de plus."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Agneau Awadhi Biryani",
+                  "paragraph": "Incorporer le yogourt et faire sauter jusqu'à ce que l'huile commence à se séparer sur les bords de la casserole; cela devrait prendre environ 5 à 6 minutes."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Agneau Awadhi Biryani",
+                  "paragraph": "Baisser le feu à moyen et maintenir l'agneau à un léger frémissement. Ajouter le bouillon et laisser mijoter, sans couvrir, pendant 50 à 60 minutes, jusqu'à ce que l'agneau soit tendre mais ne se défasse pas."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Agneau Awadhi Biryani",
+                  "paragraph": "Pendant que l'agneau mijote, faire tremper le riz. Pour ce faire, mettre le riz dans un grand bol et le couvrir généreusement d'eau. À l'aide de vos doigts, déplacer doucement le riz dans l'eau pour enlever l'amidon, en veillant à ne pas casser les grains. Laisser le riz se déposer, puis verser l'eau. Répéter deux fois avec de l'eau fraîche, puis recouvrir à nouveau le riz d'eau fraîche et laisser tremper pendant 45 minutes."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Agneau Awadhi Biryani",
+                  "paragraph": "Retirer les morceaux d'agneau et les épices du bouillon de cuisson avec une écumoire. Jeter les feuilles de laurier et la cannelle et mettre l'agneau de côté. Verser le bouillon de cuisson dans un verre doseur; vous avez besoin de 120 ml pour le plat fini. S'il y en a plus que cela, remettre le bouillon dans la casserole et laisser réduire à feu vif jusqu'à obtenir la bonne quantité."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Agneau Awadhi Biryani",
+                  "paragraph": "Préchauffer le four à 392°F. Placer l'agneau dans votre pot de cuisson à biryani. Ajouter les 120 ml de bouillon de cuisson, ainsi que la cardamome moulue, le macis, les bâtonnets de gingembre, le jus de lime, l'eau de rose, l'eau de kewda, la crème, les piments verts tranchés, la menthe, les feuilles de coriandre et les oignons frits croustillants. Bien mélanger."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Agneau Awadhi Biryani",
+                  "paragraph": "Égoutter le riz lorsque le temps de trempage est écoulé. Verser 2 litres d'eau bouillante dans une grande casserole et ajouter les 2 cuillères à thé de sel et le jus de lime. Faire bouillir pendant 4 à 5 minutes jusqu'à ce que le riz soit aux trois quarts cuit. Vous pouvez savoir quand le riz a atteint ce stade en prenant un grain entre votre index et votre pouce, et en appuyant dessus avec votre ongle; il devrait encore être légèrement ferme et se briser en environ 5 ou 6 morceaux. Égoutter le riz; vous n'avez pas besoin de le secouer complètement sec car un peu d'humidité supplémentaire aide pendant la cuisson. Placer dans le pot de biryani, sur l'agneau."
+                }
+              }
+            },
+            {
+              "position": 11,
+              "segment": {
+                "data": {
+                  "title": "Agneau Awadhi Biryani",
+                  "paragraph": "Dans une petite casserole, ou au micro-ondes, chauffer le beurre et la crème jusqu'à ce que le beurre fonde. Mélanger ensemble, puis verser sur le riz, suivi de l'eau de safran."
+                }
+              }
+            },
+            {
+              "position": 12,
+              "segment": {
+                "data": {
+                  "title": "Agneau Awadhi Biryani",
+                  "paragraph": "Couvrir hermétiquement avec deux couches de papier d'aluminium. Placer sur feu vif pendant 2 à 3 minutes, jusqu'à ce que le papier d'aluminium gonfle et que vous voyiez un peu de vapeur s'échapper. Mettre le couvercle, transférer au four et cuire au four pendant 20 minutes. Laisser reposer le biryani, toujours couvert, pendant 10 minutes avant de servir."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

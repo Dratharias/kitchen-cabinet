@@ -1,0 +1,436 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Muffins aux graines de pavot et au citron",
+      "description": [
+        "Temps: 45 min",
+        "Rendement: 12 muffins"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/HFCYn8d/Muffins-aux-graines-de-pavot-et-au-citron.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Muffins Aux Graines De Pavot Et Au",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1.75,
+                "multiply_factor": 1,
+                "title": "Muffins Aux Graines De Pavot Et Au"
+              },
+              "product": {
+                "data": {
+                  "name": "farine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Muffins Aux Graines De Pavot Et Au"
+              },
+              "product": {
+                "data": {
+                  "name": "poudre a lever"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Muffins Aux Graines De Pavot Et Au"
+              },
+              "product": {
+                "data": {
+                  "name": "bicarbonate de soude"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Muffins Aux Graines De Pavot Et Au"
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Muffins Aux Graines De Pavot Et Au"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de pavot"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Muffins Aux Graines De Pavot Et Au"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Muffins Aux Graines De Pavot Et Au"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Muffins Aux Graines De Pavot Et Au"
+              },
+              "product": {
+                "data": {
+                  "name": "cassonade"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Muffins Aux Graines De Pavot Et Au"
+              },
+              "product": {
+                "data": {
+                  "name": "oeuf"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Muffins Aux Graines De Pavot Et Au"
+              },
+              "product": {
+                "data": {
+                  "name": "creme sure"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1,
+                "title": "Muffins Aux Graines De Pavot Et Au"
+              },
+              "product": {
+                "data": {
+                  "name": "zeste"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2.5,
+                "multiply_factor": 1,
+                "title": "Muffins Aux Graines De Pavot Et Au"
+              },
+              "product": {
+                "data": {
+                  "name": "jus de lime"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1,
+                "title": "Muffins Aux Graines De Pavot Et Au"
+              },
+              "product": {
+                "data": {
+                  "name": "extrait de vanille pure"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Muffins Aux Graines De Pavot Et Au"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "cut": "tamise",
+                "title": "Glaçage Au Citron"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1,
+                "title": "Glaçage Au Citron"
+              },
+              "product": {
+                "data": {
+                  "name": "jus de lime"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Glaçage Au Citron"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Muffins Aux Graines De Pavot Et Au",
+                  "paragraph": "Préchauffer le four à 425°F (218°C). Vaporiser un moule à muffins de 12 cavités avec un spray antiadhésif ou tapisser de caissettes à cupcakes. Mettre de côté."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Muffins Aux Graines De Pavot Et Au",
+                  "paragraph": "Dans un grand bol, mélanger la farine, la poudre à lever, le bicarbonate de soude, le sel et les graines de pavot. Mettre de côté."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Muffins Aux Graines De Pavot Et Au",
+                  "paragraph": "Dans un grand bol, à l'aide d'un batteur à main ou d'un batteur sur socle équipé d'un fouet, battre le beurre, le sucre et la cassonade ensemble à vitesse élevée jusqu'à ce que le mélange soit lisse et crémeux, environ 2 minutes. Racler les côtés et le fond du bol si nécessaire. Ajouter les œufs, la crème sure, l'extrait de vanille, le zeste de lime et le jus de lime. Battre à vitesse moyenne pendant 1 minute, puis augmenter la vitesse à élevée et battre jusqu'à ce que le tout soit bien mélangé. Racler les côtés et le fond du bol si nécessaire. Le mélange peut sembler un peu grumeleux et caillé ; c'est normal."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Muffins Aux Graines De Pavot Et Au",
+                  "paragraph": "Avec le batteur en marche à basse vitesse, ajouter les ingrédients secs et le lait dans les ingrédients liquides et battre jusqu'à ce qu'il ne reste plus de poches de farine."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Muffins Aux Graines De Pavot Et Au",
+                  "paragraph": "Répartir la pâte uniformément dans chaque cavité à muffins ou caissette. Cuire les muffins pendant 5 minutes à 425°F, puis, en gardant les muffins dans le four, réduire la température du four à 350°F (177°C). Cuire pendant 15 à 17 minutes supplémentaires ou jusqu'à ce qu'un cure-dent inséré au centre en ressorte propre. Le temps total de cuisson de ces muffins est d'environ 20 à 22 minutes. Laisser les muffins refroidir pendant 5 minutes dans le moule à muffins, puis les transférer sur une grille pour les laisser refroidir complètement."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Muffins Aux Graines De Pavot Et Au",
+                  "paragraph": "Préparer le glaçage : Mélanger tous les ingrédients du glaçage ensemble et verser sur les muffins chauds ou refroidis."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Muffins Aux Graines De Pavot Et Au",
+                  "paragraph": "Couvrir et conserver les muffins restants jusqu'à 3 jours à température ambiante ou jusqu'à 1 semaine au réfrigérateur."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,538 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Paneer Tikka Chapati Roll",
+      "description": [
+        "Temps: 1h30",
+        "Rendement: 4 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/dg0qz1f/Panee-Tikka-Chapati-Roll.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Paneer Tikka Chapati Roll",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Paneer Tikka Chapati Roll"
+              },
+              "product": {
+                "data": {
+                  "name": "pate"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Paneer Tikka Chapati Roll"
+              },
+              "product": {
+                "data": {
+                  "name": "Farine"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Garniture De Paneer"
+              },
+              "product": {
+                "data": {
+                  "name": "paneer"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture De Paneer"
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Garniture De Paneer"
+              },
+              "product": {
+                "data": {
+                  "name": "poivron vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Garniture De Paneer"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon rouge"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.333,
+                "multiply_factor": 1,
+                "title": "Garniture De Paneer"
+              },
+              "product": {
+                "data": {
+                  "name": "curcuma"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Garniture De Paneer"
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de piment deggi mirch"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.333,
+                "multiply_factor": 1,
+                "title": "Garniture De Paneer"
+              },
+              "product": {
+                "data": {
+                  "name": "sel marin fin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Garniture De Paneer"
+              },
+              "product": {
+                "data": {
+                  "name": "piment vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 180,
+                "multiply_factor": 1,
+                "title": "Garniture De Paneer"
+              },
+              "product": {
+                "data": {
+                  "name": "sauce makhani"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 50,
+                "multiply_factor": 1,
+                "title": "Garniture De Paneer"
+              },
+              "product": {
+                "data": {
+                  "name": "epinards"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1,
+                "title": "Garniture De Paneer"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture De Paneer"
+              },
+              "product": {
+                "data": {
+                  "name": "masala kabab"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 70,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Paneer Tikka",
+                  "paragraph": "Faire griller le paneer sur une plaque à pâtisserie pendant 8 minutes, en le retournant une ou deux fois."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Paneer Tikka",
+                  "paragraph": "Couper le paneer en deux."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Paneer Tikka",
+                  "paragraph": "Légumes:"
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Paneer Tikka",
+                  "paragraph": "Faire sauter le poivron vert et l'oignon rouge dans une poêle pendant 3 minutes."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Paneer Tikka",
+                  "paragraph": "Ajouter le curcuma, la poudre de piment, le sel, le piment vert et la sauce makhani."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Paneer Tikka",
+                  "paragraph": "Cuire jusqu'à ce que la sauce soit chaude et bouillonnante."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Paneer Tikka",
+                  "paragraph": "Ajouter le paneer grillé et mélanger."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Préparation Des Chapatis",
+                  "paragraph": "Diviser la pâte à chapati en 4 boules."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Préparation Des Chapatis",
+                  "paragraph": "Étaler chaque boule en un cercle fin."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Préparation Des Chapatis",
+                  "paragraph": "Cuire chaque chapati dans une poêle chaude pendant environ 1 minute de chaque côté."
+                }
+              }
+            },
+            {
+              "position": 11,
+              "segment": {
+                "data": {
+                  "title": "Préparation Des Chapatis",
+                  "paragraph": "Enrouler chaque chapati cuit dans un torchon pour le garder chaud."
+                }
+              }
+            },
+            {
+              "position": 12,
+              "segment": {
+                "data": {
+                  "title": "Assemblage Des Rouleaux",
+                  "paragraph": "Disposer un chapati sur une surface propre."
+                }
+              }
+            },
+            {
+              "position": 13,
+              "segment": {
+                "data": {
+                  "title": "Assemblage Des Rouleaux",
+                  "paragraph": "Déposer les épinards, l'oignon rouge, la coriandre et le mélange de paneer au centre du chapati."
+                }
+              }
+            },
+            {
+              "position": 14,
+              "segment": {
+                "data": {
+                  "title": "Assemblage Des Rouleaux",
+                  "paragraph": "Saupoudrer de masala kabab."
+                }
+              }
+            },
+            {
+              "position": 15,
+              "segment": {
+                "data": {
+                  "title": "Assemblage Des Rouleaux",
+                  "paragraph": "Plier le chapati en deux, replier les extrémités et rouler en forme de bûche."
+                }
+              }
+            },
+            {
+              "position": 16,
+              "segment": {
+                "data": {
+                  "title": "Assemblage Des Rouleaux",
+                  "paragraph": "Répéter les étapes 1 à 4 pour les autres chapatis."
+                }
+              }
+            },
+            {
+              "position": 17,
+              "segment": {
+                "data": {
+                  "title": "Cuisson Finale",
+                  "paragraph": "Faire fondre du beurre dans une poêle chaude."
+                }
+              }
+            },
+            {
+              "position": 18,
+              "segment": {
+                "data": {
+                  "title": "Cuisson Finale",
+                  "paragraph": "Faire dorer les rouleaux de chapati de tous les côtés."
+                }
+              }
+            },
+            {
+              "position": 19,
+              "segment": {
+                "data": {
+                  "title": "Cuisson Finale",
+                  "paragraph": "Couper chaque rouleau en deux en diagonale."
+                }
+              }
+            },
+            {
+              "position": 20,
+              "segment": {
+                "data": {
+                  "title": "Service",
+                  "paragraph": "Servir immédiatement avec du chutney de coriandre et de menthe."
+                }
+              }
+            },
+            {
+              "position": 21,
+              "segment": {
+                "data": {
+                  "title": "Variation Au Poulet Tikka",
+                  "paragraph": "Remplacer le paneer tikka par du poulet tikka grillé."
+                }
+              }
+            },
+            {
+              "position": 22,
+              "segment": {
+                "data": {
+                  "title": "Variation Au Poulet Tikka",
+                  "paragraph": "Ajouter de la confiture de tomates-piments et de la salade de chou au chapati avant de le garnir de poulet tikka."
+                }
+              }
+            },
+            {
+              "position": 23,
+              "segment": {
+                "data": {
+                  "title": "Remarques",
+                  "paragraph": "Vous pouvez utiliser du paneer tikka acheté en magasin ou le préparer vous-même."
+                }
+              }
+            },
+            {
+              "position": 24,
+              "segment": {
+                "data": {
+                  "title": "Remarques",
+                  "paragraph": "Vous pouvez ajuster la quantité d'épices selon votre goût."
+                }
+              }
+            },
+            {
+              "position": 25,
+              "segment": {
+                "data": {
+                  "title": "Remarques",
+                  "paragraph": "Vous pouvez également ajouter d'autres légumes aux rouleaux, comme des tomates ou des carottes."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

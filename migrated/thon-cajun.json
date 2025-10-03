@@ -1,0 +1,168 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Thon Cajun",
+      "description": [
+        "Temps: N/A",
+        "Rendement: 4 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/MpsLfSp/Thon-Cajun.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "thon",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "cajun",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "grillé",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "rémoulade",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Thon Cajun",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "thon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "pouce"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "marinade"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Remoulade"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Saupoudrez les steaks de thon des deux côtés avec la moitié de la marinade sèche. Couvrez et laissez mariner au réfrigérateur pendant 30 minutes."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Préparez un gril pour une cuisson directe et préchauffez à haute température. Brossez et huilez la grille du gril. Si vous utilisez une plancha ou une poêle en fonte, placez-la sur la grille du gril et préchauffez."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Badigeonnez chaque steak de thon des deux côtés avec du beurre fondu, puis saupoudrez avec le reste de la marinade sèche."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez le thon sur la grille (ou sur la plancha) et grillez jusqu'à ce qu'il soit sombrement saisi à l'extérieur, mais encore rare (voire cru) au centre, environ 2 minutes de chaque côté, en retournant avec des pinces. Transférez le thon sur un plat et versez la sauce sur le dessus."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

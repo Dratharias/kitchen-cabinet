@@ -1,0 +1,401 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Crevettes Moilee",
+      "description": [
+        "Temps: 60 min",
+        "Rendement: 4 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/JKqB8Sv/Crevettes-Moilee.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Crevettes Moilee",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1,
+                "title": "Crevettes Moilee"
+              },
+              "product": {
+                "data": {
+                  "name": "piment vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 55,
+                "multiply_factor": 1,
+                "title": "Crevettes Moilee"
+              },
+              "product": {
+                "data": {
+                  "name": "huile vegetale"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Crevettes Moilee"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de moutarde"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 30,
+                "multiply_factor": 1,
+                "title": "Crevettes Moilee"
+              },
+              "product": {
+                "data": {
+                  "name": "feuilles"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 300,
+                "multiply_factor": 1,
+                "cut": "tranché",
+                "title": "Crevettes Moilee"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Crevettes Moilee"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Crevettes Moilee"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Crevettes Moilee"
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Crevettes Moilee"
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.25,
+                "multiply_factor": 1,
+                "title": "Crevettes Moilee"
+              },
+              "product": {
+                "data": {
+                  "name": "curcuma"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 25,
+                "multiply_factor": 1,
+                "cut": "batonnets",
+                "title": "Crevettes Moilee"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 400,
+                "multiply_factor": 1,
+                "title": "Crevettes Moilee"
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 250,
+                "multiply_factor": 1,
+                "title": "Crevettes Moilee"
+              },
+              "product": {
+                "data": {
+                  "name": "creme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 24,
+                "multiply_factor": 1,
+                "title": "Crevettes Moilee"
+              },
+              "product": {
+                "data": {
+                  "name": "crevette"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 300,
+                "multiply_factor": 1,
+                "cut": "en petits quartiers",
+                "title": "Crevettes Moilee"
+              },
+              "product": {
+                "data": {
+                  "name": "tomates"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "À Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "citron"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Crevettes Moilee",
+                  "paragraph": "Retirez et jetez les tiges des piments, puis coupez chacun en 3 ou 4 longues bandes. Mettez de côté."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Crevettes Moilee",
+                  "paragraph": "Placez une grande casserole sur feu moyen. Ajoutez 40ml d'huile, laissez chauffer quelques secondes, puis ajoutez les graines de moutarde et 20 feuilles de curry. Laissez-les crépiter quelques secondes."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Crevettes Moilee",
+                  "paragraph": "Ajoutez les oignons et faites-les sauter légèrement pendant 12 à 14 minutes, jusqu'à ce qu'ils soient tendres mais pas colorés."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Crevettes Moilee",
+                  "paragraph": "Ajoutez les purées d'ail et de gingembre, le sel, le poivre noir et le curcuma, et faites sauter pendant 3 minutes en remuant régulièrement. Ajoutez les piments tranchés et les bâtonnets de gingembre et faites cuire pendant 3 minutes."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Crevettes Moilee",
+                  "paragraph": "Versez le lait de coco et la crème de coco et laissez mijoter pendant 20 minutes en remuant de temps en temps."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Crevettes Moilee",
+                  "paragraph": "Pendant que le curry mijote, faites chauffer une petite poêle à feu moyen-fort et ajoutez la cuillère à soupe d'huile restante. Ajoutez le reste des feuilles de curry et faites frire pendant 1 minute, jusqu'à ce qu'elles soient croustillantes. Égouttez sur du papier absorbant et mettez de côté."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Crevettes Moilee",
+                  "paragraph": "Ajoutez les crevettes et les tomates à la sauce et laissez mijoter doucement pendant encore 5 à 6 minutes, jusqu'à ce que les crevettes soient cuites ; ne les faites pas trop cuire sinon elles seront dures."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Crevettes Moilee",
+                  "paragraph": "Servez parsemé de feuilles de curry frites, avec des quartiers de citron à côté."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

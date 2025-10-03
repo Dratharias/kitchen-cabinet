@@ -1,0 +1,150 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Porridge à la banane et aux dattes",
+      "description": [
+        "Temps: 40 min",
+        "Rendement: 2 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/0f0gg8k/Porridge-la-banane-et-aux-dattes.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Porridge À La Banane Et Aux Dattes",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "dattes Medjool"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "bananes"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 340,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "lait"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 60,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "flocons d'avoine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Retirez les noyaux des dattes. Épluchez la banane, coupez-en un tiers et mettez-le de côté avec une demi-datte ; ceux-ci seront utilisés pour finir le porridge."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "paragraph": "Hachez finement les dattes et la banane restantes. Placez-les dans une petite casserole et versez 185ml d'eau bouillante. Faites cuire à feu doux jusqu'à obtention d'une pâte épaisse, molle et raisonnablement lisse, en remuant régulièrement et en écrasant les grumeaux avec le dos de la cuillère ; cela devrait prendre environ 10 minutes. Vous pouvez également utiliser un mixeur plongeant pour éliminer les grumeaux tenaces."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "paragraph": "Pendant que le mélange banane-datte cuit, versez le lait dans un bol, ajoutez les flocons d'avoine et laissez-les tremper quelques minutes."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "paragraph": "Lorsque le mélange banane-datte est prêt, ajoutez le lait et les flocons d'avoine dans la casserole, portez à ébullition douce et laissez cuire pendant 12 à 15 minutes, en remuant régulièrement, jusqu'à ce que les flocons d'avoine soient complètement tendres."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "paragraph": "Coupez le tiers restant de la banane et hachez finement la demi-datte réservée. Servez le porridge dans un bol préchauffé, garni de tranches de banane et de morceaux de datte."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

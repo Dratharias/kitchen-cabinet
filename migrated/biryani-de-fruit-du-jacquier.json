@@ -1,0 +1,614 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Biryani de fruit du jacquier",
+      "description": [
+        "Temps: 2h",
+        "Rendement: 4 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/DQq5924/Biryani-de-fruit-du-jacquier.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Biryani De Fruit Du Jacquier",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 300,
+                "multiply_factor": 1,
+                "title": "Riz"
+              },
+              "product": {
+                "data": {
+                  "name": "riz basmati"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Riz"
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin de mer"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Riz"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Jacquier"
+              },
+              "product": {
+                "data": {
+                  "name": "jackfruit"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Jacquier"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Jacquier"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Jacquier"
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin de mer"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Jacquier"
+              },
+              "product": {
+                "data": {
+                  "name": "curcuma"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Jacquier"
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de piment deggi mirch"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Jacquier"
+              },
+              "product": {
+                "data": {
+                  "name": "Huile vegetale"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 150,
+                "multiply_factor": 1,
+                "title": "Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "pommes de terre nouvelles"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin de mer"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de piment"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1,
+                "title": "Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "garam masala"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1,
+                "title": "Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 150,
+                "multiply_factor": 1,
+                "title": "Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "yogourt grec"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "laniere",
+                "title": "Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "piment vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "cut": "batonnets",
+                "title": "Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cm"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "menthe"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 25,
+                "multiply_factor": 1,
+                "title": "Biryani"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 30,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "raisin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 30,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "creme double"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "safran"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Biryani De Fruit Du Jacquier",
+                  "paragraph": "Tout d'abord, faire tremper le riz. Pour ce faire, mettre le riz dans un grand bol et le couvrir généreusement d'eau. À l'aide de vos doigts, déplacez doucement le riz dans l'eau pour enlever l'amidon, en veillant à ne pas briser les grains. Laisser reposer le riz, puis verser l'eau. Répéter deux fois avec de l'eau fraîche, puis couvrir à nouveau avec de l'eau fraîche et laisser tremper pendant 45 minutes."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Biryani De Fruit Du Jacquier",
+                  "paragraph": "Pour préparer le jackfruit, séchez-le avec du papier absorbant et coupez les morceaux plus gros en deux. Dans un grand bol, mélanger les pâtes d'ail et de gingembre avec le sel, le curcuma, la poudre de piment et 1 cuil. à soupe d'eau. Ajouter le jackfruit, retourner pour bien enrober et laisser mariner pendant 30 minutes."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Biryani De Fruit Du Jacquier",
+                  "paragraph": "Couper les pommes de terre en morceaux de taille bite, ajouter à une casserole d'eau bouillante salée et cuire jusqu'à ce qu'elles soient presque tendres. Égoutter et sécher avec du papier absorbant ; mettre de côté."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Biryani De Fruit Du Jacquier",
+                  "paragraph": "Chauffer l'huile dans une friteuse ou dans une autre casserole profonde et lourde à 338°F. Préchauffer le four à 392°F (ventilateur à 180°C/Gaz 6)."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Biryani De Fruit Du Jacquier",
+                  "paragraph": "Faire frire le jackfruit mariné dans l'huile chaude, en deux lots si nécessaire, jusqu'à ce qu'il soit doré et croustillant partout ; cela prendra environ 10 minutes. Égoutter sur du papier absorbant. Ajouter les pommes de terre nouvelles bouillies à l'huile et faire frire pendant 5 minutes. Égoutter sur du papier absorbant."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Biryani De Fruit Du Jacquier",
+                  "paragraph": "Combiner tous les ingrédients de la base du biryani, y compris les pommes de terre frites, dans votre pot de cuisson biryani. Ajouter le jackfruit et mélanger pour bien incorporer. Mettre de côté."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Biryani De Fruit Du Jacquier",
+                  "paragraph": "Égoutter le riz lorsque le temps de trempage est écoulé. Verser 2 litres d'eau bouillante dans une grande casserole et ajouter les 2 cuil. à thé de sel et le jus de lime. Verser le riz dans la casserole et bien mélanger. Faire bouillir pendant 4 à 5 minutes jusqu'à ce que le riz soit aux trois quarts cuit. Vous pouvez dire que le riz en est à cette étape en prenant un grain entre votre index et votre pouce, et en appuyant dessus avec votre ongle ; il devrait encore être légèrement ferme et se casser en environ 5 ou 6 morceaux. Égoutter le riz ; vous n'avez pas besoin de le secouer complètement sec, car un peu d'humidité supplémentaire aide pendant la cuisson. Mettez-le dans le pot à biryani, sur le jackfruit."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Biryani De Fruit Du Jacquier",
+                  "paragraph": "Répartir les raisins secs sur le riz. Dans une petite casserole, ou au micro-ondes, chauffer le beurre et la crème jusqu'à ce que le beurre fonde. Mélanger, puis verser sur le riz, suivi de l'eau de safran."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Biryani De Fruit Du Jacquier",
+                  "paragraph": "Couvrir hermétiquement avec deux couches de papier aluminium. Placer sur un feu vif pendant 2 à 3 minutes, jusqu'à ce que le papier aluminium gonfle et que vous voyez un peu de vapeur s'échapper. Transférer au four et cuire pendant 20 minutes. Laisser reposer le biryani, toujours couvert, pendant 10 minutes avant de servir."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,327 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Bagels",
+      "description": [
+        "Rendement: 8 bagels",
+        "Temps: 3h30 minutes"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/jVPcX01/bagels.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "pain",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Bagels",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 500,
+                "multiply_factor": 1,
+                "title": "Pain"
+              },
+              "product": {
+                "data": {
+                  "name": "farine de ble"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Pain"
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Pain"
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pain"
+              },
+              "product": {
+                "data": {
+                  "name": "cassonade"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pain"
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1,
+                "title": "Pain"
+              },
+              "product": {
+                "data": {
+                  "name": "levure"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "oeuf"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "cut": "grille",
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "graines de sesame"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 10,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "gros sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Bagels",
+                  "paragraph": "Faire tremper la levure et la cassonade dans un peu d'eau entre 50°C et 55°C, couvrir d'un linge humide pendant 5 minutes. Mélanger un peu au début du trempage."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Bagels",
+                  "paragraph": "Pétrir à la main (c'est important, la machine chauffe la mixture) dans un grand bol, la levure avec la farine environ 8 à 10 minutes en ajoutant de l'eau en petites quantités, jusqu'à ce qu'elle soit légèrement humide et souple (élastique)."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Bagels",
+                  "paragraph": "Laisser reposer la pâte dans un endroit chaud et humide (un micro-onde, un four, avec un verre d'eau chaud), bol couvert d'un linge humide et chaud pendant entre 1h et 2h. Je recommande 1h30 pour une bonne texture."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Bagels",
+                  "paragraph": "Lorsque le temps d'attente est terminé, toujours dans le bol, applatir légèrement la pâte avec des petits coups de poings et laisser reposer à couvert 10 minutes. Préparer une assiète de graines de sésame, un oeuf battu et un pinceau de cuisine."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Bagels",
+                  "paragraph": "Pendant que vous effectuerez la prochaine étape, préchauffer une cassorole d'eau très large d'au moins 2 pouces de hauteur, au ¾ de sa hauteur, et porter à ébullition. (L'eau doit être au minimum à mi-hauteur lors de l'étape 8). Bonus: sucrer l'eau pour une meilleure croute avec un peu de miel ou du sucre régulier."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Bagels",
+                  "paragraph": "Préchauffer le four à 400°F. Peser la boule de pâte, et diviser le poid par le nombre de bagels désirés. 100 à 115 g sont de bons gros bagels bien dodus. Couper la boule et former de plus petites boules du poid désiré (attention, elles collent ensemble)."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Bagels",
+                  "paragraph": "Pour chaques boules, percer un petit trou avec les doigts au centre et doucement former un anneau."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Bagels",
+                  "paragraph": "Optionel: Faites une deuxième levée à couvert des bagels pour qu'ils prennent de l'expansion et que les craquelures diminuent jusqu'à 30 min, il faut les surveillés. Généralement, un 10 à 15 minutes de levée suffit."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Bagels",
+                  "paragraph": "Blanchir les anneaux de pâte dans la casserole pendant 2 minutes, de chaques côtés. Veillez à respecter du mieux possible ce temps."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Bagels",
+                  "paragraph": "Pendant qu'ils sont encore chaud, appliquer un peu d'oeuf sur le dessus des bagels et tremper dans les graines de sésames."
+                }
+              }
+            },
+            {
+              "position": 11,
+              "segment": {
+                "data": {
+                  "title": "Bagels",
+                  "paragraph": "Dans une plaque de cuisson couverte de papier parchemin, mettre au four 20 minutes, jusqu'à ce qu'ils soient dorés."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

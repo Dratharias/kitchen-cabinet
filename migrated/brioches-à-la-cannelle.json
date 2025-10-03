@@ -1,0 +1,592 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Brioches à la cannelle",
+      "description": [
+        "Temps total : 4 heures (ou une nuit)",
+        "Rendement : 12 brioches"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/ZYvcVDN/briochesalacannelle.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Brioches À La Cannelle",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "lait entier"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.6667,
+                "multiply_factor": 1,
+                "cut": "divise",
+                "title": "Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre granule"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1,
+                "title": "Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "levure active ou instantanee"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "en 4 morceaux",
+                "title": "Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "oeuf"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4.5,
+                "multiply_factor": 1,
+                "title": "Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "farine"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasses"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Pâte"
+              },
+              "product": {
+                "data": {
+                  "name": "huile"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.6667,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "cassonade"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "cannelle"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "title": "Glaçage Au Fromage À La Crème"
+              },
+              "product": {
+                "data": {
+                  "name": "fromage a la creme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "onces"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Glaçage Au Fromage À La Crème"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Glaçage Au Fromage À La Crème"
+              },
+              "product": {
+                "data": {
+                  "name": "creme epaisse"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Glaçage Au Fromage À La Crème"
+              },
+              "product": {
+                "data": {
+                  "name": "extrait de vanille pur"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Fouetter le lait chaud, 2 cuil. à soupe de sucre et la levure dans le bol de votre batteur sur socle équipé d'un crochet à pâte ou d'un accessoire à palette."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Couvrir et laisser reposer pendant environ 5 minutes ou jusqu'à ce qu'il devienne mousseux. Si vous n'avez pas de batteur, vous pouvez le faire dans un grand bol et, à l'étape suivante, mélanger la pâte avec une grande cuillère en bois/une spatule en silicone. Cela demandera un peu de force."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Un batteur à main fonctionne, mais la pâte collante reste souvent coincée dans les fouets. Mélanger à la main avec une cuillère en bois ou une spatule en silicone est un meilleur choix."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "À vitesse moyenne, incorporer le sucre restant (qui devrait être de 1/2 tasse/100 g) et le beurre ramolli jusqu'à ce qu'il soit légèrement brisé."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Ajouter les œufs et le sel et battre à vitesse moyenne jusqu'à ce qu'ils soient combinés. Le beurre ne se mélange pas vraiment au mélange, donc ne vous inquiétez pas s'il reste en morceaux."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Baisser la vitesse du batteur à basse et, tout en le faisant fonctionner, ajouter 1 tasse de farine à la fois, en vous assurant qu'elle est entièrement incorporée avant d'ajouter la suivante."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Arrêtez le batteur et racler les côtés du bol au besoin. Après l'ajout de 4 tasses, ajouter la dernière demi-tasse et battre jusqu'à ce que la pâte se rassemble et se détache des côtés du bol, environ 3 minutes. La pâte sera molle."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Laisser la pâte dans le batteur (et passer au crochet à pâte si vous avez utilisé la palette) et battre à basse vitesse pendant 5 minutes supplémentaires OU pétrir à la main sur une surface légèrement farinée pendant 5 minutes. Si vous pétrissez à la main, gardez un petit bol de farine à proximité pour fariner continuellement vos mains, car la pâte peut être assez collante."
+                }
+              }
+            },
+            {
+              "position": 9,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Après le pétrissage, piquez la pâte avec votre doigt - si elle rebondit lentement, votre pâte est prête à lever. Sinon, continuez à pétrir."
+                }
+              }
+            },
+            {
+              "position": 10,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Graisser légèrement un grand bol avec de l'huile ou utiliser un spray antiadhésif. Placer la pâte dans le bol, en la tournant pour enduire tous les côtés d'huile. Couvrir le bol avec du papier d'aluminium, du film plastique ou un torchon de cuisine propre."
+                }
+              }
+            },
+            {
+              "position": 11,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Laisser lever la pâte dans un environnement relativement chaud pendant 2 heures ou jusqu'à ce qu'elle ait doublé de volume. (Je la laisse toujours lever sur le comptoir et cela prend environ 2 heures. Pour une légère réduction du temps de levée, consultez ma réponse à la question "
+                }
+              }
+            },
+            {
+              "position": 12,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": " dans mon guide sur la cuisson avec de la levure.)"
+                }
+              }
+            },
+            {
+              "position": 13,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Graisser le fond et les côtés d'un plat de cuisson en verre ou en métal de 9x13 pouces (verre ou métal) ou le tapisser de papier parchemin. "
+                }
+              }
+            },
+            {
+              "position": 14,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Dégazer la pâte pour libérer l'air. Placer la pâte sur une surface de travail légèrement farinée et, à l'aide d'un rouleau à pâtisserie légèrement fariné, abaisser la pâte en un rectangle"
+                }
+              }
+            },
+            {
+              "position": 15,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "de 12x18 pouces. Assurez-vous que la pâte est lisse et d'épaisseur uniforme. Si la pâte continue de rétrécir pendant que vous l'étalez, arrêtez-vous, couvrez-la légèrement et laissez-la reposer pendant 10 minutes pour détendre le gluten. Lorsque vous revenez à la pâte, elle devrait s'étirer beaucoup plus facilement."
+                }
+              }
+            },
+            {
+              "position": 16,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Étaler le beurre ramolli sur toute la pâte. Plus le beurre est mou, plus il est facile à étaler à cette étape. (Réchauffez-le quelques secondes au micro-ondes s'il est nécessaire.)"
+                }
+              }
+            },
+            {
+              "position": 17,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Dans un petit bol, mélanger le sucre et la cannelle. Saupoudrer uniformément sur le beurre. Enrouler fermement la pâte pour former un journal de 18 pouces de long. Si une partie de la garniture déborde, saupoudrez-la sur le dessus du rouleau."
+                }
+              }
+            },
+            {
+              "position": 18,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Avec un couteau très tranchant, couper en 12 brioches égales, d'environ 1,5 pouce chacune. Disposer dans le plat de cuisson préparé."
+                }
+              }
+            },
+            {
+              "position": 19,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Couvrir les brioches hermétiquement et laisser lever jusqu'à ce qu'elles soient gonflées, environ 1 heure. (Ou utilisez l'option overnight dans les notes ci-dessous.). Préchauffer le four à 350°F (177°C)."
+                }
+              }
+            },
+            {
+              "position": 20,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Cuire pendant environ 25 à 28 minutes ou jusqu'à ce qu'elles soient légèrement dorées sur le dessus. Après environ 15 minutes, recouvrir le dessus du plat d'une feuille d'aluminium pour éviter que les sommets ne brunissent trop rapidement. Retirer le plat du four et le placer sur une grille pendant environ 10 minutes pendant que vous préparez le glaçage."
+                }
+              }
+            },
+            {
+              "position": 21,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Dans un bol moyen à l'aide d'un batteur à main ou d'un batteur sur socle équipé d'un accessoire à palette ou fouet, battre le fromage à la crème à vitesse moyenne jusqu'à ce qu'il soit lisse et crémeux."
+                }
+              }
+            },
+            {
+              "position": 22,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Ajouter le sucre glace, la crème/lait et la vanille. Battre à basse vitesse pendant 30 secondes, puis passer à la vitesse élevée et battre pendant 1 minute. Étaler le glaçage sur les brioches encore chaudes et servir immédiatement."
+                }
+              }
+            },
+            {
+              "position": 23,
+              "segment": {
+                "data": {
+                  "title": "Brioches À La Cannelle",
+                  "paragraph": "Couvrir les brioches restantes, glacées ou non glacées, hermétiquement et conserver à température ambiante pendant jusqu'à 2 jours ou au réfrigérateur pendant jusqu'à 5 jours."
+                }
+              }
+            },
+            {
+              "position": 24,
+              "segment": {
+                "data": {
+                  "title": "Instructions Pour Préparer À L Avance",
+                  "paragraph": "Overnight : Couvrez-les soigneusement et réfrigérez pendant 8 à 12 heures. (16 heures max. 8 à 12 heures sont idéales, mais 16 heures sont acceptables si absolument nécessaire. Ne pas dépasser 16 heures.)"
+                }
+              }
+            },
+            {
+              "position": 25,
+              "segment": {
+                "data": {
+                  "title": "Instructions Pour Préparer À L Avance",
+                  "paragraph": "Le lendemain matin, sortez-les du réfrigérateur et laissez-les lever sur le comptoir pendant 1 à 2 heures avant de continuer avec l'étape 9."
+                }
+              }
+            },
+            {
+              "position": 26,
+              "segment": {
+                "data": {
+                  "title": "Garniture",
+                  "paragraph": "Congélation : Les brioches cuites peuvent être congelées pendant jusqu'à 3 mois. Décongelez-les toute la nuit au réfrigérateur et réchauffez-les avant de les déguster. Vous pouvez également congeler les brioches non cuites."
+                }
+              }
+            },
+            {
+              "position": 27,
+              "segment": {
+                "data": {
+                  "title": "Garniture",
+                  "paragraph": "Cuisez les brioches à l'étape 9 pendant environ 10 minutes. Laissez-les refroidir complètement, puis couvrez-les soigneusement et congelez-les."
+                }
+              }
+            },
+            {
+              "position": 28,
+              "segment": {
+                "data": {
+                  "title": "Garniture",
+                  "paragraph": "Pour les servir, sortez-les du congélateur et placez-les au réfrigérateur toute la nuit pour les décongeler. Une fois décongelés, terminez de les cuire pendant environ 15 à 20 minutes."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

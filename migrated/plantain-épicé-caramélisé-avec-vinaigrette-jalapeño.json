@@ -1,0 +1,448 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Plantain épicé caramélisé avec vinaigrette Jalapeño",
+      "description": [
+        "Temps: 20 min",
+        "Portions: 4"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/t2BSdQS/Plantain-pic-caram-lis-avec-vinaigrette-Jalape-o.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Plantain Épicé Caramélisé Avec Vinaigrette Jalapeño",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "cut": "coupe",
+                "title": "Plantain Épicé Caramélisé Avec Vinaigrette Jalapeño"
+              },
+              "product": {
+                "data": {
+                  "name": "plantain"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Plantain Épicé Caramélisé Avec Vinaigrette Jalapeño"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Mélange D Épices"
+              },
+              "product": {
+                "data": {
+                  "name": "poivre de Cayenne"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Mélange D Épices"
+              },
+              "product": {
+                "data": {
+                  "name": "paprika doux"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Mélange D Épices"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Mélange D Épices"
+              },
+              "product": {
+                "data": {
+                  "name": "cumin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Mélange D Épices"
+              },
+              "product": {
+                "data": {
+                  "name": "sucre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Assaisonnement"
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre de vin blanc"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 8,
+                "multiply_factor": 1,
+                "cut": "grille",
+                "title": "Assaisonnement"
+              },
+              "product": {
+                "data": {
+                  "name": "piment jalapeno"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Assaisonnement"
+              },
+              "product": {
+                "data": {
+                  "name": "tomate"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Assaisonnement"
+              },
+              "product": {
+                "data": {
+                  "name": "huile d'olive extra vierge"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.25,
+                "multiply_factor": 1,
+                "title": "Assaisonnement"
+              },
+              "product": {
+                "data": {
+                  "name": "nectar d'agave"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "title": "Assaisonnement"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Assaisonnement"
+              },
+              "product": {
+                "data": {
+                  "name": "sel de mer"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1,
+                "multiply_factor": 1,
+                "title": "Assaisonnement"
+              },
+              "product": {
+                "data": {
+                  "name": "citron vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Assaisonnement"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "noix de cajou"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "Cresson"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "citron vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "en petits morceaux",
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "tomate"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Garniture"
+              },
+              "product": {
+                "data": {
+                  "name": "oignon"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Plantain Épicé Caramélisé Avec Vinaigrette Jalapeño",
+                  "paragraph": "Commencez par commencer par la vinaigrette, préchauffez une poêle antiadhésive à feu moyen et ajoutez un peu d'huile. Lorsque la poêle est chaude, ajoutez les oignons nouveaux et les jalapeños. Faire sauter pendant 3-4 minutes jusqu'à ce qu'ils soient ramollis et un peu dorés. Pendant ce temps, ajoutez le reste des ingrédients de la vinaigrette dans un mélangeur. Lorsque les jalapeños et les oignons sont cuits, ajoutez-les au mixeur."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Plantain Épicé Caramélisé Avec Vinaigrette Jalapeño",
+                  "paragraph": "Mélangez le mélange pendant environ quelques minutes ou jusqu'à ce qu'il soit lisse. Mettez la vinaigrette de côté jusqu'à ce que vous soyez prêt à servir. Tout reste de vinaigrette peut être conservé dans un récipient hermétique au réfrigérateur pendant 2 à 3 semaines."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Plantain Épicé Caramélisé Avec Vinaigrette Jalapeño",
+                  "paragraph": "Épluchez les plantains et coupez-les en deux. Mélangez le mélange d'épices dans un petit bol."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Plantain Épicé Caramélisé Avec Vinaigrette Jalapeño",
+                  "paragraph": "Placez une grande poêle antiadhésive sur feu moyen avec un peu d'huile et lorsque la poêle est chaude, commencez à frire les plantains côté coupé vers le bas. Faites-les cuire 2 minutes avant de les retourner puis saupoudrez généreusement du mélange épices et sucre. Faites cuire encore 3 à 4 minutes en les retournant plusieurs fois pour vous assurer que les épices et le sucre caramélisent autour du plantain."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Plantain Épicé Caramélisé Avec Vinaigrette Jalapeño",
+                  "paragraph": "Une fois cuit, servez le plantain en guise d'essai garni de beaucoup de vinaigrette, de fromage de noix de cajou (j'ai utilisé acheté en magasin), de tomates hachées, de cresson, d'oignon croustillant et d'un peu de coriandre."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

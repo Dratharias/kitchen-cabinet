@@ -1,0 +1,434 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Raan d'agneau",
+      "description": [
+        "Temps: 1h",
+        "Marinade: 24h",
+        "Repos: 5h",
+        "Rendement: 4 à 6 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/yksf1KH/Raan-d-agneau.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Raan D Agneau",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Raan D Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "cuisse d'agneau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "kg"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Raan D Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 1.75,
+                "multiply_factor": 1,
+                "title": "Raan D Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "poudre de piment Deggi Mirch"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 35,
+                "multiply_factor": 1,
+                "title": "Raan D Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 30,
+                "multiply_factor": 1,
+                "title": "Raan D Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Raan D Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "feuille de laurier"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 4,
+                "multiply_factor": 1,
+                "title": "Raan D Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "clou de girofle"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 16,
+                "multiply_factor": 1,
+                "title": "Raan D Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "poivre noir"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Raan D Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "canelle"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "bâtons"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 6,
+                "multiply_factor": 1,
+                "title": "Raan D Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "cardamome verte"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "gousse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 3,
+                "multiply_factor": 1,
+                "title": "Raan D Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "cardamome noire"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 75,
+                "multiply_factor": 1,
+                "title": "Raan D Agneau"
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 40,
+                "multiply_factor": 1,
+                "title": "Assemblage"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Assemblage"
+              },
+              "product": {
+                "data": {
+                  "name": "kabab"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 25,
+                "multiply_factor": 1,
+                "title": "Assemblage"
+              },
+              "product": {
+                "data": {
+                  "name": "jusquedelime"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "Masala"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Servir"
+              },
+              "product": {
+                "data": {
+                  "name": "piments verts"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Raan D Agneau",
+                  "paragraph": "Placez l'agneau dans un plat. Mélangez le sel et la poudre de piment et frottez le mélange partout sur l'agneau. Laissez mariner au réfrigérateur pendant 30 minutes."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Raan D Agneau",
+                  "paragraph": "Râpez l'ail et le gingembre à l'aide d'une râpe à microplane, ou écrasez-les pour obtenir une pâte fine à l'aide d'un mortier et d'un pilon. Quand les 30 minutes sont écoulées, frottez la pâte d'ail et de gingembre partout sur l'agneau. Couvrez et réfrigérez pendant 12 à 24 heures."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Raan D Agneau",
+                  "paragraph": "Sortez l'agneau du réfrigérateur 5 heures avant de vouloir le manger et laissez-le à température ambiante pendant 30 minutes. Préchauffez le four à 350°F (180°C/160°C chaleur tournante/Gaz 4)."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Raan D Agneau",
+                  "paragraph": "Placez le morceau d'agneau dans une cocotte profonde (avec un couvercle). Ajoutez la feuille de laurier, les épices et le vinaigre et versez assez d'eau pour couvrir au moins la moitié de la viande (environ 300ml). Mettez le couvercle et placez la cocotte dans le four. Rôtissez pendant 4 heures, en retournant le morceau toutes les heures et en ajoutant de l'eau si le niveau descend en dessous du tiers de la hauteur de l'agneau."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Raan D Agneau",
+                  "paragraph": "Une fois cuit, retirez l'agneau du four et laissez-le reposer dans son jus de cuisson pendant 20 à 30 minutes. Préchauffez le gril à feu vif."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Raan D Agneau",
+                  "paragraph": "Versez le jus de cuisson à travers un tamis dans un verre mesureur ; jetez les résidus dans le tamis. En travaillant dans le plat, retirez la viande de l'os ; mettez l'os de côté. Effilochez la viande à l'aide de deux fourchettes ou de vos mains. Ajoutez 120ml du jus de cuisson réservé, le beurre et 2 cuil. à thé de masala kabab. Mélangez, goûtez et ajoutez un peu plus de jus de cuisson, de jus de lime ou de masala kabab selon votre goût."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Raan D Agneau",
+                  "paragraph": "Répartissez la viande sur un plateau allant au four et placez-la sous le gril chaud pendant 4 à 5 minutes, pour créer quelques morceaux croustillants sur le dessus. Placez l'os réservé dans un plat de service et empilez la viande dessus et autour, de manière à ce qu'elle ressemble à un morceau."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Raan D Agneau",
+                  "paragraph": "Amenez le lamb raan à table dans le plat. Disposez des quartiers de lime et un plat de masala kabab supplémentaire sur la table pour que les invités en ajoutent davantage s'ils le souhaitent. Vous pouvez également servir un bol de piments verts frits."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

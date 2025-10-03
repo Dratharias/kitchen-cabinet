@@ -1,0 +1,170 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Saumure Polyvalente",
+      "description": [
+        "Temps de préparation : 20 minutes",
+        "Rendement : 1 gallon de saumure, suffisant pour 2 épaules de porc ou une dinde de 12 livres"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/tzvC6Xf/Saumure-Polyvalente.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Saumure",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "viande",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "volaille",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "porc",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "saumure polyvalente",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Saumure Polyvalente",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "eau"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "quarts"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.75,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sel"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "tasse"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Prague Powder"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuillère"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "glacee"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "quarts"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "Aromes"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Placez l'eau bouillante, le(s) sel(s) et l'éventuel édulcorant dans une grande marmite ou un grand bol de mélange et fouettez jusqu'à ce que les sels et le sucre (si utilisé) soient dissous. Fouettez dans l'eau glacée et tout autre assaisonnement. Laissez la saumure refroidir à température ambiante avant d'ajouter la viande. Couvrez et réfrigérez."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

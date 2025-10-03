@@ -1,0 +1,439 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Murgh Malai",
+      "description": [
+        "Temps: 30 minutes",
+        "Marinade: 24h + 2h",
+        "Poulet indien mariné dans une sauce crémeuse au fromage et aux épices",
+        "Rendement: 4 à 6 portions"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/TvwMMPR/Murgh-Malai.png",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "Dishoom",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Murgh Malai",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": 500,
+                "multiply_factor": 1,
+                "cut": "en 3 morceaux",
+                "title": "Pour Le Poulet"
+              },
+              "product": {
+                "data": {
+                  "name": "cuisses de poulet"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour La Première Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "ail"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour La Première Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "gingembre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Pour La Première Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 2,
+                "multiply_factor": 1,
+                "title": "Pour La Première Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "vinaigre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 90,
+                "multiply_factor": 1,
+                "cut": "rape",
+                "title": "Pour La Deuxième Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "cheddar fort"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour La Deuxième Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "yogourt grec entier"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil."
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 50,
+                "multiply_factor": 1,
+                "title": "Pour La Deuxième Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "creme"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "ml"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "title": "Pour La Deuxième Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "œuf"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 1.5,
+                "multiply_factor": 1,
+                "title": "Pour La Deuxième Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "sel fin"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "cuil. à thé"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 15,
+                "multiply_factor": 1,
+                "title": "Pour La Deuxième Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "fecule de mais"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Pour La Deuxième Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "piment vert"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1,
+                "cut": "haché",
+                "title": "Pour La Deuxième Marinade"
+              },
+              "product": {
+                "data": {
+                  "name": "tiges de coriandre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": 20,
+                "multiply_factor": 1,
+                "title": "Pour La Garniture Et Le Service"
+              },
+              "product": {
+                "data": {
+                  "name": "beurre"
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "data": {
+                      "name": "g"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour La Garniture Et Le Service"
+              },
+              "product": {
+                "data": {
+                  "name": "kabab"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": 0.5,
+                "multiply_factor": 1,
+                "cut": "pressé",
+                "title": "Pour La Garniture Et Le Service"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour La Garniture Et Le Service"
+              },
+              "product": {
+                "data": {
+                  "name": "coriandre"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1,
+                "title": "Pour La Garniture Et Le Service"
+              },
+              "product": {
+                "data": {
+                  "name": "lime"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "title": "Murgh Malai",
+                  "paragraph": "Sécher le poulet avec du papier absorbant et le placer dans un grand bol."
+                }
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "data": {
+                  "title": "Murgh Malai",
+                  "paragraph": "Mélanger les ingrédients de la première marinade dans un petit bol. Verser sur le poulet et remuer pour enrober. Couvrir et réfrigérer pendant la préparation de la deuxième marinade, idéalement jusqu'à 2 heures."
+                }
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "data": {
+                  "title": "Murgh Malai",
+                  "paragraph": "Mixer le fromage râpé, le yogourt, la crème, l'œuf, le sel et la fécule de maïs au robot culinaire jusqu'à l'obtention d'une pâte lisse. Ajouter les piments hachés et les tiges de coriandre, puis bien mélanger."
+                }
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "data": {
+                  "title": "Murgh Malai",
+                  "paragraph": "Sortir le poulet du réfrigérateur et verser la deuxième marinade dessus. Remuer et couvrir. Remettre au réfrigérateur pour mariner pendant 6 à 24 heures."
+                }
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "data": {
+                  "title": "Murgh Malai",
+                  "paragraph": "Sortir le poulet mariné du réfrigérateur environ 20 minutes avant la cuisson."
+                }
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "data": {
+                  "title": "Murgh Malai",
+                  "paragraph": "Enfiler le poulet sur des brochettes en laissant suffisamment d'espace entre les morceaux pour la cuisson. Griller pendant 12 à 15 minutes, en retournant régulièrement, jusqu'à ce qu'il soit doré foncé et légèrement carbonisé. S'assurer que le poulet est bien cuit."
+                }
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "data": {
+                  "title": "Murgh Malai",
+                  "paragraph": "Arroser le poulet cuit de beurre, de kabab masala et de jus de lime, en retournant les brochettes pour enrober le tout. Garnir de feuilles de coriandre et servir avec des quartiers de lime."
+                }
+              }
+            },
+            {
+              "position": 8,
+              "segment": {
+                "data": {
+                  "title": "Murgh Malai",
+                  "paragraph": ""
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

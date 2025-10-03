@@ -1,0 +1,108 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Sauce Tamarind",
+      "description": [
+        "Temps: 5 min",
+        "Rendement: 35 ml"
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "type": {
+        "data": {
+          "str_value": "Recette",
+          "type": "Type"
+        }
+      },
+      "style": null,
+      "author": null,
+      "tags": [
+        {
+          "data": {
+            "str_value": "dishoom",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "chutney",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "sauce épicée",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "vinaigre de xérès",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "coriandre",
+            "type": "Tag"
+          }
+        },
+        {
+          "data": {
+            "str_value": "piment",
+            "type": "Tag"
+          }
+        }
+      ],
+      "contents": [
+        {
+          "data": {
+            "total_prep_time": 0,
+            "servings": null,
+            "subtitle": "Sauce Tamarind",
+            "is_ingredient": false
+          },
+          "content_ingredients": [
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "sauce"
+                }
+              },
+              "ingredient_units": []
+            },
+            {
+              "data": {
+                "quantity": null,
+                "multiply_factor": 1
+              },
+              "product": {
+                "data": {
+                  "name": "tamarind"
+                }
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "data": {
+                  "paragraph": "Mélanger."
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
