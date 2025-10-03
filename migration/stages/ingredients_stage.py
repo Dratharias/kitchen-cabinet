@@ -3,7 +3,6 @@ from typing import Any, Dict, List
 import json
 import re
 import unicodedata
-import difflib
 import copy
 from ..mistral_client import MistralClient
 from ..utils.group_matcher import best_match, standardize_group
@@ -46,6 +45,18 @@ CUT_WORDS = {
     "grillé", "grille"
 }
 
+def clean_legacy_links(s: str) -> str:
+    if not isinstance(s, str):
+        return s
+    if "]_:_[" in s and "[" in s:
+        try:
+            left = s.index("[") + 1
+            right = s.index("]_:_[", left)
+            return s[left:right].strip()
+        except ValueError:
+            return s
+    return s.strip()
+
 def strip_accents(text: str) -> str:
     if not text:
         return text
@@ -58,14 +69,6 @@ def clean_product(product: str) -> str:
     product = re.sub(r"\([^)]*\)", "", product)  # retirer parenthèses
     product = strip_accents(product)
     return product.strip()
-
-def _norm(text: str) -> str:
-    if text is None:
-        return ""
-    t = unicodedata.normalize("NFKD", str(text)).lower()
-    t = "".join(c for c in t if not unicodedata.combining(c))
-    t = re.sub(r"[^a-z0-9]+", "", t)
-    return t
 
 def _tokens(text: str) -> list[str]:
     if not text:
@@ -170,16 +173,29 @@ class IngredientsStage:
         enriched: List[Dict[str, Any]] = []
         for block in mapped:
             out_block = {"group": block["group"], "ingredients": []}
-            for ing_str in block["ingredients"]:
-                ing_str = re.sub(r"\([^)]*\)", "", ing_str).strip()
-                unit = self._extract_unit(ing_str)
-                qty = self._extract_quantity(ing_str)
-                product_info = self._extract_product(ing_str, unit)
-                out_block["ingredients"].append({
-                    "quantity": qty,
-                    "unit": unit,
-                    "product": product_info,
-                })
+
+            def parse_one(line: str, title: str | None = None) -> Dict[str, Any]:
+                s = clean_legacy_links(re.sub(r"\([^)]*\)", "", line).strip())
+                unit = self._extract_unit(s)
+                qty = self._extract_quantity(s)
+                product_info = self._extract_product(s, unit)
+                item = {"quantity": qty, "unit": unit, "product": product_info}
+                if title:
+                    item["title"] = title
+                return item
+
+            for ing in block.get("ingredients", []):
+                if isinstance(ing, dict) and "title" in ing and "items" in ing and isinstance(ing["items"], list):
+                    t = str(ing.get("title") or "").strip() or None
+                    for itm in ing["items"]:
+                        out_block["ingredients"].append(parse_one(str(itm), t))
+                elif isinstance(ing, dict):
+                    name = ing.get("product", {}).get("name") if isinstance(ing.get("product"), dict) else None
+                    line = name or ""
+                    out_block["ingredients"].append(parse_one(line, ing.get("title")))
+                else:
+                    out_block["ingredients"].append(parse_one(str(ing)))
+
             enriched.append(out_block)
         return enriched
 
