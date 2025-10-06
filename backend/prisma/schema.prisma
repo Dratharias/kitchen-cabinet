@@ -4,30 +4,30 @@ datasource db {
 }
 
 generator client {
-  provider        = "prisma-client-js"
-  binaryTargets   = ["native", "linux-musl-openssl-3.0.x"]
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
 }
 
 model app_user {
-  user_id   String   @id @default(uuid())
+  user_id  String   @id @default(uuid())
   username String   @unique
   password String
   role     String   @default("user")
-  updated DateTime @default(now())
+  updated  DateTime @default(now())
   created  DateTime @default(now())
 
   @@map("app_user")
 }
 
 model category {
-  category_id String  @id @default(uuid())
+  category_id String @id @default(uuid())
   str_value   String
   type        String
 
-  publications_type   publication[]     @relation("PublicationType")
-  publications_style  publication[]     @relation("PublicationStyle")
-  publications_author publication[]     @relation("PublicationAuthor")
-  prep_time           prep_time[]       @relation("PrepTimeStyle")
+  publications_type   publication[]      @relation("PublicationType")
+  publications_style  publication[]      @relation("PublicationStyle")
+  publications_author publication[]      @relation("PublicationAuthor")
+  prep_time           prep_time[]        @relation("PrepTimeStyle")
   publication_tags    publication_tag[]
   product_categories  product_category[]
 
@@ -48,15 +48,17 @@ model publication {
   type_id        String?
   style_id       String?
   author_id      String?
+  gallery        String[]
+  date_created   DateTime @default(now())
 
   type   category? @relation("PublicationType", fields: [type_id], references: [category_id])
   style  category? @relation("PublicationStyle", fields: [style_id], references: [category_id])
   author category? @relation("PublicationAuthor", fields: [author_id], references: [category_id])
 
-  contents       content[]
-  productRef     product[] @relation("RecipeReference")
-  reviews        review[]
-  tags           publication_tag[]
+  contents   content[]
+  productRef product[]         @relation("RecipeReference")
+  reviews    review[]
+  tags       publication_tag[]
 
   @@index([type_id])
   @@index([style_id])
@@ -75,27 +77,27 @@ model publication_tag {
 }
 
 model content {
-  content_id     String @id @default(uuid())
-  publication_id String
-  total_prep_time Int    @default(0) @db.SmallInt
-  servings       Int? @db.SmallInt
-  subtitle       String?
+  content_id      String   @id @default(uuid())
+  publication_id  String
+  total_prep_time Int      @default(0) @db.SmallInt
+  servings        Int?     @db.SmallInt
+  subtitle        String?
   is_ingredient   Boolean?
 
-  publication        publication         @relation(fields: [publication_id], references: [publication_id], onDelete: Cascade)
+  publication         publication          @relation(fields: [publication_id], references: [publication_id], onDelete: Cascade)
   content_segments    content_segment[]
   content_ingredients content_ingredient[]
-  content_prep_times   content_prep_time[]
+  content_prep_times  content_prep_time[]
 
   @@index([publication_id])
 }
 
 model segment {
-  segment_id String @id @default(uuid())
+  segment_id String  @id @default(uuid())
   title      String?
-  paragraph  String @unique
+  paragraph  String  @unique
 
-  content_segments content_segment[]
+  content_segments  content_segment[]
   segment_prep_time segment_prep_time[]
 }
 
@@ -107,7 +109,7 @@ model unit {
 }
 
 model macro {
-  macro_id   String @id @default(uuid())
+  macro_id  String @id @default(uuid())
   calories  Int?   @db.SmallInt
   protein   Int?   @db.SmallInt
   fiber     Int?   @db.SmallInt
@@ -120,39 +122,39 @@ model macro {
 }
 
 model product {
-  product_id String  @id @default(uuid())
-  name       String  @unique
-  en_name    String?
-  macro_id   String?
+  product_id   String       @id @default(uuid())
+  name         String       @unique
+  en_name      String?
+  macro_id     String?
   is_recipe_id String?
-  isRecipe          publication? @relation("RecipeReference", fields: [is_recipe_id], references: [publication_id])
+  isRecipe     publication? @relation("RecipeReference", fields: [is_recipe_id], references: [publication_id])
 
-  macro             macro? @relation(fields: [macro_id], references: [macro_id])
-  ingredients       ingredient[]
-  reviews           review[]
+  macro              macro?             @relation(fields: [macro_id], references: [macro_id])
+  ingredients        ingredient[]
+  reviews            review[]
   product_categories product_category[]
 }
 
 model ingredient {
-  ingredient_id String  @id @default(uuid())
-  quantity     Decimal? @db.Decimal(10, 2)
-  product_id   String
-  cut          String?
-  title        String?
-  multiply_factor Decimal @db.Decimal(10, 2) @default(1.00)
+  ingredient_id   String   @id @default(uuid())
+  quantity        Decimal? @db.Decimal(10, 2)
+  product_id      String
+  cut             String?
+  title           String?
+  multiply_factor Decimal  @default(1.00) @db.Decimal(10, 2)
 
-  product           product @relation(fields: [product_id], references: [product_id], onDelete: Cascade)
+  product             product              @relation(fields: [product_id], references: [product_id], onDelete: Cascade)
   content_ingredients content_ingredient[]
-  ingredient_units   ingredient_unit[]
+  ingredient_units    ingredient_unit[]
 }
 
 model prep_time {
-  prep_time_id String @id @default(uuid())
-  duration     Int    @db.SmallInt
+  prep_time_id String  @id @default(uuid())
+  duration     Int     @db.SmallInt
   style_id     String?
 
-  style        category? @relation("PrepTimeStyle", fields: [style_id], references: [category_id])
-  
+  style category? @relation("PrepTimeStyle", fields: [style_id], references: [category_id])
+
   content_prep_times content_prep_time[]
   segment_prep_time  segment_prep_time[]
 }
@@ -160,7 +162,7 @@ model prep_time {
 model content_segment {
   content_id String
   segment_id String
-  position   Int? @db.SmallInt
+  position   Int?   @db.SmallInt
 
   content content @relation(fields: [content_id], references: [content_id], onDelete: Cascade)
   segment segment @relation(fields: [segment_id], references: [segment_id], onDelete: Cascade)
@@ -179,20 +181,20 @@ model content_ingredient {
 }
 
 model content_prep_time {
-  content_id  String
+  content_id   String
   prep_time_id String
 
-  content  content  @relation(fields: [content_id], references: [content_id], onDelete: Cascade)
+  content   content   @relation(fields: [content_id], references: [content_id], onDelete: Cascade)
   prep_time prep_time @relation(fields: [prep_time_id], references: [prep_time_id], onDelete: Cascade)
 
   @@id([content_id, prep_time_id])
 }
 
 model segment_prep_time {
-  segment_id  String
+  segment_id   String
   prep_time_id String
 
-  segment  segment  @relation(fields: [segment_id], references: [segment_id], onDelete: Cascade)
+  segment   segment   @relation(fields: [segment_id], references: [segment_id], onDelete: Cascade)
   prep_time prep_time @relation(fields: [prep_time_id], references: [prep_time_id], onDelete: Cascade)
 
   @@id([segment_id, prep_time_id])

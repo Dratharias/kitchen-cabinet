@@ -45,6 +45,7 @@ TOKEN=$(curl -s -X POST http://127.0.0.1:3001/api/auth/login \
       "public": true | false,      // obligatoire
       "published": true | false,   // obligatoire
       "thumbnail": "url",          // optionnel
+      "gallery": ["url"],          // optionnel
 
       // --- Relations catégories ---
       "type": {                    // optionnel
@@ -477,7 +478,7 @@ curl -X POST http://127.0.0.1:3001/api/publicate \
         "public": true,
         "published": true,
         "thumbnail": "https://picsum.photos/seed/orchestrator/640/480",
-
+        "gallery": ["https://picsum.photos/seed/orchestrator/640/480"]
         "type": { "data": { "str_value": "Recipe", "type": "Type" } },
         "style": { "data": { "str_value": "Fusion", "type": "Style" } },
         "author": { "data": { "str_value": "Admin Testeur", "type": "Author" } },

@@ -10,6 +10,7 @@
 "public": true | false, // obligatoire
 "published": true | false, // obligatoire
 "thumbnail": "url", // optionnel
+"gallery": ["url"] //optionnel
 
       // --- Relations catégories ---
       "type": {                    // optionnel

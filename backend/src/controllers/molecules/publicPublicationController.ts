@@ -27,6 +27,7 @@ export const normalizePublication = (pub: any): PublicPublication => {
     description: shaped.description ?? [],
     note: shaped.note ?? [],
     thumbnail: shaped.thumbnail ?? null,
+    gallery: shaped.gallery ?? [],
     type: shaped.type ?? null,
     style: shaped.style ?? null,
     author: shaped.author ?? null,

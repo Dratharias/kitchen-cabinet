@@ -23,6 +23,7 @@ interface NestedPublicationRequest {
   description?: string[];
   note?: string[];
   thumbnail?: string;
+  gallery?: string[];
   type?: NestedEntityPayload<
     CategoryRelations,
     CategoryCore,

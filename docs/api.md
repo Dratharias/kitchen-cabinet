@@ -190,7 +190,8 @@ Create a new publication.
   "note": ["string"],
   "public": boolean,
   "published": boolean,
-  "thumbnail": "string | null"
+  "thumbnail": "string | null",
+  "gallery": "string[] | null"
 }
 ```
 
@@ -240,6 +241,8 @@ Single endpoint for nested creation with upsert.
       "type": { "data": { "str_value": "Recipe", "type": "Type" } },
       "style": { "data": { "str_value": "Cocktail", "type": "Style" } },
       "author": { "data": { "str_value": "Jane Doe", "type": "Author" } },
+      "thumbnail": "",
+      "gallery": [""],
       "contents": [
         {
           "data": { "total_prep_time": 10, "servings": 4 },
@@ -351,6 +354,7 @@ Reviews must link to either a **publication** or a **product**, not both.
   "public": boolean,
   "published": boolean,
   "thumbnail": "string | null",
+  "gallery": "string[] | null",
   "type_id": "string | null",
   "style_id": "string | null",
   "author_id": "string | null",

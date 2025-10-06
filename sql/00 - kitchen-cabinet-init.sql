@@ -77,6 +77,8 @@ CREATE TABLE publication (
     type_id        UUID,
     style_id       UUID,
     author_id      UUID,
+    gallery       VARCHAR(255)[],
+    date_created        TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (type_id)   REFERENCES category(category_id) ON DELETE SET NULL,
     FOREIGN KEY (style_id)  REFERENCES category(category_id) ON DELETE SET NULL,
     FOREIGN KEY (author_id) REFERENCES category(category_id) ON DELETE SET NULL

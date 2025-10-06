@@ -31,6 +31,7 @@ export const normalizePublication = (pub: any): Publication => {
     public: shaped.public,
     published: shaped.published,
     thumbnail: shaped.thumbnail ?? null,
+    gallery: shaped.gallery ?? [],
     type: shaped.type ?? null,
     style: shaped.style ?? null,
     author: shaped.author ?? null,
@@ -64,6 +65,7 @@ export class PublicationController
         public: payload.public,
         published: payload.published,
         thumbnail: payload.thumbnail,
+        gallery: payload.gallery ?? [],
       },
       include: this.buildInclude(),
     });
@@ -163,6 +165,7 @@ export class PublicationController
         public: payload.public,
         published: payload.published,
         thumbnail: payload.thumbnail,
+        gallery: payload.gallery ?? [],
 
         contents: payload.connect?.contents
           ? {

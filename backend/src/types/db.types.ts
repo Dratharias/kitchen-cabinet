@@ -77,6 +77,7 @@ export interface PublicationData {
   public: boolean;
   published: boolean;
   thumbnail: string | null;
+  gallery: string[] | null;
   type_id: string | null;
   style_id: string | null;
   author_id: string | null;
