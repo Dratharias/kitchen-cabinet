@@ -1,27 +1,33 @@
+import { useState, useEffect, ReactNode } from "react";
 import { DesktopLayout } from "./DesktopLayout";
 import { MobileLayout } from "./MobileLayout";
 import { NavProvider } from "../../components/navbar/NavContext";
-import { createSignal, onMount, onCleanup } from "solid-js";
 
-export function Layout(props) {
-  const [isMobile, setIsMobile] = createSignal(false);
+interface LayoutProps {
+  children: ReactNode;
+}
 
-  onMount(() => {
+export function Layout({ children }: LayoutProps) {
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches
+  );
+
+  useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const handleChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+
+    mediaQuery.addEventListener("change", handleChange);
     setIsMobile(mediaQuery.matches);
 
-    const handleChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mediaQuery.addEventListener("change", handleChange);
-
-    onCleanup(() => mediaQuery.removeEventListener("change", handleChange));
-  });
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
 
   return (
     <NavProvider>
-      {isMobile() ? (
-        <MobileLayout>{props.children}</MobileLayout>
+      {isMobile ? (
+        <MobileLayout>{children}</MobileLayout>
       ) : (
-        <DesktopLayout>{props.children}</DesktopLayout>
+        <DesktopLayout>{children}</DesktopLayout>
       )}
     </NavProvider>
   );

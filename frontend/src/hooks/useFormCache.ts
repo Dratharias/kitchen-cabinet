@@ -1,43 +1,56 @@
-import { createSignal, Accessor } from "solid-js";
+import { useState, useEffect, useRef } from "react";
 
 export type Option = { value: string; label: string };
 
 type Entry = {
   loaded: boolean;
-  get: Accessor<Option[]>;
-  set: (v: Option[]) => void;
+  get: () => Option[];
+  set: React.Dispatch<React.SetStateAction<Option[]>>;
 };
 
 const REGISTRY = new Map<string, Entry>();
 
 export function useFormCache(type: string, fetcher?: () => Promise<Option[]>) {
-  let entry = REGISTRY.get(type);
-  if (!entry) {
-    const [items, setItems] = createSignal<Option[]>([]);
-    entry = { loaded: false, get: items, set: setItems };
-    REGISTRY.set(type, entry);
+  const entryRef = useRef<Entry | null>(null);
+
+  if (!REGISTRY.has(type)) {
+    const [items, setItems] = (() => {
+      const [value, setter] = useState<Option[]>([]);
+      return [() => value, setter];
+    })();
+    REGISTRY.set(type, { loaded: false, get: items, set: setItems });
   }
 
+  entryRef.current = REGISTRY.get(type)!;
+
   const ensureLoaded = async () => {
-    if (!entry!.loaded && fetcher) {
+    const entry = entryRef.current!;
+    if (!entry.loaded && fetcher) {
       const data = await fetcher().catch(() => []);
-      entry!.set(data || []);
-      entry!.loaded = true;
+      entry.set(data || []);
+      entry.loaded = true;
     }
   };
 
   const prime = (opts?: Option[]) => {
+    const entry = entryRef.current!;
     if (opts && opts.length) {
-      // priorité aux options fournies par l’appelant
-      const merged = dedupe([...opts, ...entry!.get()]);
-      entry!.set(merged);
+      const merged = dedupe([...opts, ...entry.get()]);
+      entry.set(merged);
     }
   };
 
+  const [options, setOptions] = useState<Option[]>(entryRef.current!.get());
+
+  // synchronise avec les changements du cache global
+  useEffect(() => {
+    setOptions(entryRef.current!.get());
+  }, [entryRef.current]);
+
   return {
-    options: entry.get, // cache courant
-    ensureLoaded, // déclenche le fetch si jamais chargé
-    prime, // injecte des options locales
+    options,
+    ensureLoaded,
+    prime,
   };
 }
 

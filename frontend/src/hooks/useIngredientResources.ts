@@ -1,33 +1,39 @@
-import { createSignal, onMount } from "solid-js";
+import { useState, useEffect } from "react";
 
-type Option = { value: string; label: string };
+export type Option = { value: string; label: string };
 
 export function useIngredientResources(
   unitsFetcher: () => Promise<Option[]>,
-  productsFetcher: () => Promise<Option[]>,
+  productsFetcher: () => Promise<Option[]>
 ) {
-  const [unitsOptions, setUnitsOptions] = createSignal<Option[]>([]);
-  const [productsOptions, setProductsOptions] = createSignal<Option[]>([]);
+  const [unitsOptions, setUnitsOptions] = useState<Option[]>([]);
+  const [productsOptions, setProductsOptions] = useState<Option[]>([]);
 
-  // Fetch both on mount (you can also defer if you prefer lazy loading)
-  onMount(async () => {
-    try {
-      const units = await unitsFetcher();
-      setUnitsOptions(units);
-    } catch (err) {
-      console.error("Failed to load units", err);
-    }
+  useEffect(() => {
+    let active = true;
 
-    try {
-      const products = await productsFetcher();
-      setProductsOptions(products);
-    } catch (err) {
-      console.error("Failed to load products", err);
-    }
-  });
+    const fetchResources = async () => {
+      try {
+        const [units, products] = await Promise.all([
+          unitsFetcher().catch(() => []),
+          productsFetcher().catch(() => []),
+        ]);
 
-  return {
-    unitsOptions,
-    productsOptions,
-  };
+        if (active) {
+          setUnitsOptions(units);
+          setProductsOptions(products);
+        }
+      } catch (err) {
+        console.error("Failed to load ingredient resources", err);
+      }
+    };
+
+    fetchResources();
+
+    return () => {
+      active = false;
+    };
+  }, [unitsFetcher, productsFetcher]);
+
+  return { unitsOptions, productsOptions };
 }

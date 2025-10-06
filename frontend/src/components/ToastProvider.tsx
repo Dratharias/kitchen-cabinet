@@ -1,10 +1,14 @@
-import { ParentProps } from "solid-js";
-import { Toaster } from "solid-toast";
+import { ReactNode } from "react";
+import { Toaster } from "react-hot-toast";
 
-export function ToastProvider(props: ParentProps) {
+interface ToastProviderProps {
+  children: ReactNode;
+}
+
+export function ToastProvider({ children }: ToastProviderProps) {
   return (
     <>
-      {props.children}
+      {children}
       <Toaster position="top-center" />
     </>
   );

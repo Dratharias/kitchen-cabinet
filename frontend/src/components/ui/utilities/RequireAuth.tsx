@@ -1,45 +1,44 @@
-import { JSX, Show, onMount, createEffect } from "solid-js";
-import { useNavigate } from "@solidjs/router";
+import { ReactNode, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../atoms/Button";
 import { Span } from "../atoms/Span";
-import { isAuthenticated, refreshAuthState } from "@/stores/authStore";
+import { useAuthStore } from "@/stores/authStore";
 import { AuthService } from "@/services/auth";
 
-type RequireAuthProps = {
-  fallback?: JSX.Element;
-  children: JSX.Element;
-};
+interface RequireAuthProps {
+  fallback?: ReactNode;
+  children: ReactNode;
+}
 
-export const RequireAuth = (props: RequireAuthProps) => {
+export function RequireAuth({ fallback, children }: RequireAuthProps) {
   const navigate = useNavigate();
+  const { isAuthenticated, refreshAuthState } = useAuthStore();
 
-  onMount(() => {
+  useEffect(() => {
     refreshAuthState();
-  });
+  }, [refreshAuthState]);
 
-  // Watch auth state and redirect immediately if invalid
-  createEffect(() => {
+  useEffect(() => {
     if (!AuthService.isTokenValid()) {
       refreshAuthState();
       navigate("/login", { replace: true });
     }
-  });
+  }, [isAuthenticated, navigate, refreshAuthState]);
 
-  return (
-    <Show
-      when={isAuthenticated()}
-      fallback={
-        props.fallback ?? (
-          <div class="text-center p-4">
+  if (!isAuthenticated) {
+    return (
+      <>
+        {fallback ?? (
+          <div className="text-center p-4">
             <Span>Session expirée ou utilisateur non connecté</Span>
-            <Button class="mt-8 mx-auto" onClick={() => navigate("/login")}>
+            <Button className="mt-8 mx-auto" onClick={() => navigate("/login")}>
               Se connecter
             </Button>
           </div>
-        )
-      }
-    >
-      {props.children}
-    </Show>
-  );
-};
+        )}
+      </>
+    );
+  }
+
+  return <>{children}</>;
+}

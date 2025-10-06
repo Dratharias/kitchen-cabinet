@@ -60,6 +60,7 @@ export interface PublicationData {
   public: boolean;
   published: boolean;
   thumbnail?: string;
+  gallery?: string[];
   type?: OrchestratorEntity<CategoryData>;
   style?: OrchestratorEntity<CategoryData>;
   author?: OrchestratorEntity<CategoryData>;

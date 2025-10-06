@@ -1,34 +1,37 @@
-import { JSX, onCleanup, onMount } from "solid-js";
+import { useEffect, useRef, ReactNode, CSSProperties } from "react";
 
 type ClickOutsideContainerProps = {
-  children: JSX.Element;
+  children: ReactNode;
   onClickOutside: () => void;
-  class?: string;
-  style?: JSX.CSSProperties;
+  className?: string;
+  style?: CSSProperties;
 };
 
-const ClickOutsideContainer = (props: ClickOutsideContainerProps) => {
-  let containerRef: HTMLDivElement | undefined;
+const ClickOutsideContainer = ({
+  children,
+  onClickOutside,
+  className,
+  style,
+}: ClickOutsideContainerProps) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
-  const handleClick = (event: MouseEvent) => {
-    if (!containerRef) return;
+  useEffect(() => {
+    const handleClick = (event: MouseEvent) => {
+      const el = containerRef.current;
+      if (el && !el.contains(event.target as Node)) {
+        onClickOutside();
+      }
+    };
 
-    if (!containerRef.contains(event.target as Node)) {
-      props.onClickOutside();
-    }
-  };
-
-  onMount(() => {
     document.addEventListener("pointerdown", handleClick);
-  });
-
-  onCleanup(() => {
-    document.removeEventListener("pointerdown", handleClick);
-  });
+    return () => {
+      document.removeEventListener("pointerdown", handleClick);
+    };
+  }, [onClickOutside]);
 
   return (
-    <div ref={containerRef} class={props.class}>
-      {props.children}
+    <div ref={containerRef} className={className} style={style}>
+      {children}
     </div>
   );
 };

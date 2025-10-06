@@ -1,4 +1,4 @@
-export const FeedIcon = (props: { class?: string }) => (
+export const FeedIcon = (props: { className?: string }) => (
   <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
       <path d="M13.287 5.158c-1.678-.31-9.29-1.078-9.599.47c-.58 2.797-.799 3.396-.799 3.756c0 .869 1.938.998 2.807 1.138s1.938.29 2.917.4c1.288.126 2.589.031 3.845-.28c.29 0 .68 0 .9-.34a2.7 2.7 0 0 0 .149-1.298c.34-2.767.4-2.997.3-3.336a.67.67 0 0 0-.52-.51m-.999 4.355l-1.698.28a30 30 0 0 1-4.804-.23a6.7 6.7 0 0 1-1.998-.28c0-.19-.09.74.29-2.077c0 0 .36-1.368.36-1.448c.15.37 4.994-.24 7.191.14q.55.09 1.079.21v.459c-.52 3.626-.44 2.717-.45 2.946zm5.234-2.507a.34.34 0 0 0 .46-.17c.58-.898-1.808-1.108-3.236-.869a.35.35 0 0 0-.37.32c-.04.72 2.447.41 3.146.72m-3.096 2.127a5 5 0 0 0 3.076.48c.43.14 1.06-.56.19-.86a3.4 3.4 0 0 0-.6-.09c-.958-.15-3.106-.4-2.666.47M7.774 12.72c-4.915-.13-4.665-.09-4.795.13a.28.28 0 0 0 .15.42c.16.089.06.049 4.605.519a74 74 0 0 0 9.489 0a.34.34 0 0 0 0-.68c-2.377 0-2.997-.23-9.45-.39m8.89 3.886c-5.433-.27-3.675-.55-8.63-.47c-.889 0-1.778.05-2.667 0c-.35 0-2.167-.259-2.297-.229a.32.32 0 0 0 0 .61c.1 0-.16 0 2.247.439a77 77 0 0 0 7.721.39h1.13c4.074.01 3.365-.77 2.496-.74" />
@@ -8,7 +8,7 @@ export const FeedIcon = (props: { class?: string }) => (
   </svg>
 );
 
-export const LibraryIcon = (props: { class?: string }) => (
+export const LibraryIcon = (props: { className?: string }) => (
   <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
     <path
       fill="currentColor"
@@ -17,7 +17,7 @@ export const LibraryIcon = (props: { class?: string }) => (
   </svg>
 );
 
-export const SearchIcon = (props: { class?: string }) => (
+export const SearchIcon = (props: { className?: string }) => (
   <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26">
     <path
       fill="currentColor"
@@ -26,7 +26,7 @@ export const SearchIcon = (props: { class?: string }) => (
   </svg>
 );
 
-export const HamburgerIcon = (props: { class?: string }) => (
+export const HamburgerIcon = (props: { className?: string }) => (
   <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
     <path
       fill="none"
@@ -39,7 +39,7 @@ export const HamburgerIcon = (props: { class?: string }) => (
   </svg>
 );
 
-export const ArrowIcon = (props: { class?: string }) => (
+export const ArrowIcon = (props: { className?: string }) => (
   <svg
     {...props}
     xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@ export const ArrowIcon = (props: { class?: string }) => (
   </svg>
 );
 
-export const ChevronIcon = (props: { class?: string }) => (
+export const ChevronIcon = (props: { className?: string }) => (
   <svg
     {...props}
     xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +71,7 @@ export const ChevronIcon = (props: { class?: string }) => (
   </svg>
 );
 
-export const MinusIcon = (props: { class?: string }) => (
+export const MinusIcon = (props: { className?: string }) => (
   <svg
     {...props}
     xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +86,7 @@ export const MinusIcon = (props: { class?: string }) => (
   </svg>
 );
 
-export const PlusIcon = (props: { class?: string }) => (
+export const PlusIcon = (props: { className?: string }) => (
   <svg
     {...props}
     xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +105,7 @@ export const PlusIcon = (props: { class?: string }) => (
   </svg>
 );
 
-export const TrashIcon = (props: { class?: string }) => (
+export const TrashIcon = (props: { className?: string }) => (
   <svg
     {...props}
     xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +120,7 @@ export const TrashIcon = (props: { class?: string }) => (
   </svg>
 );
 
-export const CloseIcon = (props: { class?: string }) => (
+export const CloseIcon = (props: { className?: string }) => (
   <svg
     {...props}
     xmlns="http://www.w3.org/2000/svg"

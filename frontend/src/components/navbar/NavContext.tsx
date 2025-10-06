@@ -1,25 +1,31 @@
-import { Accessor, createContext, useContext } from "solid-js";
-import { createSignal } from "solid-js";
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useCallback,
+  JSX,
+} from "react";
 
 export type NavItem = "feed" | "library";
 
 type NavState = {
-  activeItem: Accessor<NavItem>;
+  activeItem: NavItem;
   isActive: (item: NavItem) => boolean;
   activate: (item: NavItem) => void;
-  searchOpen: Accessor<boolean>;
+  searchOpen: boolean;
   toggleSearch: () => void;
 };
 
-const NavContext = createContext<NavState>();
+const NavContext = createContext<NavState | undefined>(undefined);
 
-export const NavProvider = (props: { children: any }) => {
-  const [activeItem, setActiveItem] = createSignal<NavItem>("feed");
-  const [searchOpen, setSearchOpen] = createSignal(false);
+export function NavProvider({ children }: { children: ReactNode }): JSX.Element {
+  const [activeItem, setActiveItem] = useState<NavItem>("feed");
+  const [searchOpen, setSearchOpen] = useState(false);
 
-  const isActive = (item: NavItem) => activeItem() === item;
-  const activate = (item: NavItem) => setActiveItem(item);
-  const toggleSearch = () => setSearchOpen((prev) => !prev);
+  const isActive = useCallback((item: NavItem) => activeItem === item, [activeItem]);
+  const activate = useCallback((item: NavItem) => setActiveItem(item), []);
+  const toggleSearch = useCallback(() => setSearchOpen((prev) => !prev), []);
 
   return (
     <NavContext.Provider
@@ -31,9 +37,13 @@ export const NavProvider = (props: { children: any }) => {
         toggleSearch,
       }}
     >
-      {props.children}
+      {children}
     </NavContext.Provider>
   );
-};
+}
 
-export const useNavState = () => useContext(NavContext)!;
+export function useNavState() {
+  const ctx = useContext(NavContext);
+  if (!ctx) throw new Error("useNavState must be used within a NavProvider");
+  return ctx;
+}
