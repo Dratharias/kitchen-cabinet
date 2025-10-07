@@ -8,7 +8,9 @@ import { CommonService } from "./common";
  *  - API interne (/api/publications)
  */
 export class PublicationsService {
+  // =========================================================
   // --- PUBLIC ACCESS ---
+  // =========================================================
 
   /** Liste paginée des publications publiques (non-auth) */
   static async getPublicPublications(
@@ -18,9 +20,18 @@ export class PublicationsService {
       filter?: Record<string, any>;
     },
   ): Promise<PaginatedResponse<Publication>> {
+    const safeParams = {
+      ...params,
+      ...(params?.filter
+        ? {
+            filter: encodeURIComponent(JSON.stringify(params.filter)),
+          }
+        : {}),
+    };
+
     return CommonService.get<PaginatedResponse<Publication>>(
       "/api/public/publications",
-      params,
+      safeParams,
     );
   }
 
@@ -29,7 +40,9 @@ export class PublicationsService {
     return CommonService.get<Publication>(`/api/public/publications/${id}`);
   }
 
+  // =========================================================
   // --- INTERNAL / AUTHENTICATED ACCESS ---
+  // =========================================================
 
   /** Liste paginée interne (admin, édition) */
   static async getPublications(
@@ -39,9 +52,18 @@ export class PublicationsService {
       filter?: Record<string, any>;
     },
   ): Promise<PaginatedResponse<Publication>> {
+    const safeParams = {
+      ...params,
+      ...(params?.filter
+        ? {
+            filter: encodeURIComponent(JSON.stringify(params.filter)),
+          }
+        : {}),
+    };
+
     return CommonService.get<PaginatedResponse<Publication>>(
       "/api/publications",
-      params,
+      safeParams,
     );
   }
 

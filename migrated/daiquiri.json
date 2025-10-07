@@ -4,132 +4,72 @@
     "1": {
       "title": "Daiquiri",
       "description": [
-        "Temps: 5 minutes",
-        ""
+        "Profitez d'un délicieux Daiquiri, un cocktail classique à base de rhum blanc, citron vert et sirop de canne."
       ],
       "note": [],
       "public": true,
       "published": true,
       "thumbnail": "https://i.ibb.co/9YNTW3h/daiquiri.png",
+      "gallery": [],
       "type": {
-        "data": {
-          "str_value": "Recette",
-          "type": "Type"
-        }
+        "str_value": "Recette",
+        "type": "Type"
       },
       "style": null,
       "author": null,
       "tags": [],
       "contents": [
         {
-          "data": {
-            "total_prep_time": 0,
-            "servings": null,
-            "subtitle": "Daiquiri",
-            "is_ingredient": false
-          },
+          "total_prep_time": 5,
+          "servings": null,
+          "subtitle": "Daiquiri",
+          "is_ingredient": false,
           "content_ingredients": [
             {
-              "data": {
-                "quantity": 2.25,
-                "multiply_factor": 1
-              },
+              "quantity": null,
+              "multiply_factor": 1,
               "product": {
-                "data": {
-                  "name": "fraises ou bleuets"
-                }
-              },
-              "ingredient_units": [
-                {
-                  "unit": {
-                    "data": {
-                      "name": "tasses"
-                    }
-                  }
-                }
-              ]
-            },
-            {
-              "data": {
-                "quantity": 75,
-                "multiply_factor": 1
-              },
-              "product": {
-                "data": {
-                  "name": "gin"
-                }
-              },
-              "ingredient_units": [
-                {
-                  "unit": {
-                    "data": {
-                      "name": "ml"
-                    }
-                  }
-                }
-              ]
-            },
-            {
-              "data": {
-                "quantity": 1,
-                "multiply_factor": 1
-              },
-              "product": {
-                "data": {
-                  "name": "miel"
-                }
-              },
-              "ingredient_units": [
-                {
-                  "unit": {
-                    "data": {
-                      "name": "cuil. à soupe"
-                    }
-                  }
-                }
-              ]
-            },
-            {
-              "data": {
-                "quantity": 150,
-                "multiply_factor": 1
-              },
-              "product": {
-                "data": {
-                  "name": "eau ou soda tonique"
-                }
-              },
-              "ingredient_units": [
-                {
-                  "unit": {
-                    "data": {
-                      "name": "ml"
-                    }
-                  }
-                }
-              ]
-            },
-            {
-              "data": {
-                "quantity": null,
-                "multiply_factor": 1
-              },
-              "product": {
-                "data": {
-                  "name": "Basilic"
-                }
+                "name": null
               },
               "ingredient_units": []
             },
             {
-              "data": {
-                "quantity": null,
-                "multiply_factor": 1
-              },
+              "quantity": null,
+              "multiply_factor": 1,
               "product": {
-                "data": {
-                  "name": "Lime"
-                }
+                "name": null
+              },
+              "ingredient_units": []
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": null
+              },
+              "ingredient_units": []
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": null
+              },
+              "ingredient_units": []
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": null
+              },
+              "ingredient_units": []
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": null
               },
               "ingredient_units": []
             }
@@ -138,9 +78,7 @@
             {
               "position": 1,
               "segment": {
-                "data": {
-                  "paragraph": "Mélanger le tout au mixeur."
-                }
+                "paragraph": "Mélanger le tout au mixeur."
               }
             }
           ]

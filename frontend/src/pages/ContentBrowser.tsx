@@ -8,7 +8,7 @@ import Dock from "@/components/ui/Dock";
 import { FileText, BookOpen, Lightbulb, Utensils, Search } from "lucide-react";
 import ClickOutsideContainer from "@/components/utilities/ClickOutsideContainer";
 import { StableMasonry } from "@/components/ui/StableMasonry";
-import { PublicationCard } from "@/components/ui/PublicationCard";
+import { PublicationCard } from "@/components/cards/PublicationCard";
 
 const TYPE_MAP = {
   books: ["Guide"],
@@ -35,6 +35,7 @@ export function ContentBrowser() {
   const { category } = useParams();
   const navigate = useNavigate();
 
+  // --- État principal ---
   const [page, setPage] = useState(1);
   const [limit] = useState(12);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -47,7 +48,7 @@ export function ContentBrowser() {
   const sentinelRef = useRef<HTMLDivElement | null>(null);
   const categories = useMemo(() => ["books", "reviews", "article", "recipes"], []);
 
-  // --- gestion de la catégorie courante ---
+  // --- Gestion de la catégorie courante depuis l’URL ---
   useEffect(() => {
     if (category && categories.includes(category)) {
       setSelectedCategory(category);
@@ -56,6 +57,7 @@ export function ContentBrowser() {
     }
   }, [category]);
 
+  // --- Changement de catégorie depuis le dock ---
   const handleCategorySelect = (key: string) => {
     setSelectedCategory(key);
     setSearchActive(false);
@@ -64,51 +66,68 @@ export function ContentBrowser() {
     navigate(`/${key}`);
   };
 
-  // --- chargement des publications ---
+  // --- Fetch publications ---
   const fetchPublications = useCallback(
-    async (pageToLoad: number) => {
+    async (pageToLoad: number, reset = false) => {
       if (loading) return;
       setLoading(true);
+
       const types =
         selectedCategory && TYPE_MAP[selectedCategory]
           ? TYPE_MAP[selectedCategory]
           : Object.values(TYPE_MAP).flat();
 
-      const result = await PublicationsService.getPublications({
-        page: pageToLoad,
-        limit,
-        filter: { type: types, q: query || undefined },
-      });
+      try {
+        const result = await PublicationsService.getPublicPublications({
+          page: pageToLoad,
+          limit,
+          sortBy: "title",
+          order: "asc",
+          filter: { type: types, q: query || undefined },
+        });
 
-      setItems((prev) =>
-        pageToLoad === 1 ? result.items : [...prev, ...result.items]
-      );
-      setTotalPages(result.totalPages);
-      setLoading(false);
+        // Tri alphabétique côté client (sécurité)
+        const sortedItems = [...result.items].sort((a, b) =>
+          a.title.localeCompare(b.title, "fr", { sensitivity: "base" })
+        );
+
+        setItems((prev) => (reset ? sortedItems : [...prev, ...sortedItems]));
+        setTotalPages(result.totalPages);
+      } catch (err) {
+        console.error("Erreur de chargement des publications:", err);
+      } finally {
+        setLoading(false);
+      }
     },
     [selectedCategory, query, limit, loading]
   );
 
-  // --- scroll infini ---
+  // --- Reset quand catégorie ou recherche change ---
+  useEffect(() => {
+    setItems([]);
+    setPage(1);
+  }, [selectedCategory, query]);
+
+  // --- Fetch initial et pagination ---
+  useEffect(() => {
+    fetchPublications(page, page === 1);
+  }, [page]);
+
+  // --- Scroll infini ---
   useEffect(() => {
     if (!sentinelRef.current) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && page < totalPages && !loading) {
-          setPage((prev) => prev + 1);
-        }
-      },
-      { threshold: 0.25 }
-    );
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !loading && page < totalPages) {
+        setPage((prev) => prev + 1);
+      }
+    }, { threshold: 0.25 });
+
     observer.observe(sentinelRef.current);
     return () => observer.disconnect();
-  }, [page, totalPages, loading]);
+  }, [totalPages, loading, page]);
 
-  useEffect(() => {
-    fetchPublications(page);
-  }, [page, selectedCategory, query]);
-
-  // --- dock items ---
+  // --- Dock items ---
   const dockItems = [
     ...categories.slice(0, 2).map((key) => ({
       icon: ICON_MAP[key],
@@ -130,9 +149,9 @@ export function ContentBrowser() {
     })),
   ];
 
-  // --- rendu principal ---
+  // --- Rendu principal ---
   return (
-    <div className="flex h-screen flex-col w-full relative p-8">
+    <div className="flex min-h-screen flex-col w-full relative p-8">
       {/* Fond animé */}
       <div className="absolute inset-0 w-full h-full -z-10 pointer-events-none bg-[#1F1F1F]">
         <DotGrid

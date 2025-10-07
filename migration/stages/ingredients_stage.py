@@ -4,46 +4,47 @@ import json
 import re
 import unicodedata
 import copy
+from rapidfuzz import fuzz
 from ..mistral_client import MistralClient
 from ..utils.group_matcher import best_match, standardize_group
 
 STOPWORDS_FR = {
-    "de","du","des","d","au","aux","la","le","les","et","ou","a","à","en","avec","sans",
-    "maison","pro"
+    "de","du","des","d","au","aux","la","le","les","et","ou",
+    "a","à","en","avec","sans","maison","pro"
 }
-
 UNIT_WORDS = {
-    "gousse", "paquet", "sachet", "pincée", "tranche", "feuille", "botte",
-    "cuil.", "cuil", "cuil. à soupe", "cuil. à thé",
-    "cuillère", "cuillère à soupe", "cuillère à thé",
-    "tbsp", "tbs", "tablespoon", "tsp", "teaspoon",
-    "tasse", "cup", "cups",
-    "litre", "litres", "l", "ml",
-    "g", "gramme", "grammes", "kg", "kilogramme", "kilogrammes",
-    "oz", "ounce", "ounces", "lb", "lbs", "pound", "pounds"
+    "gousse","paquet","sachet","pincée","tranche","feuille","botte",
+    "cuil.","cuil","cuil. à soupe","cuil. à thé",
+    "cuillère","cuillère à soupe","cuillère à thé",
+    "tbsp","tbs","tablespoon","tsp","teaspoon",
+    "tasse","cup","cups","litre","litres","l","ml",
+    "g","gramme","grammes","kg","kilogramme","kilogrammes",
+    "oz","ounce","ounces","lb","lbs","pound","pounds"
+}
+CUT_WORDS = {
+    "haché","hache","émincé","emince","ciselé","cisele",
+    "concassé","concasse","râpé","rape","coupé","coupe",
+    "tranché","tranche","effiloché","effiloche","découpé",
+    "decoupe","taillé","taille","en dés","dés","en rondelles",
+    "rondelles","julienne","lamelles","brunoise","écrasé",
+    "ecrase","pressé","presse","séché","seche","grillé","grille"
 }
 
-CUT_WORDS = {
-    "haché", "hache",
-    "émincé", "emince",
-    "ciselé", "cisele",
-    "concassé", "concasse",
-    "râpé", "rape",
-    "coupé", "coupe",
-    "tranché", "tranche",
-    "effiloché", "effiloche",
-    "découpé", "decoupe",
-    "taillé", "taille",
-    "en dés", "dés",
-    "en rondelles", "rondelles",
-    "julienne",
-    "lamelles",
-    "brunoise",
-    "écrasé", "ecrase",
-    "pressé", "presse",
-    "séché", "seche",
-    "grillé", "grille"
-}
+
+def strip_accents(text: str) -> str:
+    if not text:
+        return text
+    text = unicodedata.normalize("NFKD", text)
+    return "".join(c for c in text if not unicodedata.combining(c))
+
+
+def clean_product(product: str) -> str:
+    product = product.strip()
+    product = re.sub(r"^\d+[.,]?\d*\s*\w*\s+", "", product)
+    product = re.sub(r"\([^)]*\)", "", product)
+    product = strip_accents(product)
+    return product.strip()
+
 
 def clean_legacy_links(s: str) -> str:
     if not isinstance(s, str):
@@ -57,89 +58,52 @@ def clean_legacy_links(s: str) -> str:
             return s
     return s.strip()
 
-def strip_accents(text: str) -> str:
-    if not text:
-        return text
-    text = unicodedata.normalize("NFKD", text)
-    return "".join(c for c in text if not unicodedata.combining(c))
-
-def clean_product(product: str) -> str:
-    product = product.strip()
-    product = re.sub(r"^\d+[.,]?\d*\s*\w*\s+", "", product)
-    product = re.sub(r"\([^)]*\)", "", product)  # retirer parenthèses
-    product = strip_accents(product)
-    return product.strip()
-
-def _tokens(text: str) -> list[str]:
-    if not text:
-        return []
-    t = unicodedata.normalize("NFKD", str(text).lower())
-    t = "".join(c for c in t if not unicodedata.combining(c))
-    t = re.sub(r"[^a-z0-9]+", " ", t)
-    toks = [w for w in t.split() if w and w not in STOPWORDS_FR]
-    toks = [re.sub(r"s$", "", w) for w in toks]
-    return toks
-
-def _product_group_match(group_name: str, product: str) -> bool:
-    if not group_name or not product:
-        return False
-
-    def lev_dist_leq1(a: str, b: str) -> bool:
-        if a == b:
-            return True
-        if abs(len(a) - len(b)) > 1:
-            return False
-        if len(a) == len(b):
-            diff = sum(1 for x, y in zip(a, b) if x != y)
-            return diff <= 1
-        if len(a) < len(b):
-            a, b = b, a
-        i = j = diff = 0
-        while i < len(a) and j < len(b):
-            if a[i] == b[j]:
-                i += 1; j += 1
-            else:
-                diff += 1
-                if diff > 1:
-                    return False
-                i += 1
-        diff += (len(a) - i)
-        return diff <= 1
-
-    gt_all = _tokens(group_name)
-    pt_all = _tokens(product)
-    gt = [t for t in gt_all if len(t) >= 3]
-    pt = [t for t in pt_all if len(t) >= 3]
-
-    if not gt or not pt:
-        return False
-
-    for g in gt:
-        matched = False
-        for p in pt:
-            if lev_dist_leq1(g, p):
-                matched = True
-                break
-        if not matched:
-            return False
-    return True
 
 class IngredientsStage:
     def __init__(self, model: str = "mistral-nemo:12b"):
         self.client = MistralClient(model=model)
 
+    # ---------------- MAIN PIPELINE ----------------
     def process(self, md_text: str, groups: List[Dict[str, Any]]) -> Dict[str, Any]:
         raw_items = self._read_metadata_array(md_text, "ingredients")
         raw_blocks = self._group_from_raw(raw_items, groups)
         mapped = self._map_to_canonical(raw_blocks, groups)
         enriched = self._enrich_ingredients(mapped)
-        classified = self._classify_ingredient_groups(enriched)
+        classified = self.classify_from_mapped(mapped)
         return {
             "raw": raw_items,
             "mapped": mapped,
             "enriched": enriched,
             "classified": classified,
         }
+
+    # ---------------- I/O PARSING ----------------
+    def _read_metadata_array(self, md_text: str, key: str) -> List[str]:
+        lines = md_text.splitlines()
+        capture = False
+        buf: List[str] = []
+        for line in lines:
+            low = line.strip().lower()
+            if not capture and low.startswith(f"{key}:"):
+                capture = True
+                buf.append(line.split(":", 1)[1])
+                continue
+            if capture:
+                if low.startswith("steps:"):
+                    break
+                buf.append(line)
+                if "]" in line:
+                    break
+        raw = " ".join(buf)
+        if "[" not in raw or "]" not in raw:
+            return []
+        inner = raw.split("[", 1)[1].rsplit("]", 1)[0]
+        try:
+            arr = json.loads("[" + inner + "]")
+            return [clean_legacy_links(re.sub(r"\([^)]*\)", "", str(v)).strip()) for v in arr]
+        except Exception:
+            matches = re.findall(r'"([^"\\]*(?:\\.[^"\\]*)*)"', inner)
+            return [clean_legacy_links(re.sub(r"\([^)]*\)", "", m).strip()) for m in matches]
 
     def _group_from_raw(self, items: List[str], groups: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         raw_blocks: List[Dict[str, Any]] = []
@@ -155,7 +119,6 @@ class IngredientsStage:
             else:
                 if current is None:
                     current = {"group": default_group, "ingredients": []}
-                s = re.sub(r"\([^)]*\)", "", s).strip()  # retirer contenu entre parenthèses
                 current["ingredients"].append(s)
         if current:
             raw_blocks.append(current)
@@ -169,6 +132,7 @@ class IngredientsStage:
             mapped.append({"group": canonical, "ingredients": block["ingredients"]})
         return mapped
 
+    # ---------------- ENRICHMENT ----------------
     def _enrich_ingredients(self, mapped: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         enriched: List[Dict[str, Any]] = []
         for block in mapped:
@@ -199,35 +163,59 @@ class IngredientsStage:
             enriched.append(out_block)
         return enriched
 
-    def _classify_ingredient_groups(self, enriched: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        per_group_products: List[List[str]] = []
-        for block in enriched:
-            prods = [str(ing.get("product", {}).get("name") or "") for ing in block.get("ingredients", [])]
-            per_group_products.append([p for p in prods if p.strip()])
-        classified: List[Dict[str, Any]] = []
-        for i, block in enumerate(enriched):
-            gname = block.get("group", "")
-            other_products = [p for j, prods in enumerate(per_group_products) if j != i for p in prods]
-            is_ing = any(_product_group_match(gname, p) for p in other_products)
-            new_block = {
+    # ---------------- CLASSIFICATION ----------------
+    def classify_from_mapped(self, mapped: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        classified = []
+        for block in mapped:
+            gname = block["group"]
+            flag = self._is_ingredient_group_from_raw(gname, mapped)
+            classified.append({
                 "group": gname,
-                "ingredients": copy.deepcopy(block.get("ingredients", [])),
-                "is_ingredient": bool(is_ing),
-                "subtitle": gname if is_ing else None,
-            }
-            classified.append(new_block)
+                "ingredients": copy.deepcopy(block["ingredients"]),
+                "is_ingredient": flag,
+                "subtitle": gname if flag else None,
+            })
         return classified
 
+    def _is_ingredient_group_from_raw(self, group: str, all_blocks: List[Dict[str, Any]]) -> bool:
+        """Détecte si le groupe est utilisé comme ingrédient ailleurs (tolérance légère)."""
+        g_clean = strip_accents(group.lower()).strip()
+        g_words = [w for w in re.findall(r"[a-z]+", g_clean) if w not in STOPWORDS_FR and len(w) > 2]
+        if not g_words:
+            return False
+
+        for block in all_blocks:
+            if strip_accents(block["group"].lower()) == g_clean:
+                continue
+
+            for ing in block.get("ingredients", []):
+                raw_line = ing if isinstance(ing, str) else str(ing)
+                raw_clean = strip_accents(raw_line.lower()).strip()
+                i_words = [w for w in re.findall(r"[a-z]+", raw_clean) if len(w) > 2]
+
+                # Comparaison floue mot à mot
+                matches = 0
+                for gw in g_words:
+                    best = max((fuzz.ratio(gw, iw) for iw in i_words), default=0)
+                    if best >= 78:  # tolérance fautes + pluriels
+                        matches += 1
+
+                coverage = matches / len(g_words)
+                literal_match = g_clean in raw_clean
+
+                # tolère si 70% des mots sont présents + match flou direct
+                if (coverage >= 0.7 or literal_match) and not raw_clean.startswith(g_clean):
+                    print(f"[DEBUG] '{group}' vs '{raw_line}' → coverage={coverage:.2f}")
+                    return True
+        return False
+
+
+
+
+    # ---------------- AI HELPERS ----------------
     def _extract_unit(self, ing_str: str) -> str:
-        s = re.sub(r"\([^)]*\)", "", ing_str).strip()
-        prompt = f"""
-Extrait uniquement l'unité de mesure SI ou culinaire de la ligne suivante.
-Si aucune unité standard n’est trouvée, retourne null.
-
-Ligne: "{s}"
-
-Réponds uniquement en JSON: {{ "unit": "..." }} ou {{ "unit": null }}
-"""
+        s = clean_legacy_links(re.sub(r"\([^)]*\)", "", ing_str).strip())
+        prompt = f"""\nExtrait uniquement l'unité de mesure SI ou culinaire de la ligne suivante.\nSi aucune unité standard n’est trouvée, retourne null.\n\nLigne: \"{s}\"\n\nRéponds uniquement en JSON: {{ "unit": "..." }} ou {{ "unit": null }}\n"""
         try:
             result = self.client.generate_json(prompt)
             return result.get("unit") or ""
@@ -235,17 +223,8 @@ Réponds uniquement en JSON: {{ "unit": "..." }} ou {{ "unit": null }}
             return ""
 
     def _extract_quantity(self, ing_str: str) -> float | None:
-        s = re.sub(r"\([^)]*\)", "", ing_str).strip()
-        prompt = f"""
-Extrait uniquement la quantité minimale de la ligne suivante.
-- Si c'est une fraction (ex: 1/8), calcule la valeur décimale.
-- Si c'est une plage (10-15 ou 80 à 100), prends la valeur min.
-- Si aucune quantité n’est trouvée, retourne null.
-
-Ligne: "{s}"
-
-Réponds uniquement en JSON: {{ "quantity": nombre|null }}
-"""
+        s = clean_legacy_links(re.sub(r"\([^)]*\)", "", ing_str).strip())
+        prompt = f"""\nExtrait uniquement la quantité minimale de la ligne suivante.\n- Si c'est une fraction (ex: 1/8), calcule la valeur décimale.\n- Si c'est une plage (10-15 ou 80 à 100), prends la valeur min.\n- Si aucune quantité n’est trouvée, retourne null.\n\nLigne: \"{s}\"\n\nRéponds uniquement en JSON: {{ "quantity": nombre|null }}\n"""
         try:
             result = self.client.generate_json(prompt)
             return result.get("quantity")
@@ -253,19 +232,9 @@ Réponds uniquement en JSON: {{ "quantity": nombre|null }}
             return None
 
     def _extract_product(self, ing_str: str, unit: str = "") -> Dict[str, Any]:
-        s = strip_accents(str(ing_str)).replace("\u00a0", " ").strip()
+        s = clean_legacy_links(strip_accents(str(ing_str))).replace("\u00a0", " ").strip()
         s = re.sub(r"\([^)]*\)", "", s).strip()
-        prompt = f"""
-Analyse cette ligne d'ingrédient et sépare le produit et la coupe éventuelle.
-- Le champ name contient l'aliment de base (ail, carotte, oignon, etc.).
-- Le champ cut contient la préparation: {', '.join(sorted(CUT_WORDS))}.
-- Retire toute unité comme gousse, paquet, sachet, etc. du champ name.
-- Si aucune coupe n'est trouvée, cut = null.
-
-Ligne: "{s}"
-
-Réponds uniquement en JSON: {{ "name": "...", "cut": "..."|null }}
-"""
+        prompt = f"""\nAnalyse cette ligne d'ingrédient et sépare le produit et la coupe éventuelle.\n- Le champ name contient l'aliment de base (ail, carotte, oignon, etc.).\n- Le champ cut contient la préparation: {', '.join(sorted(CUT_WORDS))}.\n- Retire toute unité comme gousse, paquet, sachet, etc. du champ name.\n- Si aucune coupe n'est trouvée, cut = null.\n\nLigne: \"{s}\"\n\nRéponds uniquement en JSON: {{ "name": "...", "cut": "..."|null }}\n"""
         try:
             result = self.client.generate_json(prompt)
             name = clean_product(result.get("name", ""))
@@ -279,32 +248,5 @@ Réponds uniquement en JSON: {{ "name": "...", "cut": "..."|null }}
             name = " ".join(parts)
         if any(u in name.lower() for u in UNIT_WORDS):
             for u in UNIT_WORDS:
-                name = re.sub(rf"\\b{u}\\b", "", name, flags=re.I).strip()
+                name = re.sub(rf"\b{u}\b", "", name, flags=re.I).strip()
         return {"name": name, "cut": cut}
-
-    def _read_metadata_array(self, md_text: str, key: str) -> List[str]:
-        lines = md_text.splitlines()
-        capture = False
-        buf: List[str] = []
-        for line in lines:
-            low = line.strip().lower()
-            if not capture and low.startswith(f"{key}:"):
-                capture = True
-                buf.append(line.split(":", 1)[1])
-                continue
-            if capture:
-                if low.startswith("steps:"):
-                    break
-                buf.append(line)
-                if "]" in line:
-                    break
-        raw = " ".join(buf)
-        if "[" not in raw or "]" not in raw:
-            return []
-        inner = raw.split("[", 1)[1].rsplit("]", 1)[0]
-        try:
-            arr = json.loads("[" + inner + "]")
-            return [re.sub(r"\([^)]*\)", "", str(v)).strip() for v in arr]
-        except Exception:
-            matches = re.findall(r'"([^"\\]*(?:\\.[^"\\]*)*)"', inner)
-            return [re.sub(r"\([^)]*\)", "", m).strip() for m in matches]

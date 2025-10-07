@@ -15,7 +15,6 @@ from .stages.group_aligner import GroupAligner
 
 
 def _fix_str(s: str) -> str:
-    # Répare le mojibake puis normalise en NFC
     return unicodedata.normalize("NFC", ftfy.fix_text(s))
 
 
@@ -37,77 +36,66 @@ class RecipePipeline:
         self.group_aligner = GroupAligner()
 
     def process(self, md_text: str) -> Dict[str, Any]:
-        # Pré-fix du Markdown entier pour éviter de propager le mojibake
         md_text = _fix_str(md_text)
 
-        # Stage 1: metadata
+        # --- 1. Metadata
         metadata_stage = MetadataStage(self.model)
-        metadata = metadata_stage.process(md_text)
-        metadata = _fix_recursive(metadata)
+        metadata = _fix_recursive(metadata_stage.process(md_text))
         self._write_json("01_metadata.json", metadata)
 
-        # Stage 2: groups
+        # --- 2. Groups
         groups_stage = GroupsStage(self.model)
-        groups = groups_stage.process(md_text, metadata["title"])
-        groups = _fix_recursive(groups)
+        groups = _fix_recursive(groups_stage.process(md_text, metadata["title"]))
         self._write_json("01_groups.json", groups)
 
-        # Stage 3: ingredients (raw + mapped)
+        # --- 3. Ingredients (avec classification unique)
         ingredients_stage = IngredientsStage(self.model)
-        ingredients = ingredients_stage.process(md_text, groups)
-        ingredients = _fix_recursive(ingredients)
-        self._write_json("01_ingredients.json", ingredients["raw"])
-        self._write_json("02_ingredients.json", ingredients["mapped"])
+        raw_ing = ingredients_stage._read_metadata_array(md_text, "ingredients")
+        raw_blocks = ingredients_stage._group_from_raw(raw_ing, groups)
+        mapped = ingredients_stage._map_to_canonical(raw_blocks, groups)
+        classified = ingredients_stage.classify_from_mapped(mapped)  # flag déjà calculé ici
+        self._write_json("01_ingredients.json", raw_ing)
+        self._write_json("02_ingredients.json", mapped)
 
-        # Stage 4: steps (raw + mapped)
+        # --- 4. Steps
         steps_stage = StepsStage(self.model)
-        steps = steps_stage.process(md_text, groups)
-        steps = _fix_recursive(steps)
+        steps = _fix_recursive(steps_stage.process(md_text, groups))
         self._write_json("01_steps.json", steps["raw"])
         self._write_json("02_steps.json", steps["mapped"])
 
-        # Stage 5: align groups BEFORE enriching/classifying ingredients
-        aligned = self.group_aligner.align(ingredients["mapped"], steps["mapped"], groups)
-        aligned = _fix_recursive(aligned)
+        # --- 5. Align groups (préserve les flags calculés)
+        aligned = _fix_recursive(self.group_aligner.align(classified, steps["mapped"], groups))
         self._write_json("03_aligned.json", aligned)
 
-        # Remplacer les groupes pour les passes suivantes
-        ingredients["mapped"] = aligned["ingredients"]
-        steps["mapped"] = aligned["steps"]
+        # remplacer les groupes pour les passes suivantes
+        ingredients = aligned["ingredients"]
+        steps = aligned["steps"]
 
-        # Stage 6: enrich + classify ingredients (with aligned groups)
-        enriched = ingredients_stage._enrich_ingredients(ingredients["mapped"])
-        classified = ingredients_stage._classify_ingredient_groups(enriched)
-        enriched = _fix_recursive(enriched)
-        classified = _fix_recursive(classified)
+        # --- 6. Enrichissement (sans reclassification)
+        enriched = _fix_recursive(ingredients_stage._enrich_ingredients(ingredients))
         self._write_json("03_ingredients.json", enriched)
-        self._write_json("04_ingredients.json", classified)
+        self._write_json("04_ingredients.json", ingredients)  # les flags originaux conservés
 
-        # Stage 7: payload
+        # --- 7. Build payload
         payload_stage = PayloadStage()
-        payload = payload_stage.build(metadata, groups, classified, steps["mapped"])
-        payload = _fix_recursive(payload)
+        payload = _fix_recursive(payload_stage.build(metadata, groups, ingredients, steps))
         self._write_json("final_payload.json", payload)
 
-        # Post-fix sur le fichier écrit pour éliminer toute corruption résiduelle
+        # --- 8. Export final
         self._post_fix_file(self.work_dir / "final_payload.json")
-
-        # Stage 8: export
         slug = self._slugify(metadata.get("title", "untitled"))
-        exporter = PayloadExporter("migrated")
-        exporter.export(payload, slug)
+        PayloadExporter("migrated").export(payload, slug)
         return payload
 
+    # ---------------- UTILITAIRES ----------------
     def _post_fix_file(self, path: Path) -> None:
         try:
             raw = path.read_text(encoding="utf-8")
             fixed = _fix_str(raw)
             try:
-                # si c'est du JSON valide on re-formate proprement
                 obj = json.loads(fixed)
                 path.write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding="utf-8")
             except Exception:
-                # sinon on écrit le texte corrigé tel quel
                 path.write_text(fixed, encoding="utf-8")
         except Exception:
             pass
@@ -125,6 +113,7 @@ class RecipePipeline:
             .replace(".", "")
         )
 
+
 if __name__ == "__main__":
     import sys
     if len(sys.argv) < 3 or sys.argv[1] != "-f":
@@ -138,9 +127,6 @@ if __name__ == "__main__":
 
     work_dir = Path("output")
     pipeline = RecipePipeline(work_dir)
-
     md_text = md_file.read_text(encoding="utf-8")
     payload = pipeline.process(md_text)
-
-    # Titre déjà corrigé par les passes ftfy
     print(f"✓ Processed: {payload['payload']['1']['title']}")

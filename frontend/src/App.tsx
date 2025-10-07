@@ -9,7 +9,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ToastProvider>
-        <div className="h-screen w-full flex flex-col bg-[#1F1F1F] text-gray-200">
+        <div className="min-h-screen w-full flex flex-col bg-[#1F1F1F] text-gray-200">
           <Routes>
             {/* Routes fixes et explicites */}
             <Route path="/login" element={<LoginForm />} />

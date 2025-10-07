@@ -4,147 +4,85 @@
     "1": {
       "title": "Mojito",
       "description": [
-        "Rendement: 2 litres",
-        "Temps: 15 minutes"
+        "Profitez d'un rafraîchissement tropical avec ce classique cubain à base de menthe, citron vert et rhum blanc."
       ],
       "note": [],
       "public": true,
       "published": true,
       "thumbnail": "",
+      "gallery": [],
       "type": {
-        "data": {
-          "str_value": "Recette",
-          "type": "Type"
-        }
+        "str_value": "Recette",
+        "type": "Type"
       },
       "style": null,
       "author": null,
       "tags": [],
       "contents": [
         {
-          "data": {
-            "total_prep_time": 0,
-            "servings": null,
-            "subtitle": "Mojito",
-            "is_ingredient": false
-          },
+          "total_prep_time": 15,
+          "servings": 2,
+          "subtitle": "Mojito",
+          "is_ingredient": false,
           "content_ingredients": [
             {
-              "data": {
-                "quantity": 140,
-                "multiply_factor": 1
-              },
+              "quantity": null,
+              "multiply_factor": 1,
               "product": {
-                "data": {
-                  "name": "rhum"
-                }
-              },
-              "ingredient_units": [
-                {
-                  "unit": {
-                    "data": {
-                      "name": "ml"
-                    }
-                  }
-                }
-              ]
-            },
-            {
-              "data": {
-                "quantity": 40,
-                "multiply_factor": 1
-              },
-              "product": {
-                "data": {
-                  "name": "jus de lime"
-                }
-              },
-              "ingredient_units": [
-                {
-                  "unit": {
-                    "data": {
-                      "name": "ml"
-                    }
-                  }
-                }
-              ]
-            },
-            {
-              "data": {
-                "quantity": 20,
-                "multiply_factor": 1
-              },
-              "product": {
-                "data": {
-                  "name": "menthe"
-                }
+                "name": null
               },
               "ingredient_units": []
             },
             {
-              "data": {
-                "quantity": 140,
-                "multiply_factor": 1
-              },
+              "quantity": null,
+              "multiply_factor": 1,
               "product": {
-                "data": {
-                  "name": "sucre"
-                }
+                "name": null
               },
-              "ingredient_units": [
-                {
-                  "unit": {
-                    "data": {
-                      "name": "g"
-                    }
-                  }
-                }
-              ]
+              "ingredient_units": []
             },
             {
-              "data": {
-                "quantity": 2,
-                "multiply_factor": 1
-              },
+              "quantity": null,
+              "multiply_factor": 1,
               "product": {
-                "data": {
-                  "name": "eau"
-                }
+                "name": null
               },
-              "ingredient_units": [
-                {
-                  "unit": {
-                    "data": {
-                      "name": "litres"
-                    }
-                  }
-                }
-              ]
+              "ingredient_units": []
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": null
+              },
+              "ingredient_units": []
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": null
+              },
+              "ingredient_units": []
             }
           ],
           "content_segments": [
             {
               "position": 1,
               "segment": {
-                "data": {
-                  "paragraph": "Dans un pichet, faire mariner la menthe, le sucre et le jus de lime. (Minimum 10 minutes)"
-                }
+                "paragraph": "Dans un pichet, faire mariner la menthe, le sucre et le jus de lime. (Minimum 10 minutes)"
               }
             },
             {
               "position": 2,
               "segment": {
-                "data": {
-                  "paragraph": "Incorporer l'eau et le rhum."
-                }
+                "paragraph": "Incorporer l'eau et le rhum."
               }
             },
             {
               "position": 3,
               "segment": {
-                "data": {
-                  "paragraph": "Servir froid ou avec de la glace si désiré."
-                }
+                "paragraph": "Servir froid ou avec de la glace si désiré."
               }
             }
           ]

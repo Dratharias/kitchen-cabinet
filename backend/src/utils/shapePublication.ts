@@ -1,98 +1,157 @@
-// Objectifs:
-// - Dédupliquer par ID
-// - Supprimer les FKs redondantes au niveau parent quand l'objet enfant est présent
-// - Garder une forme compacte pour l'API publique
+import type { Publication } from "types/controller.types";
 
-export function deduplicateBy<T>(
-  arr: T[] = [],
-  keyFn: (item: T) => string,
-): T[] {
-  const seen = new Set<string>();
-  const out: T[] = [];
-  for (const item of arr) {
-    const key = keyFn(item);
-    if (!seen.has(key)) {
-      seen.add(key);
-      out.push(item);
-    }
-  }
-  return out;
-}
-
-function compactSegments(contentSegments: any[] = []) {
-  // Input item shape (Prisma include):
-  // { content_id, segment_id, position, segment: { segment_id, title, paragraph } }
-  // Output:
-  // { position, segment: { segment_id, title, paragraph } }
-  return contentSegments.map((cs) => ({
-    position: cs.position ?? null,
-    segment: cs.segment
-      ? {
-          segment_id: cs.segment.segment_id,
-          title: cs.segment.title ?? null,
-          paragraph: cs.segment.paragraph,
-        }
-      : {
-          // fallback si 'segment' n'est pas peuplé
-          segment_id: cs.segment_id,
-          title: null,
-          paragraph: "",
-        },
-  }));
-}
-
-function compactIngredients(contentIngredients: any[] = []) {
-  // Déjà compact dans le contrôleur, on garde une passe pour homogénéité + dédup units
-  return deduplicateBy(
-    contentIngredients.map((ci) => ({
-      ingredient_id: ci.ingredient.ingredient_id,
-      quantity: ci.ingredient.quantity ?? null,
-      product: ci.ingredient.product
-        ? {
-            product_id: ci.ingredient.product.product_id,
-            name: ci.ingredient.product.name,
-            en_name: ci.ingredient.product.en_name ?? null,
-            macro: ci.ingredient.product.macro ?? null,
-            isRecipe: ci.ingredient.product.isRecipe ?? null,
-          }
-        : null,
-      ingredient_units: deduplicateBy(
-        (ci.ingredient.ingredient_units || []).map((iu: any) => iu.unit),
-        (u: any) => u.unit_id,
-      ),
-    })),
-    (x) => x.ingredient_id,
-  );
-}
-
-function compactPrepTimes(contentPrepTimes: any[] = []) {
-  // Input: { content_id, prep_time_id, prep_time: { prep_time_id, duration, style } }
-  // Sortie déjà compacte dans le contrôleur, on garde l'ID du child uniquement
-  return deduplicateBy(
-    contentPrepTimes.map((cp) => ({
-      prep_time_id: cp.prep_time.prep_time_id,
-      duration: cp.prep_time.duration,
-      style: cp.prep_time.style ?? null,
-    })),
-    (x) => x.prep_time_id,
-  );
-}
-
-function compactContents(contents: any[] = []) {
-  return contents.map((c) => ({
-    // On enlève publication_id ici car redondant avec le parent
-    content_id: c.content_id,
-    total_prep_time: c.total_prep_time,
-    servings: c.servings ?? null,
-    content_segments: compactSegments(c.content_segments),
-    content_ingredients: compactIngredients(c.content_ingredients),
-    content_prep_times: compactPrepTimes(c.content_prep_times),
-  }));
-}
-
-export function shapePublicPublication(pub: any) {
+function shapePublicationBase(pub: any) {
   return {
-    ...pub,
-    contents: compactContents(pub.contents || []),
+    publication_id: pub.publication_id,
+    title: pub.title ?? "",
+    description: Array.isArray(pub.description) ? pub.description : [],
+    note: Array.isArray(pub.note) ? pub.note : [],
+    public: pub.public ?? false,
+    published: pub.published ?? false,
+    thumbnail: pub.thumbnail ?? null,
+    gallery: Array.isArray(pub.gallery) ? pub.gallery : [],
+    type: pub.type
+      ? {
+          category_id: pub.type.category_id,
+          str_value: pub.type.str_value,
+          type: pub.type.type,
+        }
+      : null,
+    style: pub.style
+      ? {
+          category_id: pub.style.category_id,
+          str_value: pub.style.str_value,
+          type: pub.style.type,
+        }
+      : null,
+    author: pub.author
+      ? {
+          category_id: pub.author.category_id,
+          str_value: pub.author.str_value,
+          type: pub.author.type,
+        }
+      : null,
+    tags: Array.isArray(pub.tags)
+      ? pub.tags.map((t: any) => ({
+          category_id: t.category?.category_id,
+          str_value: t.category?.str_value,
+          type: t.category?.type,
+        }))
+      : [],
+    productsRef: Array.isArray(pub.productsRef)
+      ? pub.productsRef.map((p: any) => ({
+          product_id: p.product_id,
+          name: p.name,
+          en_name: p.en_name,
+        }))
+      : [],
+  };
+}
+
+/* ============================================================
+   Résumé (liste / cartes)
+   ============================================================ */
+export function shapePublicPublicationSummary(pub: any): Publication {
+  const base = shapePublicationBase(pub);
+
+  const ratings =
+    Array.isArray(pub.reviews) && pub.reviews.length > 0
+      ? pub.reviews.map((r: any) => r.rating ?? 0)
+      : [];
+
+  const reviewCount = ratings.length;
+  const reviewAverageScore =
+    reviewCount > 0 ? ratings.reduce((a: any, b: any) => a + b, 0) / reviewCount : 0;
+
+  return {
+    ...base,
+    contents: Array.isArray(pub.contents)
+      ? pub.contents.map((c: any) => ({
+          total_prep_time: c.total_prep_time ?? 0,
+          servings: c.servings ?? 1,
+        }))
+      : [],
+    reviewCount,
+    reviewAverageScore,
+  };
+}
+
+/* ============================================================
+   Version complète (lecture par ID)
+   ============================================================ */
+export function shapePublicPublicationFull(pub: any): Publication {
+  const base = shapePublicationBase(pub);
+
+  const ratings =
+    Array.isArray(pub.reviews) && pub.reviews.length > 0
+      ? pub.reviews.map((r: any) => r.rating ?? 0)
+      : [];
+
+  const reviewCount = ratings.length;
+  const reviewAverageScore =
+    reviewCount > 0 ? ratings.reduce((a: any, b: any) => a + b, 0) / reviewCount : 0;
+
+  return {
+    ...base,
+    contents: Array.isArray(pub.contents)
+      ? pub.contents.map((c: any) => ({
+          content_id: c.content_id,
+          total_prep_time: c.total_prep_time ?? 0,
+          servings: c.servings ?? null,
+          subtitle: c.subtitle ?? null,
+          is_ingredient: c.is_ingredient ?? false,
+          content_segments: Array.isArray(c.content_segments)
+            ? c.content_segments.map((cs: any) => ({
+                segment_id: cs.segment?.segment_id,
+                title: cs.segment?.title ?? null,
+                paragraph: cs.segment?.paragraph ?? "",
+              }))
+            : [],
+          content_ingredients: Array.isArray(c.content_ingredients)
+            ? c.content_ingredients.map((ci: any) => ({
+                ingredient_id: ci.ingredient?.ingredient_id,
+                quantity: ci.ingredient?.quantity ?? null,
+                multiply_factor: ci.ingredient?.multiply_factor ?? 1,
+                cut: ci.ingredient?.cut ?? null,
+                title: ci.ingredient?.title ?? null,
+                product: ci.ingredient?.product
+                  ? {
+                      product_id: ci.ingredient.product.product_id,
+                      name: ci.ingredient.product.name,
+                      en_name: ci.ingredient.product.en_name,
+                      macro: ci.ingredient.product.macro
+                        ? {
+                            calories: ci.ingredient.product.macro.calories ?? 0,
+                            protein: ci.ingredient.product.macro.protein ?? 0,
+                          }
+                        : undefined,
+                    }
+                  : null,
+                ingredient_units: Array.isArray(
+                  ci.ingredient?.ingredient_units,
+                )
+                  ? ci.ingredient.ingredient_units.map((iu: any) => ({
+                      unit_id: iu.unit?.unit_id,
+                      name: iu.unit?.name,
+                    }))
+                  : [],
+              }))
+            : [],
+          content_prep_times: Array.isArray(c.content_prep_times)
+            ? c.content_prep_times.map((pt: any) => ({
+                prep_time_id: pt.prep_time?.prep_time_id,
+                duration: pt.prep_time?.duration ?? 0,
+                style: pt.prep_time?.style
+                  ? {
+                      category_id: pt.prep_time.style.category_id,
+                      str_value: pt.prep_time.style.str_value,
+                    }
+                  : undefined,
+              }))
+            : [],
+        }))
+      : [],
+    reviewCount,
+    reviewAverageScore,
   };
 }

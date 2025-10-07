@@ -90,19 +90,66 @@ export default async function createRoutes(fastify: FastifyInstance) {
     protected: true,
   });
 
-  // --- Orchestrator
-  registry.registerOrchestratorRoute("/api/publicate", true);
+  // ============================================================
+  // --- Orchestrator routes ---
+  // ============================================================
 
-  // --- GET distinct pour readAll orchestrator
+  // POST /api/publicate — create / update orchestrator
+  fastify.post(
+    "/api/publicate",
+    { preHandler: authGuard },
+    async (req, reply) => {
+      try {
+        const body = req.body as {
+          action?: "create" | "update" | "readAll";
+          payload?: Record<string, any>;
+        };
+
+        const { action, payload } = body || {};
+
+        // --- Validation minimale ---
+        if (typeof action !== "string" || typeof payload !== "object" || !payload) {
+          return reply.status(400).send({
+            success: false,
+            error: "Invalid request format. Expect { action, payload }.",
+          });
+        }
+
+        const result = await orchestrator.processRequest({ action, payload });
+
+        // --- Gestion des statuts ---
+        const statusCode = result.success ? 200 : 500;
+        return reply.status(statusCode).send(result);
+      } catch (error: any) {
+        console.error("[/api/publicate] Fatal error:", error);
+        return reply.status(500).send({
+          success: false,
+          error: error?.message || "Internal server error",
+        });
+      }
+    },
+  );
+
+  // GET /api/publicate/readAll — auto-completion data
   fastify.get(
     "/api/publicate/readAll",
     { preHandler: authGuard },
-    async (req, reply) => {
-      const result = await orchestrator.processRequest({
-        action: "readAll",
-        payload: {},
-      });
-      reply.send(result);
+    async (_req, reply) => {
+      try {
+        const result = await orchestrator.processRequest({
+          action: "readAll",
+          payload: {},
+        });
+
+        const statusCode = result.success ? 200 : 500;
+        return reply.status(statusCode).send(result);
+      } catch (error: any) {
+        console.error("[/api/publicate/readAll] Fatal error:", error);
+        return reply.status(500).send({
+          success: false,
+          error: error?.message || "Internal server error",
+        });
+      }
     },
   );
 }
