@@ -1,75 +1,203 @@
-import { useState, useEffect, useCallback } from "react";
-import { PublicationsService } from "@/services/publications";
-import { CardList } from "@/components/ui/molecules/CardList";
+"use client";
 
-const getTypesByCategory = (category: "feeds" | "reviews"): string[] => {
-  if (category === "reviews") return ["Review", "Article", "Guide"];
-  if (category === "feeds") return ["Recette", "Ingredient"];
-  return [];
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { PublicationsService } from "@/services/publications";
+import DotGrid from "@/components/ui/DotGrid";
+import Dock from "@/components/ui/Dock";
+import { FileText, BookOpen, Lightbulb, Utensils, Search } from "lucide-react";
+import ClickOutsideContainer from "@/components/utilities/ClickOutsideContainer";
+import { StableMasonry } from "@/components/ui/StableMasonry";
+import { PublicationCard } from "@/components/ui/PublicationCard";
+
+const TYPE_MAP = {
+  books: ["Guide"],
+  reviews: ["Review"],
+  article: ["Article"],
+  recipes: ["Recette", "Ingredient"],
 };
 
-interface ContentBrowserProps {
-  feeds?: boolean;
-  reviews?: boolean;
-}
+const ICON_MAP = {
+  books: <BookOpen className="w-6 h-6" />,
+  reviews: <FileText className="w-6 h-6" />,
+  article: <Lightbulb className="w-6 h-6" />,
+  recipes: <Utensils className="w-6 h-6" />,
+};
 
-export function ContentBrowser({ feeds, reviews }: ContentBrowserProps) {
+const LABEL_MAP = {
+  books: "Livres",
+  reviews: "Critiques",
+  article: "Articles",
+  recipes: "Recettes",
+};
+
+export function ContentBrowser() {
+  const { category } = useParams();
+  const navigate = useNavigate();
+
   const [page, setPage] = useState(1);
-  const [publications, setPublications] = useState<any>(null);
-  const limit = 12;
+  const [limit] = useState(12);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [items, setItems] = useState<any[]>([]);
+  const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [searchActive, setSearchActive] = useState(false);
+  const [query, setQuery] = useState("");
 
-  const category: "feeds" | "reviews" = feeds
-    ? "feeds"
-    : reviews
-      ? "reviews"
-      : (() => {
-        throw new Error("No category selected");
-      })();
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
+  const categories = useMemo(() => ["books", "reviews", "article", "recipes"], []);
 
-  const types = getTypesByCategory(category);
-
-  const fetchPublications = useCallback(async () => {
-    if (!types.length) {
-      setPublications({ items: [], total: 0, page: 1, limit, totalPages: 1 });
-      return;
+  // --- gestion de la catégorie courante ---
+  useEffect(() => {
+    if (category && categories.includes(category)) {
+      setSelectedCategory(category);
+      setPage(1);
+      setItems([]);
     }
-    const filter = types.length > 0 ? { type: types } : undefined;
-    const result = await PublicationsService.getPublications({
-      page,
-      limit,
-      filter,
-    });
-    setPublications(result);
-  }, [page, types]);
+  }, [category]);
 
-  // Réinitialise la page si le type change
-  useEffect(() => {
+  const handleCategorySelect = (key: string) => {
+    setSelectedCategory(key);
+    setSearchActive(false);
     setPage(1);
-  }, [feeds, reviews]);
-
-  // Fetch data
-  useEffect(() => {
-    fetchPublications();
-  }, [fetchPublications]);
-
-  const cards = () => {
-    if (!publications?.items) return [];
-    return publications.items.map((pub: any) => ({
-      publication: pub,
-      pathPrefix: category,
-    }));
+    setItems([]);
+    navigate(`/${key}`);
   };
 
+  // --- chargement des publications ---
+  const fetchPublications = useCallback(
+    async (pageToLoad: number) => {
+      if (loading) return;
+      setLoading(true);
+      const types =
+        selectedCategory && TYPE_MAP[selectedCategory]
+          ? TYPE_MAP[selectedCategory]
+          : Object.values(TYPE_MAP).flat();
+
+      const result = await PublicationsService.getPublications({
+        page: pageToLoad,
+        limit,
+        filter: { type: types, q: query || undefined },
+      });
+
+      setItems((prev) =>
+        pageToLoad === 1 ? result.items : [...prev, ...result.items]
+      );
+      setTotalPages(result.totalPages);
+      setLoading(false);
+    },
+    [selectedCategory, query, limit, loading]
+  );
+
+  // --- scroll infini ---
+  useEffect(() => {
+    if (!sentinelRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && page < totalPages && !loading) {
+          setPage((prev) => prev + 1);
+        }
+      },
+      { threshold: 0.25 }
+    );
+    observer.observe(sentinelRef.current);
+    return () => observer.disconnect();
+  }, [page, totalPages, loading]);
+
+  useEffect(() => {
+    fetchPublications(page);
+  }, [page, selectedCategory, query]);
+
+  // --- dock items ---
+  const dockItems = [
+    ...categories.slice(0, 2).map((key) => ({
+      icon: ICON_MAP[key],
+      label: LABEL_MAP[key],
+      onClick: () => handleCategorySelect(key),
+    })),
+    {
+      icon: <Search className="w-6 h-6" />,
+      label: searchActive ? "Fermer" : "Rechercher",
+      onClick: () => setSearchActive((s) => !s),
+      className: searchActive
+        ? "bg-amber-600 border-amber-700"
+        : "bg-[#292929] hover:bg-[#333333]",
+    },
+    ...categories.slice(2).map((key) => ({
+      icon: ICON_MAP[key],
+      label: LABEL_MAP[key],
+      onClick: () => handleCategorySelect(key),
+    })),
+  ];
+
+  // --- rendu principal ---
   return (
-    <div className="flex-1 flex flex-col w-full">
-      <CardList
-        cards={cards()}
-        pagination={{
-          page: publications?.page ?? 1,
-          totalPages: publications?.totalPages ?? 1,
-          onPageChange: setPage,
-        }}
-      />
+    <div className="flex h-screen flex-col w-full relative p-8">
+      {/* Fond animé */}
+      <div className="absolute inset-0 w-full h-full -z-10 pointer-events-none bg-[#1F1F1F]">
+        <DotGrid
+          dotSize={10}
+          gap={15}
+          baseColor="#292929"
+          activeColor="#5B4853"
+          proximity={120}
+          shockRadius={250}
+          shockStrength={5}
+          resistance={750}
+          returnDuration={1.5}
+        />
+      </div>
+
+      {/* Barre de recherche */}
+      {searchActive && (
+        <ClickOutsideContainer onClickOutside={() => setSearchActive(false)}>
+          <div className="fixed w-3/5 px-6 z-50 bottom-28 left-1/2 -translate-x-1/2">
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.currentTarget.value)}
+              placeholder="Rechercher un contenu..."
+              className="w-full h-12 rounded-md bg-[#1F1F1F] border border-gray-600 px-5 text-gray-200 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 shadow-lg"
+            />
+          </div>
+        </ClickOutsideContainer>
+      )}
+
+      {/* Dock */}
+      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 z-50">
+        <Dock
+          panelHeight={40}
+          items={dockItems}
+          magnification={70}
+          expandOnHover
+          bgClass="bg-[#1f1f1f]"
+          borderClass="border-neutral-700"
+        />
+      </div>
+
+      {/* Zone de contenu */}
+      <div className="p-6 flex-1 overflow-y-auto pb-24">
+        <StableMasonry
+          items={items.map((i, idx) => ({
+            id: `${i.publication_id}-${idx}`,
+            ...i,
+          }))}
+          renderItem={(item) => (
+            <PublicationCard
+              title={item.title}
+              description={item.description}
+              tags={item.tags}
+              thumbnail={item.thumbnail}
+              onClick={() => navigate(`/publication/${item.publication_id}`)}
+            />
+          )}
+        />
+
+        {loading && (
+          <p className="text-center text-amber-500 mt-6">Chargement...</p>
+        )}
+        <div ref={sentinelRef} className="h-10"></div>
+      </div>
     </div>
   );
 }

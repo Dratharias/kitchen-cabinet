@@ -73,25 +73,38 @@ export class PublicationController
     return normalizePublication(publication);
   }
 
-  async findById(id: string): Promise<Publication | null> {
-    const publication = await prisma.publication.findUnique({
-      where: { publication_id: id },
+  async findById(
+    id: string,
+    opts?: { admin?: boolean },
+  ): Promise<Publication | null> {
+    const where: any = { publication_id: id };
+    if (!opts?.admin) {
+      where.public = true;
+      where.published = true;
+    }
+
+    const publication = await prisma.publication.findFirst({
+      where,
       include: this.buildInclude(),
     });
     return publication ? normalizePublication(publication) : null;
   }
 
-  async findAll(params?: PublicationReadAllDto) {
+  async findAll(params?: PublicationReadAllDto & { admin?: boolean }) {
     const where: any = {};
+
+    // filtre public/published par défaut
+    if (!params?.admin) {
+      where.public = true;
+      where.published = true;
+    }
 
     if (params?.filter) {
       let filter = params.filter;
-
       if (typeof filter === "string") {
         try {
           filter = JSON.parse(filter);
-        } catch (error) {
-          console.error("Failed to parse filter:", error);
+        } catch {
           filter = {};
         }
       }
@@ -99,15 +112,12 @@ export class PublicationController
       const { tagIds, contentIds, type, style, author, ...directFields } =
         filter as any;
 
-      if (Array.isArray(type) && type.length) {
+      if (Array.isArray(type) && type.length)
         where.type = { str_value: { in: type } };
-      }
-      if (Array.isArray(style) && style.length) {
+      if (Array.isArray(style) && style.length)
         where.style = { str_value: { in: style } };
-      }
-      if (Array.isArray(author) && author.length) {
+      if (Array.isArray(author) && author.length)
         where.author = { str_value: { in: author } };
-      }
 
       Object.keys(directFields).forEach((key) => {
         const value = directFields[key as keyof typeof directFields];
@@ -145,7 +155,6 @@ export class PublicationController
 
     const items = publications.map(normalizePublication);
     const totalPages = Math.ceil(total / limit);
-
     return { items, total, page, limit, totalPages };
   }
 
@@ -166,7 +175,6 @@ export class PublicationController
         published: payload.published,
         thumbnail: payload.thumbnail,
         gallery: payload.gallery ?? [],
-
         contents: payload.connect?.contents
           ? {
               connect: payload.connect.contents.map(
@@ -180,7 +188,6 @@ export class PublicationController
                 })),
               }
             : undefined,
-
         reviews: payload.connect?.reviews
           ? {
               connect: payload.connect.reviews.map(
@@ -194,7 +201,6 @@ export class PublicationController
                 })),
               }
             : undefined,
-
         tags: payload.connect?.tags
           ? {
               connect: payload.connect.tags.map(
@@ -248,23 +254,17 @@ export class PublicationController
           },
           content_ingredients: {
             include: {
-              ingredient: {
+              product: {
                 select: {
-                  ingredient_id: true,
-                  quantity: true,
-                  product: {
-                    select: {
-                      product_id: true,
-                      name: true,
-                      en_name: true,
-                      macro: { select: { calories: true, protein: true } },
-                    },
-                  },
-                  ingredient_units: {
-                    include: {
-                      unit: { select: { unit_id: true, name: true } },
-                    },
-                  },
+                  product_id: true,
+                  name: true,
+                  en_name: true,
+                  macro: { select: { calories: true, protein: true } },
+                },
+              },
+              ingredient_units: {
+                include: {
+                  unit: { select: { unit_id: true, name: true } },
                 },
               },
             },

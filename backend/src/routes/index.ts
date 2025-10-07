@@ -39,18 +39,20 @@ export default async function createRoutes(fastify: FastifyInstance) {
     protected: true,
   });
 
-  // --- Publications
+  // --- Publications publiques
   registry.registerCrud(new PublicPublicationController(), {
-    path: "/api/publications",
+    path: "/api/public/publications",
     methods: ["findAll", "findById"],
     protected: false,
   });
+
+  // --- Publications privées (protégées)
   registry.registerCrud(new PublicationController(), {
     path: "/api/private/publications",
     protected: true,
   });
 
-  // --- Ressources de base (protégées uniquement)
+  // --- Ressources protégées (backoffice)
   registry.registerCrud(new CategoryController(), {
     path: "/api/categories",
     protected: true,
@@ -89,10 +91,9 @@ export default async function createRoutes(fastify: FastifyInstance) {
   });
 
   // --- Orchestrator
-  // POST pour create/update
   registry.registerOrchestratorRoute("/api/publicate", true);
 
-  // GET distinct pour readAll
+  // --- GET distinct pour readAll orchestrator
   fastify.get(
     "/api/publicate/readAll",
     { preHandler: authGuard },
