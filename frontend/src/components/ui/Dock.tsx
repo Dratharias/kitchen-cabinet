@@ -151,7 +151,7 @@ function DockItem({
 
 /* ---------- Dock Container ---------- */
 
-export default function Dock({
+export function Dock({
   items,
   className = "",
   spring = { mass: 0.15, stiffness: 160, damping: 18 },

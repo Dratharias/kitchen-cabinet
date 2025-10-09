@@ -4,8 +4,8 @@ import { useEffect, useMemo, useRef, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Search } from "lucide-react";
-import DotGrid from "@/components/ui/DotGrid";
-import Dock from "@/components/ui/Dock";
+import { DotGrid } from "@/components/ui/DotGrid";
+import { Dock } from "@/components/ui/Dock";
 import { PublicationCard } from "@/components/cards/PublicationCard";
 import {
   fadeSlideVariants,
