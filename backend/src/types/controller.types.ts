@@ -98,6 +98,7 @@ export type ContentCore = Required<
     | "servings"
     | "subtitle"
     | "is_ingredient"
+    | "gallery"
   >
 > & { content_id?: string };
 export type ContentRelations = Required<
@@ -109,6 +110,7 @@ export type ContentRelations = Required<
     | "servings"
     | "subtitle"
     | "is_ingredient"
+    | "gallery"
   >
 >;
 

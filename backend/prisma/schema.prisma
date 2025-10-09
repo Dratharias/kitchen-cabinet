@@ -48,7 +48,7 @@ model publication {
   type_id        String?
   style_id       String?
   author_id      String?
-  gallery        String[]
+  gallery        String[] // Rétrocompatibilité
   date_created   DateTime @default(now())
 
   type   category? @relation("PublicationType", fields: [type_id], references: [category_id])
@@ -82,6 +82,8 @@ model content {
   total_prep_time Int      @default(0) @db.SmallInt
   servings        Int?     @db.SmallInt
   subtitle        String?
+  thumbnail      String?
+  gallery        String[] // Nouvelle gallerie
   is_ingredient   Boolean?
 
   publication         publication          @relation(fields: [publication_id], references: [publication_id], onDelete: Cascade)

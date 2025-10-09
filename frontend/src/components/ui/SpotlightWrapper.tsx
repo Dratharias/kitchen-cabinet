@@ -42,6 +42,7 @@ export function SpotlightWrapper({
         className="pointer-events-none absolute inset-0 transition-opacity duration-500 ease-in-out"
         style={{
           opacity,
+          zIndex: 50,
           background: `radial-gradient(circle ${radius} at ${pos.x}px ${pos.y}px,
             ${spotlightColor} 0%,
             ${spotlightColor} ${innerStop},

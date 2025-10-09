@@ -61,10 +61,10 @@ CREATE TABLE publication (
   public         BOOLEAN DEFAULT FALSE,
   published      BOOLEAN DEFAULT FALSE,
   thumbnail      VARCHAR(255),
+  gallery        VARCHAR(255)[], -- Rétrocompatibilité
   type_id        UUID,
   style_id       UUID,
   author_id      UUID,
-  gallery        VARCHAR(255)[],
   date_created   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (type_id)   REFERENCES category(category_id) ON DELETE SET NULL,
   FOREIGN KEY (style_id)  REFERENCES category(category_id) ON DELETE SET NULL,
@@ -85,6 +85,8 @@ CREATE TABLE content (
   total_prep_time SMALLINT DEFAULT 0,
   servings       SMALLINT,
   subtitle       TEXT,
+  thumbnail      VARCHAR(255),
+  gallery        VARCHAR(255)[], -- Nouvelle gallerie
   is_ingredient  BOOLEAN,
   FOREIGN KEY (publication_id) REFERENCES publication(publication_id) ON DELETE CASCADE
 );

@@ -1,14 +1,13 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { ChevronDown, ChevronRight, Utensils, FileText } from "lucide-react";
 import { usePublicationView } from "@/hooks/usePublicationView";
 import { PublicationHeader } from "@/components/view/PublicationHeader";
 import { PublicationVariantTabs } from "@/components/view/PublicationVariantTabs";
+import { PublicationTabs } from "@/components/view/PublicationTabs";
+import { PublicationServingControl } from "@/components/view/PublicationServingControl";
 import { DotGrid } from "@/components/ui/DotGrid";
 import { SpotlightWrapper } from "@/components/ui/SpotlightWrapper";
-import { PublicationTabs } from "@/components/view/PublicationTabs";
-import { SubRecipeView } from "@/components/view/SubRecipeView";
-import { isIngredientMatch } from "@/utils/ingredientMatcher";
 
 export function PublicationView() {
   const {
@@ -20,57 +19,205 @@ export function PublicationView() {
     toggleChecked,
   } = usePublicationView();
 
-  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+  const [expandedBlocks, setExpandedBlocks] = useState<Record<string, boolean>>({});
   const [tab, setTab] = useState<"ingredients" | "steps">("ingredients");
+  const [servingFactors, setServingFactors] = useState<Record<string, number>>({});
 
-  // Définir avant toute condition
-  const contents = publication?.contents || [];
-  const variants = contents.filter((c: any) => !c.is_ingredient);
-  const ingredientBlocks = contents.filter((c: any) => c.is_ingredient);
-  const activeVariant = variants[selectedVariant] || null;
-
-  /**
-   * Construction du mapping :
-   *   variant_id -> [publication_id des blocs d'ingrédients correspondants]
-   */
-  const variantIngredientMap = useMemo(() => {
-    const map: Record<string, string[]> = {};
-    for (const v of variants) {
-      const variantId = v.publication_id || v.content_id || crypto.randomUUID();
-      const productLines =
-        v.content_ingredients?.map((i: any) => i.product?.name || "") || [];
-
-      const matches: string[] = ingredientBlocks
-        .filter((b: any) =>
-          isIngredientMatch(b.subtitle || b.group || "", productLines),
-        )
-        .map((b: any) => b.publication_id)
-        .filter(Boolean);
-
-      map[variantId] = matches;
-    }
-    return map;
-  }, [variants, ingredientBlocks]);
-
-  const toggleExpand = (id: string) =>
-    setExpanded((p) => ({ ...p, [id]: !p[id] }));
-
-  if (loading)
+  if (loading) {
     return (
       <div className="flex h-screen items-center justify-center text-gray-400">
         Chargement...
       </div>
     );
+  }
 
   if (!publication) return null;
 
-  const activeVariantId =
-    activeVariant?.publication_id || activeVariant?.content_id;
-  const currentMatches = variantIngredientMap[activeVariantId] || [];
+  const contents = publication.contents || [];
+  const variants = contents.filter((c: any) => !c.is_ingredient);
+  const subRecipes = contents.filter((c: any) => c.is_ingredient);
+  const activeVariant = variants[selectedVariant] || null;
+
+  const toggleBlock = (id: string) => {
+    setExpandedBlocks((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const getBlockId = (block: any) => {
+    return block.publication_id || block.id || block.subtitle || crypto.randomUUID();
+  };
+
+  const isBlockExpanded = (blockId: string, isActiveVariant: boolean) => {
+    if (expandedBlocks[blockId] !== undefined) {
+      return expandedBlocks[blockId];
+    }
+    return isActiveVariant;
+  };
+
+  const getServingFactor = (blockId: string) => {
+    return servingFactors[blockId] || 1;
+  };
+
+  const setServingFactor = (blockId: string, factor: number) => {
+    setServingFactors((prev) => ({ ...prev, [blockId]: factor }));
+  };
+
+  const formatIngredientLabel = (ing: any, servingFactor: number) => {
+    const multiplyFactor = ing.multiply_factor || 1;
+    const baseQuantity = parseFloat(ing.quantity) || 0;
+    const adjustedQuantity = baseQuantity * multiplyFactor * servingFactor;
+    
+    const productName = ing.product?.name || "Ingrédient";
+    const unitName = ing.ingredient_units?.[0]?.name;
+    const normalizedUnit = unitName === "l" ? "L" : unitName;
+    const cut = ing.cut;
+
+    const parts = [];
+
+    if (adjustedQuantity > 0) {
+      const formatted = adjustedQuantity % 1 === 0 
+        ? adjustedQuantity.toString() 
+        : adjustedQuantity.toFixed(2);
+      parts.push(formatted);
+    }
+
+    if (normalizedUnit) {
+      parts.push(normalizedUnit);
+    }
+
+    parts.push(productName);
+
+    if (cut) {
+      parts.push(`(${cut})`);
+    }
+
+    return parts.join(" ");
+  };
+
+  const renderIngredientBlock = (block: any, isActiveVariant: boolean = false) => {
+    const blockId = `ing-${getBlockId(block)}`;
+    const expanded = isBlockExpanded(blockId, isActiveVariant);
+    const ingredients = block.content_ingredients || [];
+    const currentServingFactor = getServingFactor(blockId);
+
+    return (
+      <div
+        key={blockId}
+        className="border border-gray-700 rounded-lg bg-[#1F1F1F]/80 mb-4 overflow-hidden"
+      >
+        <header
+          className="flex items-center justify-between px-4 py-2 bg-[#2a2a2a]/70 cursor-pointer"
+          onClick={() => toggleBlock(blockId)}
+        >
+          <h3 className="text-lg font-semibold flex items-center gap-2 text-white">
+            <Utensils className="w-5 h-5 text-amber-500" />
+            {block.subtitle || "Ingrédients"}
+          </h3>
+          {expanded ? (
+            <ChevronDown className="w-5 h-5 text-gray-400" />
+          ) : (
+            <ChevronRight className="w-5 h-5 text-gray-400" />
+          )}
+        </header>
+
+        {expanded && (
+          <div>
+            <div className="px-4 py-2">
+              <PublicationServingControl
+                servings={block.servings}
+                servingFactor={currentServingFactor}
+                onServingChange={(factor) => setServingFactor(blockId, factor)}
+                prepTime={block.total_prep_time}
+              />
+            </div>
+            <ul className="p-4 pt-2 space-y-2 text-gray-300">
+              {ingredients.map((ing: any) => {
+                const label = formatIngredientLabel(ing, currentServingFactor);
+
+                return (
+                  <li key={ing.ingredient_id}>
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={!!checkedItems[ing.ingredient_id]}
+                        onChange={() => toggleChecked(ing.ingredient_id)}
+                        className="accent-amber-500"
+                      />
+                      <span
+                        className={
+                          checkedItems[ing.ingredient_id]
+                            ? "line-through text-gray-500"
+                            : ""
+                        }
+                      >
+                        {label}
+                      </span>
+                    </label>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const renderStepBlock = (block: any, isActiveVariant: boolean = false) => {
+    const blockId = `step-${getBlockId(block)}`;
+    const expanded = isBlockExpanded(blockId, isActiveVariant);
+    const steps = block.content_segments || [];
+
+    return (
+      <div
+        key={blockId}
+        className="border border-gray-700 rounded-lg bg-[#1F1F1F]/80 mb-4 overflow-hidden"
+      >
+        <header
+          className="flex items-center justify-between px-4 py-2 bg-[#2a2a2a]/70 cursor-pointer"
+          onClick={() => toggleBlock(blockId)}
+        >
+          <h3 className="text-lg font-semibold flex items-center gap-2 text-white">
+            <FileText className="w-5 h-5 text-amber-500" />
+            {block.subtitle || "Préparation"}
+          </h3>
+          {expanded ? (
+            <ChevronDown className="w-5 h-5 text-gray-400" />
+          ) : (
+            <ChevronRight className="w-5 h-5 text-gray-400" />
+          )}
+        </header>
+
+        {expanded && (
+          <ul className="p-4 space-y-2 text-gray-300">
+            {steps.map((s: any) => (
+              <li key={s.segment_id}>
+                <label className="flex items-start gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={!!checkedItems[s.segment_id]}
+                    onChange={() => toggleChecked(s.segment_id)}
+                    className="accent-amber-500 mt-1"
+                  />
+                  <span
+                    className={
+                      checkedItems[s.segment_id]
+                        ? "line-through text-gray-500"
+                        : ""
+                    }
+                  >
+                    {s.paragraph}
+                  </span>
+                </label>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    );
+  };
 
   return (
     <div className="relative min-h-screen w-full text-gray-200 overflow-hidden">
-      {/* Fond animé */}
       <div className="absolute inset-0">
         <DotGrid
           dotSize={10}
@@ -85,16 +232,14 @@ export function PublicationView() {
         />
       </div>
 
-      {/* Contenu principal */}
       <div className="relative z-20 p-6">
         <PublicationHeader title={publication.title} />
 
-        {/* Thumbnail avec effet spotlight */}
         <SpotlightWrapper
           className="w-full h-64 rounded-xl mb-6"
           radius="150px"
-          spotlightColor="rgba(255,255,255,0.15)"
-          softness={0.01}
+          spotlightColor="rgba(255,255,255,0.2)"
+          softness={1}
         >
           {publication.thumbnail ? (
             <img
@@ -110,7 +255,6 @@ export function PublicationView() {
           )}
         </SpotlightWrapper>
 
-        {/* Description */}
         {publication.description?.length > 0 && (
           <ul className="space-y-1 text-gray-300 mb-4">
             {publication.description.map((line: string, i: number) => (
@@ -119,124 +263,26 @@ export function PublicationView() {
           </ul>
         )}
 
-        {/* Variantes */}
         <PublicationVariantTabs
           variants={variants}
           selectedVariant={selectedVariant}
           setSelectedVariant={setSelectedVariant}
         />
 
-        {/* Onglets */}
         <PublicationTabs currentTab={tab} setTab={setTab} />
 
-        {/* Onglet : Ingrédients */}
-        {tab === "ingredients" && activeVariant && (
-          <section>
-            <div className="border border-gray-800 rounded-xl mb-8 overflow-hidden">
-              <header className="bg-[#2a2a2a]/70 px-4 py-3">
-                <h2 className="text-xl font-semibold text-white flex items-center gap-2">
-                  <Utensils className="w-5 h-5 text-amber-500" />
-                  {activeVariant.subtitle || publication.title || "Ingrédients"}
-                </h2>
-              </header>
-
-              <div className="p-4 space-y-3 bg-[#1F1F1F]/70 border border-gray-700">
-                {activeVariant.content_ingredients?.map((ing: any) => {
-                  const subRecipeId = ing.product?.publication?.id;
-                  const hasSubRecipe = !!subRecipeId;
-                  const label = `${ing.product?.name}${
-                    ing.cut ? " (" + ing.cut + ")" : ""
-                  } ${
-                    ing.ingredient_units?.[0]?.unit?.name
-                      ? "(" + ing.ingredient_units[0].unit.name + ")"
-                      : ""
-                  } ${ing.quantity ? "- " + ing.quantity : ""}`;
-
-                  const isLinked =
-                    hasSubRecipe && currentMatches.includes(subRecipeId);
-
-                  return (
-                    <div key={ing.ingredient_id}>
-                      <label className="flex items-center gap-2 cursor-pointer">
-                        {hasSubRecipe && (
-                          <button
-                            onClick={() => toggleExpand(subRecipeId)}
-                            className="text-amber-400 focus:outline-none"
-                          >
-                            {expanded[subRecipeId] ? (
-                              <ChevronDown className="w-4 h-4" />
-                            ) : (
-                              <ChevronRight className="w-4 h-4" />
-                            )}
-                          </button>
-                        )}
-
-                        <input
-                          type="checkbox"
-                          checked={!!checkedItems[ing.ingredient_id]}
-                          onChange={() => toggleChecked(ing.ingredient_id)}
-                          className="accent-amber-500"
-                        />
-
-                        <span
-                          className={
-                            checkedItems[ing.ingredient_id]
-                              ? "line-through text-gray-500"
-                              : ""
-                          }
-                        >
-                          {label}
-                        </span>
-                      </label>
-
-                      {hasSubRecipe && expanded[subRecipeId] && isLinked && (
-                        <SubRecipeView subRecipeId={subRecipeId} />
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
+        {tab === "ingredients" && (
+          <div>
+            {activeVariant && renderIngredientBlock(activeVariant, true)}
+            {subRecipes.map((subRecipe) => renderIngredientBlock(subRecipe, false))}
+          </div>
         )}
 
-        {/* Onglet : Préparation */}
-        {tab === "steps" && activeVariant && (
-          <section>
-            <div className="border border-gray-700 rounded-xl mb-8 overflow-hidden bg-[#1F1F1F]/70">
-              <header className="bg-[#2a2a2a]/70 px-4 py-3">
-                <h2 className="text-xl font-semibold text-white flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-amber-500" />
-                  {activeVariant.subtitle || "Préparation"}
-                </h2>
-              </header>
-
-              <div className="p-4 space-y-3 text-gray-300">
-                {activeVariant.content_segments?.map((s: any) => (
-                  <label
-                    key={s.segment_id}
-                    className="flex items-start gap-2 cursor-pointer"
-                  >
-                    <input
-                      type="checkbox"
-                      checked={!!checkedItems[s.segment_id]}
-                      onChange={() => toggleChecked(s.segment_id)}
-                      className="accent-amber-500 mt-1"
-                    />
-                    <span
-                      className={
-                        checkedItems[s.segment_id]
-                          ? "line-through text-gray-500"
-                          : ""
-                      }
-                    >
-                      {s.paragraph}
-                    </span>
-                  </label>
-                ))}
-              </div>
-            </div>
-          </section>
+        {tab === "steps" && (
+          <div>
+            {activeVariant && renderStepBlock(activeVariant, true)}
+            {subRecipes.map((subRecipe) => renderStepBlock(subRecipe, false))}
+          </div>
         )}
       </div>
     </div>

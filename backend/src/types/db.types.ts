@@ -117,6 +117,7 @@ export interface ContentData {
   servings: number | null;
   subtitle: string | null;
   is_ingredient: boolean | null;
+  gallery: string[];
 
   // Relations N-1
   publication: PublicationData | null; // N-1
