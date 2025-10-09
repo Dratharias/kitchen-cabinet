@@ -1,32 +1,59 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { ChevronDown, ChevronRight, Utensils, FileText } from "lucide-react";
 import { usePublicationView } from "@/hooks/usePublicationView";
 import { PublicationHeader } from "@/components/view/PublicationHeader";
 import { PublicationVariantTabs } from "@/components/view/PublicationVariantTabs";
-import { PublicationTabsMobile } from "@/components/view/PublicationTabsMobile";
-import DotGrid from "@/components/ui/DotGrid";
+import { DotGrid } from "@/components/ui/DotGrid";
 import { SpotlightWrapper } from "@/components/ui/SpotlightWrapper";
-import { ContentWithRelations } from "@/types";
-
-const API_BASE =
-  import.meta.env.VITE_API_URL ||
-  `http://localhost:${import.meta.env.VITE_API_PORT}`;
+import { PublicationTabs } from "@/components/view/PublicationTabs";
+import { SubRecipeView } from "@/components/view/SubRecipeView";
+import { isIngredientMatch } from "@/utils/ingredientMatcher";
 
 export function PublicationView() {
   const {
     publication,
     loading,
-    isMobile,
     selectedVariant,
     setSelectedVariant,
-    mobileTab,
-    setMobileTab,
     checkedItems,
     toggleChecked,
   } = usePublicationView();
 
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+  const [tab, setTab] = useState<"ingredients" | "steps">("ingredients");
+
+  // Définir avant toute condition
+  const contents = publication?.contents || [];
+  const variants = contents.filter((c: any) => !c.is_ingredient);
+  const ingredientBlocks = contents.filter((c: any) => c.is_ingredient);
+  const activeVariant = variants[selectedVariant] || null;
+
+  /**
+   * Construction du mapping :
+   *   variant_id -> [publication_id des blocs d'ingrédients correspondants]
+   */
+  const variantIngredientMap = useMemo(() => {
+    const map: Record<string, string[]> = {};
+    for (const v of variants) {
+      const variantId = v.publication_id || v.content_id || crypto.randomUUID();
+      const productLines =
+        v.content_ingredients?.map((i: any) => i.product?.name || "") || [];
+
+      const matches: string[] = ingredientBlocks
+        .filter((b: any) =>
+          isIngredientMatch(b.subtitle || b.group || "", productLines),
+        )
+        .map((b: any) => b.publication_id)
+        .filter(Boolean);
+
+      map[variantId] = matches;
+    }
+    return map;
+  }, [variants, ingredientBlocks]);
+
+  const toggleExpand = (id: string) =>
+    setExpanded((p) => ({ ...p, [id]: !p[id] }));
 
   if (loading)
     return (
@@ -37,22 +64,9 @@ export function PublicationView() {
 
   if (!publication) return null;
 
-  const contents = publication.contents || [];
-  const variants = contents.filter((c: any) => !c.is_ingredient);
-  const ingredientBlocks = contents.filter((c: any) => c.is_ingredient);
-  const activeVariant = variants[selectedVariant] || null;
-
-  const linkedSubIds = new Set(
-    activeVariant?.content_ingredients
-      ?.map((i: any) => i.product?.publication?.id)
-      .filter(Boolean),
-  );
-  const visibleIngredients = ingredientBlocks.filter((b: any) =>
-    linkedSubIds.has(b.publication_id),
-  );
-
-  const toggleExpand = (id: string) =>
-    setExpanded((p) => ({ ...p, [id]: !p[id] }));
+  const activeVariantId =
+    activeVariant?.publication_id || activeVariant?.content_id;
+  const currentMatches = variantIngredientMap[activeVariantId] || [];
 
   return (
     <div className="relative min-h-screen w-full text-gray-200 overflow-hidden">
@@ -75,12 +89,12 @@ export function PublicationView() {
       <div className="relative z-20 p-6">
         <PublicationHeader title={publication.title} />
 
-        {/* Thumbnail avec spotlight */}
+        {/* Thumbnail avec effet spotlight */}
         <SpotlightWrapper
           className="w-full h-64 rounded-xl mb-6"
           radius="150px"
-          spotlightColor="rgba(255,255,255,1)"
-          softness={0}
+          spotlightColor="rgba(255,255,255,0.15)"
+          softness={0.01}
         >
           {publication.thumbnail ? (
             <img
@@ -112,24 +126,17 @@ export function PublicationView() {
           setSelectedVariant={setSelectedVariant}
         />
 
-        {/* Onglets mobile */}
-        {isMobile && (
-          <PublicationTabsMobile
-            mobileTab={mobileTab}
-            setMobileTab={setMobileTab}
-          />
-        )}
+        {/* Onglets */}
+        <PublicationTabs currentTab={tab} setTab={setTab} />
 
-        {/* Ingrédients */}
-        {(!isMobile || mobileTab === "ingredients") && activeVariant && (
+        {/* Onglet : Ingrédients */}
+        {tab === "ingredients" && activeVariant && (
           <section>
             <div className="border border-gray-800 rounded-xl mb-8 overflow-hidden">
-              <header className="bg-[#2a2a2a]/70 px-4 py-3 flex justify-between items-center">
+              <header className="bg-[#2a2a2a]/70 px-4 py-3">
                 <h2 className="text-xl font-semibold text-white flex items-center gap-2">
                   <Utensils className="w-5 h-5 text-amber-500" />
-                  {activeVariant.subtitle ||
-                    publication.title ||
-                    "Ingrédients"}
+                  {activeVariant.subtitle || publication.title || "Ingrédients"}
                 </h2>
               </header>
 
@@ -137,11 +144,16 @@ export function PublicationView() {
                 {activeVariant.content_ingredients?.map((ing: any) => {
                   const subRecipeId = ing.product?.publication?.id;
                   const hasSubRecipe = !!subRecipeId;
-                  const label = `${ing.product?.name}${ing.cut ? " (" + ing.cut + ")" : ""} ${
+                  const label = `${ing.product?.name}${
+                    ing.cut ? " (" + ing.cut + ")" : ""
+                  } ${
                     ing.ingredient_units?.[0]?.unit?.name
                       ? "(" + ing.ingredient_units[0].unit.name + ")"
                       : ""
                   } ${ing.quantity ? "- " + ing.quantity : ""}`;
+
+                  const isLinked =
+                    hasSubRecipe && currentMatches.includes(subRecipeId);
 
                   return (
                     <div key={ing.ingredient_id}>
@@ -158,12 +170,14 @@ export function PublicationView() {
                             )}
                           </button>
                         )}
+
                         <input
                           type="checkbox"
                           checked={!!checkedItems[ing.ingredient_id]}
                           onChange={() => toggleChecked(ing.ingredient_id)}
                           className="accent-amber-500"
                         />
+
                         <span
                           className={
                             checkedItems[ing.ingredient_id]
@@ -175,11 +189,9 @@ export function PublicationView() {
                         </span>
                       </label>
 
-                      {hasSubRecipe &&
-                        expanded[subRecipeId] &&
-                        visibleIngredients.some(
-                          (b: any) => b.publication_id === subRecipeId,
-                        ) && <SubRecipeView subRecipeId={subRecipeId} />}
+                      {hasSubRecipe && expanded[subRecipeId] && isLinked && (
+                        <SubRecipeView subRecipeId={subRecipeId} />
+                      )}
                     </div>
                   );
                 })}
@@ -188,11 +200,11 @@ export function PublicationView() {
           </section>
         )}
 
-        {/* Préparation */}
-        {(!isMobile || mobileTab === "steps") && activeVariant && (
+        {/* Onglet : Préparation */}
+        {tab === "steps" && activeVariant && (
           <section>
             <div className="border border-gray-700 rounded-xl mb-8 overflow-hidden bg-[#1F1F1F]/70">
-              <header className="bg-[#2a2a2a]/70 px-4 py-3 flex justify-between items-center">
+              <header className="bg-[#2a2a2a]/70 px-4 py-3">
                 <h2 className="text-xl font-semibold text-white flex items-center gap-2">
                   <FileText className="w-5 h-5 text-amber-500" />
                   {activeVariant.subtitle || "Préparation"}
@@ -227,53 +239,6 @@ export function PublicationView() {
           </section>
         )}
       </div>
-    </div>
-  );
-}
-
-/* --- Sous-recette --- */
-function SubRecipeView({ subRecipeId }: { subRecipeId: string }) {
-  const [data, setData] = useState<any | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    async function load() {
-      if (loading || data) return;
-      setLoading(true);
-      const token = localStorage.getItem("auth_token");
-      const res = await fetch(`${API_BASE}/api/publications/${subRecipeId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (res.ok) setData(await res.json());
-      setLoading(false);
-    }
-    load();
-  }, [subRecipeId]);
-
-  if (loading)
-    return <div className="pl-8 text-gray-500 text-sm">Chargement…</div>;
-  if (!data) return null;
-
-  const blocks = data.contents?.filter((c: any) => c.is_ingredient) || [];
-
-  return (
-    <div className="pl-8 mt-2 border-l border-gray-700">
-      <h4 className="text-sm font-semibold text-amber-400 mb-1">
-        {data.title}
-      </h4>
-      <ul className="text-gray-300 text-sm space-y-1">
-        {blocks.flatMap((b: any) =>
-          (b.content_ingredients || []).map((i: any) => (
-            <li key={i.ingredient_id}>
-              {i.product?.name}{" "}
-              {i.ingredient_units?.[0]?.unit?.name
-                ? "(" + i.ingredient_units[0].unit.name + ")"
-                : ""}
-              {i.quantity ? " - " + i.quantity : ""}
-            </li>
-          )),
-        )}
-      </ul>
     </div>
   );
 }
