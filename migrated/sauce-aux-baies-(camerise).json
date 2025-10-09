@@ -1,0 +1,158 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Sauce aux baies (camerise)",
+      "description": [
+        "Découvrez la saveur unique de notre sauce aux baies de camerise, un délice fruité pour relever vos plats préférés."
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "gallery": [],
+      "type": {
+        "str_value": "Recette",
+        "type": "Type"
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "total_prep_time": 0,
+          "servings": null,
+          "subtitle": "Sauce Aux Baies Camerise",
+          "is_ingredient": false,
+          "content_ingredients": [
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": "oignon rouge"
+              },
+              "ingredient_units": []
+            },
+            {
+              "quantity": 2,
+              "multiply_factor": 1,
+              "product": {
+                "name": "gousse d'ail"
+              },
+              "ingredient_units": []
+            },
+            {
+              "quantity": 0.75,
+              "multiply_factor": 1,
+              "product": {
+                "name": "vin blanc"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "tasse"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1.5,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bouillon de boeuf"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "tasse"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "de camerise"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "tasse"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 1,
+              "product": {
+                "name": "cassonade"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ],
+              "cut": "haché"
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": "Roux"
+              },
+              "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Dans une poêle, dorer l'oignon, ajouter ensuite l'ail 1 minute. Saler et poivrer."
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Ajouter le vin et attendre qu'il s'évapore."
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "paragraph": "Dans un mortier, écraser les camerises."
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "paragraph": "Ajouter le bouillon de boeuf à la poêle."
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "paragraph": "Ajouter les camerises et mélanger."
+              }
+            },
+            {
+              "position": 6,
+              "segment": {
+                "paragraph": "Ajouter l'épaississant à la sauce jusqu'à la consistance désirée."
+              }
+            },
+            {
+              "position": 7,
+              "segment": {
+                "paragraph": "Ajuster avec de la cassonade, sel et poivre."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

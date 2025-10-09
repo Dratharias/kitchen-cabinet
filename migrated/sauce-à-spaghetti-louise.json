@@ -1,0 +1,369 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Sauce à spaghetti Louise",
+      "description": [
+        "Une sauce à spaghetti riche et savoureuse, préparée avec des tomates fraîches et des herbes aromatiques."
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "",
+      "gallery": [],
+      "type": {
+        "str_value": "Recette",
+        "type": "Type"
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "total_prep_time": 375,
+          "servings": null,
+          "subtitle": "Sauce À Spaghetti Louise",
+          "is_ingredient": false,
+          "content_ingredients": [
+            {
+              "quantity": 908,
+              "multiply_factor": 1,
+              "product": {
+                "name": "steak"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ],
+              "cut": "haché",
+              "title": "Sauce"
+            },
+            {
+              "quantity": 454,
+              "multiply_factor": 1,
+              "product": {
+                "name": "boeuf"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ],
+              "cut": "haché",
+              "title": "Sauce"
+            },
+            {
+              "quantity": 5,
+              "multiply_factor": 1,
+              "product": {
+                "name": "oignon"
+              },
+              "ingredient_units": [],
+              "title": "Sauce"
+            },
+            {
+              "quantity": 4,
+              "multiply_factor": 1,
+              "product": {
+                "name": "celeri"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "célerie"
+                  }
+                }
+              ],
+              "cut": "haché",
+              "title": "Sauce"
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "poivrons"
+              },
+              "ingredient_units": [],
+              "title": "Sauce"
+            },
+            {
+              "quantity": 115,
+              "multiply_factor": 1,
+              "product": {
+                "name": "champignons"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ],
+              "title": "Sauce"
+            },
+            {
+              "quantity": 496,
+              "multiply_factor": 1,
+              "product": {
+                "name": "tomates"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ],
+              "title": "Sauce"
+            },
+            {
+              "quantity": 992,
+              "multiply_factor": 1,
+              "product": {
+                "name": "jus de tomates"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ],
+              "title": "Sauce"
+            },
+            {
+              "quantity": 796,
+              "multiply_factor": 1,
+              "product": {
+                "name": "creme de tomate"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ],
+              "title": "Sauce"
+            },
+            {
+              "quantity": 796,
+              "multiply_factor": 1,
+              "product": {
+                "name": "puree de tomate"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ],
+              "title": "Sauce"
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sel"
+              },
+              "ingredient_units": [],
+              "title": "Sauce"
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": "poivre"
+              },
+              "ingredient_units": [],
+              "title": "Sauce"
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": "de laurier"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "feuille"
+                  }
+                }
+              ],
+              "title": "Sauce"
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": "assaisonnements italiens"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ],
+              "cut": "the",
+              "title": "Épices"
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": "the de sariette"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ],
+              "title": "Épices"
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": "the de basilic"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ],
+              "cut": "haché",
+              "title": "Épices"
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": "persil"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ],
+              "cut": "haché",
+              "title": "Épices"
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": "paprika"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ],
+              "cut": "de",
+              "title": "Épices"
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": "thym"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ],
+              "cut": "haché",
+              "title": "Épices"
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": "the de cayenne"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ],
+              "title": "Épices"
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sel"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ],
+              "title": "Épices"
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Sauce À Spaghetti Louise",
+                "paragraph": "Dans un chaudron, dorer les oignons et le célerie"
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "title": "Sauce À Spaghetti Louise",
+                "paragraph": "Ajouter les poivrons et les champignons"
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "title": "Sauce À Spaghetti Louise",
+                "paragraph": "Ajouter la viande hachée et laisser dorée sans la touchée en prenant soin de l'applatir dans le chaudron"
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "title": "Sauce À Spaghetti Louise",
+                "paragraph": "Ajouter le reste des ingrédients"
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "title": "Sauce À Spaghetti Louise",
+                "paragraph": "Laisser mijoter 3 heures"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -39,11 +39,15 @@ def strip_accents(text: str) -> str:
 
 
 def clean_product(product: str) -> str:
+    """Nettoyage doux conservant les composés 'de X'."""
     product = product.strip()
+    # Retirer la quantité et les parenthèses descriptives uniquement
     product = re.sub(r"^\d+[.,]?\d*\s*\w*\s+", "", product)
     product = re.sub(r"\([^)]*\)", "", product)
     product = strip_accents(product)
-    return product.strip()
+    # Ne pas supprimer les prépositions 'de', 'du', 'des'
+    product = re.sub(r"\s+", " ", product).strip()
+    return product
 
 
 def clean_legacy_links(s: str) -> str:
@@ -209,13 +213,38 @@ class IngredientsStage:
                     return True
         return False
 
-
-
-
     # ---------------- AI HELPERS ----------------
     def _extract_unit(self, ing_str: str) -> str:
-        s = clean_legacy_links(re.sub(r"\([^)]*\)", "", ing_str).strip())
-        prompt = f"""\nExtrait uniquement l'unité de mesure SI ou culinaire de la ligne suivante.\nSi aucune unité standard n’est trouvée, retourne null.\n\nLigne: \"{s}\"\n\nRéponds uniquement en JSON: {{ "unit": "..." }} ou {{ "unit": null }}\n"""
+        s = re.sub(r"\([^)]*\)", "", ing_str).strip().lower()
+
+        # --- Table de conversion canonique ---
+        patterns = {
+            r"\b(cuill|cuil)\.?(\s*a\s*soupe|ière?\s*a\s*soupe|iere?\s*a\s*soupe)?\b": "cuil. à soupe",
+            r"\b(cuill|cuil)\.?(\s*a\s*th[eé]|ière?\s*a\s*th[eé]|iere?\s*a\s*th[eé])?\b": "cuil. à thé",
+            r"\b(cuill|cuil)\b\.?": "cuil.",
+            r"\btasse(s)?\b|\bcup(s)?\b": "tasse",
+            r"\bpinc[eé]e(s)?\b": "pincée",
+            r"\btranche(s)?\b": "tranche",
+            r"\bfeuille(s)?\b": "feuille",
+            r"\bg\b|\bgramme(s)?\b": "g",
+            r"\bkg\b|\bkilogramme(s)?\b": "kg",
+            r"\bml\b|\bmillilitre(s)?\b": "ml",
+            r"\bl\b|\blitre(s)?\b": "l",
+        }
+
+        for pattern, canonical in patterns.items():
+            if re.search(pattern, s, flags=re.IGNORECASE):
+                return canonical
+
+        # --- Sinon fallback Mistral ---
+        prompt = f"""
+Extrait uniquement l'unité de mesure SI ou culinaire de la ligne suivante.
+Si aucune unité standard n’est trouvée, retourne null.
+
+Ligne: "{ing_str}"
+
+Réponds uniquement en JSON: {{ "unit": "..." }} ou {{ "unit": null }}
+"""
         try:
             result = self.client.generate_json(prompt)
             return result.get("unit") or ""
@@ -232,21 +261,36 @@ class IngredientsStage:
             return None
 
     def _extract_product(self, ing_str: str, unit: str = "") -> Dict[str, Any]:
-        s = clean_legacy_links(strip_accents(str(ing_str))).replace("\u00a0", " ").strip()
+        s = strip_accents(str(ing_str)).replace("\u00a0", " ").strip()
         s = re.sub(r"\([^)]*\)", "", s).strip()
-        prompt = f"""\nAnalyse cette ligne d'ingrédient et sépare le produit et la coupe éventuelle.\n- Le champ name contient l'aliment de base (ail, carotte, oignon, etc.).\n- Le champ cut contient la préparation: {', '.join(sorted(CUT_WORDS))}.\n- Retire toute unité comme gousse, paquet, sachet, etc. du champ name.\n- Si aucune coupe n'est trouvée, cut = null.\n\nLigne: \"{s}\"\n\nRéponds uniquement en JSON: {{ "name": "...", "cut": "..."|null }}\n"""
+
+        # cas spéciaux
+        saline_pattern = re.compile(
+            r"(solution|saumure).*(\d{1,2}(?:[.,]\d+)?\s*%)?.*(sel|salin[e]?)", re.I
+        )
+        if saline_pattern.search(s):
+            return {"name": s.strip(), "cut": None}
+
         try:
-            result = self.client.generate_json(prompt)
+            result = self.client.generate_json(f"""
+    Analyse cette ligne d'ingrédient et sépare le produit et la coupe éventuelle.
+    - Le champ name contient l'aliment complet (ex: 'levain de gingembre', 'pâte de curry rouge').
+    - Le champ cut contient la préparation (haché, râpé, etc.).
+    - Ne retire pas les parties 'de X' qui font partie du nom.
+    - Si aucune coupe n'est trouvée, cut = null.
+
+    Ligne: "{s}"
+    Réponds uniquement en JSON: {{ "name": "...", "cut": "..."|null }}
+    """)
             name = clean_product(result.get("name", ""))
             cut = result.get("cut")
         except Exception:
             name = clean_product(s)
             cut = None
 
-        if unit and unit in name.lower():
+        # nettoyage plus prudent des unités
+        if unit and unit.lower() in name.lower().split():
             parts = [w for w in name.split() if w.lower() != unit.lower()]
             name = " ".join(parts)
-        if any(u in name.lower() for u in UNIT_WORDS):
-            for u in UNIT_WORDS:
-                name = re.sub(rf"\b{u}\b", "", name, flags=re.I).strip()
+
         return {"name": name, "cut": cut}

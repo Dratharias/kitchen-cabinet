@@ -4,7 +4,7 @@
     "1": {
       "title": "Ketchup",
       "description": [
-        "Savoureux ketchup maison, parfait pour ajouter de la saveur à vos hamburgers et frites."
+        "Une sauce tomate maison épicée et sucrée pour relever vos hamburgers et nuggets de poulet."
       ],
       "note": [],
       "public": true,
@@ -42,111 +42,192 @@
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "huile vegetale"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 2,
+              "multiply_factor": 1,
+              "product": {
+                "name": "oignons"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "tasse"
+                  }
+                }
+              ],
+              "cut": "finement coupes"
             },
             {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "gingembre"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ],
+              "cut": "haché"
+            },
+            {
+              "quantity": 4,
+              "multiply_factor": 1,
+              "product": {
+                "name": "d'ail"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "gousses"
+                  }
+                }
+              ],
+              "cut": "emincées"
+            },
+            {
+              "quantity": 2,
+              "multiply_factor": 1,
+              "product": {
+                "name": "poudre de moutarde"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 1,
+              "product": {
+                "name": "the tout epice"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 4,
+              "multiply_factor": 1,
+              "product": {
+                "name": "pate de tomate"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 2.5,
+              "multiply_factor": 1,
+              "product": {
+                "name": "piment de cayenne"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 2,
+              "multiply_factor": 1,
+              "product": {
+                "name": "tomate entiere sans pelure"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 2,
+              "multiply_factor": 1,
+              "product": {
+                "name": "de laurier"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "feuille"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.75,
+              "multiply_factor": 1,
+              "product": {
+                "name": "cassonade"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "tasse"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 1,
+              "product": {
+                "name": "vinaigre de cidre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "tasse"
+                  }
+                }
+              ]
             },
             {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "melasse"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
             },
             {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
+                "name": "sel"
               },
               "ingredient_units": []
             }
@@ -185,36 +266,61 @@
           "is_ingredient": false,
           "content_ingredients": [
             {
-              "quantity": null,
+              "quantity": 3,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "bacon"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "tranche"
+                  }
+                }
+              ],
+              "cut": "haché finement"
             },
             {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "paprika fume"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 1,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "ketchup"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "tasse"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 0.5,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "vinaigre de cidre"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
             }
           ],
           "content_segments": [
@@ -245,36 +351,62 @@
           "is_ingredient": false,
           "content_ingredients": [
             {
-              "quantity": null,
+              "quantity": 0.5,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "beurre"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 1,
+              "product": {
+                "name": "peches epluches"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "tasse"
+                  }
+                }
+              ],
+              "cut": "epluches"
             },
             {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "gingembre"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ],
+              "cut": "haché"
             },
             {
-              "quantity": null,
+              "quantity": 1.5,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "poudre de curry"
               },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
             }
           ],
           "content_segments": [
@@ -305,52 +437,89 @@
           "is_ingredient": false,
           "content_ingredients": [
             {
-              "quantity": null,
+              "quantity": 1,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "piment chipotle"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ],
+              "cut": "haché"
             },
             {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "huile vegetale"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
             },
             {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "cumin moulu"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "ketchup"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "tasse"
+                  }
+                }
+              ]
             },
             {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "the jus de lime"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
             },
             {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "the miel"
               },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
             }
           ],
           "content_segments": [

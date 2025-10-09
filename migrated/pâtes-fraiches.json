@@ -4,7 +4,7 @@
     "1": {
       "title": "Pâtes Fraiches",
       "description": [
-        "Découvrez le goût authentique de l'Italie avec ces pâtes fraiches maison, préparées avec amour pour une expérience culinaire inoubliable."
+        "Découvrez le goût authentique de l'Italie avec nos pâtes fraiches maison, préparées avec des ingrédients frais et sélectionnés avec soin."
       ],
       "note": [],
       "public": true,
@@ -31,36 +31,48 @@
           "is_ingredient": false,
           "content_ingredients": [
             {
-              "quantity": null,
+              "quantity": 625,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "farine tout usage"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
             },
             {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "Sel"
               },
               "ingredient_units": []
             },
             {
-              "quantity": null,
+              "quantity": 4,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "oeufs"
               },
               "ingredient_units": []
             },
             {
-              "quantity": null,
+              "quantity": 15,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "huile d'olive"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
             }
           ],
           "content_segments": [

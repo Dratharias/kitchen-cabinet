@@ -1,6 +1,6 @@
 # API Routes Documentation
 
-This document outlines the API endpoints for the **kitchen-cabinet** application. The API is divided into public, protected, and orchestrator routes.
+This document outlines the API endpoints for the **kitchen-kabinet** application. The API is divided into public, protected, and orchestrator routes.
 
 ---
 

@@ -5,17 +5,6 @@ import { InertiaPlugin } from 'gsap/InertiaPlugin';
 
 gsap.registerPlugin(InertiaPlugin);
 
-const throttle = (func: (...args: any[]) => void, limit: number) => {
-  let lastCall = 0;
-  return function (this: any, ...args: any[]) {
-    const now = performance.now();
-    if (now - lastCall >= limit) {
-      lastCall = now;
-      func.apply(this, args);
-    }
-  };
-};
-
 interface Dot {
   cx: number;
   cy: number;
@@ -78,13 +67,13 @@ const DotGrid: React.FC<DotGridProps> = ({
     lastX: 0,
     lastY: 0
   });
+  const rafRef = useRef<number>(0);
 
   const baseRgb = useMemo(() => hexToRgb(baseColor), [baseColor]);
   const activeRgb = useMemo(() => hexToRgb(activeColor), [activeColor]);
 
   const circlePath = useMemo(() => {
     if (typeof window === 'undefined' || !window.Path2D) return null;
-
     const p = new Path2D();
     p.arc(0, 0, dotSize / 2, 0, Math.PI * 2);
     return p;
@@ -129,70 +118,65 @@ const DotGrid: React.FC<DotGridProps> = ({
     dotsRef.current = dots;
   }, [dotSize, gap]);
 
-  useEffect(() => {
-    if (!circlePath) return;
+  const draw = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx || !circlePath) return;
 
-    let rafId: number;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const { x: px, y: py } = pointerRef.current;
     const proxSq = proximity * proximity;
 
-    const draw = () => {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      if (!ctx) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (const dot of dotsRef.current) {
+      const ox = dot.cx + dot.xOffset;
+      const oy = dot.cy + dot.yOffset;
+      const dx = dot.cx - px;
+      const dy = dot.cy - py;
+      const dsq = dx * dx + dy * dy;
 
-      const { x: px, y: py } = pointerRef.current;
-
-      for (const dot of dotsRef.current) {
-        const ox = dot.cx + dot.xOffset;
-        const oy = dot.cy + dot.yOffset;
-        const dx = dot.cx - px;
-        const dy = dot.cy - py;
-        const dsq = dx * dx + dy * dy;
-
-        let style = baseColor;
-        if (dsq <= proxSq) {
-          const dist = Math.sqrt(dsq);
-          const t = 1 - dist / proximity;
-          const r = Math.round(baseRgb.r + (activeRgb.r - baseRgb.r) * t);
-          const g = Math.round(baseRgb.g + (activeRgb.g - baseRgb.g) * t);
-          const b = Math.round(baseRgb.b + (activeRgb.b - baseRgb.b) * t);
-          style = `rgb(${r},${g},${b})`;
-        }
-
-        ctx.save();
-        ctx.translate(ox, oy);
-        ctx.fillStyle = style;
-        ctx.fill(circlePath);
-        ctx.restore();
+      let style = baseColor;
+      if (dsq <= proxSq) {
+        const dist = Math.sqrt(dsq);
+        const t = 1 - dist / proximity;
+        const r = Math.round(baseRgb.r + (activeRgb.r - baseRgb.r) * t);
+        const g = Math.round(baseRgb.g + (activeRgb.g - baseRgb.g) * t);
+        const b = Math.round(baseRgb.b + (activeRgb.b - baseRgb.b) * t);
+        style = `rgb(${r},${g},${b})`;
       }
 
-      rafId = requestAnimationFrame(draw);
-    };
+      ctx.save();
+      ctx.translate(ox, oy);
+      ctx.fillStyle = style;
+      ctx.fill(circlePath);
+      ctx.restore();
+    }
 
-    draw();
-    return () => cancelAnimationFrame(rafId);
+    rafRef.current = requestAnimationFrame(draw);
   }, [proximity, baseColor, activeRgb, baseRgb, circlePath]);
 
   useEffect(() => {
+    draw();
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [draw]);
+
+  useEffect(() => {
     buildGrid();
-    let ro: ResizeObserver | null = null;
-    if ('ResizeObserver' in window) {
-      ro = new ResizeObserver(buildGrid);
-      wrapperRef.current && ro.observe(wrapperRef.current);
-    } else {
-      (window as Window).addEventListener('resize', buildGrid);
-    }
-    return () => {
-      if (ro) ro.disconnect();
-      else window.removeEventListener('resize', buildGrid);
-    };
+    const ro = new ResizeObserver(buildGrid);
+    if (wrapperRef.current) ro.observe(wrapperRef.current);
+    return () => ro.disconnect();
   }, [buildGrid]);
 
   useEffect(() => {
+    let lastMoveTime = 0;
+    const throttleDelay = 16;
+
     const onMove = (e: MouseEvent) => {
       const now = performance.now();
+      if (now - lastMoveTime < throttleDelay) return;
+      lastMoveTime = now;
+
       const pr = pointerRef.current;
       const dt = pr.lastTime ? now - pr.lastTime : 16;
       const dx = e.clientX - pr.lastX;
@@ -217,9 +201,11 @@ const DotGrid: React.FC<DotGridProps> = ({
       pr.x = e.clientX - rect.left;
       pr.y = e.clientY - rect.top;
 
+      if (speed <= speedTrigger) return;
+
       for (const dot of dotsRef.current) {
         const dist = Math.hypot(dot.cx - pr.x, dot.cy - pr.y);
-        if (speed > speedTrigger && dist < proximity && !dot._inertiaApplied) {
+        if (dist < proximity && !dot._inertiaApplied) {
           dot._inertiaApplied = true;
           gsap.killTweensOf(dot);
           const pushX = dot.cx - pr.x + vx * 0.005;
@@ -268,12 +254,11 @@ const DotGrid: React.FC<DotGridProps> = ({
       }
     };
 
-    const throttledMove = throttle(onMove, 50);
-    window.addEventListener('mousemove', throttledMove, { passive: true });
+    window.addEventListener('mousemove', onMove, { passive: true });
     window.addEventListener('click', onClick);
 
     return () => {
-      window.removeEventListener('mousemove', throttledMove);
+      window.removeEventListener('mousemove', onMove);
       window.removeEventListener('click', onClick);
     };
   }, [maxSpeed, speedTrigger, proximity, resistance, returnDuration, shockRadius, shockStrength]);

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useInView, useMotionValue, useSpring } from 'motion/react';
+import { useInView, useMotionValue, useSpring } from 'framer-motion';
 
 interface CountUpProps {
   to: number;
@@ -28,21 +28,18 @@ export default function CountUp({
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const motionValue = useMotionValue(direction === 'down' ? to : from);
-
-  const damping = 20 + 40 * (1 / duration);
-  const stiffness = 100 * (1 / duration);
-
   const springValue = useSpring(motionValue, {
-    damping,
-    stiffness
+    damping: 20 + 40 * (1 / duration),
+    stiffness: 100 * (1 / duration)
   });
 
   const isInView = useInView(ref, { once: true, margin: '0px' });
 
   const getDecimalPlaces = (num: number): number => {
     const str = num.toString();
-    if (str.includes('.')) {
-      const decimals = str.split('.')[1];
+    const decimalIndex = str.indexOf('.');
+    if (decimalIndex !== -1) {
+      const decimals = str.slice(decimalIndex + 1);
       if (parseInt(decimals) !== 0) {
         return decimals.length;
       }
@@ -60,48 +57,38 @@ export default function CountUp({
 
   useEffect(() => {
     if (isInView && startWhen) {
-      if (typeof onStart === 'function') {
-        onStart();
-      }
+      onStart?.();
 
       const timeoutId = setTimeout(() => {
         motionValue.set(direction === 'down' ? from : to);
       }, delay * 1000);
 
-      const durationTimeoutId = setTimeout(
-        () => {
-          if (typeof onEnd === 'function') {
-            onEnd();
-          }
-        },
-        delay * 1000 + duration * 1000
-      );
+      const durationTimeoutId = setTimeout(() => {
+        onEnd?.();
+      }, (delay + duration) * 1000);
 
       return () => {
         clearTimeout(timeoutId);
         clearTimeout(durationTimeoutId);
       };
     }
-  }, [isInView, startWhen, motionValue, direction, from, to, delay, onStart, onEnd, duration]);
+  }, [isInView, startWhen, motionValue, direction, from, to, delay, duration, onStart, onEnd]);
 
   useEffect(() => {
-    const unsubscribe = springValue.on('change', latest => {
+    const unsubscribe = springValue.on('change', (latest) => {
       if (ref.current) {
-        const hasDecimals = maxDecimals > 0;
-
-        const options: Intl.NumberFormatOptions = {
+        const formatter = new Intl.NumberFormat('en-US', {
           useGrouping: !!separator,
-          minimumFractionDigits: hasDecimals ? maxDecimals : 0,
-          maximumFractionDigits: hasDecimals ? maxDecimals : 0
-        };
+          minimumFractionDigits: maxDecimals,
+          maximumFractionDigits: maxDecimals
+        });
 
-        const formattedNumber = Intl.NumberFormat('en-US', options).format(latest);
-
-        ref.current.textContent = separator ? formattedNumber.replace(/,/g, separator) : formattedNumber;
+        const formatted = formatter.format(latest);
+        ref.current.textContent = separator ? formatted.replace(/,/g, separator) : formatted;
       }
     });
 
-    return () => unsubscribe();
+    return unsubscribe;
   }, [springValue, separator, maxDecimals]);
 
   return <span className={className} ref={ref} />;

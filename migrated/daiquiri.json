@@ -4,7 +4,7 @@
     "1": {
       "title": "Daiquiri",
       "description": [
-        "Profitez d'un délicieux Daiquiri, un cocktail classique à base de rhum blanc, citron vert et sirop de canne."
+        "Profitez d'un délicieux Daiquiri, un cocktail classique à base de rhum blanc, jus de citron vert et sirop de canne, pour une expérience rafraîchissante et savoureuse."
       ],
       "note": [],
       "public": true,
@@ -26,10 +26,66 @@
           "is_ingredient": false,
           "content_ingredients": [
             {
+              "quantity": 2.25,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fraises ou bleuets"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "tasse"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 75,
+              "multiply_factor": 1,
+              "product": {
+                "name": "gin"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "miel"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 150,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau ou soda tonique"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "Basilic au gout"
               },
               "ingredient_units": []
             },
@@ -37,39 +93,7 @@
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
+                "name": "Lime"
               },
               "ingredient_units": []
             }

@@ -39,28 +39,47 @@
           "is_ingredient": true,
           "content_ingredients": [
             {
-              "quantity": null,
+              "quantity": 250,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "eau"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 10,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "gingembre"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ],
+              "cut": "haché"
             },
             {
-              "quantity": null,
+              "quantity": 10,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "sucre"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
             }
           ],
           "content_segments": [
@@ -97,28 +116,40 @@
           "is_ingredient": true,
           "content_ingredients": [
             {
-              "quantity": null,
+              "quantity": 200,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "eau"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
             },
             {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "fruit bio"
               },
               "ingredient_units": []
             },
             {
-              "quantity": null,
+              "quantity": 10,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "sucre"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
             }
           ],
           "content_segments": [
@@ -145,40 +176,157 @@
         {
           "total_prep_time": 10,
           "servings": null,
+          "subtitle": "Bière De Gingembre Maison",
+          "is_ingredient": false,
+          "content_ingredients": [
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "l"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 30,
+              "multiply_factor": 1,
+              "product": {
+                "name": "gingembre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ],
+              "cut": "rape"
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": []
+            },
+            {
+              "quantity": 50,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de gingembre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ],
+              "cut": "filtré"
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Faire mijoter eau, gingembre, sucre 5 minutes. Filtrer."
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Refroidir à température ambiante."
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "paragraph": "Ajouter le levain de gingembre filtré."
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "paragraph": "Mettre en bouteille (résistante à la pression) et fermenter 2 à 4 jours à température pièce."
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "paragraph": "Réfrigérer. Ouvrir avec précaution."
+              }
+            }
+          ]
+        },
+        {
+          "total_prep_time": 10,
+          "servings": null,
           "subtitle": "Bière De Gingembre Pro",
           "is_ingredient": false,
           "content_ingredients": [
             {
-              "quantity": null,
+              "quantity": 1,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "eau"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "l"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 30,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "gingembre"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ],
+              "cut": "rape"
             },
             {
-              "quantity": null,
+              "quantity": 80,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "sucre"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 0.125,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "levure US-05 ou champagne"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "c. à thé"
+                  }
+                }
+              ]
             }
           ],
           "content_segments": [
@@ -199,40 +347,156 @@
         {
           "total_prep_time": 10,
           "servings": null,
+          "subtitle": "Limonade Florale Ou Thé Maison",
+          "is_ingredient": false,
+          "content_ingredients": [
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "l"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fleurs"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ],
+              "cut": "haché"
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de fruit"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Infuser les fleurs ou le thé dans l'eau chaude (5–10 minutes)."
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Ajouter le sucre et refroidir."
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "paragraph": "Incorporer le levain de fruit, embouteiller, fermenter 2 à 3 jours."
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "paragraph": "Réfrigérer."
+              }
+            }
+          ]
+        },
+        {
+          "total_prep_time": 10,
+          "servings": null,
           "subtitle": "Limonade Florale Ou Thé Pro",
           "is_ingredient": false,
           "content_ingredients": [
             {
-              "quantity": null,
+              "quantity": 1,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "eau"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "l"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 1,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "fleurs"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ],
+              "cut": "haché"
             },
             {
-              "quantity": null,
+              "quantity": 80,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "sucre"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 0.125,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "levure US-05"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "c. à thé"
+                  }
+                }
+              ]
             }
           ],
           "content_segments": [
@@ -253,48 +517,75 @@
         {
           "total_prep_time": 10,
           "servings": null,
-          "subtitle": "Soda Fraise Citron Pro",
+          "subtitle": "Soda Fraise Citron Maison",
           "is_ingredient": false,
           "content_ingredients": [
             {
-              "quantity": null,
+              "quantity": 1,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "eau"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "l"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fraises"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ],
+              "cut": "ecrasees"
             },
             {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "citron"
               },
-              "ingredient_units": []
+              "ingredient_units": [],
+              "cut": "presse"
             },
             {
-              "quantity": null,
+              "quantity": 80,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "sucre"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 100,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "levain de fraise"
               },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ],
+              "cut": "filtré"
             }
           ],
           "content_segments": [
@@ -321,110 +612,74 @@
         {
           "total_prep_time": 10,
           "servings": null,
-          "subtitle": "Soda Aux Bleuets Maison",
+          "subtitle": "Soda Fraise Citron Pro",
           "is_ingredient": false,
           "content_ingredients": [
             {
-              "quantity": null,
+              "quantity": 1,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "eau"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "l"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fraises"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ],
+              "cut": "ecrasees"
             },
             {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "citron"
               },
-              "ingredient_units": []
+              "ingredient_units": [],
+              "cut": "presse"
             },
             {
-              "quantity": null,
+              "quantity": 80,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "sucre"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 0.125,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "levure US-05"
               },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            }
-          ],
-          "content_segments": [
-            {
-              "position": 1,
-              "segment": {
-                "paragraph": "Mélanger les bleuets, l'eau, le sucre et les feuilles de basilic."
-              }
-            },
-            {
-              "position": 2,
-              "segment": {
-                "paragraph": "Ajouter le levain de bleuet, fermenter 2 à 3 jours, réfrigérer."
-              }
-            }
-          ]
-        },
-        {
-          "total_prep_time": 10,
-          "servings": null,
-          "subtitle": "Soda Aux Bleuets Pro",
-          "is_ingredient": false,
-          "content_ingredients": [
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "c. à thé"
+                  }
+                }
+              ]
             }
           ],
           "content_segments": [
@@ -445,24 +700,80 @@
         {
           "total_prep_time": 10,
           "servings": null,
-          "subtitle": "Cidre Doux Pro",
+          "subtitle": "Cidre Doux Maison",
           "is_ingredient": false,
           "content_ingredients": [
             {
-              "quantity": null,
+              "quantity": 1,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "jus de pomme"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "L"
+                  }
+                }
+              ]
             },
             {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "levure naturelle du jus"
               },
               "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Laisser fermenter le jus cru 5 à 10 jours à température ambiante."
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Réfrigérer une fois le goût et la pétillance désirés atteints."
+              }
+            }
+          ]
+        },
+        {
+          "total_prep_time": 10,
+          "servings": null,
+          "subtitle": "Cidre Doux Pro",
+          "is_ingredient": false,
+          "content_ingredients": [
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "jus de pomme"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "L"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.125,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levure US-05 ou champagne"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "c. à thé"
+                  }
+                }
+              ]
             }
           ],
           "content_segments": [
@@ -487,44 +798,418 @@
           "is_ingredient": false,
           "content_ingredients": [
             {
-              "quantity": null,
+              "quantity": 1,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "eau"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "l"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 150,
+              "multiply_factor": 1,
+              "product": {
+                "name": "cerises fraiches ou surgelees"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de cerise"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Mélanger les cerises, l'eau et le sucre."
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Ajouter le levain de cerise, fermenter 2 à 3 jours, réfrigérer."
+              }
+            }
+          ]
+        },
+        {
+          "total_prep_time": 10,
+          "servings": null,
+          "subtitle": "Soda À La Cerise Pro",
+          "is_ingredient": false,
+          "content_ingredients": [
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "l"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 150,
+              "multiply_factor": 1,
+              "product": {
+                "name": "cerises fraiches ou surgelees"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.125,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levure US-05"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "c. à thé"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Même mélange, refroidi, ajouter levure US-05."
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Fermenter 2 à 3 jours, réfrigérer."
+              }
+            }
+          ]
+        },
+        {
+          "total_prep_time": 10,
+          "servings": null,
+          "subtitle": "Soda Aux Bleuets Et Basilic Maison",
+          "is_ingredient": false,
+          "content_ingredients": [
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "l"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bleuets"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ],
+              "cut": "écrasés"
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
             },
             {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "feuilles de basilic frais"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "feuille"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de bleuet"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Mélanger les bleuets, l'eau, le sucre et les feuilles de basilic."
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Ajouter le levain de bleuet, fermenter 2 à 3 jours, réfrigérer."
+              }
+            }
+          ]
+        },
+        {
+          "total_prep_time": 10,
+          "servings": null,
+          "subtitle": "Soda Aux Bleuets Et Basilic Pro",
+          "is_ingredient": false,
+          "content_ingredients": [
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "l"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bleuets"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ],
+              "cut": "écrasés"
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
             },
             {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "feuilles de basilic frais"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "feuille"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 0.125,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "levure US-05"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "c. à thé"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Même mélange, refroidi, ajouter levure US-05."
+              }
             },
             {
-              "quantity": null,
+              "position": 2,
+              "segment": {
+                "paragraph": "Fermenter 2 à 3 jours, réfrigérer."
+              }
+            }
+          ]
+        },
+        {
+          "total_prep_time": 10,
+          "servings": null,
+          "subtitle": "Soda À La Rhubarbe Et Fraise Maison",
+          "is_ingredient": false,
+          "content_ingredients": [
+            {
+              "quantity": 1,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "eau"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "l"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "rhubarbe fraiche"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ],
+              "cut": "coupee"
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fraises"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ],
+              "cut": "ecrasees"
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de rhubarbe"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
             }
           ],
           "content_segments": [
@@ -545,48 +1230,80 @@
         {
           "total_prep_time": 10,
           "servings": null,
-          "subtitle": "Soda À La Cerise Pro",
+          "subtitle": "Soda À La Rhubarbe Et Fraise Pro",
           "is_ingredient": false,
           "content_ingredients": [
             {
-              "quantity": null,
+              "quantity": 1,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "eau"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "l"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 100,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "rhubarbe fraiche"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ],
+              "cut": "coupee"
             },
             {
-              "quantity": null,
+              "quantity": 100,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "fraises"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ],
+              "cut": "ecrasees"
             },
             {
-              "quantity": null,
+              "quantity": 80,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "sucre"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 0.125,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "levure US-05"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "c. à thé"
+                  }
+                }
+              ]
             }
           ],
           "content_segments": [
@@ -607,94 +1324,64 @@
         {
           "total_prep_time": 10,
           "servings": null,
-          "subtitle": "Soda À La Rhubarbe Et Fraise Pro",
+          "subtitle": "Limonade À La Lavande Et Miel Maison",
           "is_ingredient": false,
           "content_ingredients": [
             {
-              "quantity": null,
+              "quantity": 1,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "eau"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "l"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 10,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "fleurs de lavande sechees"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 80,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "sucre"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 100,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "levain de lavande"
               },
-              "ingredient_units": []
-            }
-          ],
-          "content_segments": [
-            {
-              "position": 1,
-              "segment": {
-                "paragraph": "Même infusion, ajouter levure US-05."
-              }
-            },
-            {
-              "position": 2,
-              "segment": {
-                "paragraph": "Fermenter 2 à 3 jours, réfrigérer."
-              }
-            }
-          ]
-        },
-        {
-          "total_prep_time": 10,
-          "servings": null,
-          "subtitle": "Limonade À La Lavande Et Miel Pro",
-          "is_ingredient": false,
-          "content_ingredients": [
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
             }
           ],
           "content_segments": [
@@ -715,40 +1402,143 @@
         {
           "total_prep_time": 10,
           "servings": null,
+          "subtitle": "Limonade À La Lavande Et Miel Pro",
+          "is_ingredient": false,
+          "content_ingredients": [
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "l"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 10,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fleurs de lavande sechees"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.125,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levure US-05"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "c. à thé"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Même infusion, ajouter levure US-05."
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Fermenter 2 à 3 jours, réfrigérer."
+              }
+            }
+          ]
+        },
+        {
+          "total_prep_time": 10,
+          "servings": null,
           "subtitle": "Soda Bleuet Maison",
           "is_ingredient": false,
           "content_ingredients": [
             {
-              "quantity": null,
+              "quantity": 1,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "eau"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "l"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 150,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "bleuets"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ],
+              "cut": "écrasés"
             },
             {
-              "quantity": null,
+              "quantity": 80,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "sucre"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 100,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "levain de bleuet"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
             }
           ],
           "content_segments": [
@@ -773,36 +1563,61 @@
           "is_ingredient": false,
           "content_ingredients": [
             {
-              "quantity": null,
+              "quantity": 1,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "eau"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "l"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 150,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "bleuets"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ],
+              "cut": "écrasés"
             },
             {
-              "quantity": null,
+              "quantity": 80,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "sucre"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 0.125,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "levure US-05"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "c. à thé"
+                  }
+                }
+              ]
             }
           ],
           "content_segments": [

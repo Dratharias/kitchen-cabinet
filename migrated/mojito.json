@@ -4,7 +4,7 @@
     "1": {
       "title": "Mojito",
       "description": [
-        "Profitez d'un rafraîchissement tropical avec ce classique cubain à base de menthe, citron vert et rhum blanc."
+        "Profitez d'un rafraîchissement tropical avec ce classique cubain à base de menthe, citron vert et rhum."
       ],
       "note": [],
       "public": true,
@@ -26,44 +26,74 @@
           "is_ingredient": false,
           "content_ingredients": [
             {
-              "quantity": null,
+              "quantity": 140,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "rhum de qualite"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 40,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "jus de lime"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 20,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "de menthe"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "feuille"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 140,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "sucre"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
             },
             {
-              "quantity": null,
+              "quantity": 2,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "eau"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "l"
+                  }
+                }
+              ]
             }
           ],
           "content_segments": [

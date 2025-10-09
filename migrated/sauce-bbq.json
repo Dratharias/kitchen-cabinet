@@ -1,0 +1,163 @@
+{
+  "action": "create",
+  "payload": {
+    "1": {
+      "title": "Sauce BBQ",
+      "description": [
+        "Une sauce BBQ savoureuse et épicée pour relever vos plats de poulet ou de porc grillés."
+      ],
+      "note": [],
+      "public": true,
+      "published": true,
+      "thumbnail": "https://i.ibb.co/1nps5PG/bbq-sauce.jpg",
+      "gallery": [],
+      "type": {
+        "str_value": "Recette",
+        "type": "Type"
+      },
+      "style": null,
+      "author": null,
+      "tags": [],
+      "contents": [
+        {
+          "total_prep_time": 30,
+          "servings": null,
+          "subtitle": "Sauce Bbq",
+          "is_ingredient": false,
+          "content_ingredients": [
+            {
+              "quantity": 2,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sauce tomate biologique"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "tasse"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.25,
+              "multiply_factor": 1,
+              "product": {
+                "name": "vinaigre de cidre de pomme"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "tasse"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 1,
+              "product": {
+                "name": "melasse noire ou de sirop d'erable"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "tasse"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sel de mer"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ],
+              "cut": "haché"
+            },
+            {
+              "quantity": 0.25,
+              "multiply_factor": 1,
+              "product": {
+                "name": "the d'ail"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ],
+              "cut": "en poudre"
+            },
+            {
+              "quantity": 0.25,
+              "multiply_factor": 1,
+              "product": {
+                "name": "poudre d'oignon"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ],
+              "cut": "de"
+            },
+            {
+              "quantity": 0.25,
+              "multiply_factor": 1,
+              "product": {
+                "name": "poivre noir"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ],
+              "cut": "haché"
+            },
+            {
+              "quantity": null,
+              "multiply_factor": 1,
+              "product": {
+                "name": "pincee de poivre de cayenne"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "pincée"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Fouetter tous les ingrédients à feu moyen-vif dans une casserole. Faire bouillir pendant 1 minute, puis réduire le feu et laisser mijoter pendant 20 minutes."
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Verser dans un pot et laisser refroidir. Ensuite, fermez et conservez au réfrigérateur."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

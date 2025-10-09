@@ -94,10 +94,16 @@ export class RouteRegistry {
 
           if (query.filter) {
             try {
-              params.filter =
-                typeof query.filter === "string"
-                  ? JSON.parse(query.filter)
-                  : query.filter;
+              const raw = typeof query.filter === "string"
+                ? query.filter
+                : JSON.stringify(query.filter);
+
+              // si encodé (%7B ... %7D) on decode, sinon on garde tel quel
+              const decoded = raw.includes("%7B") || raw.includes("%7D") || raw.includes("%22")
+                ? decodeURIComponent(raw)
+                : raw;
+
+              params.filter = JSON.parse(decoded);
             } catch {
               params.filter = {};
             }
@@ -107,8 +113,12 @@ export class RouteRegistry {
             params.filter = { ...(params.filter || {}), type: query.type };
           }
 
+          if (query.page) params.page = Number(query.page);
+          if (query.limit) params.limit = Number(query.limit);
           if (query.skip) params.skip = Number(query.skip);
           if (query.take) params.take = Number(query.take);
+          if (query.sortBy) params.sortBy = query.sortBy;
+          if (query.order) params.order = query.order;
 
           if (query.includeRelations !== undefined) {
             params.includeRelations = query.includeRelations === "true";

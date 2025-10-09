@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client";
 import { prisma } from "../../config.js";
 import {
   shapePublicPublicationFull,
@@ -21,7 +22,7 @@ export class PublicPublicationController
     >
 {
   // =====================================================
-  // READ — Tous publics
+  // READ — Tous publics (avec recherche et tolérance)
   // =====================================================
   async findAll(
     params?: PublicationReadAllDto,
@@ -32,22 +33,124 @@ export class PublicPublicationController
     limit: number;
     totalPages: number;
   }> {
-    const where: any = { public: true, published: true };
+    const limit = Number(params?.limit) || 12;
+    const page = Number(params?.page) || 1;
+    const skip = (page - 1) * limit;
+    const sortBy = params?.sortBy || "title";
+    const order = params?.order === "desc" ? "desc" : "asc";
 
-    const limit = Number(params?.limit ?? 12);
-    const page = Number(params?.page ?? 1);
-    const skip = Number(params?.skip ?? (page - 1) * limit);
+    // --- Normalisation du filtre ---
+    const filter = params?.filter ?? {};
+    const q = typeof filter.q === "string" ? filter.q.trim() : null;
+    const typeField = (filter as any).type;
+    const types: string[] = Array.isArray(typeField)
+      ? typeField
+      : typeField
+      ? [typeField]
+      : [];
 
+    // --- Filtre principal ---
+    const where: Prisma.publicationWhereInput = {
+      public: true,
+      published: true,
+      AND: [
+        types.length ? { type: { str_value: { in: types } } } : undefined,
+        q
+          ? {
+              OR: [
+                { title: { contains: q, mode: Prisma.QueryMode.insensitive } },
+                { description: { hasSome: [q] } },
+                {
+                  contents: {
+                    some: {
+                      OR: [
+                        {
+                          content_segments: {
+                            some: {
+                              segment: {
+                                paragraph: {
+                                  contains: q,
+                                  mode: Prisma.QueryMode.insensitive,
+                                },
+                              },
+                            },
+                          },
+                        },
+                        {
+                          content_ingredients: {
+                            some: {
+                              ingredient: {
+                                OR: [
+                                  { title: { contains: q, mode: Prisma.QueryMode.insensitive } },
+                                  { cut: { contains: q, mode: Prisma.QueryMode.insensitive } },
+                                  {
+                                    product: {
+                                      name: { contains: q, mode: Prisma.QueryMode.insensitive },
+                                    },
+                                  },
+                                  {
+                                    ingredient_units: {
+                                      some: {
+                                        unit: {
+                                          name: { contains: q, mode: Prisma.QueryMode.insensitive },
+                                        },
+                                      },
+                                    },
+                                  },
+                                ],
+                              },
+                            },
+                          },
+                        },
+                      ],
+                    },
+                  },
+                },
+              ],
+            }
+          : undefined,
+      ].filter(Boolean) as Prisma.publicationWhereInput[],
+    };
+
+    // --- Pagination & comptage ---
     const total = await prisma.publication.count({ where });
+
+    // --- Requête principale ---
     const pubs = await prisma.publication.findMany({
       where,
       include: this.buildSummaryInclude(),
       skip,
       take: limit,
+      orderBy: { [sortBy]: order },
     });
 
+    // --- Tolérance orthographique (pg_trgm) ---
+    let results = pubs;
+    if (q) {
+      const safeQ = q.replace(/'/g, "''");
+      const fuzzy = await prisma.$queryRawUnsafe<{ publication_id: string }[]>(`
+        SELECT publication_id
+        FROM publication
+        WHERE similarity(unaccent(lower(title)), unaccent(lower('${safeQ}'))) > 0.4
+        ORDER BY similarity(unaccent(lower(title)), unaccent(lower('${safeQ}'))) DESC
+        LIMIT 50;
+      `);
+      const fuzzyIds = fuzzy.map((f) => f.publication_id);
+      if (fuzzyIds.length > 0) {
+        const fuzzyItems = await prisma.publication.findMany({
+          where: { publication_id: { in: fuzzyIds } },
+          include: this.buildSummaryInclude(),
+        });
+        const merged = new Map<string, any>();
+        [...pubs, ...fuzzyItems].forEach((p) => merged.set(p.publication_id, p));
+        results = Array.from(merged.values()).sort((a, b) =>
+          a.title.localeCompare(b.title, "fr", { sensitivity: "base" }),
+        );
+      }
+    }
+
     return {
-      items: pubs.map((p) => shapePublicPublicationSummary(p)),
+      items: results.map((p) => shapePublicPublicationSummary(p)),
       total,
       page,
       limit,

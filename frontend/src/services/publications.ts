@@ -2,10 +2,8 @@ import { Publication, PaginatedResponse, PaginatedRequest } from "@/types";
 import { CommonService } from "./common";
 
 /**
- * Gère l'accès aux publications.
- * On sépare clairement :
- *  - API publique (/api/public/publications)
- *  - API interne (/api/publications)
+ * Service centralisé pour l'accès aux publications.
+ * Gère à la fois les routes publiques et authentifiées.
  */
 export class PublicationsService {
   // =========================================================
@@ -23,9 +21,7 @@ export class PublicationsService {
     const safeParams = {
       ...params,
       ...(params?.filter
-        ? {
-            filter: encodeURIComponent(JSON.stringify(params.filter)),
-          }
+        ? { filter: encodeURIComponent(JSON.stringify(params.filter)) }
         : {}),
     };
 
@@ -35,7 +31,7 @@ export class PublicationsService {
     );
   }
 
-  /** Détails d'une publication publique (non-auth) */
+  /** Détails d’une publication publique */
   static async getPublicPublicationById(id: string): Promise<Publication> {
     return CommonService.get<Publication>(`/api/public/publications/${id}`);
   }
@@ -44,7 +40,7 @@ export class PublicationsService {
   // --- INTERNAL / AUTHENTICATED ACCESS ---
   // =========================================================
 
-  /** Liste paginée interne (admin, édition) */
+  /** Liste paginée interne (auth requise) */
   static async getPublications(
     params?: Partial<PaginatedRequest> & {
       sortBy?: string;
@@ -55,9 +51,7 @@ export class PublicationsService {
     const safeParams = {
       ...params,
       ...(params?.filter
-        ? {
-            filter: encodeURIComponent(JSON.stringify(params.filter)),
-          }
+        ? { filter: encodeURIComponent(JSON.stringify(params.filter)) }
         : {}),
     };
 
@@ -67,7 +61,7 @@ export class PublicationsService {
     );
   }
 
-  /** Détails d'une publication interne (admin, édition) */
+  /** Détails d’une publication interne (auth requise) */
   static async getPublicationById(id: string): Promise<Publication> {
     return CommonService.get<Publication>(`/api/publications/${id}`);
   }

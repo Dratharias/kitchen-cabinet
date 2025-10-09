@@ -22,54 +22,147 @@
         {
           "total_prep_time": 0,
           "servings": null,
-          "subtitle": "Sauce Piquante",
+          "subtitle": "Piments Lacto Fermentés",
           "is_ingredient": false,
           "content_ingredients": [
             {
-              "quantity": null,
+              "quantity": 450,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "piment forts"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.03,
+              "multiply_factor": 1,
+              "product": {
+                "name": "Solution d'eau saline a 3% de sel."
               },
               "ingredient_units": []
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Retirez le dessus de vos piments et coupez-les tous en deux dans le sens de la longueur."
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Placez-les dans un bocal mason 500 ml propre de préférence stérile. Ajouter la solution d'eau saline jusqu'au cou du bocal."
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "paragraph": "Gardez-les immergé avec un objet lourd et sceller avec un couvercle."
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "paragraph": "Laissez-les à température ambiante à l'abris du soleil pendant 5 jours à 2 semaines."
+              }
+            },
+            {
+              "position": 5,
+              "segment": {
+                "paragraph": "Une fois que vos piments ont atteint le point où vous pensez qu'ils sont prêt, passez-les à travers une passoire en filet. Réserver la saumure."
+              }
+            }
+          ]
+        },
+        {
+          "total_prep_time": 0,
+          "servings": null,
+          "subtitle": "Sauce Au Piments",
+          "is_ingredient": false,
+          "content_ingredients": [
+            {
+              "quantity": 8,
+              "multiply_factor": 1,
+              "product": {
+                "name": "d'ail"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "gousses"
+                  }
+                }
+              ],
+              "cut": "tranches en fines rondelles"
+            },
+            {
+              "quantity": 450,
+              "multiply_factor": 1,
+              "product": {
+                "name": "piments ferment├es"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 1,
+              "product": {
+                "name": "huile neutre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "tasse"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 1,
+              "product": {
+                "name": "vinaigre distille blanc"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
             },
             {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
+                "name": "saumure de piment"
               },
-              "ingredient_units": []
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
             },
             {
               "quantity": null,
               "multiply_factor": 1,
               "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
+                "name": "Sel au gout"
               },
               "ingredient_units": []
             }
@@ -109,62 +202,6 @@
               "position": 6,
               "segment": {
                 "paragraph": "Ajouter du sel au goût."
-              }
-            }
-          ]
-        },
-        {
-          "total_prep_time": 0,
-          "servings": null,
-          "subtitle": "Piments Lacto Fermentés",
-          "is_ingredient": false,
-          "content_ingredients": [
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            },
-            {
-              "quantity": null,
-              "multiply_factor": 1,
-              "product": {
-                "name": null
-              },
-              "ingredient_units": []
-            }
-          ],
-          "content_segments": [
-            {
-              "position": 1,
-              "segment": {
-                "paragraph": "Retirez le dessus de vos piments et coupez-les tous en deux dans le sens de la longueur."
-              }
-            },
-            {
-              "position": 2,
-              "segment": {
-                "paragraph": "Placez-les dans un bocal mason 500 ml propre de préférence stérile. Ajouter la solution d'eau saline jusqu'au cou du bocal."
-              }
-            },
-            {
-              "position": 3,
-              "segment": {
-                "paragraph": "Gardez-les immergé avec un objet lourd et sceller avec un couvercle."
-              }
-            },
-            {
-              "position": 4,
-              "segment": {
-                "paragraph": "Laissez-les à température ambiante à l'abris du soleil pendant 5 jours à 2 semaines."
-              }
-            },
-            {
-              "position": 5,
-              "segment": {
-                "paragraph": "Une fois que vos piments ont atteint le point où vous pensez qu'ils sont prêt, passez-les à travers une passoire en filet. Réserver la saumure."
               }
             }
           ]

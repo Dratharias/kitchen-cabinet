@@ -1,112 +1,99 @@
 from __future__ import annotations
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 import copy
 import difflib
+import re
+from ..utils.group_matcher import normalize_root
 
+VARIANT_RE = re.compile(r"\b(maison|pro)\b", re.I)
+AGG_RE = re.compile(r"versions?.*maison.*pro", re.I)
+
+def _variant(name: str) -> str | None:
+    m = VARIANT_RE.search(name or "")
+    return m.group(1).capitalize() if m else None
+
+def _is_aggregator(name: str) -> bool:
+    return bool(AGG_RE.search(name or ""))
 
 class GroupAligner:
-    """
-    Aligne les groupes d'ingrédients et de steps.
-    Conserve et recalcule les flags `is_ingredient` si nécessaires.
-    """
-
     def align(self, ingredients: List[Dict[str, Any]], steps: List[Dict[str, Any]], groups: List[Dict[str, Any]]):
-        ing_groups = [g["group"] for g in ingredients]
-        step_groups = [g["group"] for g in steps]
+        ing_names = [i["group"] for i in ingredients]
+        step_names = [s["group"] for s in steps]
 
-        aligned_steps: List[Dict[str, Any]] = []
-        aligned_ingredients: List[Dict[str, Any]] = []
-        used_ing = set()
+        def score_pair(ing: str, step: str) -> float:
+            name_ratio = difflib.SequenceMatcher(None, ing.lower(), step.lower()).ratio()
+            root_ratio = difflib.SequenceMatcher(None, normalize_root(ing), normalize_root(step)).ratio()
+            same_variant = _variant(ing) == _variant(step)
+            if same_variant: name_ratio += 0.1
+            return 0.6 * name_ratio + 0.4 * root_ratio
 
-        # --- alignement des steps
-        for s in steps:
-            sname = s["group"]
-            match = difflib.get_close_matches(sname, ing_groups, n=1, cutoff=0.5)
-            new_group_name = match[0] if match else sname
-            used_ing.add(new_group_name)
-            aligned_steps.append({"group": new_group_name, "steps": copy.deepcopy(s["steps"])})
+        # --- Construire toutes les paires (ing, step, score)
+        pairs: List[Tuple[int, int, float]] = []
+        for i, ing in enumerate(ingredients):
+            if _is_aggregator(ing["group"]):  # ignorer agrégateurs directs
+                continue
+            for j, st in enumerate(steps):
+                if _is_aggregator(st["group"]):
+                    continue
+                sc = score_pair(ing["group"], st["group"])
+                if sc >= 0.45:  # ignorer matches faibles
+                    pairs.append((i, j, sc))
 
-        # --- alignement des ingrédients
-        for ing in ingredients:
-            iname = ing["group"]
-            if iname in used_ing:
-                new_group_name = iname
-            else:
-                match = difflib.get_close_matches(iname, step_groups, n=1, cutoff=0.5)
-                new_group_name = match[0] if match else iname
+        # --- Trier les paires par score décroissant
+        pairs.sort(key=lambda x: x[2], reverse=True)
 
+        matched_ing, matched_step = set(), set()
+        links: List[Tuple[int, int, float]] = []
+
+        # --- Appariement exclusif : un seul match par groupe
+        for i, j, sc in pairs:
+            if i not in matched_ing and j not in matched_step:
+                links.append((i, j, sc))
+                matched_ing.add(i)
+                matched_step.add(j)
+
+        # --- Construire les blocs alignés
+        aligned_ingredients, aligned_steps = [], []
+        for (i, j, sc) in links:
+            ing = copy.deepcopy(ingredients[i])
+            st = copy.deepcopy(steps[j])
+            name = ing["group"]
+            # si variante cohérente -> garde nom du step plus précis
+            if _variant(st["group"]) == _variant(name):
+                name = st["group"]
             aligned_ingredients.append({
-                "group": new_group_name,
-                "ingredients": copy.deepcopy(ing.get("ingredients", [])),
-                # on conserve les anciens flags si présents
+                "group": name,
+                "ingredients": ing.get("ingredients", []),
                 "is_ingredient": ing.get("is_ingredient", False),
                 "subtitle": ing.get("subtitle"),
+                "score": round(sc, 3),
             })
+            aligned_steps.append({"group": name, "steps": st.get("steps", []), "score": round(sc, 3)})
 
-        aligned = self._refine_group_titles(
-            {"ingredients": aligned_ingredients, "steps": aligned_steps},
-            groups
-        )
+        # --- Grouper les orphelins
+        orphans_ing = [i for k, i in enumerate(ingredients) if k not in matched_ing and not _is_aggregator(i["group"])]
+        orphans_step = [s for k, s in enumerate(steps) if k not in matched_step and not _is_aggregator(s["group"])]
 
-        # --- vérification des correspondances
-        ing_names = {g["group"] for g in aligned["ingredients"] if g.get("ingredients")}
-        step_names = {g["group"] for g in aligned["steps"] if g.get("steps")}
-        perfect = ing_names and step_names and (ing_names == step_names)
-
-        if not perfect:
+        if orphans_ing or orphans_step:
             default_title = groups[0]["group"] if groups else "Recette"
-            merged_block = {"group": default_title, "ingredients": [], "steps": []}
-
-            for ing in ingredients:
-                if ing.get("ingredients"):
-                    merged_block["ingredients"].append({
-                        "title": ing["group"],
-                        "items": ing["ingredients"],
-                    })
-            for st in steps:
-                if st.get("steps"):
-                    merged_block["steps"].append({
-                        "title": st["group"],
-                        "items": st["steps"],
-                    })
-
-            aligned = {
-                "ingredients": [{
-                    "group": default_title,
-                    "ingredients": merged_block["ingredients"],
-                    "is_ingredient": True,
-                    "subtitle": default_title,
-                }],
-                "steps": [{
-                    "group": default_title,
-                    "steps": merged_block["steps"],
-                }],
+            merged_ing = {
+                "group": default_title,
+                "ingredients": [{"title": o["group"], "items": o.get("ingredients", [])} for o in orphans_ing],
+                "is_ingredient": True,
+                "subtitle": default_title,
+                "score": 0.0,
             }
+            merged_step = {
+                "group": default_title,
+                "steps": [{"title": o["group"], "items": o.get("steps", [])} for o in orphans_step],
+                "score": 0.0,
+            }
+            aligned_ingredients.append(merged_ing)
+            aligned_steps.append(merged_step)
 
-        # --- recalcul automatique du flag `is_ingredient` si manquant
-        for block in aligned["ingredients"]:
-            if not block.get("is_ingredient"):
-                g = block["group"].lower()
-                flag = any(
-                    g in str(ing).lower() and g != str(ing).lower()
-                    for other in aligned["ingredients"] if other["group"].lower() != g
-                    for ing in other.get("ingredients", [])
-                )
-                if flag:
-                    block["is_ingredient"] = True
-                    block["subtitle"] = block["group"]
+        # --- Nettoyage final : suppression du champ interne "score"
+        for arr in (aligned_ingredients, aligned_steps):
+            for b in arr:
+                b.pop("score", None)
 
-        return aligned
-
-    def _refine_group_titles(self, aligned: Dict[str, List[Dict[str, Any]]], groups: List[Dict[str, Any]]):
-        canonical_names = [g["group"] for g in groups]
-
-        def pick_best(name: str) -> str:
-            matches = difflib.get_close_matches(name, canonical_names, n=3, cutoff=0.5)
-            return min(matches, key=len) if matches else name
-
-        for block in aligned["steps"]:
-            block["group"] = pick_best(block["group"])
-        for block in aligned["ingredients"]:
-            block["group"] = pick_best(block["group"])
-        return aligned
+        return {"ingredients": aligned_ingredients, "steps": aligned_steps}

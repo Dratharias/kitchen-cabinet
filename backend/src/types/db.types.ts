@@ -29,6 +29,10 @@ export interface ReadAllParams<T> {
   includeRelations?: boolean;
   skip?: number;
   take?: number;
+  page?: number;
+  limit?: number;
+  sortBy?: string;
+  order?: "asc" | "desc";
 }
 
 /* ============================================================

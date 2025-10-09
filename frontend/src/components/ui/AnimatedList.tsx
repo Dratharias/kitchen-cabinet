@@ -12,6 +12,7 @@ interface AnimatedItemProps {
 const AnimatedItem: React.FC<AnimatedItemProps> = ({ children, delay = 0, index, onMouseEnter, onClick }) => {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.5, once: false });
+  
   return (
     <motion.div
       ref={ref}
@@ -21,6 +22,7 @@ const AnimatedItem: React.FC<AnimatedItemProps> = ({ children, delay = 0, index,
       initial={{ scale: 0.7, opacity: 0 }}
       animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.7, opacity: 0 }}
       transition={{ duration: 0.2, delay }}
+      style={{ willChange: 'transform, opacity' }}
       className="mb-4 cursor-pointer"
     >
       {children}
@@ -41,21 +43,9 @@ interface AnimatedListProps {
 
 const AnimatedList: React.FC<AnimatedListProps> = ({
   items = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
-    'Item 6',
-    'Item 7',
-    'Item 8',
-    'Item 9',
-    'Item 10',
-    'Item 11',
-    'Item 12',
-    'Item 13',
-    'Item 14',
-    'Item 15'
+    'Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5',
+    'Item 6', 'Item 7', 'Item 8', 'Item 9', 'Item 10',
+    'Item 11', 'Item 12', 'Item 13', 'Item 14', 'Item 15'
   ],
   onItemSelect,
   showGradients = true,
@@ -80,6 +70,7 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
 
   useEffect(() => {
     if (!enableArrowNavigation) return;
+    
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowDown' || (e.key === 'Tab' && !e.shiftKey)) {
         e.preventDefault();
@@ -89,13 +80,9 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
         e.preventDefault();
         setKeyboardNav(true);
         setSelectedIndex(prev => Math.max(prev - 1, 0));
-      } else if (e.key === 'Enter') {
-        if (selectedIndex >= 0 && selectedIndex < items.length) {
-          e.preventDefault();
-          if (onItemSelect) {
-            onItemSelect(items[selectedIndex], selectedIndex);
-          }
-        }
+      } else if (e.key === 'Enter' && selectedIndex >= 0 && selectedIndex < items.length) {
+        e.preventDefault();
+        onItemSelect?.(items[selectedIndex], selectedIndex);
       }
     };
 
@@ -105,14 +92,17 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
 
   useEffect(() => {
     if (!keyboardNav || selectedIndex < 0 || !listRef.current) return;
+    
     const container = listRef.current;
     const selectedItem = container.querySelector(`[data-index="${selectedIndex}"]`) as HTMLElement | null;
+    
     if (selectedItem) {
       const extraMargin = 50;
       const containerScrollTop = container.scrollTop;
       const containerHeight = container.clientHeight;
       const itemTop = selectedItem.offsetTop;
       const itemBottom = itemTop + selectedItem.offsetHeight;
+      
       if (itemTop < containerScrollTop + extraMargin) {
         container.scrollTo({ top: itemTop - extraMargin, behavior: 'smooth' });
       } else if (itemBottom > containerScrollTop + containerHeight - extraMargin) {
@@ -124,6 +114,11 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
     }
     setKeyboardNav(false);
   }, [selectedIndex, keyboardNav]);
+
+  const handleItemClick = (item: string, index: number) => {
+    setSelectedIndex(index);
+    onItemSelect?.(item, index);
+  };
 
   return (
     <div className={`relative w-[500px] ${className}`}>
@@ -146,14 +141,9 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
             delay={0.1}
             index={index}
             onMouseEnter={() => setSelectedIndex(index)}
-            onClick={() => {
-              setSelectedIndex(index);
-              if (onItemSelect) {
-                onItemSelect(item, index);
-              }
-            }}
+            onClick={() => handleItemClick(item, index)}
           >
-            <div className={`p-4 bg-[#111] rounded-lg ${selectedIndex === index ? 'bg-[#222]' : ''} ${itemClassName}`}>
+            <div className={`p-4 bg-[#111] rounded-lg transition-colors ${selectedIndex === index ? 'bg-[#222]' : ''} ${itemClassName}`}>
               <p className="text-white m-0">{item}</p>
             </div>
           </AnimatedItem>
@@ -162,13 +152,13 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
       {showGradients && (
         <>
           <div
-            className="absolute top-0 left-0 right-0 h-[50px] bg-gradient-to-b from-[#060010] to-transparent pointer-events-none transition-opacity duration-300 ease"
+            className="absolute top-0 left-0 right-0 h-[50px] bg-gradient-to-b from-[#060010] to-transparent pointer-events-none transition-opacity duration-300"
             style={{ opacity: topGradientOpacity }}
-          ></div>
+          />
           <div
-            className="absolute bottom-0 left-0 right-0 h-[100px] bg-gradient-to-t from-[#060010] to-transparent pointer-events-none transition-opacity duration-300 ease"
+            className="absolute bottom-0 left-0 right-0 h-[100px] bg-gradient-to-t from-[#060010] to-transparent pointer-events-none transition-opacity duration-300"
             style={{ opacity: bottomGradientOpacity }}
-          ></div>
+          />
         </>
       )}
     </div>
