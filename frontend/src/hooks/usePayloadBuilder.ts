@@ -138,7 +138,7 @@ export function usePayloadBuilder() {
                 total_prep_time: c.total_prep_time ?? 0,
                 servings: c.servings ?? null,
                 is_ingredient: c.is_ingredient ?? null,
-                subtitle: c.subtitle ?? null
+                subtitle: c.subtitle ?? null,
               },
 
               // --- Segments ---

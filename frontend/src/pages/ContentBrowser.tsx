@@ -7,7 +7,10 @@ import { Search } from "lucide-react";
 import DotGrid from "@/components/ui/DotGrid";
 import Dock from "@/components/ui/Dock";
 import { PublicationCard } from "@/components/cards/PublicationCard";
-import { fadeSlideVariants, fadeSlideTransition } from "@/components/animations/motionFadeSlide";
+import {
+  fadeSlideVariants,
+  fadeSlideTransition,
+} from "@/components/animations/motionFadeSlide";
 import { usePublicationCache } from "@/hooks/usePublicationCache";
 import { usePublicationLoader } from "@/hooks/usePublicationLoader";
 import { useSearchBar } from "@/hooks/useSearchBar";
@@ -31,7 +34,8 @@ export function ContentBrowser() {
   const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const cols = useResponsiveColumns();
-  const { loadViewFromCache, mergeIntoCache, getDisplayItems } = usePublicationCache();
+  const { loadViewFromCache, mergeIntoCache, getDisplayItems } =
+    usePublicationCache();
   const { loading, totalPages, fetchPublications } = usePublicationLoader();
   const { searchActive, query, setQuery, toggleSearch } = useSearchBar({
     searchInputRef,
@@ -57,7 +61,7 @@ export function ContentBrowser() {
 
   const viewKey = useMemo(
     () => `${selectedCategory || "all"}::${query}`,
-    [selectedCategory, query]
+    [selectedCategory, query],
   );
 
   // Chargement des pages
@@ -71,7 +75,14 @@ export function ContentBrowser() {
       });
       mergeIntoCache(viewKey, items, totalPages);
     },
-    [fetchPublications, currentTypes, query, mergeIntoCache, viewKey, totalPages]
+    [
+      fetchPublications,
+      currentTypes,
+      query,
+      mergeIntoCache,
+      viewKey,
+      totalPages,
+    ],
   );
 
   const { sentinelRef, resetPage } = useInfiniteScroll({
@@ -100,7 +111,14 @@ export function ContentBrowser() {
     return () => {
       if (debounceTimer.current) clearTimeout(debounceTimer.current);
     };
-  }, [query, selectedCategory, viewKey, loadViewFromCache, loadPage, resetPage]);
+  }, [
+    query,
+    selectedCategory,
+    viewKey,
+    loadViewFromCache,
+    loadPage,
+    resetPage,
+  ]);
 
   // Sélection de catégorie
   const handleCategorySelect = useCallback(
@@ -108,7 +126,7 @@ export function ContentBrowser() {
       navigate(`/content/${key}`);
       toggleSearch(false);
     },
-    [navigate, toggleSearch]
+    [navigate, toggleSearch],
   );
 
   const items = getDisplayItems() as Publication[];
@@ -219,8 +237,8 @@ export function ContentBrowser() {
                   Array.isArray(item.description)
                     ? item.description
                     : item.description
-                    ? [item.description]
-                    : []
+                      ? [item.description]
+                      : []
                 }
                 tags={item.tags}
                 thumbnail={item.thumbnail}

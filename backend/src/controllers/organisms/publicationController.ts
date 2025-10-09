@@ -11,7 +11,10 @@ import type {
   PublicationRelations,
 } from "types/controller.types";
 import type { GenericPaginatedController } from "types/crud.types";
-import type { PublicationReadAllDto, PublicationConnect } from "types/dto.types";
+import type {
+  PublicationReadAllDto,
+  PublicationConnect,
+} from "types/dto.types";
 
 export class PublicationController
   implements
@@ -57,9 +60,7 @@ export class PublicationController
   // =====================================================
   // READ ALL — admin/public + recherche + tolérance orthographique
   // =====================================================
-  async findAll(
-    params?: PublicationReadAllDto & { admin?: boolean },
-  ): Promise<{
+  async findAll(params?: PublicationReadAllDto & { admin?: boolean }): Promise<{
     items: Publication[];
     total: number;
     page: number;
@@ -79,8 +80,8 @@ export class PublicationController
     const types: string[] = Array.isArray(typeField)
       ? typeField
       : typeField
-      ? [typeField]
-      : [];
+        ? [typeField]
+        : [];
 
     // --- Filtre de base (public/published si non admin) ---
     const where: Prisma.publicationWhereInput = {
@@ -113,18 +114,34 @@ export class PublicationController
                             some: {
                               ingredient: {
                                 OR: [
-                                  { title: { contains: q, mode: Prisma.QueryMode.insensitive } },
-                                  { cut: { contains: q, mode: Prisma.QueryMode.insensitive } },
+                                  {
+                                    title: {
+                                      contains: q,
+                                      mode: Prisma.QueryMode.insensitive,
+                                    },
+                                  },
+                                  {
+                                    cut: {
+                                      contains: q,
+                                      mode: Prisma.QueryMode.insensitive,
+                                    },
+                                  },
                                   {
                                     product: {
-                                      name: { contains: q, mode: Prisma.QueryMode.insensitive },
+                                      name: {
+                                        contains: q,
+                                        mode: Prisma.QueryMode.insensitive,
+                                      },
                                     },
                                   },
                                   {
                                     ingredient_units: {
                                       some: {
                                         unit: {
-                                          name: { contains: q, mode: Prisma.QueryMode.insensitive },
+                                          name: {
+                                            contains: q,
+                                            mode: Prisma.QueryMode.insensitive,
+                                          },
                                         },
                                       },
                                     },
@@ -176,7 +193,9 @@ export class PublicationController
         });
 
         const merged = new Map<string, any>();
-        [...pubs, ...fuzzyItems].forEach((p) => merged.set(p.publication_id, p));
+        [...pubs, ...fuzzyItems].forEach((p) =>
+          merged.set(p.publication_id, p),
+        );
         results = Array.from(merged.values()).sort((a, b) =>
           a.title.localeCompare(b.title, "fr", { sensitivity: "base" }),
         );
@@ -285,7 +304,9 @@ export class PublicationController
                     },
                   },
                   ingredient_units: {
-                    include: { unit: { select: { unit_id: true, name: true } } },
+                    include: {
+                      unit: { select: { unit_id: true, name: true } },
+                    },
                   },
                 },
               },

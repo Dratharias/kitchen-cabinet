@@ -37,7 +37,9 @@ export const ContentVariantSelector: React.FC<ContentVariantSelectorProps> = ({
 
   return (
     <div className="w-full max-w-md mx-auto mt-4">
-      <h3 className="text-sm text-gray-400 mb-2">Sélectionner une variante :</h3>
+      <h3 className="text-sm text-gray-400 mb-2">
+        Sélectionner une variante :
+      </h3>
       <AnimatedList
         items={items}
         onItemSelect={(_, index) => {

@@ -4,7 +4,7 @@ export type Option = { value: string; label: string };
 
 export function useIngredientResources(
   unitsFetcher: () => Promise<Option[]>,
-  productsFetcher: () => Promise<Option[]>
+  productsFetcher: () => Promise<Option[]>,
 ) {
   const [unitsOptions, setUnitsOptions] = useState<Option[]>([]);
   const [productsOptions, setProductsOptions] = useState<Option[]>([]);

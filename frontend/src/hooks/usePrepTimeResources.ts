@@ -10,7 +10,7 @@ async function fetchPrepStyles(): Promise<Option[]> {
     `${import.meta.env.VITE_API_URL}/api/categories?type=PrepStyle`,
     {
       headers: { Authorization: `Bearer ${token}` },
-    }
+    },
   );
 
   if (!res.ok) return [];

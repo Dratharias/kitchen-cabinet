@@ -1,54 +1,55 @@
 "use client";
 
-import React, { useRef, useState, useCallback } from "react";
+import React, { useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 
 interface AnimatedItemProps {
   children: React.ReactNode;
+  delay?: number;
   index: number;
-  isSelected: boolean;
-  onSelect: () => void;
+  onMouseEnter?: React.MouseEventHandler<HTMLDivElement>;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
-
-const AnimatedItem: React.FC<AnimatedItemProps> = ({ children, index, isSelected, onSelect }) => {
+const AnimatedItem: React.FC<AnimatedItemProps> = ({
+  children,
+  delay = 0,
+  index,
+  onMouseEnter,
+  onClick,
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.5, once: false });
-  
   return (
     <motion.div
       ref={ref}
       data-index={index}
-      onMouseEnter={onSelect}
-      onClick={onSelect}
+      onMouseEnter={onMouseEnter}
+      onClick={onClick}
       initial={{ scale: 0.7, opacity: 0 }}
       animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.7, opacity: 0 }}
-      transition={{ duration: 0.2 }}
+      transition={{ duration: 0.2, delay }}
       className="mb-3 cursor-pointer"
     >
-      <div
-        className={`p-3 rounded-lg transition-colors duration-200 ${
-          isSelected ? "bg-[#222]" : "bg-[#111]"
-        }`}
-      >
-        {children}
-      </div>
+      {children}
     </motion.div>
   );
 };
 
 interface AnimatedListProps {
   items: string[];
-  selectedIndex: number;
-  onItemSelect: (index: number) => void;
+  onItemSelect?: (item: string, index: number) => void;
   className?: string;
+  itemClassName?: string;
+  initialSelectedIndex?: number;
 }
-
 const AnimatedList: React.FC<AnimatedListProps> = ({
   items,
-  selectedIndex,
   onItemSelect,
   className = "",
+  itemClassName = "",
+  initialSelectedIndex = -1,
 }) => {
+  const [selectedIndex, setSelectedIndex] = useState(initialSelectedIndex);
   return (
     <div className={`relative w-full ${className}`}>
       <div className="max-h-[250px] overflow-y-auto p-2">
@@ -56,10 +57,19 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
           <AnimatedItem
             key={index}
             index={index}
-            isSelected={selectedIndex === index}
-            onSelect={() => onItemSelect(index)}
+            onMouseEnter={() => setSelectedIndex(index)}
+            onClick={() => {
+              setSelectedIndex(index);
+              onItemSelect?.(item, index);
+            }}
           >
-            <p className="text-gray-200 text-sm m-0">{item}</p>
+            <div
+              className={`p-3 rounded-lg transition-colors duration-200 ${
+                selectedIndex === index ? "bg-[#222]" : "bg-[#111]"
+              } ${itemClassName}`}
+            >
+              <p className="text-gray-200 text-sm m-0">{item}</p>
+            </div>
           </AnimatedItem>
         ))}
       </div>
@@ -78,14 +88,11 @@ interface ContentVariantSelectorProps {
   contents: ContentVariant[];
   onSelect: (content: ContentVariant) => void;
 }
-
-const ContentVariantSelector: React.FC<ContentVariantSelectorProps> = ({ contents, onSelect }) => {
+const ContentVariantSelector: React.FC<ContentVariantSelectorProps> = ({
+  contents,
+  onSelect,
+}) => {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
-
-  const handleSelect = useCallback((idx: number) => {
-    setSelectedIndex(idx);
-    onSelect(contents[idx]);
-  }, [contents, onSelect]);
 
   if (!contents || contents.length <= 1) {
     if (contents?.[0]) onSelect(contents[0]);
@@ -104,8 +111,11 @@ const ContentVariantSelector: React.FC<ContentVariantSelectorProps> = ({ content
     <div className="mt-3 bg-[#0f0f0f] rounded-xl border border-neutral-800">
       <AnimatedList
         items={items}
-        selectedIndex={selectedIndex}
-        onItemSelect={handleSelect}
+        initialSelectedIndex={selectedIndex}
+        onItemSelect={(_, idx) => {
+          setSelectedIndex(idx);
+          onSelect(contents[idx]);
+        }}
       />
     </div>
   );
@@ -138,29 +148,30 @@ export function PublicationCard({
 }: PublicationCardProps) {
   const divRef = useRef<HTMLDivElement>(null);
   const spotlightRef = useRef<HTMLDivElement>(null);
-  const supportsHoverRef = useRef(
-    typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches
+  const [supportsHover] = useState(
+    typeof window !== "undefined" &&
+      window.matchMedia("(hover: hover)").matches,
+  );
+  const [selectedVariant, setSelectedVariant] = useState<ContentVariant | null>(
+    null,
   );
 
-  const handleMouseMove = useCallback<React.MouseEventHandler<HTMLDivElement>>((e) => {
-    if (!supportsHoverRef.current || !divRef.current || !spotlightRef.current) return;
+  const handleMouseMove: React.MouseEventHandler<HTMLDivElement> = (e) => {
+    if (!supportsHover || !divRef.current || !spotlightRef.current) return;
     const rect = divRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     spotlightRef.current.style.background = `radial-gradient(circle at ${x}px ${y}px, ${spotlightColor}, transparent 80%)`;
-  }, [spotlightColor]);
+  };
 
-  const handleMouseEnter = useCallback(() => {
-    if (supportsHoverRef.current && spotlightRef.current) {
+  const handleMouseEnter = () => {
+    if (supportsHover && spotlightRef.current)
       spotlightRef.current.style.opacity = "0.5";
-    }
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    if (supportsHoverRef.current && spotlightRef.current) {
+  };
+  const handleMouseLeave = () => {
+    if (supportsHover && spotlightRef.current)
       spotlightRef.current.style.opacity = "0";
-    }
-  }, []);
+  };
 
   return (
     <div
@@ -171,16 +182,19 @@ export function PublicationCard({
       onMouseLeave={handleMouseLeave}
       className={`relative rounded-2xl border border-neutral-800 bg-[#161616] overflow-hidden shadow-md hover:shadow-lg transition-transform duration-300 cursor-pointer ${className}`}
     >
+      {/* Effet spotlight */}
       <div
         ref={spotlightRef}
         className="absolute inset-0 pointer-events-none transition-opacity duration-300 ease-in-out"
         style={{
           opacity: 0,
-          background: "radial-gradient(circle at 50% 50%, transparent, transparent 80%)",
+          background:
+            "radial-gradient(circle at 50% 50%, transparent, transparent 80%)",
           willChange: "background, opacity",
         }}
       />
 
+      {/* Image */}
       {thumbnail ? (
         <div className="relative w-full h-48 overflow-hidden">
           <img
@@ -196,6 +210,7 @@ export function PublicationCard({
         </div>
       )}
 
+      {/* Contenu principal */}
       <div className="p-4 flex flex-col justify-between flex-1 relative z-10">
         <div>
           <h3 className="text-white font-semibold text-lg mb-2 line-clamp-1">
@@ -218,10 +233,11 @@ export function PublicationCard({
         ) : (
           <div className="mt-2" />
         )}
+        {/* Liste des variantes */}
         {contents && contents.length > 0 && (
           <ContentVariantSelector
             contents={contents}
-            onSelect={() => {}}
+            onSelect={(variant) => setSelectedVariant(variant)}
           />
         )}
       </div>

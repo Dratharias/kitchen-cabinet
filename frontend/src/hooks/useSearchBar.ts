@@ -5,7 +5,10 @@ interface UseSearchBarParams {
   searchButtonRef: RefObject<HTMLDivElement>;
 }
 
-export function useSearchBar({ searchInputRef, searchButtonRef }: UseSearchBarParams) {
+export function useSearchBar({
+  searchInputRef,
+  searchButtonRef,
+}: UseSearchBarParams) {
   const [searchActive, setSearchActive] = useState(false);
   const [query, setQuery] = useState("");
 
@@ -20,7 +23,8 @@ export function useSearchBar({ searchInputRef, searchButtonRef }: UseSearchBarPa
       if (
         searchInputRef.current?.contains(target) ||
         searchButtonRef.current?.contains(target)
-      ) return;
+      )
+        return;
       toggleSearch(false);
     };
 

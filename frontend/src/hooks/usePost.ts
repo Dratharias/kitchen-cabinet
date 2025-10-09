@@ -17,7 +17,7 @@ export function usePost() {
     async <T>(
       url: string,
       method: "POST" | "PATCH" | "PUT" | "DELETE",
-      body?: any
+      body?: any,
     ): Promise<T | null> => {
       setLoading(true);
       setError(null);
@@ -49,18 +49,20 @@ export function usePost() {
         setLoading(false);
       }
     },
-    [logoutAndRedirect]
+    [logoutAndRedirect],
   );
 
   const postPublicate = useCallback(
-    async (payload: OrchestratorPayload): Promise<OrchestratorResponse | null> => {
+    async (
+      payload: OrchestratorPayload,
+    ): Promise<OrchestratorResponse | null> => {
       return request<OrchestratorResponse>(
         `${API_BASE}/api/publicate`,
         "POST",
-        payload
+        payload,
       );
     },
-    [request]
+    [request],
   );
 
   return { request, postPublicate, loading, error };

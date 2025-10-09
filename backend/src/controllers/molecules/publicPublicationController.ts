@@ -10,7 +10,10 @@ import type {
   PublicationRelations,
 } from "types/controller.types";
 import type { GenericPaginatedController } from "types/crud.types";
-import type { PublicationReadAllDto, PublicationConnect } from "types/dto.types";
+import type {
+  PublicationReadAllDto,
+  PublicationConnect,
+} from "types/dto.types";
 
 export class PublicPublicationController
   implements
@@ -24,9 +27,7 @@ export class PublicPublicationController
   // =====================================================
   // READ — Tous publics (avec recherche et tolérance)
   // =====================================================
-  async findAll(
-    params?: PublicationReadAllDto,
-  ): Promise<{
+  async findAll(params?: PublicationReadAllDto): Promise<{
     items: Publication[];
     total: number;
     page: number;
@@ -46,8 +47,8 @@ export class PublicPublicationController
     const types: string[] = Array.isArray(typeField)
       ? typeField
       : typeField
-      ? [typeField]
-      : [];
+        ? [typeField]
+        : [];
 
     // --- Filtre principal ---
     const where: Prisma.publicationWhereInput = {
@@ -81,18 +82,34 @@ export class PublicPublicationController
                             some: {
                               ingredient: {
                                 OR: [
-                                  { title: { contains: q, mode: Prisma.QueryMode.insensitive } },
-                                  { cut: { contains: q, mode: Prisma.QueryMode.insensitive } },
+                                  {
+                                    title: {
+                                      contains: q,
+                                      mode: Prisma.QueryMode.insensitive,
+                                    },
+                                  },
+                                  {
+                                    cut: {
+                                      contains: q,
+                                      mode: Prisma.QueryMode.insensitive,
+                                    },
+                                  },
                                   {
                                     product: {
-                                      name: { contains: q, mode: Prisma.QueryMode.insensitive },
+                                      name: {
+                                        contains: q,
+                                        mode: Prisma.QueryMode.insensitive,
+                                      },
                                     },
                                   },
                                   {
                                     ingredient_units: {
                                       some: {
                                         unit: {
-                                          name: { contains: q, mode: Prisma.QueryMode.insensitive },
+                                          name: {
+                                            contains: q,
+                                            mode: Prisma.QueryMode.insensitive,
+                                          },
                                         },
                                       },
                                     },
@@ -142,7 +159,9 @@ export class PublicPublicationController
           include: this.buildSummaryInclude(),
         });
         const merged = new Map<string, any>();
-        [...pubs, ...fuzzyItems].forEach((p) => merged.set(p.publication_id, p));
+        [...pubs, ...fuzzyItems].forEach((p) =>
+          merged.set(p.publication_id, p),
+        );
         results = Array.from(merged.values()).sort((a, b) =>
           a.title.localeCompare(b.title, "fr", { sensitivity: "base" }),
         );

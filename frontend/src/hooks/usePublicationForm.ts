@@ -114,7 +114,7 @@ export function usePublicationForm(publicationId?: string) {
           : undefined,
         tags: form.tags.map((t) => ({ data: { str_value: t, type: "Tag" } })),
       },
-      form.contents
+      form.contents,
     );
 
     const res = await postPublicate(payload);
@@ -122,7 +122,7 @@ export function usePublicationForm(publicationId?: string) {
       setMessage(
         isEdit
           ? "Publication mise à jour avec succès"
-          : "Publication créée avec succès"
+          : "Publication créée avec succès",
       );
       return res;
     } else {

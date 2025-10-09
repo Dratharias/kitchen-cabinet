@@ -1,4 +1,8 @@
-export function PublicationVariantTabs({ variants, selectedVariant, setSelectedVariant }: any) {
+export function PublicationVariantTabs({
+  variants,
+  selectedVariant,
+  setSelectedVariant,
+}: any) {
   if (variants.length <= 1) return null;
   return (
     <div className="flex flex-wrap gap-2 mb-6">

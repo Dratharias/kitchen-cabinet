@@ -116,7 +116,7 @@ function DockItem({
   const targetSize = useTransform(
     mouseDistance,
     [-distance, 0, distance],
-    [baseItemSize, magnification, baseItemSize]
+    [baseItemSize, magnification, baseItemSize],
   );
 
   const size = useSpring(targetSize, spring);
@@ -137,10 +137,13 @@ function DockItem({
     >
       {Children.map(children, (child) =>
         React.isValidElement(child)
-          ? cloneElement(child as React.ReactElement<{ isHovered?: MotionValue<number> }>, {
-              isHovered,
-            })
-          : child
+          ? cloneElement(
+              child as React.ReactElement<{ isHovered?: MotionValue<number> }>,
+              {
+                isHovered,
+              },
+            )
+          : child,
       )}
     </motion.div>
   );
@@ -170,7 +173,11 @@ export default function Dock({
     ? Math.max(panelHeight, magnification + 20)
     : panelHeight;
 
-  const heightRow = useTransform(isHovered, [0, 1], [panelHeight, expandedHeight]);
+  const heightRow = useTransform(
+    isHovered,
+    [0, 1],
+    [panelHeight, expandedHeight],
+  );
   const height = useSpring(heightRow, spring);
 
   const handleMouseMove = useCallback(
@@ -178,7 +185,7 @@ export default function Dock({
       isHovered.set(1);
       mouseX.set(pageX);
     },
-    [isHovered, mouseX]
+    [isHovered, mouseX],
   );
 
   const handleMouseLeave = useCallback(() => {
@@ -203,7 +210,10 @@ export default function Dock({
   const alignClass = alignClasses[align];
 
   return (
-    <motion.div style={{ height }} className="flex items-center justify-center overflow-visible w-fit">
+    <motion.div
+      style={{ height }}
+      className="flex items-center justify-center overflow-visible w-fit"
+    >
       <motion.div
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}

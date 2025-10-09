@@ -29,7 +29,11 @@ export function RequireAuth({ fallback, children }: RequireAuthProps) {
         {fallback ?? (
           <div className="text-center p-4">
             <span>Session expirée ou utilisateur non connecté</span>
-            <button type="button" className="mt-8 mx-auto" onClick={() => navigate("/login")}>
+            <button
+              type="button"
+              className="mt-8 mx-auto"
+              onClick={() => navigate("/login")}
+            >
               Se connecter
             </button>
           </div>

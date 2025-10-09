@@ -1,4 +1,10 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 import { AuthService } from "@/services/auth";
 
 interface User {
@@ -16,8 +22,12 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(AuthService.isTokenValid());
-  const [currentUser, setCurrentUser] = useState<User | null>(AuthService.getUser());
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    AuthService.isTokenValid(),
+  );
+  const [currentUser, setCurrentUser] = useState<User | null>(
+    AuthService.getUser(),
+  );
 
   const refreshAuthState = () => {
     const valid = AuthService.isTokenValid();
@@ -41,7 +51,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [isAuthenticated]);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, currentUser, refreshAuthState, setAuth }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated, currentUser, refreshAuthState, setAuth }}
+    >
       {children}
     </AuthContext.Provider>
   );

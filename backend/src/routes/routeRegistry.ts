@@ -94,14 +94,18 @@ export class RouteRegistry {
 
           if (query.filter) {
             try {
-              const raw = typeof query.filter === "string"
-                ? query.filter
-                : JSON.stringify(query.filter);
+              const raw =
+                typeof query.filter === "string"
+                  ? query.filter
+                  : JSON.stringify(query.filter);
 
               // si encodé (%7B ... %7D) on decode, sinon on garde tel quel
-              const decoded = raw.includes("%7B") || raw.includes("%7D") || raw.includes("%22")
-                ? decodeURIComponent(raw)
-                : raw;
+              const decoded =
+                raw.includes("%7B") ||
+                raw.includes("%7D") ||
+                raw.includes("%22")
+                  ? decodeURIComponent(raw)
+                  : raw;
 
               params.filter = JSON.parse(decoded);
             } catch {

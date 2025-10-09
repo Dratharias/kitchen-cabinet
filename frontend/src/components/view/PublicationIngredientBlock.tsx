@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  Utensils,
-  FileText,
-  ChevronDown,
-  ChevronRight,
-} from "lucide-react";
+import { Utensils, FileText, ChevronDown, ChevronRight } from "lucide-react";
 
 interface Props {
   block: any;
@@ -168,7 +163,7 @@ function SubRecipeView({
                 : ""}
               {i.quantity ? " - " + i.quantity : ""}
             </li>
-          ))
+          )),
         )}
       </ul>
     </div>

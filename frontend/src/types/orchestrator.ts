@@ -50,7 +50,7 @@ export interface ContentData {
   total_prep_time: number;
   servings: number | null;
   is_ingredient?: boolean | null;
-  subtitle?: string | null; 
+  subtitle?: string | null;
 }
 
 export interface PublicationData {
@@ -65,7 +65,7 @@ export interface PublicationData {
   style?: OrchestratorEntity<CategoryData>;
   author?: OrchestratorEntity<CategoryData>;
   tags?: OrchestratorEntity<CategoryData>[];
-  contents?: ContentWithRelations[];
+  contents?: Content[];
 }
 
 export interface ReviewData {
@@ -77,16 +77,12 @@ export interface ReviewData {
   publication?: OrchestratorEntity<Publication>;
 }
 
-export interface ContentWithRelations {
-  data: ContentData;
-  content_segments?: {
-    position: number;
-    segment: SegmentWithRelations;
-  }[];
-  content_ingredients?: IngredientWithRelations[];
-  content_prep_times?: {
-    prep_time: OrchestratorEntity<PrepTimeData>;
-  }[];
+export interface ContentWithRelations extends Content {
+  is_ingredient?: boolean | null;
+  subtitle?: string | null;
+  content_segments?: Segment[];
+  content_ingredients?: Ingredient[];
+  content_prep_times?: PrepTime[];
 }
 
 export interface SegmentWithRelations {

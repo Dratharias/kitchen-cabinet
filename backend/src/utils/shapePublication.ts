@@ -61,7 +61,9 @@ export function shapePublicPublicationSummary(pub: any): Publication {
 
   const reviewCount = ratings.length;
   const reviewAverageScore =
-    reviewCount > 0 ? ratings.reduce((a: any, b: any) => a + b, 0) / reviewCount : 0;
+    reviewCount > 0
+      ? ratings.reduce((a: any, b: any) => a + b, 0) / reviewCount
+      : 0;
 
   return {
     ...base,
@@ -89,7 +91,9 @@ export function shapePublicPublicationFull(pub: any): Publication {
 
   const reviewCount = ratings.length;
   const reviewAverageScore =
-    reviewCount > 0 ? ratings.reduce((a: any, b: any) => a + b, 0) / reviewCount : 0;
+    reviewCount > 0
+      ? ratings.reduce((a: any, b: any) => a + b, 0) / reviewCount
+      : 0;
 
   return {
     ...base,
@@ -127,9 +131,7 @@ export function shapePublicPublicationFull(pub: any): Publication {
                         : undefined,
                     }
                   : null,
-                ingredient_units: Array.isArray(
-                  ci.ingredient?.ingredient_units,
-                )
+                ingredient_units: Array.isArray(ci.ingredient?.ingredient_units)
                   ? ci.ingredient.ingredient_units.map((iu: any) => ({
                       unit_id: iu.unit?.unit_id,
                       name: iu.unit?.name,

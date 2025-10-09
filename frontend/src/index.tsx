@@ -9,7 +9,7 @@ const rootElement = document.getElementById("root");
 
 if (!rootElement) {
   throw new Error(
-    "Root element not found. Did you forget to add it to your index.html? Or maybe the id attribute got misspelled?"
+    "Root element not found. Did you forget to add it to your index.html? Or maybe the id attribute got misspelled?",
   );
 }
 
@@ -25,5 +25,5 @@ const Root = (
 );
 
 ReactDOM.createRoot(rootElement).render(
-  isProd ? <React.StrictMode>{Root}</React.StrictMode> : Root
+  isProd ? <React.StrictMode>{Root}</React.StrictMode> : Root,
 );

@@ -27,7 +27,7 @@ export function useInfiniteScroll({
           onLoadMore(nextPage);
         }
       },
-      { threshold }
+      { threshold },
     );
 
     observer.observe(sentinelRef.current);

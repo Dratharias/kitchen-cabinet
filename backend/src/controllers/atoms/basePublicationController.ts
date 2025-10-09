@@ -45,7 +45,9 @@ export async function fetchPublicationsUnified({
                       {
                         content_segments: {
                           some: {
-                            segment: { paragraph: { contains: q, mode: insensitive } },
+                            segment: {
+                              paragraph: { contains: q, mode: insensitive },
+                            },
                           },
                         },
                       },
@@ -58,12 +60,19 @@ export async function fetchPublicationsUnified({
                                 { title: { contains: q, mode: insensitive } },
                                 { cut: { contains: q, mode: insensitive } },
                                 {
-                                  product: { name: { contains: q, mode: insensitive } },
+                                  product: {
+                                    name: { contains: q, mode: insensitive },
+                                  },
                                 },
                                 {
                                   ingredient_units: {
                                     some: {
-                                      unit: { name: { contains: q, mode: insensitive } },
+                                      unit: {
+                                        name: {
+                                          contains: q,
+                                          mode: insensitive,
+                                        },
+                                      },
                                     },
                                   },
                                 },

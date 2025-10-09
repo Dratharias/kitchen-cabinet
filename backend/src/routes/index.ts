@@ -108,7 +108,11 @@ export default async function createRoutes(fastify: FastifyInstance) {
         const { action, payload } = body || {};
 
         // --- Validation minimale ---
-        if (typeof action !== "string" || typeof payload !== "object" || !payload) {
+        if (
+          typeof action !== "string" ||
+          typeof payload !== "object" ||
+          !payload
+        ) {
           return reply.status(400).send({
             success: false,
             error: "Invalid request format. Expect { action, payload }.",

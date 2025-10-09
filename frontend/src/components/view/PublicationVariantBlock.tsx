@@ -1,6 +1,11 @@
 import { Clock, Users, Utensils, FileText } from "lucide-react";
 
-export function PublicationVariantBlock({ block, servingFactor, checkedItems, toggleChecked }: any) {
+export function PublicationVariantBlock({
+  block,
+  servingFactor,
+  checkedItems,
+  toggleChecked,
+}: any) {
   const ingredients = block.content_ingredients || [];
   const steps = block.content_segments || [];
 
@@ -14,7 +19,8 @@ export function PublicationVariantBlock({ block, servingFactor, checkedItems, to
           </h2>
           <div className="flex gap-4 mt-1 text-sm text-gray-400">
             <span className="flex items-center gap-1">
-              <Clock className="w-4 h-4 text-amber-400" /> {block.total_prep_time ?? 0} min
+              <Clock className="w-4 h-4 text-amber-400" />{" "}
+              {block.total_prep_time ?? 0} min
             </span>
             {block.servings && (
               <span className="flex items-center gap-1">
@@ -40,9 +46,16 @@ export function PublicationVariantBlock({ block, servingFactor, checkedItems, to
                   onChange={() => toggleChecked(ing.ingredient_id)}
                   className="accent-amber-500"
                 />
-                <span className={checkedItems[ing.ingredient_id] ? "line-through text-gray-500" : ""}>
+                <span
+                  className={
+                    checkedItems[ing.ingredient_id]
+                      ? "line-through text-gray-500"
+                      : ""
+                  }
+                >
                   {ing.product?.name} {ing.cut ? "(" + ing.cut + ")" : ""}{" "}
-                  {ing.ingredient_units?.[0]?.unit?.name && `(${ing.ingredient_units[0].unit.name})`}
+                  {ing.ingredient_units?.[0]?.unit?.name &&
+                    `(${ing.ingredient_units[0].unit.name})`}
                 </span>
               </label>
             </li>
@@ -62,7 +75,13 @@ export function PublicationVariantBlock({ block, servingFactor, checkedItems, to
                   onChange={() => toggleChecked(s.segment_id)}
                   className="accent-amber-500 mt-1"
                 />
-                <span className={checkedItems[s.segment_id] ? "line-through text-gray-500" : ""}>
+                <span
+                  className={
+                    checkedItems[s.segment_id]
+                      ? "line-through text-gray-500"
+                      : ""
+                  }
+                >
                   {s.paragraph}
                 </span>
               </label>

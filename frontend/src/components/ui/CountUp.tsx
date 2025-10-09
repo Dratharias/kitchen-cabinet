@@ -1,10 +1,10 @@
-import { useEffect, useRef } from 'react';
-import { useInView, useMotionValue, useSpring } from 'framer-motion';
+import { useEffect, useRef } from "react";
+import { useInView, useMotionValue, useSpring } from "framer-motion";
 
 interface CountUpProps {
   to: number;
   from?: number;
-  direction?: 'up' | 'down';
+  direction?: "up" | "down";
   delay?: number;
   duration?: number;
   className?: string;
@@ -17,27 +17,27 @@ interface CountUpProps {
 export default function CountUp({
   to,
   from = 0,
-  direction = 'up',
+  direction = "up",
   delay = 0,
   duration = 2,
-  className = '',
+  className = "",
   startWhen = true,
-  separator = '',
+  separator = "",
   onStart,
-  onEnd
+  onEnd,
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const motionValue = useMotionValue(direction === 'down' ? to : from);
+  const motionValue = useMotionValue(direction === "down" ? to : from);
   const springValue = useSpring(motionValue, {
     damping: 20 + 40 * (1 / duration),
-    stiffness: 100 * (1 / duration)
+    stiffness: 100 * (1 / duration),
   });
 
-  const isInView = useInView(ref, { once: true, margin: '0px' });
+  const isInView = useInView(ref, { once: true, margin: "0px" });
 
   const getDecimalPlaces = (num: number): number => {
     const str = num.toString();
-    const decimalIndex = str.indexOf('.');
+    const decimalIndex = str.indexOf(".");
     if (decimalIndex !== -1) {
       const decimals = str.slice(decimalIndex + 1);
       if (parseInt(decimals) !== 0) {
@@ -51,7 +51,7 @@ export default function CountUp({
 
   useEffect(() => {
     if (ref.current) {
-      ref.current.textContent = String(direction === 'down' ? to : from);
+      ref.current.textContent = String(direction === "down" ? to : from);
     }
   }, [from, to, direction]);
 
@@ -60,31 +60,47 @@ export default function CountUp({
       onStart?.();
 
       const timeoutId = setTimeout(() => {
-        motionValue.set(direction === 'down' ? from : to);
+        motionValue.set(direction === "down" ? from : to);
       }, delay * 1000);
 
-      const durationTimeoutId = setTimeout(() => {
-        onEnd?.();
-      }, (delay + duration) * 1000);
+      const durationTimeoutId = setTimeout(
+        () => {
+          onEnd?.();
+        },
+        (delay + duration) * 1000,
+      );
 
       return () => {
         clearTimeout(timeoutId);
         clearTimeout(durationTimeoutId);
       };
     }
-  }, [isInView, startWhen, motionValue, direction, from, to, delay, duration, onStart, onEnd]);
+  }, [
+    isInView,
+    startWhen,
+    motionValue,
+    direction,
+    from,
+    to,
+    delay,
+    duration,
+    onStart,
+    onEnd,
+  ]);
 
   useEffect(() => {
-    const unsubscribe = springValue.on('change', (latest) => {
+    const unsubscribe = springValue.on("change", (latest) => {
       if (ref.current) {
-        const formatter = new Intl.NumberFormat('en-US', {
+        const formatter = new Intl.NumberFormat("en-US", {
           useGrouping: !!separator,
           minimumFractionDigits: maxDecimals,
-          maximumFractionDigits: maxDecimals
+          maximumFractionDigits: maxDecimals,
         });
 
         const formatted = formatter.format(latest);
-        ref.current.textContent = separator ? formatted.replace(/,/g, separator) : formatted;
+        ref.current.textContent = separator
+          ? formatted.replace(/,/g, separator)
+          : formatted;
       }
     });
 

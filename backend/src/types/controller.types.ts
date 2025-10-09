@@ -91,12 +91,24 @@ export type PublicationRelations = Required<
    ============================================================ */
 export type Content = ContentCore & ContentRelations & { content_id: string };
 export type ContentCore = Required<
-  Pick<ContentData, "publication_id" | "total_prep_time" | "servings" | "subtitle" | "is_ingredient">
+  Pick<
+    ContentData,
+    | "publication_id"
+    | "total_prep_time"
+    | "servings"
+    | "subtitle"
+    | "is_ingredient"
+  >
 > & { content_id?: string };
 export type ContentRelations = Required<
   Omit<
     ContentData,
-    "content_id" | "publication_id" | "total_prep_time" | "servings" | "subtitle" | "is_ingredient"
+    | "content_id"
+    | "publication_id"
+    | "total_prep_time"
+    | "servings"
+    | "subtitle"
+    | "is_ingredient"
   >
 >;
 

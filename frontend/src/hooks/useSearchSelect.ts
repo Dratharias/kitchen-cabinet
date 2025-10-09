@@ -12,11 +12,11 @@ interface Params {
 
 export function useSearchSelect(
   options: Option[] | (() => Option[]),
-  params?: Params
+  params?: Params,
 ) {
   const getOptions = useCallback(
     () => (typeof options === "function" ? options() : options),
-    [options]
+    [options],
   );
 
   const [text, setText] = useState("");
@@ -41,7 +41,7 @@ export function useSearchSelect(
     if (params?.allowFreeInput === false) {
       const val = text.trim();
       const match = getOptions().find(
-        (o) => o.label === val || o.value === val
+        (o) => o.label === val || o.value === val,
       );
       if (!match) {
         setText("");
@@ -56,7 +56,7 @@ export function useSearchSelect(
         e.preventDefault();
         const val = text.trim();
         const hasExact = getOptions().some(
-          (o) => o.label === val || o.value === val
+          (o) => o.label === val || o.value === val,
         );
 
         // Création si pas de match exact
@@ -72,7 +72,7 @@ export function useSearchSelect(
         if (params?.allowFreeInput === false) {
           if (hasExact) {
             const exact = getOptions().find(
-              (o) => o.label === val || o.value === val
+              (o) => o.label === val || o.value === val,
             )!;
             params?.onSelect?.(exact.value);
             setText("");
@@ -92,7 +92,7 @@ export function useSearchSelect(
         setOpen(false);
       }
     },
-    [text, getOptions, params]
+    [text, getOptions, params],
   );
 
   useEffect(() => {

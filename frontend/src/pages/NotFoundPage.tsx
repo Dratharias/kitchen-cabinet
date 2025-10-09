@@ -1,7 +1,7 @@
 import FuzzyText from "@/components/ui/FuzzyText";
 
 const metadata = {
-  title: "404"
+  title: "404",
 };
 
 export default function NotFoundPage() {
@@ -10,11 +10,7 @@ export default function NotFoundPage() {
       <div className="flex flex-col items-center justify-center space-y-10">
         {/* Texte principal avec effet fuzzy */}
         <div className="flex-col justify-center">
-          <FuzzyText
-            baseIntensity={0.1}
-            hoverIntensity={0.25}
-            enableHover
-          >
+          <FuzzyText baseIntensity={0.1} hoverIntensity={0.25} enableHover>
             {metadata.title}
           </FuzzyText>
         </div>

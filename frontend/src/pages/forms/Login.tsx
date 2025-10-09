@@ -21,8 +21,7 @@ export function LoginForm() {
   return (
     <div className="flex items-center justify-center min-h-[70vh] w-full text-prim-txt dark:text-prim-txt-d">
       {isAuthenticated ? (
-        <div className="flex flex-col items-center space-y-4">
-        </div>
+        <div className="flex flex-col items-center space-y-4"></div>
       ) : (
         <form onSubmit={handleSubmit} className="w-full max-w-sm space-y-4">
           <h2 className="text-xl font-bold mb-4">Login</h2>
