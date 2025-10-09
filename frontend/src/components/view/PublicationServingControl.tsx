@@ -22,9 +22,9 @@ export function PublicationServingControl({
   };
 
   return (
-    <div className="flex items-center p-2 bg-[#1F1F1F]/0 border-b border-gray-700">
+    <div className="flex items-center justify-between p-2 bg-[#1F1F1F]/0 border-b border-gray-700">
       {!isNaN(prepTime) && (
-        <div className="flex w-1/5 items-center gap-2 text-gray-300">
+        <div className="flex items-center gap-2 text-gray-300">
           <Clock className="w-4 h-4 text-amber-400" />
           <span className="text-sm">{prepTime} min</span>
         </div>

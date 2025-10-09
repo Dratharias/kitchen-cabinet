@@ -1,207 +1,76 @@
-import React, {
-  useRef,
-  useState,
-  useEffect,
-  ReactNode,
-  MouseEventHandler,
-  UIEvent,
-} from "react";
-import { motion, useInView } from "motion/react";
-
-interface AnimatedItemProps {
-  children: ReactNode;
-  delay?: number;
-  index: number;
-  onMouseEnter?: MouseEventHandler<HTMLDivElement>;
-  onClick?: MouseEventHandler<HTMLDivElement>;
-}
-
-const AnimatedItem: React.FC<AnimatedItemProps> = ({
-  children,
-  delay = 0,
-  index,
-  onMouseEnter,
-  onClick,
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { amount: 0.5, once: false });
-
-  return (
-    <motion.div
-      ref={ref}
-      data-index={index}
-      onMouseEnter={onMouseEnter}
-      onClick={onClick}
-      initial={{ scale: 0.7, opacity: 0 }}
-      animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.7, opacity: 0 }}
-      transition={{ duration: 0.2, delay }}
-      style={{ willChange: "transform, opacity" }}
-      className="mb-4 cursor-pointer"
-    >
-      {children}
-    </motion.div>
-  );
-};
+import React, { useState, ReactNode } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import ClickOutsideContainer from "../utilities/ClickOutsideContainer";
 
 interface AnimatedListProps {
-  items?: string[];
-  onItemSelect?: (item: string, index: number) => void;
-  showGradients?: boolean;
-  enableArrowNavigation?: boolean;
-  className?: string;
-  itemClassName?: string;
-  displayScrollbar?: boolean;
+  children: ReactNode[];
+  onItemSelect?: (index: number) => void;
   initialSelectedIndex?: number;
+  className?: string;
 }
 
 const AnimatedList: React.FC<AnimatedListProps> = ({
-  items = [
-    "Item 1",
-    "Item 2",
-    "Item 3",
-    "Item 4",
-    "Item 5",
-    "Item 6",
-    "Item 7",
-    "Item 8",
-    "Item 9",
-    "Item 10",
-    "Item 11",
-    "Item 12",
-    "Item 13",
-    "Item 14",
-    "Item 15",
-  ],
+  children,
   onItemSelect,
-  showGradients = true,
-  enableArrowNavigation = true,
+  initialSelectedIndex = 0,
   className = "",
-  itemClassName = "",
-  displayScrollbar = true,
-  initialSelectedIndex = -1,
 }) => {
-  const listRef = useRef<HTMLDivElement>(null);
-  const [selectedIndex, setSelectedIndex] =
-    useState<number>(initialSelectedIndex);
-  const [keyboardNav, setKeyboardNav] = useState<boolean>(false);
-  const [topGradientOpacity, setTopGradientOpacity] = useState<number>(0);
-  const [bottomGradientOpacity, setBottomGradientOpacity] = useState<number>(1);
+  const [selectedIndex, setSelectedIndex] = useState(initialSelectedIndex);
+  const [open, setOpen] = useState(false);
 
-  const handleScroll = (e: UIEvent<HTMLDivElement>) => {
-    const { scrollTop, scrollHeight, clientHeight } =
-      e.target as HTMLDivElement;
-    setTopGradientOpacity(Math.min(scrollTop / 50, 1));
-    const bottomDistance = scrollHeight - (scrollTop + clientHeight);
-    setBottomGradientOpacity(
-      scrollHeight <= clientHeight ? 0 : Math.min(bottomDistance / 50, 1),
-    );
-  };
-
-  useEffect(() => {
-    if (!enableArrowNavigation) return;
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowDown" || (e.key === "Tab" && !e.shiftKey)) {
-        e.preventDefault();
-        setKeyboardNav(true);
-        setSelectedIndex((prev) => Math.min(prev + 1, items.length - 1));
-      } else if (e.key === "ArrowUp" || (e.key === "Tab" && e.shiftKey)) {
-        e.preventDefault();
-        setKeyboardNav(true);
-        setSelectedIndex((prev) => Math.max(prev - 1, 0));
-      } else if (
-        e.key === "Enter" &&
-        selectedIndex >= 0 &&
-        selectedIndex < items.length
-      ) {
-        e.preventDefault();
-        onItemSelect?.(items[selectedIndex], selectedIndex);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [items, selectedIndex, onItemSelect, enableArrowNavigation]);
-
-  useEffect(() => {
-    if (!keyboardNav || selectedIndex < 0 || !listRef.current) return;
-
-    const container = listRef.current;
-    const selectedItem = container.querySelector(
-      `[data-index="${selectedIndex}"]`,
-    ) as HTMLElement | null;
-
-    if (selectedItem) {
-      const extraMargin = 50;
-      const containerScrollTop = container.scrollTop;
-      const containerHeight = container.clientHeight;
-      const itemTop = selectedItem.offsetTop;
-      const itemBottom = itemTop + selectedItem.offsetHeight;
-
-      if (itemTop < containerScrollTop + extraMargin) {
-        container.scrollTo({ top: itemTop - extraMargin, behavior: "smooth" });
-      } else if (
-        itemBottom >
-        containerScrollTop + containerHeight - extraMargin
-      ) {
-        container.scrollTo({
-          top: itemBottom - containerHeight + extraMargin,
-          behavior: "smooth",
-        });
-      }
-    }
-    setKeyboardNav(false);
-  }, [selectedIndex, keyboardNav]);
-
-  const handleItemClick = (item: string, index: number) => {
+  const handleSelect = (index: number) => {
     setSelectedIndex(index);
-    onItemSelect?.(item, index);
+    onItemSelect?.(index);
+    setOpen(false);
   };
+
+  const items = React.Children.toArray(children);
 
   return (
-    <div className={`relative w-[500px] ${className}`}>
-      <div
-        ref={listRef}
-        className={`max-h-[400px] overflow-y-auto p-4 ${
-          displayScrollbar
-            ? "[&::-webkit-scrollbar]:w-[8px] [&::-webkit-scrollbar-track]:bg-[#060010] [&::-webkit-scrollbar-thumb]:bg-[#222] [&::-webkit-scrollbar-thumb]:rounded-[4px]"
-            : "scrollbar-hide"
-        }`}
-        onScroll={handleScroll}
-        style={{
-          scrollbarWidth: displayScrollbar ? "thin" : "none",
-          scrollbarColor: "#222 #060010",
-        }}
-      >
-        {items.map((item, index) => (
-          <AnimatedItem
-            key={index}
-            delay={0.1}
-            index={index}
-            onMouseEnter={() => setSelectedIndex(index)}
-            onClick={() => handleItemClick(item, index)}
-          >
-            <div
-              className={`p-4 bg-[#111] rounded-lg transition-colors ${selectedIndex === index ? "bg-[#222]" : ""} ${itemClassName}`}
+    <div className={`relative inline-block ${className}`}>
+        {/* Bouton principal */}
+        <ClickOutsideContainer onClickOutside={() => handleSelect(selectedIndex)}>
+        <button
+          type="button"
+          onClick={() => setOpen((o) => !o)}
+          className="px-4 py-2 rounded-full text-sm bg-gray-700 text-gray-300 hover:bg-gray-600 hover:cursor-pointer"
+        >
+          <span>{items[selectedIndex]}</span> 
+          <span className="pl-3">({items.length})</span>
+        </button>
+
+        {/* Liste déroulante animée */}
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.95 }}
+              transition={{ duration: 0.15 }}
+              className="absolute mt-2 w-max min-w-full bg-[#1f1f1f] border border-gray-700 rounded-lg shadow-lg z-50"
             >
-              <p className="text-white m-0">{item}</p>
-            </div>
-          </AnimatedItem>
-        ))}
+              <ul className="flex flex-col">
+                {items.map((child, i) => (
+                  <li key={i}>
+                    <button
+                      type="button"
+                      onClick={() => handleSelect(i)}
+                      className={`w-full text-left px-4 py-2 text-sm rounded-md hover:cursor-pointer ${
+                        i === selectedIndex
+                          ? "bg-amber-600 text-white"
+                          : "text-gray-300 hover:bg-gray-700"
+                      }`}
+                    >
+                      {child}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
+    </ClickOutsideContainer>
       </div>
-      {showGradients && (
-        <>
-          <div
-            className="absolute top-0 left-0 right-0 h-[50px] bg-gradient-to-b from-[#060010] to-transparent pointer-events-none transition-opacity duration-300"
-            style={{ opacity: topGradientOpacity }}
-          />
-          <div
-            className="absolute bottom-0 left-0 right-0 h-[100px] bg-gradient-to-t from-[#060010] to-transparent pointer-events-none transition-opacity duration-300"
-            style={{ opacity: bottomGradientOpacity }}
-          />
-        </>
-      )}
-    </div>
   );
 };
 

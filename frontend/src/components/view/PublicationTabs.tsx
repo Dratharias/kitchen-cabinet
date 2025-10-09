@@ -13,7 +13,7 @@ export function PublicationTabs({
   ];
 
   return (
-    <div className="flex w-full justify-center gap-2 mt-4 border-b border-gray-700 bg-[#1F1F1F]/80">
+    <div className="flex w-full justify-center gap-2 mt-4 mb-2 border-b border-gray-700 bg-[#1F1F1F]/80">
       {tabs.map((tab) => (
         <button
           key={tab.key}
@@ -21,7 +21,7 @@ export function PublicationTabs({
           className={`flex-1 px-4 py-2 flex items-center justify-center gap-2 text-base font-medium transition-colors border-b-2 hover:cursor-pointer ${
             currentTab === tab.key
               ? "text-amber-400 border-amber-400"
-              : "text-gray-400 hover:text-gray-200 border-transparent"
+              : "text-gray-400 hover:text-gray-200 border-transparent hover:border-gray-400"
           }`}
         >
           {tab.icon}

@@ -1,3 +1,4 @@
+// src/pages/ContentBrowser.tsx
 "use client";
 
 import { useEffect, useMemo, useRef, useCallback } from "react";
@@ -149,15 +150,15 @@ export function ContentBrowser() {
         : "bg-[#292929] hover:bg-[#333333]",
     };
 
-  const loginButton = {
-    icon: <User className="w-6 h-6" />,
-    label: isAuthenticated ? "Déconnexion" : "Connexion",
-    onClick: isAuthenticated
-      ? async () => {
-          await logout();
-        }
-      : () => navigate("/login"),
-  };
+    const loginButton = {
+      icon: <User className="w-6 h-6" />,
+      label: isAuthenticated ? "Déconnexion" : "Connexion",
+      onClick: isAuthenticated
+        ? async () => {
+            await logout();
+          }
+        : () => navigate("/login"),
+    };
 
     return [
       categoryItems[0],
@@ -166,7 +167,7 @@ export function ContentBrowser() {
       categoryItems[2],
       loginButton,
     ];
-  }, [handleCategorySelect, searchActive, toggleSearch, navigate]);
+  }, [handleCategorySelect, searchActive, toggleSearch, navigate, isAuthenticated, logout]);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -175,97 +176,110 @@ export function ContentBrowser() {
   }, [isAuthenticated, navigate]);
 
   return (
-    <div className="flex min-h-screen flex-col w-full relative p-8">
-      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none bg-[#1F1F1F]">
-        <DotGrid
-          dotSize={10}
-          gap={15}
-          baseColor="#292929"
-          activeColor="#5B4853"
-          proximity={120}
-          shockRadius={250}
-          shockStrength={5}
-          resistance={750}
-          returnDuration={1.5}
-        />
-      </div>
-
-      <AnimatePresence>
-        {searchActive && (
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 60 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed w-3/5 px-6 z-50 bottom-28 left-1/2 -translate-x-1/2"
-          >
-            <input
-              ref={searchInputRef}
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.currentTarget.value)}
-              placeholder="Rechercher un contenu..."
-              className="w-full h-12 rounded-md bg-[#1F1F1F] border border-gray-600 px-5 text-gray-200 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 shadow-lg"
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
+    <DotGrid
+      dotSize={10}
+      gap={15}
+      baseColor="#292929"
+      activeColor="#5B4853"
+      proximity={120}
+      shockRadius={250}
+      shockStrength={5}
+      resistance={750}
+      returnDuration={1.5}
+      className="bg-[#1F1F1F]"
+    >
       <div
-        className="fixed bottom-0 left-1/2 -translate-x-1/2 z-50"
-        ref={searchButtonRef}
+        className="
+          flex mx-auto 
+          w-full 
+          max-w-full 
+          sm:max-w-[640px] 
+          md:max-w-[768px] 
+          lg:max-w-[1024px] 
+          xl:max-w-[1280px] 
+          2xl:max-w-[1600px] 
+          [@media(min-width:1920px)]:max-w-[1800px] 
+          [@media(min-width:2560px)]:max-w-[2000px] 
+          px-4 sm:px-6 lg:px-8
+        "
       >
-        <Dock
-          panelHeight={40}
-          items={dockItems}
-          magnification={70}
-          expandOnHover
-          bgClass="bg-[#1f1f1f]"
-          borderClass="border-neutral-700"
-        />
-      </div>
-
-      <div
-        className="grid gap-6 pb-24 pt-4"
-        style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
-      >
-        <AnimatePresence mode="popLayout">
-          {items.map((item, i) => (
+        <AnimatePresence>
+          {searchActive && (
             <motion.div
-              key={item.publication_id}
-              layout
-              variants={fadeSlideVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              transition={fadeSlideTransition(i, cols)}
-              className="publication-card"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 60 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="fixed w-3/5 px-6 z-50 bottom-28 left-1/2 -translate-x-1/2"
             >
-              <PublicationCard
-                title={item.title}
-                description={
-                  Array.isArray(item.description)
-                    ? item.description
-                    : item.description
-                      ? [item.description]
-                      : []
-                }
-                tags={item.tags}
-                thumbnail={item.thumbnail}
-                onClick={() => navigate(`/publication/${item.publication_id}`)}
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.currentTarget.value)}
+                placeholder="Rechercher un contenu..."
+                className="w-full h-12 rounded-md bg-[#1F1F1F] border border-gray-600 px-5 text-gray-200 text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 shadow-lg"
               />
             </motion.div>
-          ))}
+          )}
         </AnimatePresence>
 
-        {loading && (
-          <p className="col-span-full text-center text-amber-500 mt-6">
-            Chargement...
-          </p>
-        )}
-      </div>
+        <div
+          className="fixed bottom-0 left-1/2 -translate-x-1/2 z-50"
+          ref={searchButtonRef}
+        >
+          <Dock
+            panelHeight={40}
+            items={dockItems}
+            magnification={70}
+            expandOnHover
+            bgClass="bg-[#1f1f1f]"
+            borderClass="border-neutral-700"
+          />
+        </div>
 
-      <div ref={sentinelRef} className="h-10" />
-    </div>
+        <div
+          className="grid gap-6 pb-24 pt-4"
+          style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
+        >
+          <AnimatePresence mode="popLayout">
+            {items.map((item, i) => (
+              <motion.div
+                key={item.publication_id}
+                layout
+                variants={fadeSlideVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                transition={fadeSlideTransition(i, cols)}
+                className="publication-card"
+              >
+                <PublicationCard
+                  title={item.title}
+                  description={
+                    Array.isArray(item.description)
+                      ? item.description
+                      : item.description
+                        ? [item.description]
+                        : []
+                  }
+                  tags={item.tags}
+                  thumbnail={item.thumbnail}
+                  onClick={() => navigate(`/publication/${item.publication_id}`)}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+
+          {loading && (
+            <p className="col-span-full text-center text-amber-500 mt-6">
+              Chargement...
+            </p>
+          )}
+        </div>
+
+        <div ref={sentinelRef} className="h-10" />
+      </div>
+    </DotGrid>
   );
 }

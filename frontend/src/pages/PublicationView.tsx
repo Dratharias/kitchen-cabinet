@@ -220,22 +220,33 @@ export function PublicationView() {
   };
 
   return (
-    <div className="relative min-h-screen w-full text-gray-200 overflow-hidden">
-      <div className="absolute inset-0">
-        <DotGrid
-          dotSize={10}
-          gap={15}
-          baseColor="#292929"
-          activeColor="#5B4853"
-          proximity={120}
-          shockRadius={250}
-          shockStrength={5}
-          resistance={750}
-          returnDuration={1.5}
-        />
-      </div>
-
-      <div className="relative z-20 p-6">
+    <DotGrid
+      dotSize={10}
+      gap={15}
+      baseColor="#292929"
+      activeColor="#5B4853"
+      proximity={120}
+      shockRadius={250}
+      shockStrength={5}
+      resistance={750}
+      returnDuration={1.5}
+      className="bg-[#1F1F1F] min-h-screen"
+    >
+      <div
+        className="
+          relative z-20 
+          mx-auto w-full 
+          max-w-full 
+          sm:max-w-[640px] 
+          md:max-w-[768px] 
+          lg:max-w-[1024px] 
+          xl:max-w-[1280px] 
+          2xl:max-w-[1600px] 
+          [@media(min-width:1920px)]:max-w-[1800px] 
+          [@media(min-width:2560px)]:max-w-[2000px] 
+          px-4 sm:px-6 lg:px-8 py-6
+        "
+      >
         <PublicationHeader title={publication.title} />
 
         <SpotlightWrapper
@@ -275,19 +286,20 @@ export function PublicationView() {
         <PublicationTabs currentTab={tab} setTab={setTab} />
 
         {tab === "ingredients" && (
-          <div>
+          <div className="pb-16">
             {activeVariant && renderIngredientBlock(activeVariant, true)}
             {subRecipes.map((subRecipe) => renderIngredientBlock(subRecipe, false))}
           </div>
         )}
 
         {tab === "steps" && (
-          <div>
+          <div className="pb-16">
             {activeVariant && renderStepBlock(activeVariant, true)}
             {subRecipes.map((subRecipe) => renderStepBlock(subRecipe, false))}
           </div>
         )}
       </div>
-    </div>
+    </DotGrid>
   );
+
 }

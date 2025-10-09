@@ -27,6 +27,7 @@ export interface DotGridProps {
   returnDuration?: number;
   className?: string;
   style?: React.CSSProperties;
+  children?: React.ReactNode;
 }
 
 function hexToRgb(hex: string) {
@@ -53,6 +54,7 @@ export const DotGrid: React.FC<DotGridProps> = ({
   returnDuration = 1.5,
   className = "",
   style,
+  children,
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -94,24 +96,21 @@ export const DotGrid: React.FC<DotGridProps> = ({
     const ctx = canvas.getContext("2d");
     if (ctx) ctx.scale(dpr, dpr);
 
-    const cols = Math.floor((width + gap) / (dotSize + gap));
-    const rows = Math.floor((height + gap) / (dotSize + gap));
     const cell = dotSize + gap;
-
-    const gridW = cell * cols - gap;
-    const gridH = cell * rows - gap;
-
-    const extraX = width - gridW;
-    const extraY = height - gridH;
-
-    const startX = extraX / 2 + dotSize / 2;
-    const startY = extraY / 2 + dotSize / 2;
+    const cols = Math.ceil(width / cell);
+    const rows = Math.ceil(height / cell);
+    
+    const gridW = cols * cell - gap;
+    const gridH = rows * cell - gap;
+    
+    const offsetX = (width - gridW) / 2 + dotSize / 2;
+    const offsetY = (height - gridH) / 2 + dotSize / 2;
 
     const dots: Dot[] = [];
     for (let y = 0; y < rows; y++) {
       for (let x = 0; x < cols; x++) {
-        const cx = startX + x * cell;
-        const cy = startY + y * cell;
+        const cx = offsetX + x * cell;
+        const cy = offsetY + y * cell;
         dots.push({ cx, cy, xOffset: 0, yOffset: 0, _inertiaApplied: false });
       }
     }
@@ -273,15 +272,19 @@ export const DotGrid: React.FC<DotGridProps> = ({
 
   return (
     <section
-      className={`p-4 flex items-center justify-center h-full w-full relative ${className}`}
+      ref={wrapperRef}
+      className={`fixed inset-0 ${className}`}
       style={style}
     >
-      <div ref={wrapperRef} className="w-full h-full relative">
-        <canvas
-          ref={canvasRef}
-          className="absolute inset-0 w-full h-full pointer-events-none"
-        />
-      </div>
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full pointer-events-none"
+      />
+      {children && (
+        <div className="relative z-10 w-full h-full overflow-y-auto flex justify-center">
+          {children}
+        </div>
+      )}
     </section>
   );
 };
