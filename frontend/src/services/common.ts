@@ -17,7 +17,6 @@ export class CommonService {
     params: Partial<PaginatedRequest> & Record<string, any>,
   ): string {
     const searchParams = new URLSearchParams();
-
     Object.entries(params).forEach(([key, value]) => {
       if (value !== undefined && value !== null) {
         if (typeof value === "object") {
@@ -27,7 +26,6 @@ export class CommonService {
         }
       }
     });
-
     return searchParams.toString();
   }
 
@@ -40,7 +38,6 @@ export class CommonService {
         errorData,
       );
     }
-
     return response.json();
   }
 
@@ -69,7 +66,6 @@ export class CommonService {
       method: "GET",
       headers: this.getDefaultHeaders(includeAuth),
     });
-
     return this.handleResponse<T>(response);
   }
 
@@ -83,7 +79,6 @@ export class CommonService {
       headers: this.getDefaultHeaders(includeAuth),
       body: JSON.stringify(data),
     });
-
     return this.handleResponse<T>(response);
   }
 }

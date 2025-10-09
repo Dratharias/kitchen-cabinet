@@ -37,6 +37,9 @@ export function PublicationView() {
   const variants = contents.filter((c: any) => !c.is_ingredient);
   const subRecipes = contents.filter((c: any) => c.is_ingredient);
   const activeVariant = variants[selectedVariant] || null;
+  const thumbnail =
+    activeVariant?.thumbnail || publication.thumbnail || null;
+
 
   const toggleBlock = (id: string) => {
     setExpandedBlocks((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -241,9 +244,9 @@ export function PublicationView() {
           spotlightColor="rgba(255,255,255,0.2)"
           softness={1}
         >
-          {publication.thumbnail ? (
+          {thumbnail ? (
             <img
-              src={publication.thumbnail}
+              src={thumbnail}
               alt={publication.title}
               className="object-cover w-full h-full transition-transform duration-500 hover:scale-105 rounded-xl"
               loading="lazy"

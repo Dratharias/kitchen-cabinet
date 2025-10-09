@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { PublicationsService } from "@/services/publications";
+import { useAuthStore } from "@/stores/authStore";
 import type { Publication } from "@/types/publication";
 
 interface UsePublicationLoaderResult {
@@ -16,11 +17,10 @@ interface UsePublicationLoaderResult {
 }
 
 /**
- * Hook de chargement paginé des publications.
- * - Centralise les appels API publics.
- * - Expose `loading`, `totalPages` et `fetchPublications`.
+ * Loader qui bascule auto public/privé selon l'auth.
  */
 export function usePublicationLoader(): UsePublicationLoaderResult {
+  const { isAuthenticated } = useAuthStore();
   const [loading, setLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(1);
 
@@ -39,29 +39,48 @@ export function usePublicationLoader(): UsePublicationLoaderResult {
       if (loading) return [];
 
       setLoading(true);
-      try {
-        const filter: Record<string, any> = {};
-        if (types && types.length) filter.type = types;
-        if (query && query.trim() !== "") filter.q = query.trim();
+      const filter: Record<string, unknown> = {};
+      if (types?.length) filter.type = types;
+      if (query?.trim()) filter.q = query.trim();
 
-        const response = await PublicationsService.getPublicPublications({
+      const call = isAuthenticated
+        ? PublicationsService.getPrivatePublications
+        : PublicationsService.getPublicPublications;
+
+      try {
+        const res = await call({
           page,
           limit,
           sortBy: "title",
           order: "asc",
           filter,
         });
-
-        setTotalPages(response.totalPages ?? 1);
-        return (response.items ?? []) as Publication[];
-      } catch (error) {
-        console.error("Erreur lors du chargement des publications :", error);
+        setTotalPages(res.totalPages ?? 1);
+        return (res.items ?? []) as Publication[];
+      } catch (err: any) {
+        // Fallback public si la requête privée échoue (ex: 401/403).
+        if (isAuthenticated) {
+          try {
+            const res = await PublicationsService.getPublicPublications({
+              page,
+              limit,
+              sortBy: "title",
+              order: "asc",
+              filter,
+            });
+            setTotalPages(res.totalPages ?? 1);
+            return (res.items ?? []) as Publication[];
+          } catch (e2) {
+            console.error("Échec fallback public:", e2);
+          }
+        }
+        console.error("Erreur publications:", err);
         return [];
       } finally {
         setLoading(false);
       }
     },
-    [loading],
+    [loading, isAuthenticated],
   );
 
   return { loading, totalPages, fetchPublications };

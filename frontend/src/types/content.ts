@@ -4,11 +4,13 @@ import { PrepTime } from "./prepTime";
 import { Segment } from "./segment";
 
 export interface Content {
+  thumbnail?: string;
   content_id: string;
   publication_id?: string;
   total_prep_time: number;
   servings?: number | null;
   subtitle?: string | null;
+  gallery?: string[] | null;
   is_ingredient?: boolean | null;
 
   content_segments?: Segment[];

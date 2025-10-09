@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { Search } from "lucide-react";
+import { Search, User } from "lucide-react";
 import { DotGrid } from "@/components/ui/DotGrid";
 import { Dock } from "@/components/ui/Dock";
 import { PublicationCard } from "@/components/cards/PublicationCard";
@@ -24,10 +24,14 @@ import {
   type CategoryKey,
 } from "@/constants/contentBrowser";
 import type { Publication } from "@/types/publication";
+import { useAuthStore } from "@/stores/authStore";
+import { useAuth } from "@/hooks/useAuth";
 
 export function ContentBrowser() {
   const { category } = useParams();
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuthStore();
+  const { logout } = useAuth();
 
   const searchInputRef = useRef<HTMLInputElement>(null);
   const searchButtonRef = useRef<HTMLDivElement>(null);
@@ -42,7 +46,6 @@ export function ContentBrowser() {
     searchButtonRef,
   });
 
-  // Catégorie courante
   const selectedCategory = useMemo(() => {
     if (category && CATEGORIES.includes(category as CategoryKey)) {
       return category as CategoryKey;
@@ -50,7 +53,6 @@ export function ContentBrowser() {
     return null;
   }, [category]);
 
-  // Types courants : cast pour supprimer la readonly
   const currentTypes = useMemo(() => {
     const types =
       selectedCategory && TYPE_MAP[selectedCategory]
@@ -64,7 +66,6 @@ export function ContentBrowser() {
     [selectedCategory, query],
   );
 
-  // Chargement des pages
   const loadPage = useCallback(
     async (pageNum: number) => {
       const items: Publication[] = await fetchPublications({
@@ -91,15 +92,13 @@ export function ContentBrowser() {
     onLoadMore: loadPage,
   });
 
-  // Premier chargement ou changement de vue
   useEffect(() => {
     if (!loadViewFromCache(viewKey)) {
       resetPage();
       loadPage(1);
     }
-  }, [viewKey, loadViewFromCache, loadPage, resetPage]);
+  }, [viewKey, loadViewFromCache, loadPage, resetPage, isAuthenticated]);
 
-  // Recherche avec debounce
   useEffect(() => {
     if (debounceTimer.current) clearTimeout(debounceTimer.current);
     debounceTimer.current = setTimeout(() => {
@@ -118,12 +117,12 @@ export function ContentBrowser() {
     loadViewFromCache,
     loadPage,
     resetPage,
+    isAuthenticated
   ]);
 
-  // Sélection de catégorie
   const handleCategorySelect = useCallback(
     (key: CategoryKey) => {
-      navigate(`/content/${key}`);
+      navigate(`/${key}`);
       toggleSearch(false);
     },
     [navigate, toggleSearch],
@@ -131,7 +130,6 @@ export function ContentBrowser() {
 
   const items = getDisplayItems() as Publication[];
 
-  // Dock dynamique
   const dockItems = useMemo(() => {
     const categoryItems = CATEGORIES.map((key) => {
       const IconComponent = ICON_MAP[key];
@@ -151,18 +149,33 @@ export function ContentBrowser() {
         : "bg-[#292929] hover:bg-[#333333]",
     };
 
+  const loginButton = {
+    icon: <User className="w-6 h-6" />,
+    label: isAuthenticated ? "Déconnexion" : "Connexion",
+    onClick: isAuthenticated
+      ? async () => {
+          await logout();
+        }
+      : () => navigate("/login"),
+  };
+
     return [
       categoryItems[0],
       categoryItems[1],
       searchButton,
       categoryItems[2],
-      categoryItems[3],
+      loginButton,
     ];
-  }, [handleCategorySelect, searchActive, toggleSearch]);
+  }, [handleCategorySelect, searchActive, toggleSearch, navigate]);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated, navigate]);
 
   return (
     <div className="flex min-h-screen flex-col w-full relative p-8">
-      {/* Fond animé */}
       <div className="absolute inset-0 w-full h-full z-0 pointer-events-none bg-[#1F1F1F]">
         <DotGrid
           dotSize={10}
@@ -177,7 +190,6 @@ export function ContentBrowser() {
         />
       </div>
 
-      {/* Barre de recherche */}
       <AnimatePresence>
         {searchActive && (
           <motion.div
@@ -199,7 +211,6 @@ export function ContentBrowser() {
         )}
       </AnimatePresence>
 
-      {/* Dock principal */}
       <div
         className="fixed bottom-0 left-1/2 -translate-x-1/2 z-50"
         ref={searchButtonRef}
@@ -214,7 +225,6 @@ export function ContentBrowser() {
         />
       </div>
 
-      {/* Grille des publications */}
       <div
         className="grid gap-6 pb-24 pt-4"
         style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
