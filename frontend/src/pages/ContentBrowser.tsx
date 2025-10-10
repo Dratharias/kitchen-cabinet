@@ -189,20 +189,20 @@ export function ContentBrowser() {
       className="bg-[#1F1F1F]"
     >
       <div
-        className="
-          flex mx-auto 
-          w-full 
-          max-w-full 
-          sm:max-w-[640px] 
-          md:max-w-[768px] 
-          lg:max-w-[1024px] 
-          xl:max-w-[1280px] 
-          2xl:max-w-[1600px] 
-          [@media(min-width:1920px)]:max-w-[1800px] 
-          [@media(min-width:2560px)]:max-w-[2000px] 
-          px-4 sm:px-6 lg:px-8
-        "
-      >
+    className="
+      flex mx-auto 
+      w-full 
+      max-w-full 
+      sm:max-w-[640px] 
+      md:max-w-[768px] 
+      lg:max-w-[1024px] 
+      xl:max-w-[1280px] 
+      2xl:max-w-[1600px] 
+      [@media(min-width:1920px)]:max-w-[1800px] 
+      [@media(min-width:2560px)]:max-w-[2000px] 
+      px-4 sm:px-6 lg:px-8
+    "
+  >
         <AnimatePresence>
           {searchActive && (
             <motion.div
