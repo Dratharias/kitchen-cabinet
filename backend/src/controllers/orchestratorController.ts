@@ -428,7 +428,7 @@ export class OrchestratorController {
 
     const product_id = uuidv4();
     const created = await tx.product.create({
-      data: { product_id, name, en_name: name },
+      data: { product_id, name },
     });
     return created.product_id;
   }

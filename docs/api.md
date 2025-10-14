@@ -273,7 +273,6 @@ Single endpoint for nested creation with upsert.
               "product": {
                 "data": {
                   "name": "Super Product",
-                  "en_name": "Super Product",
                   "publication": {
                     "id": "existing-publication-id",
                     "data": {}
@@ -401,7 +400,6 @@ Reviews must link to either a **publication** or a **product**, not both.
 {
   "product_id": "string",
   "name": "string",
-  "en_name": "string | null",
   "macro_id": "string | null",
   "macro": "Macro | null",
   "publication": "Publication | null",

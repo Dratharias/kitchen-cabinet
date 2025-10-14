@@ -184,7 +184,6 @@ export interface SegmentPrepTimeData {
 export interface ProductData {
   product_id: string;
   name: string;
-  en_name: string | null;
   macro_id: string | null;
   is_recipe_id: string | null;
 

@@ -3,7 +3,7 @@ import { FileText, Lightbulb, Utensils } from "lucide-react";
 export const TYPE_MAP = {
   reviews: ["Review"],
   articles: ["Article"],
-  recettes: ["Recette", "Ingredient"],
+  recettes: ["Recette"],
 } as const;
 
 export const ICON_MAP = {

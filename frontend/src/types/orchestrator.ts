@@ -32,7 +32,6 @@ export interface PrepTimeData {
 
 export interface ProductData {
   name: string;
-  en_name?: string;
   publication?: OrchestratorEntity<{}>;
 }
 

@@ -57,7 +57,6 @@ async function createProduct(existingNames = new Set()) {
     data: {
       product_id: uuidv4(),
       name,
-      en_name: faker.commerce.product(),
       macro_id: macroId,
     },
   });

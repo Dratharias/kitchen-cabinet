@@ -41,8 +41,7 @@ function shapePublicationBase(pub: any) {
     productsRef: Array.isArray(pub.productsRef)
       ? pub.productsRef.map((p: any) => ({
           product_id: p.product_id,
-          name: p.name,
-          en_name: p.en_name,
+          name: p.name
         }))
       : [],
   };
@@ -122,7 +121,6 @@ export function shapePublicPublicationFull(pub: any): Publication {
                   ? {
                       product_id: ci.ingredient.product.product_id,
                       name: ci.ingredient.product.name,
-                      en_name: ci.ingredient.product.en_name,
                       macro: ci.ingredient.product.macro
                         ? {
                             calories: ci.ingredient.product.macro.calories ?? 0,

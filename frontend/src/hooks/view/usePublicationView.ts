@@ -3,8 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { PublicationsService } from "@/services/publications";
-import { useIsMobile } from "@/hooks/useIsMobile";
-import { useAuthStore } from "@/stores/authStore"; // on lit l'état auth
+import { useAuthStore } from "@/stores/authStore";
 import type { Publication } from "@/types/publication";
 
 const API_BASE =
@@ -14,7 +13,6 @@ const API_BASE =
 export function usePublicationView() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const isMobile = useIsMobile();
   const { isAuthenticated } = useAuthStore();
 
   type DynamicPublication = Publication & {
@@ -104,7 +102,6 @@ export function usePublicationView() {
   return {
     publication,
     loading,
-    isMobile,
     selectedVariant,
     setSelectedVariant,
     mobileTab,

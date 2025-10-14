@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Lock, User as UserIcon } from "lucide-react";
 import { DotGrid } from "@/components/ui/DotGrid";
 import { useAuthStore } from "@/stores/authStore";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/hooks/auth/useAuth";
 
 export function LoginPage() {
   const navigate = useNavigate();

@@ -1,72 +1,77 @@
 {
   "action": "create",
   "payload": {
-    "1": {
+    "babeurre": {
       "title": "Babeurre",
       "description": [
-        "Découvrez la saveur unique du babeurre maison, un produit laitier riche et crémeux, parfait pour relever vos plats préférés."
+        "Babeurre maison prêt en 10 minutes pour remplacer le babeurre des recettes (gâteaux, pancakes)."
       ],
-      "note": [],
+      "note": [
+        "Fonctionne avec lait entier, demi-écrémé ou écrémé.",
+        "Version sans lactose et vegan: utiliser du lait de coco entier et procéder de la même façon.",
+        "Le jus de citron frais est recommandé; alternatives: jus en bouteille, vinaigre blanc 5% ou vinaigre de cidre."
+      ],
       "public": true,
       "published": true,
       "thumbnail": "https://i.ibb.co/qDb3Kyc/babeurre.jpg",
       "gallery": [],
-      "type": {
-        "str_value": "Recette",
-        "type": "Type"
-      },
-      "style": null,
-      "author": null,
       "tags": [],
       "contents": [
         {
           "total_prep_time": 10,
-          "servings": null,
-          "subtitle": "Babeurre",
-          "is_ingredient": false,
+          "servings": { "yield": 1, "value": "tasse (250 ml)" },
           "content_ingredients": [
             {
               "quantity": 1,
               "multiply_factor": 1,
               "product": {
-                "name": "lait"
+                "name": "lait (de préférence entier)",
+                "macro": { "calories": 62, "protein": 3, "carbs": 5, "fat": 3 }
               },
-              "ingredient_units": [
-                {
-                  "unit": {
-                    "name": "tasse"
-                  }
-                }
-              ]
+              "ingredient_units": [ { "unit": { "name": "tasse" } } ]
             },
             {
               "quantity": 1,
               "multiply_factor": 1,
-              "product": {
-                "name": "vinaigre blanc ou de jus de citron"
-              },
-              "ingredient_units": [
-                {
-                  "unit": {
-                    "name": "cuil. à soupe"
-                  }
-                }
-              ]
+              "product": { "name": "vinaigre blanc 5% ou jus de citron", "macro": null },
+              "ingredient_units": [ { "unit": { "name": "cuil. à soupe" } } ]
             }
           ],
           "content_segments": [
             {
               "position": 1,
               "segment": {
-                "paragraph": "Mélangez le lait avec le vinaigre ou le jus de citron. Laissez reposer environ 5 à 10 minutes à température ambiante. Le lait va cailler."
-              }
+                "title": "Mélange",
+                "paragraph": "Mélanger le lait avec le vinaigre ou le jus de citron."
+              },
+              "segment_prep_time": [
+                {
+                  "prep_time": {
+                    "duration": 1,
+                    "style": { "str_value": "Préparation", "type": "PrepStyle" }
+                  }
+                }
+              ]
             },
             {
               "position": 2,
               "segment": {
-                "paragraph": "Couvrez et gardez votre babeurre au réfrigérateur jusqu'au moment de l'utiliser."
-              }
+                "title": "Repos",
+                "paragraph": "Laisser reposer 5 à 10 minutes à température ambiante jusqu’à ce que le lait caille. Couvrir et réfrigérer jusqu’à utilisation."
+              },
+              "segment_prep_time": [
+                {
+                  "prep_time": {
+                    "duration": 9,
+                    "style": { "str_value": "Repos / Marinade", "type": "PrepStyle" }
+                  }
+                }
+              ]
             }
+          ],
+          "content_prep_times": [
+            { "duration": 1, "style": { "str_value": "Préparation", "type": "PrepStyle" } },
+            { "duration": 9, "style": { "str_value": "Repos / Marinade", "type": "PrepStyle" } }
           ]
         }
       ]

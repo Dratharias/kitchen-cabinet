@@ -83,13 +83,20 @@ CREATE TABLE content (
   content_id     UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   publication_id UUID NOT NULL,
   total_prep_time SMALLINT DEFAULT 0,
-  servings       SMALLINT,
+  servings       UUID,
   subtitle       TEXT,
   thumbnail      VARCHAR(255),
   gallery        VARCHAR(255)[], -- Nouvelle gallerie
   is_ingredient  BOOLEAN,
+  FOREIGN KEY (serving_id) REFERENCES servings(serving_id) ON DELETE SET NULL,
   FOREIGN KEY (publication_id) REFERENCES publication(publication_id) ON DELETE CASCADE
 );
+
+CREATE TABLE servings {
+  serving_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  yield SMALLINT,
+  value VARCHAR(30)
+}
 
 CREATE INDEX idx_content_publication_id ON content(publication_id);
 
@@ -124,7 +131,6 @@ CREATE TABLE macro (
 CREATE TABLE product (
   product_id  UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name        VARCHAR(255) UNIQUE NOT NULL,
-  en_name     VARCHAR(255),
   is_recipe_id UUID,
   macro_id    UUID,
   FOREIGN KEY (macro_id) REFERENCES macro(macro_id) ON DELETE SET NULL,

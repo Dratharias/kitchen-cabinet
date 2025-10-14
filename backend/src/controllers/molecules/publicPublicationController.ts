@@ -269,7 +269,6 @@ export class PublicPublicationController
                     select: {
                       product_id: true,
                       name: true,
-                      en_name: true,
                       macro: { select: { calories: true, protein: true } },
                     },
                   },
