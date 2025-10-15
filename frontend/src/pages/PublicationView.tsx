@@ -1,13 +1,31 @@
 "use client";
 import { useState } from "react";
-import { ChevronDown, ChevronRight, Utensils, FileText } from "lucide-react";
 import { usePublicationView } from "@/hooks/view/usePublicationView";
-import { PublicationHeader } from "@/components/view/PublicationHeader";
+import { PublicationHeaderEditable } from "@/components/view/PublicationHeaderEditable";
+import { PublicationDescriptionEditable } from "@/components/view/PublicationDescriptionEditable";
 import { PublicationVariantTabs } from "@/components/view/PublicationVariantTabs";
 import { PublicationTabs } from "@/components/view/PublicationTabs";
-import { PublicationServingControl } from "@/components/view/PublicationServingControl";
 import { DotGrid } from "@/components/ui/DotGrid";
 import { SpotlightWrapper } from "@/components/ui/SpotlightWrapper";
+import { PublicationHeader } from "@/components/view/PublicationHeader";
+
+import { IngredientBlockEditable } from "@/components/view/IngredientBlockEditable";
+import { SegmentBlockEditable } from "@/components/view/SegmentBlockEditable";
+import { ContentBlockHeaderEditable } from "@/components/view/ContentBlockHeaderEditable";
+
+import { useIngredientEdit } from "@/hooks/edit/useIngredientEdit";
+import { useSegmentEdit } from "@/hooks/edit/useSegmentEdit";
+import { useContentEdit } from "@/hooks/edit/useContentEdit";
+import { normalizePublication } from "@/utils/normalizePublication";
+import type { ServingsPayload } from "@/types/payloadBuilder";
+
+function normalizeServings(val: any): ServingsPayload | null {
+  if (!val) return null;
+  if (typeof val === "number") {
+    return { yield: val, value: "portion(s)" };
+  }
+  return val as ServingsPayload;
+}
 
 export function PublicationView() {
   const {
@@ -17,15 +35,16 @@ export function PublicationView() {
     setSelectedVariant,
     checkedItems,
     toggleChecked,
+    isAuthenticated,
   } = usePublicationView();
 
-  const [expandedBlocks, setExpandedBlocks] = useState<Record<string, boolean>>(
-    {},
-  );
-  const [tab, setTab] = useState<"ingredients" | "steps">("ingredients");
-  const [servingFactors, setServingFactors] = useState<Record<string, number>>(
-    {},
-  );
+  // normalisation du contenu pour compatibilité des hooks
+  const normalized = publication ? normalizePublication(publication) : null;
+
+  // Hooks d'édition toujours appelés
+  const ingredientEdit = useIngredientEdit(normalized);
+  const segmentEdit = useSegmentEdit(normalized);
+  const contentEdit = useContentEdit(normalized);
 
   if (loading) {
     return (
@@ -34,8 +53,11 @@ export function PublicationView() {
       </div>
     );
   }
-
   if (!publication) return null;
+
+  const [expandedBlocks, setExpandedBlocks] = useState<Record<string, boolean>>({});
+  const [tab, setTab] = useState<"ingredients" | "steps">("ingredients");
+  const [servingFactors, setServingFactors] = useState<Record<string, number>>({});
 
   const contents = publication.contents || [];
   const variants = contents.filter((c: any) => !c.is_ingredient);
@@ -47,186 +69,23 @@ export function PublicationView() {
     setExpandedBlocks((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const getBlockId = (block: any) => {
-    return (
-      block.publication_id || block.id || block.subtitle || crypto.randomUUID()
-    );
-  };
+  const getBlockId = (block: any) =>
+    block.content_id ||
+    block.publication_id ||
+    block.id ||
+    block.subtitle ||
+    crypto.randomUUID();
 
-  const isBlockExpanded = (blockId: string, isActiveVariant: boolean) => {
-    if (expandedBlocks[blockId] !== undefined) {
-      return expandedBlocks[blockId];
-    }
-    return isActiveVariant;
-  };
+  const isBlockExpanded = (blockId: string, isActiveVariant: boolean) =>
+    expandedBlocks[blockId] !== undefined
+      ? expandedBlocks[blockId]
+      : isActiveVariant;
 
-  const getServingFactor = (blockId: string) => {
-    return servingFactors[blockId] || 1;
-  };
-
-  const setServingFactor = (blockId: string, factor: number) => {
+  const getServingFactor = (blockId: string) => servingFactors[blockId] || 1;
+  const setServingFactor = (blockId: string, factor: number) =>
     setServingFactors((prev) => ({ ...prev, [blockId]: factor }));
-  };
 
-  const formatIngredientLabel = (ing: any, servingFactor: number) => {
-    const multiplyFactor = ing.multiply_factor || 1;
-    const baseQuantity = parseFloat(ing.quantity) || 0;
-    const adjustedQuantity = baseQuantity * multiplyFactor * servingFactor;
-
-    const productName = ing.product?.name || "Ingrédient";
-    const unitName = ing.ingredient_units?.[0]?.name;
-    const normalizedUnit = unitName === "l" ? "L" : unitName;
-    const cut = ing.cut;
-
-    const parts = [];
-
-    if (adjustedQuantity > 0) {
-      const formatted =
-        adjustedQuantity % 1 === 0
-          ? adjustedQuantity.toString()
-          : adjustedQuantity.toFixed(2);
-      parts.push(formatted);
-    }
-
-    if (normalizedUnit) {
-      parts.push(normalizedUnit);
-    }
-
-    parts.push(productName);
-
-    if (cut) {
-      parts.push(`(${cut})`);
-    }
-
-    return parts.join(" ");
-  };
-
-  const renderIngredientBlock = (
-    block: any,
-    isActiveVariant: boolean = false,
-  ) => {
-    const blockId = `ing-${getBlockId(block)}`;
-    const expanded = isBlockExpanded(blockId, isActiveVariant);
-    const ingredients = block.content_ingredients || [];
-    const currentServingFactor = getServingFactor(blockId);
-
-    return (
-      <div
-        key={blockId}
-        className="border border-gray-700 rounded-lg bg-[#1F1F1F]/80 mb-4 overflow-hidden"
-      >
-        <header
-          className="flex items-center justify-between px-4 py-2 bg-[#2a2a2a]/70 cursor-pointer"
-          onClick={() => toggleBlock(blockId)}
-        >
-          <h3 className="text-lg font-semibold flex items-center gap-2 text-white">
-            <Utensils className="w-5 h-5 text-amber-500" />
-            {block.subtitle || "Ingrédients"}
-          </h3>
-          {expanded ? (
-            <ChevronDown className="w-5 h-5 text-gray-400" />
-          ) : (
-            <ChevronRight className="w-5 h-5 text-gray-400" />
-          )}
-        </header>
-
-        {expanded && (
-          <div>
-            <div className="px-4 py-2">
-              <PublicationServingControl
-                servings={block.servings}
-                servingFactor={currentServingFactor}
-                onServingChange={(factor) => setServingFactor(blockId, factor)}
-                prepTime={block.total_prep_time}
-              />
-            </div>
-            <ul className="p-4 pt-2 space-y-2 text-gray-300">
-              {ingredients.map((ing: any) => {
-                const label = formatIngredientLabel(ing, currentServingFactor);
-
-                return (
-                  <li key={ing.ingredient_id}>
-                    <label className="flex items-center gap-2 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={!!checkedItems[ing.ingredient_id]}
-                        onChange={() => toggleChecked(ing.ingredient_id)}
-                        className="accent-amber-500"
-                      />
-                      <span
-                        className={
-                          checkedItems[ing.ingredient_id]
-                            ? "line-through text-gray-500"
-                            : ""
-                        }
-                      >
-                        {label}
-                      </span>
-                    </label>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        )}
-      </div>
-    );
-  };
-
-  const renderStepBlock = (block: any, isActiveVariant: boolean = false) => {
-    const blockId = `step-${getBlockId(block)}`;
-    const expanded = isBlockExpanded(blockId, isActiveVariant);
-    const steps = block.content_segments || [];
-
-    return (
-      <div
-        key={blockId}
-        className="border border-gray-700 rounded-lg bg-[#1F1F1F]/80 mb-4 overflow-hidden"
-      >
-        <header
-          className="flex items-center justify-between px-4 py-2 bg-[#2a2a2a]/70 cursor-pointer"
-          onClick={() => toggleBlock(blockId)}
-        >
-          <h3 className="text-lg font-semibold flex items-center gap-2 text-white">
-            <FileText className="w-5 h-5 text-amber-500" />
-            {block.subtitle || "Préparation"}
-          </h3>
-          {expanded ? (
-            <ChevronDown className="w-5 h-5 text-gray-400" />
-          ) : (
-            <ChevronRight className="w-5 h-5 text-gray-400" />
-          )}
-        </header>
-
-        {expanded && (
-          <ul className="p-4 space-y-2 text-gray-300">
-            {steps.map((s: any) => (
-              <li key={s.segment_id}>
-                <label className="flex items-start gap-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={!!checkedItems[s.segment_id]}
-                    onChange={() => toggleChecked(s.segment_id)}
-                    className="accent-amber-500 mt-1"
-                  />
-                  <span
-                    className={
-                      checkedItems[s.segment_id]
-                        ? "line-through text-gray-500"
-                        : ""
-                    }
-                  >
-                    {s.paragraph}
-                  </span>
-                </label>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    );
-  };
-
+  // --- rendu principal
   return (
     <DotGrid
       dotSize={10}
@@ -240,23 +99,26 @@ export function PublicationView() {
       returnDuration={1.5}
       className="bg-[#1F1F1F] min-h-screen"
     >
-      <div
-        className="
-          relative z-20 
-          mx-auto w-full 
-          max-w-full 
-          sm:max-w-[640px] 
-          md:max-w-[768px] 
-          lg:max-w-[1024px] 
-          xl:max-w-[1280px] 
-          2xl:max-w-[1600px] 
-          [@media(min-width:1920px)]:max-w-[1800px] 
-          [@media(min-width:2560px)]:max-w-[2000px] 
-          px-4 sm:px-6 lg:px-8 py-6
-        "
-      >
-        <PublicationHeader title={publication.title} />
+      <div className="relative z-20 mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 py-6">
+        {/* Header */}
+        {isAuthenticated ? (
+          <PublicationHeaderEditable
+            title={publication.title}
+            isAuthenticated={isAuthenticated}
+            isEditing={ingredientEdit.editingField === "title"}
+            editValue={ingredientEdit.editValues["title"] || publication.title}
+            onStartEdit={() => ingredientEdit.startEdit("title", publication.title)}
+            onCancel={() => ingredientEdit.cancelEdit("title")}
+            onConfirm={() =>
+              ingredientEdit.confirmIngredient(publication.publication_id, "title", "title")
+            }
+            onChange={(value) => ingredientEdit.updateValue("title", value)}
+          />
+        ) : (
+          <PublicationHeader title={publication.title} />
+        )}
 
+        {/* Thumbnail */}
         <SpotlightWrapper
           className="w-full h-64 rounded-xl mb-6"
           radius="150px"
@@ -277,35 +139,119 @@ export function PublicationView() {
           )}
         </SpotlightWrapper>
 
-        {publication.description?.length > 0 && (
-          <ul className="space-y-1 text-gray-300 mb-4">
-            {publication.description.map((line: string, i: number) => (
-              <li key={i}>{line}</li>
-            ))}
-          </ul>
-        )}
+        {/* Description */}
+        <PublicationDescriptionEditable
+          description={publication.description || []}
+          isAuthenticated={isAuthenticated}
+          isEditing={ingredientEdit.editingField === "description"}
+          editValue={
+            ingredientEdit.editValues["description"] ||
+            (publication.description || []).join("\n")
+          }
+          onStartEdit={() =>
+            ingredientEdit.startEdit(
+              "description",
+              (publication.description || []).join("\n"),
+            )
+          }
+          onCancel={() => ingredientEdit.cancelEdit("description")}
+          onConfirm={() =>
+            ingredientEdit.confirmIngredient(publication.publication_id, "description", "description")
+          }
+          onChange={(value) => ingredientEdit.updateValue("description", value)}
+        />
 
+        {/* Variantes */}
         <PublicationVariantTabs
           variants={variants}
           selectedVariant={selectedVariant}
           setSelectedVariant={setSelectedVariant}
         />
 
+        {/* Onglets */}
         <PublicationTabs currentTab={tab} setTab={setTab} />
 
+        {/* INGREDIENTS */}
         {tab === "ingredients" && (
           <div className="pb-16">
-            {activeVariant && renderIngredientBlock(activeVariant, true)}
-            {subRecipes.map((subRecipe) =>
-              renderIngredientBlock(subRecipe, false),
+            {activeVariant && (
+              <>
+                <ContentBlockHeaderEditable
+                  contentId={activeVariant.content_id}
+                  subtitle={activeVariant.subtitle}
+                  servings={normalizeServings(activeVariant.servings)}
+                  isAuthenticated={isAuthenticated}
+                  editingField={contentEdit.editingField}
+                  editValues={contentEdit.editValues}
+                  startEdit={contentEdit.startEdit}
+                  cancelEdit={contentEdit.cancelEdit}
+                  updateValue={contentEdit.updateValue}
+                  confirmContent={contentEdit.confirmContent}
+                />
+                <IngredientBlockEditable
+                  block={activeVariant}
+                  expanded={isBlockExpanded(`ing-${getBlockId(activeVariant)}`, true)}
+                  toggleBlock={() => toggleBlock(`ing-${getBlockId(activeVariant)}`)}
+                  servingFactor={getServingFactor(`ing-${getBlockId(activeVariant)}`)}
+                  onServingChange={(factor) =>
+                    setServingFactor(`ing-${getBlockId(activeVariant)}`, factor)
+                  }
+                  ingredients={activeVariant.content_ingredients || []}
+                  isAuthenticated={isAuthenticated}
+                  checkedItems={checkedItems}
+                  toggleChecked={toggleChecked}
+                  {...ingredientEdit}
+                />
+              </>
             )}
+            {subRecipes.map((subRecipe) => (
+              <IngredientBlockEditable
+                key={getBlockId(subRecipe)}
+                block={subRecipe}
+                expanded={isBlockExpanded(`ing-${getBlockId(subRecipe)}`, false)}
+                toggleBlock={() => toggleBlock(`ing-${getBlockId(subRecipe)}`)}
+                servingFactor={getServingFactor(`ing-${getBlockId(subRecipe)}`)}
+                onServingChange={(factor) =>
+                  setServingFactor(`ing-${getBlockId(subRecipe)}`, factor)
+                }
+                ingredients={subRecipe.content_ingredients || []}
+                isAuthenticated={isAuthenticated}
+                checkedItems={checkedItems}
+                toggleChecked={toggleChecked}
+                {...ingredientEdit}
+              />
+            ))}
           </div>
         )}
 
+        {/* ÉTAPES */}
         {tab === "steps" && (
           <div className="pb-16">
-            {activeVariant && renderStepBlock(activeVariant, true)}
-            {subRecipes.map((subRecipe) => renderStepBlock(subRecipe, false))}
+            {activeVariant && (
+              <SegmentBlockEditable
+                block={activeVariant}
+                expanded={isBlockExpanded(`step-${getBlockId(activeVariant)}`, true)}
+                toggleBlock={() => toggleBlock(`step-${getBlockId(activeVariant)}`)}
+                segments={activeVariant.content_segments || []}
+                isAuthenticated={isAuthenticated}
+                checkedItems={checkedItems}
+                toggleChecked={toggleChecked}
+                {...segmentEdit}
+              />
+            )}
+            {subRecipes.map((subRecipe) => (
+              <SegmentBlockEditable
+                key={getBlockId(subRecipe)}
+                block={subRecipe}
+                expanded={isBlockExpanded(`step-${getBlockId(subRecipe)}`, false)}
+                toggleBlock={() => toggleBlock(`step-${getBlockId(subRecipe)}`)}
+                segments={subRecipe.content_segments || []}
+                isAuthenticated={isAuthenticated}
+                checkedItems={checkedItems}
+                toggleChecked={toggleChecked}
+                {...segmentEdit}
+              />
+            ))}
           </div>
         )}
       </div>

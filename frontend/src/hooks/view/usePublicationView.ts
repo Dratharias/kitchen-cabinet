@@ -27,42 +27,40 @@ export function usePublicationView() {
     >;
   };
 
-  const [publication, setPublication] = useState<DynamicPublication | null>(
-    null,
-  );
+  // états toujours définis
+  const [publication, setPublication] = useState<DynamicPublication | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedVariant, setSelectedVariant] = useState(0);
-  const [mobileTab, setMobileTab] = useState<"ingredients" | "steps">(
-    "ingredients",
-  );
+  const [mobileTab, setMobileTab] = useState<"ingredients" | "steps">("ingredients");
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
   const [servingFactor, setServingFactor] = useState(1);
 
-  /** Fetch principal : bascule public/privé */
+  /** Fetch principal, toujours défini */
   const fetchPublication = useCallback(async () => {
     if (!id) {
       navigate("/404", { replace: true });
       return;
     }
-    setLoading(true);
 
-    const call = isAuthenticated
+    setLoading(true);
+    const getFn = isAuthenticated
       ? PublicationsService.getPrivatePublicationById
       : PublicationsService.getPublicPublicationById;
 
     try {
-      const result = await call(id);
-      if (!result) {
-        navigate("/404", { replace: true });
+      const result = await getFn(id);
+      if (result) {
+        setPublication(result as DynamicPublication);
         return;
       }
-      setPublication(result as DynamicPublication);
+
+      // pas de résultat → fallback 404
+      navigate("/404", { replace: true });
     } catch (err) {
-      // fallback public si token expiré / 401
+      // fallback public si token expiré
       if (isAuthenticated) {
         try {
-          const fallback =
-            await PublicationsService.getPublicPublicationById(id);
+          const fallback = await PublicationsService.getPublicPublicationById(id);
           if (fallback) {
             setPublication(fallback as DynamicPublication);
             return;
@@ -71,21 +69,24 @@ export function usePublicationView() {
           console.error("Échec fallback public :", e2);
         }
       }
-      console.error("Erreur lors du chargement :", err);
+      console.error("Erreur de chargement :", err);
       navigate("/404", { replace: true });
     } finally {
       setLoading(false);
     }
   }, [id, navigate, isAuthenticated]);
 
+  /** exécuter une seule fois le fetch */
   useEffect(() => {
     fetchPublication();
   }, [fetchPublication]);
 
+  /** gestion de cases cochées */
   const toggleChecked = useCallback((key: string) => {
     setCheckedItems((prev) => ({ ...prev, [key]: !prev[key] }));
   }, []);
 
+  /** fetch pour sous-recettes, toujours stable */
   const expandFetcher = useCallback(async (subId: string) => {
     try {
       const token = localStorage.getItem("auth_token");
@@ -93,13 +94,15 @@ export function usePublicationView() {
         headers: token ? { Authorization: `Bearer ${token}` } : {},
       });
       if (!res.ok) return null;
-      return (await res.json()) as DynamicPublication;
+      const data = (await res.json()) as DynamicPublication;
+      return data;
     } catch (e) {
       console.error("Erreur de chargement sous-recette :", e);
       return null;
     }
   }, []);
 
+  // hook toujours ordonné, retour constant
   return {
     publication,
     loading,
@@ -112,5 +115,6 @@ export function usePublicationView() {
     servingFactor,
     setServingFactor,
     expandFetcher,
+    isAuthenticated,
   };
 }

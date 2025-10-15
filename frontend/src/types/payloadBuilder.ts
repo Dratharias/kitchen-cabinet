@@ -1,8 +1,8 @@
-export type Action = "create" | "update";
+export type Action = "create" | "update" | "delete";
 
 export interface OrchestratorPayload {
   action: Action;
-  payload: Record<string, PublicationPayload>;
+  payload: Record<string, Record<string, any> | null>;
 }
 
 export interface OrchestratorResponse {
@@ -75,7 +75,7 @@ export interface SegmentWithMeta {
 export interface ContentPayload {
   content_id?: string;
   total_prep_time: number;
-  servings: ServingsPayload | number | null;
+  servings: ServingsPayload | null;
   gallery?: string[] | null;
   subtitle?: string;
   is_ingredient?: boolean;
