@@ -1,7 +1,7 @@
 import { prisma } from "../../config.js";
 import { GenericController } from "types/crud.types.js";
 import { Category, PrepTime } from "types/controller.types.js";
-import { PrepTimeCreateDto, PrepTimeUpdateDto } from "types/dto.types.js";
+import { PrepTimeCreateDto, PrepTimeUpdateDto, PrepTimeConnect } from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
 
 export const normalizePrepTime = (prepTime: any): PrepTime => ({
@@ -23,7 +23,9 @@ export class PrepTimeController
         style: Category | null;
         content_prep_times: any[] | null;
         segment_prep_time: any[] | null;
-      }
+      },
+      PrepTimeConnect,
+      PrepTimeConnect
     >
 {
   async create(
@@ -33,12 +35,17 @@ export class PrepTimeController
     > & { connect?: PrepTimeCreateDto["connect"] },
   ): Promise<PrepTime> {
     const newId = uuidv4();
+    
+    // Gérer la connexion N-1 (style)
+    const style_id = payload.connect?.style?.[0]?.category_id ?? payload.style_id;
+
     const prepTime = await prisma.prep_time.create({
       data: {
         prep_time_id: newId,
         duration: payload.duration,
-        style_id: payload.style_id ?? undefined, // N-1 relation scalar FK
+        style_id: style_id, 
 
+        // Relations N-N (Content)
         content_prep_times: payload.connect?.content_prep_times
           ? {
               connect: payload.connect.content_prep_times.map((c) => ({
@@ -50,6 +57,7 @@ export class PrepTimeController
             }
           : undefined,
 
+        // Relations N-N (Segment)
         segment_prep_time: payload.connect?.segment_prep_time
           ? {
               connect: payload.connect.segment_prep_time.map((s) => ({
@@ -95,12 +103,17 @@ export class PrepTimeController
   }
 
   async update(id: string, payload: PrepTimeUpdateDto): Promise<PrepTime> {
+    
+    // Gérer la connexion N-1 (style)
+    const style_id = payload.connect?.style?.[0]?.category_id ?? payload.style_id;
+
     const prepTime = await prisma.prep_time.update({
       where: { prep_time_id: id },
       data: {
         duration: payload.duration,
-        style_id: payload.style_id ?? undefined,
+        style_id: style_id, // Mise à jour de la FK
 
+        // Relations N-N (Content)
         content_prep_times: payload.connect?.content_prep_times
           ? {
               connect: payload.connect.content_prep_times.map((c) => ({
@@ -121,6 +134,7 @@ export class PrepTimeController
               }
             : undefined,
 
+        // Relations N-N (Segment)
         segment_prep_time: payload.connect?.segment_prep_time
           ? {
               connect: payload.connect.segment_prep_time.map((s) => ({

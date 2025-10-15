@@ -147,6 +147,7 @@ model macro {
   saturated Int?   @db.SmallInt
   trans     Int?   @db.SmallInt
   caffein   Int?   @db.SmallInt
+  alcohol   Int?   @db.SmallInt
 
   products product[]
 }

@@ -4,8 +4,9 @@ import {
   ContentCore,
   ContentRelations,
   Content,
+  Servings,
 } from "types/controller.types.js";
-import { ContentCreateDto, ContentUpdateDto } from "types/dto.types.js";
+import { ContentCreateDto, ContentUpdateDto, ServingsConnect } from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
 import { Prisma } from "@prisma/client";
 
@@ -13,12 +14,11 @@ export const normalizeContent = (content: any): Content => ({
   content_id: content.content_id,
   publication_id: content.publication_id,
   total_prep_time: content.total_prep_time,
-  // NOTE: Le champ `servings` doit être ajusté pour devenir un objet
-  servings: content.servings ?? null, 
+  // FIX: Servings est maintenant un objet (relation 1-1) ou null
+  servings: content.servings ? (content.servings as Servings) : null,
   subtitle: content.subtitle,
   is_ingredient: content.is_ingredient,
-  // Rétrocompatibilité, sera supprimé si Gallery devient une table
-  gallery: content.gallery ?? null, 
+  gallery: content.gallery ?? null,
 
   publication: content.publication ?? null,
   content_segments: content.content_segments ?? null,
@@ -50,7 +50,7 @@ async function upsertServings(tx: Prisma.TransactionClient, data: any): Promise<
 
 
 export class ContentController
-  implements GenericController<Content, ContentCore, ContentRelations>
+  implements GenericController<Content, ContentCore, ContentRelations, ContentConnect, ContentConnect>
 {
   async create(
     payload: ContentCore & { connect?: ContentCreateDto["connect"] },
@@ -59,53 +59,46 @@ export class ContentController
     if (!payload.publication_id) throw new Error("Publication ID is required to create Content.");
     
     // Gestion du Servings (Upsert requis pour la relation 1-N)
-    const serving_id = await upsertServings(prisma, payload.connect?.servings?.[0] as any);
+    // NOTE: Le frontend utilise `payload.servings` qui est un nombre/objet simple.
+    // L'ancien Orchestrator utilisait `payload.connect?.servings?.[0]`. 
+    // Ici, nous supposons que le DTO direct contient l'objet Servings pour l'upsert.
+    let serving_id: string | undefined = undefined;
+    if (payload.servings && typeof payload.servings === 'object') {
+        // Le DTO est censé inclure les données Servings (yield, value)
+        serving_id = await upsertServings(prisma, payload.servings);
+    }
+    
+    // Si la création est passée par l'orchestrator, le payload.connect est utilisé:
+    else if (payload.connect?.servings?.[0]) {
+      serving_id = await upsertServings(prisma, payload.connect.servings[0] as any);
+    }
+
 
     const content = await prisma.content.create({
       data: {
         content_id: newId,
         publication_id: payload.publication_id,
         total_prep_time: payload.total_prep_time,
-        serving_id: serving_id, // Utilise la FK
+        serving_id: serving_id, 
         subtitle: payload.subtitle,
         gallery: payload.gallery,
         is_ingredient: payload.is_ingredient,
 
         content_segments: payload.connect?.content_segments
-          ? {
-              connect: payload.connect.content_segments.map((s) => ({
-                content_id_segment_id: {
-                  content_id: newId,
-                  segment_id: s.segment_id,
-                },
-              })),
-            }
+          ? { connect: payload.connect.content_segments }
           : undefined,
 
         content_ingredients: payload.connect?.content_ingredients
-          ? {
-              connect: payload.connect.content_ingredients.map((i) => ({
-                content_id_ingredient_id: {
-                  content_id: newId,
-                  ingredient_id: i.ingredient_id,
-                },
-              })),
-            }
+          ? { connect: payload.connect.content_ingredients }
           : undefined,
 
         content_prep_times: payload.connect?.content_prep_times
-          ? {
-              connect: payload.connect.content_prep_times.map((p) => ({
-                content_id_prep_time_id: {
-                  content_id: newId,
-                  prep_time_id: p.prep_time_id,
-                },
-              })),
-            }
+          ? { connect: payload.connect.content_prep_times }
           : undefined,
       },
       include: {
         publication: true,
+        servings: true,
         content_segments: true,
         content_ingredients: true,
         content_prep_times: true,
@@ -120,6 +113,7 @@ export class ContentController
       where: { content_id: id },
       include: {
         publication: true,
+        servings: true,
         content_segments: true,
         content_ingredients: true,
         content_prep_times: true,
@@ -132,6 +126,7 @@ export class ContentController
     const contents = await prisma.content.findMany({
       include: {
         publication: true,
+        servings: true,
         content_segments: true,
         content_ingredients: true,
         content_prep_times: true,
@@ -150,9 +145,15 @@ export class ContentController
     if (payload.gallery !== undefined) data.gallery = payload.gallery;
     if (payload.is_ingredient !== undefined) data.is_ingredient = payload.is_ingredient;
 
-    // Gestion du Servings lors de la mise à jour
-    if (payload.connect?.servings?.[0]) {
-        // Supposons que payload.connect.servings[0] contient { serving_id, yield, value }
+    // Gestion du Servings lors de la mise à jour (directement via DTO ou via connect)
+    if (payload.servings && typeof payload.servings === 'object') {
+        // Si le DTO direct est utilisé
+        const serving_id = await upsertServings(prisma, payload.servings);
+        if (serving_id) {
+            data.serving_id = serving_id;
+        }
+    } else if (payload.connect?.servings?.[0]) {
+        // Si la mise à jour est passée par un connect (potentiellement de l'orchestrator)
         const serving_id = await upsertServings(prisma, payload.connect.servings[0] as any);
         if (serving_id) {
             data.serving_id = serving_id;
@@ -166,67 +167,26 @@ export class ContentController
         ...data,
         // Les connexions aux tables de jointure (N-N) sont gérées via les DTOs connect/set/disconnect
         content_segments: payload.connect?.content_segments
-          ? {
-              connect: payload.connect.content_segments.map((s) => ({
-                content_id_segment_id: {
-                  content_id: id,
-                  segment_id: s.segment_id,
-                },
-              })),
-            }
+          ? { connect: payload.connect.content_segments }
           : payload.set?.content_segments
-            ? {
-                set: payload.set.content_segments.map((s) => ({
-                  content_id_segment_id: {
-                    content_id: id,
-                    segment_id: s.segment_id,
-                  },
-                })),
-              }
+            ? { set: payload.set.content_segments }
             : undefined,
 
         content_ingredients: payload.connect?.content_ingredients
-          ? {
-              connect: payload.connect.content_ingredients.map((i) => ({
-                content_id_ingredient_id: {
-                  content_id: id,
-                  ingredient_id: i.ingredient_id,
-                },
-              })),
-            }
+          ? { connect: payload.connect.content_ingredients }
           : payload.set?.content_ingredients
-            ? {
-                set: payload.set.content_ingredients.map((i) => ({
-                  content_id_ingredient_id: {
-                    content_id: id,
-                    ingredient_id: i.ingredient_id,
-                  },
-                })),
-              }
+            ? { set: payload.set.content_ingredients }
             : undefined,
 
         content_prep_times: payload.connect?.content_prep_times
-          ? {
-              connect: payload.connect.content_prep_times.map((p) => ({
-                content_id_prep_time_id: {
-                  content_id: id,
-                  prep_time_id: p.prep_time_id,
-                },
-              })),
-            }
+          ? { connect: payload.connect.content_prep_times }
           : payload.set?.content_prep_times
-            ? {
-                set: payload.set.content_prep_times.map((p) => ({
-                  content_id_prep_time_id: {
-                    content_id: id,
-                    prep_time_id: p.prep_time_id,
-                  },
-                })),
-              }
+            ? { set: payload.set.content_prep_times }
             : undefined,
       },
       include: {
         publication: true,
+        servings: true,
         content_segments: true,
         content_ingredients: true,
         content_prep_times: true,
@@ -237,7 +197,21 @@ export class ContentController
   }
 
   async delete(id: string): Promise<{ deleted: boolean }> {
+    // Si vous voulez supprimer la portion associée, vous devriez le faire ici
+    const content = await prisma.content.findUnique({ where: { content_id: id }, select: { serving_id: true } });
+    
+    // Supprimer le contenu (cascade sur les tables de jointure)
     await prisma.content.delete({ where: { content_id: id } });
+    
+    // Supprimer la portion (si elle existait et que c'était la seule référence)
+    if (content?.serving_id) {
+        // Vérifier si d'autres contenus référencent cette portion (logique simplifiée)
+        const count = await prisma.content.count({ where: { serving_id: content.serving_id } });
+        if (count === 0) {
+            await prisma.servings.delete({ where: { serving_id: content.serving_id } });
+        }
+    }
+    
     return { deleted: true };
   }
 }

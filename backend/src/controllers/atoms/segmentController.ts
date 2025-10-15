@@ -5,7 +5,7 @@ import {
   SegmentRelations,
   Segment,
 } from "types/controller.types.js";
-import { SegmentCreateDto, SegmentUpdateDto } from "types/dto.types.js";
+import { SegmentCreateDto, SegmentUpdateDto, SegmentConnect } from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
 import { Prisma } from "@prisma/client";
 
@@ -18,7 +18,7 @@ export const normalizeSegment = (segment: any): Segment => ({
 });
 
 export class SegmentController
-  implements GenericController<Segment, SegmentCore, SegmentRelations>
+  implements GenericController<Segment, SegmentCore, SegmentRelations, SegmentConnect, SegmentConnect>
 {
   async create(
     payload: SegmentCore & { connect?: SegmentCreateDto["connect"] },
@@ -30,6 +30,7 @@ export class SegmentController
         title: payload.title,
         paragraph: payload.paragraph,
 
+        // CORRECTION N-N: Construction de la clé composite content_id_segment_id
         content_segments: payload.connect?.content_segments
           ? {
               connect: payload.connect.content_segments.map((c) => ({
@@ -41,6 +42,7 @@ export class SegmentController
             }
           : undefined,
 
+        // CORRECTION N-N: Construction de la clé composite segment_id_prep_time_id
         segment_prep_time: payload.connect?.segment_prep_time
           ? {
               connect: payload.connect.segment_prep_time.map((p) => ({
@@ -94,7 +96,8 @@ export class SegmentController
       where: { segment_id: id },
       data: {
         ...data,
-        // Les connexions aux tables de jointure (N-N) sont gérées via les DTOs connect/set/disconnect
+        
+        // CORRECTION N-N: Utilisation de la clé composite content_id_segment_id
         content_segments: payload.connect?.content_segments
           ? {
               connect: payload.connect.content_segments.map((c) => ({
@@ -115,6 +118,7 @@ export class SegmentController
               }
             : undefined,
 
+        // CORRECTION N-N: Utilisation de la clé composite segment_id_prep_time_id
         segment_prep_time: payload.connect?.segment_prep_time
           ? {
               connect: payload.connect.segment_prep_time.map((p) => ({

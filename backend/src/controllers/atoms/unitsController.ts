@@ -1,7 +1,7 @@
 import { prisma } from "../../config.js";
 import { GenericController } from "types/crud.types.js";
 import { IngredientUnit, Unit } from "types/controller.types.js";
-import { UnitCreateDto, UnitUpdateDto } from "types/dto.types.js";
+import { UnitCreateDto, UnitUpdateDto, UnitConnect } from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
 
 export const normalizeUnit = (unit: any): Unit => ({
@@ -15,7 +15,9 @@ export class UnitController
     GenericController<
       Unit,
       Omit<Unit, "ingredient_units">,
-      { ingredient_units: IngredientUnit[] | null }
+      { ingredient_units: IngredientUnit[] | null },
+      UnitConnect,
+      UnitConnect
     >
 {
   async create(
@@ -23,7 +25,7 @@ export class UnitController
       connect?: UnitCreateDto["connect"];
     },
   ): Promise<Unit> {
-    const newId = uuidv4();
+    const newId = payload.unit_id ?? uuidv4();
     const unit = await prisma.unit.create({
       data: {
         unit_id: newId,

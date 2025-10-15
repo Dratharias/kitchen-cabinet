@@ -140,7 +140,8 @@ CREATE TABLE macro (
   sugar      SMALLINT,
   saturated  SMALLINT,
   trans      SMALLINT,
-  caffein    SMALLINT
+  caffein    SMALLINT,
+  alcohol    SMALLINT,
 );
 
 -- ====================================================================

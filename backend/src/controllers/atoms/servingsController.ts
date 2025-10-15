@@ -5,12 +5,12 @@ import {
   ServingsRelations,
   Servings,
 } from "types/controller.types.js";
-import { ServingsCreateDto, ServingsUpdateDto } from "types/dto.types.js";
+import { ServingsCreateDto, ServingsUpdateDto, ServingsConnect } from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
 import { Prisma } from "@prisma/client";
 
-// NOTE: Vous devez ajouter ServingsCore, ServingsRelations, Servings, 
-// ServingsCreateDto, et ServingsUpdateDto dans vos fichiers de types.
+// NOTE: Ce contrôleur suppose que les types ServingsCore, ServingsRelations, 
+// et Servings sont correctement définis dans controller.types.ts et db.types.ts.
 
 export const normalizeServings = (servings: any): Servings => ({
   serving_id: servings.serving_id,
@@ -21,7 +21,7 @@ export const normalizeServings = (servings: any): Servings => ({
 });
 
 export class ServingsController
-  implements GenericController<Servings, ServingsCore, ServingsRelations>
+  implements GenericController<Servings, ServingsCore, ServingsRelations, ServingsConnect, ServingsConnect>
 {
   // =====================================================
   // CREATE
@@ -36,13 +36,13 @@ export class ServingsController
         yield: payload.yield,
         value: payload.value,
         
-        // Exemple de connexion (Content est la relation inverse)
+        // Connexion Content (relation inverse)
         content: payload.connect?.content
           ? { connect: payload.connect.content }
           : undefined,
       },
       include: {
-        content: true, // Inclure la relation inverse si nécessaire
+        content: true,
       },
     });
 

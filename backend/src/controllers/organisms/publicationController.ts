@@ -23,14 +23,23 @@ export class PublicationController
       Publication,
       PublicationCore,
       PublicationRelations,
+      PublicationConnect,
       PublicationConnect
     >
 {
   // =====================================================
   // CREATE
   // =====================================================
-  async create(payload: PublicationCore): Promise<Publication> {
+  async create(
+    payload: PublicationCore & { connect?: PublicationConnect },
+  ): Promise<Publication> {
     const newId = payload.publication_id ?? uuidv4();
+    
+    // Simplification: Utiliser le connect pour les relations 1-N (Category/FK)
+    const type_id = payload.connect?.type?.[0]?.category_id;
+    const style_id = payload.connect?.style?.[0]?.category_id;
+    const author_id = payload.connect?.author?.[0]?.category_id;
+
     const pub = await prisma.publication.create({
       data: {
         publication_id: newId,
@@ -40,7 +49,18 @@ export class PublicationController
         public: payload.public ?? true,
         published: payload.published ?? true,
         thumbnail: payload.thumbnail ?? null,
-        gallery: payload.gallery ?? [],
+        // Prisma gère désormais les tableaux `gallery`
+        // gallery: payload.gallery ?? [], 
+        type_id,
+        style_id,
+        author_id,
+        
+        // Relations N-N (Tags)
+        tags: payload.connect?.tags
+          ? { connect: payload.connect.tags.map(t => ({ category_id: t.category_id, publication_id: newId })) }
+          : undefined,
+
+        // Relations 1-N (Contents) - Non géré ici pour rester RESTful (création via ContentController)
       },
       include: this.buildFullInclude(),
     });
@@ -59,8 +79,7 @@ export class PublicationController
   }
 
   // =====================================================
-  // READ ALL — admin/public + recherche + tolérance orthographique
-  // (Logique inchangée, utilise les optimisations existantes)
+  // READ ALL (Logique inchangée)
   // =====================================================
   async findAll(params?: PublicationReadAllDto & { admin?: boolean }): Promise<{
     items: Publication[];
@@ -69,6 +88,7 @@ export class PublicationController
     limit: number;
     totalPages: number;
   }> {
+    // ... (Logique inchangée, utilise les optimisations existantes)
     const limit = Number(params?.limit) || 12;
     const page = Number(params?.page) || 1;
     const skip = (page - 1) * limit;
@@ -208,6 +228,7 @@ export class PublicationController
     return { items, total, page, limit, totalPages: Math.ceil(total / limit) };
   }
 
+
   // =====================================================
   // UPDATE (supporte PUT et PATCH)
   // =====================================================
@@ -228,15 +249,30 @@ export class PublicationController
     if (payload.thumbnail !== undefined) data.thumbnail = payload.thumbnail;
     if (payload.gallery !== undefined) data.gallery = payload.gallery;
 
-    // Relations (connect/set pour les FK et N-N)
-    // Relations 1-N (Category/FK): on utilise le connect DTO
+    // Relations N-1 (Category/FK): on utilise le connect DTO (ex: type)
     if (payload.connect?.type?.[0]) data.type = { connect: payload.connect.type[0] };
     if (payload.connect?.style?.[0]) data.style = { connect: payload.connect.style[0] };
     if (payload.connect?.author?.[0]) data.author = { connect: payload.connect.author[0] };
-
+    
     // Relations N-N (Tags)
-    if (payload.connect?.tags) data.tags = { connect: payload.connect.tags };
-    if (payload.set?.tags) data.tags = { set: payload.set.tags };
+    // On doit mapper la structure DTO vers Prisma
+    if (payload.connect?.tags) {
+      data.tags = {
+        connect: payload.connect.tags.map(t => ({ 
+          category_id: t.category_id,
+          publication_id: id // publication_id doit être l'ID de l'entité courante
+        }))
+      };
+    }
+    if (payload.set?.tags) {
+      // NOTE: Le `set` dans Prisma est plus complexe pour les tables de jointure 
+      // car il nécessite une suppression/re-création. Il est plus sûr de gérer 
+      // la logique de SET/DELETE dans l'Orchestrator si la mise à jour complète
+      // des tags est requise. Pour le PATCH atomique, on favorise le `connect`.
+      // Si un remplacement complet est requis, on doit d'abord deleteMany.
+      // Dans le cadre du refactoring RESTful et vu l'usage du PATCH, on ne gère que le `connect` ici.
+      // Si le frontend envoie un set complet, il devrait d'abord appeler DELETE sur les anciens.
+    }
 
 
     const pub = await prisma.publication.update({
@@ -246,6 +282,7 @@ export class PublicationController
     });
     return shapePublicPublicationFull(pub);
   }
+
 
   // =====================================================
   // DELETE
@@ -274,10 +311,14 @@ export class PublicationController
         select: {
           content_id: true,
           total_prep_time: true,
-          servings: true,
+          // FIX: Inclure serving_id pour les relations Servings
+          serving_id: true, 
           subtitle: true,
           is_ingredient: true,
         },
+        include: { // Inclure Servings pour la summary
+            servings: true
+        }
       },
       reviews: { select: { rating: true } },
     };
@@ -297,6 +338,8 @@ export class PublicationController
       },
       contents: {
         include: {
+          // FIX: Inclure Servings pour les relations Servings
+          servings: true,
           content_segments: {
             include: {
               segment: {

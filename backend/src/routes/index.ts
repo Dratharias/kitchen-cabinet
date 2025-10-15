@@ -18,6 +18,7 @@ import { UnitController } from "../controllers/atoms/unitsController.js";
 import { AppUserController } from "../controllers/organisms/appUserController.js";
 import { PublicPublicationController } from "../controllers/molecules/publicPublicationController.js";
 import { OrchestratorController } from "../controllers/orchestratorController.js";
+import { ServingsController } from "../controllers/atoms/servingsController.js"; // NOUVEAU
 
 export default async function createRoutes(fastify: FastifyInstance) {
   const orchestrator = new OrchestratorController();
@@ -86,6 +87,11 @@ export default async function createRoutes(fastify: FastifyInstance) {
   });
   registry.registerCrud(new ContentController(), {
     path: "/api/contents",
+    protected: true,
+  });
+  // NOUVEAU: Ajout de Servings Controller
+  registry.registerCrud(new ServingsController(), {
+    path: "/api/servings",
     protected: true,
   });
   registry.registerCrud(new AppUserController(), {

@@ -171,14 +171,16 @@ export type ProductCreateDto = ProductCore &
 /* ============================================================
    Macro / Macro
    ============================================================ */
+export type MacroConnect = { products?: { product_id: string }[] }; // <-- Ajouté ici
+
 export type MacroCreateDto = MacroCore &
   Partial<MacroRelations> & {
-    connect?: { products?: { product_id: string }[] };
+    connect?: MacroConnect; // <-- Utilise la nouvelle définition
   };
 
 export type MacroUpdateDto = Partial<MacroCore & MacroRelations> & {
-  connect?: { products?: { product_id: string }[] };
-  set?: { products?: { product_id: string }[] };
+  connect?: MacroConnect; // <-- Utilise la nouvelle définition
+  set?: MacroConnect;     // <-- Utilise la nouvelle définition
 };
 
 /* ============================================================

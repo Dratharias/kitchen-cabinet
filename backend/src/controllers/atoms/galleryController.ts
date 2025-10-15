@@ -5,24 +5,20 @@ import {
   GalleryRelations,
   Gallery,
 } from "types/controller.types.js";
-import { GalleryCreateDto, GalleryUpdateDto } from "types/dto.types.js";
+import { GalleryCreateDto, GalleryUpdateDto, GalleryConnect } from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
 import { Prisma } from "@prisma/client";
-
-// NOTE: Assurez-vous que GalleryCore, GalleryRelations, Gallery,
-// GalleryCreateDto, et GalleryUpdateDto sont définis dans vos fichiers de types
-// (par exemple, dans db.types.ts et controller.types.ts).
 
 export const normalizeGallery = (gallery: any): Gallery => ({
   gallery_id: gallery.gallery_id,
   order_num: gallery.order_num,
   url: gallery.url,
   label: gallery.label,
-  // Relations (si Gallery est relié à Publication/Content via une table de jonction, l'inclure ici)
+  content_gallery: gallery.content_gallery ?? null,
 });
 
 export class GalleryController
-  implements GenericController<Gallery, GalleryCore, GalleryRelations>
+  implements GenericController<Gallery, GalleryCore, GalleryRelations, GalleryConnect, GalleryConnect>
 {
   // =====================================================
   // CREATE
@@ -35,12 +31,25 @@ export class GalleryController
     const gallery = await prisma.gallery.create({
       data: {
         gallery_id: newId,
-        order_num: payload.order_num,
         url: payload.url,
         label: payload.label ?? null,
-        // Gérez ici la connexion aux tables de jonction (ex: PublicationGallery)
+        
+        // CORRECTION N-N: Utilisation de la clé composite content_id_gallery_id
+        content_gallery: payload.connect?.content_gallery
+            ? { 
+                connect: payload.connect.content_gallery.map(cg => ({
+                    // Nous nous assurons que l'objet de connexion N-N est bien la clé composite
+                    content_id_gallery_id: { 
+                        content_id: cg.content_id, 
+                        gallery_id: newId 
+                    }
+                })) 
+            }
+            : undefined,
       },
-      // Inclure les relations si nécessaire
+      include: {
+        content_gallery: true,
+      }
     });
 
     return normalizeGallery(gallery);
@@ -52,13 +61,17 @@ export class GalleryController
   async findById(id: string): Promise<Gallery | null> {
     const gallery = await prisma.gallery.findUnique({
       where: { gallery_id: id },
-      // Inclure les relations si nécessaire
+      include: {
+        content_gallery: true,
+      }
     });
     return gallery ? normalizeGallery(gallery) : null;
   }
 
   async findAll(): Promise<Gallery[]> {
-    const galleries = await prisma.gallery.findMany({});
+    const galleries = await prisma.gallery.findMany({
+        include: { content_gallery: true }
+    });
     return galleries.map(normalizeGallery);
   }
 
@@ -69,7 +82,6 @@ export class GalleryController
     const data: Prisma.galleryUpdateInput = {};
 
     // Mappage des champs scalaires (PATCH)
-    if (payload.order_num !== undefined) data.order_num = payload.order_num;
     if (payload.url !== undefined) data.url = payload.url;
     if (payload.label !== undefined) data.label = payload.label;
 
@@ -77,9 +89,24 @@ export class GalleryController
       where: { gallery_id: id },
       data: {
         ...data,
-        // Gérez ici la déconnexion/reconnexion des tables de jonction
+        // CORRECTION N-N: Utilisation de la clé composite content_id_gallery_id
+        content_gallery: payload.connect?.content_gallery
+            ? { 
+                connect: payload.connect.content_gallery.map(cg => ({
+                    content_id_gallery_id: { content_id: cg.content_id, gallery_id: id }
+                })) 
+            }
+            : payload.set?.content_gallery
+                ? { 
+                    set: payload.set.content_gallery.map(cg => ({
+                        content_id_gallery_id: { content_id: cg.content_id, gallery_id: id }
+                    })) 
+                }
+                : undefined,
       },
-      // Inclure les relations si nécessaire
+      include: {
+        content_gallery: true,
+      }
     });
 
     return normalizeGallery(gallery);

@@ -14,6 +14,7 @@ export const normalizeMacro = (macro: any): Macro => ({
   saturated: macro.saturated,
   trans: macro.trans,
   caffein: macro.caffein,
+  alcohol: macro.alcohol,
 
   products: macro.products ?? null,
 });
@@ -45,6 +46,7 @@ export class MacroController
         saturated: payload.saturated,
         trans: payload.trans,
         caffein: payload.caffein,
+        alcohol: payload.alcohol,
 
         products: payload.connect?.products
           ? { connect: payload.connect.products }
@@ -57,6 +59,20 @@ export class MacroController
 
     return normalizeMacro(macro);
   }
+
+  // =====================================================
+  // READ
+  // =====================================================
+  async findById(id: string): Promise<Macro | null> {
+    const macro = await prisma.macro.findUnique({ where: { macro_id: id } });
+    return macro ? normalizeMacro(macro) : null;
+  }
+
+  async findAll(): Promise<Macro[]> {
+    const macros = await prisma.macro.findMany();
+    return macros.map(normalizeMacro);
+  }
+
 
   // =====================================================
   // UPDATE (supporte PUT et PATCH)
@@ -98,6 +114,4 @@ export class MacroController
     await prisma.macro.delete({ where: { macro_id: id } });
     return { deleted: true };
   }
-  
-  // ... (findById et findAll restent inchangés)
 }
