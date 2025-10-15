@@ -309,13 +309,15 @@ export class PublicationController
         },
       },
       contents: {
-        select: { // FIX: On utilise 'select' pour tout le contenu
+        select: {
           content_id: true,
           total_prep_time: true,
           serving_id: true, 
           subtitle: true,
           is_ingredient: true,
-          servings: true // <-- Inclusion de la relation 'servings' DANS le bloc 'select'
+        },
+        include: { 
+            servings: true
         }
       },
       reviews: { select: { rating: true } },
