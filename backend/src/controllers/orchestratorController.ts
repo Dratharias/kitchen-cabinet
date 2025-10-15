@@ -6,6 +6,93 @@ import { Prisma } from "@prisma/client";
 import { v4 as uuidv4 } from "uuid";
 
 /**
+ * Handles the creation of a new Ingredient and links it to a Content entity.
+ */
+async function handleAtomicIngredientCreate(tx: Prisma.TransactionClient, contentId: string, payload: any) {
+    assert(payload.product?.name, "Product name is required for new ingredient", "handleAtomicIngredientCreate");
+
+    const product = await tx.product.upsert({
+        where: { name: payload.product.name },
+        create: { name: payload.product.name },
+        update: {},
+    });
+
+    const ingredient_id = uuidv4();
+    await tx.ingredient.create({
+        data: {
+            ingredient_id,
+            quantity: Number(payload.quantity) || 0,
+            multiply_factor: Number(payload.multiply_factor) || 1,
+            product_id: product.product_id,
+            cut: payload.cut ?? null,
+            title: payload.title ?? null,
+        }
+    });
+
+    if (payload.ingredient_units?.[0]?.unit?.name) {
+        const unitName = payload.ingredient_units[0].unit.name;
+        const unit = await tx.unit.upsert({
+            where: { name: unitName },
+            create: { name: unitName },
+            update: {},
+        });
+        await tx.ingredient_unit.create({
+            data: {
+                ingredient_id,
+                unit_id: unit.unit_id,
+            }
+        });
+    }
+
+    await tx.content_ingredient.create({
+        data: {
+            content_id: contentId,
+            ingredient_id,
+        }
+    });
+
+    return tx.ingredient.findUnique({
+        where: { ingredient_id },
+        include: {
+            product: true,
+            ingredient_units: { include: { unit: true } }
+        }
+    });
+}
+
+/**
+ * Handles the creation of a new Segment and links it to a Content entity.
+ */
+async function handleAtomicSegmentCreate(tx: Prisma.TransactionClient, contentId: string, payload: any) {
+    assert(payload.paragraph, "Segment paragraph is required", "handleAtomicSegmentCreate");
+
+    const segment_id = uuidv4();
+    const newSegment = await tx.segment.create({
+        data: {
+            segment_id,
+            paragraph: payload.paragraph,
+            title: payload.title ?? null,
+        }
+    });
+    
+    const lastSegment = await tx.content_segment.findFirst({
+        where: { content_id: contentId },
+        orderBy: { position: 'desc' }
+    });
+    const newPosition = (lastSegment?.position ?? 0) + 1;
+
+    await tx.content_segment.create({
+        data: {
+            content_id: contentId,
+            segment_id,
+            position: newPosition,
+        }
+    });
+
+    return newSegment;
+}
+
+/**
  * Handles atomic updates for an Ingredient entity. It translates simple
  * frontend payloads into complex Prisma relation updates.
  */
@@ -125,7 +212,31 @@ export class OrchestratorController {
 
           if (action === "create") {
             assert(data, "Missing payload for create", "processRequest", `payload.${key}`);
-            out[key] = await processor.create(data);
+            
+            // Heuristic to differentiate between full publication and atomic creation
+            if (data.title && Array.isArray(data.contents)) {
+                // Full publication creation
+                out[key] = await processor.create(data);
+            } else {
+                // Atomic creation: key is the parent ID
+                const parentId = key;
+                let newEntity = null;
+
+                // Check if it's an ingredient being added to a content
+                if (data.product && Array.isArray(data.ingredient_units)) {
+                    assert(await tx.content.findUnique({ where: { content_id: parentId } }), `Parent content with ID ${parentId} not found for ingredient creation.`, "processRequest:create");
+                    newEntity = await handleAtomicIngredientCreate(tx, parentId, data);
+                }
+                // Check if it's a segment being added to a content
+                else if (data.paragraph) {
+                    assert(await tx.content.findUnique({ where: { content_id: parentId } }), `Parent content with ID ${parentId} not found for segment creation.`, "processRequest:create");
+                    newEntity = await handleAtomicSegmentCreate(tx, parentId, data);
+                }
+                else {
+                    throw new OrchestratorError(`Unknown payload structure for 'create' action.`, "processRequest:create", `payload.${key}`);
+                }
+                out[parentId] = newEntity;
+            }
           } 
           else if (action === "update") {
             assert(data, "Missing payload for update", "processRequest", `payload.${key}`);
