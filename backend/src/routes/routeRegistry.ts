@@ -6,11 +6,6 @@ import {
 import { OrchestratorController } from "../controllers/orchestratorController.js";
 import { OrchestratorRequest } from "../types/orchestrator.types.js";
 import { ReadAllParams } from "types/db.types.js";
-import {
-  PublicationCore,
-  PublicationRelations,
-} from "types/controller.types.js";
-import { PublicationUpdateDto } from "types/dto.types.js";
 
 const DEV_MODE = process.env.NODE_ENV !== "production";
 
@@ -29,6 +24,12 @@ interface RegisterCrudOptions {
   methods?: CrudMethods[];
 }
 
+// Définir une interface minimale pour la vérification des publications
+interface PublicationCheck {
+    public: boolean;
+    published: boolean;
+}
+
 export class RouteRegistry {
   constructor(
     private fastify: FastifyInstance,
@@ -38,7 +39,27 @@ export class RouteRegistry {
     ) => Promise<void>,
     private orchestrator?: OrchestratorController,
   ) {}
+  
+  /**
+   * Expose un handler pour les routes enregistrées manuellement.
+   */
+  public handler = (
+    fn: (req: FastifyRequest, reply: FastifyReply) => Promise<any>,
+  ) => {
+    return async (req: FastifyRequest, reply: FastifyReply) => {
+      try {
+        return await fn(req, reply);
+      } catch (error) {
+        console.error("Route handler error:", error);
+        reply.status(500).send({ success: false, error: "Internal Server Error" });
+      }
+    };
+  };
 
+  /**
+   * Enregistre les routes CRUD pour un contrôleur donné.
+   * Ajoute la logique de filtrage public/privé pour les publications.
+   */
   registerCrud<T, C, U>(
     controller:
       | GenericController<T, C, U>
@@ -53,6 +74,9 @@ export class RouteRegistry {
       "update",
       "delete",
     ];
+    
+    // Détecter si la route est la route publique de publication
+    const isPublicPublicationRoute = basePath === "/api/public/publications";
 
     const handler = (
       fn: (req: FastifyRequest, reply: FastifyReply) => Promise<any>,
@@ -85,6 +109,17 @@ export class RouteRegistry {
         `${basePath}/:id`,
         handler(async (req: any, reply: FastifyReply) => {
           const result = await controller.findById(req.params.id);
+          
+          // LOGIQUE UNIFIÉE: Vérifier l'état public/published
+          if (isPublicPublicationRoute && result) {
+            // CORRECTION: Assertion de type pour convaincre TypeScript de l'existence des propriétés
+            const pub = result as unknown as PublicationCheck; 
+            
+            if (!pub.public || !pub.published) {
+               return reply.status(404).send({ error: "Publication not found or not published" });
+            }
+          }
+          
           reply.send(result);
         }),
       );
@@ -95,7 +130,7 @@ export class RouteRegistry {
         `${basePath}`,
         handler(async (req: any, reply: FastifyReply) => {
           const query = req.query || {};
-          const params: ReadAllParams<any> = {};
+          const params: ReadAllParams<any> & { isPublicRoute?: boolean } = {};
 
           if (query.filter) {
             try {
@@ -104,7 +139,6 @@ export class RouteRegistry {
                   ? query.filter
                   : JSON.stringify(query.filter);
 
-              // si encodé (%7B ... %7D) on decode, sinon on garde tel quel
               const decoded =
                 raw.includes("%7B") ||
                 raw.includes("%7D") ||
@@ -132,6 +166,11 @@ export class RouteRegistry {
           if (query.includeRelations !== undefined) {
             params.includeRelations = query.includeRelations === "true";
           }
+          
+          // LOGIQUE UNIFIÉE: Injection du flag isPublicRoute
+          if (isPublicPublicationRoute) {
+            params.isPublicRoute = true;
+          }
 
           const result = await controller.findAll(params);
           reply.send(result);
@@ -152,7 +191,6 @@ export class RouteRegistry {
       this.fastify.patch(
         `${basePath}/:id`,
         handler(async (req: any, reply: FastifyReply) => {
-          // Utilise le même handler 'update' car le DTO est déjà Partial<C&U>
           const result = await controller.update(req.params.id, req.body);
           reply.send(result);
         }),
@@ -172,7 +210,6 @@ export class RouteRegistry {
 
   /**
    * Registers a single route for the orchestrator with detailed error handling.
-   * NOTE: This is kept for the monolithic "create/update ALL" endpoint.
    */
   registerOrchestratorRoute(
     method: "POST" | "GET",

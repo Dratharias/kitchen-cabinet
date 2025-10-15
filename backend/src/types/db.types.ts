@@ -114,13 +114,14 @@ export interface ContentData {
   content_id: string;
   publication_id: string;
   total_prep_time: number;
-  servings: number | null;
+  serving_id: string | null;
   subtitle: string | null;
   is_ingredient: boolean | null;
-  gallery: string[];
+  gallery: GalleryData | null;
 
   // Relations N-1
   publication: PublicationData | null; // N-1
+  servings: ServingsData | null;
 
   // Relations N-N
   content_segments: ContentSegmentData[] | null; // N-N

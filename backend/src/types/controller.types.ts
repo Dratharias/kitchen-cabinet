@@ -131,7 +131,7 @@ export type ContentCore = Required<
     ContentData,
     | "publication_id"
     | "total_prep_time"
-    | "servings"
+    | "serving_id"
     | "subtitle"
     | "is_ingredient"
     | "gallery"
@@ -143,11 +143,13 @@ export type ContentRelations = Required<
     | "content_id"
     | "publication_id"
     | "total_prep_time"
-    | "servings"
+    | "serving_id"
     | "subtitle"
     | "is_ingredient"
     | "gallery"
-  >
+  > & {
+    servings: Servings | null;
+  }
 >;
 
 /* ============================================================

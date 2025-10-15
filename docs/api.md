@@ -1,18 +1,16 @@
-# API Routes Documentation
+# Documentation API - Système de Publication
 
-This document outlines the API endpoints for the **kitchen-kabinet** application. The API is divided into public, protected, and orchestrator routes.
+## 1. Aperçu des Routes API (Backend)
 
----
+Le backend est structuré autour de trois groupes de routes principaux : **Authentification**, **Accès Public** (lecture seule filtrée), et **Accès Privé** (CRUD complet).
 
-## 1. Authentication
+### 1.1 Authentification
 
-All protected routes require a Bearer token.
+| Méthode | Chemin | Rôle |
+|---------|--------|------|
+| `POST` | `/api/auth/login` | Authentifie un utilisateur et retourne un jeton JWT Bearer |
 
-### `POST /api/auth/login`
-
-Authenticate a user.
-
-**Payload:**
+**Payload de Connexion :**
 
 ```json
 {
@@ -21,568 +19,342 @@ Authenticate a user.
 }
 ```
 
-**Response:**
+**Réponse (Succès) :**
 
 ```json
 {
   "username": "string",
-  "role": "admin" | "user" | "guest",
-  "token": "string"
+  "role": "admin" | "user",
+  "token": "string (JWT)"
 }
 ```
 
-**Error Codes:**
+### 1.2 Accès Public (Lecture Seule)
 
-- 400: Missing credentials
-- 401: Invalid username or password
-- 429: Too many attempts
-- 500: Internal server error
+Ces routes ne nécessitent pas de jeton d'authentification mais n'affichent que les publications avec `public: true` et `published: true`.
+
+#### Publications
+
+| Méthode | Chemin | Rôle |
+|---------|--------|------|
+| `GET` | `/api/public/publications` | Liste paginée des publications publiques |
+| `GET` | `/api/public/publications/:id` | Récupère une publication détaillée par ID (si publique et publiée) |
+
+**Paramètres de Requête pour `GET /api/public/publications` :**
+
+| Paramètre | Type | Défaut | Description |
+|-----------|------|--------|-------------|
+| `page` | `number` | `1` | Numéro de page |
+| `limit` | `number` | `12` | Éléments par page |
+| `sortBy` | `string` | `"title"` | Champ de tri (`title`, `date_created`, etc.) |
+| `order` | `"asc" \| "desc"` | `"asc"` | Ordre de tri |
+| `filter` | `string` (JSON) | `{}` | Filtres de recherche (ex: `{"q": "gingembre", "type": ["Recette"]}`) |
+
+### 1.3 Accès Privé (CRUD Protégé)
+
+Toutes ces routes nécessitent un jeton JWT Bearer valide dans l'en-tête `Authorization`.
+
+#### Publications (Atomique)
+
+Ce contrôleur gère les opérations CRUD simples sur la publication elle-même (champs scalaires et relations 1-N). Pour le CRUD imbriqué (contenu, ingrédients), utilisez l'Orchestrateur.
+
+| Méthode | Chemin | Rôle |
+|---------|--------|------|
+| `GET` | `/api/private/publications` | Liste paginée de toutes les publications (publiques ou privées) |
+| `GET` | `/api/private/publications/:id` | Récupère une publication détaillée par ID |
+| `POST` | `/api/private/publications` | Crée une publication (champs de base uniquement) |
+| `PATCH` | `/api/private/publications/:id` | Mise à jour partielle des champs scalaires (ex: `title`, `public`) |
+| `PUT` | `/api/private/publications/:id` | Remplacement complet |
+| `DELETE` | `/api/private/publications/:id` | Supprime une publication |
+
+#### Autres Ressources (CRUD atomique)
+
+Des contrôleurs atomiques existent pour les entités non-imbriquées, principalement utilisés pour le backoffice et l'édition manuelle :
+
+| Chemin | Ressource |
+|--------|-----------|
+| `/api/categories` | Catégories (Type, Style, Tag) |
+| `/api/products` | Produits (référence d'ingrédient) |
+| `/api/macros` | Macros nutritionnelles |
+| `/api/units` | Unités de mesure |
+| `/api/prepTimes` | Temps de préparation |
+| `/api/segments` | Segments d'étapes (paragraphes) |
+| `/api/servings` | Définitions de portions |
+| `/api/users` | Utilisateurs |
+| `/api/reviews` | Avis et critiques |
 
 ---
 
-## 2. Public Routes
+## 2. Guide de l'Orchestrateur Monolithique
 
-Accessible without authentication.
+L'endpoint `POST /api/publicate` est conçu pour gérer les structures de données profondément imbriquées (Publication > Contenu > Ingrédients/Segments) en une seule transaction. Il est la méthode privilégiée pour l'ingestion de nouvelles recettes ou la mise à jour complète des structures existantes.
 
-### `GET /api/publications`
+### 2.1 Schéma de la Requête
 
-Retrieve a paginated list of public publications.
+Chaque opération (`create`, `update`, `delete`) est spécifiée dans l'objet racine.
 
-**Query Parameters:**
+| Champ | Type | Valeur | Description |
+|-------|------|--------|-------------|
+| `action` | `string` | `"create" \| "update" \| "delete"` | Type d'opération à effectuer |
+| `payload` | `Object` | `{ [key: string]: PublicationPayload \| null }` | Un objet où chaque clé (libre ou `publication_id`) mappe à la publication à traiter |
 
-```
-?page=number
-&limit=number
-&sortBy=string
-&order=asc|desc
-&filter=object
-```
+### 2.2 Opération CREATE
 
-**Response:**
+L'action `"create"` crée toutes les entités manquantes (Catégories, Produits, Segments) et les lie à la nouvelle Publication.
 
-```json
-{
-  "items": [
-    {
-      "publication_id": "string",
-      "title": "string",
-      "description": ["string"],
-      "reviewCount": number,
-      "reviewAverageScore": number,
-      "type": {
-        "str_value": "string",
-        "type": "string"
-      }
-    }
-  ],
-  "total": number,
-  "page": number,
-  "limit": number,
-  "totalPages": number
-}
-```
+- **Clé `payload`** : Peut être n'importe quelle chaîne (ex: `"ma_recette_1"`)
+- **`publication_id`** : Optionnel. S'il est fourni, il sera validé pour garantir qu'il n'existe pas déjà
 
-### `GET /api/publications/:id`
-
-Retrieve a single public publication by ID.
-
-**Response:**
-
-```json
-{
-  "publication_id": "string",
-  "title": "string",
-  "description": ["string"],
-  "note": ["string"],
-  "contents": [
-    {
-      "content_id": "string",
-      "servings": number,
-      "total_prep_time": number,
-      "content_segments": "ContentSegment[]",
-      "content_ingredients": "ContentIngredient[]",
-      "content_prep_times": "ContentPrepTime[]"
-    }
-  ],
-  "tags": "Category[]",
-  "type": "Category",
-  "style": "Category",
-  "author": "Category"
-}
-```
-
-### `GET /api/reviews`
-
-Retrieve a paginated list of all reviews. Includes product and publication references.
-
-**Query Parameters:**
-
-```
-?page=number
-&limit=number
-&sortBy=string
-&order=asc|desc
-&filter=object
-```
-
-**Response:**
-
-```json
-{
-  "items": [
-    {
-      "review_id": "string",
-      "product_id": "string | null",
-      "publication_id": "string | null",
-      "rating": "number | null",
-      "comment": ["string"],
-      "description": ["string"],
-      "buy_again": "string | null",
-      "date_review": "string",
-      "product": "Product | null",
-      "publication": "Publication | null"
-    }
-  ],
-  "total": number,
-  "page": number,
-  "limit": number,
-  "totalPages": number
-}
-```
-
-### `GET /api/reviews/:id`
-
-Retrieve a single review by ID with product and publication details.
-
-**Response:**
-
-```json
-{
-  "review_id": "string",
-  "product_id": "string | null",
-  "publication_id": "string | null",
-  "rating": "number | null",
-  "comment": ["string"],
-  "description": ["string"],
-  "buy_again": "string | null",
-  "date_review": "string",
-  "product": "Product | null",
-  "publication": "Publication | null"
-}
-```
-
----
-
-## 3. Protected CRUD Routes
-
-Require a Bearer token.
-
-### `POST /api/private/publications`
-
-Create a new publication.
-
-**Payload:**
-
-```json
-{
-  "title": "string",
-  "description": ["string"],
-  "note": ["string"],
-  "public": boolean,
-  "published": boolean,
-  "thumbnail": "string | null",
-  "gallery": "string[] | null"
-}
-```
-
-### `GET /api/private/publications/:id`
-
-Retrieve a publication by ID (admin/owner only).
-
-### `PUT /api/private/publications/:id`
-
-Update a publication. Only provided fields will be updated.
-
-**Payload:**
-
-```json
-{
-  "title": "string",
-  "note": ["string"]
-}
-```
-
-### `DELETE /api/private/publications/:id`
-
-Delete a publication by ID.
-
----
-
-## 4. Orchestrator Route
-
-Single endpoint for nested creation with upsert.
-
-### `POST /api/publicate`
-
-#### Exhaustive Publication Creation Example
+**Exemple de Création (Ingrédient, Macro, Unité, Segment, Catégorie) :**
 
 ```json
 {
   "action": "create",
   "payload": {
-    "1": {
-      "title": "Exhaustive Recipe Example",
-      "description": [
-        "A complete example showing all nested relationships in a single request."
-      ],
-      "note": ["This is for testing all the nested joins."],
+    "cocktail_mojito": {
+      "title": "Mojito Classique",
+      "description": ["Le cocktail cubain par excellence."],
       "public": true,
-      "published": true,
-      "type": { "data": { "str_value": "Recipe", "type": "Type" } },
-      "style": { "data": { "str_value": "Cocktail", "type": "Style" } },
-      "author": { "data": { "str_value": "Jane Doe", "type": "Author" } },
-      "thumbnail": "",
-      "gallery": [""],
+      "tags": [
+        {
+          "str_value": "Cocktail",
+          "type": "Tag"
+        }
+      ],
+      "type": {
+        "str_value": "Boisson",
+        "type": "Type"
+      },
       "contents": [
         {
-          "data": { "total_prep_time": 10, "servings": 4 },
+          "subtitle": "Instructions principales",
+          "is_ingredient": false,
+          "total_prep_time": 15,
+          "servings": {
+            "yield": 2,
+            "value": "verres"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 60,
+              "multiply_factor": 1,
+              "product": {
+                "name": "Rhum Blanc",
+                "macro": {
+                  "calories": 200,
+                  "alcohol": 40
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
+          ],
           "content_segments": [
             {
               "position": 1,
               "segment": {
-                "data": {
-                  "paragraph": "This is a segment with a prep time.",
-                  "title": "Prep Segment"
-                },
-                "segment_prep_time": [
-                  {
-                    "prep_time": {
-                      "data": { "duration": 5 },
-                      "style": {
-                        "data": { "str_value": "Prep", "type": "PrepTimeStyle" }
-                      }
-                    }
-                  }
-                ]
+                "paragraph": "Mélanger tous les ingrédients...",
+                "title": "Mélange des arômes"
               }
             }
-          ],
-          "content_ingredients": [
-            {
-              "data": { "quantity": 1, "multiply_factor": 1.0 },
-              "product": {
-                "data": {
-                  "name": "Super Product",
-                  "publication": {
-                    "id": "existing-publication-id",
-                    "data": {}
-                  }
-                }
-              },
-              "ingredient_units": [{ "unit": { "data": { "name": "grams" } } }]
-            }
-          ],
-          "content_prep_times": [{ "prep_time": { "data": { "duration": 5 } } }]
+          ]
         }
-      ],
-      "tags": [
-        { "data": { "str_value": "Fast", "type": "Tag" } },
-        { "data": { "str_value": "Easy", "type": "Tag" } }
       ]
     }
   }
 }
 ```
 
-#### Review Creation Examples
+### 2.3 Opération UPDATE
 
-Reviews must link to either a **publication** or a **product**, not both.
+L'action `"update"` nécessite le `publication_id` dans l'objet de publication.
 
-**1. Review a Publication:**
+Le processus est monolithique pour les relations imbriquées (Contents, Tags) :
+
+1. Les champs scalaires de la Publication (`title`, `public`, `thumbnail`) sont mis à jour (PATCH)
+2. Toutes les relations `tags` sont supprimées puis recréées (`DELETE MANY + CREATE`)
+3. Tous les `contents` (et tout ce qu'ils contiennent : ingrédients, segments, temps) sont supprimés de la base (`DELETE MANY`) puis recréés entièrement
+
+- **Clé `payload`** : Doit être le `publication_id` existant si l'action est dirigée par un DTO atomique, sinon une clé libre
+- **`publication_id`** : Obligatoire dans l'objet de publication
+
+### 2.4 Opération DELETE
+
+L'action `"delete"` supprime une publication complète.
+
+- **Clé `payload`** : Doit être le `publication_id` de la publication à supprimer
+- **Valeur** : Doit être `null`
+
+**Exemple de Suppression :**
 
 ```json
 {
-  "action": "create",
+  "action": "delete",
   "payload": {
-    "1": {
-      "rating": 5,
-      "comment": ["This recipe was fantastic!"],
-      "description": ["Easy to follow and delicious."],
-      "buy_again": "Y",
-      "publication": {
-        "id": "existing-publication-id",
-        "data": {}
-      }
-    }
+    "b8f6e8c0-12a3-45b6-89c0-1234567890ab": null
   }
 }
 ```
 
-**2. Review a Product:**
+> **Note :** Ceci supprime la publication ainsi que tous ses Contents, Tags, ContentSegments, etc., grâce aux cascades PostgreSQL.
 
-```json
-{
-  "action": "create",
-  "payload": {
-    "1": {
-      "rating": 4,
-      "comment": ["The product was great for baking."],
-      "description": ["High quality and worth the price."],
-      "buy_again": "Y",
-      "product": {
-        "id": "existing-product-id",
-        "data": {}
-      }
-    }
-  }
+---
+
+## 3. Référence des Modèles de Données (Types Orchestrateur)
+
+Cette section fournit les structures de types TypeScript utilisées pour construire le `payload` de l'Orchestrateur (`POST /api/publicate`).
+
+### 3.1 DTOs Atomiques (Utilisés pour l'Upsert)
+
+Ces objets sont utilisés pour créer ou identifier des entités atomiques et sont souvent imbriqués.
+
+#### CategoryData (Type, Style, Author, Tag, PrepTimeStyle)
+
+```typescript
+export interface CategoryData {
+  str_value: string; // Nom de la catégorie (ex: "Recette", "Boulangerie")
+  type: string;      // Type de taxonomie (ex: "Type", "Style", "Tag")
+}
+```
+
+#### ServingsData (Portions)
+
+```typescript
+export interface ServingsData {
+  serving_id?: UUID; // ID si update/référence d'une portion existante
+  yield: number;     // Nombre de portions / rendement (ex: 4)
+  value: string;     // Unité de portion (ex: "verres de 250ml", "portions")
+}
+```
+
+#### MacroData (Nutritionnel)
+
+Les valeurs sont des entiers (arrondis sur 100g de produit).
+
+```typescript
+export interface MacroData {
+  macro_id?: UUID;
+  calories?: number;
+  protein?: number;
+  carbs?: number;
+  fiber?: number;
+  sugar?: number;
+  saturated?: number;
+  trans?: number;
+  caffein?: number;
+  alcohol?: number; // Taux d'alcool (pour les boissons)
+}
+```
+
+#### ProductData (Référence d'Ingrédient)
+
+```typescript
+export interface ProductData {
+  product_id?: UUID;        // ID si référence d'un produit existant
+  name: string;             // Nom du produit (requis)
+  macro?: MacroData | null; // Macrodata imbriquée
+}
+```
+
+#### UnitData (Unité de Mesure)
+
+```typescript
+export interface UnitData {
+  unit_id?: UUID;
+  name: string; // Nom de l'unité (ex: "g", "ml", "tasse")
+}
+```
+
+### 3.2 Structure Imbriquée Principale
+
+#### IngredientPayload (Ingrédient dans un Contenu)
+
+```typescript
+export interface IngredientPayload {
+  ingredient_id?: UUID;
+  quantity: number;
+  multiply_factor: number;
+  cut?: string;  // (ex: "haché", "râpé")
+  title?: string;
+  product: ProductData; // Objet Product (voir 3.1)
+  ingredient_units: Array<{ unit: UnitData }>; // Unité de mesure
+}
+```
+
+#### SegmentWithMeta (Étape de Préparation)
+
+```typescript
+export interface SegmentWithMeta {
+  position: number; // Ordre séquentiel (1, 2, 3...)
+  segment: {
+    segment_id?: UUID;
+    title?: string;
+    paragraph: string; // Description de l'étape (requis)
+  };
+  segment_prep_time?: Array<{
+    prep_time: PrepTimePayload;
+  }>;
+}
+```
+
+#### ContentData (Bloc de Recette / Variante)
+
+Ceci est la structure pour un élément du tableau `PublicationPayload.contents`.
+
+```typescript
+export interface ContentData {
+  content_id?: UUID;
+  publication_id?: UUID; // Requis uniquement si mis à jour atomique
+  total_prep_time: number;
+  subtitle?: string | null;
+  is_ingredient?: boolean;
+  
+  // Clés étrangères (ID du Servings créé via l'upsert)
+  serving_id?: string | null; 
+
+  servings: ServingsData | null; // Objet Servings (pour upsert)
+  
+  content_segments: SegmentWithMeta[];
+  content_ingredients: IngredientPayload[];
+  content_prep_times: PrepTimePayload[];
+  
+  // Note: La gestion de la galerie (M-N) est souvent gérée séparément
+  // ou omise de cette structure pour éviter la complexité des jointures.
+}
+```
+
+#### PublicationPayload (Structure Racine)
+
+```typescript
+export interface PublicationPayload {
+  publication_id?: UUID; 
+  title: string;
+  description: string[];
+  note: string[];
+  public: boolean;
+  published: boolean;
+  thumbnail?: string;
+  // OMIT: gallery (relation N-N)
+  
+  type?: CategoryData;
+  style?: CategoryData;
+  author?: CategoryData;
+  tags?: CategoryData[];
+  
+  contents: ContentData[];
 }
 ```
 
 ---
 
-## 5. Data Models
+## Annexe : Notes Techniques
 
-### Publication
-
-```json
-{
-  "publication_id": "string",
-  "title": "string",
-  "description": ["string"],
-  "note": ["string"],
-  "public": boolean,
-  "published": boolean,
-  "thumbnail": "string | null",
-  "gallery": "string[] | null",
-  "type_id": "string | null",
-  "style_id": "string | null",
-  "author_id": "string | null",
-  "type": "Category | null",
-  "style": "Category | null",
-  "author": "Category | null",
-  "contents": "Content[] | null",
-  "publication_tags": "PublicationTag[] | null"
-}
-```
-
-### Content
-
-```json
-{
-  "content_id": "string",
-  "publication_id": "string",
-  "total_prep_time": "number | null",
-  "servings": "number | null",
-  "contents": "Publication | null",
-  "content_segments": "ContentSegment[] | null",
-  "content_ingredients": "ContentIngredient[] | null",
-  "content_prep_times": "ContentPrepTime[] | null"
-}
-```
-
-### Ingredient
-
-```json
-{
-  "ingredient_id": "string",
-  "product_id": "string",
-  "quantity": "number | null",
-  "multiply_factor": number,
-  "product": "Product | null",
-  "content_ingredients": "ContentIngredient[] | null",
-  "ingredient_units": "IngredientUnit[] | null"
-}
-```
-
-### Product
-
-```json
-{
-  "product_id": "string",
-  "name": "string",
-  "macro_id": "string | null",
-  "macro": "Macro | null",
-  "publication": "Publication | null",
-  "reviews": "Review[] | null",
-  "product_categories": "ProductCategory[] | null"
-}
-```
-
-### Macro
-
-```json
-{
-  "macro_id": "string",
-  "calories": "number | null",
-  "protein": "number | null",
-  "fiber": "number | null",
-  "sugar": "number | null",
-  "saturated": "number | null",
-  "trans": "number | null",
-  "caffein": "number | null",
-  "products": "Product[] | null"
-}
-```
-
-### Unit
-
-```json
-{
-  "unit_id": "string",
-  "name": "string",
-  "ingredient_units": "IngredientUnit[] | null"
-}
-```
-
-### PrepTime
-
-```json
-{
-  "prep_time_id": "string",
-  "duration": number,
-  "style_id": "string | null",
-  "style": "Category | null",
-  "content_prep_times": "ContentPrepTime[] | null",
-  "segment_prep_time": "SegmentPrepTime[] | null"
-}
-```
-
-### Review
-
-```json
-{
-  "review_id": "string",
-  "product_id": "string | null",
-  "publication_id": "string | null",
-  "rating": "number | null",
-  "comment": ["string"],
-  "description": ["string"],
-  "buy_again": "string | null",
-  "date_review": "string",
-  "product": "Product | null",
-  "publication": "Publication | null"
-}
-```
-
-### Segment
-
-```json
-{
-  "segment_id": "string",
-  "title": "string | null",
-  "paragraph": "string | null",
-  "content_segments": "ContentSegment[] | null",
-  "segment_prep_time": "SegmentPrepTime[] | null"
-}
-```
-
-### Category
-
-```json
-{
-  "category_id": "string",
-  "str_value": "string",
-  "type": "string",
-  "publications_type": "Publication[] | null",
-  "publications_style": "Publication[] | null",
-  "publications_author": "Publication[] | null",
-  "prep_time": "PrepTime[] | null",
-  "publication_tags": "PublicationTag[] | null",
-  "product_categories": "ProductCategory[] | null"
-}
-```
-
-### AppUser
-
-```json
-{
-  "user_id": "string",
-  "username": "string",
-  "password": "string",
-  "role": "string",
-  "updated": "string",
-  "created": "string"
-}
-```
-
----
-
-## Jointure Tables
-
-### PublicationTag
-
-```json
-{
-  "publication_id": "string",
-  "category_id": "string",
-  "publication": "Publication | null",
-  "category": "Category | null"
-}
-```
-
-### ContentIngredient
-
-```json
-{
-  "content_id": "string",
-  "ingredient_id": "string",
-  "content": "Content | null",
-  "ingredient": "Ingredient | null"
-}
-```
-
-### ContentSegment
-
-```json
-{
-  "content_id": "string",
-  "segment_id": "string",
-  "position": "number | null",
-  "content": "Content | null",
-  "segment": "Segment | null"
-}
-```
-
-### ContentPrepTime
-
-```json
-{
-  "content_id": "string",
-  "prep_time_id": "string",
-  "content": "Content | null",
-  "prep_time": "PrepTime | null"
-}
-```
-
-### IngredientUnit
-
-```json
-{
-  "ingredient_id": "string",
-  "unit_id": "string",
-  "ingredient": "Ingredient | null",
-  "unit": "Unit | null"
-}
-```
-
-### ProductCategory
-
-```json
-{
-  "product_id": "string",
-  "category_id": "string",
-  "product": "Product | null",
-  "category": "Category | null"
-}
-```
-
-### SegmentPrepTime
-
-```json
-{
-  "segment_id": "string",
-  "prep_time_id": "string",
-  "segment": "Segment | null",
-  "prep_time": "PrepTime | null"
-}
-```
+- **UUID** : Type identifiant unique universel
+- **Cascade PostgreSQL** : Les suppressions en cascade sont configurées au niveau de la base de données
+- **JWT Bearer** : Format d'en-tête : `Authorization: Bearer <token>`
+- **Upsert** : Opération qui crée une entité si elle n'existe pas, ou la met à jour si elle existe déjà

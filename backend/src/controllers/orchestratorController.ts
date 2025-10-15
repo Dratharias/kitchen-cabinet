@@ -8,7 +8,7 @@ import type {
 
 const DEV_MODE = process.env.NODE_ENV !== "production";
 
-/* -------------------- util -------------------- */
+/* -------------------- Utilities -------------------- */
 class OrchestratorError extends Error {
   context: string;
   path?: string;
@@ -49,9 +49,13 @@ function assert(
 }
 
 /* ============================================================
-   OrchestratorController
+   OrchestratorController (Core Logic)
    ============================================================ */
 export class OrchestratorController {
+  
+  /**
+   * Assure que l'ID n'est pas déjà utilisé.
+   */
   private async safeId(
     tx: PrismaClient,
     table: keyof PrismaClient,
@@ -65,30 +69,34 @@ export class OrchestratorController {
     return exists ? uuidv4() : candidateId;
   }
 
+  /**
+   * Point d'entrée pour le traitement des requêtes monolithiques (CRUD).
+   */
   public async processRequest(
     req: OrchestratorRequest,
   ): Promise<OrchestratorResponse> {
     const { action, payload } = req;
 
-    if (action === "create" || action === "update") {
+    if (action === "create" || action === "update" || action === "delete") {
       try {
         const results = await prisma.$transaction(async (tx: any) => {
           const out: Record<string, unknown> = {};
           for (const key of Object.keys(payload || {})) {
             const publication = (payload as any)[key];
-            assert(
-              publication,
-              "Missing publication payload",
-              "processRequest",
-              `payload.${key}`,
-              publication,
-            );
+            
+            assert(key, "Missing payload key", "processRequest");
+            
+            let res: any;
 
-            // Pour l'action 'update', nous gérons le remplacement complet (monolithique)
-            const res =
-              action === "create"
-                ? await this.createPublication(publication, tx)
-                : await this.updatePublication(publication, tx);
+            if (action === "create") {
+              assert(publication, "Missing publication payload for create", "processRequest", `payload.${key}`);
+              res = await this.createPublication(publication, tx);
+            } else if (action === "update") {
+              assert(publication?.publication_id, "Missing publication_id for update", "processRequest", `payload.${key}`);
+              res = await this.updatePublication(publication, tx);
+            } else if (action === "delete") {
+              res = await this.deletePublication(key, tx);
+            }
 
             out[key] = res;
           }
@@ -106,88 +114,18 @@ export class OrchestratorController {
       }
     }
 
-    // Suppression de l'ancienne logique readAll
-
     return { success: false, error: `Action '${action}' not supported.` };
   }
 
-  /* -------------------- publication -------------------- */
-  private async createPublication(pub: any, tx: PrismaClient) {
-    const ctx = "createPublication";
-    assert(pub?.title, "Publication.title is required", ctx, "title", pub);
+  /* ============================================================
+     CRUD Helpers
+     ============================================================ */
 
-    const publication_id = await this.safeId(
-      tx,
-      "publication",
-      "publication_id",
-      pub.publication_id,
-    );
-
-    const type_id = await this.processCategory(
-      pub.type,
-      tx,
-      "Type",
-      `${ctx}.type`,
-    );
-    const style_id = await this.processCategory(
-      pub.style,
-      tx,
-      "Style",
-      `${ctx}.style`,
-    );
-    const author_id = await this.processCategory(
-      pub.author,
-      tx,
-      "Author",
-      `${ctx}.author`,
-    );
-
-    const created = await tx.publication.create({
-      data: {
-        publication_id,
-        title: pub.title,
-        description: Array.isArray(pub.description) ? pub.description : [],
-        note: Array.isArray(pub.note) ? pub.note : [],
-        public: typeof pub.public === "boolean" ? pub.public : true,
-        published: typeof pub.published === "boolean" ? pub.published : true,
-        thumbnail: pub.thumbnail ?? null,
-        gallery: Array.isArray(pub.gallery) ? pub.gallery : [],
-        type_id,
-        style_id,
-        author_id,
-      },
-    });
-
-    if (Array.isArray(pub.tags)) {
-      for (let i = 0; i < pub.tags.length; i++) {
-        const tagId = await this.processCategory(
-          pub.tags[i],
-          tx,
-          "Tag",
-          `tags[${i}]`,
-        );
-        if (!tagId) continue;
-        await tx.publication_tag.create({
-          data: { publication_id: created.publication_id, category_id: tagId },
-        });
-      }
-    }
-
-    if (Array.isArray(pub.contents)) {
-      for (let i = 0; i < pub.contents.length; i++) {
-        await this.processContent(
-          pub.contents[i],
-          created.publication_id,
-          tx,
-          `contents[${i}]`,
-        );
-      }
-    }
-
-    return created;
+  private async deletePublication(publicationId: string, tx: PrismaClient) {
+    await tx.publication.delete({ where: { publication_id: publicationId } });
+    return { publication_id: publicationId, deleted: true };
   }
-
-  // NOTE: Cette fonction effectue un remplacement complet (delete/recreate) pour les contenus imbriqués.
+  
   private async updatePublication(pub: any, tx: PrismaClient) {
     const ctx = "updatePublication";
     assert(
@@ -198,24 +136,9 @@ export class OrchestratorController {
       pub,
     );
 
-    const type_id = await this.processCategory(
-      pub.type,
-      tx,
-      "Type",
-      `${ctx}.type`,
-    );
-    const style_id = await this.processCategory(
-      pub.style,
-      tx,
-      "Style",
-      `${ctx}.style`,
-    );
-    const author_id = await this.processCategory(
-      pub.author,
-      tx,
-      "Author",
-      `${ctx}.author`,
-    );
+    const type_id = await this.processCategory(pub.type, tx, "Type", `${ctx}.type`);
+    const style_id = await this.processCategory(pub.style, tx, "Style", `${ctx}.style`);
+    const author_id = await this.processCategory(pub.author, tx, "Author", `${ctx}.author`);
 
     const updated = await tx.publication.update({
       where: { publication_id: pub.publication_id },
@@ -226,33 +149,28 @@ export class OrchestratorController {
         public: typeof pub.public === "boolean" ? pub.public : true,
         published: typeof pub.published === "boolean" ? pub.published : true,
         thumbnail: pub.thumbnail ?? null,
-        gallery: Array.isArray(pub.gallery) ? pub.gallery : [],
         type_id,
         style_id,
         author_id,
       },
     });
 
-    // Gestion des Tags
+    // 1. Gestion des Tags (Delete Many + Recreate)
     await tx.publication_tag.deleteMany({
       where: { publication_id: updated.publication_id },
     });
     if (Array.isArray(pub.tags)) {
       for (let i = 0; i < pub.tags.length; i++) {
-        const tagId = await this.processCategory(
-          pub.tags[i],
-          tx,
-          "Tag",
-          `tags[${i}]`,
-        );
+        const tagId = await this.processCategory(pub.tags[i], tx, "Tag", `tags[${i}]`);
         if (!tagId) continue;
         await tx.publication_tag.create({
+          // FIX: Clé composée pour N-N (Création)
           data: { publication_id: updated.publication_id, category_id: tagId },
         });
       }
     }
 
-    // Gestion des Contenus (Suppression et Recréation, approche monolithique)
+    // 2. Gestion des Contenus (Delete Many + Recreate)
     await tx.content.deleteMany({
       where: { publication_id: updated.publication_id },
     });
@@ -269,8 +187,65 @@ export class OrchestratorController {
 
     return updated;
   }
+  
+  private async createPublication(pub: any, tx: PrismaClient) {
+    const ctx = "createPublication";
+    assert(pub?.title, "Publication.title is required", ctx, "title", pub);
 
-  /* -------------------- content (flat) -------------------- */
+    const publication_id = await this.safeId(
+      tx,
+      "publication",
+      "publication_id",
+      pub.publication_id,
+    );
+
+    const type_id = await this.processCategory(pub.type, tx, "Type", `${ctx}.type`);
+    const style_id = await this.processCategory(pub.style, tx, "Style", `${ctx}.style`);
+    const author_id = await this.processCategory(pub.author, tx, "Author", `${ctx}.author`);
+
+    const created = await tx.publication.create({
+      data: {
+        publication_id,
+        title: pub.title,
+        description: Array.isArray(pub.description) ? pub.description : [],
+        note: Array.isArray(pub.note) ? pub.note : [],
+        public: typeof pub.public === "boolean" ? pub.public : true,
+        published: typeof pub.published === "boolean" ? pub.published : true,
+        thumbnail: pub.thumbnail ?? null,
+        type_id,
+        style_id,
+        author_id,
+      },
+    });
+
+    // 1. Gestion des Tags
+    if (Array.isArray(pub.tags)) {
+      for (let i = 0; i < pub.tags.length; i++) {
+        const tagId = await this.processCategory(pub.tags[i], tx, "Tag", `tags[${i}]`);
+        if (!tagId) continue;
+        await tx.publication_tag.create({
+          // FIX: Clé composée pour N-N (Création)
+          data: { publication_id: created.publication_id, category_id: tagId },
+        });
+      }
+    }
+
+    // 2. Gestion des Contenus
+    if (Array.isArray(pub.contents)) {
+      for (let i = 0; i < pub.contents.length; i++) {
+        await this.processContent(
+          pub.contents[i],
+          created.publication_id,
+          tx,
+          `contents[${i}]`,
+        );
+      }
+    }
+
+    return created;
+  }
+
+  /* -------------------- Content (Nested Resources) -------------------- */
   private async processContent(
     content: any,
     publicationId: string,
@@ -294,10 +269,9 @@ export class OrchestratorController {
         content.content_id,
       );
       
-      // NOTE: Ajout du champ serving_id dans le modèle (relation 1-N Servings)
+      // Upsert Servings
       let serving_id: string | undefined = undefined;
       if (content.servings && typeof content.servings === 'object' && content.servings.yield !== undefined) {
-        // Upsert Servings
         const { yield: sYield, value: sValue } = content.servings;
         const serving = await tx.servings.upsert({
           where: { serving_id: content.servings.serving_id ?? uuidv4() },
@@ -315,39 +289,55 @@ export class OrchestratorController {
           total_prep_time: Number.isFinite(content.total_prep_time)
             ? content.total_prep_time
             : 0,
-          serving_id, // Utilisation de serving_id
+          serving_id, 
           subtitle:
             typeof content.subtitle === "string" ? content.subtitle : null,
           is_ingredient:
             typeof content.is_ingredient === "boolean"
               ? content.is_ingredient
               : false,
-          gallery: Array.isArray(content.gallery) ? content.gallery : [],
         },
       });
 
-      // segments
+      // Segments (Steps)
       if (Array.isArray(content.content_segments)) {
         for (let i = 0; i < content.content_segments.length; i++) {
           const wrap = content.content_segments[i];
           const seg = wrap?.segment;
           if (!seg) continue;
+          
           const segment_id = await this.processSegment(
             seg,
             tx,
             `${path}.content_segments[${i}].segment`,
           );
+          
           await tx.content_segment.create({
             data: {
-              content_id: created.content_id,
-              segment_id,
+              // FIX: Utiliser les champs scalaires pour la création N-N
+              content_id: created.content_id, 
+              segment_id, 
               position: wrap?.position ?? i + 1,
             },
           });
+          
+          // Process Segment Prep Times (nested under segment wrapper)
+          if (Array.isArray(wrap.segment_prep_time)) {
+              for (const ptWrap of wrap.segment_prep_time) {
+                  const pt_id = await this.processPrepTime(ptWrap.prep_time, tx, `${path}.content_segments[${i}].segment_prep_time`);
+                  await tx.segment_prep_time.create({
+                      data: {
+                          // FIX: Utiliser les champs scalaires pour la création N-N
+                          segment_id, 
+                          prep_time_id: pt_id 
+                      }
+                  });
+              }
+          }
         }
       }
 
-      // ingredients
+      // Ingredients
       if (Array.isArray(content.content_ingredients)) {
         for (let i = 0; i < content.content_ingredients.length; i++) {
           const ing_id = await this.processIngredient(
@@ -356,12 +346,16 @@ export class OrchestratorController {
             `${path}.content_ingredients[${i}]`,
           );
           await tx.content_ingredient.create({
-            data: { content_id: created.content_id, ingredient_id: ing_id },
+            data: { 
+                // FIX: Utiliser les champs scalaires pour la création N-N
+                content_id: created.content_id, 
+                ingredient_id: ing_id 
+            },
           });
         }
       }
 
-      // prep times
+      // Prep Times (Content Level)
       if (Array.isArray(content.content_prep_times)) {
         for (let i = 0; i < content.content_prep_times.length; i++) {
           const pt_id = await this.processPrepTime(
@@ -370,7 +364,11 @@ export class OrchestratorController {
             `${path}.content_prep_times[${i}]`,
           );
           await tx.content_prep_time.create({
-            data: { content_id: created.content_id, prep_time_id: pt_id },
+            data: { 
+                // FIX: Utiliser les champs scalaires pour la création N-N
+                content_id: created.content_id, 
+                prep_time_id: pt_id 
+            },
           });
         }
       }
@@ -382,7 +380,7 @@ export class OrchestratorController {
     }
   }
 
-  /* -------------------- category/product/unit/segment/preptime (flat) -------------------- */
+  /* -------------------- Atom Helpers (Category/Product/Unit/Segment/PrepTime) -------------------- */
   private async processCategory(
     cat: any,
     tx: PrismaClient,
@@ -423,14 +421,51 @@ export class OrchestratorController {
       prod,
     );
 
+    // Correction: Inclure la macro si présente
+    let macro_id: string | null = null;
+    if (prod.macro) {
+        macro_id = await this.processMacro(prod.macro, tx, `${path}.macro`);
+    }
+
     const existing = await tx.product.findUnique({ where: { name } });
     if (existing) return existing.product_id;
 
     const product_id = uuidv4();
     const created = await tx.product.create({
-      data: { product_id, name },
+      data: { product_id, name, macro_id },
     });
     return created.product_id;
+  }
+  
+  private async processMacro(
+    macro: any,
+    tx: PrismaClient,
+    path = "macro",
+  ): Promise<string> {
+    const macro_id = macro.macro_id ?? uuidv4(); 
+    
+    // Simplification: Upsert si l'ID est fourni, sinon Create
+    const data = { 
+        calories: macro.calories, 
+        protein: macro.protein, 
+        sugar: macro.sugar, 
+        fiber: macro.fiber, 
+        alcohol: macro.alcohol 
+    };
+
+    if (macro.macro_id) {
+        await tx.macro.upsert({
+            where: { macro_id },
+            create: { macro_id, ...data },
+            update: data,
+        });
+    } else {
+        await tx.macro.create({
+            data: { macro_id, ...data },
+        });
+    }
+
+    return macro_id;
   }
 
   private async processUnit(
@@ -462,7 +497,7 @@ export class OrchestratorController {
       `${path}.product`,
     );
 
-    const ingredient_id = uuidv4();
+    const ingredient_id = ing.ingredient_id ?? uuidv4();
     const created = await tx.ingredient.create({
       data: {
         ingredient_id,
@@ -484,7 +519,11 @@ export class OrchestratorController {
           `${path}.ingredient_units[${i}].unit`,
         );
         await tx.ingredient_unit.create({
-          data: { ingredient_id: created.ingredient_id, unit_id: unitId },
+          data: { 
+            // FIX: Utiliser les champs scalaires pour la création N-N
+            ingredient_id: created.ingredient_id, 
+            unit_id: unitId 
+          },
         });
       }
     }
@@ -506,10 +545,10 @@ export class OrchestratorController {
       `${path}.paragraph`,
       seg,
     );
-
-    const existing = await tx.segment.findFirst({ where: { paragraph } });
+    
+    // UPSERT Segment basé sur le paragraphe UNIQUE
+    const existing = await tx.segment.findUnique({ where: { paragraph } });
     if (existing) {
-      // Optionally update title if provided
       if (typeof seg.title === "string" && seg.title !== existing.title) {
         await tx.segment.update({
           where: { segment_id: existing.segment_id },
@@ -519,7 +558,7 @@ export class OrchestratorController {
       return existing.segment_id;
     }
 
-    const segment_id = uuidv4();
+    const segment_id = seg.segment_id ?? uuidv4();
     const created = await tx.segment.create({
       data: { segment_id, paragraph, title: seg.title ?? null },
     });
@@ -550,8 +589,8 @@ export class OrchestratorController {
         `${path}.style`,
       );
     }
-
-    const prep_time_id = uuidv4();
+    
+    const prep_time_id = pt.prep_time_id ?? uuidv4();
     const created = await tx.prep_time.create({
       data: { prep_time_id, duration, style_id },
     });

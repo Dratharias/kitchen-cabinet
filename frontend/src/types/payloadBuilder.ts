@@ -75,7 +75,7 @@ export interface SegmentWithMeta {
 export interface ContentPayload {
   content_id?: string;
   total_prep_time: number;
-  servings: ServingsPayload | null;
+  servings: ServingsPayload | null; // <--- FIX: Assure le type objet
   gallery?: string[] | null;
   subtitle?: string;
   is_ingredient?: boolean;

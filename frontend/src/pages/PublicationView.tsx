@@ -7,22 +7,25 @@ import { PublicationVariantTabs } from "@/components/view/PublicationVariantTabs
 import { PublicationTabs } from "@/components/view/PublicationTabs";
 import { DotGrid } from "@/components/ui/DotGrid";
 import { SpotlightWrapper } from "@/components/ui/SpotlightWrapper";
-import { PublicationHeader } from "@/components/view/PublicationHeader";
 import { IngredientBlockEditable } from "@/components/view/IngredientBlockEditable";
 import { SegmentBlockEditable } from "@/components/view/SegmentBlockEditable";
 import { ContentBlockHeaderEditable } from "@/components/view/ContentBlockHeaderEditable";
 import type { ServingsPayload } from "@/types/payloadBuilder";
-import { FileText, Utensils } from "lucide-react";
 
 // --- Helpers ---
 
 /** Helper to ensure servings data is in the expected object format for display */
 function normalizeServings(val: any): ServingsPayload | null {
   if (!val) return null;
+  // Si les données proviennent du backend, elles peuvent être un objet { yield, value }
+  if (typeof val === "object" && val.yield !== undefined) {
+    return val as ServingsPayload;
+  }
+  // Rétrocompatibilité (si le backend renvoyait un simple nombre)
   if (typeof val === "number") {
     return { yield: val, value: "portion(s)" };
   }
-  return val as ServingsPayload;
+  return null;
 }
 
 /** Helper to get a stable ID for block keying */
@@ -35,9 +38,9 @@ const getBlockId = (block: any) =>
 
 /**
  * Parses a servings label string (e.g., "4 portions") into separate yield and value.
- * Used when confirming an inline edit to the servings field.
+ * Now returns the full ServingsPayload object for DTO compatibility.
  */
-const parseServingsLabel = (label: string): { yield: number; value: string } => {
+const parseServingsLabel = (label: string): ServingsPayload => {
     const match = label.match(/(\d+)\s*(.*)/) || [];
     const yieldValue = parseInt(match[1], 10) || 1;
     let unitValue = match[2].trim();
@@ -47,9 +50,7 @@ const parseServingsLabel = (label: string): { yield: number; value: string } => 
         unitValue = yieldValue > 1 ? 'portions' : 'portion';
     }
     
-    // The backend's Content table expects a simple number for `servings` for now.
-    // We send back the yield number, but note that the actual backend model 
-    // might need to be adjusted if complex units are required.
+    // FIX: Retourne l'objet ServingsPayload complet
     return { yield: yieldValue, value: unitValue };
 };
 
@@ -89,9 +90,15 @@ export function PublicationView() {
   const contents = publication?.contents || [];
   
   const { variants, subRecipes } = useMemo(() => {
+    // Les Servings peuvent maintenant être des objets, nous devons les normaliser.
+    const normalizedContents = contents.map(c => ({
+        ...c,
+        servings: normalizeServings(c.servings) 
+    }));
+
     return {
-      variants: contents.filter((c: any) => !c.is_ingredient),
-      subRecipes: contents.filter((c: any) => c.is_ingredient),
+      variants: normalizedContents.filter((c: any) => !c.is_ingredient),
+      subRecipes: normalizedContents.filter((c: any) => c.is_ingredient),
     };
   }, [contents]);
 
@@ -158,18 +165,20 @@ export function PublicationView() {
             break;
         case 'content':
             if (fieldName === 'servings') {
-                const { yield: yieldValue } = parseServingsLabel(value);
-                // Send only the yield number, as per current backend Content model limitations
-                fields = { servings: yieldValue }; 
+                // FIX: Envoyer l'objet ServingsPayload complet au hook
+                fields = { servings: parseServingsLabel(value) }; 
             }
             success = await updateContentField(resourceId, fields);
             break;
         case 'ingredient':
+            // FIX: Les updates atomiques sont gérés par le hook qui s'attend
+            // à recevoir le champ et la valeur brute (ex: { unit: 'ml' }).
             if (fieldName === 'product') {
-                fields = { product: { name: value } };
+                fields = { product: value };
             } else if (fieldName === 'unit') {
-                // Orchestrator payload format for updating unit relation
-                fields = { ingredient_units: [{ unit: { name: value } }] };
+                fields = { unit: value };
+            } else if (fieldName === 'quantity') {
+                fields = { quantity: Number(value) };
             }
             success = await updateIngredientField(resourceId, fields);
             break;
@@ -199,14 +208,20 @@ export function PublicationView() {
               <ContentBlockHeaderEditable
                 contentId={block.content_id}
                 subtitle={block.subtitle}
-                servings={normalizeServings(block.servings)}
+                // FIX: Passer l'objet ServingsPayload normalisé
+                servings={block.servings} 
                 isAuthenticated={isAuthenticated}
                 editingField={editingField}
                 editValues={editValues}
                 startEdit={startEdit}
                 cancelEdit={cancelEdit}
                 updateValue={updateValue}
-                confirmContent={(field) => confirmEdit(`subtitle-${block.content_id}`, block.content_id, 'content', field)}
+                confirmContent={(field) => confirmEdit(
+                    `${field}-${block.content_id}`, 
+                    block.content_id, 
+                    'content', 
+                    field
+                )}
               />
             )}
             

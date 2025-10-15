@@ -37,13 +37,14 @@ export function usePublicationView() {
 
   /**
    * Constructs the Orchestrator payload for micro-updates.
+   * Assumes the ID passed is for the *main* resource (Publication, Content, Segment, Ingredient).
    */
   const buildMicroUpdatePayload = useCallback((id: string, fields: SimpleUpdatePayload): any => {
+    // Description: Traitée comme un tableau si c'est une chaîne multiligne
     if (fields.description && typeof fields.description === 'string') {
         fields.description = fields.description.split('\n');
     }
     
-    // The Orchestrator expects the resource ID as the top-level payload key.
     return {
         action: "update",
         payload: {
@@ -61,6 +62,8 @@ export function usePublicationView() {
         return false;
     }
     
+    // Si l'ID n'est pas une publication ou un contenu, on tente de le traiter atomiquement
+    // NOTE: L'orchestrator du backend a été mis à jour pour gérer ces ID directs.
     const payload = buildMicroUpdatePayload(id, fields);
     
     try {
@@ -81,127 +84,59 @@ export function usePublicationView() {
   }, [isAuthenticated, buildMicroUpdatePayload, forceReload]);
 
 
-  // --- 1. Update Handlers (Reconstruction Complète) ---
+  // --- 1. Update Handlers (Updates atomiques vers Orchestrator) ---
 
-  /**
-   * PUBLIC API: Update a direct publication field (e.g., title, description).
-   */
   const updatePublicationField = useCallback(async (fields: SimpleUpdatePayload) => {
     if (!publication?.publication_id) return false;
-    // Publication update is simple: executeUpdate with the publication ID
     return executeUpdate(publication.publication_id, fields);
   }, [publication?.publication_id, executeUpdate]);
 
-  /**
-   * PUBLIC API: Update a content block field (e.g., subtitle, servings).
-   */
   const updateContentField = useCallback(async (contentId: string, fields: SimpleUpdatePayload) => {
-    // Content update is simple: executeUpdate with the content ID
+    // Servings nécessite une conversion de string (label) à ServingsData (objet)
+    if (fields.servings && typeof fields.servings === 'string') {
+        const match = fields.servings.match(/(\d+)\s*(.*)/) || [];
+        const yieldValue = parseInt(match[1], 10) || 1;
+        const unitValue = match[2].trim() || (yieldValue > 1 ? 'portions' : 'portion');
+        
+        // Le DTO attend un ServingsData object
+        fields.servings = { yield: yieldValue, value: unitValue };
+    }
+    
     return executeUpdate(contentId, fields);
   }, [executeUpdate]);
   
   /**
-   * PUBLIC API: Update an ingredient field (e.g., quantity, product name).
-   * FIX: Reconstruit et envoie la publication complète avec l'ingrédient modifié.
+   * PUBLIC API: Update an ingredient field (e.g., quantity, product name, unit).
    */
   const updateIngredientField = useCallback(async (ingredientId: string, fields: SimpleUpdatePayload) => {
-    if (!publication?.publication_id || !publication.contents) return false;
-
-    // Deep clone de la publication actuelle pour modification
-    const pubToUpdate = JSON.parse(JSON.stringify(publication)) as Publication;
-    let ingredientFound = false;
-
-    // On parcourt les contenus pour trouver et modifier l'ingrédient cible
-    const updatedContents = pubToUpdate.contents?.map((content) => {
-      // S'il n'y a pas d'ingrédients, retourne le content tel quel
-      if (!content.content_ingredients) return content;
-
-      const updatedIngredients = content.content_ingredients.map((ing) => {
-        if (ing.ingredient_id !== ingredientId) return ing;
-        
-        ingredientFound = true;
-        
-        // Cible de la mise à jour
-        const ingUpdate = { 
-            ...ing, 
-            quantity: ing.quantity, 
-            product: { ...ing.product }, 
-            ingredient_units: ing.ingredient_units
-        };
-        
-        // Appliquer les mises à jour atomiques
-        if (fields.quantity !== undefined) {
-          ingUpdate.quantity = fields.quantity;
-        }
-        
-        // Mettre à jour la relation Produit
-        if (fields.product !== undefined) {
-          ingUpdate.product = { 
-            name: fields.product.name,
-          };
-        }
-        
-        // Mettre à jour la relation Unité (gestion de la structure imbriquée)
-        if (fields.ingredient_units !== undefined) {
-            const newUnitName = fields.ingredient_units.name;
-            const currentUnit = ing.ingredient_units?.[0];
-
-            // FIX: Assurer que l'objet unitaire est bien encapsulé et contient l'ID existant
-            // pour satisfaire le validateur et permettre l'UPDATE du nom si l'ID est connu.
-            ingUpdate.ingredient_units = [{
-                unit: {
-                    unit_id: currentUnit?.unit_id,
-                    name: newUnitName,
-                }
-            }];
-        }
-
-        return ingUpdate;
-      });
-
-      return { ...content, content_ingredients: updatedIngredients };
-    });
-
-    if (!ingredientFound) {
-      console.error(`Ingrédient ID ${ingredientId} non trouvé dans les contenus de la publication (state local).`);
-      return false;
+    // Si la mise à jour concerne une sous-ressource de l'ingrédient, 
+    // le payload est préparé pour le contrôleur atomique du backend
+    
+    const updateFields: SimpleUpdatePayload = {};
+    
+    if (fields.quantity !== undefined) {
+      updateFields.quantity = Number(fields.quantity);
     }
     
-    // Assigner les contenus mis à jour à la publication
-    pubToUpdate.contents = updatedContents;
-
-    // --- 5. Final Payload Construction ---
-    
-    const payload: any = {
-        action: "update",
-        payload: {
-            [pubToUpdate.publication_id]: pubToUpdate // FIX: Envoi du clone complet de la publication
-        }
-    };
-    
-    // Execute update
-    try {
-        await toast.promise(
-            OrchestratorService.patch(payload),
-            {
-                loading: 'Mise à jour ingrédient...',
-                success: 'Ingrédient mis à jour avec succès!',
-                error: 'Échec de la mise à jour de l\'ingrédient.'
-            }
-        );
-        forceReload();
-        return true;
-    } catch (error) {
-        console.error("Échec de la mise à jour ingrédient orchestrée:", error);
-        return false;
+    // Mettre à jour le Produit (nom)
+    if (fields.product !== undefined) {
+      // Le backend attend la structure { product: { name: newName } }
+      updateFields.product = { name: fields.product };
     }
     
-  }, [publication?.publication_id, publication?.contents, forceReload]);
+    // Mettre à jour l'Unité (nom)
+    if (fields.unit !== undefined) {
+      // Le backend attend la structure { ingredient_units: [{ unit: { name: newName } }] }
+      // Nous ne gérons ici qu'une seule unité par ingrédient.
+      updateFields.ingredient_units = [{ unit: { name: fields.unit } }];
+    }
+    
+    return executeUpdate(ingredientId, updateFields);
+    
+  }, [executeUpdate]);
   
-  /**
-   * PUBLIC API: Update a segment field (e.g., title, paragraph).
-   */
   const updateSegmentField = useCallback(async (segmentId: string, fields: SimpleUpdatePayload) => {
+    // Pas de manipulation complexe ici, le contrôleur atomique gère title/paragraph
     return executeUpdate(segmentId, fields);
   }, [executeUpdate]);
   
@@ -216,47 +151,39 @@ export function usePublicationView() {
     resourceId: string, // ID de la ressource parente (content_id) ou de la ressource à supprimer
     resourceType: "ingredient" | "segment",
   ): any => {
-    if (!publication?.publication_id) return { action: "invalid", payload: {} };
-    
-    const publicationId = publication.publication_id;
-
     if (action === "delete") {
-        // For atomic delete on a sub-resource, we use the specific resource ID
+        // Pour la suppression atomique, l'ID de la ressource à supprimer est la clé.
         return { action: "delete", payload: { [resourceId]: null } };
     }
 
     // CREATE (ResourceId here is the contentId)
-    const contentBlock = publication.contents?.find(c => c.content_id === resourceId);
-    if (!contentBlock) return { action: "invalid", payload: {} };
-    
     let newItem: any;
     if (resourceType === "ingredient") {
-        // Payload minimal for unconfirmed ingredient creation
+        // Payload minimal pour la création d'ingrédient
         newItem = { 
-            quantity: 0, 
+            quantity: 1, 
             multiply_factor: 1, 
             product: { name: "Nouvel ingrédient" },
-            ingredient_units: [{ unit: { name: "unité" } }], // FIX: Ajout de 'unit' pour la création
-            connect: { content_id: resourceId }
+            ingredient_units: [{ unit: { name: "unité" } }],
         };
     } else if (resourceType === "segment") {
-        // Payload minimal for unconfirmed segment creation
+        // Payload minimal pour la création de segment
         newItem = { 
             title: "Nouvelle étape", 
             paragraph: "Description de l'étape",
-            connect: { content_id: resourceId } 
         };
     }
-
-    // The CREATE payload targets the specific content block ID.
+    
+    // L'orchestrator attend un payload qui sera traité pour la création.
+    // L'ID est la clé de la ressource parente (contentId)
     return {
         action: "create",
         payload: {
-            [resourceId]: newItem // Key = Content ID (where to insert)
+            [resourceId]: newItem 
         }
     };
 
-  }, [publication?.publication_id, publication?.contents]);
+  }, []);
 
   
   /**
@@ -278,6 +205,8 @@ export function usePublicationView() {
             }
         );
         forceReload();
+        // NOTE: L'orchestrator retourne l'ID de la ressource créée dans `results`
+        // mais pour une simple mutation d'ajout, on retourne le succès.
         return response.success ?? false;
     } catch (error) {
         console.error("Échec de la mutation orchestrée:", error);

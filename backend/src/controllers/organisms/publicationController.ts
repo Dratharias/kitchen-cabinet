@@ -35,10 +35,10 @@ export class PublicationController
   ): Promise<Publication> {
     const newId = payload.publication_id ?? uuidv4();
     
-    // Simplification: Utiliser le connect pour les relations 1-N (Category/FK)
+    // Simplification et accès direct
     const type_id = payload.connect?.type?.[0]?.category_id;
     const style_id = payload.connect?.style?.[0]?.category_id;
-    const author_id = payload.connect?.author?.[0]?.category_id;
+    const author_id = payload.connect?.author?.[0]?.category_id; 
 
     const pub = await prisma.publication.create({
       data: {
@@ -49,18 +49,21 @@ export class PublicationController
         public: payload.public ?? true,
         published: payload.published ?? true,
         thumbnail: payload.thumbnail ?? null,
-        // Prisma gère désormais les tableaux `gallery`
-        // gallery: payload.gallery ?? [], 
         type_id,
         style_id,
         author_id,
         
-        // Relations N-N (Tags)
+        // Relations N-N (Tags) - Correction de la clé composée
         tags: payload.connect?.tags
-          ? { connect: payload.connect.tags.map(t => ({ category_id: t.category_id, publication_id: newId })) }
+          ? {
+              connect: payload.connect.tags.map(t => ({ 
+                publication_id_category_id: {
+                  category_id: t.category_id,
+                  publication_id: newId, 
+                }
+              }))
+            }
           : undefined,
-
-        // Relations 1-N (Contents) - Non géré ici pour rester RESTful (création via ContentController)
       },
       include: this.buildFullInclude(),
     });
@@ -71,6 +74,7 @@ export class PublicationController
   // READ BY ID
   // =====================================================
   async findById(id: string): Promise<Publication | null> {
+    // NOTE: Pour les accès privés/authentifiés, ne filtre pas sur public/published
     const pub = await prisma.publication.findFirst({
       where: { publication_id: id },
       include: this.buildFullInclude(),
@@ -79,21 +83,23 @@ export class PublicationController
   }
 
   // =====================================================
-  // READ ALL (Logique inchangée)
+  // READ ALL (Logique UNIFIÉE pour privé et public)
   // =====================================================
-  async findAll(params?: PublicationReadAllDto & { admin?: boolean }): Promise<{
+  async findAll(params?: PublicationReadAllDto & { isPublicRoute?: boolean }): Promise<{
     items: Publication[];
     total: number;
     page: number;
     limit: number;
     totalPages: number;
   }> {
-    // ... (Logique inchangée, utilise les optimisations existantes)
     const limit = Number(params?.limit) || 12;
     const page = Number(params?.page) || 1;
     const skip = (page - 1) * limit;
     const sortBy = params?.sortBy || "title";
     const order = params?.order === "desc" ? "desc" : "asc";
+    
+    // Si la route est /public/publications, on applique le filtre public/published
+    const isPublic = params?.isPublicRoute ?? false; 
 
     // --- Normalisation des filtres ---
     const filter = params?.filter ?? {};
@@ -105,10 +111,10 @@ export class PublicationController
         ? [typeField]
         : [];
 
-    // --- Filtre de base (public/published si non admin) ---
+    // --- Filtre de base (public/published si route publique) ---
     const where: Prisma.publicationWhereInput = {
       AND: [
-        !params?.admin ? { public: true, published: true } : undefined,
+        isPublic ? { public: true, published: true } : undefined,
         types.length ? { type: { str_value: { in: types } } } : undefined,
         q
           ? {
@@ -247,31 +253,26 @@ export class PublicationController
     if (payload.public !== undefined) data.public = payload.public;
     if (payload.published !== undefined) data.published = payload.published;
     if (payload.thumbnail !== undefined) data.thumbnail = payload.thumbnail;
-    if (payload.gallery !== undefined) data.gallery = payload.gallery;
-
+    
     // Relations N-1 (Category/FK): on utilise le connect DTO (ex: type)
     if (payload.connect?.type?.[0]) data.type = { connect: payload.connect.type[0] };
     if (payload.connect?.style?.[0]) data.style = { connect: payload.connect.style[0] };
     if (payload.connect?.author?.[0]) data.author = { connect: payload.connect.author[0] };
     
-    // Relations N-N (Tags)
-    // On doit mapper la structure DTO vers Prisma
+    // Relations N-N (Tags) - Correction de la clé composée
     if (payload.connect?.tags) {
       data.tags = {
         connect: payload.connect.tags.map(t => ({ 
-          category_id: t.category_id,
-          publication_id: id // publication_id doit être l'ID de l'entité courante
+          publication_id_category_id: { publication_id: id, category_id: t.category_id }
         }))
       };
     }
     if (payload.set?.tags) {
-      // NOTE: Le `set` dans Prisma est plus complexe pour les tables de jointure 
-      // car il nécessite une suppression/re-création. Il est plus sûr de gérer 
-      // la logique de SET/DELETE dans l'Orchestrator si la mise à jour complète
-      // des tags est requise. Pour le PATCH atomique, on favorise le `connect`.
-      // Si un remplacement complet est requis, on doit d'abord deleteMany.
-      // Dans le cadre du refactoring RESTful et vu l'usage du PATCH, on ne gère que le `connect` ici.
-      // Si le frontend envoie un set complet, il devrait d'abord appeler DELETE sur les anciens.
+      data.tags = {
+        set: payload.set.tags.map(t => ({ 
+          publication_id_category_id: { publication_id: id, category_id: t.category_id }
+        }))
+      };
     }
 
 
@@ -311,12 +312,11 @@ export class PublicationController
         select: {
           content_id: true,
           total_prep_time: true,
-          // FIX: Inclure serving_id pour les relations Servings
           serving_id: true, 
           subtitle: true,
           is_ingredient: true,
         },
-        include: { // Inclure Servings pour la summary
+        include: { 
             servings: true
         }
       },
@@ -338,7 +338,6 @@ export class PublicationController
       },
       contents: {
         include: {
-          // FIX: Inclure Servings pour les relations Servings
           servings: true,
           content_segments: {
             include: {

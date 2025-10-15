@@ -35,7 +35,8 @@ export const PublicationForm: React.FC<PublicationFormProps> = ({
       contents: [
         ...prev.contents,
         {
-          servings: null,
+          total_prep_time: 0,
+          servings: { yield: 1, value: "portion" }, // Initialisation au format objet
           subtitle: "",
           content_ingredients: [],
           content_segments: [],
@@ -65,26 +66,37 @@ export const PublicationForm: React.FC<PublicationFormProps> = ({
 
     const data = {
       title: formData.title,
-      description: formData.description,
+      // FIX: La description est passée en chaîne, le builder la convertit en tableau
+      description: formData.description, 
       note: formData.note,
       public: formData.public,
       published: formData.published,
       thumbnail: formData.thumbnail || undefined,
-      gallery: formData.gallery.length > 0 ? formData.gallery : undefined,
+      // FIX: Gallery est passée mais sera ignorée par l'orchestrator (N-N)
+      gallery: formData.gallery.length > 0 ? formData.gallery : undefined, 
       contents: formData.contents,
     };
 
+    // La validation est faite avant l'appel à handleSubmit grâce à isValidForm()
     const payload = builder.build("create", "publication", data);
     onSubmit(payload);
   };
 
+  /**
+   * Valide que le formulaire contient les données minimales et cohérentes.
+   */
   const isValidForm = (): boolean => {
+    // Validation des champs de publication de base (title, description, note)
     if (!formData.title.trim()) return false;
     if (!formData.description.trim()) return false;
     if (!formData.note.trim()) return false;
+    
+    // Validation des Contenus
     if (formData.contents.length === 0) return false;
 
     for (const content of formData.contents) {
+      
+      // Validation des Ingrédients
       if (
         !content.content_ingredients ||
         content.content_ingredients.length === 0
@@ -93,17 +105,20 @@ export const PublicationForm: React.FC<PublicationFormProps> = ({
 
       for (const ing of content.content_ingredients) {
         if (!ing.product?.name?.trim()) return false;
-        if (!ing.quantity || ing.quantity <= 0) return false;
+        // La quantité peut être 0 si l'unité est "au goût" ou "pincée", mais doit exister
+        if (ing.quantity === undefined || ing.quantity === null || ing.quantity < 0) return false; 
         if (!ing.ingredient_units?.[0]?.unit?.name?.trim()) return false;
       }
 
+      // Validation des Segments
       if (!content.content_segments || content.content_segments.length === 0)
         return false;
 
       for (const seg of content.content_segments) {
         if (!seg.segment?.paragraph?.trim()) return false;
       }
-
+      
+      // Validation du Temps de Préparation
       if (
         !content.content_prep_times ||
         content.content_prep_times.length === 0
@@ -111,16 +126,15 @@ export const PublicationForm: React.FC<PublicationFormProps> = ({
         return false;
 
       for (const pt of content.content_prep_times) {
-        if (!pt.duration || pt.duration <= 0) return false;
+        if (pt.duration === undefined || pt.duration <= 0) return false;
         if (!pt.style?.str_value?.trim()) return false;
       }
-    }
-
-    try {
-      const builder = new PayloadBuilder();
-      builder.build("create", "publication", formData);
-    } catch {
-      return false;
+      
+      // Validation des Servings
+      if (!content.servings || content.servings.yield === undefined || content.servings.yield <= 0) {
+          // Si le yield n'est pas fourni ou est invalide, la validation échoue.
+          return false;
+      }
     }
 
     return true;
@@ -145,7 +159,7 @@ export const PublicationForm: React.FC<PublicationFormProps> = ({
 
       <div className="space-y-4 px-4 py-6 bg-[#2a2a2a]/20 rounded-md border border-white/5">
         <div className="flex justify-between items-center">
-          <h3 className="text-lg font-semibold text-gray-200">Contents</h3>
+          <h3 className="text-lg font-semibold text-gray-200">Contenus (Variantes/Recettes)</h3>
           <button
             onClick={addContent}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-amber-600 text-white text-sm hover:bg-amber-700 transition-colors hover:cursor-pointer"

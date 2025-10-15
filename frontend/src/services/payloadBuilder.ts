@@ -6,6 +6,7 @@ import type {
   IngredientPayload,
   PrepTimePayload,
   CategoryPayload,
+  ServingsPayload, // Import ajouté
   Action,
 } from "@/types/payloadBuilder";
 
@@ -29,11 +30,14 @@ export class PayloadBuilder {
     existing?: PublicationPayload,
     isUpdate = false,
   ): PublicationPayload {
+    // FIX: S'assurer que la description est traitée comme un tableau de lignes
+    const descriptionLines = this.toArray(data.description ?? existing?.description);
+    
     return {
       publication_id: isUpdate ? existing?.publication_id : undefined,
       title: data.title ?? existing?.title ?? "Untitled",
-      description: this.toArray(data.description ?? existing?.description),
-      note: this.toArray(data.note ?? existing?.note ?? []),
+      description: descriptionLines.filter(line => line.trim() !== ''),
+      note: this.toArray(data.note ?? existing?.note ?? []).filter(line => line.trim() !== ''),
       public: data.public ?? existing?.public ?? false,
       published: data.published ?? existing?.published ?? false,
       thumbnail: data.thumbnail ?? existing?.thumbnail,
@@ -53,17 +57,27 @@ export class PayloadBuilder {
     existing?: ContentPayload,
     isUpdate = false,
   ): ContentPayload {
-    const servings = c.servings ?? existing?.servings ?? null;
+    const rawServings = c.servings ?? existing?.servings ?? null;
+    let mappedServings: ServingsPayload | null = null;
+    
+    // FIX: Conversion sécurisée en ServingsPayload
+    if (rawServings) {
+        if (typeof rawServings === "object" && rawServings.yield !== undefined) {
+            mappedServings = rawServings; // Déjà au bon format
+        } else if (typeof rawServings === "number" || (typeof rawServings === "string" && !isNaN(Number(rawServings)))) {
+            // Conversion depuis un simple nombre (pour rétrocompatibilité/form simple)
+            mappedServings = { 
+                yield: Number(rawServings), 
+                value: "" // Valeur par défaut
+            };
+        }
+    }
+    
     return {
       content_id: isUpdate ? existing?.content_id : undefined,
       total_prep_time:
         c.total_prep_time ?? existing?.total_prep_time ?? this.sumPrepTimes(c),
-      servings:
-        typeof servings === "object"
-          ? servings
-          : servings
-            ? { yield: Number(servings), value: "" }
-            : null,
+      servings: mappedServings, // Utilisation de l'objet ServingsPayload
       subtitle: c.subtitle ?? existing?.subtitle,
       is_ingredient: c.is_ingredient ?? existing?.is_ingredient ?? false,
       publication: c.publication ?? existing?.publication,
@@ -167,7 +181,15 @@ export class PayloadBuilder {
 
   private toArray(value: unknown): string[] {
     if (!value) return [];
-    return Array.isArray(value) ? value : [String(value)];
+    // Gère le cas où l'input est déjà un tableau de chaînes, ou une seule chaîne multiligne
+    if (Array.isArray(value)) {
+        return value.filter(s => typeof s === 'string') as string[];
+    }
+    if (typeof value === 'string') {
+        // Traite la chaîne multiligne en tableau de lignes
+        return value.split('\n'); 
+    }
+    return [];
   }
 
   private sumPrepTimes(c: any): number {

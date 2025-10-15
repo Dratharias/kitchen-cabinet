@@ -69,7 +69,7 @@ export type PublicationConnect = {
   tags?: { category_id: string }[];
   type?: { category_id: string }[];
   style?: { category_id: string }[];
-  author?: { user_id: string }[];
+  author?: { category_id: string }[]; 
 };
 
 export type PublicationCreateDto = PublicationCore &
@@ -110,6 +110,7 @@ export type ContentConnect = {
   content_segments?: { segment_id: string }[];
   content_ingredients?: { ingredient_id: string }[];
   content_prep_times?: { prep_time_id: string }[];
+  servings?: { serving_id: string }[]; 
 };
 
 export type ContentCreateDto = ContentCore &
