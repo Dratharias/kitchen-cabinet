@@ -89,11 +89,14 @@ export type PublicationReadAllDto = {
   filter?: Partial<PublicationReadDto> & {
     tagIds?: string[];
     contentIds?: string[];
+    q?: string;
   };
   skip?: number;
   take?: number;
   page?: number;
   limit?: number;
+  sortBy?: string;
+  order?: string;
 };
 
 /* ============================================================

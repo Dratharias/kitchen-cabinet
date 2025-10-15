@@ -44,8 +44,7 @@
               "data": { "quantity": 2, "multiply_factor": 1 },
               "product": {
                 "data": {
-                  "name": "Tomate",
-                  "en_name": "Tomato"
+                  "name": "Tomate"
                 }
               },
               "ingredient_units": [{ "unit": { "data": { "name": "pieces" } } }]
@@ -54,8 +53,7 @@
               "data": { "quantity": 200, "multiply_factor": 1 },
               "product": {
                 "data": {
-                  "name": "Spaghetti",
-                  "en_name": "Spaghetti"
+                  "name": "Spaghetti"
                 }
               },
               "ingredient_units": [{ "unit": { "data": { "name": "grams" } } }]

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   motion,
@@ -8,8 +8,14 @@ import {
   useTransform,
   type SpringOptions,
   AnimatePresence,
-} from 'motion/react';
-import React, { Children, cloneElement, useEffect, useMemo, useRef, useState } from 'react';
+} from "motion/react";
+import React, {
+  useRef,
+  useState,
+  useCallback,
+  Children,
+  cloneElement,
+} from "react";
 
 export type DockItemData = {
   icon: React.ReactNode;
@@ -26,65 +32,18 @@ export type DockProps = {
   baseItemSize?: number;
   magnification?: number;
   spring?: SpringOptions;
-
-  position?: 'bottom' | 'top' | 'left' | 'right';
-  align?: 'center' | 'start' | 'end';
+  position?: "bottom" | "top" | "left" | "right";
+  align?: "center" | "start" | "end";
   bgClass?: string;
   borderClass?: string;
   showLabels?: boolean;
-  expandOnHover?: boolean; // <-- nouvelle option
+  expandOnHover?: boolean;
 };
 
-type DockItemProps = {
-  className?: string;
-  children: React.ReactNode;
-  onClick?: () => void;
-  mouseX: MotionValue<number>;
-  spring: SpringOptions;
-  distance: number;
-  baseItemSize: number;
-  magnification: number;
-};
+/* ---------- Subcomponents ---------- */
 
-function DockItem({
-  children,
-  className = '',
-  onClick,
-  mouseX,
-  spring,
-  distance,
-  magnification,
-  baseItemSize,
-}: DockItemProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isHovered = useMotionValue(0);
-
-  const mouseDistance = useTransform(mouseX, (val) => {
-    const rect = ref.current?.getBoundingClientRect() ?? { x: 0, width: baseItemSize };
-    return val - rect.x - baseItemSize / 2;
-  });
-
-  const targetSize = useTransform(mouseDistance, [-distance, 0, distance], [baseItemSize, magnification, baseItemSize]);
-  const size = useSpring(targetSize, spring);
-
-  return (
-    <motion.div
-      ref={ref}
-      style={{ width: size, height: size }}
-      onHoverStart={() => isHovered.set(1)}
-      onHoverEnd={() => isHovered.set(0)}
-      onClick={onClick}
-      className={`relative inline-flex items-center justify-center rounded-full border-2 border-neutral-700 bg-[#1f1f1f] hover:cursor-pointer shadow-md ${className}`}
-      tabIndex={0}
-      role="button"
-    >
-      {Children.map(children, (child) =>
-        React.isValidElement(child)
-          ? cloneElement(child as React.ReactElement<{ isHovered?: MotionValue<number> }>, { isHovered })
-          : child,
-      )}
-    </motion.div>
-  );
+function DockIcon({ children }: { children: React.ReactNode }) {
+  return <div className="flex items-center justify-center">{children}</div>;
 }
 
 function DockLabel({
@@ -95,14 +54,19 @@ function DockLabel({
   isHovered?: MotionValue<number>;
 }) {
   const [isVisible, setIsVisible] = useState(false);
-  useEffect(() => {
+
+  const handleChange = useCallback((latest: number) => {
+    setIsVisible(latest === 1);
+  }, []);
+
+  React.useEffect(() => {
     if (!isHovered) return;
-    const unsub = isHovered.on('change', (latest) => setIsVisible(latest === 1));
-    return () => unsub();
-  }, [isHovered]);
+    const unsub = isHovered.on("change", handleChange);
+    return unsub;
+  }, [isHovered, handleChange]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {isVisible && (
         <motion.div
           initial={{ opacity: 0, y: 0 }}
@@ -118,69 +82,148 @@ function DockLabel({
   );
 }
 
-function DockIcon({ children }: { children: React.ReactNode }) {
-  return <div className="flex items-center justify-center">{children}</div>;
+function DockItem({
+  children,
+  className = "",
+  onClick,
+  mouseX,
+  spring,
+  distance,
+  magnification,
+  baseItemSize,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+  mouseX: MotionValue<number>;
+  spring: SpringOptions;
+  distance: number;
+  magnification: number;
+  baseItemSize: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isHovered = useMotionValue(0);
+
+  // These hooks must be top-level
+  const mouseDistance = useTransform(mouseX, (val) => {
+    const rect = ref.current?.getBoundingClientRect() ?? {
+      x: 0,
+      width: baseItemSize,
+    };
+    return val - rect.x - baseItemSize / 2;
+  });
+
+  const targetSize = useTransform(
+    mouseDistance,
+    [-distance, 0, distance],
+    [baseItemSize, magnification, baseItemSize],
+  );
+
+  const size = useSpring(targetSize, spring);
+
+  const handleHoverStart = useCallback(() => isHovered.set(1), [isHovered]);
+  const handleHoverEnd = useCallback(() => isHovered.set(0), [isHovered]);
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ width: size, height: size }}
+      onHoverStart={handleHoverStart}
+      onHoverEnd={handleHoverEnd}
+      onClick={onClick}
+      className={`relative inline-flex items-center justify-center rounded-full border-2 border-neutral-700 bg-[#1f1f1f] hover:cursor-pointer shadow-md ${className}`}
+      tabIndex={0}
+      role="button"
+    >
+      {Children.map(children, (child) =>
+        React.isValidElement(child)
+          ? cloneElement(
+              child as React.ReactElement<{ isHovered?: MotionValue<number> }>,
+              {
+                isHovered,
+              },
+            )
+          : child,
+      )}
+    </motion.div>
+  );
 }
 
-export default function Dock({
+/* ---------- Dock Container ---------- */
+
+export function Dock({
   items,
-  className = '',
+  className = "",
   spring = { mass: 0.15, stiffness: 160, damping: 18 },
   magnification = 70,
   distance = 200,
   panelHeight = 64,
   baseItemSize = 50,
-  position = 'bottom',
-  align = 'center',
-  bgClass = 'bg-[#1f1f1f]',
-  borderClass = 'border-neutral-700',
+  position = "bottom",
+  align = "center",
+  bgClass = "bg-[#1f1f1f]",
+  borderClass = "border-neutral-700",
   showLabels = true,
   expandOnHover = true,
 }: DockProps) {
   const mouseX = useMotionValue(Infinity);
   const isHovered = useMotionValue(0);
 
-  const expandedHeight = useMemo(
-    () => (expandOnHover ? Math.max(panelHeight, magnification + 20) : panelHeight),
-    [expandOnHover, panelHeight, magnification]
-  );
+  const expandedHeight = expandOnHover
+    ? Math.max(panelHeight, magnification + 20)
+    : panelHeight;
 
-  const heightRow = useTransform(isHovered, [0, 1], [panelHeight, expandedHeight]);
+  const heightRow = useTransform(
+    isHovered,
+    [0, 1],
+    [panelHeight, expandedHeight],
+  );
   const height = useSpring(heightRow, spring);
 
-  const posClass =
-    position === 'bottom'
-      ? 'bottom-4'
-      : position === 'top'
-      ? 'top-4'
-      : position === 'left'
-      ? 'left-4'
-      : 'right-4';
-  const alignClass =
-    align === 'center'
-      ? 'left-1/2 -translate-x-1/2'
-      : align === 'start'
-      ? 'left-6'
-      : 'right-6';
+  const handleMouseMove = useCallback(
+    ({ pageX }: React.MouseEvent) => {
+      isHovered.set(1);
+      mouseX.set(pageX);
+    },
+    [isHovered, mouseX],
+  );
+
+  const handleMouseLeave = useCallback(() => {
+    isHovered.set(0);
+    mouseX.set(Infinity);
+  }, [isHovered, mouseX]);
+
+  const positionClasses = {
+    bottom: "bottom-4",
+    top: "top-4",
+    left: "left-4",
+    right: "right-4",
+  };
+
+  const alignClasses = {
+    center: "left-1/2 -translate-x-1/2",
+    start: "left-6",
+    end: "right-6",
+  };
+
+  const posClass = positionClasses[position];
+  const alignClass = alignClasses[align];
 
   return (
-    <motion.div style={{ height }} className="flex items-center justify-center overflow-visible w-fit">
+    <motion.div
+      style={{ height }}
+      className="flex items-center justify-center overflow-visible w-fit"
+    >
       <motion.div
-        onMouseMove={({ pageX }) => {
-          isHovered.set(1);
-          mouseX.set(pageX);
-        }}
-        onMouseLeave={() => {
-          isHovered.set(0);
-          mouseX.set(Infinity);
-        }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         className={`${className} fixed ${posClass} ${alignClass} flex items-end w-fit gap-4 rounded-2xl border-2 px-4 pb-2 ${bgClass} ${borderClass} z-50`}
         style={{ height: panelHeight }}
         role="toolbar"
       >
-        {items.map((item, index) => (
+        {items.map((item, i) => (
           <DockItem
-            key={index}
+            key={`dock-item-${i}`}
             onClick={item.onClick}
             className={item.className}
             mouseX={mouseX}

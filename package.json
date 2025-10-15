@@ -1,5 +1,5 @@
 {
-  "name": "kitchen-cabinet",
+  "name": "kitchen-kabinet",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
@@ -29,6 +29,7 @@
     "nuke": "docker compose down && npm run clean:all && npm run update:all:install && npm run up:build && npm run prisma:build:user",
     "rebuild:backend": "cd backend && npx tsc --build && cd .. && docker system prune -af --volumes && docker compose up --build -d backend",
     "generate:token": "sh -c \"TOKEN=$(curl -s -X POST http://127.0.0.1:3001/api/auth/login -H 'Content-Type: application/json' -d '{\"username\":\"admin\",\"password\\\":\"admin123\"}' | jq -r '.token')\"",
-    "prettify": "npx prettier --write '**/*.{js,ts,jsx,tsx,json,css,md}'"
+    "prettify": "npx prettier --write '**/*.{js,ts,jsx,tsx,json,css,md}'",
+    "seed": "cd migrated && sh -c './seed.sh' && cd .."
   }
 }

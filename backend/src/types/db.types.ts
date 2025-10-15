@@ -29,6 +29,10 @@ export interface ReadAllParams<T> {
   includeRelations?: boolean;
   skip?: number;
   take?: number;
+  page?: number;
+  limit?: number;
+  sortBy?: string;
+  order?: "asc" | "desc";
 }
 
 /* ============================================================
@@ -113,6 +117,7 @@ export interface ContentData {
   servings: number | null;
   subtitle: string | null;
   is_ingredient: boolean | null;
+  gallery: string[];
 
   // Relations N-1
   publication: PublicationData | null; // N-1
@@ -179,7 +184,6 @@ export interface SegmentPrepTimeData {
 export interface ProductData {
   product_id: string;
   name: string;
-  en_name: string | null;
   macro_id: string | null;
   is_recipe_id: string | null;
 

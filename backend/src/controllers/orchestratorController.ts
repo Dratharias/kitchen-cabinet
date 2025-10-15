@@ -8,20 +8,11 @@ import type {
 
 const DEV_MODE = process.env.NODE_ENV !== "production";
 
-function safeStringify(v: unknown, max = 2000): string {
-  try {
-    const s = JSON.stringify(v);
-    return s.length > max ? s.slice(0, max) + "…(truncated)" : s;
-  } catch {
-    return "[unserializable]";
-  }
-}
-
+/* -------------------- util -------------------- */
 class OrchestratorError extends Error {
   context: string;
   path?: string;
   payload?: unknown;
-
   constructor(
     message: string,
     context: string,
@@ -35,7 +26,6 @@ class OrchestratorError extends Error {
     this.payload = payload;
   }
 }
-
 function logError(
   context: string,
   error: any,
@@ -48,7 +38,6 @@ function logError(
     extra,
   });
 }
-
 function assert(
   condition: any,
   message: string,
@@ -59,6 +48,9 @@ function assert(
   if (!condition) throw new OrchestratorError(message, context, path, payload);
 }
 
+/* ============================================================
+   OrchestratorController
+   ============================================================ */
 export class OrchestratorController {
   private async safeId(
     tx: PrismaClient,
@@ -74,39 +66,33 @@ export class OrchestratorController {
   }
 
   public async processRequest(
-    request: OrchestratorRequest,
+    req: OrchestratorRequest,
   ): Promise<OrchestratorResponse> {
-    const { action, payload } = request;
+    const { action, payload } = req;
 
-    if (action === "create") {
+    if (action === "create" || action === "update") {
       try {
         const results = await prisma.$transaction(async (tx: any) => {
           const out: Record<string, unknown> = {};
           for (const key of Object.keys(payload || {})) {
-            const publicationData = (payload as any)[key];
-            try {
-              assert(
-                publicationData,
-                "Missing publication payload",
-                "processRequest",
-                `payload.${key}`,
-                publicationData,
-              );
-              const result = await this.processPublication(publicationData, tx);
-              out[key] = result;
-            } catch (e: any) {
-              // Log with the per-key payload
-              logError("processPublication", e, {
-                key,
-                payload: publicationData,
-              });
-              // Re-throw to abort transaction
-              throw e;
-            }
+            const publication = (payload as any)[key];
+            assert(
+              publication,
+              "Missing publication payload",
+              "processRequest",
+              `payload.${key}`,
+              publication,
+            );
+
+            const res =
+              action === "create"
+                ? await this.createPublication(publication, tx)
+                : await this.updatePublication(publication, tx);
+
+            out[key] = res;
           }
           return out;
         });
-
         return { success: true, results: results as any };
       } catch (error: any) {
         logError("transaction", error, { payload });
@@ -139,129 +125,166 @@ export class OrchestratorController {
     return { success: false, error: `Action '${action}' not supported.` };
   }
 
-  // ---- Publication ---------------------------------------------------------
+  /* -------------------- publication -------------------- */
+  private async createPublication(pub: any, tx: PrismaClient) {
+    const ctx = "createPublication";
+    assert(pub?.title, "Publication.title is required", ctx, "title", pub);
 
-  private async processPublication(publicationData: any, tx: PrismaClient) {
-    const ctx = "processPublication";
+    const publication_id = await this.safeId(
+      tx,
+      "publication",
+      "publication_id",
+      pub.publication_id,
+    );
 
-    try {
-      assert(
-        publicationData?.title,
-        "Publication.title is required",
-        ctx,
-        "title",
-        publicationData,
-      );
+    const type_id = await this.processCategory(
+      pub.type,
+      tx,
+      "Type",
+      `${ctx}.type`,
+    );
+    const style_id = await this.processCategory(
+      pub.style,
+      tx,
+      "Style",
+      `${ctx}.style`,
+    );
+    const author_id = await this.processCategory(
+      pub.author,
+      tx,
+      "Author",
+      `${ctx}.author`,
+    );
 
-      // Optional categories
-      const typeId = publicationData.type?.data?.str_value
-        ? await this.processCategory(publicationData.type, "Type", tx, "type")
-        : null;
+    const created = await tx.publication.create({
+      data: {
+        publication_id,
+        title: pub.title,
+        description: Array.isArray(pub.description) ? pub.description : [],
+        note: Array.isArray(pub.note) ? pub.note : [],
+        public: typeof pub.public === "boolean" ? pub.public : true,
+        published: typeof pub.published === "boolean" ? pub.published : true,
+        thumbnail: pub.thumbnail ?? null,
+        gallery: Array.isArray(pub.gallery) ? pub.gallery : [],
+        type_id,
+        style_id,
+        author_id,
+      },
+    });
 
-      const styleId = publicationData.style?.data?.str_value
-        ? await this.processCategory(
-            publicationData.style,
-            "Style",
-            tx,
-            "style",
-          )
-        : null;
-
-      const authorId = publicationData.author?.data?.str_value
-        ? await this.processCategory(
-            publicationData.author,
-            "Author",
-            tx,
-            "author",
-          )
-        : null;
-
-      // Upsert publication
-      const publicationId = await this.safeId(
-        tx,
-        "publication",
-        "publication_id",
-        publicationData.publication_id,
-      );
-
-      const publication = await tx.publication.upsert({
-        where: { publication_id: publicationId },
-        update: {
-          title: publicationData.title,
-          description: publicationData.description ?? [],
-          note: publicationData.note ?? [],
-          thumbnail: publicationData.thumbnail ?? null,
-          gallery: publicationData.gallery ?? [],
-          public: publicationData.public ?? true,
-          published: publicationData.published ?? true,
-          type_id: typeId,
-          style_id: styleId,
-          author_id: authorId,
-        },
-        create: {
-          publication_id: publicationId,
-          title: publicationData.title,
-          description: publicationData.description ?? [],
-          note: publicationData.note ?? [],
-          thumbnail: publicationData.thumbnail ?? null,
-          gallery: publicationData.gallery ?? [],
-          public: publicationData.public ?? true,
-          published: publicationData.published ?? true,
-          type_id: typeId,
-          style_id: styleId,
-          author_id: authorId,
-        },
-      });
-
-      // Tags
-      if (publicationData.tags) {
-        await tx.publication_tag.deleteMany({
-          where: { publication_id: publication.publication_id },
+    if (Array.isArray(pub.tags)) {
+      for (let i = 0; i < pub.tags.length; i++) {
+        const tagId = await this.processCategory(
+          pub.tags[i],
+          tx,
+          "Tag",
+          `tags[${i}]`,
+        );
+        if (!tagId) continue;
+        await tx.publication_tag.create({
+          data: { publication_id: created.publication_id, category_id: tagId },
         });
-        for (let i = 0; i < publicationData.tags.length; i++) {
-          const tagPayload = publicationData.tags[i];
-          const tagId = await this.processCategory(
-            tagPayload,
-            "Tag",
-            tx,
-            `tags[${i}]`,
-          );
-          await tx.publication_tag.create({
-            data: {
-              publication_id: publication.publication_id,
-              category_id: tagId,
-            },
-          });
-        }
       }
-
-      // Contents
-      if (publicationData.contents) {
-        for (let ci = 0; ci < publicationData.contents.length; ci++) {
-          await this.processContent(
-            publicationData.contents[ci],
-            publication.publication_id,
-            tx,
-            `contents[${ci}]`,
-          );
-        }
-      }
-
-      return publication;
-    } catch (err: any) {
-      // Provide payload snippet in dev
-      const extra = DEV_MODE
-        ? { payload: safeStringify(publicationData) }
-        : undefined;
-      logError(ctx, err, extra);
-      throw err;
     }
+
+    if (Array.isArray(pub.contents)) {
+      for (let i = 0; i < pub.contents.length; i++) {
+        await this.processContent(
+          pub.contents[i],
+          created.publication_id,
+          tx,
+          `contents[${i}]`,
+        );
+      }
+    }
+
+    return created;
   }
 
-  // ---- Content -------------------------------------------------------------
+  private async updatePublication(pub: any, tx: PrismaClient) {
+    const ctx = "updatePublication";
+    assert(
+      pub?.publication_id,
+      "Missing publication_id for update",
+      ctx,
+      "publication_id",
+      pub,
+    );
 
+    const type_id = await this.processCategory(
+      pub.type,
+      tx,
+      "Type",
+      `${ctx}.type`,
+    );
+    const style_id = await this.processCategory(
+      pub.style,
+      tx,
+      "Style",
+      `${ctx}.style`,
+    );
+    const author_id = await this.processCategory(
+      pub.author,
+      tx,
+      "Author",
+      `${ctx}.author`,
+    );
+
+    const updated = await tx.publication.update({
+      where: { publication_id: pub.publication_id },
+      data: {
+        title: pub.title,
+        description: Array.isArray(pub.description) ? pub.description : [],
+        note: Array.isArray(pub.note) ? pub.note : [],
+        public: typeof pub.public === "boolean" ? pub.public : true,
+        published: typeof pub.published === "boolean" ? pub.published : true,
+        thumbnail: pub.thumbnail ?? null,
+        gallery: Array.isArray(pub.gallery) ? pub.gallery : [],
+        type_id,
+        style_id,
+        author_id,
+      },
+    });
+
+    await tx.publication_tag.deleteMany({
+      where: { publication_id: updated.publication_id },
+    });
+    if (Array.isArray(pub.tags)) {
+      for (let i = 0; i < pub.tags.length; i++) {
+        const tagId = await this.processCategory(
+          pub.tags[i],
+          tx,
+          "Tag",
+          `tags[${i}]`,
+        );
+        if (!tagId) continue;
+        await tx.publication_tag.create({
+          data: { publication_id: updated.publication_id, category_id: tagId },
+        });
+      }
+    }
+
+    // reset contents (cascade on junctions is enabled)
+    await tx.content.deleteMany({
+      where: { publication_id: updated.publication_id },
+    });
+    if (Array.isArray(pub.contents)) {
+      for (let i = 0; i < pub.contents.length; i++) {
+        await this.processContent(
+          pub.contents[i],
+          updated.publication_id,
+          tx,
+          `contents[${i}]`,
+        );
+      }
+    }
+
+    return updated;
+  }
+
+  /* -------------------- content (flat) -------------------- */
   private async processContent(
-    contentPayload: any,
+    content: any,
     publicationId: string,
     tx: PrismaClient,
     path = "content",
@@ -269,453 +292,269 @@ export class OrchestratorController {
     const ctx = "processContent";
     try {
       assert(
-        contentPayload?.data,
-        "Content.data is required",
+        content && typeof content === "object",
+        "Invalid content payload",
         ctx,
-        `${path}.data`,
-        contentPayload,
-      );
-      assert(
-        typeof contentPayload.data.total_prep_time === "number",
-        "Content.data.total_prep_time must be a number",
-        ctx,
-        `${path}.data.total_prep_time`,
-        contentPayload,
+        path,
+        content,
       );
 
-      const contentId = await this.safeId(
+      const content_id = await this.safeId(
         tx,
         "content",
         "content_id",
-        contentPayload.content_id,
+        content.content_id,
       );
-      const content = await tx.content.upsert({
-        where: { content_id: contentId },
-        update: {
-          total_prep_time: contentPayload.data.total_prep_time ?? 0,
-          servings: contentPayload.data.servings ?? null,
+
+      const created = await tx.content.create({
+        data: {
+          content_id,
           publication_id: publicationId,
-        },
-        create: {
-          content_id: contentId,
-          total_prep_time: contentPayload.data.total_prep_time ?? 0,
-          servings: contentPayload.data.servings ?? null,
-          publication_id: publicationId,
+          total_prep_time: Number.isFinite(content.total_prep_time)
+            ? content.total_prep_time
+            : 0,
+          servings:
+            typeof content.servings === "number" || content.servings === null
+              ? content.servings
+              : null,
+          subtitle:
+            typeof content.subtitle === "string" ? content.subtitle : null,
+          is_ingredient:
+            typeof content.is_ingredient === "boolean"
+              ? content.is_ingredient
+              : false,
         },
       });
 
       // segments
-      if (contentPayload.content_segments) {
-        await tx.content_segment.deleteMany({
-          where: { content_id: content.content_id },
-        });
-        for (let i = 0; i < contentPayload.content_segments.length; i++) {
-          const segWrapper = contentPayload.content_segments[i];
-          assert(
-            segWrapper?.segment,
-            "content_segments[i].segment is required",
-            ctx,
-            `${path}.content_segments[${i}]`,
-            segWrapper,
-          );
-          const segmentId = await this.processSegment(
-            segWrapper.segment,
+      if (Array.isArray(content.content_segments)) {
+        for (let i = 0; i < content.content_segments.length; i++) {
+          const wrap = content.content_segments[i];
+          const seg = wrap?.segment;
+          if (!seg) continue;
+          const segment_id = await this.processSegment(
+            seg,
             tx,
             `${path}.content_segments[${i}].segment`,
           );
           await tx.content_segment.create({
             data: {
-              content_id: content.content_id,
-              segment_id: segmentId,
-              position: segWrapper.position ?? i + 1,
+              content_id: created.content_id,
+              segment_id,
+              position: wrap?.position ?? i + 1,
             },
           });
         }
       }
 
       // ingredients
-      if (contentPayload.content_ingredients) {
-        await tx.content_ingredient.deleteMany({
-          where: { content_id: content.content_id },
-        });
-        for (let i = 0; i < contentPayload.content_ingredients.length; i++) {
-          const ingPayload = contentPayload.content_ingredients[i];
-          const ingredientId = await this.processIngredient(
-            ingPayload,
+      if (Array.isArray(content.content_ingredients)) {
+        for (let i = 0; i < content.content_ingredients.length; i++) {
+          const ing_id = await this.processIngredient(
+            content.content_ingredients[i],
             tx,
             `${path}.content_ingredients[${i}]`,
           );
           await tx.content_ingredient.create({
-            data: {
-              content_id: content.content_id,
-              ingredient_id: ingredientId,
-            },
+            data: { content_id: created.content_id, ingredient_id: ing_id },
           });
         }
       }
 
       // prep times
-      if (contentPayload.content_prep_times) {
-        await tx.content_prep_time.deleteMany({
-          where: { content_id: content.content_id },
-        });
-        for (let i = 0; i < contentPayload.content_prep_times.length; i++) {
-          const ptPayload = contentPayload.content_prep_times[i];
-          const prepTimeId = await this.processPrepTime(
-            ptPayload,
+      if (Array.isArray(content.content_prep_times)) {
+        for (let i = 0; i < content.content_prep_times.length; i++) {
+          const pt_id = await this.processPrepTime(
+            content.content_prep_times[i],
             tx,
             `${path}.content_prep_times[${i}]`,
           );
           await tx.content_prep_time.create({
-            data: { content_id: content.content_id, prep_time_id: prepTimeId },
+            data: { content_id: created.content_id, prep_time_id: pt_id },
           });
         }
       }
+
+      return created;
     } catch (err: any) {
-      const extra = DEV_MODE
-        ? { path, payload: safeStringify(contentPayload) }
-        : undefined;
-      logError(ctx, err, extra);
+      logError(ctx, err, DEV_MODE ? { path, payload: content } : undefined);
       throw err;
     }
   }
 
-  // ---- Category ------------------------------------------------------------
-
+  /* -------------------- category/product/unit/segment/preptime (flat) -------------------- */
   private async processCategory(
-    categoryPayload: any,
-    type: string,
+    cat: any,
     tx: PrismaClient,
+    fallbackType: string,
     path = "category",
-  ): Promise<string> {
-    const ctx = "processCategory";
-    try {
-      assert(
-        categoryPayload?.data,
-        "Category.data is required",
-        ctx,
-        `${path}.data`,
-        categoryPayload,
-      );
-      const { str_value } = categoryPayload.data;
-      assert(
-        str_value,
-        "Category.data.str_value is required",
-        ctx,
-        `${path}.data.str_value`,
-        categoryPayload,
-      );
+  ): Promise<string | null> {
+    if (!cat) return null;
+    const str_value = (cat.str_value ?? cat.name ?? cat.value ?? "")
+      .toString()
+      .trim();
+    const type = (cat.type ?? fallbackType ?? "").toString().trim();
+    if (!str_value || !type) return null;
 
-      const existing = await tx.category.findUnique({
-        where: { str_value_type: { str_value, type } },
-      });
-      if (existing) return existing.category_id;
+    const existing = await tx.category.findUnique({
+      where: { str_value_type: { str_value, type } },
+    });
+    if (existing) return existing.category_id;
 
-      const categoryId = await this.safeId(
-        tx,
-        "category",
-        "category_id",
-        categoryPayload.category_id,
-      );
-      const category = await tx.category.create({
-        data: { category_id: categoryId, str_value, type },
-      });
-      return category.category_id;
-    } catch (err: any) {
-      const extra = DEV_MODE
-        ? { type, path, payload: safeStringify(categoryPayload) }
-        : undefined;
-      logError(ctx, err, extra);
-      throw err;
-    }
+    const category_id = uuidv4();
+    const created = await tx.category.create({
+      data: { category_id, str_value, type },
+    });
+    return created.category_id;
   }
-
-  // ---- Segment -------------------------------------------------------------
-
-  private async processSegment(
-    segmentPayload: any,
-    tx: PrismaClient,
-    path = "segment",
-  ): Promise<string> {
-    const ctx = "processSegment";
-    try {
-      assert(
-        segmentPayload?.data,
-        "Segment.data is required",
-        ctx,
-        `${path}.data`,
-        segmentPayload,
-      );
-
-      const { title, paragraph } = segmentPayload.data;
-      assert(
-        typeof paragraph === "string",
-        "Segment.data.paragraph must be a string",
-        ctx,
-        `${path}.data.paragraph`,
-        segmentPayload,
-      );
-
-      const existing = await tx.segment.findFirst({ where: { paragraph } });
-      if (existing) {
-        await tx.segment.update({
-          where: { segment_id: existing.segment_id },
-          data: {
-            title: title ?? existing.title,
-          },
-        });
-        return existing.segment_id;
-      }
-
-      const segmentId = await this.safeId(
-        tx,
-        "segment",
-        "segment_id",
-        segmentPayload.segment_id,
-      );
-      const segment = await tx.segment.create({
-        data: {
-          segment_id: segmentId,
-          title: title ?? null,
-          paragraph,
-        },
-      });
-      return segment.segment_id;
-    } catch (err: any) {
-      const extra = DEV_MODE
-        ? { path, payload: safeStringify(segmentPayload) }
-        : undefined;
-      logError(ctx, err, extra);
-      throw err;
-    }
-  }
-
-  // ---- Product -------------------------------------------------------------
 
   private async processProduct(
-    productPayload: any,
+    prod: any,
     tx: PrismaClient,
     path = "product",
   ): Promise<string> {
-    const ctx = "processProduct";
-    try {
-      assert(productPayload, "Product payload is required", ctx, path);
-      // connect by id
-      if (productPayload.id) return productPayload.id;
+    assert(prod, "Product payload missing", "processProduct", path, prod);
+    const name = (prod.name ?? "").toString().trim();
+    assert(
+      name,
+      "Product.name is required",
+      "processProduct",
+      `${path}.name`,
+      prod,
+    );
 
-      // create by data
-      assert(
-        productPayload.data,
-        "Product.data is required when id is missing",
-        ctx,
-        `${path}.data`,
-        productPayload,
-      );
-      const { name, en_name, publication } = productPayload.data;
-      assert(
-        name,
-        "Product.data.name is required",
-        ctx,
-        `${path}.data.name`,
-        productPayload,
-      );
+    const existing = await tx.product.findUnique({ where: { name } });
+    if (existing) return existing.product_id;
 
-      const existing = await tx.product.findUnique({ where: { name } });
-      if (existing) return existing.product_id;
-
-      const productId = await this.safeId(
-        tx,
-        "product",
-        "product_id",
-        productPayload.product_id,
-      );
-      await tx.product.create({
-        data: {
-          product_id: productId,
-          name,
-          en_name: en_name || name,
-          is_recipe_id: publication?.id || null,
-        },
-      });
-      return productId;
-    } catch (err: any) {
-      const extra = DEV_MODE
-        ? { path, payload: safeStringify(productPayload) }
-        : undefined;
-      logError(ctx, err, extra);
-      throw err;
-    }
+    const product_id = uuidv4();
+    const created = await tx.product.create({
+      data: { product_id, name },
+    });
+    return created.product_id;
   }
-
-  // ---- Ingredient ----------------------------------------------------------
-
-  private async processIngredient(
-    ingredientPayload: any,
-    tx: PrismaClient,
-    path = "ingredient",
-  ): Promise<string> {
-    const ctx = "processIngredient";
-    try {
-      assert(
-        ingredientPayload?.data,
-        "Ingredient.data is required",
-        ctx,
-        `${path}.data`,
-        ingredientPayload,
-      );
-
-      const productId = await this.processProduct(
-        ingredientPayload.product,
-        tx,
-        `${path}.product`,
-      );
-      const ingredientId = await this.safeId(
-        tx,
-        "ingredient",
-        "ingredient_id",
-        ingredientPayload.ingredient_id,
-      );
-
-      const ingredient = await tx.ingredient.upsert({
-        where: { ingredient_id: ingredientId },
-        update: {
-          quantity: ingredientPayload.data?.quantity ?? 0,
-          multiply_factor: ingredientPayload.data?.multiply_factor ?? 1,
-          product_id: productId,
-        },
-        create: {
-          ingredient_id: ingredientId,
-          quantity: ingredientPayload.data?.quantity ?? 0,
-          multiply_factor: ingredientPayload.data?.multiply_factor ?? 1,
-          product_id: productId,
-        },
-      });
-
-      // Units
-      if (ingredientPayload.ingredient_units?.length) {
-        await tx.ingredient_unit.deleteMany({
-          where: { ingredient_id: ingredient.ingredient_id },
-        });
-
-        for (let i = 0; i < ingredientPayload.ingredient_units.length; i++) {
-          const unitWrap = ingredientPayload.ingredient_units[i];
-          const unitId = await this.processUnit(
-            unitWrap?.unit,
-            tx,
-            `${path}.ingredient_units[${i}].unit`,
-          );
-          await tx.ingredient_unit.create({
-            data: { ingredient_id: ingredient.ingredient_id, unit_id: unitId },
-          });
-        }
-      }
-
-      return ingredient.ingredient_id;
-    } catch (err: any) {
-      const extra = DEV_MODE
-        ? { path, payload: safeStringify(ingredientPayload) }
-        : undefined;
-      logError(ctx, err, extra);
-      throw err;
-    }
-  }
-
-  // ---- Unit ----------------------------------------------------------------
 
   private async processUnit(
-    unitPayload: any,
+    unit: any,
     tx: PrismaClient,
     path = "unit",
   ): Promise<string> {
-    const ctx = "processUnit";
-    try {
-      assert(unitPayload, "Unit payload is required", ctx, path);
-      // connect
-      if (unitPayload.id) return unitPayload.id;
+    assert(unit, "Unit payload missing", "processUnit", path, unit);
+    const name = (unit.name ?? "").toString().trim();
+    assert(name, "Unit.name is required", "processUnit", `${path}.name`, unit);
 
-      // create
-      const name = unitPayload?.data?.name;
-      assert(
-        name,
-        "Unit.data.name is required when id is missing",
-        ctx,
-        `${path}.data.name`,
-        unitPayload,
-      );
+    const existing = await tx.unit.findUnique({ where: { name } });
+    if (existing) return existing.unit_id;
 
-      const existing = await tx.unit.findUnique({ where: { name } });
-      if (existing) return existing.unit_id;
-
-      const unitId = await this.safeId(
-        tx,
-        "unit",
-        "unit_id",
-        unitPayload.unit_id,
-      );
-      const unit = await tx.unit.create({ data: { unit_id: unitId, name } });
-      return unit.unit_id;
-    } catch (err: any) {
-      const extra = DEV_MODE
-        ? { path, payload: safeStringify(unitPayload) }
-        : undefined;
-      logError(ctx, err, extra);
-      throw err;
-    }
+    const unit_id = uuidv4();
+    const created = await tx.unit.create({ data: { unit_id, name } });
+    return created.unit_id;
   }
 
-  // ---- Prep Time -----------------------------------------------------------
+  private async processIngredient(
+    ing: any,
+    tx: PrismaClient,
+    path = "ingredient",
+  ): Promise<string> {
+    assert(ing, "Ingredient payload missing", "processIngredient", path, ing);
+    const product_id = await this.processProduct(
+      ing.product,
+      tx,
+      `${path}.product`,
+    );
+
+    const ingredient_id = uuidv4();
+    const created = await tx.ingredient.create({
+      data: {
+        ingredient_id,
+        quantity: typeof ing.quantity === "number" ? ing.quantity : null,
+        multiply_factor: Number.isFinite(ing.multiply_factor)
+          ? ing.multiply_factor
+          : 1,
+        cut: ing.cut ?? null,
+        title: ing.title ?? null,
+        product_id,
+      },
+    });
+
+    if (Array.isArray(ing.ingredient_units)) {
+      for (let i = 0; i < ing.ingredient_units.length; i++) {
+        const unitId = await this.processUnit(
+          ing.ingredient_units[i]?.unit,
+          tx,
+          `${path}.ingredient_units[${i}].unit`,
+        );
+        await tx.ingredient_unit.create({
+          data: { ingredient_id: created.ingredient_id, unit_id: unitId },
+        });
+      }
+    }
+
+    return created.ingredient_id;
+  }
+
+  private async processSegment(
+    seg: any,
+    tx: PrismaClient,
+    path = "segment",
+  ): Promise<string> {
+    assert(seg, "Segment payload missing", "processSegment", path, seg);
+    const paragraph = (seg.paragraph ?? "").toString().trim();
+    assert(
+      paragraph,
+      "Segment.paragraph is required",
+      "processSegment",
+      `${path}.paragraph`,
+      seg,
+    );
+
+    const existing = await tx.segment.findFirst({ where: { paragraph } });
+    if (existing) {
+      // Optionally update title if provided
+      if (typeof seg.title === "string" && seg.title !== existing.title) {
+        await tx.segment.update({
+          where: { segment_id: existing.segment_id },
+          data: { title: seg.title },
+        });
+      }
+      return existing.segment_id;
+    }
+
+    const segment_id = uuidv4();
+    const created = await tx.segment.create({
+      data: { segment_id, paragraph, title: seg.title ?? null },
+    });
+    return created.segment_id;
+  }
 
   private async processPrepTime(
-    prepTimePayload: any,
+    pt: any,
     tx: PrismaClient,
     path = "prep_time",
   ): Promise<string> {
-    const ctx = "processPrepTime";
-    try {
-      const duration =
-        prepTimePayload?.data?.duration ??
-        prepTimePayload?.duration ??
-        prepTimePayload?.prep_time?.data?.duration ??
-        prepTimePayload?.prep_time?.duration;
+    assert(pt, "PrepTime payload missing", "processPrepTime", path, pt);
+    const duration = Number(pt.duration);
+    assert(
+      Number.isFinite(duration),
+      "PrepTime.duration is required (number)",
+      "processPrepTime",
+      `${path}.duration`,
+      pt,
+    );
 
-      assert(
-        Number.isFinite(duration),
-        "PrepTime.duration is required (number)",
-        ctx,
-        `${path}.data.duration`,
-        prepTimePayload,
-      );
-
-      const styleId = prepTimePayload?.style?.data?.str_value
-        ? await this.processCategory(
-            prepTimePayload.style,
-            "Cook",
-            tx,
-            `${path}.style`,
-          )
-        : null;
-
-      const prepTimeId = await this.safeId(
+    let style_id: string | null = null;
+    if (pt.style) {
+      style_id = await this.processCategory(
+        pt.style,
         tx,
-        "prep_time",
-        "prep_time_id",
-        prepTimePayload?.prep_time_id ||
-          prepTimePayload?.prep_time?.prep_time_id,
+        "Cook",
+        `${path}.style`,
       );
-
-      const pt = await tx.prep_time.upsert({
-        where: { prep_time_id: prepTimeId },
-        update: { duration, style_id: styleId },
-        create: { prep_time_id: prepTimeId, duration, style_id: styleId },
-      });
-
-      return pt.prep_time_id;
-    } catch (err: any) {
-      const extra = DEV_MODE
-        ? { path, payload: safeStringify(prepTimePayload) }
-        : undefined;
-      logError(ctx, err, extra);
-      throw err;
     }
+
+    const prep_time_id = uuidv4();
+    const created = await tx.prep_time.create({
+      data: { prep_time_id, duration, style_id },
+    });
+    return created.prep_time_id;
   }
 }

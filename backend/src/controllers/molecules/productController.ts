@@ -11,7 +11,6 @@ import { v4 as uuidv4 } from "uuid";
 export const normalizeProduct = (product: any): Product => ({
   product_id: product.product_id,
   name: product.name,
-  en_name: product.en_name,
   is_recipe_id: product.is_recipe_id,
   macro_id: product.macro_id,
   isRecipe: product.isRecipe ?? null,
@@ -32,7 +31,6 @@ export class ProductController
       data: {
         product_id: newId,
         name: payload.name,
-        en_name: payload.en_name,
         // Correction: Remove `macro_id` and use the `macro` relation.
         macro: payload.connect?.macro
           ? { connect: { macro_id: payload.connect.macro.macro_id } }
@@ -108,7 +106,6 @@ export class ProductController
       where: { product_id: id },
       data: {
         name: payload.name,
-        en_name: payload.en_name,
         // Correction: Remove `macro_id` and use the `macro` relation.
         macro: payload.connect?.macro
           ? { connect: { macro_id: payload.connect.macro.macro_id } }

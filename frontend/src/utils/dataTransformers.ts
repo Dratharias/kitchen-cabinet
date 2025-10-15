@@ -10,7 +10,6 @@ export type Unit = {
 export type Product = {
   product_id: string;
   name: string;
-  en_name: string;
 };
 
 // --- Transforms ---

@@ -1,4 +1,10 @@
-import { useState, useEffect, createContext, useContext, ReactNode } from "react";
+import {
+  useState,
+  useEffect,
+  createContext,
+  useContext,
+  ReactNode,
+} from "react";
 
 export type Option = { value: string; label: string };
 export type CacheKey = "products" | "units" | "publications" | "prepStyles";
@@ -25,7 +31,10 @@ export function FormCacheProvider({ children }: { children: ReactNode }) {
     prepStyles: false,
   };
 
-  const fetchResource = async (key: CacheKey, endpoint: string): Promise<Option[]> => {
+  const fetchResource = async (
+    key: CacheKey,
+    endpoint: string,
+  ): Promise<Option[]> => {
     if (loaded[key]) return cache[key];
 
     const token = localStorage.getItem("auth_token");
@@ -68,7 +77,7 @@ export function FormCacheProvider({ children }: { children: ReactNode }) {
     }
 
     loaded[key] = true;
-    setCache(prev => ({ ...prev, [key]: mapped }));
+    setCache((prev) => ({ ...prev, [key]: mapped }));
     return mapped;
   };
 
@@ -81,6 +90,7 @@ export function FormCacheProvider({ children }: { children: ReactNode }) {
 
 export function useFormCache() {
   const ctx = useContext(CacheContext);
-  if (!ctx) throw new Error("useFormCache must be used within FormCacheProvider");
+  if (!ctx)
+    throw new Error("useFormCache must be used within FormCacheProvider");
   return ctx;
 }

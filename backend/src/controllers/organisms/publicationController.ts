@@ -1,48 +1,20 @@
+import { Prisma } from "@prisma/client";
+import { prisma } from "../../config.js";
+import { v4 as uuidv4 } from "uuid";
 import {
+  shapePublicPublicationFull,
+  shapePublicPublicationSummary,
+} from "../../utils/shapePublication.js";
+import type {
   Publication,
   PublicationCore,
   PublicationRelations,
-  PublicationTag,
-  Review,
 } from "types/controller.types";
-import { GenericPaginatedController } from "types/crud.types";
-import { PublicationConnect, PublicationReadAllDto } from "types/dto.types";
-import { v4 as uuidv4 } from "uuid";
-import { prisma } from "../../config.js";
-import { shapePublicPublication } from "../../utils/shapePublication.js";
-
-export const normalizePublication = (pub: any): Publication => {
-  const shaped = shapePublicPublication(pub);
-
-  const reviewCount = shaped.reviews?.length ?? 0;
-  const reviewAverageScore =
-    reviewCount > 0
-      ? shaped.reviews.reduce(
-          (acc: number, r: Review) => acc + (r.rating ?? 0),
-          0,
-        ) / reviewCount
-      : 0;
-
-  return {
-    publication_id: shaped.publication_id,
-    title: shaped.title,
-    description: shaped.description ?? [],
-    note: shaped.note ?? [],
-    public: shaped.public,
-    published: shaped.published,
-    thumbnail: shaped.thumbnail ?? null,
-    gallery: shaped.gallery ?? [],
-    type: shaped.type ?? null,
-    style: shaped.style ?? null,
-    author: shaped.author ?? null,
-    contents: shaped.contents ?? null,
-    productsRef: shaped.productsRef ?? null,
-    reviewCount,
-    reviewAverageScore,
-    tags:
-      shaped.tags?.map((tag: PublicationTag) => tag.category?.str_value) ?? [],
-  };
-};
+import type { GenericPaginatedController } from "types/crud.types";
+import type {
+  PublicationReadAllDto,
+  PublicationConnect,
+} from "types/dto.types";
 
 export class PublicationController
   implements
@@ -53,218 +25,288 @@ export class PublicationController
       PublicationConnect
     >
 {
+  // =====================================================
+  // CREATE
+  // =====================================================
   async create(payload: PublicationCore): Promise<Publication> {
     const newId = payload.publication_id ?? uuidv4();
-
-    const publication = await prisma.publication.create({
+    const pub = await prisma.publication.create({
       data: {
         publication_id: newId,
         title: payload.title,
-        description: payload.description,
-        note: payload.note,
-        public: payload.public,
-        published: payload.published,
-        thumbnail: payload.thumbnail,
+        description: payload.description ?? [],
+        note: payload.note ?? [],
+        public: payload.public ?? true,
+        published: payload.published ?? true,
+        thumbnail: payload.thumbnail ?? null,
         gallery: payload.gallery ?? [],
       },
-      include: this.buildInclude(),
+      include: this.buildFullInclude(),
     });
-
-    return normalizePublication(publication);
+    return shapePublicPublicationFull(pub);
   }
 
-  async findById(
-    id: string,
-    opts?: { admin?: boolean },
-  ): Promise<Publication | null> {
-    const where: any = { publication_id: id };
-    if (!opts?.admin) {
-      where.public = true;
-      where.published = true;
-    }
-
-    const publication = await prisma.publication.findFirst({
-      where,
-      include: this.buildInclude(),
+  // =====================================================
+  // READ BY ID
+  // =====================================================
+  async findById(id: string): Promise<Publication | null> {
+    const pub = await prisma.publication.findFirst({
+      where: { publication_id: id },
+      include: this.buildFullInclude(),
     });
-    return publication ? normalizePublication(publication) : null;
+    return pub ? shapePublicPublicationFull(pub) : null;
   }
 
-  async findAll(params?: PublicationReadAllDto & { admin?: boolean }) {
-    const where: any = {};
+  // =====================================================
+  // READ ALL — admin/public + recherche + tolérance orthographique
+  // =====================================================
+  async findAll(params?: PublicationReadAllDto & { admin?: boolean }): Promise<{
+    items: Publication[];
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  }> {
+    const limit = Number(params?.limit) || 12;
+    const page = Number(params?.page) || 1;
+    const skip = (page - 1) * limit;
+    const sortBy = params?.sortBy || "title";
+    const order = params?.order === "desc" ? "desc" : "asc";
 
-    // filtre public/published par défaut
-    if (!params?.admin) {
-      where.public = true;
-      where.published = true;
-    }
+    // --- Normalisation des filtres ---
+    const filter = params?.filter ?? {};
+    const q = typeof filter.q === "string" ? filter.q.trim() : null;
+    const typeField = (filter as any).type;
+    const types: string[] = Array.isArray(typeField)
+      ? typeField
+      : typeField
+        ? [typeField]
+        : [];
 
-    if (params?.filter) {
-      let filter = params.filter;
-      if (typeof filter === "string") {
-        try {
-          filter = JSON.parse(filter);
-        } catch {
-          filter = {};
-        }
-      }
+    // --- Filtre de base (public/published si non admin) ---
+    const where: Prisma.publicationWhereInput = {
+      AND: [
+        !params?.admin ? { public: true, published: true } : undefined,
+        types.length ? { type: { str_value: { in: types } } } : undefined,
+        q
+          ? {
+              OR: [
+                { title: { contains: q, mode: Prisma.QueryMode.insensitive } },
+                { description: { hasSome: [q] } },
+                {
+                  contents: {
+                    some: {
+                      OR: [
+                        {
+                          content_segments: {
+                            some: {
+                              segment: {
+                                paragraph: {
+                                  contains: q,
+                                  mode: Prisma.QueryMode.insensitive,
+                                },
+                              },
+                            },
+                          },
+                        },
+                        {
+                          content_ingredients: {
+                            some: {
+                              ingredient: {
+                                OR: [
+                                  {
+                                    title: {
+                                      contains: q,
+                                      mode: Prisma.QueryMode.insensitive,
+                                    },
+                                  },
+                                  {
+                                    cut: {
+                                      contains: q,
+                                      mode: Prisma.QueryMode.insensitive,
+                                    },
+                                  },
+                                  {
+                                    product: {
+                                      name: {
+                                        contains: q,
+                                        mode: Prisma.QueryMode.insensitive,
+                                      },
+                                    },
+                                  },
+                                  {
+                                    ingredient_units: {
+                                      some: {
+                                        unit: {
+                                          name: {
+                                            contains: q,
+                                            mode: Prisma.QueryMode.insensitive,
+                                          },
+                                        },
+                                      },
+                                    },
+                                  },
+                                ],
+                              },
+                            },
+                          },
+                        },
+                      ],
+                    },
+                  },
+                },
+              ],
+            }
+          : undefined,
+      ].filter(Boolean) as Prisma.publicationWhereInput[],
+    };
 
-      const { tagIds, contentIds, type, style, author, ...directFields } =
-        filter as any;
-
-      if (Array.isArray(type) && type.length)
-        where.type = { str_value: { in: type } };
-      if (Array.isArray(style) && style.length)
-        where.style = { str_value: { in: style } };
-      if (Array.isArray(author) && author.length)
-        where.author = { str_value: { in: author } };
-
-      Object.keys(directFields).forEach((key) => {
-        const value = directFields[key as keyof typeof directFields];
-        if (
-          value !== undefined &&
-          value !== null &&
-          !Array.isArray(value) &&
-          typeof value !== "object"
-        ) {
-          where[key] = value;
-        }
-      });
-
-      if (tagIds?.length)
-        where.tags = { some: { category_id: { in: tagIds } } };
-      if (contentIds?.length)
-        where.contents = { some: { content_id: { in: contentIds } } };
-    }
-
+    // --- Comptage total ---
     const total = await prisma.publication.count({ where });
-    const limit = params?.limit
-      ? Number(params.limit)
-      : params?.take
-        ? Number(params.take)
-        : 12;
-    const page = params?.page ? Number(params.page) : 1;
-    const skip = params?.skip ? Number(params.skip) : (page - 1) * limit;
 
-    const publications = await prisma.publication.findMany({
+    // --- Fetch principal ---
+    const pubs = await prisma.publication.findMany({
       where,
-      include: this.buildInclude(),
+      include: this.buildSummaryInclude(),
       skip,
       take: limit,
+      orderBy: { [sortBy]: order },
     });
 
-    const items = publications.map(normalizePublication);
-    const totalPages = Math.ceil(total / limit);
-    return { items, total, page, limit, totalPages };
+    // --- Tolérance orthographique (pg_trgm) ---
+    let results = pubs;
+    if (q) {
+      const safeQ = q.replace(/'/g, "''");
+      const fuzzy = await prisma.$queryRawUnsafe<{ publication_id: string }[]>(`
+        SELECT publication_id
+        FROM publication
+        WHERE similarity(unaccent(lower(title)), unaccent(lower('${safeQ}'))) > 0.4
+        ORDER BY similarity(unaccent(lower(title)), unaccent(lower('${safeQ}'))) DESC
+        LIMIT 50;
+      `);
+
+      const fuzzyIds = fuzzy.map((f) => f.publication_id);
+      if (fuzzyIds.length > 0) {
+        const fuzzyItems = await prisma.publication.findMany({
+          where: { publication_id: { in: fuzzyIds } },
+          include: this.buildSummaryInclude(),
+        });
+
+        const merged = new Map<string, any>();
+        [...pubs, ...fuzzyItems].forEach((p) =>
+          merged.set(p.publication_id, p),
+        );
+        results = Array.from(merged.values()).sort((a, b) =>
+          a.title.localeCompare(b.title, "fr", { sensitivity: "base" }),
+        );
+      }
+    }
+
+    const items = results.map((p) => shapePublicPublicationSummary(p));
+    return { items, total, page, limit, totalPages: Math.ceil(total / limit) };
   }
 
+  // =====================================================
+  // UPDATE
+  // =====================================================
   async update(
     id: string,
-    payload: Partial<PublicationCore & PublicationRelations> & {
-      connect?: Partial<PublicationConnect>;
-      set?: Partial<PublicationConnect>;
-    },
+    payload: Partial<PublicationCore & PublicationRelations>,
   ): Promise<Publication> {
-    const publication = await prisma.publication.update({
+    const pub = await prisma.publication.update({
       where: { publication_id: id },
       data: {
         title: payload.title,
-        description: payload.description,
-        note: payload.note,
-        public: payload.public,
-        published: payload.published,
-        thumbnail: payload.thumbnail,
+        description: payload.description ?? [],
+        note: payload.note ?? [],
+        public: payload.public ?? true,
+        published: payload.published ?? true,
+        thumbnail: payload.thumbnail ?? null,
         gallery: payload.gallery ?? [],
-        contents: payload.connect?.contents
-          ? {
-              connect: payload.connect.contents.map(
-                (c: { content_id: string }) => ({ content_id: c.content_id }),
-              ),
-            }
-          : payload.set?.contents
-            ? {
-                set: payload.set.contents.map((c: { content_id: string }) => ({
-                  content_id: c.content_id,
-                })),
-              }
-            : undefined,
-        reviews: payload.connect?.reviews
-          ? {
-              connect: payload.connect.reviews.map(
-                (r: { review_id: string }) => ({ review_id: r.review_id }),
-              ),
-            }
-          : payload.set?.reviews
-            ? {
-                set: payload.set.reviews.map((r: { review_id: string }) => ({
-                  review_id: r.review_id,
-                })),
-              }
-            : undefined,
-        tags: payload.connect?.tags
-          ? {
-              connect: payload.connect.tags.map(
-                (t: { category_id: string }) => ({
-                  publication_id_category_id: {
-                    publication_id: id,
-                    category_id: t.category_id,
-                  },
-                }),
-              ),
-            }
-          : payload.set?.tags
-            ? {
-                set: payload.set.tags.map((t: { category_id: string }) => ({
-                  publication_id_category_id: {
-                    publication_id: id,
-                    category_id: t.category_id,
-                  },
-                })),
-              }
-            : undefined,
       },
-      include: this.buildInclude(),
+      include: this.buildFullInclude(),
     });
-
-    return normalizePublication(publication);
+    return shapePublicPublicationFull(pub);
   }
 
+  // =====================================================
+  // DELETE
+  // =====================================================
   async delete(id: string): Promise<{ deleted: boolean }> {
     await prisma.publication.delete({ where: { publication_id: id } });
     return { deleted: true };
   }
 
-  private buildInclude(): any {
+  // =====================================================
+  // INCLUDES
+  // =====================================================
+  private buildSummaryInclude() {
     return {
       type: true,
       style: true,
       author: true,
+      tags: {
+        include: {
+          category: {
+            select: { category_id: true, str_value: true, type: true },
+          },
+        },
+      },
+      contents: {
+        select: {
+          content_id: true,
+          total_prep_time: true,
+          servings: true,
+          subtitle: true,
+          is_ingredient: true,
+        },
+      },
+      reviews: { select: { rating: true } },
+    };
+  }
+
+  private buildFullInclude() {
+    return {
+      type: true,
+      style: true,
+      author: true,
+      tags: {
+        include: {
+          category: {
+            select: { category_id: true, str_value: true, type: true },
+          },
+        },
+      },
       contents: {
         include: {
           content_segments: {
             include: {
               segment: {
-                select: {
-                  segment_id: true,
-                  title: true,
-                  paragraph: true,
-                },
+                select: { segment_id: true, title: true, paragraph: true },
               },
             },
           },
           content_ingredients: {
             include: {
-              product: {
+              ingredient: {
                 select: {
-                  product_id: true,
-                  name: true,
-                  en_name: true,
-                  macro: { select: { calories: true, protein: true } },
-                },
-              },
-              ingredient_units: {
-                include: {
-                  unit: { select: { unit_id: true, name: true } },
+                  ingredient_id: true,
+                  quantity: true,
+                  multiply_factor: true,
+                  cut: true,
+                  title: true,
+                  product: {
+                    select: {
+                      product_id: true,
+                      name: true,
+                      macro: { select: { calories: true, protein: true } },
+                    },
+                  },
+                  ingredient_units: {
+                    include: {
+                      unit: { select: { unit_id: true, name: true } },
+                    },
+                  },
                 },
               },
             },
@@ -282,8 +324,7 @@ export class PublicationController
           },
         },
       },
-      reviews: true,
-      tags: { include: { category: true } },
+      reviews: { select: { rating: true, comment: true } },
     };
   }
 }

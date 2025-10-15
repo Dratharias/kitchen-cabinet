@@ -14,7 +14,7 @@ export const normalizeIngredient = (ingredient: any): Ingredient => ({
   product_id: ingredient.product_id,
   multiply_factor: ingredient.multiply_factor,
   title: ingredient.title ?? null,
-  cut:   ingredient.cut ?? null,
+  cut: ingredient.cut ?? null,
 
   product: ingredient.product ?? null,
   content_ingredients: ingredient.content_ingredients ?? null,

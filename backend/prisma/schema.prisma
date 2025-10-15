@@ -48,7 +48,7 @@ model publication {
   type_id        String?
   style_id       String?
   author_id      String?
-  gallery        String[]
+  gallery        String[] // Rétrocompatibilité
   date_created   DateTime @default(now())
 
   type   category? @relation("PublicationType", fields: [type_id], references: [category_id])
@@ -80,16 +80,27 @@ model content {
   content_id      String   @id @default(uuid())
   publication_id  String
   total_prep_time Int      @default(0) @db.SmallInt
-  servings        Int?     @db.SmallInt
+  serving_id        String
   subtitle        String?
+  thumbnail      String?
+  gallery        String[] // Nouvelle gallerie
   is_ingredient   Boolean?
 
+  servings servings @relation(fields: [serving_id], references: [serving_id])
   publication         publication          @relation(fields: [publication_id], references: [publication_id], onDelete: Cascade)
   content_segments    content_segment[]
   content_ingredients content_ingredient[]
   content_prep_times  content_prep_time[]
 
   @@index([publication_id])
+}
+
+model servings {
+  serving_id String @id @default(uuid())
+  yield Int @db.SmallInt
+  value String
+
+  content content[]
 }
 
 model segment {
@@ -124,10 +135,9 @@ model macro {
 model product {
   product_id   String       @id @default(uuid())
   name         String       @unique
-  en_name      String?
   macro_id     String?
   is_recipe_id String?
-  isRecipe     publication? @relation("RecipeReference", fields: [is_recipe_id], references: [publication_id])
+  is_recipe     publication? @relation("RecipeReference", fields: [is_recipe_id], references: [publication_id])
 
   macro              macro?             @relation(fields: [macro_id], references: [macro_id])
   ingredients        ingredient[]

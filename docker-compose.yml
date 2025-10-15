@@ -26,7 +26,7 @@ services:
     tty: true
 
   dev-kitchen:
-    image: postgres:15
+    image: postgres:latest
     container_name: dev-kitchen
     env_file:
       - .env

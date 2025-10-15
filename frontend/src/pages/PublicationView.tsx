@@ -1,196 +1,260 @@
 "use client";
+import { useState } from "react";
+import { usePublicationView } from "@/hooks/view/usePublicationView";
+import { PublicationHeaderEditable } from "@/components/view/PublicationHeaderEditable";
+import { PublicationDescriptionEditable } from "@/components/view/PublicationDescriptionEditable";
+import { PublicationVariantTabs } from "@/components/view/PublicationVariantTabs";
+import { PublicationTabs } from "@/components/view/PublicationTabs";
+import { DotGrid } from "@/components/ui/DotGrid";
+import { SpotlightWrapper } from "@/components/ui/SpotlightWrapper";
+import { PublicationHeader } from "@/components/view/PublicationHeader";
 
-import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import {
-  FileText,
-  Utensils,
-  ArrowLeft,
-  Clock,
-  Users,
-  ChevronDown,
-  ChevronUp,
-} from "lucide-react";
-import { PublicationsService } from "@/services/publications";
-import { useIsMobile } from "@/hooks/useIsMobile";
+import { IngredientBlockEditable } from "@/components/view/IngredientBlockEditable";
+import { SegmentBlockEditable } from "@/components/view/SegmentBlockEditable";
+import { ContentBlockHeaderEditable } from "@/components/view/ContentBlockHeaderEditable";
+
+import { useIngredientEdit } from "@/hooks/edit/useIngredientEdit";
+import { useSegmentEdit } from "@/hooks/edit/useSegmentEdit";
+import { useContentEdit } from "@/hooks/edit/useContentEdit";
+import { normalizePublication } from "@/utils/normalizePublication";
+import type { ServingsPayload } from "@/types/payloadBuilder";
+
+function normalizeServings(val: any): ServingsPayload | null {
+  if (!val) return null;
+  if (typeof val === "number") {
+    return { yield: val, value: "portion(s)" };
+  }
+  return val as ServingsPayload;
+}
 
 export function PublicationView() {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const isMobile = useIsMobile();
+  const {
+    publication,
+    loading,
+    selectedVariant,
+    setSelectedVariant,
+    checkedItems,
+    toggleChecked,
+    isAuthenticated,
+  } = usePublicationView();
 
-  const [publication, setPublication] = useState<any | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [showIngredients, setShowIngredients] = useState(true);
-  const [showSteps, setShowSteps] = useState(true);
+  // normalisation du contenu pour compatibilité des hooks
+  const normalized = publication ? normalizePublication(publication) : null;
 
-  useEffect(() => {
-    if (!id) {
-      navigate("/404", { replace: true });
-      return;
-    }
+  // Hooks d'édition toujours appelés
+  const ingredientEdit = useIngredientEdit(normalized);
+  const segmentEdit = useSegmentEdit(normalized);
+  const contentEdit = useContentEdit(normalized);
 
-    (async () => {
-      try {
-        const result = await PublicationsService.getPublicPublicationById(id);
-        if (!result) {
-          navigate("/404", { replace: true });
-          return;
-        }
-        setPublication(result);
-      } catch (err: any) {
-        console.error("Erreur de chargement :", err);
-        navigate("/404", { replace: true });
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, [id, navigate]);
-
-  if (loading)
+  if (loading) {
     return (
       <div className="flex h-screen items-center justify-center text-gray-400">
         Chargement...
       </div>
     );
-
+  }
   if (!publication) return null;
 
-  const firstContent = publication.contents?.[0];
-  const ingredients = firstContent?.content_ingredients || [];
-  const steps = firstContent?.content_segments || [];
-  const totalTime = firstContent?.total_prep_time ?? 0;
-  const servings = firstContent?.servings ?? 0;
+  const [expandedBlocks, setExpandedBlocks] = useState<Record<string, boolean>>({});
+  const [tab, setTab] = useState<"ingredients" | "steps">("ingredients");
+  const [servingFactors, setServingFactors] = useState<Record<string, number>>({});
 
+  const contents = publication.contents || [];
+  const variants = contents.filter((c: any) => !c.is_ingredient);
+  const subRecipes = contents.filter((c: any) => c.is_ingredient);
+  const activeVariant = variants[selectedVariant] || null;
+  const thumbnail = activeVariant?.thumbnail || publication.thumbnail || null;
+
+  const toggleBlock = (id: string) => {
+    setExpandedBlocks((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const getBlockId = (block: any) =>
+    block.content_id ||
+    block.publication_id ||
+    block.id ||
+    block.subtitle ||
+    crypto.randomUUID();
+
+  const isBlockExpanded = (blockId: string, isActiveVariant: boolean) =>
+    expandedBlocks[blockId] !== undefined
+      ? expandedBlocks[blockId]
+      : isActiveVariant;
+
+  const getServingFactor = (blockId: string) => servingFactors[blockId] || 1;
+  const setServingFactor = (blockId: string, factor: number) =>
+    setServingFactors((prev) => ({ ...prev, [blockId]: factor }));
+
+  // --- rendu principal
   return (
-    <div className="min-h-screen w-full p-6 bg-[#1F1F1F] text-gray-200">
-      {/* --- HEADER --- */}
-      <div className="flex items-center justify-between mb-8">
-        <button
-          onClick={() => navigate(-1)}
-          className="flex items-center gap-2 text-gray-400 hover:text-white transition"
+    <DotGrid
+      dotSize={10}
+      gap={15}
+      baseColor="#292929"
+      activeColor="#5B4853"
+      proximity={120}
+      shockRadius={250}
+      shockStrength={5}
+      resistance={750}
+      returnDuration={1.5}
+      className="bg-[#1F1F1F] min-h-screen"
+    >
+      <div className="relative z-20 mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 py-6">
+        {/* Header */}
+        {isAuthenticated ? (
+          <PublicationHeaderEditable
+            title={publication.title}
+            isAuthenticated={isAuthenticated}
+            isEditing={ingredientEdit.editingField === "title"}
+            editValue={ingredientEdit.editValues["title"] || publication.title}
+            onStartEdit={() => ingredientEdit.startEdit("title", publication.title)}
+            onCancel={() => ingredientEdit.cancelEdit("title")}
+            onConfirm={() =>
+              ingredientEdit.confirmIngredient(publication.publication_id, "title", "title")
+            }
+            onChange={(value) => ingredientEdit.updateValue("title", value)}
+          />
+        ) : (
+          <PublicationHeader title={publication.title} />
+        )}
+
+        {/* Thumbnail */}
+        <SpotlightWrapper
+          className="w-full h-64 rounded-xl mb-6"
+          radius="150px"
+          spotlightColor="rgba(255,255,255,0.2)"
+          softness={1}
         >
-          <ArrowLeft className="w-4 h-4" />
-          Retour
-        </button>
-
-        <div className="flex items-center gap-3">
-          {publication.type && (
-            <span className="px-3 py-1 text-xs rounded-full bg-amber-600 text-white uppercase tracking-wide">
-              {publication.type.str_value}
-            </span>
+          {thumbnail ? (
+            <img
+              src={thumbnail}
+              alt={publication.title}
+              className="object-cover w-full h-full transition-transform duration-500 hover:scale-105 rounded-xl"
+              loading="lazy"
+            />
+          ) : (
+            <div className="flex items-center justify-center h-full bg-gray-800 text-gray-500 text-sm rounded-xl">
+              Aucun visuel
+            </div>
           )}
-          {publication.style && (
-            <span className="px-3 py-1 text-xs rounded-full bg-gray-700 text-gray-200">
-              {publication.style.str_value}
-            </span>
-          )}
-        </div>
-      </div>
+        </SpotlightWrapper>
 
-      {/* --- Titre --- */}
-      <h1 className="text-4xl font-bold text-white mb-4">
-        {publication.title}
-      </h1>
-
-      {/* --- Image --- */}
-      {publication.thumbnail ? (
-        <img
-          src={publication.thumbnail}
-          alt={publication.title}
-          className="w-full h-64 object-cover rounded-xl mb-6"
-          loading="lazy"
+        {/* Description */}
+        <PublicationDescriptionEditable
+          description={publication.description || []}
+          isAuthenticated={isAuthenticated}
+          isEditing={ingredientEdit.editingField === "description"}
+          editValue={
+            ingredientEdit.editValues["description"] ||
+            (publication.description || []).join("\n")
+          }
+          onStartEdit={() =>
+            ingredientEdit.startEdit(
+              "description",
+              (publication.description || []).join("\n"),
+            )
+          }
+          onCancel={() => ingredientEdit.cancelEdit("description")}
+          onConfirm={() =>
+            ingredientEdit.confirmIngredient(publication.publication_id, "description", "description")
+          }
+          onChange={(value) => ingredientEdit.updateValue("description", value)}
         />
-      ) : (
-        <div className="w-full h-64 bg-gray-800 rounded-xl flex items-center justify-center text-gray-500 mb-6">
-          Aucun visuel
-        </div>
-      )}
 
-      {/* --- Description --- */}
-      <ul className="space-y-1 text-gray-300 mb-4">
-        {publication.description?.map((line: string, i: number) => (
-          <li key={i}>• {line}</li>
-        ))}
-      </ul>
+        {/* Variantes */}
+        <PublicationVariantTabs
+          variants={variants}
+          selectedVariant={selectedVariant}
+          setSelectedVariant={setSelectedVariant}
+        />
 
-      {/* --- Stats --- */}
-      <div className="flex justify-around text-center mb-8">
-        <div>
-          <Clock className="w-6 h-6 text-amber-500 mx-auto mb-1" />
-          <p className="text-2xl font-semibold">{totalTime}</p>
-          <p className="text-xs text-gray-400">minutes</p>
-        </div>
-        <div>
-          <Users className="w-6 h-6 text-amber-500 mx-auto mb-1" />
-          <p className="text-2xl font-semibold">{servings}</p>
-          <p className="text-xs text-gray-400">portions</p>
-        </div>
+        {/* Onglets */}
+        <PublicationTabs currentTab={tab} setTab={setTab} />
+
+        {/* INGREDIENTS */}
+        {tab === "ingredients" && (
+          <div className="pb-16">
+            {activeVariant && (
+              <>
+                <ContentBlockHeaderEditable
+                  contentId={activeVariant.content_id}
+                  subtitle={activeVariant.subtitle}
+                  servings={normalizeServings(activeVariant.servings)}
+                  isAuthenticated={isAuthenticated}
+                  editingField={contentEdit.editingField}
+                  editValues={contentEdit.editValues}
+                  startEdit={contentEdit.startEdit}
+                  cancelEdit={contentEdit.cancelEdit}
+                  updateValue={contentEdit.updateValue}
+                  confirmContent={contentEdit.confirmContent}
+                />
+                <IngredientBlockEditable
+                  block={activeVariant}
+                  expanded={isBlockExpanded(`ing-${getBlockId(activeVariant)}`, true)}
+                  toggleBlock={() => toggleBlock(`ing-${getBlockId(activeVariant)}`)}
+                  servingFactor={getServingFactor(`ing-${getBlockId(activeVariant)}`)}
+                  onServingChange={(factor) =>
+                    setServingFactor(`ing-${getBlockId(activeVariant)}`, factor)
+                  }
+                  ingredients={activeVariant.content_ingredients || []}
+                  isAuthenticated={isAuthenticated}
+                  checkedItems={checkedItems}
+                  toggleChecked={toggleChecked}
+                  {...ingredientEdit}
+                />
+              </>
+            )}
+            {subRecipes.map((subRecipe) => (
+              <IngredientBlockEditable
+                key={getBlockId(subRecipe)}
+                block={subRecipe}
+                expanded={isBlockExpanded(`ing-${getBlockId(subRecipe)}`, false)}
+                toggleBlock={() => toggleBlock(`ing-${getBlockId(subRecipe)}`)}
+                servingFactor={getServingFactor(`ing-${getBlockId(subRecipe)}`)}
+                onServingChange={(factor) =>
+                  setServingFactor(`ing-${getBlockId(subRecipe)}`, factor)
+                }
+                ingredients={subRecipe.content_ingredients || []}
+                isAuthenticated={isAuthenticated}
+                checkedItems={checkedItems}
+                toggleChecked={toggleChecked}
+                {...ingredientEdit}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* ÉTAPES */}
+        {tab === "steps" && (
+          <div className="pb-16">
+            {activeVariant && (
+              <SegmentBlockEditable
+                block={activeVariant}
+                expanded={isBlockExpanded(`step-${getBlockId(activeVariant)}`, true)}
+                toggleBlock={() => toggleBlock(`step-${getBlockId(activeVariant)}`)}
+                segments={activeVariant.content_segments || []}
+                isAuthenticated={isAuthenticated}
+                checkedItems={checkedItems}
+                toggleChecked={toggleChecked}
+                {...segmentEdit}
+              />
+            )}
+            {subRecipes.map((subRecipe) => (
+              <SegmentBlockEditable
+                key={getBlockId(subRecipe)}
+                block={subRecipe}
+                expanded={isBlockExpanded(`step-${getBlockId(subRecipe)}`, false)}
+                toggleBlock={() => toggleBlock(`step-${getBlockId(subRecipe)}`)}
+                segments={subRecipe.content_segments || []}
+                isAuthenticated={isAuthenticated}
+                checkedItems={checkedItems}
+                toggleChecked={toggleChecked}
+                {...segmentEdit}
+              />
+            ))}
+          </div>
+        )}
       </div>
-
-      {/* --- INGREDIENTS --- */}
-      <section className="border border-gray-800 rounded-lg p-4 mb-6">
-        <header
-          className="flex justify-between items-center cursor-pointer select-none"
-          onClick={() => isMobile && setShowIngredients((p) => !p)}
-        >
-          <h2 className="text-xl font-semibold text-white flex items-center gap-2">
-            <Utensils className="w-5 h-5" /> Ingrédients
-          </h2>
-          {isMobile &&
-            (showIngredients ? (
-              <ChevronUp className="w-5 h-5 text-gray-400" />
-            ) : (
-              <ChevronDown className="w-5 h-5 text-gray-400" />
-            ))}
-        </header>
-
-        {(!isMobile || showIngredients) && (
-          <ul className="mt-4 space-y-2 text-gray-300">
-            {ingredients.map((ing) => (
-              <li
-                key={ing.ingredient_id}
-                className="flex justify-between border-b border-gray-800 pb-1"
-              >
-                <span>
-                  {ing.product.name}
-                  {ing.ingredient_units?.length > 0 &&
-                    ` (${ing.ingredient_units[0].name})`}
-                </span>
-                <span>{ing.quantity}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
-
-      {/* --- ETAPES --- */}
-      <section className="border border-gray-800 rounded-lg p-4 mb-12">
-        <header
-          className="flex justify-between items-center cursor-pointer select-none"
-          onClick={() => isMobile && setShowSteps((p) => !p)}
-        >
-          <h2 className="text-xl font-semibold text-white flex items-center gap-2">
-            <FileText className="w-5 h-5" /> Préparation
-          </h2>
-          {isMobile &&
-            (showSteps ? (
-              <ChevronUp className="w-5 h-5 text-gray-400" />
-            ) : (
-              <ChevronDown className="w-5 h-5 text-gray-400" />
-            ))}
-        </header>
-
-        {(!isMobile || showSteps) && (
-          <ol className="mt-4 list-decimal list-inside space-y-4 text-gray-300">
-            {steps.map((s) => (
-              <li key={s.segment.segment_id}>
-                <p className="leading-relaxed">{s.segment.paragraph}</p>
-              </li>
-            ))}
-          </ol>
-        )}
-      </section>
-    </div>
+    </DotGrid>
   );
 }

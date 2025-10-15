@@ -1,0 +1,3273 @@
+{
+  "action": "create",
+  "payload": {
+    "bieredegingembre": {
+      "title": "Bière de gingembre (versions maison & pro)",
+      "description": [
+        "Boisson pétillante au gingembre, fermentée naturellement pour une effervescence légère et des notes épicées.",
+        "Inclut le levain de gingembre et deux variantes: maison (levain) et pro (levure commerciale)."
+      ],
+      "note": [
+        "Utiliser des bouteilles résistantes à la pression et dégazer au besoin.",
+        "Fermentation selon la température: plus chaud = plus rapide.",
+        "Prévoir un temps de refroidissement complet avant ensemencement du levain ou ajout de levure."
+      ],
+      "public": true,
+      "published": true,
+      "tags": [
+        {
+          "str_value": "fermentation",
+          "type": "Tag"
+        },
+        {
+          "str_value": "boissons",
+          "type": "Tag"
+        },
+        {
+          "str_value": "levain",
+          "type": "Tag"
+        }
+      ],
+      "thumbnail": "~/nas/media/recipebook/bieredegingembre.png",
+      "contents": [
+        {
+          "subtitle": "Levain de gingembre",
+          "is_ingredient": true,
+          "total_prep_time": 5765,
+          "servings": {
+            "yield": 120,
+            "value": "ml de levain actif"
+          },
+          "content_prep_times": [
+            {
+              "duration": 5,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 5760,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        },
+        {
+          "subtitle": "Bière de gingembre (maison)",
+          "total_prep_time": 4395,
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
+          "content_prep_times": [
+            {
+              "duration": 15,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 4320,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        },
+        {
+          "subtitle": "Bière de gingembre (pro)",
+          "total_prep_time": 2960,
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
+          "content_prep_times": [
+            {
+              "duration": 20,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "limonadeflorale": {
+      "title": "Limonade florale / thé (versions maison & pro)",
+      "description": [
+        "Boisson pétillante et rafraîchissante à base de fleurs ou de thé fermenté.",
+        "Inclut le levain de fruits et deux variantes : maison (levain) et pro (levure commerciale)."
+      ],
+      "note": [
+        "Utiliser des fleurs séchées comestibles ou un thé doux (vert, blanc).",
+        "Laisser refroidir l'infusion avant ajout du levain pour préserver les ferments actifs.",
+        "Fermenter de 2 à 3 jours selon la température."
+      ],
+      "public": true,
+      "published": true,
+      "tags": [
+        {
+          "str_value": "fermentation",
+          "type": "Tag"
+        },
+        {
+          "str_value": "boissons",
+          "type": "Tag"
+        },
+        {
+          "str_value": "levain",
+          "type": "Tag"
+        }
+      ],
+      "thumbnail": "~/nas/media/recipebook/limonadeflorale.png",
+      "contents": [
+        {
+          "subtitle": "Levain de fruits",
+          "is_ingredient": true,
+          "total_prep_time": 5765,
+          "servings": {
+            "yield": 100,
+            "value": "ml de levain de fruits actif"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 200,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fruit bio (fraise, framboise, bleuet, pomme)",
+                "macro": {
+                  "calories": 30,
+                  "sugar": 6
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "pièce"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 15,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 60,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation du levain de fruits",
+                "paragraph": "Écraser le fruit avec l’eau et le sucre dans un bocal. Couvrir d’un tissu et remuer deux fois par jour. Filtrer après 3 à 6 jours lorsque le liquide pétille et dégage un parfum agréable."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 5,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 5760,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 5,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 5760,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        },
+        {
+          "subtitle": "Limonade florale / thé (maison)",
+          "total_prep_time": 4385,
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 10,
+              "multiply_factor": 0.8,
+              "product": {
+                "name": "fleurs séchées (lavande, rose) ou thé",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 310,
+                  "sugar": 80
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de fruits filtré",
+                "macro": {
+                  "calories": 5,
+                  "sugar": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Infusion et fermentation maison",
+                "paragraph": "Infuser les fleurs ou le thé dans l’eau chaude pendant 10 minutes. Ajouter le sucre et laisser refroidir environ 1h. Incorporer le levain filtré, embouteiller et laisser fermenter 2 à 3 jours à température ambiante avant réfrigération."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Infusion",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Infusion",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        },
+        {
+          "subtitle": "Limonade florale / thé (pro)",
+          "total_prep_time": 2900,
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 10,
+              "multiply_factor": 0.8,
+              "product": {
+                "name": "fleurs séchées (lavande, rose) ou thé"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 0.9,
+              "product": {
+                "name": "levure US-05"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Infusion et fermentation pro",
+                "paragraph": "Infuser les fleurs ou le thé 10 minutes, ajouter le sucre puis refroidir à 20–22°C (environ 1h). Ajouter la levure, embouteiller et fermenter 2 à 3 jours avant réfrigération."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Infusion",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Infusion",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "sodafraisecitron": {
+      "title": "Soda fraise-citron (versions maison & pro)",
+      "description": [
+        "Soda fruité et pétillant à base de fraises et de citron, légèrement fermenté pour développer une effervescence naturelle.",
+        "Inclut le levain de fraise et deux variantes : maison (levain) et pro (levure commerciale)."
+      ],
+      "note": [
+        "Utiliser des fraises mûres et du citron frais pour un goût équilibré.",
+        "Ne pas ajouter le levain tant que le mélange n'est pas refroidi sous 25°C.",
+        "Fermenter 2 à 3 jours selon la température ambiante."
+      ],
+      "public": true,
+      "published": true,
+      "tags": [
+        {
+          "str_value": "fermentation",
+          "type": "Tag"
+        },
+        {
+          "str_value": "boissons",
+          "type": "Tag"
+        },
+        {
+          "str_value": "levain",
+          "type": "Tag"
+        }
+      ],
+      "thumbnail": "~/nas/media/recipebook/sodafraisecitron.png",
+      "contents": [
+        {
+          "subtitle": "Levain de fraise",
+          "is_ingredient": true,
+          "total_prep_time": 5765,
+          "servings": {
+            "yield": 100,
+            "value": "ml de levain de fraise actif"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 200,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fraises fraîches écrasées",
+                "macro": {
+                  "calories": 32,
+                  "sugar": 5
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 15,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 60,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation du levain de fraise",
+                "paragraph": "Écraser les fraises avec l’eau et le sucre. Couvrir d’un tissu et remuer deux fois par jour. Filtrer après 3 à 6 jours quand le mélange pétille et dégage un parfum fruité."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 5760,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 5760,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        },
+        {
+          "subtitle": "Soda fraise-citron (maison)",
+          "total_prep_time": 2950,
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fraises écrasées",
+                "macro": {
+                  "calories": 32,
+                  "sugar": 5
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 50,
+              "multiply_factor": 1,
+              "product": {
+                "name": "jus de citron frais",
+                "macro": {
+                  "calories": 17,
+                  "sugar": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 310,
+                  "sugar": 80
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de fraise filtré",
+                "macro": {
+                  "calories": 5,
+                  "sugar": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation maison",
+                "paragraph": "Mélanger les fraises écrasées, le jus de citron, l’eau et le sucre. Laisser reposer 30 minutes pour dissoudre le sucre, puis refroidir 1h avant d’ajouter le levain filtré. Embouteiller et laisser fermenter 2 à 3 jours à température ambiante avant réfrigération."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Mélange & repos",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Mélange & repos",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        },
+        {
+          "subtitle": "Soda fraise-citron (pro)",
+          "total_prep_time": 2900,
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fraises écrasées"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 50,
+              "multiply_factor": 1,
+              "product": {
+                "name": "jus de citron"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 0.9,
+              "product": {
+                "name": "levure US-05"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation pro",
+                "paragraph": "Mélanger les fraises, le jus de citron, l’eau et le sucre. Refroidir à 20–22°C (environ 1h) avant d’ajouter la levure. Embouteiller et fermenter 2 à 3 jours à température ambiante avant réfrigération."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "sodableuet": {
+      "title": "Soda aux bleuets (versions maison & pro)",
+      "description": [
+        "Boisson pétillante et légèrement sucrée à base de bleuets fermentés, développant une teinte violette naturelle et des arômes fruités.",
+        "Inclut le levain de bleuet et deux variantes : maison (levain) et pro (levure commerciale)."
+      ],
+      "note": [
+        "Utiliser des bleuets bien mûrs pour une meilleure fermentation et couleur.",
+        "Refroidir le mélange avant ajout du levain ou de la levure.",
+        "Fermenter 2 à 3 jours selon la température ambiante."
+      ],
+      "public": true,
+      "published": true,
+      "tags": [
+        {
+          "str_value": "fermentation",
+          "type": "Tag"
+        },
+        {
+          "str_value": "boissons",
+          "type": "Tag"
+        },
+        {
+          "str_value": "levain",
+          "type": "Tag"
+        }
+      ],
+      "thumbnail": "~/nas/media/recipebook/sodableuet.png",
+      "contents": [
+        {
+          "subtitle": "Levain de bleuet",
+          "is_ingredient": true,
+          "total_prep_time": 5765,
+          "servings": {
+            "yield": 100,
+            "value": "ml de levain de bleuet actif"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 200,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 150,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bleuets écrasés",
+                "macro": {
+                  "calories": 85,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 15,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 60,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation du levain de bleuet",
+                "paragraph": "Écraser les bleuets avec l’eau et le sucre. Couvrir d’un tissu, remuer deux fois par jour. Filtrer après 3 à 6 jours lorsque le liquide pétille et sent bon."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 5760,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 5760,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        },
+        {
+          "subtitle": "Soda aux bleuets (maison)",
+          "total_prep_time": 2950,
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 150,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bleuets écrasés",
+                "macro": {
+                  "calories": 85,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 310,
+                  "sugar": 80
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de bleuet filtré",
+                "macro": {
+                  "calories": 5,
+                  "sugar": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation maison",
+                "paragraph": "Écraser les bleuets avec l’eau et le sucre. Laisser reposer 30 minutes pour dissoudre le sucre. Refroidir environ 1h avant d’ajouter le levain filtré. Embouteiller et fermenter 2 à 3 jours à température ambiante avant de réfrigérer."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Mélange & repos",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Mélange & repos",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        },
+        {
+          "subtitle": "Soda aux bleuets (pro)",
+          "total_prep_time": 2900,
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 150,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bleuets écrasés"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 0.9,
+              "product": {
+                "name": "levure US-05"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation pro",
+                "paragraph": "Mélanger les bleuets, l’eau et le sucre. Refroidir à 20–22°C (environ 1h), ajouter la levure et embouteiller. Fermenter 2 à 3 jours à température ambiante puis réfrigérer."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "cidredoux": {
+      "title": "Cidre doux (versions maison & pro)",
+      "description": [
+        "Boisson fermentée douce à base de jus de pomme, offrant une légère effervescence et des arômes fruités naturels.",
+        "Inclut le levain de pomme et deux variantes : maison (fermentation naturelle) et pro (levure commerciale)."
+      ],
+      "note": [
+        "Utiliser un jus non pasteurisé pour la version maison afin de conserver les levures naturelles.",
+        "Fermenter entre 2 et 10 jours selon la température et le goût souhaité.",
+        "Refroidir après fermentation pour stopper l’activité."
+      ],
+      "public": true,
+      "published": true,
+      "tags": [
+        {
+          "str_value": "fermentation",
+          "type": "Tag"
+        },
+        {
+          "str_value": "boissons",
+          "type": "Tag"
+        },
+        {
+          "str_value": "levain",
+          "type": "Tag"
+        }
+      ],
+      "thumbnail": "~/nas/media/recipebook/cidredoux.png",
+      "contents": [
+        {
+          "subtitle": "Levain de pomme",
+          "is_ingredient": true,
+          "total_prep_time": 5765,
+          "servings": {
+            "yield": 100,
+            "value": "ml de levain de pomme actif"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 200,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "pomme bio râpée",
+                "macro": {
+                  "calories": 52,
+                  "sugar": 10
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "pièce"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 15,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 60,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation du levain de pomme",
+                "paragraph": "Râper la pomme et la mélanger avec l’eau et le sucre dans un bocal. Couvrir d’un tissu et remuer deux fois par jour. Filtrer après 3 à 6 jours, lorsque le mélange pétille et sent la pomme fermentée."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 5760,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 5760,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        },
+        {
+          "subtitle": "Cidre doux (maison)",
+          "total_prep_time": 7200,
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "jus de pomme non pasteurisé",
+                "macro": {
+                  "calories": 460,
+                  "sugar": 100
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Fermentation naturelle maison",
+                "paragraph": "Verser le jus dans un récipient en verre, couvrir d’un tissu et laisser fermenter 5 à 10 jours à température ambiante selon la douceur désirée. Réfrigérer pour stopper la fermentation."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 5,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 7200,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 5,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 7200,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        },
+        {
+          "subtitle": "Cidre doux (pro)",
+          "total_prep_time": 2900,
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "jus de pomme pasteurisé",
+                "macro": {
+                  "calories": 460,
+                  "sugar": 100
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 0.9,
+              "product": {
+                "name": "levure US-05",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Fermentation pro",
+                "paragraph": "Verser le jus pasteurisé dans une bonbonne, refroidir à 20–22°C si nécessaire, puis ajouter la levure. Fermenter 2 à 5 jours avant réfrigération pour conserver un goût doux."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 20,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 20,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "sodacerise": {
+      "title": "Soda à la cerise (versions maison & pro)",
+      "description": [
+        "Boisson pétillante et colorée à base de cerises fermentées, douce et fruitée, idéale en été.",
+        "Inclut le levain de cerise et deux variantes : maison (levain) et pro (levure commerciale)."
+      ],
+      "note": [
+        "Utiliser des cerises mûres (fraîches ou surgelées).",
+        "Refroidir avant ajout du levain ou de la levure pour préserver la fermentation.",
+        "Fermenter 2 à 3 jours pour une effervescence modérée."
+      ],
+      "public": true,
+      "published": true,
+      "tags": [
+        {
+          "str_value": "fermentation",
+          "type": "Tag"
+        },
+        {
+          "str_value": "boissons",
+          "type": "Tag"
+        },
+        {
+          "str_value": "levain",
+          "type": "Tag"
+        }
+      ],
+      "thumbnail": "~/nas/media/recipebook/sodacerise.png",
+      "contents": [
+        {
+          "subtitle": "Levain de cerise",
+          "is_ingredient": true,
+          "total_prep_time": 5765,
+          "servings": {
+            "yield": 100,
+            "value": "ml de levain de cerise actif"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 200,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 150,
+              "multiply_factor": 1,
+              "product": {
+                "name": "cerises fraîches écrasées",
+                "macro": {
+                  "calories": 63,
+                  "sugar": 12
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 15,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 60,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation du levain de cerise",
+                "paragraph": "Écraser les cerises avec l’eau et le sucre. Couvrir d’un tissu et remuer deux fois par jour. Filtrer après 3 à 6 jours lorsque le mélange pétille et dégage un arôme fruité."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 5760,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 5760,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        },
+        {
+          "subtitle": "Soda à la cerise (maison)",
+          "total_prep_time": 2950,
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 150,
+              "multiply_factor": 1,
+              "product": {
+                "name": "cerises fraîches ou surgelées écrasées",
+                "macro": {
+                  "calories": 63,
+                  "sugar": 12
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 310,
+                  "sugar": 80
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de cerise filtré",
+                "macro": {
+                  "calories": 5,
+                  "sugar": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation maison",
+                "paragraph": "Mélanger les cerises écrasées, l’eau et le sucre. Laisser reposer 30 minutes pour dissoudre le sucre. Refroidir 1h avant d’ajouter le levain filtré. Embouteiller et fermenter 2 à 3 jours à température ambiante, puis réfrigérer."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Mélange & repos",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Mélange & repos",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        },
+        {
+          "subtitle": "Soda à la cerise (pro)",
+          "total_prep_time": 2900,
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 150,
+              "multiply_factor": 1,
+              "product": {
+                "name": "cerises écrasées"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 0.9,
+              "product": {
+                "name": "levure US-05"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation pro",
+                "paragraph": "Mélanger les cerises, l’eau et le sucre. Refroidir à 20–22°C (environ 1h) avant d’ajouter la levure. Embouteiller et fermenter 2 à 3 jours à température ambiante, puis réfrigérer."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "sodableuetbasilic": {
+      "title": "Soda aux bleuets et basilic (versions maison & pro)",
+      "description": [
+        "Boisson pétillante aux notes fruitées et herbacées, alliant le bleuet frais et le basilic pour un équilibre aromatique unique.",
+        "Inclut le levain de bleuet et deux variantes : maison (levain) et pro (levure commerciale)."
+      ],
+      "note": [
+        "Utiliser du basilic frais pour préserver les arômes.",
+        "Refroidir avant ajout du levain ou de la levure pour ne pas tuer les ferments.",
+        "Fermenter 2 à 3 jours selon la température ambiante."
+      ],
+      "public": true,
+      "published": true,
+      "tags": [
+        {
+          "str_value": "fermentation",
+          "type": "Tag"
+        },
+        {
+          "str_value": "boissons",
+          "type": "Tag"
+        },
+        {
+          "str_value": "levain",
+          "type": "Tag"
+        }
+      ],
+      "thumbnail": "~/nas/media/recipebook/sodableuetbasilic.png",
+      "contents": [
+        {
+          "subtitle": "Levain de bleuet",
+          "is_ingredient": true,
+          "total_prep_time": 5765,
+          "servings": {
+            "yield": 100,
+            "value": "ml de levain de bleuet actif"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 200,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 150,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bleuets écrasés",
+                "macro": {
+                  "calories": 85,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 15,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 60,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation du levain de bleuet",
+                "paragraph": "Écraser les bleuets avec l’eau et le sucre. Couvrir d’un tissu et remuer deux fois par jour. Filtrer après 3 à 6 jours, lorsque le liquide pétille et sent bon."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 5760,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 5760,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        },
+        {
+          "subtitle": "Soda aux bleuets et basilic (maison)",
+          "total_prep_time": 2950,
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bleuets écrasés",
+                "macro": {
+                  "calories": 57,
+                  "sugar": 10
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 5,
+              "multiply_factor": 0.8,
+              "product": {
+                "name": "feuilles de basilic frais",
+                "macro": {
+                  "calories": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 310,
+                  "sugar": 80
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de bleuet filtré",
+                "macro": {
+                  "calories": 5,
+                  "sugar": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation maison",
+                "paragraph": "Mélanger les bleuets écrasés, le sucre, l’eau et les feuilles de basilic. Laisser reposer 30 minutes pour infuser. Refroidir 1h avant d’ajouter le levain filtré. Embouteiller et fermenter 2 à 3 jours à température ambiante avant de réfrigérer."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Infusion",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Infusion",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        },
+        {
+          "subtitle": "Soda aux bleuets et basilic (pro)",
+          "total_prep_time": 2900,
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bleuets écrasés"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 5,
+              "multiply_factor": 0.8,
+              "product": {
+                "name": "feuilles de basilic"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 0.9,
+              "product": {
+                "name": "levure US-05"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation pro",
+                "paragraph": "Mélanger les bleuets, l’eau, le sucre et le basilic. Laisser infuser 30 minutes, puis refroidir à 20–22°C (1h) avant d’ajouter la levure. Embouteiller et fermenter 2 à 3 jours à température ambiante, puis réfrigérer."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Infusion",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Infusion",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "sodarhubarbefraise": {
+      "title": "Soda à la rhubarbe et fraise (versions maison & pro)",
+      "description": [
+        "Boisson pétillante rose acidulée à base de rhubarbe et de fraises, équilibrant fraîcheur et douceur naturelle.",
+        "Inclut le levain de rhubarbe et deux variantes : maison (levain) et pro (levure commerciale)."
+      ],
+      "note": [
+        "Utiliser de la rhubarbe fraîche et des fraises mûres.",
+        "Refroidir le mélange avant ajout du levain ou de la levure.",
+        "Fermenter 2 à 3 jours selon la température ambiante."
+      ],
+      "public": true,
+      "published": true,
+      "tags": [
+        {
+          "str_value": "fermentation",
+          "type": "Tag"
+        },
+        {
+          "str_value": "boissons",
+          "type": "Tag"
+        },
+        {
+          "str_value": "levain",
+          "type": "Tag"
+        }
+      ],
+      "thumbnail": "~/nas/media/recipebook/sodarhubarbefraise.png",
+      "contents": [
+        {
+          "subtitle": "Levain de rhubarbe",
+          "is_ingredient": true,
+          "total_prep_time": 5765,
+          "servings": {
+            "yield": 100,
+            "value": "ml de levain de rhubarbe actif"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 200,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "rhubarbe coupée",
+                "macro": {
+                  "calories": 21,
+                  "sugar": 1.1,
+                  "fiber": 2
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 15,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 60,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation du levain de rhubarbe",
+                "paragraph": "Mélanger la rhubarbe, l’eau et le sucre dans un bocal. Couvrir d’un tissu et remuer deux fois par jour. Filtrer après 3 à 6 jours lorsque le mélange devient pétillant et aromatique."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 5760,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 5760,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        },
+        {
+          "subtitle": "Soda à la rhubarbe et fraise (maison)",
+          "total_prep_time": 2950,
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "rhubarbe fraîche coupée",
+                "macro": {
+                  "calories": 21,
+                  "sugar": 1.1,
+                  "fiber": 2
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fraises écrasées",
+                "macro": {
+                  "calories": 32,
+                  "sugar": 5
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 310,
+                  "sugar": 80
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de rhubarbe filtré",
+                "macro": {
+                  "calories": 5,
+                  "sugar": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation maison",
+                "paragraph": "Mélanger la rhubarbe, les fraises, le sucre et l’eau. Laisser reposer 30 minutes pour dissoudre le sucre et infuser. Refroidir 1h avant d’ajouter le levain filtré. Embouteiller et fermenter 2 à 3 jours à température ambiante avant réfrigération."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Infusion",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Infusion",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        },
+        {
+          "subtitle": "Soda à la rhubarbe et fraise (pro)",
+          "total_prep_time": 2900,
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "rhubarbe fraîche coupée"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fraises écrasées"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 0.9,
+              "product": {
+                "name": "levure US-05"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation pro",
+                "paragraph": "Mélanger la rhubarbe, les fraises, le sucre et l’eau. Refroidir à 20–22°C (environ 1h), ajouter la levure, embouteiller et fermenter 2 à 3 jours avant réfrigération."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "limonadelavandemiel": {
+      "title": "Limonade à la lavande et miel (versions maison & pro)",
+      "description": [
+        "Boisson florale et apaisante à base de lavande et de miel, légèrement pétillante grâce à la fermentation naturelle.",
+        "Inclut le levain de lavande et deux variantes : maison (levain) et pro (levure commerciale)."
+      ],
+      "note": [
+        "Infuser la lavande à température contrôlée pour éviter l’amertume.",
+        "Refroidir avant ajout du levain ou de la levure.",
+        "Fermenter 2 à 3 jours pour une boisson douce et légèrement sucrée."
+      ],
+      "public": true,
+      "published": true,
+      "tags": [
+        {
+          "str_value": "fermentation",
+          "type": "Tag"
+        },
+        {
+          "str_value": "boissons",
+          "type": "Tag"
+        },
+        {
+          "str_value": "levain",
+          "type": "Tag"
+        }
+      ],
+      "thumbnail": "~/nas/media/recipebook/limonadelavandemiel.png",
+      "contents": [
+        {
+          "subtitle": "Levain de lavande",
+          "is_ingredient": true,
+          "total_prep_time": 5765,
+          "servings": {
+            "yield": 100,
+            "value": "ml de levain de lavande actif"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 200,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 10,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fleurs de lavande séchées comestibles",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 15,
+              "multiply_factor": 1,
+              "product": {
+                "name": "miel",
+                "macro": {
+                  "calories": 46,
+                  "sugar": 12
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation du levain de lavande",
+                "paragraph": "Mélanger l’eau, les fleurs de lavande et le miel dans un bocal. Couvrir d’un tissu et remuer deux fois par jour. Filtrer après 3 à 6 jours, lorsque le mélange devient pétillant et floral."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 5760,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 5760,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        },
+        {
+          "subtitle": "Limonade à la lavande et miel (maison)",
+          "total_prep_time": 2950,
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 10,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fleurs de lavande séchées comestibles",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "miel",
+                "macro": {
+                  "calories": 310,
+                  "sugar": 80
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de lavande filtré",
+                "macro": {
+                  "calories": 5,
+                  "sugar": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation maison",
+                "paragraph": "Infuser la lavande dans l’eau chaude pendant 10 minutes. Ajouter le miel et laisser refroidir environ 1h avant d’incorporer le levain filtré. Embouteiller et fermenter 2 à 3 jours à température ambiante avant réfrigération."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Infusion",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Infusion",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        },
+        {
+          "subtitle": "Limonade à la lavande et miel (pro)",
+          "total_prep_time": 2900,
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
+          "content_ingredients": [
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 10,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fleurs de lavande séchées comestibles"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "miel"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 0.9,
+              "product": {
+                "name": "levure US-05"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_segments": [
+            {
+              "position": 1,
+              "segment": {
+                "title": "Préparation pro",
+                "paragraph": "Infuser la lavande 10 minutes dans l’eau chaude. Ajouter le miel, laisser refroidir à 20–22°C (1h) puis ajouter la levure. Embouteiller et fermenter 2 à 3 jours avant de réfrigérer."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Infusion",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Infusion",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

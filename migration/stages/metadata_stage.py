@@ -13,10 +13,12 @@ class MetadataStage:
         Extrait directement les métadonnées du frontmatter markdown.
         Le titre est repris tel quel, sans normalisation.
         """
+        from .time_servings_extractor import TimeServingsExtractor
+        from .description_generator import DescriptionGenerator
+        
         meta: Dict[str, Any] = {}
         lines = md_text.splitlines()
 
-        # capture les lignes entre --- ... ---
         frontmatter: List[str] = []
         in_block = False
         for line in lines:
@@ -51,21 +53,28 @@ class MetadataStage:
                 meta["note"] = [notes_str] if notes_str else []
             elif line.startswith("thumbnail:"):
                 meta["thumbnail"] = line.split(":", 1)[1].strip()
+            elif line.startswith("gallery:"):
+                gallery = line.split(":", 1)[1].strip()
+                try:
+                    meta["gallery"] = json.loads(gallery)
+                except Exception:
+                    meta["gallery"] = []
             elif line.startswith("published:"):
                 val = line.split(":", 1)[1].strip().lower()
                 meta["published"] = val in ("true", "yes", "1")
-            elif line.startswith("gallery:"):
-                gal_str = line.split(":", 1)[1].strip()
-                try:
-                    meta["gallery"] = json.loads(gal_str)
-                except Exception:
-                    meta["gallery"] = []
 
-        # si certains champs manquent, initialiser
         meta.setdefault("description", [])
         meta.setdefault("note", [])
         meta.setdefault("tags", [])
         meta.setdefault("gallery", [])
         meta.setdefault("published", False)
+
+        extractor = TimeServingsExtractor()
+        extracted = extractor.extract(meta.get("description", []))
+        meta["prep_time"] = extracted["total_prep_time"]
+        meta["servings"] = extracted["servings"]
+
+        generator = DescriptionGenerator(self.model)
+        meta["description"] = generator.generate(meta.get("title", ""))
 
         return meta

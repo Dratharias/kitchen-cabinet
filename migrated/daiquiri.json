@@ -1,146 +1,154 @@
 {
   "action": "create",
   "payload": {
-    "1": {
+    "daiquiri": {
       "title": "Daiquiri",
-      "description": [
-        "Temps: 5 minutes",
-        ""
+      "description": ["Temps: 5 minutes"],
+      "note": [
+        "J'utilise un gin lime et basilic plutôt que les ingrédients frais et c'est aussi bon."
       ],
-      "note": [],
       "public": true,
       "published": true,
-      "thumbnail": "https://i.ibb.co/9YNTW3h/daiquiri.png",
-      "type": {
-        "data": {
-          "str_value": "Recette",
-          "type": "Type"
+      "tags": [
+        {
+          "str_value": "cocktail",
+          "type": "Tag"
         }
-      },
-      "style": null,
-      "author": null,
-      "tags": [],
+      ],
+      "thumbnail": "~/nas/media/recipebook/daiquiri.png",
       "contents": [
         {
-          "data": {
-            "total_prep_time": 0,
-            "servings": null,
-            "subtitle": "Daiquiri",
-            "is_ingredient": false
+          "subtitle": "Préparation du daiquiri",
+          "total_prep_time": 5,
+          "servings": {
+            "yield": 1,
+            "value": "verre de 500 ml"
           },
           "content_ingredients": [
             {
-              "data": {
-                "quantity": 2.25,
-                "multiply_factor": 1
-              },
+              "quantity": 2.25,
+              "multiply_factor": 1,
               "product": {
-                "data": {
-                  "name": "fraises ou bleuets"
-                }
+                "name": "fraises ou bleuets surgelés"
               },
               "ingredient_units": [
                 {
                   "unit": {
-                    "data": {
-                      "name": "tasses"
-                    }
+                    "name": "tasse"
                   }
                 }
               ]
             },
             {
-              "data": {
-                "quantity": 75,
-                "multiply_factor": 1
-              },
+              "quantity": 75,
+              "multiply_factor": 1,
               "product": {
-                "data": {
-                  "name": "gin"
+                "name": "gin",
+                "macro": {
+                  "calories": 310,
+                  "sugar": 77
                 }
               },
               "ingredient_units": [
                 {
                   "unit": {
-                    "data": {
-                      "name": "ml"
-                    }
+                    "name": "ml"
                   }
                 }
               ]
             },
             {
-              "data": {
-                "quantity": 1,
-                "multiply_factor": 1
-              },
+              "quantity": 1.5,
+              "multiply_factor": 1,
               "product": {
-                "data": {
-                  "name": "miel"
+                "name": "miel",
+                "macro": {
+                  "calories": 90,
+                  "sugar": 24
                 }
               },
               "ingredient_units": [
                 {
                   "unit": {
-                    "data": {
-                      "name": "cuil. à soupe"
-                    }
+                    "name": "cuil. à soupe"
                   }
                 }
               ]
             },
             {
-              "data": {
-                "quantity": 150,
-                "multiply_factor": 1
-              },
+              "quantity": 150,
+              "multiply_factor": 1,
               "product": {
-                "data": {
-                  "name": "eau ou soda tonique"
+                "name": "eau ou soda tonique"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "basilic",
+                "macro": {
+                  "calories": 1
                 }
               },
               "ingredient_units": [
                 {
                   "unit": {
-                    "data": {
-                      "name": "ml"
-                    }
+                    "name": "au goût"
                   }
                 }
               ]
             },
             {
-              "data": {
-                "quantity": null,
-                "multiply_factor": 1
-              },
+              "quantity": 1,
+              "multiply_factor": 1,
               "product": {
-                "data": {
-                  "name": "Basilic"
+                "name": "lime",
+                "macro": {
+                  "calories": 11,
+                  "sugar": 1
                 }
               },
-              "ingredient_units": []
-            },
-            {
-              "data": {
-                "quantity": null,
-                "multiply_factor": 1
-              },
-              "product": {
-                "data": {
-                  "name": "Lime"
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "au goût"
+                  }
                 }
-              },
-              "ingredient_units": []
+              ]
             }
           ],
           "content_segments": [
             {
               "position": 1,
               "segment": {
-                "data": {
-                  "paragraph": "Mélanger le tout au mixeur."
+                "title": "Mélange",
+                "paragraph": "Mélanger tous les ingrédients au mixeur jusqu’à consistance lisse."
+              },
+              "segment_prep_time": [
+                {
+                  "duration": 5,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepStyle"
+                  }
                 }
+              ]
+            }
+          ],
+          "content_prep_times": [
+            {
+              "duration": 5,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepStyle"
               }
             }
           ]

@@ -13,11 +13,11 @@ export class ApiError extends Error {
 }
 
 export class CommonService {
+  /** Construit les paramètres de requête ?key=value&... */
   static buildQueryParams(
     params: Partial<PaginatedRequest> & Record<string, any>,
   ): string {
     const searchParams = new URLSearchParams();
-
     Object.entries(params).forEach(([key, value]) => {
       if (value !== undefined && value !== null) {
         if (typeof value === "object") {
@@ -27,10 +27,10 @@ export class CommonService {
         }
       }
     });
-
     return searchParams.toString();
   }
 
+  /** Gestion d’erreur HTTP */
   static async handleResponse<T>(response: Response): Promise<T> {
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
@@ -40,10 +40,10 @@ export class CommonService {
         errorData,
       );
     }
-
     return response.json();
   }
 
+  /** En-têtes par défaut (auth facultative) */
   static getDefaultHeaders(includeAuth = false): HeadersInit {
     const headers: HeadersInit = {
       "Content-Type": "application/json",
@@ -51,14 +51,13 @@ export class CommonService {
 
     if (includeAuth) {
       const token = localStorage.getItem("auth_token");
-      if (token) {
-        headers.Authorization = `Bearer ${token}`;
-      }
+      if (token) headers.Authorization = `Bearer ${token}`;
     }
 
     return headers;
   }
 
+  /** GET */
   static async get<T>(
     endpoint: string,
     params?: Record<string, any>,
@@ -69,10 +68,10 @@ export class CommonService {
       method: "GET",
       headers: this.getDefaultHeaders(includeAuth),
     });
-
     return this.handleResponse<T>(response);
   }
 
+  /** POST */
   static async post<T>(
     endpoint: string,
     data: any,
@@ -83,7 +82,32 @@ export class CommonService {
       headers: this.getDefaultHeaders(includeAuth),
       body: JSON.stringify(data),
     });
+    return this.handleResponse<T>(response);
+  }
 
+  /** PUT — ajoutée pour les updates génériques */
+  static async put<T>(
+    endpoint: string,
+    data: any,
+    includeAuth = false,
+  ): Promise<T> {
+    const response = await fetch(`${API_BASE}${endpoint}`, {
+      method: "PUT",
+      headers: this.getDefaultHeaders(includeAuth),
+      body: JSON.stringify(data),
+    });
+    return this.handleResponse<T>(response);
+  }
+
+  /** DELETE — utile pour ressources simples */
+  static async delete<T>(
+    endpoint: string,
+    includeAuth = false,
+  ): Promise<T> {
+    const response = await fetch(`${API_BASE}${endpoint}`, {
+      method: "DELETE",
+      headers: this.getDefaultHeaders(includeAuth),
+    });
     return this.handleResponse<T>(response);
   }
 }
