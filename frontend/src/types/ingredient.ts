@@ -12,6 +12,7 @@ export interface IngredientPayload {
   };
 }
 export interface Ingredient extends IngredientPayload {
+  product: any;
   ingredient_id: UUID;
 }
 

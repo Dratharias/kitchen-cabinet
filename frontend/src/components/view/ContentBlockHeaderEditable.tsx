@@ -12,7 +12,6 @@ interface ContentBlockHeaderEditableProps {
   startEdit: (fieldId: string, value: string) => void;
   cancelEdit: () => void;
   updateValue: (fieldId: string, value: string) => void;
-  // Simplified confirm signature to match the centralized dispatcher
   confirmContent: (field: "subtitle" | "servings") => void;
 }
 
@@ -20,7 +19,6 @@ export const ContentBlockHeaderEditable: React.FC<
   ContentBlockHeaderEditableProps
 > = ({
   contentId,
-  subtitle,
   servings,
   isAuthenticated,
   editingField,
@@ -30,7 +28,6 @@ export const ContentBlockHeaderEditable: React.FC<
   updateValue,
   confirmContent,
 }) => {
-  const subtitleFieldId = `subtitle-${contentId}`;
   const servingsFieldId = `servings-${contentId}`;
 
   const servingsLabel = servings
@@ -39,24 +36,6 @@ export const ContentBlockHeaderEditable: React.FC<
 
   return (
     <div className="flex flex-col gap-2 mb-4">
-      {isAuthenticated ? (
-        <InlineEditField
-          fieldId={subtitleFieldId}
-          value={subtitle || ""}
-          isEditing={editingField === subtitleFieldId}
-          editValue={editValues[subtitleFieldId] || subtitle || ""}
-          onStartEdit={() => startEdit(subtitleFieldId, subtitle || "")}
-          onCancel={cancelEdit}
-          onConfirm={() => confirmContent("subtitle")}
-          onChange={(v) => updateValue(subtitleFieldId, v)}
-          className="text-lg font-semibold text-amber-400"
-        />
-      ) : (
-        subtitle && (
-          <h3 className="text-lg font-semibold text-amber-400">{subtitle}</h3>
-        )
-      )}
-
       {isAuthenticated ? (
         <div className="flex">
           <span className="mr-2">Rendement:</span>
@@ -67,10 +46,6 @@ export const ContentBlockHeaderEditable: React.FC<
             editValue={editValues[servingsFieldId] || servingsLabel}
             onStartEdit={() => startEdit(servingsFieldId, servingsLabel)}
             onCancel={cancelEdit}
-            // Note: The conversion logic for the complex 'servings' field
-            // from string (editValue) to object payload is complex and
-            // should ideally be handled in the centralized hook. For now,
-            // we use 'servings' as the field name.
             onConfirm={() => confirmContent("servings")}
             onChange={(v) => updateValue(servingsFieldId, v)}
             className="text-gray-300"
