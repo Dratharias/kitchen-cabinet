@@ -50,6 +50,42 @@ export async function loginHandler(req: any, reply: any) {
 const attemptCache: Record<string, { count: number; lastAttempt: number }> = {};
 const MAX_ATTEMPTS = 5;
 const BLOCK_DURATION_MS = 15 * 60 * 1000; // 15 minutes
+export async function identifyUser(req: FastifyRequest, reply: FastifyReply) {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) {
+    (req as any).user = null; // No token, proceed as guest
+    return;
+  }
+
+  const token = authHeader.replace("Bearer ", "");
+  if (!token) {
+    (req as any).user = null; // Malformed header, proceed as guest
+    return;
+  }
+
+  try {
+    const payload = jwt.verify(token, JWT_SECRET) as {
+      userId: string;
+      role: string;
+    };
+
+    // Verify user still exists in the database
+    const user = await prisma.app_user.findUnique({
+      where: { user_id: payload.userId },
+    });
+
+    if (!user) {
+      (req as any).user = null; // User deleted, proceed as guest
+      return;
+    }
+
+    // Success: Attach user payload to the request
+    (req as any).user = payload;
+  } catch (err) {
+    // Invalid token, proceed as guest
+    (req as any).user = null;
+  }
+}
 
 export async function authGuard(req: FastifyRequest, reply: FastifyReply) {
   const ip = req.ip;

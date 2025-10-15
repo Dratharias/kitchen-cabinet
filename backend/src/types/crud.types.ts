@@ -98,8 +98,8 @@ export interface GenericController<
   RelationSetDto = any,
 > {
   create(payload: C & { connect?: RelationConnectDto }): Promise<T>;
-  findById(id: string): Promise<T | null>;
-  findAll(params?: ReadAllParams<T>): Promise<T[]>;
+  findById(id: string, user?: any): Promise<T | null>;
+  findAll(params?: ReadAllParams<T>, user?: any): Promise<T[]>;
 
   // PATCH Support: Le payload est Partiel de Core (C) et Relations (U) + connect/set
   update(
@@ -122,8 +122,8 @@ export interface GenericPaginatedController<
   RelationSetDto = any,
 > {
   create(payload: C & { connect?: RelationConnectDto }): Promise<T>;
-  findById(id: string): Promise<T | null>;
-  findAll(params?: ReadAllParams<T>): Promise<PaginatedResponse<T>>;
+  findById(id: string, user?: any): Promise<T | null>;
+  findAll(params?: ReadAllParams<T>, user?: any): Promise<PaginatedResponse<T>>;
 
   // PATCH Support: Le payload est Partiel de Core (C) et Relations (U) + connect/set
   update(

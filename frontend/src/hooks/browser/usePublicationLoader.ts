@@ -17,7 +17,7 @@ interface UsePublicationLoaderResult {
 }
 
 /**
- * Loader qui bascule auto public/privé selon l'auth.
+ * Loader that automatically handles public/private fetching based on auth status.
  */
 export function usePublicationLoader(): UsePublicationLoaderResult {
   const { isAuthenticated } = useAuthStore();
@@ -43,20 +43,18 @@ export function usePublicationLoader(): UsePublicationLoaderResult {
       if (types?.length) filter.type = types;
       if (query?.trim()) filter.q = query.trim();
 
-      const call = PublicationsService.getPublications;
-
       try {
-        const res = await call({
+        const res = await PublicationsService.getPublications({
           page,
           limit,
           sortBy: "title",
           order: "asc",
           filter,
-        });
+        }, isAuthenticated);
         setTotalPages(res.totalPages ?? 1);
         return (res.items ?? []) as Publication[];
       } catch (err: any) {
-        console.error("Erreur publications:", err);
+        console.error("Error fetching publications:", err);
         return [];
       } finally {
         setLoading(false);

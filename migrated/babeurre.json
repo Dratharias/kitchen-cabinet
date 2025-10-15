@@ -16,6 +16,10 @@
       "thumbnail": "https://i.ibb.co/qDb3Kyc/babeurre.jpg",
       "gallery": [],
       "tags": [],
+      "type": {
+        "str_value": "Recette",
+        "type": "Type"
+      },
       "contents": [
         {
           "total_prep_time": 10,

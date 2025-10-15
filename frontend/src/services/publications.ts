@@ -8,6 +8,7 @@ export class PublicationsService {
       order?: "asc" | "desc";
       filter?: Record<string, any>;
     },
+    isAuthenticated: boolean = false,
   ): Promise<PaginatedResponse<Publication>> {
     const safeParams = {
       ...params,
@@ -19,15 +20,15 @@ export class PublicationsService {
     return CommonService.get<PaginatedResponse<Publication>>(
       "/api/publications",
       safeParams,
-      false,
+      isAuthenticated, // Pass authentication status to the service
     );
   }
 
-  static async getPublicationById(id: string): Promise<Publication> {
+  static async getPublicationById(id: string, isAuthenticated: boolean = false): Promise<Publication> {
     return CommonService.get<Publication>(
       `/api/publications/${id}`,
       undefined,
-      false,
+      isAuthenticated, // Pass authentication status to the service
     );
   }
 }

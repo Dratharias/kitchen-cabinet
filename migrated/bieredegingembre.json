@@ -28,6 +28,10 @@
           "type": "Tag"
         }
       ],
+      "type": {
+        "str_value": "Recette",
+        "type": "Type"
+      },
       "thumbnail": "~/nas/media/recipebook/bieredegingembre.png",
       "contents": [
         {

@@ -13,13 +13,6 @@ type SimpleUpdatePayload = {
     [key: string]: any;
 };
 
-// Helper pour reconstruire la structure de l'unité depuis les données du hook
-const buildUnitPayload = (unit: any) => ({
-    unit: {
-        unit_id: unit?.unit_id,
-        name: unit?.name || "unité"
-    }
-});
 
 export function usePublicationView() {
   const { id } = useParams<{ id: string }>(); 

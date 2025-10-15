@@ -7,7 +7,7 @@
       "note": [
         "J'utilise un gin lime et basilic plutôt que les ingrédients frais et c'est aussi bon."
       ],
-      "public": true,
+      "public": false,
       "published": true,
       "tags": [
         {
@@ -15,6 +15,10 @@
           "type": "Tag"
         }
       ],
+      "type": {
+        "str_value": "Recette",
+        "type": "Type"
+      },
       "thumbnail": "~/nas/media/recipebook/daiquiri.png",
       "contents": [
         {
