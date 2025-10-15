@@ -23,17 +23,17 @@ export class OrchestratorService {
     return CommonService.post<OrchestratorResponse>("/api/publicate", payload, true);
   }
 
-  /** PATCH (mise à jour partielle) */
+  /** PATCH (mise à jour partielle) - Utilise POST pour l'endpoint d'orchestration */
   static async patch(payload: OrchestratorPayload): Promise<OrchestratorResponse> {
-    return CommonService.put<OrchestratorResponse>("/api/publicate", payload, true);
+    // Using POST as /api/publicate expects the action inside the body for mutations.
+    return CommonService.post<OrchestratorResponse>("/api/publicate", payload, true);
   }
 
   /** DELETE (suppression logique ou complète) */
   static async remove(id: string): Promise<OrchestratorResponse> {
     if (!id) throw new Error("id requis pour la suppression");
-    return CommonService.delete<OrchestratorResponse>(
-      `/api/publicate/${id}`,
-      true,
-    );
+    // NOTE: Based on the current API structure, direct DELETE is usually bypassed
+    // in favor of the orchestrator POST with action: "delete".
+    throw new Error("Use OrchestratorService.send({ action: 'delete', payload: { [id]: null } }) instead of remove.");
   }
 }

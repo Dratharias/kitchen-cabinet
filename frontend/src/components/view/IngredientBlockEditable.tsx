@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Utensils, ChevronDown, ChevronRight, Trash2, Plus } from "lucide-react";
 import { InlineEditField } from "@/components/view/InlineEditField";
 
@@ -13,20 +13,26 @@ interface IngredientBlockEditableProps {
   checkedItems: Record<string, boolean>;
   toggleChecked: (id: string) => void;
 
-  // hooks (useIngredientEdit)
+  // Standardized Inline Edit Props (from parent/usePublicationView)
   editingField: string | null;
   editValues: Record<string, string>;
   startEdit: (fieldId: string, value: string) => void;
-  cancelEdit: (fieldId: string) => void;
+  cancelEdit: () => void; 
   updateValue: (fieldId: string, value: string) => void;
-  confirmIngredient: (
-    ingredientId: string,
-    field: string,
-    resourceField: string
-  ) => void;
-  addIngredient: () => Promise<void>;
-  deleteIngredient: (ingredientId: string) => Promise<void>;
-  isLoading: boolean;
+  confirmIngredient: (ingredientId: string, field: "quantity" | "unit" | "product") => void;
+
+  // Simplified mutation hooks
+  onAddIngredient?: (contentId: string) => Promise<boolean | void>;
+  onDeleteIngredient?: (ingredientId: string) => Promise<boolean | void>;
+}
+
+// Helper function to safely decode text and handle basic encoding issues
+const safeDecodeText = (text: string | null | undefined): string => {
+    if (!text) return "";
+    let s = String(text);
+    // Simple heuristic fix for common backend encoding errors
+    s = s.replace(/├e/g, 'é').replace(/├/g, ''); 
+    return s.trim();
 }
 
 export const IngredientBlockEditable: React.FC<IngredientBlockEditableProps> = ({
@@ -39,15 +45,41 @@ export const IngredientBlockEditable: React.FC<IngredientBlockEditableProps> = (
   isAuthenticated,
   checkedItems,
   toggleChecked,
+  // Standardized Inline Edit Props
   editingField,
   editValues,
   startEdit,
   cancelEdit,
   updateValue,
   confirmIngredient,
-  addIngredient,
-  deleteIngredient,
+  // Mutation hooks
+  onAddIngredient,
+  onDeleteIngredient,
 }) => {
+  const contentId = block.content_id;
+  
+  // Helper to construct the unique ID for the InlineEditField
+  const buildFieldId = useCallback((field: string, id: string) => `${field}-${id}`, []);
+
+  /**
+   * Assembles the display string in read mode.
+   * FIX: Accesses the unit name directly from the jointure object (ing.ingredient_units?.[0]?.name).
+   */
+  const getDisplayValue = (ing: any) => {
+    // FIX: Accès direct à la propriété 'name' de l'objet Unit
+    const unitName = safeDecodeText(ing.ingredient_units?.[0]?.name) || "";
+    
+    const rawQuantity = String(ing.quantity || '').trim();
+    const productName = safeDecodeText(ing.product?.name);
+    
+    // Concaténer les parties non-vides avec des espaces
+    const parts = [rawQuantity, unitName, productName].filter(part => part.length > 0);
+
+    if (parts.length === 0) return "[Ingrédient vide]";
+    
+    return parts.join(' ');
+  };
+
   return (
     <div className="border border-gray-700 rounded-lg bg-[#1F1F1F]/80 mb-4 overflow-hidden">
       <header
@@ -67,102 +99,93 @@ export const IngredientBlockEditable: React.FC<IngredientBlockEditableProps> = (
 
       {expanded && (
         <div className="p-4 space-y-3 text-gray-300">
-          {ingredients.map((ing: any) => (
-            <div
-              key={ing.ingredient_id}
-              className="flex items-center gap-3 border-b border-gray-700 pb-2"
-            >
-              <input
-                type="checkbox"
-                checked={!!checkedItems[ing.ingredient_id]}
-                onChange={() => toggleChecked(ing.ingredient_id)}
-                className="accent-amber-500"
-              />
+          {ingredients.map((ing: any) => {
+            const id = ing.ingredient_id;
+            const quantityFieldId = buildFieldId("quantity", id);
+            const unitFieldId = buildFieldId("unit", id);
+            const productFieldId = buildFieldId("product", id);
 
-              {isAuthenticated ? (
-                <div className="flex flex-wrap gap-2 flex-1">
-                  <InlineEditField
-                    fieldId={`quantity-${ing.ingredient_id}`}
-                    value={String(ing.quantity || 0)}
-                    isEditing={editingField === `quantity-${ing.ingredient_id}`}
-                    editValue={
-                      editValues[`quantity-${ing.ingredient_id}`] ||
-                      String(ing.quantity || 0)
-                    }
-                    onStartEdit={() =>
-                      startEdit(`quantity-${ing.ingredient_id}`, String(ing.quantity || 0))
-                    }
-                    onCancel={() => cancelEdit(`quantity-${ing.ingredient_id}`)}
-                    onConfirm={() =>
-                      confirmIngredient(ing.ingredient_id, "quantity", "quantity")
-                    }
-                    onChange={(v) =>
-                      updateValue(`quantity-${ing.ingredient_id}`, v)
-                    }
+            const unitNameForEdit = safeDecodeText(ing.ingredient_units?.[0]?.name) || "";
+            const qtyValue = String(ing.quantity || 0); 
+            const productValue = safeDecodeText(ing.product?.name) || "";
+
+
+            return (
+              <div
+                key={id}
+                className="flex items-start gap-3 border-b border-gray-700 pb-2"
+              >
+                {/* Checkbox */}
+                <div className="pt-1.5">
+                  <input
+                    type="checkbox"
+                    checked={!!checkedItems[id]}
+                    onChange={() => toggleChecked(id)}
+                    className="accent-amber-500 w-4 h-4"
                   />
-                  <InlineEditField
-                    fieldId={`unit-${ing.ingredient_id}`}
-                    value={ing.ingredient_units?.[0]?.unit?.name || ""}
-                    isEditing={editingField === `unit-${ing.ingredient_id}`}
-                    editValue={
-                      editValues[`unit-${ing.ingredient_id}`] ||
-                      ing.ingredient_units?.[0]?.unit?.name ||
-                      ""
-                    }
-                    onStartEdit={() =>
-                      startEdit(
-                        `unit-${ing.ingredient_id}`,
-                        ing.ingredient_units?.[0]?.unit?.name || ""
-                      )
-                    }
-                    onCancel={() => cancelEdit(`unit-${ing.ingredient_id}`)}
-                    onConfirm={() =>
-                      confirmIngredient(ing.ingredient_id, "unit", "ingredient_units")
-                    }
-                    onChange={(v) => updateValue(`unit-${ing.ingredient_id}`, v)}
-                  />
-                  <InlineEditField
-                    fieldId={`product-${ing.ingredient_id}`}
-                    value={ing.product?.name || ""}
-                    isEditing={editingField === `product-${ing.ingredient_id}`}
-                    editValue={
-                      editValues[`product-${ing.ingredient_id}`] ||
-                      ing.product?.name ||
-                      ""
-                    }
-                    onStartEdit={() =>
-                      startEdit(`product-${ing.ingredient_id}`, ing.product?.name || "")
-                    }
-                    onCancel={() => cancelEdit(`product-${ing.ingredient_id}`)}
-                    onConfirm={() =>
-                      confirmIngredient(ing.ingredient_id, "product", "product")
-                    }
-                    onChange={(v) => updateValue(`product-${ing.ingredient_id}`, v)}
-                  />
-                  <button
-                    onClick={() => deleteIngredient(ing.ingredient_id)}
-                    className="text-red-400 hover:text-red-300 transition-colors"
-                  >
-                    <Trash2 size={16} />
-                  </button>
                 </div>
-              ) : (
-                <span
-                  className={
-                    checkedItems[ing.ingredient_id]
-                      ? "line-through text-gray-500"
-                      : ""
-                  }
-                >
-                  {`${ing.quantity || ""} ${ing.ingredient_units?.[0]?.unit?.name || ""} ${ing.product?.name || ""}`}
-                </span>
-              )}
-            </div>
-          ))}
 
-          {isAuthenticated && (
+                {isAuthenticated ? (
+                  <div className="flex flex-wrap gap-2 flex-1">
+                    {/* Quantity Field */}
+                    <InlineEditField
+                      fieldId={quantityFieldId}
+                      value={qtyValue} 
+                      isEditing={editingField === quantityFieldId}
+                      editValue={editValues[quantityFieldId] || qtyValue}
+                      onStartEdit={() => startEdit(quantityFieldId, qtyValue)}
+                      onCancel={cancelEdit}
+                      onConfirm={() => confirmIngredient(id, "quantity")}
+                      onChange={(v) => updateValue(quantityFieldId, v)}
+                      className="min-w-[70px] flex-grow-0"
+                    />
+                    {/* Unit Field */}
+                    <InlineEditField
+                      fieldId={unitFieldId}
+                      value={unitNameForEdit || '[Unité]'} 
+                      isEditing={editingField === unitFieldId}
+                      editValue={editValues[unitFieldId] || unitNameForEdit}
+                      onStartEdit={() => startEdit(unitFieldId, unitNameForEdit)}
+                      onCancel={cancelEdit}
+                      onConfirm={() => confirmIngredient(id, "unit")}
+                      onChange={(v) => updateValue(unitFieldId, v)}
+                      className="min-w-[90px] flex-grow-0"
+                    />
+                    {/* Product Field (takes remaining space) */}
+                    <InlineEditField
+                      fieldId={productFieldId}
+                      value={productValue || '[Produit]'}
+                      isEditing={editingField === productFieldId}
+                      editValue={editValues[productFieldId] || productValue}
+                      onStartEdit={() => startEdit(productFieldId, productValue)}
+                      onCancel={cancelEdit}
+                      onConfirm={() => confirmIngredient(id, "product")}
+                      onChange={(v) => updateValue(productFieldId, v)}
+                      className="flex-1 min-w-[150px]"
+                    />
+                    
+                    {/* Delete button */}
+                    <button
+                      onClick={() => onDeleteIngredient?.(id)}
+                      className="text-red-400 hover:text-red-300 transition-colors self-start p-1.5 mt-1"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </div>
+                ) : (
+                  <span
+                    className={`flex-1 pt-1.5 ${checkedItems[id] ? "line-through text-gray-500" : ""}`}
+                  >
+                    {getDisplayValue(ing)}
+                  </span>
+                )}
+              </div>
+            );
+          })}
+
+          {isAuthenticated && onAddIngredient && (
             <button
-              onClick={addIngredient}
+              onClick={() => onAddIngredient(contentId)}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-amber-600 text-white text-sm hover:bg-amber-700 transition-colors hover:cursor-pointer"
             >
               <Plus size={16} />
