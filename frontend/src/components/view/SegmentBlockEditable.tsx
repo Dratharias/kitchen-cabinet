@@ -9,9 +9,9 @@ import {
   Check,
   X,
 } from "lucide-react";
-import { FormInput } from "@/components/atoms/FormInput";
-import { FormTextarea } from "@/components/atoms/FormTextarea";
-import { PrepTimeFormSection } from "@/components/molecules/PrepTimeFormSection";
+import { FormInput } from "../atoms/FormInput";
+import { FormTextarea } from "../atoms/FormTextarea";
+import { PrepTimeFormSection } from "../molecules/PrepTimeFormSection";
 import type { PrepTimePayload } from "@/types/payloadBuilder";
 
 interface FullSegmentEditFields {
@@ -32,8 +32,11 @@ interface SegmentBlockEditableProps {
     segmentId: string,
     fields: FullSegmentEditFields,
   ) => Promise<boolean | void>;
-  onAddSegment?: (contentId: string) => Promise<boolean | void>;
   onDeleteSegment?: (segmentId: string) => Promise<boolean | void>;
+  pendingAddItem: boolean;
+  onConfirmAdd: (fields: FullSegmentEditFields) => void;
+  onCancelAdd: () => void;
+  onAddSegmentClick: () => void;
 }
 
 const SegmentEditor: React.FC<{
@@ -53,20 +56,22 @@ const SegmentEditor: React.FC<{
   };
 
   return (
-    <div className="flex-1 flex-col gap-3 p-3 bg-[#2f2f2f] border border-neutral-600 rounded-md">
+    <div className="flex-1 w-full flex-col gap-3 p-4 bg-[#2f2f2f] border border-neutral-600 rounded-lg shadow-lg">
       <FormInput
         label="Titre de l'étape"
         value={title}
         onChange={setTitle}
         placeholder="Optionnel"
       />
-      <FormTextarea
-        label="Description de l'étape"
-        value={paragraph}
-        onChange={setParagraph}
-        rows={4}
-        required
-      />
+      <div className="mt-3">
+        <FormTextarea
+            label="Description de l'étape"
+            value={paragraph}
+            onChange={setParagraph}
+            rows={4}
+            required
+        />
+      </div>
       <div className="mt-4">
         <PrepTimeFormSection
           prepTimes={prepTimes}
@@ -74,7 +79,7 @@ const SegmentEditor: React.FC<{
           onChange={setPrepTimes}
         />
       </div>
-      <div className="flex justify-end gap-2 mt-3">
+      <div className="flex justify-end gap-2 mt-4">
         <button
           onClick={onCancel}
           className="p-2 rounded-md text-red-500 bg-neutral-700/60 hover:text-red-400"
@@ -101,11 +106,13 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
   checkedItems,
   toggleChecked,
   onConfirmUpdate,
-  onAddSegment,
   onDeleteSegment,
+  pendingAddItem,
+  onConfirmAdd,
+  onCancelAdd,
+  onAddSegmentClick,
 }) => {
   const [editingSegmentId, setEditingSegmentId] = useState<string | null>(null);
-  const contentId = block.content_id;
 
   const handleConfirmUpdate = async (
     segmentId: string,
@@ -141,7 +148,7 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
             const isEditingThis = editingSegmentId === id;
 
             return (
-              <div key={id} className="flex items-start gap-3">
+              <div key={id} className="flex items-start gap-3 w-full">
                 {isEditingThis ? (
                   <SegmentEditor
                     segment={seg}
@@ -196,9 +203,19 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
             );
           })}
 
-          {isAuthenticated && onAddSegment && (
+          {pendingAddItem && (
+            <div className="flex items-start gap-3 w-full">
+              <SegmentEditor
+                segment={{}}
+                onConfirm={onConfirmAdd}
+                onCancel={onCancelAdd}
+              />
+            </div>
+          )}
+
+          {isAuthenticated && !pendingAddItem && (
             <button
-              onClick={() => onAddSegment(contentId)}
+              onClick={onAddSegmentClick}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-amber-600 text-white text-sm hover:bg-amber-700 transition-colors mt-4"
             >
               <Plus size={16} />
@@ -210,3 +227,4 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
     </div>
   );
 };
+

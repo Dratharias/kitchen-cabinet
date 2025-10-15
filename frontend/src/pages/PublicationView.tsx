@@ -11,6 +11,7 @@ import { IngredientBlockEditable } from "@/components/view/IngredientBlockEditab
 import { ContentBlockHeaderEditable } from "@/components/view/ContentBlockHeaderEditable";
 import { SegmentBlockEditable } from "@/components/view/SegmentBlockEditable";
 import type { ServingsPayload } from "@/types/payloadBuilder";
+import { Plus } from "lucide-react";
 
 // --- Helpers ---
 
@@ -31,18 +32,6 @@ const getBlockId = (block: any) =>
   block.id ||
   block.subtitle ||
   crypto.randomUUID();
-
-const parseServingsLabel = (label: string): ServingsPayload => {
-  const match = label.match(/(\d+)\s*(.*)/) || [];
-  const yieldValue = parseInt(match[1], 10) || 1;
-  let unitValue = match[2].trim();
-
-  if (!unitValue || unitValue.toLowerCase().startsWith("portion")) {
-    unitValue = yieldValue > 1 ? "portions" : "portion";
-  }
-
-  return { yield: yieldValue, value: unitValue };
-};
 
 // --- Composant Principal ---
 
@@ -69,11 +58,12 @@ export function PublicationView() {
     {},
   );
   const [tab, setTab] = useState<"ingredients" | "steps">("ingredients");
-  const [servingFactors, setServingFactors] = useState<Record<string, number>>(
-    {},
-  );
   const [editingField, setEditingField] = useState<string | null>(null);
-  const [editValues, setEditValues] = useState<Record<string, string>>({});
+  const [editValues, setEditValues] = useState<Record<string, any>>({});
+  const [pendingAddItem, setPendingAddItem] = useState<{
+    type: "ingredient" | "segment";
+    contentId: string;
+  } | null>(null);
 
   const contents = publication?.contents || [];
 
@@ -115,17 +105,7 @@ export function PublicationView() {
     [expandedBlocks],
   );
 
-  const getServingFactor = useCallback(
-    (blockId: string) => servingFactors[blockId] || 1,
-    [servingFactors],
-  );
-  const setServingFactor = useCallback(
-    (blockId: string, factor: number) =>
-      setServingFactors((prev) => ({ ...prev, [blockId]: factor })),
-    [setServingFactors],
-  );
-
-  const startEdit = useCallback((fieldId: string, value: string) => {
+  const startEdit = useCallback((fieldId: string, value: any) => {
     setEditingField(fieldId);
     setEditValues({ [fieldId]: value });
   }, []);
@@ -135,8 +115,8 @@ export function PublicationView() {
     setEditValues({});
   }, []);
 
-  const updateValue = useCallback((fieldId: string, value: string) => {
-    setEditValues({ [fieldId]: value });
+  const updateValue = useCallback((fieldId: string, value: any) => {
+    setEditValues((prev) => ({ ...prev, [fieldId]: value }));
   }, []);
 
   const confirmEdit = useCallback(
@@ -153,16 +133,13 @@ export function PublicationView() {
       }
 
       let success = false;
-      let fields: any = { [fieldName]: value };
+      const fields: any = { [fieldName]: value };
 
       switch (resourceType) {
         case "publication":
           success = await updatePublicationField(fields);
           break;
         case "content":
-          if (fieldName === "servings") {
-            fields = { servings: parseServingsLabel(value) };
-          }
           success = await updateContentField(resourceId, fields);
           break;
       }
@@ -174,17 +151,35 @@ export function PublicationView() {
     [editValues, cancelEdit, updatePublicationField, updateContentField],
   );
 
+  const handleConfirmAddIngredient = async (contentId: string, fields: any) => {
+    const success = await addIngredient(contentId, fields);
+    if (success) {
+      setPendingAddItem(null);
+    }
+  };
+
+  const handleConfirmAddSegment = async (contentId: string, fields: any) => {
+    const success = await addSegment(contentId, fields);
+    if (success) {
+      setPendingAddItem(null);
+    }
+  };
+
   const renderIngredientBlocks = () => (
     <div className="pb-16 space-y-4">
       {allDisplayBlocks.map((block) => {
         const blockId = getBlockId(block);
+        const contentId = block.content_id;
         const isMainVariant = block.__isMainVariant;
+        const showNewIngredientEditor =
+          pendingAddItem?.type === "ingredient" &&
+          pendingAddItem?.contentId === contentId;
 
         return (
           <div key={`ing-${blockId}`}>
             {isMainVariant && (
               <ContentBlockHeaderEditable
-                contentId={block.content_id}
+                contentId={contentId}
                 subtitle={block.subtitle}
                 servings={block.servings}
                 isAuthenticated={isAuthenticated}
@@ -195,8 +190,8 @@ export function PublicationView() {
                 updateValue={updateValue}
                 confirmContent={(field) =>
                   confirmEdit(
-                    `${field}-${block.content_id}`,
-                    block.content_id,
+                    `${field}-${contentId}`,
+                    contentId,
                     "content",
                     field,
                   )
@@ -213,8 +208,15 @@ export function PublicationView() {
               checkedItems={checkedItems}
               toggleChecked={toggleChecked}
               onConfirmUpdate={updateIngredientFields}
-              onAddIngredient={addIngredient}
               onDeleteIngredient={deleteIngredient}
+              pendingAddItem={showNewIngredientEditor}
+              onConfirmAdd={(fields) =>
+                handleConfirmAddIngredient(contentId, fields)
+              }
+              onCancelAdd={() => setPendingAddItem(null)}
+              onAddIngredientClick={() =>
+                setPendingAddItem({ type: "ingredient", contentId })
+              }
             />
           </div>
         );
@@ -226,10 +228,36 @@ export function PublicationView() {
     <div className="pb-16 space-y-4">
       {allDisplayBlocks.map((block) => {
         const blockId = getBlockId(block);
+        const contentId = block.content_id;
         const isMainVariant = block.__isMainVariant;
+        const showNewSegmentEditor =
+          pendingAddItem?.type === "segment" &&
+          pendingAddItem?.contentId === contentId;
 
-        if (!block.content_segments || block.content_segments.length === 0)
+        if (
+          !block.content_segments ||
+          (block.content_segments.length === 0 && !showNewSegmentEditor)
+        ) {
+          if (isAuthenticated && block.__isMainVariant) {
+            return (
+              <div
+                key={`add-seg-${blockId}`}
+                className="p-4 border border-dashed border-gray-700 rounded-lg"
+              >
+                <button
+                  onClick={() =>
+                    setPendingAddItem({ type: "segment", contentId })
+                  }
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-amber-600/80 text-white text-sm hover:bg-amber-700 transition-colors"
+                >
+                  <Plus size={16} />
+                  Ajouter une étape
+                </button>
+              </div>
+            );
+          }
           return null;
+        }
 
         return (
           <SegmentBlockEditable
@@ -242,8 +270,13 @@ export function PublicationView() {
             checkedItems={checkedItems}
             toggleChecked={toggleChecked}
             onConfirmUpdate={updateSegmentFields}
-            onAddSegment={addSegment}
             onDeleteSegment={deleteSegment}
+            pendingAddItem={showNewSegmentEditor}
+            onConfirmAdd={(fields) => handleConfirmAddSegment(contentId, fields)}
+            onCancelAdd={() => setPendingAddItem(null)}
+            onAddSegmentClick={() =>
+              setPendingAddItem({ type: "segment", contentId })
+            }
           />
         );
       })}
@@ -348,3 +381,4 @@ export function PublicationView() {
     </DotGrid>
   );
 }
+

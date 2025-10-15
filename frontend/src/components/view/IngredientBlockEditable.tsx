@@ -9,8 +9,8 @@ import {
   Check,
   X,
 } from "lucide-react";
-import { FormInput } from "@/components/atoms/FormInput";
-import { MacroFormSection } from "@/components/molecules/MacroFormSection";
+import { FormInput } from "../atoms/FormInput";
+import { MacroFormSection } from "../molecules/MacroFormSection";
 import type { MacroPayload } from "@/types/payloadBuilder";
 
 interface FullIngredientEditFields {
@@ -35,13 +35,20 @@ interface IngredientBlockEditableProps {
     ingredientId: string,
     fields: FullIngredientEditFields,
   ) => Promise<boolean | void>;
-  onAddIngredient?: (contentId: string) => Promise<boolean | void>;
   onDeleteIngredient?: (ingredientId: string) => Promise<boolean | void>;
+  pendingAddItem: boolean;
+  onConfirmAdd: (fields: FullIngredientEditFields) => void;
+  onCancelAdd: () => void;
+  onAddIngredientClick: () => void;
 }
 
 const safeDecodeText = (text: string | null | undefined): string => {
   if (!text) return "";
-  return String(text).replace(/├e/g, "é").replace(/├/g, "").trim();
+  try {
+    return decodeURIComponent(String(text));
+  } catch (e) {
+    return String(text).replace(/├e/g, "é").replace(/├/g, "").trim();
+  }
 };
 
 const IngredientEditor: React.FC<{
@@ -49,109 +56,100 @@ const IngredientEditor: React.FC<{
   onConfirm: (fields: FullIngredientEditFields) => void;
   onCancel: () => void;
 }> = ({ ingredient, onConfirm, onCancel }) => {
-  const [quantity, setQuantity] = useState(
-    ingredient.quantity?.toString() || "0",
-  );
-  const [unit, setUnit] = useState(
-    safeDecodeText(ingredient.ingredient_units?.[0]?.unit?.name) || "",
-  );
-  const [product, setProduct] = useState(
-    safeDecodeText(ingredient.product?.name) || "",
-  );
-  const [title, setTitle] = useState(safeDecodeText(ingredient.title) || "");
-  const [cut, setCut] = useState(safeDecodeText(ingredient.cut) || "");
-  const [multiplyFactor, setMultiplyFactor] = useState(
-    ingredient.multiply_factor?.toString() || "1",
-  );
-  const [macro, setMacro] = useState<MacroPayload | null>(
-    ingredient.product?.macro || null,
-  );
+  const [fields, setFields] = useState<FullIngredientEditFields>({
+    quantity: ingredient.quantity ?? 0,
+    unit: safeDecodeText(ingredient.ingredient_units?.[0]?.unit?.name) || "",
+    product: safeDecodeText(ingredient.product?.name) || "",
+    title: safeDecodeText(ingredient.title) || "",
+    cut: safeDecodeText(ingredient.cut) || "",
+    multiply_factor: ingredient.multiply_factor ?? 1,
+    macro: ingredient.product?.macro || null,
+  });
   const [isMacroOpen, setMacroOpen] = useState(false);
 
+  const handleChange = (field: keyof FullIngredientEditFields, value: any) => {
+    setFields((prev) => ({ ...prev, [field]: value }));
+  };
+
   const handleConfirm = () => {
-    onConfirm({
-      quantity: Number(quantity) || 0,
-      unit,
-      product,
-      title,
-      cut,
-      multiply_factor: Number(multiplyFactor) || 1,
-      macro,
-    });
+    onConfirm(fields);
   };
 
   return (
-    <div className="flex-1 flex-col gap-3 p-3 bg-[#2f2f2f] border border-neutral-600 rounded-md">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-3">
+    <div className="flex-1 w-full flex-col gap-3 p-3 bg-[#2f2f2f] border border-neutral-600 rounded-lg shadow-lg">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-3 gap-y-2">
         <FormInput
           label="Titre (optionnel)"
-          value={title}
-          onChange={setTitle}
+          value={fields.title}
+          onChange={(v) => handleChange("title", v)}
           placeholder="Ex: Pour la garniture"
         />
         <FormInput
           label="Produit"
-          value={product}
-          onChange={setProduct}
+          value={fields.product}
+          onChange={(v) => handleChange("product", v)}
           placeholder="Nom du produit"
           required
         />
         <FormInput
           label="Quantité"
           type="number"
-          value={quantity}
-          onChange={setQuantity}
+          value={fields.quantity.toString()}
+          onChange={(v) => handleChange("quantity", Number(v))}
           placeholder="0"
         />
         <FormInput
           label="Unité"
-          value={unit}
-          onChange={setUnit}
+          value={fields.unit}
+          onChange={(v) => handleChange("unit", v)}
           placeholder="g, ml, tasse..."
         />
         <FormInput
           label="Coupe (optionnel)"
-          value={cut}
-          onChange={setCut}
+          value={fields.cut}
+          onChange={(v) => handleChange("cut", v)}
           placeholder="haché, en dés..."
         />
         <FormInput
           label="Multiplicateur"
           type="number"
-          value={multiplyFactor}
-          onChange={setMultiplyFactor}
+          value={fields.multiply_factor.toString()}
+          onChange={(v) => handleChange("multiply_factor", Number(v))}
           placeholder="1.0"
         />
       </div>
 
-      <div className="border-t border-gray-600 pt-3 mt-4">
+      <div>
         <button
           type="button"
           onClick={() => setMacroOpen((prev) => !prev)}
-          className="flex items-center gap-2 text-sm font-medium text-gray-300 hover:text-amber-400 transition-colors"
+          className="flex items-center gap-2 pt-2 text-sm font-medium text-gray-300 hover:text-amber-400 transition-colors hover:cursor-pointer"
         >
           {isMacroOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
           {isMacroOpen ? "Masquer les macros" : "Modifier les macros"}
         </button>
         {isMacroOpen && (
-          <div className="mt-4">
-            <MacroFormSection macro={macro} onChange={setMacro} />
+          <div className="mt-3">
+            <MacroFormSection
+              macro={fields.macro}
+              onChange={(m) => handleChange("macro", m)}
+            />
           </div>
         )}
       </div>
 
       <div className="flex justify-end gap-2 mt-3">
         <button
-          onClick={onCancel}
-          className="p-2 rounded-md text-red-500 bg-neutral-700/60 hover:text-red-400"
-        >
-          <X size={18} />
-        </button>
-        <button
           onClick={handleConfirm}
-          className="p-2 rounded-md text-green-500 bg-neutral-700/60 hover:text-green-400"
+          className="p-2 rounded-md text-green-500 bg-neutral-700/60 hover:text-green-400 hover:cursor-pointer"
         >
           <Check size={18} />
+        </button>
+        <button
+          onClick={onCancel}
+          className="p-2 rounded-md text-red-500 bg-neutral-700/60 hover:text-red-400 hover:cursor-pointer"
+        >
+          <X size={18} />
         </button>
       </div>
     </div>
@@ -169,13 +167,15 @@ export const IngredientBlockEditable: React.FC<
   checkedItems,
   toggleChecked,
   onConfirmUpdate,
-  onAddIngredient,
   onDeleteIngredient,
+  pendingAddItem,
+  onConfirmAdd,
+  onCancelAdd,
+  onAddIngredientClick,
 }) => {
   const [editingIngredientId, setEditingIngredientId] = useState<string | null>(
     null,
   );
-  const contentId = block.content_id;
 
   const handleConfirmUpdate = async (
     ingredientId: string,
@@ -212,7 +212,7 @@ export const IngredientBlockEditable: React.FC<
   return (
     <div className="border border-gray-700 rounded-lg bg-[#1F1F1F]/80 mb-4 overflow-hidden">
       <header
-        className="flex items-center justify-between px-4 py-2 bg-[#2a2a2a]/70 cursor-pointer"
+        className="flex items-center justify-between px-3 py-2 bg-[#2a2a2a]/70 cursor-pointer"
         onClick={toggleBlock}
       >
         <h3 className="text-lg font-semibold flex items-center gap-2 text-white">
@@ -227,13 +227,13 @@ export const IngredientBlockEditable: React.FC<
       </header>
 
       {expanded && (
-        <div className="p-4 space-y-3 text-gray-300">
+        <div className="p-3 text-gray-300">
           {ingredients.map((ing: any) => {
             const id = ing.ingredient_id;
             const isEditingThis = editingIngredientId === id;
 
             return (
-              <div key={id} className="flex items-start gap-3">
+              <div key={id} className="flex items-start gap-2 w-full py-1">
                 {isEditingThis ? (
                   <IngredientEditor
                     ingredient={ing}
@@ -242,7 +242,7 @@ export const IngredientBlockEditable: React.FC<
                   />
                 ) : (
                   <>
-                    <div className="pt-1.5">
+                    <div className="py-1">
                       <input
                         type="checkbox"
                         checked={!!checkedItems[id]}
@@ -251,7 +251,7 @@ export const IngredientBlockEditable: React.FC<
                       />
                     </div>
                     <div
-                      className={`group relative flex-1 border-b border-gray-800 pb-2`}
+                      className={`group relative justify-center items-center flex-1 border-b border-gray-800 py-0.5`}
                     >
                       <span
                         className={
@@ -264,13 +264,13 @@ export const IngredientBlockEditable: React.FC<
                         <div className="absolute top-0 right-0 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                           <button
                             onClick={() => onDeleteIngredient?.(id)}
-                            className="p-1.5 rounded-md bg-neutral-700/80 text-red-500 hover:text-red-400"
+                            className="p-1.5 rounded-md bg-neutral-700/80 text-red-500 hover:text-red-400 hover:cursor-pointer"
                           >
                             <Trash2 size={16} />
                           </button>
                           <button
                             onClick={() => setEditingIngredientId(id)}
-                            className="p-1.5 rounded-md bg-neutral-700/80 text-amber-500 hover:text-amber-400"
+                            className="p-1.5 rounded-md bg-neutral-700/80 text-amber-500 hover:text-amber-400 hover:cursor-pointer"
                           >
                             <Edit2 size={16} />
                           </button>
@@ -283,10 +283,20 @@ export const IngredientBlockEditable: React.FC<
             );
           })}
 
-          {isAuthenticated && onAddIngredient && (
+          {pendingAddItem && (
+            <div className="flex items-start gap-2 w-full">
+              <IngredientEditor
+                ingredient={{}}
+                onConfirm={onConfirmAdd}
+                onCancel={onCancelAdd}
+              />
+            </div>
+          )}
+
+          {isAuthenticated && !pendingAddItem && (
             <button
-              onClick={() => onAddIngredient(contentId)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-amber-600 text-white text-sm hover:bg-amber-700 transition-colors mt-4"
+              onClick={onAddIngredientClick}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-amber-600 text-white text-sm hover:bg-amber-700 transition-colors mt-3"
             >
               <Plus size={16} />
               Ajouter un ingrédient
