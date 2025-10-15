@@ -249,12 +249,9 @@ export function usePublicationView() {
     }
 
     setLoading(true);
-    const getFn = isAuthenticated
-      ? PublicationsService.getPrivatePublicationById
-      : PublicationsService.getPublicPublicationById;
 
     try {
-      const result = await getFn(id!);
+      const result = await PublicationsService.getPublicationById(id!);
       if (result) {
         setPublication(result as Publication);
         return;
@@ -264,7 +261,7 @@ export function usePublicationView() {
     } catch (err) {
       if (isAuthenticated) {
         try {
-          const fallback = await PublicationsService.getPublicPublicationById(id!);
+          const fallback = await PublicationsService.getPublicationById(id!);
           if (fallback) {
             setPublication(fallback as Publication);
             return;

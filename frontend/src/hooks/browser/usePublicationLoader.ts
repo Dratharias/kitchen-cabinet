@@ -43,9 +43,7 @@ export function usePublicationLoader(): UsePublicationLoaderResult {
       if (types?.length) filter.type = types;
       if (query?.trim()) filter.q = query.trim();
 
-      const call = isAuthenticated
-        ? PublicationsService.getPrivatePublications
-        : PublicationsService.getPublicPublications;
+      const call = PublicationsService.getPublications;
 
       try {
         const res = await call({
@@ -58,22 +56,6 @@ export function usePublicationLoader(): UsePublicationLoaderResult {
         setTotalPages(res.totalPages ?? 1);
         return (res.items ?? []) as Publication[];
       } catch (err: any) {
-        // Fallback public si la requête privée échoue (ex: 401/403).
-        if (isAuthenticated) {
-          try {
-            const res = await PublicationsService.getPublicPublications({
-              page,
-              limit,
-              sortBy: "title",
-              order: "asc",
-              filter,
-            });
-            setTotalPages(res.totalPages ?? 1);
-            return (res.items ?? []) as Publication[];
-          } catch (e2) {
-            console.error("Échec fallback public:", e2);
-          }
-        }
         console.error("Erreur publications:", err);
         return [];
       } finally {
