@@ -15,6 +15,14 @@ import {
   CATEGORIES,
   type CategoryKey,
 } from "@/constants/contentBrowser";
+import type { Publication } from "@/types/publication";
+import { CreateCard } from "@/components/atoms/CreateCard";
+
+type CreateCardItem = { __kind: "create"; id: "create" };
+type DisplayItem = Publication | CreateCardItem;
+
+const isCreateCard = (x: DisplayItem): x is CreateCardItem =>
+  (x as CreateCardItem).__kind === "create";
 
 export function ContentBrowser() {
   const {
@@ -38,7 +46,6 @@ export function ContentBrowser() {
     navigate(`/${key}`);
   };
 
-  // Génération des items de catégories
   const categoryItems = CATEGORIES.map((key) => {
     const Icon = ICON_MAP[key];
     return {
@@ -48,7 +55,6 @@ export function ContentBrowser() {
     };
   });
 
-  // Bouton recherche
   const searchItem = {
     icon: <Search className="w-6 h-6" />,
     label: searchActive ? "Fermer" : "Rechercher",
@@ -58,26 +64,26 @@ export function ContentBrowser() {
       : "bg-[#292929] hover:bg-[#333333]",
   };
 
-  // Bouton login/logout
   const authItem = {
     icon: <User className="w-6 h-6" />,
     label: isAuthenticated ? "Déconnexion" : "Connexion",
     onClick: () => {
-      if (isAuthenticated) {
-        logout();
-      } else {
-        navigate("/login");
-      }
+      if (isAuthenticated) logout();
+      else navigate("/login");
     },
   };
 
-  // Insertion du search au centre des catégories
   const dockItems = [
     ...categoryItems.slice(0, 2),
     searchItem,
     ...categoryItems.slice(2),
     authItem,
   ];
+
+  // Ajout de la carte "Créer" uniquement si connecté
+  const fullItems: DisplayItem[] = isAuthenticated
+    ? [{ __kind: "create", id: "create" }, ...items]
+    : items;
 
   return (
     <AppLayout dockItems={dockItems} searchButtonRef={searchButtonRef}>
@@ -88,7 +94,7 @@ export function ContentBrowser() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 60 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed w-3/5 px-6 z-50 bottom-28 left-1/2 -translate-x-1/2"
+            className="fixed w-3/5 z-50 bottom-28 left-1/2 -translate-x-1/2"
           >
             <input
               ref={searchInputRef}
@@ -107,9 +113,9 @@ export function ContentBrowser() {
         style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
       >
         <AnimatePresence mode="popLayout">
-          {items.map((item, i) => (
+          {fullItems.map((item, i) => (
             <motion.div
-              key={item.publication_id}
+              key={isCreateCard(item) ? item.id : item.publication_id}
               layout
               variants={fadeSlideVariants}
               initial="initial"
@@ -118,21 +124,25 @@ export function ContentBrowser() {
               transition={fadeSlideTransition(i, cols)}
               className="publication-card"
             >
-              <PublicationCard
-                title={item.title}
-                description={
-                  Array.isArray(item.description)
-                    ? item.description
-                    : item.description
-                    ? [item.description]
-                    : []
-                }
-                tags={item.tags}
-                thumbnail={item.thumbnail}
-                onClick={() =>
-                  navigate(`/publication/${item.publication_id}`)
-                }
-              />
+              {isCreateCard(item) ? (
+                <CreateCard onClick={() => navigate("/create")} />
+              ) : (
+                <PublicationCard
+                  title={item.title}
+                  description={
+                    Array.isArray(item.description)
+                      ? item.description
+                      : item.description
+                        ? [item.description]
+                        : []
+                  }
+                  tags={item.tags}
+                  thumbnail={item.thumbnail}
+                  onClick={() =>
+                    navigate(`/publication/${item.publication_id}`)
+                  }
+                />
+              )}
             </motion.div>
           ))}
         </AnimatePresence>

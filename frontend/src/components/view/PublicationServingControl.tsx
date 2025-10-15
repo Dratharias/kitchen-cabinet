@@ -29,7 +29,7 @@ export function PublicationServingControl({
           <span className="text-sm">{prepTime} min</span>
         </div>
       )}
-      
+
       <div className="flex items-center gap-3">
         <Users className="w-4 h-4 text-amber-400" />
         <button

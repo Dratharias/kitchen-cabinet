@@ -99,10 +99,10 @@ export const DotGrid: React.FC<DotGridProps> = ({
     const cell = dotSize + gap;
     const cols = Math.ceil(width / cell);
     const rows = Math.ceil(height / cell);
-    
+
     const gridW = cols * cell - gap;
     const gridH = rows * cell - gap;
-    
+
     const offsetX = (width - gridW) / 2 + dotSize / 2;
     const offsetY = (height - gridH) / 2 + dotSize / 2;
 

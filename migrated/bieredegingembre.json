@@ -15,9 +15,18 @@
       "public": true,
       "published": true,
       "tags": [
-        { "str_value": "fermentation", "type": "Tag" },
-        { "str_value": "boissons", "type": "Tag" },
-        { "str_value": "levain", "type": "Tag" }
+        {
+          "str_value": "fermentation",
+          "type": "Tag"
+        },
+        {
+          "str_value": "boissons",
+          "type": "Tag"
+        },
+        {
+          "str_value": "levain",
+          "type": "Tag"
+        }
       ],
       "thumbnail": "~/nas/media/recipebook/bieredegingembre.png",
       "contents": [
@@ -25,30 +34,87 @@
           "subtitle": "Levain de gingembre",
           "is_ingredient": true,
           "total_prep_time": 5765,
-          "servings": { "yield": 120, "value": "ml de levain actif" },
+          "servings": {
+            "yield": 120,
+            "value": "ml de levain actif"
+          },
           "content_prep_times": [
-            { "prep_time": { "duration": 5, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 5760, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 5,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 5760,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         },
         {
           "subtitle": "Bière de gingembre (maison)",
           "total_prep_time": 4395,
-          "servings": { "yield": 4, "value": "bouteilles de 473ml" },
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
           "content_prep_times": [
-            { "prep_time": { "duration": 15, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 4320, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 15,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 4320,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         },
         {
           "subtitle": "Bière de gingembre (pro)",
           "total_prep_time": 2960,
-          "servings": { "yield": 4, "value": "bouteilles de 473ml" },
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
           "content_prep_times": [
-            { "prep_time": { "duration": 20, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 20,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         }
       ]
@@ -67,9 +133,18 @@
       "public": true,
       "published": true,
       "tags": [
-        { "str_value": "fermentation", "type": "Tag" },
-        { "str_value": "boissons", "type": "Tag" },
-        { "str_value": "levain", "type": "Tag" }
+        {
+          "str_value": "fermentation",
+          "type": "Tag"
+        },
+        {
+          "str_value": "boissons",
+          "type": "Tag"
+        },
+        {
+          "str_value": "levain",
+          "type": "Tag"
+        }
       ],
       "thumbnail": "~/nas/media/recipebook/limonadeflorale.png",
       "contents": [
@@ -77,11 +152,64 @@
           "subtitle": "Levain de fruits",
           "is_ingredient": true,
           "total_prep_time": 5765,
-          "servings": { "yield": 100, "value": "ml de levain de fruits actif" },
+          "servings": {
+            "yield": 100,
+            "value": "ml de levain de fruits actif"
+          },
           "content_ingredients": [
-            { "quantity": 200, "multiply_factor": 1, "product": { "name": "eau", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "fruit bio (fraise, framboise, bleuet, pomme)", "macro": { "calories": 30, "sugar": 6 } }, "ingredient_units": [{ "unit": { "name": "pièce" } }] },
-            { "quantity": 15, "multiply_factor": 1, "product": { "name": "sucre", "macro": { "calories": 60, "sugar": 15 } }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 200,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fruit bio (fraise, framboise, bleuet, pomme)",
+                "macro": {
+                  "calories": 30,
+                  "sugar": 6
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "pièce"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 15,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 60,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -91,25 +219,118 @@
                 "paragraph": "Écraser le fruit avec l’eau et le sucre dans un bocal. Couvrir d’un tissu et remuer deux fois par jour. Filtrer après 3 à 6 jours lorsque le liquide pétille et dégage un parfum agréable."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 5, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 5760, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 5,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 5760,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 5, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 5760, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 5,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 5760,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         },
         {
           "subtitle": "Limonade florale / thé (maison)",
           "total_prep_time": 4385,
-          "servings": { "yield": 4, "value": "bouteilles de 473ml" },
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
           "content_ingredients": [
-            { "quantity": 1000, "multiply_factor": 1, "product": { "name": "eau", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 10, "multiply_factor": 0.8, "product": { "name": "fleurs séchées (lavande, rose) ou thé", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 80, "multiply_factor": 1, "product": { "name": "sucre", "macro": { "calories": 310, "sugar": 80 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 100, "multiply_factor": 1, "product": { "name": "levain de fruits filtré", "macro": { "calories": 5, "sugar": 1 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] }
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 10,
+              "multiply_factor": 0.8,
+              "product": {
+                "name": "fleurs séchées (lavande, rose) ou thé",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 310,
+                  "sugar": 80
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de fruits filtré",
+                "macro": {
+                  "calories": 5,
+                  "sugar": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -119,27 +340,118 @@
                 "paragraph": "Infuser les fleurs ou le thé dans l’eau chaude pendant 10 minutes. Ajouter le sucre et laisser refroidir environ 1h. Incorporer le levain filtré, embouteiller et laisser fermenter 2 à 3 jours à température ambiante avant réfrigération."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 10, "style": { "str_value": "Infusion", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Infusion",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 10, "style": { "str_value": "Infusion", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Infusion",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         },
         {
           "subtitle": "Limonade florale / thé (pro)",
           "total_prep_time": 2900,
-          "servings": { "yield": 4, "value": "bouteilles de 473ml" },
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
           "content_ingredients": [
-            { "quantity": 1000, "multiply_factor": 1, "product": { "name": "eau" }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 10, "multiply_factor": 0.8, "product": { "name": "fleurs séchées (lavande, rose) ou thé" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 80, "multiply_factor": 1, "product": { "name": "sucre" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 0.5, "multiply_factor": 0.9, "product": { "name": "levure US-05" }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 10,
+              "multiply_factor": 0.8,
+              "product": {
+                "name": "fleurs séchées (lavande, rose) ou thé"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 0.9,
+              "product": {
+                "name": "levure US-05"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -149,16 +461,52 @@
                 "paragraph": "Infuser les fleurs ou le thé 10 minutes, ajouter le sucre puis refroidir à 20–22°C (environ 1h). Ajouter la levure, embouteiller et fermenter 2 à 3 jours avant réfrigération."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 10, "style": { "str_value": "Infusion", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Infusion",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 10, "style": { "str_value": "Infusion", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Infusion",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         }
       ]
@@ -177,9 +525,18 @@
       "public": true,
       "published": true,
       "tags": [
-        { "str_value": "fermentation", "type": "Tag" },
-        { "str_value": "boissons", "type": "Tag" },
-        { "str_value": "levain", "type": "Tag" }
+        {
+          "str_value": "fermentation",
+          "type": "Tag"
+        },
+        {
+          "str_value": "boissons",
+          "type": "Tag"
+        },
+        {
+          "str_value": "levain",
+          "type": "Tag"
+        }
       ],
       "thumbnail": "~/nas/media/recipebook/sodafraisecitron.png",
       "contents": [
@@ -187,11 +544,64 @@
           "subtitle": "Levain de fraise",
           "is_ingredient": true,
           "total_prep_time": 5765,
-          "servings": { "yield": 100, "value": "ml de levain de fraise actif" },
+          "servings": {
+            "yield": 100,
+            "value": "ml de levain de fraise actif"
+          },
           "content_ingredients": [
-            { "quantity": 200, "multiply_factor": 1, "product": { "name": "eau", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 100, "multiply_factor": 1, "product": { "name": "fraises fraîches écrasées", "macro": { "calories": 32, "sugar": 5 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 15, "multiply_factor": 1, "product": { "name": "sucre", "macro": { "calories": 60, "sugar": 15 } }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 200,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fraises fraîches écrasées",
+                "macro": {
+                  "calories": 32,
+                  "sugar": 5
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 15,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 60,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -201,26 +611,137 @@
                 "paragraph": "Écraser les fraises avec l’eau et le sucre. Couvrir d’un tissu et remuer deux fois par jour. Filtrer après 3 à 6 jours quand le mélange pétille et dégage un parfum fruité."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 5760, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 5760,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 5760, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 5760,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         },
         {
           "subtitle": "Soda fraise-citron (maison)",
           "total_prep_time": 2950,
-          "servings": { "yield": 4, "value": "bouteilles de 473ml" },
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
           "content_ingredients": [
-            { "quantity": 1000, "multiply_factor": 1, "product": { "name": "eau", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 100, "multiply_factor": 1, "product": { "name": "fraises écrasées", "macro": { "calories": 32, "sugar": 5 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 50, "multiply_factor": 1, "product": { "name": "jus de citron frais", "macro": { "calories": 17, "sugar": 1 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 80, "multiply_factor": 1, "product": { "name": "sucre", "macro": { "calories": 310, "sugar": 80 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 100, "multiply_factor": 1, "product": { "name": "levain de fraise filtré", "macro": { "calories": 5, "sugar": 1 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] }
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fraises écrasées",
+                "macro": {
+                  "calories": 32,
+                  "sugar": 5
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 50,
+              "multiply_factor": 1,
+              "product": {
+                "name": "jus de citron frais",
+                "macro": {
+                  "calories": 17,
+                  "sugar": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 310,
+                  "sugar": 80
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de fraise filtré",
+                "macro": {
+                  "calories": 5,
+                  "sugar": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -230,28 +751,132 @@
                 "paragraph": "Mélanger les fraises écrasées, le jus de citron, l’eau et le sucre. Laisser reposer 30 minutes pour dissoudre le sucre, puis refroidir 1h avant d’ajouter le levain filtré. Embouteiller et laisser fermenter 2 à 3 jours à température ambiante avant réfrigération."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 30, "style": { "str_value": "Mélange & repos", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Mélange & repos",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 30, "style": { "str_value": "Mélange & repos", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Mélange & repos",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         },
         {
           "subtitle": "Soda fraise-citron (pro)",
           "total_prep_time": 2900,
-          "servings": { "yield": 4, "value": "bouteilles de 473ml" },
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
           "content_ingredients": [
-            { "quantity": 1000, "multiply_factor": 1, "product": { "name": "eau" }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 100, "multiply_factor": 1, "product": { "name": "fraises écrasées" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 50, "multiply_factor": 1, "product": { "name": "jus de citron" }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 80, "multiply_factor": 1, "product": { "name": "sucre" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 0.5, "multiply_factor": 0.9, "product": { "name": "levure US-05" }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fraises écrasées"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 50,
+              "multiply_factor": 1,
+              "product": {
+                "name": "jus de citron"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 0.9,
+              "product": {
+                "name": "levure US-05"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -261,16 +886,52 @@
                 "paragraph": "Mélanger les fraises, le jus de citron, l’eau et le sucre. Refroidir à 20–22°C (environ 1h) avant d’ajouter la levure. Embouteiller et fermenter 2 à 3 jours à température ambiante avant réfrigération."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 30, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 30, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         }
       ]
@@ -289,9 +950,18 @@
       "public": true,
       "published": true,
       "tags": [
-        { "str_value": "fermentation", "type": "Tag" },
-        { "str_value": "boissons", "type": "Tag" },
-        { "str_value": "levain", "type": "Tag" }
+        {
+          "str_value": "fermentation",
+          "type": "Tag"
+        },
+        {
+          "str_value": "boissons",
+          "type": "Tag"
+        },
+        {
+          "str_value": "levain",
+          "type": "Tag"
+        }
       ],
       "thumbnail": "~/nas/media/recipebook/sodableuet.png",
       "contents": [
@@ -299,11 +969,64 @@
           "subtitle": "Levain de bleuet",
           "is_ingredient": true,
           "total_prep_time": 5765,
-          "servings": { "yield": 100, "value": "ml de levain de bleuet actif" },
+          "servings": {
+            "yield": 100,
+            "value": "ml de levain de bleuet actif"
+          },
           "content_ingredients": [
-            { "quantity": 200, "multiply_factor": 1, "product": { "name": "eau", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 150, "multiply_factor": 1, "product": { "name": "bleuets écrasés", "macro": { "calories": 85, "sugar": 15 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 15, "multiply_factor": 1, "product": { "name": "sucre", "macro": { "calories": 60, "sugar": 15 } }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 200,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 150,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bleuets écrasés",
+                "macro": {
+                  "calories": 85,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 15,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 60,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -313,25 +1036,119 @@
                 "paragraph": "Écraser les bleuets avec l’eau et le sucre. Couvrir d’un tissu, remuer deux fois par jour. Filtrer après 3 à 6 jours lorsque le liquide pétille et sent bon."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 5760, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 5760,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 5760, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 5760,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         },
         {
           "subtitle": "Soda aux bleuets (maison)",
           "total_prep_time": 2950,
-          "servings": { "yield": 4, "value": "bouteilles de 473ml" },
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
           "content_ingredients": [
-            { "quantity": 1000, "multiply_factor": 1, "product": { "name": "eau", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 150, "multiply_factor": 1, "product": { "name": "bleuets écrasés", "macro": { "calories": 85, "sugar": 15 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 80, "multiply_factor": 1, "product": { "name": "sucre", "macro": { "calories": 310, "sugar": 80 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 100, "multiply_factor": 1, "product": { "name": "levain de bleuet filtré", "macro": { "calories": 5, "sugar": 1 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] }
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 150,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bleuets écrasés",
+                "macro": {
+                  "calories": 85,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 310,
+                  "sugar": 80
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de bleuet filtré",
+                "macro": {
+                  "calories": 5,
+                  "sugar": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -341,27 +1158,118 @@
                 "paragraph": "Écraser les bleuets avec l’eau et le sucre. Laisser reposer 30 minutes pour dissoudre le sucre. Refroidir environ 1h avant d’ajouter le levain filtré. Embouteiller et fermenter 2 à 3 jours à température ambiante avant de réfrigérer."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 30, "style": { "str_value": "Mélange & repos", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Mélange & repos",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 30, "style": { "str_value": "Mélange & repos", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Mélange & repos",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         },
         {
           "subtitle": "Soda aux bleuets (pro)",
           "total_prep_time": 2900,
-          "servings": { "yield": 4, "value": "bouteilles de 473ml" },
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
           "content_ingredients": [
-            { "quantity": 1000, "multiply_factor": 1, "product": { "name": "eau" }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 150, "multiply_factor": 1, "product": { "name": "bleuets écrasés" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 80, "multiply_factor": 1, "product": { "name": "sucre" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 0.5, "multiply_factor": 0.9, "product": { "name": "levure US-05" }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 150,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bleuets écrasés"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 0.9,
+              "product": {
+                "name": "levure US-05"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -371,16 +1279,52 @@
                 "paragraph": "Mélanger les bleuets, l’eau et le sucre. Refroidir à 20–22°C (environ 1h), ajouter la levure et embouteiller. Fermenter 2 à 3 jours à température ambiante puis réfrigérer."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 30, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 30, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         }
       ]
@@ -399,9 +1343,18 @@
       "public": true,
       "published": true,
       "tags": [
-        { "str_value": "fermentation", "type": "Tag" },
-        { "str_value": "boissons", "type": "Tag" },
-        { "str_value": "levain", "type": "Tag" }
+        {
+          "str_value": "fermentation",
+          "type": "Tag"
+        },
+        {
+          "str_value": "boissons",
+          "type": "Tag"
+        },
+        {
+          "str_value": "levain",
+          "type": "Tag"
+        }
       ],
       "thumbnail": "~/nas/media/recipebook/cidredoux.png",
       "contents": [
@@ -409,11 +1362,64 @@
           "subtitle": "Levain de pomme",
           "is_ingredient": true,
           "total_prep_time": 5765,
-          "servings": { "yield": 100, "value": "ml de levain de pomme actif" },
+          "servings": {
+            "yield": 100,
+            "value": "ml de levain de pomme actif"
+          },
           "content_ingredients": [
-            { "quantity": 200, "multiply_factor": 1, "product": { "name": "eau", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "pomme bio râpée", "macro": { "calories": 52, "sugar": 10 } }, "ingredient_units": [{ "unit": { "name": "pièce" } }] },
-            { "quantity": 15, "multiply_factor": 1, "product": { "name": "sucre", "macro": { "calories": 60, "sugar": 15 } }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 200,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "pomme bio râpée",
+                "macro": {
+                  "calories": 52,
+                  "sugar": 10
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "pièce"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 15,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 60,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -423,22 +1429,66 @@
                 "paragraph": "Râper la pomme et la mélanger avec l’eau et le sucre dans un bocal. Couvrir d’un tissu et remuer deux fois par jour. Filtrer après 3 à 6 jours, lorsque le mélange pétille et sent la pomme fermentée."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 5760, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 5760,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 5760, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 5760,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         },
         {
           "subtitle": "Cidre doux (maison)",
           "total_prep_time": 7200,
-          "servings": { "yield": 4, "value": "bouteilles de 473ml" },
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
           "content_ingredients": [
-            { "quantity": 1000, "multiply_factor": 1, "product": { "name": "jus de pomme non pasteurisé", "macro": { "calories": 460, "sugar": 100 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] }
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "jus de pomme non pasteurisé",
+                "macro": {
+                  "calories": 460,
+                  "sugar": 100
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -448,23 +1498,83 @@
                 "paragraph": "Verser le jus dans un récipient en verre, couvrir d’un tissu et laisser fermenter 5 à 10 jours à température ambiante selon la douceur désirée. Réfrigérer pour stopper la fermentation."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 5, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 7200, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 5,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 7200,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 5, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 7200, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 5,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 7200,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         },
         {
           "subtitle": "Cidre doux (pro)",
           "total_prep_time": 2900,
-          "servings": { "yield": 4, "value": "bouteilles de 473ml" },
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
           "content_ingredients": [
-            { "quantity": 1000, "multiply_factor": 1, "product": { "name": "jus de pomme pasteurisé", "macro": { "calories": 460, "sugar": 100 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 0.5, "multiply_factor": 0.9, "product": { "name": "levure US-05", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "jus de pomme pasteurisé",
+                "macro": {
+                  "calories": 460,
+                  "sugar": 100
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 0.9,
+              "product": {
+                "name": "levure US-05",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -474,16 +1584,52 @@
                 "paragraph": "Verser le jus pasteurisé dans une bonbonne, refroidir à 20–22°C si nécessaire, puis ajouter la levure. Fermenter 2 à 5 jours avant réfrigération pour conserver un goût doux."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 20, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 20,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 20, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 20,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         }
       ]
@@ -502,9 +1648,18 @@
       "public": true,
       "published": true,
       "tags": [
-        { "str_value": "fermentation", "type": "Tag" },
-        { "str_value": "boissons", "type": "Tag" },
-        { "str_value": "levain", "type": "Tag" }
+        {
+          "str_value": "fermentation",
+          "type": "Tag"
+        },
+        {
+          "str_value": "boissons",
+          "type": "Tag"
+        },
+        {
+          "str_value": "levain",
+          "type": "Tag"
+        }
       ],
       "thumbnail": "~/nas/media/recipebook/sodacerise.png",
       "contents": [
@@ -512,11 +1667,64 @@
           "subtitle": "Levain de cerise",
           "is_ingredient": true,
           "total_prep_time": 5765,
-          "servings": { "yield": 100, "value": "ml de levain de cerise actif" },
+          "servings": {
+            "yield": 100,
+            "value": "ml de levain de cerise actif"
+          },
           "content_ingredients": [
-            { "quantity": 200, "multiply_factor": 1, "product": { "name": "eau", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 150, "multiply_factor": 1, "product": { "name": "cerises fraîches écrasées", "macro": { "calories": 63, "sugar": 12 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 15, "multiply_factor": 1, "product": { "name": "sucre", "macro": { "calories": 60, "sugar": 15 } }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 200,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 150,
+              "multiply_factor": 1,
+              "product": {
+                "name": "cerises fraîches écrasées",
+                "macro": {
+                  "calories": 63,
+                  "sugar": 12
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 15,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 60,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -526,25 +1734,119 @@
                 "paragraph": "Écraser les cerises avec l’eau et le sucre. Couvrir d’un tissu et remuer deux fois par jour. Filtrer après 3 à 6 jours lorsque le mélange pétille et dégage un arôme fruité."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 5760, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 5760,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 5760, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 5760,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         },
         {
           "subtitle": "Soda à la cerise (maison)",
           "total_prep_time": 2950,
-          "servings": { "yield": 4, "value": "bouteilles de 473ml" },
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
           "content_ingredients": [
-            { "quantity": 1000, "multiply_factor": 1, "product": { "name": "eau", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 150, "multiply_factor": 1, "product": { "name": "cerises fraîches ou surgelées écrasées", "macro": { "calories": 63, "sugar": 12 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 80, "multiply_factor": 1, "product": { "name": "sucre", "macro": { "calories": 310, "sugar": 80 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 100, "multiply_factor": 1, "product": { "name": "levain de cerise filtré", "macro": { "calories": 5, "sugar": 1 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] }
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 150,
+              "multiply_factor": 1,
+              "product": {
+                "name": "cerises fraîches ou surgelées écrasées",
+                "macro": {
+                  "calories": 63,
+                  "sugar": 12
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 310,
+                  "sugar": 80
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de cerise filtré",
+                "macro": {
+                  "calories": 5,
+                  "sugar": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -554,27 +1856,118 @@
                 "paragraph": "Mélanger les cerises écrasées, l’eau et le sucre. Laisser reposer 30 minutes pour dissoudre le sucre. Refroidir 1h avant d’ajouter le levain filtré. Embouteiller et fermenter 2 à 3 jours à température ambiante, puis réfrigérer."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 30, "style": { "str_value": "Mélange & repos", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Mélange & repos",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 30, "style": { "str_value": "Mélange & repos", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Mélange & repos",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         },
         {
           "subtitle": "Soda à la cerise (pro)",
           "total_prep_time": 2900,
-          "servings": { "yield": 4, "value": "bouteilles de 473ml" },
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
           "content_ingredients": [
-            { "quantity": 1000, "multiply_factor": 1, "product": { "name": "eau" }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 150, "multiply_factor": 1, "product": { "name": "cerises écrasées" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 80, "multiply_factor": 1, "product": { "name": "sucre" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 0.5, "multiply_factor": 0.9, "product": { "name": "levure US-05" }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 150,
+              "multiply_factor": 1,
+              "product": {
+                "name": "cerises écrasées"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 0.9,
+              "product": {
+                "name": "levure US-05"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -584,16 +1977,52 @@
                 "paragraph": "Mélanger les cerises, l’eau et le sucre. Refroidir à 20–22°C (environ 1h) avant d’ajouter la levure. Embouteiller et fermenter 2 à 3 jours à température ambiante, puis réfrigérer."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 30, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 30, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         }
       ]
@@ -612,9 +2041,18 @@
       "public": true,
       "published": true,
       "tags": [
-        { "str_value": "fermentation", "type": "Tag" },
-        { "str_value": "boissons", "type": "Tag" },
-        { "str_value": "levain", "type": "Tag" }
+        {
+          "str_value": "fermentation",
+          "type": "Tag"
+        },
+        {
+          "str_value": "boissons",
+          "type": "Tag"
+        },
+        {
+          "str_value": "levain",
+          "type": "Tag"
+        }
       ],
       "thumbnail": "~/nas/media/recipebook/sodableuetbasilic.png",
       "contents": [
@@ -622,11 +2060,64 @@
           "subtitle": "Levain de bleuet",
           "is_ingredient": true,
           "total_prep_time": 5765,
-          "servings": { "yield": 100, "value": "ml de levain de bleuet actif" },
+          "servings": {
+            "yield": 100,
+            "value": "ml de levain de bleuet actif"
+          },
           "content_ingredients": [
-            { "quantity": 200, "multiply_factor": 1, "product": { "name": "eau", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 150, "multiply_factor": 1, "product": { "name": "bleuets écrasés", "macro": { "calories": 85, "sugar": 15 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 15, "multiply_factor": 1, "product": { "name": "sucre", "macro": { "calories": 60, "sugar": 15 } }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 200,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 150,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bleuets écrasés",
+                "macro": {
+                  "calories": 85,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 15,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 60,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -636,26 +2127,136 @@
                 "paragraph": "Écraser les bleuets avec l’eau et le sucre. Couvrir d’un tissu et remuer deux fois par jour. Filtrer après 3 à 6 jours, lorsque le liquide pétille et sent bon."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 5760, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 5760,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 5760, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 5760,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         },
         {
           "subtitle": "Soda aux bleuets et basilic (maison)",
           "total_prep_time": 2950,
-          "servings": { "yield": 4, "value": "bouteilles de 473ml" },
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
           "content_ingredients": [
-            { "quantity": 1000, "multiply_factor": 1, "product": { "name": "eau", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 100, "multiply_factor": 1, "product": { "name": "bleuets écrasés", "macro": { "calories": 57, "sugar": 10 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 5, "multiply_factor": 0.8, "product": { "name": "feuilles de basilic frais", "macro": { "calories": 1 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 80, "multiply_factor": 1, "product": { "name": "sucre", "macro": { "calories": 310, "sugar": 80 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 100, "multiply_factor": 1, "product": { "name": "levain de bleuet filtré", "macro": { "calories": 5, "sugar": 1 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] }
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bleuets écrasés",
+                "macro": {
+                  "calories": 57,
+                  "sugar": 10
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 5,
+              "multiply_factor": 0.8,
+              "product": {
+                "name": "feuilles de basilic frais",
+                "macro": {
+                  "calories": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 310,
+                  "sugar": 80
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de bleuet filtré",
+                "macro": {
+                  "calories": 5,
+                  "sugar": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -665,28 +2266,132 @@
                 "paragraph": "Mélanger les bleuets écrasés, le sucre, l’eau et les feuilles de basilic. Laisser reposer 30 minutes pour infuser. Refroidir 1h avant d’ajouter le levain filtré. Embouteiller et fermenter 2 à 3 jours à température ambiante avant de réfrigérer."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 30, "style": { "str_value": "Infusion", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Infusion",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 30, "style": { "str_value": "Infusion", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Infusion",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         },
         {
           "subtitle": "Soda aux bleuets et basilic (pro)",
           "total_prep_time": 2900,
-          "servings": { "yield": 4, "value": "bouteilles de 473ml" },
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
           "content_ingredients": [
-            { "quantity": 1000, "multiply_factor": 1, "product": { "name": "eau" }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 100, "multiply_factor": 1, "product": { "name": "bleuets écrasés" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 5, "multiply_factor": 0.8, "product": { "name": "feuilles de basilic" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 80, "multiply_factor": 1, "product": { "name": "sucre" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 0.5, "multiply_factor": 0.9, "product": { "name": "levure US-05" }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bleuets écrasés"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 5,
+              "multiply_factor": 0.8,
+              "product": {
+                "name": "feuilles de basilic"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 0.9,
+              "product": {
+                "name": "levure US-05"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -696,16 +2401,52 @@
                 "paragraph": "Mélanger les bleuets, l’eau, le sucre et le basilic. Laisser infuser 30 minutes, puis refroidir à 20–22°C (1h) avant d’ajouter la levure. Embouteiller et fermenter 2 à 3 jours à température ambiante, puis réfrigérer."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 30, "style": { "str_value": "Infusion", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Infusion",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 30, "style": { "str_value": "Infusion", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Infusion",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         }
       ]
@@ -724,9 +2465,18 @@
       "public": true,
       "published": true,
       "tags": [
-        { "str_value": "fermentation", "type": "Tag" },
-        { "str_value": "boissons", "type": "Tag" },
-        { "str_value": "levain", "type": "Tag" }
+        {
+          "str_value": "fermentation",
+          "type": "Tag"
+        },
+        {
+          "str_value": "boissons",
+          "type": "Tag"
+        },
+        {
+          "str_value": "levain",
+          "type": "Tag"
+        }
       ],
       "thumbnail": "~/nas/media/recipebook/sodarhubarbefraise.png",
       "contents": [
@@ -734,11 +2484,65 @@
           "subtitle": "Levain de rhubarbe",
           "is_ingredient": true,
           "total_prep_time": 5765,
-          "servings": { "yield": 100, "value": "ml de levain de rhubarbe actif" },
+          "servings": {
+            "yield": 100,
+            "value": "ml de levain de rhubarbe actif"
+          },
           "content_ingredients": [
-            { "quantity": 200, "multiply_factor": 1, "product": { "name": "eau", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 100, "multiply_factor": 1, "product": { "name": "rhubarbe coupée", "macro": { "calories": 21, "sugar": 1.1, "fiber": 2 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 15, "multiply_factor": 1, "product": { "name": "sucre", "macro": { "calories": 60, "sugar": 15 } }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 200,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "rhubarbe coupée",
+                "macro": {
+                  "calories": 21,
+                  "sugar": 1.1,
+                  "fiber": 2
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 15,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 60,
+                  "sugar": 15
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -748,26 +2552,138 @@
                 "paragraph": "Mélanger la rhubarbe, l’eau et le sucre dans un bocal. Couvrir d’un tissu et remuer deux fois par jour. Filtrer après 3 à 6 jours lorsque le mélange devient pétillant et aromatique."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 5760, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 5760,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 5760, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 5760,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         },
         {
           "subtitle": "Soda à la rhubarbe et fraise (maison)",
           "total_prep_time": 2950,
-          "servings": { "yield": 4, "value": "bouteilles de 473ml" },
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
           "content_ingredients": [
-            { "quantity": 1000, "multiply_factor": 1, "product": { "name": "eau", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 100, "multiply_factor": 1, "product": { "name": "rhubarbe fraîche coupée", "macro": { "calories": 21, "sugar": 1.1, "fiber": 2 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 100, "multiply_factor": 1, "product": { "name": "fraises écrasées", "macro": { "calories": 32, "sugar": 5 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 80, "multiply_factor": 1, "product": { "name": "sucre", "macro": { "calories": 310, "sugar": 80 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 100, "multiply_factor": 1, "product": { "name": "levain de rhubarbe filtré", "macro": { "calories": 5, "sugar": 1 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] }
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "rhubarbe fraîche coupée",
+                "macro": {
+                  "calories": 21,
+                  "sugar": 1.1,
+                  "fiber": 2
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fraises écrasées",
+                "macro": {
+                  "calories": 32,
+                  "sugar": 5
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre",
+                "macro": {
+                  "calories": 310,
+                  "sugar": 80
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de rhubarbe filtré",
+                "macro": {
+                  "calories": 5,
+                  "sugar": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -777,28 +2693,132 @@
                 "paragraph": "Mélanger la rhubarbe, les fraises, le sucre et l’eau. Laisser reposer 30 minutes pour dissoudre le sucre et infuser. Refroidir 1h avant d’ajouter le levain filtré. Embouteiller et fermenter 2 à 3 jours à température ambiante avant réfrigération."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 30, "style": { "str_value": "Infusion", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Infusion",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 30, "style": { "str_value": "Infusion", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Infusion",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         },
         {
           "subtitle": "Soda à la rhubarbe et fraise (pro)",
           "total_prep_time": 2900,
-          "servings": { "yield": 4, "value": "bouteilles de 473ml" },
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
           "content_ingredients": [
-            { "quantity": 1000, "multiply_factor": 1, "product": { "name": "eau" }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 100, "multiply_factor": 1, "product": { "name": "rhubarbe fraîche coupée" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 100, "multiply_factor": 1, "product": { "name": "fraises écrasées" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 80, "multiply_factor": 1, "product": { "name": "sucre" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 0.5, "multiply_factor": 0.9, "product": { "name": "levure US-05" }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "rhubarbe fraîche coupée"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fraises écrasées"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "sucre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 0.9,
+              "product": {
+                "name": "levure US-05"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -808,16 +2828,52 @@
                 "paragraph": "Mélanger la rhubarbe, les fraises, le sucre et l’eau. Refroidir à 20–22°C (environ 1h), ajouter la levure, embouteiller et fermenter 2 à 3 jours avant réfrigération."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 30, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 30,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 30, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 30,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         }
       ]
@@ -836,9 +2892,18 @@
       "public": true,
       "published": true,
       "tags": [
-        { "str_value": "fermentation", "type": "Tag" },
-        { "str_value": "boissons", "type": "Tag" },
-        { "str_value": "levain", "type": "Tag" }
+        {
+          "str_value": "fermentation",
+          "type": "Tag"
+        },
+        {
+          "str_value": "boissons",
+          "type": "Tag"
+        },
+        {
+          "str_value": "levain",
+          "type": "Tag"
+        }
       ],
       "thumbnail": "~/nas/media/recipebook/limonadelavandemiel.png",
       "contents": [
@@ -846,11 +2911,63 @@
           "subtitle": "Levain de lavande",
           "is_ingredient": true,
           "total_prep_time": 5765,
-          "servings": { "yield": 100, "value": "ml de levain de lavande actif" },
+          "servings": {
+            "yield": 100,
+            "value": "ml de levain de lavande actif"
+          },
           "content_ingredients": [
-            { "quantity": 200, "multiply_factor": 1, "product": { "name": "eau", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 10, "multiply_factor": 1, "product": { "name": "fleurs de lavande séchées comestibles", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 15, "multiply_factor": 1, "product": { "name": "miel", "macro": { "calories": 46, "sugar": 12 } }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 200,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 10,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fleurs de lavande séchées comestibles",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 15,
+              "multiply_factor": 1,
+              "product": {
+                "name": "miel",
+                "macro": {
+                  "calories": 46,
+                  "sugar": 12
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -860,25 +2977,118 @@
                 "paragraph": "Mélanger l’eau, les fleurs de lavande et le miel dans un bocal. Couvrir d’un tissu et remuer deux fois par jour. Filtrer après 3 à 6 jours, lorsque le mélange devient pétillant et floral."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 5760, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 5760,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 5760, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 5760,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         },
         {
           "subtitle": "Limonade à la lavande et miel (maison)",
           "total_prep_time": 2950,
-          "servings": { "yield": 4, "value": "bouteilles de 473ml" },
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
           "content_ingredients": [
-            { "quantity": 1000, "multiply_factor": 1, "product": { "name": "eau", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 10, "multiply_factor": 1, "product": { "name": "fleurs de lavande séchées comestibles", "macro": { "calories": 0 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 80, "multiply_factor": 1, "product": { "name": "miel", "macro": { "calories": 310, "sugar": 80 } }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 100, "multiply_factor": 1, "product": { "name": "levain de lavande filtré", "macro": { "calories": 5, "sugar": 1 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] }
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 10,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fleurs de lavande séchées comestibles",
+                "macro": {
+                  "calories": 0
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "miel",
+                "macro": {
+                  "calories": 310,
+                  "sugar": 80
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 100,
+              "multiply_factor": 1,
+              "product": {
+                "name": "levain de lavande filtré",
+                "macro": {
+                  "calories": 5,
+                  "sugar": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -888,27 +3098,118 @@
                 "paragraph": "Infuser la lavande dans l’eau chaude pendant 10 minutes. Ajouter le miel et laisser refroidir environ 1h avant d’incorporer le levain filtré. Embouteiller et fermenter 2 à 3 jours à température ambiante avant réfrigération."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 10, "style": { "str_value": "Infusion", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Infusion",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 10, "style": { "str_value": "Infusion", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Infusion",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         },
         {
           "subtitle": "Limonade à la lavande et miel (pro)",
           "total_prep_time": 2900,
-          "servings": { "yield": 4, "value": "bouteilles de 473ml" },
+          "servings": {
+            "yield": 4,
+            "value": "bouteilles de 473ml"
+          },
           "content_ingredients": [
-            { "quantity": 1000, "multiply_factor": 1, "product": { "name": "eau" }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 10, "multiply_factor": 1, "product": { "name": "fleurs de lavande séchées comestibles" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 80, "multiply_factor": 1, "product": { "name": "miel" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 0.5, "multiply_factor": 0.9, "product": { "name": "levure US-05" }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 1000,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 10,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fleurs de lavande séchées comestibles"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 80,
+              "multiply_factor": 1,
+              "product": {
+                "name": "miel"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 0.5,
+              "multiply_factor": 0.9,
+              "product": {
+                "name": "levure US-05"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "g"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -918,16 +3219,52 @@
                 "paragraph": "Infuser la lavande 10 minutes dans l’eau chaude. Ajouter le miel, laisser refroidir à 20–22°C (1h) puis ajouter la levure. Embouteiller et fermenter 2 à 3 jours avant de réfrigérer."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 10, "style": { "str_value": "Infusion", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-                { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+                {
+                  "duration": 10,
+                  "style": {
+                    "str_value": "Infusion",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 60,
+                  "style": {
+                    "str_value": "Refroidissement",
+                    "type": "PrepTime"
+                  }
+                },
+                {
+                  "duration": 2880,
+                  "style": {
+                    "str_value": "Fermentation",
+                    "type": "PrepTime"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 10, "style": { "str_value": "Infusion", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 60, "style": { "str_value": "Refroidissement", "type": "PrepTime" } } },
-            { "prep_time": { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } } }
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Infusion",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 60,
+              "style": {
+                "str_value": "Refroidissement",
+                "type": "PrepTime"
+              }
+            },
+            {
+              "duration": 2880,
+              "style": {
+                "str_value": "Fermentation",
+                "type": "PrepTime"
+              }
+            }
           ]
         }
       ]

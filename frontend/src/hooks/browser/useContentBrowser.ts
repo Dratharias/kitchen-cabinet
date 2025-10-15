@@ -6,7 +6,7 @@ import { usePublicationCache } from "@/hooks/browser/usePublicationCache";
 import { usePublicationLoader } from "@/hooks/browser/usePublicationLoader";
 import { useSearchBar } from "@/hooks/browser/useSearchBar";
 import { useInfiniteScroll } from "@/hooks/browser/useInfiniteScroll";
-import { useResponsiveColumns } from "@/hooks/useResponsiveColumns";
+import { useResponsiveColumns } from "@/hooks/browser/useResponsiveColumns";
 import {
   TYPE_MAP,
   CATEGORIES,
@@ -27,7 +27,8 @@ export function useContentBrowser() {
   const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const cols = useResponsiveColumns();
-  const { loadViewFromCache, mergeIntoCache, getDisplayItems } = usePublicationCache();
+  const { loadViewFromCache, mergeIntoCache, getDisplayItems } =
+    usePublicationCache();
   const { loading, totalPages, fetchPublications } = usePublicationLoader();
   const { searchActive, query, setQuery, toggleSearch } = useSearchBar({
     searchInputRef,
@@ -47,7 +48,10 @@ export function useContentBrowser() {
       : Object.values(TYPE_MAP).flat();
   }, [selectedCategory]);
 
-  const viewKey = useMemo(() => `${selectedCategory || "all"}::${query}`, [selectedCategory, query]);
+  const viewKey = useMemo(
+    () => `${selectedCategory || "all"}::${query}`,
+    [selectedCategory, query],
+  );
 
   const loadPage = useCallback(
     async (pageNum: number) => {
@@ -59,7 +63,14 @@ export function useContentBrowser() {
       });
       mergeIntoCache(viewKey, items, totalPages);
     },
-    [fetchPublications, currentTypes, query, mergeIntoCache, viewKey, totalPages],
+    [
+      fetchPublications,
+      currentTypes,
+      query,
+      mergeIntoCache,
+      viewKey,
+      totalPages,
+    ],
   );
 
   const { sentinelRef, resetPage } = useInfiniteScroll({
@@ -86,8 +97,16 @@ export function useContentBrowser() {
     return () => {
       if (debounceTimer.current) clearTimeout(debounceTimer.current);
     };
-  }, [query, selectedCategory, viewKey, loadViewFromCache, loadPage, resetPage, isAuthenticated]);
-  
+  }, [
+    query,
+    selectedCategory,
+    viewKey,
+    loadViewFromCache,
+    loadPage,
+    resetPage,
+    isAuthenticated,
+  ]);
+
   const items = getDisplayItems() as Publication[];
 
   return {

@@ -8,7 +8,9 @@ export type UUID = string;
 export type Action = "create" | "update";
 
 // Catégories typées
-export type CategoryOf<T extends "Type" | "Style" | "Author" | "Tag" | "PrepTime"> = {
+export type CategoryOf<
+  T extends "Type" | "Style" | "Author" | "Tag" | "PrepTime",
+> = {
   str_value: string;
   type: T;
 };
@@ -34,9 +36,9 @@ export interface MacroPayload {
 // Produit (ingrédient/référence recette)
 export interface ProductInput {
   product_id?: UUID; // si produit existant
-  name?: string;     // requis si nouveau produit
-  is_recipe?: UUID;  // Publication liée (facultatif)
-  macro_id?: UUID;   // facultatif
+  name?: string; // requis si nouveau produit
+  is_recipe?: UUID; // Publication liée (facultatif)
+  macro_id?: UUID; // facultatif
   macro?: MacroPayload; // facultatif
 }
 
@@ -51,19 +53,19 @@ export interface UnitRef {
 // Ingrédient dans un content
 export interface IngredientPayload {
   ingredient_id?: UUID;
-  quantity: number;        // requis
+  quantity: number; // requis
   multiply_factor: number; // requis
   cut?: string;
   title?: string;
-  product: ProductInput;   // requis
+  product: ProductInput; // requis
   ingredient_units?: UnitRef[]; // facultatif
 }
 
 // Temps de préparation (réutilisable au segment ou au content)
 export interface PrepTimePayload {
   prep_time_id?: UUID;
-  duration: number;          // requis, >= 0
-  style?: PrepTimeStyleRef;  // facultatif
+  duration: number; // requis, >= 0
+  style?: PrepTimeStyleRef; // facultatif
 }
 
 // Segment d'instruction
@@ -83,14 +85,14 @@ export interface SegmentWithMeta {
 // Bloc de contenu (ingrédients + étapes)
 export interface ContentPayload {
   content_id?: UUID;
-  total_prep_time: number;     // requis
-  servings: number | null;     // requis (peut être null)
-  gallery?: string[];          // facultatif
-  subtitle?: string;           // facultatif
-  is_ingredient?: boolean;     // facultatif
-  publication?: UUID;          // si présent, omettre segments/ingredients/prep_times
+  total_prep_time: number; // requis
+  servings: number | null; // requis (peut être null)
+  gallery?: string[]; // facultatif
+  subtitle?: string; // facultatif
+  is_ingredient?: boolean; // facultatif
+  publication?: UUID; // si présent, omettre segments/ingredients/prep_times
 
-  content_segments?: SegmentWithMeta[];   // facultatif
+  content_segments?: SegmentWithMeta[]; // facultatif
   content_ingredients?: IngredientPayload[]; // facultatif
   content_prep_times?: PrepTimePayload[]; // facultatif
 }
@@ -98,18 +100,18 @@ export interface ContentPayload {
 // Publication
 export interface PublicationPayload {
   publication_id?: UUID; // fourni en update
-  title: string;         // requis
+  title: string; // requis
   description: string[]; // requis (>=1)
-  note: string[];        // requis (>=1)
-  public: boolean;       // requis
-  published: boolean;    // requis
-  thumbnail?: string;    // facultatif
-  gallery?: string[];    // facultatif (rétrocompatibilité)
+  note: string[]; // requis (>=1)
+  public: boolean; // requis
+  published: boolean; // requis
+  thumbnail?: string; // facultatif
+  gallery?: string[]; // facultatif (rétrocompatibilité)
 
-  type?: TypeRef;        // facultatif
-  style?: StyleRef;      // facultatif
-  author?: AuthorRef;    // facultatif
-  tags?: TagRef[];       // facultatif
+  type?: TypeRef; // facultatif
+  style?: StyleRef; // facultatif
+  author?: AuthorRef; // facultatif
+  tags?: TagRef[]; // facultatif
 
   contents?: ContentPayload[]; // facultatif
 }
@@ -123,10 +125,10 @@ export interface OrchestratorPayload {
 
 ## Notes de validité
 
-* `servings` doit exister même si `null`.
-* Si `content.publication` est fourni, ne pas envoyer `content_segments`, `content_ingredients`, `content_prep_times`.
-* `product`: fournir `product_id` OU `name` lors de la création.
-* Les catégories exigent la clé `type` précise: `"Type" | "Style" | "Author" | "Tag" | "PrepTime"`.
+- `servings` doit exister même si `null`.
+- Si `content.publication` est fourni, ne pas envoyer `content_segments`, `content_ingredients`, `content_prep_times`.
+- `product`: fournir `product_id` OU `name` lors de la création.
+- Les catégories exigent la clé `type` précise: `"Type" | "Style" | "Author" | "Tag" | "PrepTime"`.
 
 ---
 
@@ -147,7 +149,7 @@ export interface OrchestratorPayload {
       "type": { "str_value": "Recette", "type": "Type" },
       "style": { "str_value": "Boulangerie", "type": "Style" },
       "author": { "str_value": "Jean Dupont", "type": "Author" },
-      "tags": [ { "str_value": "Brunch", "type": "Tag" } ],
+      "tags": [{ "str_value": "Brunch", "type": "Tag" }],
       "contents": [
         {
           "total_prep_time": 120,
@@ -184,29 +186,32 @@ export interface OrchestratorPayload {
               "quantity": 500,
               "multiply_factor": 1,
               "product": { "name": "Farine blanche" },
-              "ingredient_units": [ { "unit": { "name": "g" } } ]
+              "ingredient_units": [{ "unit": { "name": "g" } }]
             },
             {
               "quantity": 7,
               "multiply_factor": 1,
               "product": { "name": "Levure sèche" },
-              "ingredient_units": [ { "unit": { "name": "g" } } ]
+              "ingredient_units": [{ "unit": { "name": "g" } }]
             },
             {
               "quantity": 300,
               "multiply_factor": 1,
               "product": { "name": "Eau" },
-              "ingredient_units": [ { "unit": { "name": "ml" } } ]
+              "ingredient_units": [{ "unit": { "name": "ml" } }]
             },
             {
               "quantity": 10,
               "multiply_factor": 1,
               "product": { "name": "Sel" },
-              "ingredient_units": [ { "unit": { "name": "g" } } ]
+              "ingredient_units": [{ "unit": { "name": "g" } }]
             }
           ],
           "content_prep_times": [
-            { "duration": 30, "style": { "str_value": "Cuisson", "type": "PrepTime" } }
+            {
+              "duration": 30,
+              "style": { "str_value": "Cuisson", "type": "PrepTime" }
+            }
           ]
         }
       ]

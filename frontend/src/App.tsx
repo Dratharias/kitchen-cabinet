@@ -3,7 +3,9 @@ import { ToastProvider } from "./components/ToastProvider";
 import { LoginPage } from "./pages/LoginPage";
 import { ContentBrowser } from "./pages/ContentBrowser";
 import { PublicationView } from "./pages/PublicationView";
-import NotFoundPage from "./pages/NotFoundPage";
+import { NotFoundPage } from "./pages/NotFoundPage";
+import { CreatePublicationPage } from "./pages/CreatePublicationPage";
+import { ProtectedRoute } from "./components/utilities/ProtectedRoute";
 
 export default function App() {
   return (
@@ -15,6 +17,14 @@ export default function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/publication/:id" element={<PublicationView />} />
             <Route path="/404" element={<NotFoundPage />} />
+            <Route
+              path="/create"
+              element={
+                <ProtectedRoute>
+                  <CreatePublicationPage />
+                </ProtectedRoute>
+              }
+            />
 
             {/* Routes normales */}
             <Route path="/" element={<ContentBrowser />} />

@@ -1,4 +1,7 @@
-import { OrchestratorPayload, OrchestratorResponse } from "@/types";
+import {
+  OrchestratorPayload,
+  OrchestratorResponse,
+} from "@/types/payloadBuilder";
 import { CommonService } from "./common";
 
 export class OrchestratorService {
@@ -10,27 +13,5 @@ export class OrchestratorService {
       payload,
       true,
     );
-  }
-
-  static createPublicationRequest(
-    publicationData: { [key: string]: import("@/types").PublicationData },
-    relatedData?: any,
-  ): OrchestratorPayload {
-    return {
-      action: "create",
-      payload: {
-        ...publicationData,
-        ...relatedData,
-      },
-    };
-  }
-
-  static createReviewRequest(reviewData: {
-    [key: string]: import("@/types").ReviewData;
-  }): OrchestratorPayload {
-    return {
-      action: "create",
-      payload: reviewData,
-    };
   }
 }

@@ -61,7 +61,8 @@ export function usePublicationView() {
       // fallback public si token expiré / 401
       if (isAuthenticated) {
         try {
-          const fallback = await PublicationsService.getPublicPublicationById(id);
+          const fallback =
+            await PublicationsService.getPublicPublicationById(id);
           if (fallback) {
             setPublication(fallback as DynamicPublication);
             return;

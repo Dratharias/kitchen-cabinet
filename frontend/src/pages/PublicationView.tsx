@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { ChevronDown, ChevronRight, Utensils, FileText } from "lucide-react";
-import { usePublicationView } from "@/hooks/usePublicationView";
+import { usePublicationView } from "@/hooks/view/usePublicationView";
 import { PublicationHeader } from "@/components/view/PublicationHeader";
 import { PublicationVariantTabs } from "@/components/view/PublicationVariantTabs";
 import { PublicationTabs } from "@/components/view/PublicationTabs";
@@ -19,9 +19,13 @@ export function PublicationView() {
     toggleChecked,
   } = usePublicationView();
 
-  const [expandedBlocks, setExpandedBlocks] = useState<Record<string, boolean>>({});
+  const [expandedBlocks, setExpandedBlocks] = useState<Record<string, boolean>>(
+    {},
+  );
   const [tab, setTab] = useState<"ingredients" | "steps">("ingredients");
-  const [servingFactors, setServingFactors] = useState<Record<string, number>>({});
+  const [servingFactors, setServingFactors] = useState<Record<string, number>>(
+    {},
+  );
 
   if (loading) {
     return (
@@ -37,16 +41,16 @@ export function PublicationView() {
   const variants = contents.filter((c: any) => !c.is_ingredient);
   const subRecipes = contents.filter((c: any) => c.is_ingredient);
   const activeVariant = variants[selectedVariant] || null;
-  const thumbnail =
-    activeVariant?.thumbnail || publication.thumbnail || null;
-
+  const thumbnail = activeVariant?.thumbnail || publication.thumbnail || null;
 
   const toggleBlock = (id: string) => {
     setExpandedBlocks((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
   const getBlockId = (block: any) => {
-    return block.publication_id || block.id || block.subtitle || crypto.randomUUID();
+    return (
+      block.publication_id || block.id || block.subtitle || crypto.randomUUID()
+    );
   };
 
   const isBlockExpanded = (blockId: string, isActiveVariant: boolean) => {
@@ -68,7 +72,7 @@ export function PublicationView() {
     const multiplyFactor = ing.multiply_factor || 1;
     const baseQuantity = parseFloat(ing.quantity) || 0;
     const adjustedQuantity = baseQuantity * multiplyFactor * servingFactor;
-    
+
     const productName = ing.product?.name || "Ingrédient";
     const unitName = ing.ingredient_units?.[0]?.name;
     const normalizedUnit = unitName === "l" ? "L" : unitName;
@@ -77,9 +81,10 @@ export function PublicationView() {
     const parts = [];
 
     if (adjustedQuantity > 0) {
-      const formatted = adjustedQuantity % 1 === 0 
-        ? adjustedQuantity.toString() 
-        : adjustedQuantity.toFixed(2);
+      const formatted =
+        adjustedQuantity % 1 === 0
+          ? adjustedQuantity.toString()
+          : adjustedQuantity.toFixed(2);
       parts.push(formatted);
     }
 
@@ -96,7 +101,10 @@ export function PublicationView() {
     return parts.join(" ");
   };
 
-  const renderIngredientBlock = (block: any, isActiveVariant: boolean = false) => {
+  const renderIngredientBlock = (
+    block: any,
+    isActiveVariant: boolean = false,
+  ) => {
     const blockId = `ing-${getBlockId(block)}`;
     const expanded = isBlockExpanded(blockId, isActiveVariant);
     const ingredients = block.content_ingredients || [];
@@ -288,7 +296,9 @@ export function PublicationView() {
         {tab === "ingredients" && (
           <div className="pb-16">
             {activeVariant && renderIngredientBlock(activeVariant, true)}
-            {subRecipes.map((subRecipe) => renderIngredientBlock(subRecipe, false))}
+            {subRecipes.map((subRecipe) =>
+              renderIngredientBlock(subRecipe, false),
+            )}
           </div>
         )}
 
@@ -301,5 +311,4 @@ export function PublicationView() {
       </div>
     </DotGrid>
   );
-
 }

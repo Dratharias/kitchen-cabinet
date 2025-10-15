@@ -15,28 +15,28 @@ export interface OrchestratorPayload {
 export interface PublicationPayload {
   publication_id?: string;
   title: string;
-  description: string[];           // ["Description de la recette"]
-  note: string[];                   // Conseils, variations
+  description: string[]; // ["Description de la recette"]
+  note: string[]; // Conseils, variations
   public: boolean;
   published: boolean;
-  thumbnail?: string;               // ~/nas/media/recipebook/<slug>.png
+  thumbnail?: string; // ~/nas/media/recipebook/<slug>.png
   gallery?: string[];
   type?: { str_value: string; type: "Type" };
   style?: { str_value: string; type: "Style" };
   author?: { str_value: string; type: "Author" };
   tags?: Array<{ str_value: string; type: "Tag" }>;
-  contents?: ContentPayload[];      // ≥1 groupe
+  contents?: ContentPayload[]; // ≥1 groupe
 }
 
 export interface ContentPayload {
   content_id?: string;
-  total_prep_time: number;          // Minutes totales
+  total_prep_time: number; // Minutes totales
   servings: {
     yield: number;
-    value: string;                  // "portions", "verres de 250ml"
+    value: string; // "portions", "verres de 250ml"
   } | null;
-  subtitle?: string;                // Nom du groupe
-  is_ingredient?: boolean;          // true si composante réutilisable
+  subtitle?: string; // Nom du groupe
+  is_ingredient?: boolean; // true si composante réutilisable
   publication?: string;
   content_segments?: SegmentWithMeta[];
   content_ingredients?: IngredientPayload[];
@@ -44,10 +44,10 @@ export interface ContentPayload {
 }
 
 export interface SegmentWithMeta {
-  position: number;                 // 1, 2, 3... séquentiel
+  position: number; // 1, 2, 3... séquentiel
   segment: {
-    title?: string;                 // "Marinade aromatique"
-    paragraph: string;              // Instructions
+    title?: string; // "Marinade aromatique"
+    paragraph: string; // Instructions
   };
   segment_prep_time?: Array<{
     prep_time: PrepTimePayload;
@@ -57,9 +57,9 @@ export interface SegmentWithMeta {
 export interface IngredientPayload {
   ingredient_id?: string;
   quantity: number;
-  multiply_factor: number;          // Défaut 1, ajusté pour épices
-  cut?: string;                     // "haché", "râpé"
-  title?: string;                   // Regroupement optionnel
+  multiply_factor: number; // Défaut 1, ajusté pour épices
+  cut?: string; // "haché", "râpé"
+  title?: string; // Regroupement optionnel
   product: {
     name?: string;
     product_id?: string;
@@ -67,27 +67,28 @@ export interface IngredientPayload {
   };
   ingredient_units?: Array<{
     unit: {
-      name: string;                 // "ml", "g", "tasse", "pièce"
+      name: string; // "ml", "g", "tasse", "pièce"
       unit_id?: string;
     };
   }>;
 }
 
-export interface MacroPayload {     // Valeur sur 100g, ENTIERS arrondis
+export interface MacroPayload {
+  // Valeur sur 100g, ENTIERS arrondis
   calories: number;
   protein?: number;
   carbs?: number;
   fat?: number;
   fiber?: number;
   sugar?: number;
-  alcohol?: number;                 // % volumique
+  alcohol?: number; // % volumique
 }
 
 export interface PrepTimePayload {
   prep_time_id?: string;
   duration: number;
   style?: {
-    str_value: string;              // "Préparation", "Cuisson", "Repos / Marinade"
+    str_value: string; // "Préparation", "Cuisson", "Repos / Marinade"
     type: "PrepTime" | "PrepStyle";
   };
 }

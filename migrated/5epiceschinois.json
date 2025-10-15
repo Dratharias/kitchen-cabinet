@@ -7,28 +7,127 @@
       "note": [],
       "public": true,
       "published": true,
-      "tags": [{ "str_value": "épices", "type": "Tag" }],
+      "tags": [
+        {
+          "str_value": "épices",
+          "type": "Tag"
+        }
+      ],
       "thumbnail": "~/nas/media/recipebook/5epiceschinois.png",
       "contents": [
         {
           "subtitle": "Préparation du mélange",
           "total_prep_time": 5,
-          "servings": { "yield": 50, "value": "ml" },
+          "servings": {
+            "yield": 50,
+            "value": "ml"
+          },
           "content_ingredients": [
-            { "quantity": 2, "multiply_factor": 1, "product": { "name": "poivre de Sichuan moulu" }, "ingredient_units": [{ "unit": { "name": "cuil. à thé" } }] },
-            { "quantity": 2, "multiply_factor": 1, "product": { "name": "graines de fenouil moulus" }, "ingredient_units": [{ "unit": { "name": "cuil. à thé" } }] },
-            { "quantity": 2, "multiply_factor": 1, "product": { "name": "clous de girofle moulus" }, "ingredient_units": [{ "unit": { "name": "cuil. à thé" } }] },
-            { "quantity": 2, "multiply_factor": 1, "product": { "name": "cannelle en poudre" }, "ingredient_units": [{ "unit": { "name": "cuil. à thé" } }] },
-            { "quantity": 2, "multiply_factor": 1, "product": { "name": "poudre d'anis étoilé" }, "ingredient_units": [{ "unit": { "name": "cuil. à thé" } }] }
+            {
+              "quantity": 2,
+              "multiply_factor": 1,
+              "product": {
+                "name": "poivre de Sichuan moulu"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à thé"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 2,
+              "multiply_factor": 1,
+              "product": {
+                "name": "graines de fenouil moulus"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à thé"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 2,
+              "multiply_factor": 1,
+              "product": {
+                "name": "clous de girofle moulus"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à thé"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 2,
+              "multiply_factor": 1,
+              "product": {
+                "name": "cannelle en poudre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à thé"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 2,
+              "multiply_factor": 1,
+              "product": {
+                "name": "poudre d'anis étoilé"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à thé"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "Mélangez toutes les épices dans un bol." } },
-            { "position": 2, "segment": { "paragraph": "Moudre les graines de fenouil si elles ne sont pas déjà moulues." } },
-            { "position": 3, "segment": { "paragraph": "Bien homogénéiser le mélange." } },
-            { "position": 4, "segment": { "paragraph": "Conserver dans un récipient hermétique à l’abri de la lumière." } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Mélangez toutes les épices dans un bol."
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Moudre les graines de fenouil si elles ne sont pas déjà moulues."
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "paragraph": "Bien homogénéiser le mélange."
+              }
+            },
+            {
+              "position": 4,
+              "segment": {
+                "paragraph": "Conserver dans un récipient hermétique à l’abri de la lumière."
+              }
+            }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 5, "style": { "str_value": "Préparation", "type": "PrepStyle" } } }
+            {
+              "duration": 5,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepStyle"
+              }
+            }
           ]
         }
       ]

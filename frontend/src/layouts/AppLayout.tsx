@@ -6,11 +6,15 @@ import { Dock } from "@/components/ui/Dock";
 
 interface AppLayoutProps {
   children: ReactNode;
-  dockItems: any[];
+  dockItems?: any[];
   searchButtonRef?: React.RefObject<HTMLDivElement>;
 }
 
-export function AppLayout({ children, dockItems, searchButtonRef }: AppLayoutProps) {
+export function AppLayout({
+  children,
+  dockItems,
+  searchButtonRef,
+}: AppLayoutProps) {
   return (
     <DotGrid
       dotSize={10}
@@ -36,22 +40,27 @@ export function AppLayout({ children, dockItems, searchButtonRef }: AppLayoutPro
           2xl:max-w-[1600px] 
           [@media(min-width:1920px)]:max-w-[1800px] 
           [@media(min-width:2560px)]:max-w-[2000px] 
-          px-4 pt-4 sm:px-6 lg:px-8
+          px-4 pt-4 md:px-6 lg:px-8 xl:px-10
         "
       >
         {children}
       </main>
 
-      <div ref={searchButtonRef} className="fixed bottom-0 left-1/2 -translate-x-1/2 z-50 h-26 w-110 backdrop-blur-md bg-black/10 p-4 rounded-lg">
-        <Dock
-          panelHeight={40}
-          items={dockItems}
-          magnification={70}
-          expandOnHover
-          bgClass="bg-[#1f1f1f]"
-          borderClass="border-neutral-700"
-        />
-      </div>
+      {dockItems && searchButtonRef && (
+        <div
+          ref={searchButtonRef}
+          className="fixed bottom-0 left-1/2 -translate-x-1/2 z-50 h-26 w-110 backdrop-blur-md bg-black/10 p-4 rounded-lg"
+        >
+          <Dock
+            panelHeight={40}
+            items={dockItems}
+            magnification={70}
+            expandOnHover
+            bgClass="bg-[#1f1f1f]"
+            borderClass="border-neutral-700"
+          />
+        </div>
+      )}
     </DotGrid>
   );
 }

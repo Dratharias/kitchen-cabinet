@@ -7,108 +7,611 @@
       "note": [],
       "public": true,
       "published": true,
-      "tags": [{ "str_value": "épices", "type": "Tag" }],
+      "tags": [
+        {
+          "str_value": "épices",
+          "type": "Tag"
+        }
+      ],
       "thumbnail": "~/nas/media/recipebook/garammasala.png",
       "contents": [
         {
           "subtitle": "Garam masala du Nord",
           "total_prep_time": 10,
-          "servings": { "yield": 90, "value": "ml" },
+          "servings": {
+            "yield": 90,
+            "value": "ml"
+          },
           "content_ingredients": [
-            { "quantity": 2, "multiply_factor": 1, "product": { "name": "graines de coriandre" }, "ingredient_units": [{ "unit": { "name": "cuil. à soupe" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "graines de cumin" }, "ingredient_units": [{ "unit": { "name": "cuil. à soupe" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "cardamome verte (graines)" }, "ingredient_units": [{ "unit": { "name": "cuil. à soupe" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "clous de girofle" }, "ingredient_units": [{ "unit": { "name": "cuil. à soupe" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "bâton de cannelle (environ 5 cm)" }, "ingredient_units": [{ "unit": { "name": "pièce" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "poivre noir" }, "ingredient_units": [{ "unit": { "name": "cuil. à thé" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "cardamome noire" }, "ingredient_units": [{ "unit": { "name": "cuil. à thé" } }] }
+            {
+              "quantity": 2,
+              "multiply_factor": 1,
+              "product": {
+                "name": "graines de coriandre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "graines de cumin"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "cardamome verte (graines)"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "clous de girofle"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bâton de cannelle (environ 5 cm)"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "pièce"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "poivre noir"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à thé"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "cardamome noire"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à thé"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "Grillez les épices dans une poêle." } },
-            { "position": 2, "segment": { "paragraph": "Laissez refroidir puis broyez dans un moulin à épices." } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Grillez les épices dans une poêle."
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Laissez refroidir puis broyez dans un moulin à épices."
+              }
+            }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepStyle" } } }
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepStyle"
+              }
+            }
           ]
         },
         {
           "subtitle": "Garam masala du Sud",
           "total_prep_time": 10,
-          "servings": { "yield": 90, "value": "ml" },
+          "servings": {
+            "yield": 90,
+            "value": "ml"
+          },
           "content_ingredients": [
-            { "quantity": 2, "multiply_factor": 1, "product": { "name": "graines de coriandre" }, "ingredient_units": [{ "unit": { "name": "cuil. à soupe" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "graines de cumin" }, "ingredient_units": [{ "unit": { "name": "cuil. à soupe" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "graines de moutarde" }, "ingredient_units": [{ "unit": { "name": "cuil. à soupe" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "fenugrec" }, "ingredient_units": [{ "unit": { "name": "cuil. à soupe" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "bâton de cannelle (environ 5 cm)" }, "ingredient_units": [{ "unit": { "name": "pièce" } }] },
-            { "quantity": 2, "multiply_factor": 1, "product": { "name": "poivre noir" }, "ingredient_units": [{ "unit": { "name": "cuil. à thé" } }] }
+            {
+              "quantity": 2,
+              "multiply_factor": 1,
+              "product": {
+                "name": "graines de coriandre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "graines de cumin"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "graines de moutarde"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fenugrec"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bâton de cannelle (environ 5 cm)"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "pièce"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 2,
+              "multiply_factor": 1,
+              "product": {
+                "name": "poivre noir"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à thé"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "Grillez les épices dans une poêle." } },
-            { "position": 2, "segment": { "paragraph": "Laissez refroidir puis broyez dans un moulin à épices." } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Grillez les épices dans une poêle."
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Laissez refroidir puis broyez dans un moulin à épices."
+              }
+            }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepStyle" } } }
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepStyle"
+              }
+            }
           ]
         },
         {
           "subtitle": "Garam masala de l’Ouest",
           "total_prep_time": 10,
-          "servings": { "yield": 85, "value": "ml" },
+          "servings": {
+            "yield": 85,
+            "value": "ml"
+          },
           "content_ingredients": [
-            { "quantity": 2, "multiply_factor": 1, "product": { "name": "graines de coriandre" }, "ingredient_units": [{ "unit": { "name": "cuil. à soupe" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "graines de cumin" }, "ingredient_units": [{ "unit": { "name": "cuil. à soupe" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "graines de sésame" }, "ingredient_units": [{ "unit": { "name": "cuil. à soupe" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "graines de pavot" }, "ingredient_units": [{ "unit": { "name": "cuil. à soupe" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "bâton de cannelle (environ 5 cm)" }, "ingredient_units": [{ "unit": { "name": "pièce" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "poivre noir" }, "ingredient_units": [{ "unit": { "name": "cuil. à thé" } }] }
+            {
+              "quantity": 2,
+              "multiply_factor": 1,
+              "product": {
+                "name": "graines de coriandre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "graines de cumin"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "graines de sésame"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "graines de pavot"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bâton de cannelle (environ 5 cm)"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "pièce"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "poivre noir"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à thé"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "Grillez les épices dans une poêle." } },
-            { "position": 2, "segment": { "paragraph": "Laissez refroidir puis broyez dans un moulin à épices." } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Grillez les épices dans une poêle."
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Laissez refroidir puis broyez dans un moulin à épices."
+              }
+            }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepStyle" } } }
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepStyle"
+              }
+            }
           ]
         },
         {
           "subtitle": "Garam masala de l’Est",
           "total_prep_time": 10,
-          "servings": { "yield": 70, "value": "ml" },
+          "servings": {
+            "yield": 70,
+            "value": "ml"
+          },
           "content_ingredients": [
-            { "quantity": 2, "multiply_factor": 1, "product": { "name": "graines de coriandre" }, "ingredient_units": [{ "unit": { "name": "cuil. à soupe" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "graines de cumin" }, "ingredient_units": [{ "unit": { "name": "cuil. à soupe" } }] },
-            { "quantity": 2, "multiply_factor": 1, "product": { "name": "cardamome verte" }, "ingredient_units": [{ "unit": { "name": "cuil. à thé" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "cardamome noire" }, "ingredient_units": [{ "unit": { "name": "cuil. à thé" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "bâton de cannelle (environ 5 cm)" }, "ingredient_units": [{ "unit": { "name": "pièce" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "poivre noir" }, "ingredient_units": [{ "unit": { "name": "cuil. à thé" } }] }
+            {
+              "quantity": 2,
+              "multiply_factor": 1,
+              "product": {
+                "name": "graines de coriandre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "graines de cumin"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 2,
+              "multiply_factor": 1,
+              "product": {
+                "name": "cardamome verte"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à thé"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "cardamome noire"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à thé"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bâton de cannelle (environ 5 cm)"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "pièce"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "poivre noir"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à thé"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "Grillez les épices dans une poêle." } },
-            { "position": 2, "segment": { "paragraph": "Laissez refroidir puis broyez dans un moulin à épices." } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Grillez les épices dans une poêle."
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Laissez refroidir puis broyez dans un moulin à épices."
+              }
+            }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepStyle" } } }
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepStyle"
+              }
+            }
           ]
         },
         {
           "subtitle": "Garam masala cachemire",
           "total_prep_time": 10,
-          "servings": { "yield": 75, "value": "ml" },
+          "servings": {
+            "yield": 75,
+            "value": "ml"
+          },
           "content_ingredients": [
-            { "quantity": 2, "multiply_factor": 1, "product": { "name": "graines de coriandre" }, "ingredient_units": [{ "unit": { "name": "cuil. à soupe" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "graines de cumin" }, "ingredient_units": [{ "unit": { "name": "cuil. à soupe" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "cardamome verte (graines)" }, "ingredient_units": [{ "unit": { "name": "cuil. à soupe" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "bâton de cannelle (environ 5 cm)" }, "ingredient_units": [{ "unit": { "name": "pièce" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "poivre noir" }, "ingredient_units": [{ "unit": { "name": "cuil. à thé" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "fleurs de lavande séchées" }, "ingredient_units": [{ "unit": { "name": "cuil. à thé" } }] }
+            {
+              "quantity": 2,
+              "multiply_factor": 1,
+              "product": {
+                "name": "graines de coriandre"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "graines de cumin"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "cardamome verte (graines)"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "bâton de cannelle (environ 5 cm)"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "pièce"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "poivre noir"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à thé"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fleurs de lavande séchées"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à thé"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "Grillez les épices dans une poêle." } },
-            { "position": 2, "segment": { "paragraph": "Laissez refroidir puis broyez dans un moulin à épices." } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Grillez les épices dans une poêle."
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Laissez refroidir puis broyez dans un moulin à épices."
+              }
+            }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 10, "style": { "str_value": "Préparation", "type": "PrepStyle" } } }
+            {
+              "duration": 10,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepStyle"
+              }
+            }
           ]
         }
       ]

@@ -19,22 +19,45 @@
       "contents": [
         {
           "total_prep_time": 10,
-          "servings": { "yield": 1, "value": "tasse (250 ml)" },
+          "servings": {
+            "yield": 1,
+            "value": "tasse (250 ml)"
+          },
           "content_ingredients": [
             {
               "quantity": 1,
               "multiply_factor": 1,
               "product": {
                 "name": "lait (de préférence entier)",
-                "macro": { "calories": 62, "protein": 3, "carbs": 5, "fat": 3 }
+                "macro": {
+                  "calories": 62,
+                  "protein": 3,
+                  "carbs": 5,
+                  "fat": 3
+                }
               },
-              "ingredient_units": [ { "unit": { "name": "tasse" } } ]
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "tasse"
+                  }
+                }
+              ]
             },
             {
               "quantity": 1,
               "multiply_factor": 1,
-              "product": { "name": "vinaigre blanc 5% ou jus de citron", "macro": null },
-              "ingredient_units": [ { "unit": { "name": "cuil. à soupe" } } ]
+              "product": {
+                "name": "vinaigre blanc 5% ou jus de citron",
+                "macro": null
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
             }
           ],
           "content_segments": [
@@ -46,9 +69,10 @@
               },
               "segment_prep_time": [
                 {
-                  "prep_time": {
-                    "duration": 1,
-                    "style": { "str_value": "Préparation", "type": "PrepStyle" }
+                  "duration": 1,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepStyle"
                   }
                 }
               ]
@@ -61,17 +85,30 @@
               },
               "segment_prep_time": [
                 {
-                  "prep_time": {
-                    "duration": 9,
-                    "style": { "str_value": "Repos / Marinade", "type": "PrepStyle" }
+                  "duration": 9,
+                  "style": {
+                    "str_value": "Repos / Marinade",
+                    "type": "PrepStyle"
                   }
                 }
               ]
             }
           ],
           "content_prep_times": [
-            { "duration": 1, "style": { "str_value": "Préparation", "type": "PrepStyle" } },
-            { "duration": 9, "style": { "str_value": "Repos / Marinade", "type": "PrepStyle" } }
+            {
+              "duration": 1,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepStyle"
+              }
+            },
+            {
+              "duration": 9,
+              "style": {
+                "str_value": "Repos / Marinade",
+                "type": "PrepStyle"
+              }
+            }
           ]
         }
       ]

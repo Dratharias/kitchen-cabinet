@@ -4,23 +4,126 @@
     "daiquiri": {
       "title": "Daiquiri",
       "description": ["Temps: 5 minutes"],
-      "note": ["J'utilise un gin lime et basilic plutôt que les ingrédients frais et c'est aussi bon."],
+      "note": [
+        "J'utilise un gin lime et basilic plutôt que les ingrédients frais et c'est aussi bon."
+      ],
       "public": true,
       "published": true,
-      "tags": [{ "str_value": "cocktail", "type": "Tag" }],
+      "tags": [
+        {
+          "str_value": "cocktail",
+          "type": "Tag"
+        }
+      ],
       "thumbnail": "~/nas/media/recipebook/daiquiri.png",
       "contents": [
         {
           "subtitle": "Préparation du daiquiri",
           "total_prep_time": 5,
-          "servings": { "yield": 1, "value": "verre de 500 ml" },
+          "servings": {
+            "yield": 1,
+            "value": "verre de 500 ml"
+          },
           "content_ingredients": [
-            { "quantity": 2.25, "multiply_factor": 1, "product": { "name": "fraises ou bleuets surgelés" }, "ingredient_units": [{ "unit": { "name": "tasse" } }] },
-            { "quantity": 75, "multiply_factor": 1, "product": { "name": "gin", "macro": { "calories": 310, "sugar": 77 } }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 1.5, "multiply_factor": 1, "product": { "name": "miel", "macro": { "calories": 90, "sugar": 24 } }, "ingredient_units": [{ "unit": { "name": "cuil. à soupe" } }] },
-            { "quantity": 150, "multiply_factor": 1, "product": { "name": "eau ou soda tonique" }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "basilic", "macro": { "calories": 1 } }, "ingredient_units": [{ "unit": { "name": "au goût" } }] },
-            { "quantity": 1, "multiply_factor": 1, "product": { "name": "lime", "macro": { "calories": 11, "sugar": 1 } }, "ingredient_units": [{ "unit": { "name": "au goût" } }] }
+            {
+              "quantity": 2.25,
+              "multiply_factor": 1,
+              "product": {
+                "name": "fraises ou bleuets surgelés"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "tasse"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 75,
+              "multiply_factor": 1,
+              "product": {
+                "name": "gin",
+                "macro": {
+                  "calories": 310,
+                  "sugar": 77
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1.5,
+              "multiply_factor": 1,
+              "product": {
+                "name": "miel",
+                "macro": {
+                  "calories": 90,
+                  "sugar": 24
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "cuil. à soupe"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 150,
+              "multiply_factor": 1,
+              "product": {
+                "name": "eau ou soda tonique"
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "ml"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "basilic",
+                "macro": {
+                  "calories": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "au goût"
+                  }
+                }
+              ]
+            },
+            {
+              "quantity": 1,
+              "multiply_factor": 1,
+              "product": {
+                "name": "lime",
+                "macro": {
+                  "calories": 11,
+                  "sugar": 1
+                }
+              },
+              "ingredient_units": [
+                {
+                  "unit": {
+                    "name": "au goût"
+                  }
+                }
+              ]
+            }
           ],
           "content_segments": [
             {
@@ -30,12 +133,24 @@
                 "paragraph": "Mélanger tous les ingrédients au mixeur jusqu’à consistance lisse."
               },
               "segment_prep_time": [
-                { "prep_time": { "duration": 5, "style": { "str_value": "Préparation", "type": "PrepStyle" } } }
+                {
+                  "duration": 5,
+                  "style": {
+                    "str_value": "Préparation",
+                    "type": "PrepStyle"
+                  }
+                }
               ]
             }
           ],
           "content_prep_times": [
-            { "prep_time": { "duration": 5, "style": { "str_value": "Préparation", "type": "PrepStyle" } } }
+            {
+              "duration": 5,
+              "style": {
+                "str_value": "Préparation",
+                "type": "PrepStyle"
+              }
+            }
           ]
         }
       ]

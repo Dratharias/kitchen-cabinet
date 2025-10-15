@@ -28,14 +28,14 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
 
   return (
     <div className={`relative inline-block ${className}`}>
-        {/* Bouton principal */}
-        <ClickOutsideContainer onClickOutside={() => handleSelect(selectedIndex)}>
+      {/* Bouton principal */}
+      <ClickOutsideContainer onClickOutside={() => handleSelect(selectedIndex)}>
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}
           className="px-4 py-2 rounded-full text-sm bg-gray-700 text-gray-300 hover:bg-gray-600 hover:cursor-pointer"
         >
-          <span>{items[selectedIndex]}</span> 
+          <span>{items[selectedIndex]}</span>
           <span className="pl-3">({items.length})</span>
         </button>
 
@@ -69,8 +69,8 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
             </motion.div>
           )}
         </AnimatePresence>
-    </ClickOutsideContainer>
-      </div>
+      </ClickOutsideContainer>
+    </div>
   );
 };
 

@@ -4,7 +4,7 @@ const metadata = {
   title: "404",
 };
 
-export default function NotFoundPage() {
+export function NotFoundPage() {
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-[#1F1F1F] text-center text-gray-200 px-6">
       <div className="flex flex-col items-center justify-center space-y-10">

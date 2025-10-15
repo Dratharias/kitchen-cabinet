@@ -41,7 +41,7 @@ function shapePublicationBase(pub: any) {
     productsRef: Array.isArray(pub.productsRef)
       ? pub.productsRef.map((p: any) => ({
           product_id: p.product_id,
-          name: p.name
+          name: p.name,
         }))
       : [],
   };

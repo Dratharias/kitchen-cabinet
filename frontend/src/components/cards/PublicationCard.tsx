@@ -180,7 +180,7 @@ export function PublicationCard({
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`relative rounded-2xl border border-neutral-800 bg-[#161616] overflow-hidden shadow-md hover:shadow-lg transition-transform duration-300 cursor-pointer ${className}`}
+      className={`relative min-h-full rounded-2xl border border-neutral-800 bg-[#161616] overflow-hidden shadow-md hover:shadow-lg transition-transform duration-300 cursor-pointer ${className}`}
     >
       {/* Effet spotlight */}
       <div

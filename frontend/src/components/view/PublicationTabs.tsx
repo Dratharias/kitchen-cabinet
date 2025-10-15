@@ -7,9 +7,21 @@ export function PublicationTabs({
   currentTab: "ingredients" | "steps";
   setTab: (tab: "ingredients" | "steps") => void;
 }) {
-  const tabs: { key: "ingredients" | "steps"; label: string; icon: React.ReactNode }[] = [
-    { key: "ingredients", label: "Ingrédients", icon: <Utensils className="w-5 h-5" /> },
-    { key: "steps", label: "Préparation", icon: <FileText className="w-5 h-5" /> },
+  const tabs: {
+    key: "ingredients" | "steps";
+    label: string;
+    icon: React.ReactNode;
+  }[] = [
+    {
+      key: "ingredients",
+      label: "Ingrédients",
+      icon: <Utensils className="w-5 h-5" />,
+    },
+    {
+      key: "steps",
+      label: "Préparation",
+      icon: <FileText className="w-5 h-5" />,
+    },
   ];
 
   return (
