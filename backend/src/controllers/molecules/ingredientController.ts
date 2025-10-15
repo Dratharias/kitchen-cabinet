@@ -7,6 +7,7 @@ import {
 } from "types/controller.types.js";
 import { IngredientCreateDto, IngredientUpdateDto } from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
+import { Prisma } from "@prisma/client";
 
 export const normalizeIngredient = (ingredient: any): Ingredient => ({
   ingredient_id: ingredient.ingredient_id,
@@ -27,16 +28,51 @@ export class IngredientController
   async create(
     payload: IngredientCore & { connect?: IngredientCreateDto["connect"] },
   ): Promise<Ingredient> {
-    const newId = uuidv4();
+    const newId = payload.ingredient_id ?? uuidv4();
+    
+    // Simplification: le Product doit être upserté si le nom est fourni
+    let productConnect: Prisma.productCreateOrConnectWithoutIngredientsInput | undefined;
+    const productPayload = payload.connect?.product?.[0] || payload.product;
+
+    if (productPayload && productPayload.name) {
+      productConnect = {
+        where: { name: productPayload.name },
+        create: { product_id: productPayload.product_id ?? uuidv4(), name: productPayload.name },
+      };
+    } else if (!payload.product_id) {
+        throw new Error("Product name or product_id is required for Ingredient creation.");
+    }
+    
+    // Simplification: les unités doivent être upsertées si le nom est fourni
+    let unitConnect: Prisma.ingredient_unitCreateManyIngredientInput[] | undefined;
+    const unitPayloads = payload.connect?.ingredient_units || [];
+
+    if (unitPayloads.length > 0) {
+        // Pour une approche simple, on ne gère que la première unité fournie
+        const unitName = unitPayloads[0].name;
+
+        // Upsert l'unité
+        const unit = await prisma.unit.upsert({
+            where: { name: unitName },
+            update: {},
+            create: { unit_id: uuidv4(), name: unitName },
+        });
+
+        unitConnect = [{ unit_id: unit.unit_id }];
+    }
+
+
     const ingredient = await prisma.ingredient.create({
       data: {
         ingredient_id: newId,
         quantity: payload.quantity,
-        product_id: payload.product_id,
+        product_id: payload.product_id, // Si l'ID est fourni (moins prioritaire si productConnect est là)
         multiply_factor: payload.multiply_factor ?? 1,
         title: payload.title,
         cut: payload.cut,
-
+        
+        product: productConnect ? { connectOrCreate: productConnect } : undefined, // Upsert ou Connect si Product est fourni
+        
         content_ingredients: payload.connect?.content_ingredients
           ? {
               connect: payload.connect.content_ingredients.map((c) => ({
@@ -48,21 +84,12 @@ export class IngredientController
             }
           : undefined,
 
-        ingredient_units: payload.connect?.ingredient_units
-          ? {
-              connect: payload.connect.ingredient_units.map((u) => ({
-                ingredient_id_unit_id: {
-                  ingredient_id: newId,
-                  unit_id: u.unit_id,
-                },
-              })),
-            }
-          : undefined,
+        ingredient_units: unitConnect ? { createMany: { data: unitConnect, skipDuplicates: true } } : undefined,
       },
       include: {
         product: true,
         content_ingredients: true,
-        ingredient_units: true,
+        ingredient_units: { include: { unit: true } },
       },
     });
 

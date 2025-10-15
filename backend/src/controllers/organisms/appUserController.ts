@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client";
 import { prisma } from "../../config.js";
 import { GenericController } from "types/crud.types.js";
 import { UserRoleData } from "types/db.types.js";
@@ -41,9 +42,15 @@ export class AppUserController
     id: string,
     payload: Partial<UserCreateDto & UserUpdateDto>,
   ): Promise<UserUpdateDto> {
+    const data: Prisma.app_userUpdateInput = {};
+
+    if (payload.username !== undefined) data.username = payload.username;
+    if (payload.password !== undefined) data.password = payload.password;
+    if (payload.role !== undefined) data.role = payload.role;
+
     const user = await prisma.app_user.update({
       where: { user_id: id },
-      data: payload,
+      data: data,
     });
 
     return { username: user.username, role: user.role as UserRoleData };

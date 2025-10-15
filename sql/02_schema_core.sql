@@ -22,7 +22,10 @@ DROP TABLE IF EXISTS
     publication_tag,
     publication,
     category,
-    app_user
+    app_user,
+    gallery,
+    servings,
+    content_gallery
 CASCADE;
 
 -- ====================================================================
@@ -61,7 +64,6 @@ CREATE TABLE publication (
   public         BOOLEAN DEFAULT FALSE,
   published      BOOLEAN DEFAULT FALSE,
   thumbnail      VARCHAR(255),
-  gallery        VARCHAR(255)[], -- Rétrocompatibilité
   type_id        UUID,
   style_id       UUID,
   author_id      UUID,
@@ -83,21 +85,37 @@ CREATE TABLE content (
   content_id     UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   publication_id UUID NOT NULL,
   total_prep_time SMALLINT DEFAULT 0,
-  servings       UUID,
+  serving_id     UUID,
   subtitle       TEXT,
   thumbnail      VARCHAR(255),
-  gallery        VARCHAR(255)[], -- Nouvelle gallerie
   is_ingredient  BOOLEAN,
   FOREIGN KEY (serving_id) REFERENCES servings(serving_id) ON DELETE SET NULL,
   FOREIGN KEY (publication_id) REFERENCES publication(publication_id) ON DELETE CASCADE
 );
 
-CREATE TABLE servings {
+CREATE TABLE servings (
   serving_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  yield SMALLINT,
-  value VARCHAR(30)
-}
+  yield SMALLINT NOT NULL CHECK (yield >= 0),
+  value VARCHAR(50) NOT NULL
+);
 
+CREATE TABLE gallery (
+  gallery_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  order_num SMALLINT NOT NULL CHECK (order_num >= 0),
+  url TEXT NOT NULL,
+  label TEXT
+);
+
+CREATE TABLE content_gallery (
+  content_id UUID NOT NULL,
+  gallery_id UUID NOT NULL,
+  order_num SMALLINT DEFAULT 0,
+  PRIMARY KEY (content_id, gallery_id),
+  FOREIGN KEY (content_id) REFERENCES content(content_id) ON DELETE CASCADE,
+  FOREIGN KEY (gallery_id) REFERENCES gallery(gallery_id) ON DELETE CASCADE
+);
+
+CREATE INDEX idx_content_serving_id ON content(serving_id);
 CREATE INDEX idx_content_publication_id ON content(publication_id);
 
 CREATE TABLE segment (

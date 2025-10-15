@@ -23,6 +23,10 @@ import {
   ReviewRelations,
   Publication,
   Review,
+  GalleryCore,
+  GalleryRelations,
+  ServingsCore,
+  ServingsRelations,
 } from "./controller.types.js";
 
 /* ============================================================
@@ -183,7 +187,7 @@ export type MacroUpdateDto = Partial<MacroCore & MacroRelations> & {
 export type IngredientConnect = {
   product?: { product_id: string }[];
   content_ingredients?: { content_id: string }[];
-  ingredient_units?: { unit_id: string }[];
+  ingredient_units?: { unit_id: string, name: string }[];
 };
 
 export type IngredientCreateDto = IngredientCore &
@@ -227,6 +231,42 @@ export type PrepTimeUpdateDto = Partial<PrepTimeCore & PrepTimeRelations> & {
   connect?: PrepTimeConnect;
   set?: PrepTimeConnect;
 };
+
+/* ============================================================
+   Portions / Servings
+   ============================================================ */
+export type ServingsConnect = {
+  content?: { content_id: string }[];
+};
+
+export type ServingsCreateDto = ServingsCore &
+  Partial<ServingsRelations> & {
+    connect?: ServingsConnect;
+  };
+
+export type ServingsUpdateDto = Partial<ServingsCore & ServingsRelations> & {
+  connect?: ServingsConnect;
+  set?: ServingsConnect;
+};
+
+/* ============================================================
+   Galerie / Gallery
+   ============================================================ */
+export type GalleryConnect = {
+  content_gallery?: { content_id: string }[];
+  publication_gallery?: { publication_id: string }[];
+};
+
+export type GalleryCreateDto = GalleryCore &
+  Partial<GalleryRelations> & {
+    connect?: GalleryConnect;
+  };
+
+export type GalleryUpdateDto = Partial<GalleryCore & GalleryRelations> & {
+  connect?: GalleryConnect;
+  set?: GalleryConnect;
+};
+
 
 /* ============================================================
    Avis / Review

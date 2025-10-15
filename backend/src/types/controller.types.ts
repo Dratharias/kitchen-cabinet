@@ -17,6 +17,9 @@ import {
   PrepTimeData,
   ReviewData,
   AppUserData,
+  ContentGalleryData,
+  GalleryData,
+  ServingsData,
 } from "./db.types.js";
 
 /* ============================================================
@@ -35,6 +38,39 @@ export type CategoryCore = Required<
 export type CategoryRelations = Partial<
   Omit<CategoryData, "str_value" | "type" | "category_id">
 >;
+
+/* ============================================================
+   Portions (Servings)
+   ============================================================ */
+export type Servings = ServingsCore & ServingsRelations & { serving_id: string };
+export type ServingsCore = Required<
+  Omit<ServingsData, "serving_id" | "content">
+> & { serving_id?: string };
+export type ServingsRelations = {
+  content: Content[] | null;
+};
+
+/* ============================================================
+   Galerie
+   ============================================================ */
+export type Gallery = GalleryCore & GalleryRelations & { gallery_id: string };
+export type GalleryCore = Required<
+  Omit<GalleryData, "gallery_id" | "content_gallery" | "publication_gallery">
+> & { gallery_id?: string };
+export type GalleryRelations = {
+  content_gallery: ContentGallery[] | null;
+};
+
+/* ============================================================
+   Tables de jointure
+   ============================================================ */
+export type ContentGallery = Required<
+  Omit<ContentGalleryData, "content" | "gallery">
+> & {
+  content: Content | null;
+  gallery: Gallery | null;
+};
+
 
 /* ============================================================
    Publication

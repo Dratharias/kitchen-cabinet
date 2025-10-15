@@ -48,7 +48,6 @@ model publication {
   type_id        String?
   style_id       String?
   author_id      String?
-  gallery        String[] // Rétrocompatibilité
   date_created   DateTime @default(now())
 
   type   category? @relation("PublicationType", fields: [type_id], references: [category_id])
@@ -80,19 +79,20 @@ model content {
   content_id      String   @id @default(uuid())
   publication_id  String
   total_prep_time Int      @default(0) @db.SmallInt
-  serving_id        String
+  serving_id      String?
   subtitle        String?
-  thumbnail      String?
-  gallery        String[] // Nouvelle gallerie
+  thumbnail       String?
   is_ingredient   Boolean?
 
-  servings servings @relation(fields: [serving_id], references: [serving_id])
+  servings            servings?            @relation(fields: [serving_id], references: [serving_id])
   publication         publication          @relation(fields: [publication_id], references: [publication_id], onDelete: Cascade)
   content_segments    content_segment[]
   content_ingredients content_ingredient[]
   content_prep_times  content_prep_time[]
+  content_gallery     content_gallery[]
 
   @@index([publication_id])
+  @@index([serving_id])
 }
 
 model servings {
@@ -102,6 +102,25 @@ model servings {
 
   content content[]
 }
+
+model gallery {
+  gallery_id String @id @default(uuid())
+  url        String @db.Text
+  label      String? @db.Text
+  content_gallery     content_gallery[]
+}
+
+model content_gallery {
+  content_id String
+  gallery_id String
+  order_num  Int @default(0) @db.SmallInt
+
+  content content @relation(fields: [content_id], references: [content_id], onDelete: Cascade)
+  gallery gallery @relation(fields: [gallery_id], references: [gallery_id], onDelete: Cascade)
+
+  @@id([content_id, gallery_id])
+}
+
 
 model segment {
   segment_id String  @id @default(uuid())

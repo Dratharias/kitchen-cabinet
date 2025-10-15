@@ -33,6 +33,9 @@ import {
 import { PaginatedResponse, ReadAllParams } from "./db.types.js";
 import { UserUpdateDto, UserCreateDto } from "./dto.types.js";
 
+// Les DTOs de Relation Connect/Set ne sont pas modifiés car ils sont
+// utilisés par les DTOs générés dans dto.types.ts
+
 export interface ControllerMap {
   users: GenericController<UserUpdateDto, UserCreateDto, UserUpdateDto>;
   categories: GenericController<Category, CategoryCore, CategoryRelations>;
@@ -65,6 +68,7 @@ export const junctionOrder = [
   "publicationTags",
 ];
 
+// Mise à jour : le payload pour l'update est maintenant un Partial de C & U pour supporter le PATCH
 export interface GenericController<
   T,
   C,
@@ -76,6 +80,7 @@ export interface GenericController<
   findById(id: string): Promise<T | null>;
   findAll(params?: ReadAllParams<T>): Promise<T[]>;
 
+  // PATCH Support: Le payload est Partiel de Core (C) et Relations (U) + connect/set
   update(
     id: string,
     payload: Partial<C & U> & {
@@ -87,6 +92,7 @@ export interface GenericController<
   delete(id: string): Promise<{ deleted: boolean }>;
 }
 
+// Mise à jour : le payload pour l'update est maintenant un Partial de C & U pour supporter le PATCH
 export interface GenericPaginatedController<
   T,
   C,
@@ -98,6 +104,7 @@ export interface GenericPaginatedController<
   findById(id: string): Promise<T | null>;
   findAll(params?: ReadAllParams<T>): Promise<PaginatedResponse<T>>;
 
+  // PATCH Support: Le payload est Partiel de Core (C) et Relations (U) + connect/set
   update(
     id: string,
     payload: Partial<C & U> & {

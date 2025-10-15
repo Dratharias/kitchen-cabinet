@@ -6,6 +6,11 @@ import {
 import { OrchestratorController } from "../controllers/orchestratorController.js";
 import { OrchestratorRequest } from "../types/orchestrator.types.js";
 import { ReadAllParams } from "types/db.types.js";
+import {
+  PublicationCore,
+  PublicationRelations,
+} from "types/controller.types.js";
+import { PublicationUpdateDto } from "types/dto.types.js";
 
 const DEV_MODE = process.env.NODE_ENV !== "production";
 
@@ -135,9 +140,19 @@ export class RouteRegistry {
     }
 
     if (methods.includes("update")) {
+      // Support PUT (replacement)
       this.fastify.put(
         `${basePath}/:id`,
         handler(async (req: any, reply: FastifyReply) => {
+          const result = await controller.update(req.params.id, req.body);
+          reply.send(result);
+        }),
+      );
+      // Support PATCH (partial update)
+      this.fastify.patch(
+        `${basePath}/:id`,
+        handler(async (req: any, reply: FastifyReply) => {
+          // Utilise le même handler 'update' car le DTO est déjà Partial<C&U>
           const result = await controller.update(req.params.id, req.body);
           reply.send(result);
         }),
@@ -157,8 +172,13 @@ export class RouteRegistry {
 
   /**
    * Registers a single route for the orchestrator with detailed error handling.
+   * NOTE: This is kept for the monolithic "create/update ALL" endpoint.
    */
-  registerOrchestratorRoute(path: string, authRequired: boolean = true) {
+  registerOrchestratorRoute(
+    method: "POST" | "GET",
+    path: string,
+    authRequired: boolean = true,
+  ) {
     if (!this.orchestrator) {
       throw new Error(
         "Orchestrator is required to register orchestrator routes",
@@ -176,7 +196,7 @@ export class RouteRegistry {
             await this.handleOrchestrator(req, reply);
           };
 
-    this.fastify.post(path, handler);
+    this.fastify[method.toLowerCase() as "post" | "get"](path, handler);
   }
 
   private async handleOrchestrator(req: FastifyRequest, reply: FastifyReply) {

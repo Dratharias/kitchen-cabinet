@@ -14,6 +14,7 @@ import type { GenericPaginatedController } from "types/crud.types";
 import type {
   PublicationReadAllDto,
   PublicationConnect,
+  PublicationUpdateDto,
 } from "types/dto.types";
 
 export class PublicationController
@@ -59,6 +60,7 @@ export class PublicationController
 
   // =====================================================
   // READ ALL — admin/public + recherche + tolérance orthographique
+  // (Logique inchangée, utilise les optimisations existantes)
   // =====================================================
   async findAll(params?: PublicationReadAllDto & { admin?: boolean }): Promise<{
     items: Publication[];
@@ -207,23 +209,39 @@ export class PublicationController
   }
 
   // =====================================================
-  // UPDATE
+  // UPDATE (supporte PUT et PATCH)
   // =====================================================
   async update(
     id: string,
-    payload: Partial<PublicationCore & PublicationRelations>,
+    payload: PublicationUpdateDto,
   ): Promise<Publication> {
+    
+    // Construction de l'objet de données pour Prisma (uniquement les champs fournis dans le payload)
+    const data: Prisma.publicationUpdateInput = {};
+
+    // Champs scalaires (mise à jour atomique)
+    if (payload.title !== undefined) data.title = payload.title;
+    if (payload.description !== undefined) data.description = payload.description;
+    if (payload.note !== undefined) data.note = payload.note;
+    if (payload.public !== undefined) data.public = payload.public;
+    if (payload.published !== undefined) data.published = payload.published;
+    if (payload.thumbnail !== undefined) data.thumbnail = payload.thumbnail;
+    if (payload.gallery !== undefined) data.gallery = payload.gallery;
+
+    // Relations (connect/set pour les FK et N-N)
+    // Relations 1-N (Category/FK): on utilise le connect DTO
+    if (payload.connect?.type?.[0]) data.type = { connect: payload.connect.type[0] };
+    if (payload.connect?.style?.[0]) data.style = { connect: payload.connect.style[0] };
+    if (payload.connect?.author?.[0]) data.author = { connect: payload.connect.author[0] };
+
+    // Relations N-N (Tags)
+    if (payload.connect?.tags) data.tags = { connect: payload.connect.tags };
+    if (payload.set?.tags) data.tags = { set: payload.set.tags };
+
+
     const pub = await prisma.publication.update({
       where: { publication_id: id },
-      data: {
-        title: payload.title,
-        description: payload.description ?? [],
-        note: payload.note ?? [],
-        public: payload.public ?? true,
-        published: payload.published ?? true,
-        thumbnail: payload.thumbnail ?? null,
-        gallery: payload.gallery ?? [],
-      },
+      data: data, // Passe l'objet de données construit
       include: this.buildFullInclude(),
     });
     return shapePublicPublicationFull(pub);
@@ -238,7 +256,7 @@ export class PublicationController
   }
 
   // =====================================================
-  // INCLUDES
+  // INCLUDES (inchangés)
   // =====================================================
   private buildSummaryInclude() {
     return {

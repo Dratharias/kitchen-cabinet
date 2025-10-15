@@ -220,6 +220,7 @@ export interface MacroData {
   saturated: number | null;
   trans: number | null;
   caffein: number | null;
+  alcohol: number | null;
 
   // Relations 1-N
   products: ProductData[] | null; // 1-N
@@ -296,4 +297,51 @@ export interface ReviewData {
   // Relations N-1
   product: ProductData | null; // N-1
   publication: PublicationData | null; // N-1
+}
+
+/* ============================================================
+   Domaine: Galerie
+   ============================================================ */
+export interface GalleryData {
+  gallery_id: string;
+  order_num: number;
+  url: string;
+  label: string | null;
+
+  // Relations N-N
+  content_gallery: ContentGalleryData[] | null; // N-N
+  publication_gallery: PublicationGalleryData[] | null; // N-N
+}
+
+export interface PublicationGalleryData {
+  publication_id: string;
+  gallery_id: string;
+  
+  // Relations N-N
+  publication: PublicationData | null;
+  gallery: GalleryData | null;
+}
+
+/* ============================================================
+   Domaine: Portions (Servings)
+   ============================================================ */
+export interface ServingsData {
+  serving_id: string;
+  yield: number;
+  value: string;
+
+  // Relations 1-N
+  content: ContentData[] | null;
+}
+
+/* ============================================================
+   Tables de jonction
+   ============================================================ */
+export interface ContentGalleryData {
+  content_id: string;
+  gallery_id: string;
+
+  // Relations N-N
+  content: ContentData | null;
+  gallery: GalleryData | null;
 }

@@ -7,6 +7,7 @@ import {
 } from "types/controller.types.js";
 import { SegmentCreateDto, SegmentUpdateDto } from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
+import { Prisma } from "@prisma/client";
 
 export const normalizeSegment = (segment: any): Segment => ({
   segment_id: segment.segment_id,
@@ -22,7 +23,7 @@ export class SegmentController
   async create(
     payload: SegmentCore & { connect?: SegmentCreateDto["connect"] },
   ): Promise<Segment> {
-    const newId = uuidv4();
+    const newId = payload.segment_id ?? uuidv4();
     const segment = await prisma.segment.create({
       data: {
         segment_id: newId,
@@ -82,12 +83,18 @@ export class SegmentController
   }
 
   async update(id: string, payload: SegmentUpdateDto): Promise<Segment> {
+    const data: Prisma.segmentUpdateInput = {};
+    
+    // Mappage des champs scalaires (PATCH)
+    if (payload.title !== undefined) data.title = payload.title;
+    if (payload.paragraph !== undefined) data.paragraph = payload.paragraph;
+
+
     const segment = await prisma.segment.update({
       where: { segment_id: id },
       data: {
-        title: payload.title,
-        paragraph: payload.paragraph,
-
+        ...data,
+        // Les connexions aux tables de jointure (N-N) sont gérées via les DTOs connect/set/disconnect
         content_segments: payload.connect?.content_segments
           ? {
               connect: payload.connect.content_segments.map((c) => ({

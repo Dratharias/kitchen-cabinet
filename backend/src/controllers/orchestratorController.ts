@@ -84,6 +84,7 @@ export class OrchestratorController {
               publication,
             );
 
+            // Pour l'action 'update', nous gérons le remplacement complet (monolithique)
             const res =
               action === "create"
                 ? await this.createPublication(publication, tx)
@@ -105,22 +106,7 @@ export class OrchestratorController {
       }
     }
 
-    if (action === "readAll") {
-      try {
-        const [categories, products, units] = await prisma.$transaction([
-          prisma.category.findMany(),
-          prisma.product.findMany(),
-          prisma.unit.findMany(),
-        ]);
-        return {
-          success: true,
-          results: { categories, products, units } as any,
-        };
-      } catch (error: any) {
-        logError("readAll", error);
-        return { success: false, error: "Internal server error" };
-      }
-    }
+    // Suppression de l'ancienne logique readAll
 
     return { success: false, error: `Action '${action}' not supported.` };
   }
@@ -201,6 +187,7 @@ export class OrchestratorController {
     return created;
   }
 
+  // NOTE: Cette fonction effectue un remplacement complet (delete/recreate) pour les contenus imbriqués.
   private async updatePublication(pub: any, tx: PrismaClient) {
     const ctx = "updatePublication";
     assert(
@@ -246,6 +233,7 @@ export class OrchestratorController {
       },
     });
 
+    // Gestion des Tags
     await tx.publication_tag.deleteMany({
       where: { publication_id: updated.publication_id },
     });
@@ -264,7 +252,7 @@ export class OrchestratorController {
       }
     }
 
-    // reset contents (cascade on junctions is enabled)
+    // Gestion des Contenus (Suppression et Recréation, approche monolithique)
     await tx.content.deleteMany({
       where: { publication_id: updated.publication_id },
     });
@@ -305,6 +293,20 @@ export class OrchestratorController {
         "content_id",
         content.content_id,
       );
+      
+      // NOTE: Ajout du champ serving_id dans le modèle (relation 1-N Servings)
+      let serving_id: string | undefined = undefined;
+      if (content.servings && typeof content.servings === 'object' && content.servings.yield !== undefined) {
+        // Upsert Servings
+        const { yield: sYield, value: sValue } = content.servings;
+        const serving = await tx.servings.upsert({
+          where: { serving_id: content.servings.serving_id ?? uuidv4() },
+          create: { yield: sYield, value: sValue, serving_id: uuidv4() },
+          update: { yield: sYield, value: sValue },
+        });
+        serving_id = serving.serving_id;
+      }
+      
 
       const created = await tx.content.create({
         data: {
@@ -313,16 +315,14 @@ export class OrchestratorController {
           total_prep_time: Number.isFinite(content.total_prep_time)
             ? content.total_prep_time
             : 0,
-          servings:
-            typeof content.servings === "number" || content.servings === null
-              ? content.servings
-              : null,
+          serving_id, // Utilisation de serving_id
           subtitle:
             typeof content.subtitle === "string" ? content.subtitle : null,
           is_ingredient:
             typeof content.is_ingredient === "boolean"
               ? content.is_ingredient
               : false,
+          gallery: Array.isArray(content.gallery) ? content.gallery : [],
         },
       });
 
@@ -546,7 +546,7 @@ export class OrchestratorController {
       style_id = await this.processCategory(
         pt.style,
         tx,
-        "Cook",
+        "PrepTime",
         `${path}.style`,
       );
     }
