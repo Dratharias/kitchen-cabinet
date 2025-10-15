@@ -35,7 +35,7 @@ export class PublicationController
   ): Promise<Publication> {
     const newId = payload.publication_id ?? uuidv4();
     
-    // Simplification et accès direct
+    // Simplification and direct access
     const type_id = payload.connect?.type?.[0]?.category_id;
     const style_id = payload.connect?.style?.[0]?.category_id;
     const author_id = payload.connect?.author?.[0]?.category_id; 
@@ -53,7 +53,7 @@ export class PublicationController
         style_id,
         author_id,
         
-        // Relations N-N (Tags) - Correction de la clé composée
+        // N-N Relations (Tags) - Composite key correction
         tags: payload.connect?.tags
           ? {
               connect: payload.connect.tags.map(t => ({ 
@@ -74,7 +74,7 @@ export class PublicationController
   // READ BY ID
   // =====================================================
   async findById(id: string): Promise<Publication | null> {
-    // NOTE: Pour les accès privés/authentifiés, ne filtre pas sur public/published
+    // For private/authenticated access, does not filter on public/published
     const pub = await prisma.publication.findFirst({
       where: { publication_id: id },
       include: this.buildFullInclude(),
@@ -83,7 +83,7 @@ export class PublicationController
   }
 
   // =====================================================
-  // READ ALL (Logique UNIFIÉE pour privé et public)
+  // READ ALL (UNIFIED logic for private and public)
   // =====================================================
   async findAll(params?: PublicationReadAllDto & { isPublicRoute?: boolean }): Promise<{
     items: Publication[];
@@ -98,20 +98,22 @@ export class PublicationController
     const sortBy = params?.sortBy || "title";
     const order = params?.order === "desc" ? "desc" : "asc";
     
-    // Si la route est /public/publications, on applique le filtre public/published
+    // If the route is /public/publications, apply public/published filter
     const isPublic = params?.isPublicRoute ?? false; 
 
-    // --- Normalisation des filtres ---
+    // --- Filter normalization ---
     const filter = params?.filter ?? {};
     const q = typeof filter.q === "string" ? filter.q.trim() : null;
     const typeField = (filter as any).type;
+    
+    // This logic correctly handles if `type` is a single string or an array of strings.
     const types: string[] = Array.isArray(typeField)
       ? typeField
       : typeField
         ? [typeField]
         : [];
 
-    // --- Filtre de base (public/published si route publique) ---
+    // --- Base WHERE filter (applies public filter if needed) ---
     const where: Prisma.publicationWhereInput = {
       AND: [
         isPublic ? { public: true, published: true } : undefined,
@@ -189,10 +191,10 @@ export class PublicationController
       ].filter(Boolean) as Prisma.publicationWhereInput[],
     };
 
-    // --- Comptage total ---
+    // --- Count total ---
     const total = await prisma.publication.count({ where });
 
-    // --- Fetch principal ---
+    // --- Main Fetch ---
     const pubs = await prisma.publication.findMany({
       where,
       include: this.buildSummaryInclude(),
@@ -201,7 +203,7 @@ export class PublicationController
       orderBy: { [sortBy]: order },
     });
 
-    // --- Tolérance orthographique (pg_trgm) ---
+    // --- Fuzzy Search (pg_trgm) ---
     let results = pubs;
     if (q) {
       const safeQ = q.replace(/'/g, "''");
@@ -236,17 +238,16 @@ export class PublicationController
 
 
   // =====================================================
-  // UPDATE (supporte PUT et PATCH)
+  // UPDATE (supports PUT and PATCH)
   // =====================================================
   async update(
     id: string,
     payload: PublicationUpdateDto,
   ): Promise<Publication> {
     
-    // Construction de l'objet de données pour Prisma (uniquement les champs fournis dans le payload)
     const data: Prisma.publicationUpdateInput = {};
 
-    // Champs scalaires (mise à jour atomique)
+    // Scalar fields
     if (payload.title !== undefined) data.title = payload.title;
     if (payload.description !== undefined) data.description = payload.description;
     if (payload.note !== undefined) data.note = payload.note;
@@ -254,12 +255,12 @@ export class PublicationController
     if (payload.published !== undefined) data.published = payload.published;
     if (payload.thumbnail !== undefined) data.thumbnail = payload.thumbnail;
     
-    // Relations N-1 (Category/FK): on utilise le connect DTO (ex: type)
+    // N-1 Relations (Category/FK)
     if (payload.connect?.type?.[0]) data.type = { connect: payload.connect.type[0] };
     if (payload.connect?.style?.[0]) data.style = { connect: payload.connect.style[0] };
     if (payload.connect?.author?.[0]) data.author = { connect: payload.connect.author[0] };
     
-    // Relations N-N (Tags) - Correction de la clé composée
+    // N-N Relations (Tags)
     if (payload.connect?.tags) {
       data.tags = {
         connect: payload.connect.tags.map(t => ({ 
@@ -278,7 +279,7 @@ export class PublicationController
 
     const pub = await prisma.publication.update({
       where: { publication_id: id },
-      data: data, // Passe l'objet de données construit
+      data: data,
       include: this.buildFullInclude(),
     });
     return shapePublicPublicationFull(pub);
@@ -294,7 +295,7 @@ export class PublicationController
   }
 
   // =====================================================
-  // INCLUDES (inchangés)
+  // PRISMA INCLUDES
   // =====================================================
   private buildSummaryInclude() {
     return {
@@ -315,9 +316,7 @@ export class PublicationController
           serving_id: true, 
           subtitle: true,
           is_ingredient: true,
-        },
-        include: { 
-            servings: true
+          servings: true,
         }
       },
       reviews: { select: { rating: true } },
@@ -388,3 +387,4 @@ export class PublicationController
     };
   }
 }
+
