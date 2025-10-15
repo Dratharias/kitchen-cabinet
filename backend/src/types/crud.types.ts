@@ -34,28 +34,60 @@ import {
   ServingsRelations,
 } from "./controller.types.js";
 import { PaginatedResponse, ReadAllParams } from "./db.types.js";
-import { UserUpdateDto, UserCreateDto, CategoryConnect, ProductConnect, ProductSet, IngredientConnect, UnitConnect, PrepTimeConnect, SegmentConnect, ContentConnect, PublicationConnect, PublicationUpdateDto, ReviewConnect, ServingsConnect } from "./dto.types.js";
+import {
+  UserUpdateDto,
+  UserCreateDto,
+  CategoryConnect,
+  ProductConnect,
+  ProductSet,
+  IngredientConnect,
+  UnitConnect,
+  PrepTimeConnect,
+  SegmentConnect,
+  ContentConnect,
+  PublicationConnect,
+  PublicationUpdateDto,
+  ReviewConnect,
+  ServingsConnect,
+} from "./dto.types.js";
 
 // Les DTOs de Relation Connect/Set ne sont pas modifiés car ils sont
 // utilisés par les DTOs générés dans dto.types.ts
 
 // Mappage pour les interfaces DTO de relations
-type CategoryRelationDTO = { connect: CategoryConnect, set: CategoryConnect };
-type ProductRelationDTO = { connect: ProductConnect, set: ProductSet };
-type IngredientRelationDTO = { connect: IngredientConnect, set: IngredientConnect };
-type UnitRelationDTO = { connect: UnitConnect, set: UnitConnect };
-type PrepTimeRelationDTO = { connect: PrepTimeConnect, set: PrepTimeConnect };
-type SegmentRelationDTO = { connect: SegmentConnect, set: SegmentConnect };
-type ContentRelationDTO = { connect: ContentConnect, set: ContentConnect };
-type PublicationRelationDTO = { connect: PublicationConnect, set: PublicationConnect };
-type ReviewRelationDTO = { connect: ReviewConnect, set: ReviewConnect };
-type ServingsRelationDTO = { connect: ServingsConnect, set: ServingsConnect };
-
+type CategoryRelationDTO = { connect: CategoryConnect; set: CategoryConnect };
+type ProductRelationDTO = { connect: ProductConnect; set: ProductSet };
+type IngredientRelationDTO = {
+  connect: IngredientConnect;
+  set: IngredientConnect;
+};
+type UnitRelationDTO = { connect: UnitConnect; set: UnitConnect };
+type PrepTimeRelationDTO = { connect: PrepTimeConnect; set: PrepTimeConnect };
+type SegmentRelationDTO = { connect: SegmentConnect; set: SegmentConnect };
+type ContentRelationDTO = { connect: ContentConnect; set: ContentConnect };
+type PublicationRelationDTO = {
+  connect: PublicationConnect;
+  set: PublicationConnect;
+};
+type ReviewRelationDTO = { connect: ReviewConnect; set: ReviewConnect };
+type ServingsRelationDTO = { connect: ServingsConnect; set: ServingsConnect };
 
 export interface ControllerMap {
   users: GenericController<UserUpdateDto, UserCreateDto, UserUpdateDto>;
-  categories: GenericController<Category, CategoryCore, CategoryRelations, CategoryConnect, CategoryConnect>;
-  products: GenericController<Product, ProductCore, ProductRelations, ProductConnect, ProductSet>;
+  categories: GenericController<
+    Category,
+    CategoryCore,
+    CategoryRelations,
+    CategoryConnect,
+    CategoryConnect
+  >;
+  products: GenericController<
+    Product,
+    ProductCore,
+    ProductRelations,
+    ProductConnect,
+    ProductSet
+  >;
   ingredients: GenericController<
     Ingredient,
     IngredientCore,
@@ -64,10 +96,34 @@ export interface ControllerMap {
     IngredientConnect
   >;
   macros: GenericController<Macro, MacroCore, MacroRelations>;
-  units: GenericController<Unit, UnitCore, UnitRelations, UnitConnect, UnitConnect>;
-  prepTimes: GenericController<PrepTime, PrepTimeCore, PrepTimeRelations, PrepTimeConnect, PrepTimeConnect>;
-  segments: GenericController<Segment, SegmentCore, SegmentRelations, SegmentConnect, SegmentConnect>;
-  contents: GenericController<Content, ContentCore, ContentRelations, ContentConnect, ContentConnect>;
+  units: GenericController<
+    Unit,
+    UnitCore,
+    UnitRelations,
+    UnitConnect,
+    UnitConnect
+  >;
+  prepTimes: GenericController<
+    PrepTime,
+    PrepTimeCore,
+    PrepTimeRelations,
+    PrepTimeConnect,
+    PrepTimeConnect
+  >;
+  segments: GenericController<
+    Segment,
+    SegmentCore,
+    SegmentRelations,
+    SegmentConnect,
+    SegmentConnect
+  >;
+  contents: GenericController<
+    Content,
+    ContentCore,
+    ContentRelations,
+    ContentConnect,
+    ContentConnect
+  >;
   publications: GenericPaginatedController<
     Publication,
     PublicationCore,
@@ -75,8 +131,20 @@ export interface ControllerMap {
     PublicationConnect,
     PublicationConnect
   >;
-  reviews: GenericController<Review, ReviewCore, ReviewRelations, ReviewConnect, ReviewConnect>;
-  servings: GenericController<Servings, ServingsCore, ServingsRelations, ServingsConnect, ServingsConnect>;
+  reviews: GenericController<
+    Review,
+    ReviewCore,
+    ReviewRelations,
+    ReviewConnect,
+    ReviewConnect
+  >;
+  servings: GenericController<
+    Servings,
+    ServingsCore,
+    ServingsRelations,
+    ServingsConnect,
+    ServingsConnect
+  >;
 }
 
 export const junctionOrder = [

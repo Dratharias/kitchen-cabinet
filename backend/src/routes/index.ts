@@ -24,7 +24,11 @@ import { ServingsController } from "../controllers/atoms/servingsController.js";
 export default async function createRoutes(fastify: FastifyInstance) {
   const orchestrator = new OrchestratorController();
   // Pass both authentication handlers to the registry
-  const registry = new RouteRegistry(fastify, { authGuard, identifyUser }, orchestrator);
+  const registry = new RouteRegistry(
+    fastify,
+    { authGuard, identifyUser },
+    orchestrator,
+  );
 
   // --- Authentication Route ---
   registry.registerCustomRoute("POST", "/api/auth/login", loginHandler);
@@ -33,31 +37,64 @@ export default async function createRoutes(fastify: FastifyInstance) {
   // Reading is open to everyone (optional auth), but writing requires authentication.
   registry.registerCrud(new PublicationController(), {
     path: "/api/publications",
-    readAuth: 'optional',  // Guests can read public items, users see all
-    writeAuth: 'required', // Creating, updating, deleting requires a valid token
+    readAuth: "optional", // Guests can read public items, users see all
+    writeAuth: "required", // Creating, updating, deleting requires a valid token
   });
 
   // --- Unified Review Routes ---
   registry.registerCrud(new ReviewController(), {
     path: "/api/reviews",
-    readAuth: 'optional',
-    writeAuth: 'required',
+    readAuth: "optional",
+    writeAuth: "required",
   });
 
   // --- Strictly Protected Admin/Backoffice Routes ---
   // All actions (read and write) on these resources require authentication.
-  const protectedCrudOptions = { readAuth: 'required', writeAuth: 'required' } as const;
+  const protectedCrudOptions = {
+    readAuth: "required",
+    writeAuth: "required",
+  } as const;
 
-  registry.registerCrud(new CategoryController(), { path: "/api/categories", ...protectedCrudOptions });
-  registry.registerCrud(new UnitController(), { path: "/api/units", ...protectedCrudOptions });
-  registry.registerCrud(new ProductController(), { path: "/api/products", ...protectedCrudOptions });
-  registry.registerCrud(new IngredientController(), { path: "/api/ingredients", ...protectedCrudOptions });
-  registry.registerCrud(new MacroController(), { path: "/api/macros", ...protectedCrudOptions });
-  registry.registerCrud(new PrepTimeController(), { path: "/api/prepTimes", ...protectedCrudOptions });
-  registry.registerCrud(new SegmentController(), { path: "/api/segments", ...protectedCrudOptions });
-  registry.registerCrud(new ContentController(), { path: "/api/contents", ...protectedCrudOptions });
-  registry.registerCrud(new ServingsController(), { path: "/api/servings", ...protectedCrudOptions });
-  registry.registerCrud(new AppUserController(), { path: "/api/users", ...protectedCrudOptions });
+  registry.registerCrud(new CategoryController(), {
+    path: "/api/categories",
+    ...protectedCrudOptions,
+  });
+  registry.registerCrud(new UnitController(), {
+    path: "/api/units",
+    ...protectedCrudOptions,
+  });
+  registry.registerCrud(new ProductController(), {
+    path: "/api/products",
+    ...protectedCrudOptions,
+  });
+  registry.registerCrud(new IngredientController(), {
+    path: "/api/ingredients",
+    ...protectedCrudOptions,
+  });
+  registry.registerCrud(new MacroController(), {
+    path: "/api/macros",
+    ...protectedCrudOptions,
+  });
+  registry.registerCrud(new PrepTimeController(), {
+    path: "/api/prepTimes",
+    ...protectedCrudOptions,
+  });
+  registry.registerCrud(new SegmentController(), {
+    path: "/api/segments",
+    ...protectedCrudOptions,
+  });
+  registry.registerCrud(new ContentController(), {
+    path: "/api/contents",
+    ...protectedCrudOptions,
+  });
+  registry.registerCrud(new ServingsController(), {
+    path: "/api/servings",
+    ...protectedCrudOptions,
+  });
+  registry.registerCrud(new AppUserController(), {
+    path: "/api/users",
+    ...protectedCrudOptions,
+  });
 
   // --- Orchestrator Route for monolithic actions ---
   registry.registerOrchestratorRoute("POST", "/api/publicate", true);

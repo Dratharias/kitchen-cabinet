@@ -1,5 +1,5 @@
-import React from 'react';
-import { InlineEditField } from './InlineEditField';
+import React from "react";
+import { InlineEditField } from "./InlineEditField";
 
 interface PublicationDescriptionEditableProps {
   description: string[];
@@ -12,7 +12,9 @@ interface PublicationDescriptionEditableProps {
   onChange: (value: string) => void;
 }
 
-export const PublicationDescriptionEditable: React.FC<PublicationDescriptionEditableProps> = ({
+export const PublicationDescriptionEditable: React.FC<
+  PublicationDescriptionEditableProps
+> = ({
   description,
   isAuthenticated,
   isEditing,
@@ -24,7 +26,7 @@ export const PublicationDescriptionEditable: React.FC<PublicationDescriptionEdit
 }) => {
   if (description.length === 0) return null;
 
-  const fullDescription = description.join('\n');
+  const fullDescription = description.join("\n");
 
   return (
     <div className="mb-4">

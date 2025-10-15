@@ -8,27 +8,23 @@ import { PublicationTabs } from "@/components/view/PublicationTabs";
 import { DotGrid } from "@/components/ui/DotGrid";
 import { SpotlightWrapper } from "@/components/ui/SpotlightWrapper";
 import { IngredientBlockEditable } from "@/components/view/IngredientBlockEditable";
-import { SegmentBlockEditable } from "@/components/view/SegmentBlockEditable";
 import { ContentBlockHeaderEditable } from "@/components/view/ContentBlockHeaderEditable";
+import { SegmentBlockEditable } from "@/components/view/SegmentBlockEditable";
 import type { ServingsPayload } from "@/types/payloadBuilder";
 
 // --- Helpers ---
 
-/** Helper to ensure servings data is in the expected object format for display */
 function normalizeServings(val: any): ServingsPayload | null {
   if (!val) return null;
-  // Si les données proviennent du backend, elles peuvent être un objet { yield, value }
   if (typeof val === "object" && val.yield !== undefined) {
     return val as ServingsPayload;
   }
-  // Rétrocompatibilité (si le backend renvoyait un simple nombre)
   if (typeof val === "number") {
     return { yield: val, value: "portion(s)" };
   }
   return null;
 }
 
-/** Helper to get a stable ID for block keying */
 const getBlockId = (block: any) =>
   block.content_id ||
   block.publication_id ||
@@ -36,24 +32,19 @@ const getBlockId = (block: any) =>
   block.subtitle ||
   crypto.randomUUID();
 
-/**
- * Parses a servings label string (e.g., "4 portions") into separate yield and value.
- * Now returns the full ServingsPayload object for DTO compatibility.
- */
 const parseServingsLabel = (label: string): ServingsPayload => {
-    const match = label.match(/(\d+)\s*(.*)/) || [];
-    const yieldValue = parseInt(match[1], 10) || 1;
-    let unitValue = match[2].trim();
+  const match = label.match(/(\d+)\s*(.*)/) || [];
+  const yieldValue = parseInt(match[1], 10) || 1;
+  let unitValue = match[2].trim();
 
-    // Default to 'portion(s)' if unit is empty or just whitespace
-    if (!unitValue || unitValue.toLowerCase().startsWith('portion')) {
-        unitValue = yieldValue > 1 ? 'portions' : 'portion';
-    }
-    
-    // FIX: Retourne l'objet ServingsPayload complet
-    return { yield: yieldValue, value: unitValue };
+  if (!unitValue || unitValue.toLowerCase().startsWith("portion")) {
+    unitValue = yieldValue > 1 ? "portions" : "portion";
+  }
+
+  return { yield: yieldValue, value: unitValue };
 };
 
+// --- Composant Principal ---
 
 export function PublicationView() {
   const {
@@ -64,38 +55,33 @@ export function PublicationView() {
     checkedItems,
     toggleChecked,
     isAuthenticated,
-    // Centralized API calls (Updates)
     updatePublicationField,
     updateContentField,
-    updateIngredientField,
-    updateSegmentField,
-    // Centralized API calls (Mutations)
+    updateIngredientFields,
+    updateSegmentFields,
     addIngredient,
     deleteIngredient,
     addSegment,
     deleteSegment,
   } = usePublicationView();
 
-  // Local UI State (Hooks must be called unconditionally)
-  const [expandedBlocks, setExpandedBlocks] = useState<Record<string, boolean>>({});
+  const [expandedBlocks, setExpandedBlocks] = useState<Record<string, boolean>>(
+    {},
+  );
   const [tab, setTab] = useState<"ingredients" | "steps">("ingredients");
-  const [servingFactors, setServingFactors] = useState<Record<string, number>>({});
-  
-  // Inline Editing State (Managed locally and passed to InlineEditField)
+  const [servingFactors, setServingFactors] = useState<Record<string, number>>(
+    {},
+  );
   const [editingField, setEditingField] = useState<string | null>(null);
   const [editValues, setEditValues] = useState<Record<string, string>>({});
 
-  // --- Memoized Data & Handlers ---
-
   const contents = publication?.contents || [];
-  
-  const { variants, subRecipes } = useMemo(() => {
-    // Les Servings peuvent maintenant être des objets, nous devons les normaliser.
-    const normalizedContents = contents.map(c => ({
-        ...c,
-        servings: normalizeServings(c.servings) 
-    }));
 
+  const { variants, subRecipes } = useMemo(() => {
+    const normalizedContents = contents.map((c) => ({
+      ...c,
+      servings: normalizeServings(c.servings),
+    }));
     return {
       variants: normalizedContents.filter((c: any) => !c.is_ingredient),
       subRecipes: normalizedContents.filter((c: any) => c.is_ingredient),
@@ -103,37 +89,41 @@ export function PublicationView() {
   }, [contents]);
 
   const activeVariant = variants[selectedVariant] || null;
-  const thumbnail = activeVariant?.gallery?.[0] || publication?.thumbnail || null;
-  
-  // Unified list of blocks for rendering tabs (main variant + all sub-recipes)
+  const thumbnail =
+    activeVariant?.gallery?.[0] || publication?.thumbnail || null;
+
   const allDisplayBlocks = useMemo(() => {
     const blocks: any[] = [];
     if (activeVariant) {
       blocks.push({ ...activeVariant, __isMainVariant: true });
     }
-    blocks.push(...subRecipes.map((c: any) => ({ ...c, __isMainVariant: false })));
+    blocks.push(
+      ...subRecipes.map((c: any) => ({ ...c, __isMainVariant: false })),
+    );
     return blocks;
   }, [activeVariant, subRecipes]);
-
 
   const toggleBlock = useCallback((id: string) => {
     setExpandedBlocks((prev) => ({ ...prev, [id]: !prev[id] }));
   }, []);
 
-  const isBlockExpanded = useCallback((blockId: string, isMainVariant: boolean) =>
-    expandedBlocks[blockId] !== undefined
-      ? expandedBlocks[blockId]
-      : isMainVariant, // Default to expanded for main variant
-    [expandedBlocks]
+  const isBlockExpanded = useCallback(
+    (blockId: string, isMainVariant: boolean) =>
+      expandedBlocks[blockId] !== undefined
+        ? expandedBlocks[blockId]
+        : isMainVariant,
+    [expandedBlocks],
   );
 
-  const getServingFactor = useCallback((blockId: string) => servingFactors[blockId] || 1, [servingFactors]);
-  const setServingFactor = useCallback((blockId: string, factor: number) =>
-    setServingFactors((prev) => ({ ...prev, [blockId]: factor })),
-    [setServingFactors]
+  const getServingFactor = useCallback(
+    (blockId: string) => servingFactors[blockId] || 1,
+    [servingFactors],
   );
-  
-  // --- Standardized Inline Edit Callbacks ---
+  const setServingFactor = useCallback(
+    (blockId: string, factor: number) =>
+      setServingFactors((prev) => ({ ...prev, [blockId]: factor })),
+    [setServingFactors],
+  );
 
   const startEdit = useCallback((fieldId: string, value: string) => {
     setEditingField(fieldId);
@@ -148,103 +138,81 @@ export function PublicationView() {
   const updateValue = useCallback((fieldId: string, value: string) => {
     setEditValues({ [fieldId]: value });
   }, []);
-  
-  const confirmEdit = useCallback(async (fieldId: string, resourceId: string, resourceType: 'publication' | 'content' | 'ingredient' | 'segment', fieldName: string) => {
-    const value = editValues[fieldId];
-    if (value === undefined || value === null) {
-      cancelEdit();
-      return;
-    }
-    
-    let success = false;
-    let fields: any = { [fieldName]: value };
 
-    switch (resourceType) {
-        case 'publication':
-            success = await updatePublicationField(fields);
-            break;
-        case 'content':
-            if (fieldName === 'servings') {
-                // FIX: Envoyer l'objet ServingsPayload complet au hook
-                fields = { servings: parseServingsLabel(value) }; 
-            }
-            success = await updateContentField(resourceId, fields);
-            break;
-        case 'ingredient':
-            // FIX: Les updates atomiques sont gérés par le hook qui s'attend
-            // à recevoir le champ et la valeur brute (ex: { unit: 'ml' }).
-            if (fieldName === 'product') {
-                fields = { product: value };
-            } else if (fieldName === 'unit') {
-                fields = { unit: value };
-            } else if (fieldName === 'quantity') {
-                fields = { quantity: Number(value) };
-            }
-            success = await updateIngredientField(resourceId, fields);
-            break;
-        case 'segment':
-            success = await updateSegmentField(resourceId, fields);
-            break;
-    }
-    
-    if (success) {
-      cancelEdit();
-    }
-  }, [editValues, cancelEdit, updatePublicationField, updateContentField, updateIngredientField, updateSegmentField]);
+  const confirmEdit = useCallback(
+    async (
+      fieldId: string,
+      resourceId: string,
+      resourceType: "publication" | "content",
+      fieldName: string,
+    ) => {
+      const value = editValues[fieldId];
+      if (value === undefined) {
+        cancelEdit();
+        return;
+      }
 
+      let success = false;
+      let fields: any = { [fieldName]: value };
 
-  // --- Render Functions ---
+      switch (resourceType) {
+        case "publication":
+          success = await updatePublicationField(fields);
+          break;
+        case "content":
+          if (fieldName === "servings") {
+            fields = { servings: parseServingsLabel(value) };
+          }
+          success = await updateContentField(resourceId, fields);
+          break;
+      }
+
+      if (success) {
+        cancelEdit();
+      }
+    },
+    [editValues, cancelEdit, updatePublicationField, updateContentField],
+  );
 
   const renderIngredientBlocks = () => (
     <div className="pb-16 space-y-4">
       {allDisplayBlocks.map((block) => {
         const blockId = getBlockId(block);
         const isMainVariant = block.__isMainVariant;
-        
+
         return (
           <div key={`ing-${blockId}`}>
-            {/* Header for the Main Content Block (Active Variant) */}
             {isMainVariant && (
               <ContentBlockHeaderEditable
                 contentId={block.content_id}
                 subtitle={block.subtitle}
-                // FIX: Passer l'objet ServingsPayload normalisé
-                servings={block.servings} 
+                servings={block.servings}
                 isAuthenticated={isAuthenticated}
                 editingField={editingField}
                 editValues={editValues}
                 startEdit={startEdit}
                 cancelEdit={cancelEdit}
                 updateValue={updateValue}
-                confirmContent={(field) => confirmEdit(
-                    `${field}-${block.content_id}`, 
-                    block.content_id, 
-                    'content', 
-                    field
-                )}
+                confirmContent={(field) =>
+                  confirmEdit(
+                    `${field}-${block.content_id}`,
+                    block.content_id,
+                    "content",
+                    field,
+                  )
+                }
               />
             )}
-            
+
             <IngredientBlockEditable
               block={block}
               expanded={isBlockExpanded(`ing-${blockId}`, isMainVariant)}
               toggleBlock={() => toggleBlock(`ing-${blockId}`)}
-              servingFactor={getServingFactor(`ing-${blockId}`)}
-              onServingChange={(factor) => setServingFactor(`ing-${blockId}`, factor)}
               ingredients={block.content_ingredients || []}
               isAuthenticated={isAuthenticated}
               checkedItems={checkedItems}
               toggleChecked={toggleChecked}
-              
-              // Standardized Inline Edit Props
-              editingField={editingField}
-              editValues={editValues}
-              startEdit={startEdit}
-              cancelEdit={cancelEdit}
-              updateValue={updateValue}
-              confirmIngredient={(id, field) => confirmEdit(`${field}-${id}`, id, 'ingredient', field)}
-              
-              // Mutation hooks connection
+              onConfirmUpdate={updateIngredientFields}
               onAddIngredient={addIngredient}
               onDeleteIngredient={deleteIngredient}
             />
@@ -260,8 +228,8 @@ export function PublicationView() {
         const blockId = getBlockId(block);
         const isMainVariant = block.__isMainVariant;
 
-        // Skip rendering segments if there are none
-        if (!block.content_segments || block.content_segments.length === 0) return null;
+        if (!block.content_segments || block.content_segments.length === 0)
+          return null;
 
         return (
           <SegmentBlockEditable
@@ -273,16 +241,7 @@ export function PublicationView() {
             isAuthenticated={isAuthenticated}
             checkedItems={checkedItems}
             toggleChecked={toggleChecked}
-            
-            // Standardized Inline Edit Props
-            editingField={editingField}
-            editValues={editValues}
-            startEdit={startEdit}
-            cancelEdit={cancelEdit}
-            updateValue={updateValue}
-            confirmSegment={(id, field) => confirmEdit(`paragraph-${id}`, id, 'segment', field)}
-            
-            // Mutation hooks connection
+            onConfirmUpdate={updateSegmentFields}
             onAddSegment={addSegment}
             onDeleteSegment={deleteSegment}
           />
@@ -291,7 +250,6 @@ export function PublicationView() {
     </div>
   );
 
-  // --- Early Returns ---
   if (loading) {
     return (
       <div className="flex h-screen items-center justify-center text-gray-400">
@@ -301,8 +259,6 @@ export function PublicationView() {
   }
   if (!publication) return null;
 
-
-  // --- Main Render ---
   return (
     <DotGrid
       dotSize={10}
@@ -317,8 +273,6 @@ export function PublicationView() {
       className="bg-[#1F1F1F] min-h-screen"
     >
       <div className="relative z-20 mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 py-6">
-        
-        {/* Publication Header (Title) */}
         <PublicationHeaderEditable
           title={publication.title}
           isAuthenticated={isAuthenticated}
@@ -326,11 +280,17 @@ export function PublicationView() {
           editValue={editValues["title"] || publication.title}
           onStartEdit={() => startEdit("title", publication.title)}
           onCancel={cancelEdit}
-          onConfirm={() => confirmEdit("title", publication.publication_id, 'publication', "title")}
+          onConfirm={() =>
+            confirmEdit(
+              "title",
+              publication.publication_id,
+              "publication",
+              "title",
+            )
+          }
           onChange={(value) => updateValue("title", value)}
         />
-        
-        {/* Thumbnail */}
+
         <SpotlightWrapper
           className="w-full h-64 rounded-xl mb-6"
           radius="150px"
@@ -351,7 +311,6 @@ export function PublicationView() {
           )}
         </SpotlightWrapper>
 
-        {/* Description */}
         <PublicationDescriptionEditable
           description={publication.description || []}
           isAuthenticated={isAuthenticated}
@@ -361,27 +320,28 @@ export function PublicationView() {
             (publication.description || []).join("\n")
           }
           onStartEdit={() =>
-            startEdit(
-              "description",
-              (publication.description || []).join("\n"),
-            )
+            startEdit("description", (publication.description || []).join("\n"))
           }
           onCancel={cancelEdit}
-          onConfirm={() => confirmEdit("description", publication.publication_id, 'publication', "description")}
+          onConfirm={() =>
+            confirmEdit(
+              "description",
+              publication.publication_id,
+              "publication",
+              "description",
+            )
+          }
           onChange={(value) => updateValue("description", value)}
         />
 
-        {/* Variants Selector (Only renders if > 1 variant) */}
         <PublicationVariantTabs
           variants={variants}
           selectedVariant={selectedVariant}
           setSelectedVariant={setSelectedVariant}
         />
 
-        {/* Mobile Tabs */}
         <PublicationTabs currentTab={tab} setTab={setTab} />
 
-        {/* Content Blocks */}
         {tab === "ingredients" && renderIngredientBlocks()}
         {tab === "steps" && renderSegmentBlocks()}
       </div>

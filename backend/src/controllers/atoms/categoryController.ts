@@ -6,7 +6,11 @@ import {
   CategoryRelations,
 } from "types/controller.types.js";
 import { v4 as uuidv4 } from "uuid";
-import { CategoryCreateDto, CategoryUpdateDto, CategoryConnect } from "types/dto.types.js";
+import {
+  CategoryCreateDto,
+  CategoryUpdateDto,
+  CategoryConnect,
+} from "types/dto.types.js";
 import { ReadAllParams } from "types/db.types.js";
 import { Prisma } from "@prisma/client";
 
@@ -25,7 +29,14 @@ export function normalizeCategory(cat: any): Category {
 }
 
 export class CategoryController
-  implements GenericController<Category, CategoryCore, CategoryRelations, CategoryConnect, CategoryConnect>
+  implements
+    GenericController<
+      Category,
+      CategoryCore,
+      CategoryRelations,
+      CategoryConnect,
+      CategoryConnect
+    >
 {
   async create(
     payload: CategoryCore & {
@@ -33,7 +44,7 @@ export class CategoryController
     },
   ): Promise<Category> {
     const newId = payload.category_id ?? uuidv4();
-    
+
     const category = await prisma.category.create({
       data: {
         category_id: newId,
@@ -61,8 +72,8 @@ export class CategoryController
         publication_tags: payload.connect?.publication_tags
           ? {
               create: payload.connect.publication_tags.map((pt) => ({
-                  category_id: newId,
-                  publication_id: pt.publication_id,
+                category_id: newId,
+                publication_id: pt.publication_id,
               })),
             }
           : undefined,
@@ -91,7 +102,7 @@ export class CategoryController
         prep_time: true,
         publication_tags: true,
         product_categories: true,
-      }
+      },
     });
     return category ? normalizeCategory(category) : null;
   }
@@ -130,12 +141,12 @@ export class CategoryController
 
     if (payload.str_value !== undefined) data.str_value = payload.str_value;
     if (payload.type !== undefined) data.type = payload.type;
-    
+
     // Helper pour créer les connexions N-N
-    const mapNNConnect = (connects: any[], idKey: string, otherKey: string) => 
+    const mapNNConnect = (connects: any[], idKey: string, otherKey: string) =>
       connects.map((c) => ({
-          [idKey]: id, // category_id ou prep_time_id
-          [otherKey]: c[otherKey], // publication_id, product_id, prep_time_id
+        [idKey]: id, // category_id ou prep_time_id
+        [otherKey]: c[otherKey], // publication_id, product_id, prep_time_id
       }));
 
     const category = await prisma.category.update({
@@ -163,27 +174,47 @@ export class CategoryController
           : payload.set?.prep_time
             ? { set: payload.set.prep_time }
             : undefined,
-        
+
         // Relations N-N (PublicationTags)
         publication_tags: payload.connect?.publication_tags
-          ? { connect: payload.connect.publication_tags.map(pt => ({ 
-              publication_id_category_id: { publication_id: pt.publication_id, category_id: id }
-            })) }
+          ? {
+              connect: payload.connect.publication_tags.map((pt) => ({
+                publication_id_category_id: {
+                  publication_id: pt.publication_id,
+                  category_id: id,
+                },
+              })),
+            }
           : payload.set?.publication_tags
-            ? { set: payload.set.publication_tags.map(pt => ({ 
-              publication_id_category_id: { publication_id: pt.publication_id, category_id: id }
-            })) }
+            ? {
+                set: payload.set.publication_tags.map((pt) => ({
+                  publication_id_category_id: {
+                    publication_id: pt.publication_id,
+                    category_id: id,
+                  },
+                })),
+              }
             : undefined,
-            
+
         // Relations N-N (ProductCategories)
         product_categories: payload.connect?.product_categories
-          ? { connect: payload.connect.product_categories.map(pc => ({ 
-              product_id_category_id: { product_id: pc.product_id, category_id: id }
-            })) }
+          ? {
+              connect: payload.connect.product_categories.map((pc) => ({
+                product_id_category_id: {
+                  product_id: pc.product_id,
+                  category_id: id,
+                },
+              })),
+            }
           : payload.set?.product_categories
-            ? { set: payload.set.product_categories.map(pc => ({ 
-              product_id_category_id: { product_id: pc.product_id, category_id: id }
-            })) }
+            ? {
+                set: payload.set.product_categories.map((pc) => ({
+                  product_id_category_id: {
+                    product_id: pc.product_id,
+                    category_id: id,
+                  },
+                })),
+              }
             : undefined,
       },
     });

@@ -5,7 +5,11 @@ import {
   GalleryRelations,
   Gallery,
 } from "types/controller.types.js";
-import { GalleryCreateDto, GalleryUpdateDto, GalleryConnect } from "types/dto.types.js";
+import {
+  GalleryCreateDto,
+  GalleryUpdateDto,
+  GalleryConnect,
+} from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
 import { Prisma } from "@prisma/client";
 
@@ -18,7 +22,14 @@ export const normalizeGallery = (gallery: any): Gallery => ({
 });
 
 export class GalleryController
-  implements GenericController<Gallery, GalleryCore, GalleryRelations, GalleryConnect, GalleryConnect>
+  implements
+    GenericController<
+      Gallery,
+      GalleryCore,
+      GalleryRelations,
+      GalleryConnect,
+      GalleryConnect
+    >
 {
   // =====================================================
   // CREATE
@@ -33,23 +44,23 @@ export class GalleryController
         gallery_id: newId,
         url: payload.url,
         label: payload.label ?? null,
-        
+
         // CORRECTION N-N: Utilisation de la clé composite content_id_gallery_id
         content_gallery: payload.connect?.content_gallery
-            ? { 
-                connect: payload.connect.content_gallery.map(cg => ({
-                    // Nous nous assurons que l'objet de connexion N-N est bien la clé composite
-                    content_id_gallery_id: { 
-                        content_id: cg.content_id, 
-                        gallery_id: newId 
-                    }
-                })) 
+          ? {
+              connect: payload.connect.content_gallery.map((cg) => ({
+                // Nous nous assurons que l'objet de connexion N-N est bien la clé composite
+                content_id_gallery_id: {
+                  content_id: cg.content_id,
+                  gallery_id: newId,
+                },
+              })),
             }
-            : undefined,
+          : undefined,
       },
       include: {
         content_gallery: true,
-      }
+      },
     });
 
     return normalizeGallery(gallery);
@@ -63,14 +74,14 @@ export class GalleryController
       where: { gallery_id: id },
       include: {
         content_gallery: true,
-      }
+      },
     });
     return gallery ? normalizeGallery(gallery) : null;
   }
 
   async findAll(): Promise<Gallery[]> {
     const galleries = await prisma.gallery.findMany({
-        include: { content_gallery: true }
+      include: { content_gallery: true },
     });
     return galleries.map(normalizeGallery);
   }
@@ -91,22 +102,28 @@ export class GalleryController
         ...data,
         // CORRECTION N-N: Utilisation de la clé composite content_id_gallery_id
         content_gallery: payload.connect?.content_gallery
-            ? { 
-                connect: payload.connect.content_gallery.map(cg => ({
-                    content_id_gallery_id: { content_id: cg.content_id, gallery_id: id }
-                })) 
+          ? {
+              connect: payload.connect.content_gallery.map((cg) => ({
+                content_id_gallery_id: {
+                  content_id: cg.content_id,
+                  gallery_id: id,
+                },
+              })),
             }
-            : payload.set?.content_gallery
-                ? { 
-                    set: payload.set.content_gallery.map(cg => ({
-                        content_id_gallery_id: { content_id: cg.content_id, gallery_id: id }
-                    })) 
-                }
-                : undefined,
+          : payload.set?.content_gallery
+            ? {
+                set: payload.set.content_gallery.map((cg) => ({
+                  content_id_gallery_id: {
+                    content_id: cg.content_id,
+                    gallery_id: id,
+                  },
+                })),
+              }
+            : undefined,
       },
       include: {
         content_gallery: true,
-      }
+      },
     });
 
     return normalizeGallery(gallery);

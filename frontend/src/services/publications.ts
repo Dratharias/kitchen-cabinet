@@ -24,7 +24,10 @@ export class PublicationsService {
     );
   }
 
-  static async getPublicationById(id: string, isAuthenticated: boolean = false): Promise<Publication> {
+  static async getPublicationById(
+    id: string,
+    isAuthenticated: boolean = false,
+  ): Promise<Publication> {
     return CommonService.get<Publication>(
       `/api/publications/${id}`,
       undefined,

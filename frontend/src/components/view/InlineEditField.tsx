@@ -1,5 +1,5 @@
-import React from 'react';
-import { Edit2, Check, X } from 'lucide-react';
+import React from "react";
+import { Edit2, Check, X } from "lucide-react";
 
 interface InlineEditFieldProps {
   fieldId: string;
@@ -24,7 +24,7 @@ export const InlineEditField: React.FC<InlineEditFieldProps> = ({
   onConfirm,
   onChange,
   multiline = false,
-  className = '',
+  className = "",
 }) => {
   if (!isEditing) {
     return (

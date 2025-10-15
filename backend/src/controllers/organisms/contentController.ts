@@ -6,13 +6,17 @@ import {
   Content,
   Servings,
 } from "types/controller.types.js";
-import { ContentCreateDto, ContentUpdateDto, ContentConnect } from "types/dto.types.js";
+import {
+  ContentCreateDto,
+  ContentUpdateDto,
+  ContentConnect,
+} from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
 import { Prisma } from "@prisma/client";
 
 const contentInclude = {
   publication: true,
-  servings: true, 
+  servings: true,
   content_segments: true,
   content_ingredients: true,
   content_prep_times: true,
@@ -85,24 +89,29 @@ export class ContentController
     if (upsertPayload.servings && typeof upsertPayload.servings === "object") {
       serving_id = await upsertServings(prisma, upsertPayload.servings);
     } else if (payload.connect?.servings?.[0]) {
-      serving_id = await upsertServings(prisma, payload.connect.servings[0] as any);
+      serving_id = await upsertServings(
+        prisma,
+        payload.connect.servings[0] as any,
+      );
     }
 
     const content = await prisma.content.create({
       data: {
         content_id: newId,
-        
+
         publication: { connect: { publication_id: payload.publication_id } },
-        
+
         total_prep_time: payload.total_prep_time,
-        
-        servings: serving_id ? { connect: { serving_id: serving_id } } : undefined,
-        
+
+        servings: serving_id
+          ? { connect: { serving_id: serving_id } }
+          : undefined,
+
         subtitle: payload.subtitle,
         is_ingredient: payload.is_ingredient,
 
         content_segments: payload.connect?.content_segments
-          ? { 
+          ? {
               connect: payload.connect.content_segments.map((c) => ({
                 content_id_segment_id: {
                   content_id: newId,
@@ -113,7 +122,7 @@ export class ContentController
           : undefined,
 
         content_ingredients: payload.connect?.content_ingredients
-          ? { 
+          ? {
               connect: payload.connect.content_ingredients.map((c) => ({
                 content_id_ingredient_id: {
                   content_id: newId,
@@ -124,7 +133,7 @@ export class ContentController
           : undefined,
 
         content_prep_times: payload.connect?.content_prep_times
-          ? { 
+          ? {
               connect: payload.connect.content_prep_times.map((c) => ({
                 content_id_prep_time_id: {
                   content_id: newId,
@@ -133,7 +142,6 @@ export class ContentController
               })),
             }
           : undefined,
-          
       },
       include: contentInclude,
     });
@@ -160,7 +168,9 @@ export class ContentController
     const data: Prisma.contentUpdateInput = {};
 
     if (payload.publication_id) {
-         data.publication = { connect: { publication_id: payload.publication_id } };
+      data.publication = {
+        connect: { publication_id: payload.publication_id },
+      };
     }
 
     if (payload.total_prep_time !== undefined)
@@ -168,22 +178,28 @@ export class ContentController
     if (payload.subtitle !== undefined) data.subtitle = payload.subtitle;
     if (payload.is_ingredient !== undefined)
       data.is_ingredient = payload.is_ingredient;
-          
+
     const upsertPayload = payload as ContentUpdateDto & { servings?: any };
     let determined_serving_id: string | null | undefined = undefined;
-    
+
     if (upsertPayload.servings && typeof upsertPayload.servings === "object") {
-      determined_serving_id = await upsertServings(prisma, upsertPayload.servings);
+      determined_serving_id = await upsertServings(
+        prisma,
+        upsertPayload.servings,
+      );
     } else if (payload.connect?.servings?.[0]) {
-      determined_serving_id = await upsertServings(prisma, payload.connect.servings[0] as any);
+      determined_serving_id = await upsertServings(
+        prisma,
+        payload.connect.servings[0] as any,
+      );
     }
 
     if (determined_serving_id !== undefined) {
-        if (determined_serving_id) {
-            data.servings = { connect: { serving_id: determined_serving_id } }; 
-        } else {
-            data.servings = { disconnect: true };
-        }
+      if (determined_serving_id) {
+        data.servings = { connect: { serving_id: determined_serving_id } };
+      } else {
+        data.servings = { disconnect: true };
+      }
     }
 
     const content = await prisma.content.update({
@@ -192,43 +208,61 @@ export class ContentController
         ...data,
 
         content_segments: payload.connect?.content_segments
-          ? { 
+          ? {
               connect: payload.connect.content_segments.map((c) => ({
-                content_id_segment_id: { content_id: id, segment_id: c.segment_id },
+                content_id_segment_id: {
+                  content_id: id,
+                  segment_id: c.segment_id,
+                },
               })),
             }
           : payload.set?.content_segments
-            ? { 
+            ? {
                 set: payload.set.content_segments.map((c) => ({
-                  content_id_segment_id: { content_id: id, segment_id: c.segment_id },
+                  content_id_segment_id: {
+                    content_id: id,
+                    segment_id: c.segment_id,
+                  },
                 })),
               }
             : undefined,
 
         content_ingredients: payload.connect?.content_ingredients
-          ? { 
+          ? {
               connect: payload.connect.content_ingredients.map((c) => ({
-                content_id_ingredient_id: { content_id: id, ingredient_id: c.ingredient_id },
+                content_id_ingredient_id: {
+                  content_id: id,
+                  ingredient_id: c.ingredient_id,
+                },
               })),
             }
           : payload.set?.content_ingredients
-            ? { 
+            ? {
                 set: payload.set.content_ingredients.map((c) => ({
-                  content_id_ingredient_id: { content_id: id, ingredient_id: c.ingredient_id },
+                  content_id_ingredient_id: {
+                    content_id: id,
+                    ingredient_id: c.ingredient_id,
+                  },
                 })),
               }
             : undefined,
 
         content_prep_times: payload.connect?.content_prep_times
-          ? { 
+          ? {
               connect: payload.connect.content_prep_times.map((c) => ({
-                content_id_prep_time_id: { content_id: id, prep_time_id: c.prep_time_id },
+                content_id_prep_time_id: {
+                  content_id: id,
+                  prep_time_id: c.prep_time_id,
+                },
               })),
             }
           : payload.set?.content_prep_times
-            ? { 
+            ? {
                 set: payload.set.content_prep_times.map((c) => ({
-                  content_id_prep_time_id: { content_id: id, prep_time_id: c.prep_time_id },
+                  content_id_prep_time_id: {
+                    content_id: id,
+                    prep_time_id: c.prep_time_id,
+                  },
                 })),
               }
             : undefined,
@@ -252,7 +286,9 @@ export class ContentController
         where: { serving_id: content.serving_id },
       });
       if (count === 0) {
-        await prisma.servings.delete({ where: { serving_id: content.serving_id } });
+        await prisma.servings.delete({
+          where: { serving_id: content.serving_id },
+        });
       }
     }
 

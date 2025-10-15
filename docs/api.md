@@ -6,9 +6,9 @@ Le backend est structuré autour de trois groupes de routes principaux : **Authe
 
 ### 1.1 Authentification
 
-| Méthode | Chemin | Rôle |
-|---------|--------|------|
-| `POST` | `/api/auth/login` | Authentifie un utilisateur et retourne un jeton JWT Bearer |
+| Méthode | Chemin            | Rôle                                                       |
+| ------- | ----------------- | ---------------------------------------------------------- |
+| `POST`  | `/api/auth/login` | Authentifie un utilisateur et retourne un jeton JWT Bearer |
 
 **Payload de Connexion :**
 
@@ -35,20 +35,20 @@ Ces routes ne nécessitent pas de jeton d'authentification mais n'affichent que 
 
 #### Publications
 
-| Méthode | Chemin | Rôle |
-|---------|--------|------|
-| `GET` | `/api/public/publications` | Liste paginée des publications publiques |
-| `GET` | `/api/public/publications/:id` | Récupère une publication détaillée par ID (si publique et publiée) |
+| Méthode | Chemin                         | Rôle                                                               |
+| ------- | ------------------------------ | ------------------------------------------------------------------ |
+| `GET`   | `/api/public/publications`     | Liste paginée des publications publiques                           |
+| `GET`   | `/api/public/publications/:id` | Récupère une publication détaillée par ID (si publique et publiée) |
 
 **Paramètres de Requête pour `GET /api/public/publications` :**
 
-| Paramètre | Type | Défaut | Description |
-|-----------|------|--------|-------------|
-| `page` | `number` | `1` | Numéro de page |
-| `limit` | `number` | `12` | Éléments par page |
-| `sortBy` | `string` | `"title"` | Champ de tri (`title`, `date_created`, etc.) |
-| `order` | `"asc" \| "desc"` | `"asc"` | Ordre de tri |
-| `filter` | `string` (JSON) | `{}` | Filtres de recherche (ex: `{"q": "gingembre", "type": ["Recette"]}`) |
+| Paramètre | Type              | Défaut    | Description                                                          |
+| --------- | ----------------- | --------- | -------------------------------------------------------------------- |
+| `page`    | `number`          | `1`       | Numéro de page                                                       |
+| `limit`   | `number`          | `12`      | Éléments par page                                                    |
+| `sortBy`  | `string`          | `"title"` | Champ de tri (`title`, `date_created`, etc.)                         |
+| `order`   | `"asc" \| "desc"` | `"asc"`   | Ordre de tri                                                         |
+| `filter`  | `string` (JSON)   | `{}`      | Filtres de recherche (ex: `{"q": "gingembre", "type": ["Recette"]}`) |
 
 ### 1.3 Accès Privé (CRUD Protégé)
 
@@ -58,30 +58,30 @@ Toutes ces routes nécessitent un jeton JWT Bearer valide dans l'en-tête `Autho
 
 Ce contrôleur gère les opérations CRUD simples sur la publication elle-même (champs scalaires et relations 1-N). Pour le CRUD imbriqué (contenu, ingrédients), utilisez l'Orchestrateur.
 
-| Méthode | Chemin | Rôle |
-|---------|--------|------|
-| `GET` | `/api/private/publications` | Liste paginée de toutes les publications (publiques ou privées) |
-| `GET` | `/api/private/publications/:id` | Récupère une publication détaillée par ID |
-| `POST` | `/api/private/publications` | Crée une publication (champs de base uniquement) |
-| `PATCH` | `/api/private/publications/:id` | Mise à jour partielle des champs scalaires (ex: `title`, `public`) |
-| `PUT` | `/api/private/publications/:id` | Remplacement complet |
-| `DELETE` | `/api/private/publications/:id` | Supprime une publication |
+| Méthode  | Chemin                          | Rôle                                                               |
+| -------- | ------------------------------- | ------------------------------------------------------------------ |
+| `GET`    | `/api/private/publications`     | Liste paginée de toutes les publications (publiques ou privées)    |
+| `GET`    | `/api/private/publications/:id` | Récupère une publication détaillée par ID                          |
+| `POST`   | `/api/private/publications`     | Crée une publication (champs de base uniquement)                   |
+| `PATCH`  | `/api/private/publications/:id` | Mise à jour partielle des champs scalaires (ex: `title`, `public`) |
+| `PUT`    | `/api/private/publications/:id` | Remplacement complet                                               |
+| `DELETE` | `/api/private/publications/:id` | Supprime une publication                                           |
 
 #### Autres Ressources (CRUD atomique)
 
 Des contrôleurs atomiques existent pour les entités non-imbriquées, principalement utilisés pour le backoffice et l'édition manuelle :
 
-| Chemin | Ressource |
-|--------|-----------|
-| `/api/categories` | Catégories (Type, Style, Tag) |
-| `/api/products` | Produits (référence d'ingrédient) |
-| `/api/macros` | Macros nutritionnelles |
-| `/api/units` | Unités de mesure |
-| `/api/prepTimes` | Temps de préparation |
-| `/api/segments` | Segments d'étapes (paragraphes) |
-| `/api/servings` | Définitions de portions |
-| `/api/users` | Utilisateurs |
-| `/api/reviews` | Avis et critiques |
+| Chemin            | Ressource                         |
+| ----------------- | --------------------------------- |
+| `/api/categories` | Catégories (Type, Style, Tag)     |
+| `/api/products`   | Produits (référence d'ingrédient) |
+| `/api/macros`     | Macros nutritionnelles            |
+| `/api/units`      | Unités de mesure                  |
+| `/api/prepTimes`  | Temps de préparation              |
+| `/api/segments`   | Segments d'étapes (paragraphes)   |
+| `/api/servings`   | Définitions de portions           |
+| `/api/users`      | Utilisateurs                      |
+| `/api/reviews`    | Avis et critiques                 |
 
 ---
 
@@ -93,9 +93,9 @@ L'endpoint `POST /api/publicate` est conçu pour gérer les structures de donné
 
 Chaque opération (`create`, `update`, `delete`) est spécifiée dans l'objet racine.
 
-| Champ | Type | Valeur | Description |
-|-------|------|--------|-------------|
-| `action` | `string` | `"create" \| "update" \| "delete"` | Type d'opération à effectuer |
+| Champ     | Type     | Valeur                                          | Description                                                                         |
+| --------- | -------- | ----------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `action`  | `string` | `"create" \| "update" \| "delete"`              | Type d'opération à effectuer                                                        |
 | `payload` | `Object` | `{ [key: string]: PublicationPayload \| null }` | Un objet où chaque clé (libre ou `publication_id`) mappe à la publication à traiter |
 
 ### 2.2 Opération CREATE
@@ -218,7 +218,7 @@ Ces objets sont utilisés pour créer ou identifier des entités atomiques et so
 ```typescript
 export interface CategoryData {
   str_value: string; // Nom de la catégorie (ex: "Recette", "Boulangerie")
-  type: string;      // Type de taxonomie (ex: "Type", "Style", "Tag")
+  type: string; // Type de taxonomie (ex: "Type", "Style", "Tag")
 }
 ```
 
@@ -227,8 +227,8 @@ export interface CategoryData {
 ```typescript
 export interface ServingsData {
   serving_id?: UUID; // ID si update/référence d'une portion existante
-  yield: number;     // Nombre de portions / rendement (ex: 4)
-  value: string;     // Unité de portion (ex: "verres de 250ml", "portions")
+  yield: number; // Nombre de portions / rendement (ex: 4)
+  value: string; // Unité de portion (ex: "verres de 250ml", "portions")
 }
 ```
 
@@ -255,8 +255,8 @@ export interface MacroData {
 
 ```typescript
 export interface ProductData {
-  product_id?: UUID;        // ID si référence d'un produit existant
-  name: string;             // Nom du produit (requis)
+  product_id?: UUID; // ID si référence d'un produit existant
+  name: string; // Nom du produit (requis)
   macro?: MacroData | null; // Macrodata imbriquée
 }
 ```
@@ -279,7 +279,7 @@ export interface IngredientPayload {
   ingredient_id?: UUID;
   quantity: number;
   multiply_factor: number;
-  cut?: string;  // (ex: "haché", "râpé")
+  cut?: string; // (ex: "haché", "râpé")
   title?: string;
   product: ProductData; // Objet Product (voir 3.1)
   ingredient_units: Array<{ unit: UnitData }>; // Unité de mesure
@@ -313,16 +313,16 @@ export interface ContentData {
   total_prep_time: number;
   subtitle?: string | null;
   is_ingredient?: boolean;
-  
+
   // Clés étrangères (ID du Servings créé via l'upsert)
-  serving_id?: string | null; 
+  serving_id?: string | null;
 
   servings: ServingsData | null; // Objet Servings (pour upsert)
-  
+
   content_segments: SegmentWithMeta[];
   content_ingredients: IngredientPayload[];
   content_prep_times: PrepTimePayload[];
-  
+
   // Note: La gestion de la galerie (M-N) est souvent gérée séparément
   // ou omise de cette structure pour éviter la complexité des jointures.
 }
@@ -332,7 +332,7 @@ export interface ContentData {
 
 ```typescript
 export interface PublicationPayload {
-  publication_id?: UUID; 
+  publication_id?: UUID;
   title: string;
   description: string[];
   note: string[];
@@ -340,12 +340,12 @@ export interface PublicationPayload {
   published: boolean;
   thumbnail?: string;
   // OMIT: gallery (relation N-N)
-  
+
   type?: CategoryData;
   style?: CategoryData;
   author?: CategoryData;
   tags?: CategoryData[];
-  
+
   contents: ContentData[];
 }
 ```

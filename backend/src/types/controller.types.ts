@@ -42,7 +42,8 @@ export type CategoryRelations = Partial<
 /* ============================================================
    Portions (Servings)
    ============================================================ */
-export type Servings = ServingsCore & ServingsRelations & { serving_id: string };
+export type Servings = ServingsCore &
+  ServingsRelations & { serving_id: string };
 export type ServingsCore = Required<
   Omit<ServingsData, "serving_id" | "content">
 > & { serving_id?: string };
@@ -70,7 +71,6 @@ export type ContentGallery = Required<
   content: Content | null;
   gallery: Gallery | null;
 };
-
 
 /* ============================================================
    Publication

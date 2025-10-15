@@ -317,7 +317,7 @@ export interface GalleryData {
 export interface PublicationGalleryData {
   publication_id: string;
   gallery_id: string;
-  
+
   // Relations N-N
   publication: PublicationData | null;
   gallery: GalleryData | null;

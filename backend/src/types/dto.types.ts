@@ -69,7 +69,7 @@ export type PublicationConnect = {
   tags?: { category_id: string }[];
   type?: { category_id: string }[];
   style?: { category_id: string }[];
-  author?: { category_id: string }[]; 
+  author?: { category_id: string }[];
 };
 
 export type PublicationCreateDto = PublicationCore &
@@ -110,7 +110,7 @@ export type ContentConnect = {
   content_segments?: { segment_id: string }[];
   content_ingredients?: { ingredient_id: string }[];
   content_prep_times?: { prep_time_id: string }[];
-  servings?: { serving_id: string }[]; 
+  servings?: { serving_id: string }[];
 };
 
 export type ContentCreateDto = ContentCore &
@@ -181,7 +181,7 @@ export type MacroCreateDto = MacroCore &
 
 export type MacroUpdateDto = Partial<MacroCore & MacroRelations> & {
   connect?: MacroConnect; // <-- Utilise la nouvelle définition
-  set?: MacroConnect;     // <-- Utilise la nouvelle définition
+  set?: MacroConnect; // <-- Utilise la nouvelle définition
 };
 
 /* ============================================================
@@ -190,7 +190,7 @@ export type MacroUpdateDto = Partial<MacroCore & MacroRelations> & {
 export type IngredientConnect = {
   product?: { product_id: string }[];
   content_ingredients?: { content_id: string }[];
-  ingredient_units?: { unit_id: string, name: string }[];
+  ingredient_units?: { unit_id: string; name: string }[];
 };
 
 export type IngredientCreateDto = IngredientCore &
@@ -269,7 +269,6 @@ export type GalleryUpdateDto = Partial<GalleryCore & GalleryRelations> & {
   connect?: GalleryConnect;
   set?: GalleryConnect;
 };
-
 
 /* ============================================================
    Avis / Review

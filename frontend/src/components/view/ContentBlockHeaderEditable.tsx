@@ -13,7 +13,7 @@ interface ContentBlockHeaderEditableProps {
   cancelEdit: () => void;
   updateValue: (fieldId: string, value: string) => void;
   // Simplified confirm signature to match the centralized dispatcher
-  confirmContent: (field: "subtitle" | "servings") => void; 
+  confirmContent: (field: "subtitle" | "servings") => void;
 }
 
 export const ContentBlockHeaderEditable: React.FC<
@@ -52,28 +52,35 @@ export const ContentBlockHeaderEditable: React.FC<
           className="text-lg font-semibold text-amber-400"
         />
       ) : (
-        subtitle && <h3 className="text-lg font-semibold text-amber-400">{subtitle}</h3>
+        subtitle && (
+          <h3 className="text-lg font-semibold text-amber-400">{subtitle}</h3>
+        )
       )}
 
       {isAuthenticated ? (
-        <InlineEditField
-          fieldId={servingsFieldId}
-          value={servingsLabel}
-          isEditing={editingField === servingsFieldId}
-          editValue={editValues[servingsFieldId] || servingsLabel}
-          onStartEdit={() => startEdit(servingsFieldId, servingsLabel)}
-          onCancel={cancelEdit}
-          // Note: The conversion logic for the complex 'servings' field 
-          // from string (editValue) to object payload is complex and 
-          // should ideally be handled in the centralized hook. For now, 
-          // we use 'servings' as the field name.
-          onConfirm={() => confirmContent("servings")} 
-          onChange={(v) => updateValue(servingsFieldId, v)}
-          className="text-gray-300"
-        />
+        <div className="flex">
+          <span className="mr-2">Rendement:</span>
+          <InlineEditField
+            fieldId={servingsFieldId}
+            value={servingsLabel}
+            isEditing={editingField === servingsFieldId}
+            editValue={editValues[servingsFieldId] || servingsLabel}
+            onStartEdit={() => startEdit(servingsFieldId, servingsLabel)}
+            onCancel={cancelEdit}
+            // Note: The conversion logic for the complex 'servings' field
+            // from string (editValue) to object payload is complex and
+            // should ideally be handled in the centralized hook. For now,
+            // we use 'servings' as the field name.
+            onConfirm={() => confirmContent("servings")}
+            onChange={(v) => updateValue(servingsFieldId, v)}
+            className="text-gray-300"
+          />
+        </div>
       ) : (
         servings && (
-          <span className="text-gray-400 text-sm">{servingsLabel}</span>
+          <span className="text-gray-400 text-sm">
+            Rendement: {servingsLabel}
+          </span>
         )
       )}
     </div>

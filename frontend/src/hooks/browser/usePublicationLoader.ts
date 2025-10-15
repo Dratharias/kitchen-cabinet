@@ -44,13 +44,16 @@ export function usePublicationLoader(): UsePublicationLoaderResult {
       if (query?.trim()) filter.q = query.trim();
 
       try {
-        const res = await PublicationsService.getPublications({
-          page,
-          limit,
-          sortBy: "title",
-          order: "asc",
-          filter,
-        }, isAuthenticated);
+        const res = await PublicationsService.getPublications(
+          {
+            page,
+            limit,
+            sortBy: "title",
+            order: "asc",
+            filter,
+          },
+          isAuthenticated,
+        );
         setTotalPages(res.totalPages ?? 1);
         return (res.items ?? []) as Publication[];
       } catch (err: any) {

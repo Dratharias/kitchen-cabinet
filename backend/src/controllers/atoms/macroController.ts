@@ -73,7 +73,6 @@ export class MacroController
     return macros.map(normalizeMacro);
   }
 
-
   // =====================================================
   // UPDATE (supporte PUT et PATCH)
   // =====================================================

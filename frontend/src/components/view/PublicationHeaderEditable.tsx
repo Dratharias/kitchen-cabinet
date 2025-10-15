@@ -1,5 +1,5 @@
-import React from 'react';
-import { InlineEditField } from './InlineEditField';
+import React from "react";
+import { InlineEditField } from "./InlineEditField";
 
 interface PublicationHeaderEditableProps {
   title: string;
@@ -12,7 +12,9 @@ interface PublicationHeaderEditableProps {
   onChange: (value: string) => void;
 }
 
-export const PublicationHeaderEditable: React.FC<PublicationHeaderEditableProps> = ({
+export const PublicationHeaderEditable: React.FC<
+  PublicationHeaderEditableProps
+> = ({
   title,
   isAuthenticated,
   isEditing,

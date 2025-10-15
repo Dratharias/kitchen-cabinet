@@ -1,83 +1,212 @@
-import React, { useCallback } from "react";
-import { Utensils, ChevronDown, ChevronRight, Trash2, Plus } from "lucide-react";
-import { InlineEditField } from "@/components/view/InlineEditField";
+import React, { useState } from "react";
+import {
+  Utensils,
+  ChevronDown,
+  ChevronRight,
+  Plus,
+  Trash2,
+  Edit2,
+  Check,
+  X,
+} from "lucide-react";
+import { FormInput } from "@/components/atoms/FormInput";
+import { MacroFormSection } from "@/components/molecules/MacroFormSection";
+import type { MacroPayload } from "@/types/payloadBuilder";
+
+interface FullIngredientEditFields {
+  quantity: number;
+  unit: string;
+  product: string;
+  title: string;
+  cut: string;
+  multiply_factor: number;
+  macro: MacroPayload | null;
+}
 
 interface IngredientBlockEditableProps {
   block: any;
   expanded: boolean;
   toggleBlock: () => void;
-  servingFactor: number;
-  onServingChange: (factor: number) => void;
   ingredients: any[];
   isAuthenticated: boolean;
   checkedItems: Record<string, boolean>;
   toggleChecked: (id: string) => void;
-
-  // Standardized Inline Edit Props (from parent/usePublicationView)
-  editingField: string | null;
-  editValues: Record<string, string>;
-  startEdit: (fieldId: string, value: string) => void;
-  cancelEdit: () => void; 
-  updateValue: (fieldId: string, value: string) => void;
-  confirmIngredient: (ingredientId: string, field: "quantity" | "unit" | "product") => void;
-
-  // Simplified mutation hooks
+  onConfirmUpdate: (
+    ingredientId: string,
+    fields: FullIngredientEditFields,
+  ) => Promise<boolean | void>;
   onAddIngredient?: (contentId: string) => Promise<boolean | void>;
   onDeleteIngredient?: (ingredientId: string) => Promise<boolean | void>;
 }
 
-// Helper function to safely decode text and handle basic encoding issues
 const safeDecodeText = (text: string | null | undefined): string => {
-    if (!text) return "";
-    let s = String(text);
-    // Simple heuristic fix for common backend encoding errors
-    s = s.replace(/├e/g, 'é').replace(/├/g, ''); 
-    return s.trim();
-}
+  if (!text) return "";
+  return String(text).replace(/├e/g, "é").replace(/├/g, "").trim();
+};
 
-export const IngredientBlockEditable: React.FC<IngredientBlockEditableProps> = ({
+const IngredientEditor: React.FC<{
+  ingredient: any;
+  onConfirm: (fields: FullIngredientEditFields) => void;
+  onCancel: () => void;
+}> = ({ ingredient, onConfirm, onCancel }) => {
+  const [quantity, setQuantity] = useState(
+    ingredient.quantity?.toString() || "0",
+  );
+  const [unit, setUnit] = useState(
+    safeDecodeText(ingredient.ingredient_units?.[0]?.unit?.name) || "",
+  );
+  const [product, setProduct] = useState(
+    safeDecodeText(ingredient.product?.name) || "",
+  );
+  const [title, setTitle] = useState(safeDecodeText(ingredient.title) || "");
+  const [cut, setCut] = useState(safeDecodeText(ingredient.cut) || "");
+  const [multiplyFactor, setMultiplyFactor] = useState(
+    ingredient.multiply_factor?.toString() || "1",
+  );
+  const [macro, setMacro] = useState<MacroPayload | null>(
+    ingredient.product?.macro || null,
+  );
+  const [isMacroOpen, setMacroOpen] = useState(false);
+
+  const handleConfirm = () => {
+    onConfirm({
+      quantity: Number(quantity) || 0,
+      unit,
+      product,
+      title,
+      cut,
+      multiply_factor: Number(multiplyFactor) || 1,
+      macro,
+    });
+  };
+
+  return (
+    <div className="flex-1 flex-col gap-3 p-3 bg-[#2f2f2f] border border-neutral-600 rounded-md">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-3">
+        <FormInput
+          label="Titre (optionnel)"
+          value={title}
+          onChange={setTitle}
+          placeholder="Ex: Pour la garniture"
+        />
+        <FormInput
+          label="Produit"
+          value={product}
+          onChange={setProduct}
+          placeholder="Nom du produit"
+          required
+        />
+        <FormInput
+          label="Quantité"
+          type="number"
+          value={quantity}
+          onChange={setQuantity}
+          placeholder="0"
+        />
+        <FormInput
+          label="Unité"
+          value={unit}
+          onChange={setUnit}
+          placeholder="g, ml, tasse..."
+        />
+        <FormInput
+          label="Coupe (optionnel)"
+          value={cut}
+          onChange={setCut}
+          placeholder="haché, en dés..."
+        />
+        <FormInput
+          label="Multiplicateur"
+          type="number"
+          value={multiplyFactor}
+          onChange={setMultiplyFactor}
+          placeholder="1.0"
+        />
+      </div>
+
+      <div className="border-t border-gray-600 pt-3 mt-4">
+        <button
+          type="button"
+          onClick={() => setMacroOpen((prev) => !prev)}
+          className="flex items-center gap-2 text-sm font-medium text-gray-300 hover:text-amber-400 transition-colors"
+        >
+          {isMacroOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+          {isMacroOpen ? "Masquer les macros" : "Modifier les macros"}
+        </button>
+        {isMacroOpen && (
+          <div className="mt-4">
+            <MacroFormSection macro={macro} onChange={setMacro} />
+          </div>
+        )}
+      </div>
+
+      <div className="flex justify-end gap-2 mt-3">
+        <button
+          onClick={onCancel}
+          className="p-2 rounded-md text-red-500 bg-neutral-700/60 hover:text-red-400"
+        >
+          <X size={18} />
+        </button>
+        <button
+          onClick={handleConfirm}
+          className="p-2 rounded-md text-green-500 bg-neutral-700/60 hover:text-green-400"
+        >
+          <Check size={18} />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export const IngredientBlockEditable: React.FC<
+  IngredientBlockEditableProps
+> = ({
   block,
   expanded,
   toggleBlock,
-  servingFactor,
-  onServingChange,
   ingredients,
   isAuthenticated,
   checkedItems,
   toggleChecked,
-  // Standardized Inline Edit Props
-  editingField,
-  editValues,
-  startEdit,
-  cancelEdit,
-  updateValue,
-  confirmIngredient,
-  // Mutation hooks
+  onConfirmUpdate,
   onAddIngredient,
   onDeleteIngredient,
 }) => {
+  const [editingIngredientId, setEditingIngredientId] = useState<string | null>(
+    null,
+  );
   const contentId = block.content_id;
-  
-  // Helper to construct the unique ID for the InlineEditField
-  const buildFieldId = useCallback((field: string, id: string) => `${field}-${id}`, []);
 
-  /**
-   * Assembles the display string in read mode.
-   * FIX: Accesses the unit name directly from the jointure object (ing.ingredient_units?.[0]?.name).
-   */
+  const handleConfirmUpdate = async (
+    ingredientId: string,
+    fields: FullIngredientEditFields,
+  ) => {
+    const success = await onConfirmUpdate(ingredientId, fields);
+    if (success !== false) {
+      setEditingIngredientId(null);
+    }
+  };
+
   const getDisplayValue = (ing: any) => {
-    // FIX: Accès direct à la propriété 'name' de l'objet Unit
-    const unitName = safeDecodeText(ing.ingredient_units?.[0]?.name) || "";
-    
-    const rawQuantity = String(ing.quantity || '').trim();
+    const title = safeDecodeText(ing.title);
+    const unitName =
+      safeDecodeText(ing.ingredient_units?.[0]?.unit?.name) || "";
+    const rawQuantity = String(ing.quantity || "").trim();
     const productName = safeDecodeText(ing.product?.name);
-    
-    // Concaténer les parties non-vides avec des espaces
-    const parts = [rawQuantity, unitName, productName].filter(part => part.length > 0);
+    const cut = safeDecodeText(ing.cut);
 
-    if (parts.length === 0) return "[Ingrédient vide]";
-    
-    return parts.join(' ');
+    const mainParts = [rawQuantity, unitName, productName]
+      .filter((part) => part && part.length > 0)
+      .join(" ");
+    const fullDisplay = [
+      title ? `[${title}]` : "",
+      mainParts,
+      cut ? `(${cut})` : "",
+    ]
+      .filter((part) => part.length > 0)
+      .join(" ");
+
+    return fullDisplay.length === 0 ? "[Ingrédient vide]" : fullDisplay;
   };
 
   return (
@@ -101,83 +230,54 @@ export const IngredientBlockEditable: React.FC<IngredientBlockEditableProps> = (
         <div className="p-4 space-y-3 text-gray-300">
           {ingredients.map((ing: any) => {
             const id = ing.ingredient_id;
-            const quantityFieldId = buildFieldId("quantity", id);
-            const unitFieldId = buildFieldId("unit", id);
-            const productFieldId = buildFieldId("product", id);
-
-            const unitNameForEdit = safeDecodeText(ing.ingredient_units?.[0]?.name) || "";
-            const qtyValue = String(ing.quantity || 0); 
-            const productValue = safeDecodeText(ing.product?.name) || "";
-
+            const isEditingThis = editingIngredientId === id;
 
             return (
-              <div
-                key={id}
-                className="flex items-start gap-3 border-b border-gray-700 pb-2"
-              >
-                {/* Checkbox */}
-                <div className="pt-1.5">
-                  <input
-                    type="checkbox"
-                    checked={!!checkedItems[id]}
-                    onChange={() => toggleChecked(id)}
-                    className="accent-amber-500 w-4 h-4"
+              <div key={id} className="flex items-start gap-3">
+                {isEditingThis ? (
+                  <IngredientEditor
+                    ingredient={ing}
+                    onConfirm={(fields) => handleConfirmUpdate(id, fields)}
+                    onCancel={() => setEditingIngredientId(null)}
                   />
-                </div>
-
-                {isAuthenticated ? (
-                  <div className="flex flex-wrap gap-2 flex-1">
-                    {/* Quantity Field */}
-                    <InlineEditField
-                      fieldId={quantityFieldId}
-                      value={qtyValue} 
-                      isEditing={editingField === quantityFieldId}
-                      editValue={editValues[quantityFieldId] || qtyValue}
-                      onStartEdit={() => startEdit(quantityFieldId, qtyValue)}
-                      onCancel={cancelEdit}
-                      onConfirm={() => confirmIngredient(id, "quantity")}
-                      onChange={(v) => updateValue(quantityFieldId, v)}
-                      className="min-w-[70px] flex-grow-0"
-                    />
-                    {/* Unit Field */}
-                    <InlineEditField
-                      fieldId={unitFieldId}
-                      value={unitNameForEdit || '[Unité]'} 
-                      isEditing={editingField === unitFieldId}
-                      editValue={editValues[unitFieldId] || unitNameForEdit}
-                      onStartEdit={() => startEdit(unitFieldId, unitNameForEdit)}
-                      onCancel={cancelEdit}
-                      onConfirm={() => confirmIngredient(id, "unit")}
-                      onChange={(v) => updateValue(unitFieldId, v)}
-                      className="min-w-[90px] flex-grow-0"
-                    />
-                    {/* Product Field (takes remaining space) */}
-                    <InlineEditField
-                      fieldId={productFieldId}
-                      value={productValue || '[Produit]'}
-                      isEditing={editingField === productFieldId}
-                      editValue={editValues[productFieldId] || productValue}
-                      onStartEdit={() => startEdit(productFieldId, productValue)}
-                      onCancel={cancelEdit}
-                      onConfirm={() => confirmIngredient(id, "product")}
-                      onChange={(v) => updateValue(productFieldId, v)}
-                      className="flex-1 min-w-[150px]"
-                    />
-                    
-                    {/* Delete button */}
-                    <button
-                      onClick={() => onDeleteIngredient?.(id)}
-                      className="text-red-400 hover:text-red-300 transition-colors self-start p-1.5 mt-1"
-                    >
-                      <Trash2 size={16} />
-                    </button>
-                  </div>
                 ) : (
-                  <span
-                    className={`flex-1 pt-1.5 ${checkedItems[id] ? "line-through text-gray-500" : ""}`}
-                  >
-                    {getDisplayValue(ing)}
-                  </span>
+                  <>
+                    <div className="pt-1.5">
+                      <input
+                        type="checkbox"
+                        checked={!!checkedItems[id]}
+                        onChange={() => toggleChecked(id)}
+                        className="accent-amber-500 w-4 h-4 cursor-pointer"
+                      />
+                    </div>
+                    <div
+                      className={`group relative flex-1 border-b border-gray-800 pb-2`}
+                    >
+                      <span
+                        className={
+                          checkedItems[id] ? "line-through text-gray-500" : ""
+                        }
+                      >
+                        {getDisplayValue(ing)}
+                      </span>
+                      {isAuthenticated && (
+                        <div className="absolute top-0 right-0 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <button
+                            onClick={() => onDeleteIngredient?.(id)}
+                            className="p-1.5 rounded-md bg-neutral-700/80 text-red-500 hover:text-red-400"
+                          >
+                            <Trash2 size={16} />
+                          </button>
+                          <button
+                            onClick={() => setEditingIngredientId(id)}
+                            className="p-1.5 rounded-md bg-neutral-700/80 text-amber-500 hover:text-amber-400"
+                          >
+                            <Edit2 size={16} />
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </>
                 )}
               </div>
             );
@@ -186,7 +286,7 @@ export const IngredientBlockEditable: React.FC<IngredientBlockEditableProps> = (
           {isAuthenticated && onAddIngredient && (
             <button
               onClick={() => onAddIngredient(contentId)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-amber-600 text-white text-sm hover:bg-amber-700 transition-colors hover:cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-amber-600 text-white text-sm hover:bg-amber-700 transition-colors mt-4"
             >
               <Plus size={16} />
               Ajouter un ingrédient

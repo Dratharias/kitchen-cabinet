@@ -5,7 +5,11 @@ import {
   SegmentRelations,
   Segment,
 } from "types/controller.types.js";
-import { SegmentCreateDto, SegmentUpdateDto, SegmentConnect } from "types/dto.types.js";
+import {
+  SegmentCreateDto,
+  SegmentUpdateDto,
+  SegmentConnect,
+} from "types/dto.types.js";
 import { v4 as uuidv4 } from "uuid";
 import { Prisma } from "@prisma/client";
 
@@ -18,7 +22,14 @@ export const normalizeSegment = (segment: any): Segment => ({
 });
 
 export class SegmentController
-  implements GenericController<Segment, SegmentCore, SegmentRelations, SegmentConnect, SegmentConnect>
+  implements
+    GenericController<
+      Segment,
+      SegmentCore,
+      SegmentRelations,
+      SegmentConnect,
+      SegmentConnect
+    >
 {
   async create(
     payload: SegmentCore & { connect?: SegmentCreateDto["connect"] },
@@ -86,17 +97,16 @@ export class SegmentController
 
   async update(id: string, payload: SegmentUpdateDto): Promise<Segment> {
     const data: Prisma.segmentUpdateInput = {};
-    
+
     // Mappage des champs scalaires (PATCH)
     if (payload.title !== undefined) data.title = payload.title;
     if (payload.paragraph !== undefined) data.paragraph = payload.paragraph;
-
 
     const segment = await prisma.segment.update({
       where: { segment_id: id },
       data: {
         ...data,
-        
+
         // CORRECTION N-N: Utilisation de la clé composite content_id_segment_id
         content_segments: payload.connect?.content_segments
           ? {

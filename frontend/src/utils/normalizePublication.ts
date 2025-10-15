@@ -2,7 +2,9 @@ import type { PublicationPayload } from "@/types/payloadBuilder";
 
 type DynamicPublication = any;
 
-export function normalizePublication(pub: DynamicPublication): PublicationPayload {
+export function normalizePublication(
+  pub: DynamicPublication,
+): PublicationPayload {
   return {
     publication_id: pub.publication_id,
     title: pub.title ?? "Untitled",

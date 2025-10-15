@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { PayloadBuilder } from '@/services/payloadBuilder';
-import { useAuthStore } from '@/stores/authStore';
+import { useState } from "react";
+import { PayloadBuilder } from "@/services/payloadBuilder";
+import { useAuthStore } from "@/stores/authStore";
 
 export function usePublicationEdit(publicationId: string) {
   const [editingField, setEditingField] = useState<string | null>(null);
@@ -24,28 +24,28 @@ export function usePublicationEdit(publicationId: string) {
   const confirmEdit = async (fieldId: string, fieldPath: string) => {
     const builder = new PayloadBuilder();
     const value = editValues[fieldId];
-    
-    const payload = builder.build('update', 'publication', {
+
+    const payload = builder.build("update", "publication", {
       id: publicationId,
       [fieldPath]: value,
     });
 
     try {
-      const response = await fetch('/api/publications', {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/publications", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) throw new Error('Update failed');
+      if (!response.ok) throw new Error("Update failed");
 
       setEditingField(null);
       const { [fieldId]: _, ...rest } = editValues;
       setEditValues(rest);
-      
+
       return true;
     } catch (error) {
-      console.error('Failed to update:', error);
+      console.error("Failed to update:", error);
       return false;
     }
   };
