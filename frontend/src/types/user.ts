@@ -1,7 +1,7 @@
-import { PaginatedResponse, UUID } from "./common";
+import { PaginatedResponse } from "./common";
 
 export interface User {
-  user_id: UUID;
+  user_id: string;
   username: string;
   role: string;
   created_at: string;

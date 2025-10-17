@@ -1,8 +1,7 @@
 import React from "react";
-import { FormInput } from "@/components/atoms/FormInput";
-import { FormTextarea } from "@/components/atoms/FormTextarea";
-import { FormCheckbox } from "@/components/atoms/FormCheckbox";
-import { GalleryFormSection } from "@/components/molecules/GalleryFormSection";
+import { FormInput } from "../atoms/FormInput";
+import { FormTextarea } from "../atoms/FormTextarea";
+import { FormCheckbox } from "../atoms/FormCheckbox";
 
 interface PublicationFormSectionProps {
   title: string;
@@ -11,7 +10,6 @@ interface PublicationFormSectionProps {
   isPublic: boolean;
   isPublished: boolean;
   thumbnail?: string;
-  gallery?: string[];
   onChange: (field: string, value: any) => void;
 }
 
@@ -22,7 +20,6 @@ export const PublicationFormSection: React.FC<PublicationFormSectionProps> = ({
   isPublic,
   isPublished,
   thumbnail,
-  gallery = [],
   onChange,
 }) => {
   return (
@@ -60,11 +57,6 @@ export const PublicationFormSection: React.FC<PublicationFormSectionProps> = ({
         placeholder="https://example.com/image.jpg"
       />
 
-      <GalleryFormSection
-        gallery={gallery}
-        onChange={(gallery) => onChange("gallery", gallery)}
-      />
-
       <div className="flex gap-4">
         <FormCheckbox
           label="Public"
@@ -80,3 +72,4 @@ export const PublicationFormSection: React.FC<PublicationFormSectionProps> = ({
     </div>
   );
 };
+

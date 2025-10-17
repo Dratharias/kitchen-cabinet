@@ -1,11 +1,12 @@
-import { PaginatedResponse, UUID } from "./common";
+import { PaginatedResponse } from "./common";
 
 export interface CategoryPayload {
+  category_id?: string;
   str_value: string;
   type: string;
 }
 export interface Category extends CategoryPayload {
-  category_id: UUID;
+  category_id: string;
 }
 
 export type ListCategoriesResponse = PaginatedResponse<Category>;

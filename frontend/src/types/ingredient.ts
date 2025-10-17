@@ -1,10 +1,11 @@
-import { PaginatedResponse, UUID } from "./common";
+import { PaginatedResponse } from "./common";
 import { Product } from "./product";
 import { Unit } from "./unit";
 
 export interface IngredientPayload {
+  ingredient_id?: string;
   quantity?: number;
-  product_id?: UUID;
+  product_id?: string;
   multiply_factor?: number;
   connect?: {
     product?: Product[];
@@ -13,7 +14,7 @@ export interface IngredientPayload {
 }
 export interface Ingredient extends IngredientPayload {
   product: any;
-  ingredient_id: UUID;
+  ingredient_id: string;
 }
 
 export type ListIngredientsResponse = PaginatedResponse<Ingredient>;

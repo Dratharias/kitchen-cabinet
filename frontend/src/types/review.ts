@@ -1,12 +1,12 @@
-import { PaginatedResponse, UUID } from "./common";
+import { PaginatedResponse } from "./common";
 import { Product } from "./product";
 import { Publication } from "./publication";
 
 export type BuyAgain = "Y" | "N" | "M" | "D";
 
 export interface ReviewPayload {
-  product_id?: UUID | null;
-  publication_id?: UUID | null;
+  product_id?: string | null;
+  publication_id?: string | null;
   rating?: number | null;
   comment?: string[];
   description?: string[];
@@ -15,9 +15,9 @@ export interface ReviewPayload {
 }
 
 export interface Review extends ReviewPayload {
-  review_id: UUID;
-  product_id: UUID | null;
-  publication_id: UUID | null;
+  review_id: string;
+  product_id: string | null;
+  publication_id: string | null;
   rating: number | null;
   comment: string[];
   description: string[];

@@ -2,11 +2,12 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { PublicationsService } from "@/services/publications";
-import { useAuthStore } from "@/stores/authStore";
-import type { Publication } from "@/types";
-import { OrchestratorService } from "@/services/orchestrator";
+import { PublicationsService } from "../../services/publications";
+import { useAuthStore } from "../../stores/authStore";
+import type { Publication, PublicationPayload } from "../../types";
+import { OrchestratorService } from "../../services/orchestrator";
 import toast from "react-hot-toast";
+import { PayloadBuilder } from "../../services/payloadBuilder";
 
 type SimpleUpdatePayload = {
   [key: string]: any;
@@ -145,6 +146,20 @@ export function usePublicationView() {
     },
     [buildStructuralPayload, executeMutation],
   );
+  
+  const updatePublication = useCallback(async (publicationData: PublicationPayload) => {
+    if (!publication?.publication_id) return false;
+
+    const payloadBuilder = new PayloadBuilder();
+    const payload = payloadBuilder.build('update', publication.publication_id, publicationData, publication);
+    
+    if (payload.payload[publication.publication_id]) {
+        (payload.payload[publication.publication_id] as Publication).publication_id = publication.publication_id;
+    }
+
+    return executeMutation(payload, "Publication mise à jour !");
+  }, [publication, executeMutation]);
+
 
   const fetchPublication = useCallback(async () => {
     if (!id) {
@@ -186,6 +201,7 @@ export function usePublicationView() {
     checkedItems,
     toggleChecked,
     isAuthenticated,
+    updatePublication,
     updatePublicationField,
     updateContentField,
     updateIngredientFields,

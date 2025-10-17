@@ -1,4 +1,4 @@
-import { PaginatedResponse, UUID } from "./common";
+import { PaginatedResponse } from "./common";
 import { Ingredient } from "./ingredient";
 import { PrepTime } from "./prepTime";
 import { Segment } from "./segment";

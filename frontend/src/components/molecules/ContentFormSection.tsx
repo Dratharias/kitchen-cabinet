@@ -1,10 +1,10 @@
 import React from "react";
-import { FormInput } from "@/components/atoms/FormInput";
-import { IngredientFormSection } from "@/components/molecules/IngredientFormSection";
-import { SegmentFormSection } from "@/components/molecules/SegmentFormSection";
-import { GalleryFormSection } from "@/components/molecules/GalleryFormSection";
-import { PrepTimeFormSection } from "@/components/molecules/PrepTimeFormSection";
-import type { ContentPayload } from "@/types/payloadBuilder";
+import { FormInput } from "../atoms/FormInput";
+import { IngredientFormSection } from "./IngredientFormSection";
+import { SegmentFormSection } from "./SegmentFormSection";
+import { GalleryFormSection } from "./GalleryFormSection";
+import { PrepTimeFormSection } from "./PrepTimeFormSection";
+import type { ContentPayload } from "../../types/payloadBuilder";
 
 interface ContentFormSectionProps {
   content: Partial<ContentPayload>;
@@ -34,7 +34,7 @@ export const ContentFormSection: React.FC<ContentFormSectionProps> = ({
         Contenu #{index + 1}
       </h4>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <FormInput
           label="Sous-titre"
           value={content.subtitle || ""}
@@ -65,6 +65,14 @@ export const ContentFormSection: React.FC<ContentFormSectionProps> = ({
           placeholder="tasse, portion..."
         />
       </div>
+      
+      <FormInput
+          label="Temps de préparation total (min)"
+          type="number"
+          value={String(content.total_prep_time || 0)}
+          onChange={(v) => handleFieldChange("total_prep_time", Number(v))}
+          placeholder="0"
+        />
 
       <PrepTimeFormSection
         prepTimes={content.content_prep_times || []}
@@ -93,3 +101,4 @@ export const ContentFormSection: React.FC<ContentFormSectionProps> = ({
     </div>
   );
 };
+

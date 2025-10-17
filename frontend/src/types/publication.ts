@@ -1,5 +1,5 @@
 import { Category } from "./category";
-import { PaginatedRequest, PaginatedResponse, UUID } from "./common";
+import { PaginatedRequest, PaginatedResponse } from "./common";
 import { Content } from "./content";
 import { Product } from "./product";
 
@@ -11,9 +11,9 @@ export interface PublicationPayload {
   published?: boolean;
   thumbnail?: string;
   gallery?: string[];
-  type_id?: UUID | null;
-  style_id?: UUID | null;
-  author_id?: UUID | null;
+  type_id?: string | null;
+  style_id?: string | null;
+  author_id?: string | null;
   connect?: {
     type?: Category[];
     style?: Category[];
@@ -22,11 +22,11 @@ export interface PublicationPayload {
     contents?: Content[];
   };
   set?: {
-    contents?: { content_id: UUID }[];
+    contents?: { content_id: string }[];
   };
 }
 export interface Publication extends PublicationPayload {
-  publication_id: UUID;
+  publication_id: string;
   reviewCount: number;
   averageRating: number;
   type?: Category;
@@ -38,8 +38,8 @@ export interface Publication extends PublicationPayload {
 }
 
 export type ListPublicationsRequest = PaginatedRequest & {
-  tagIds?: UUID[];
-  contentIds?: UUID[];
+  tagIds?: string[];
+  contentIds?: string[];
 };
 export type ListPublicationsResponse = PaginatedResponse<Publication>;
 

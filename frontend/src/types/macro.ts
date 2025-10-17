@@ -1,6 +1,7 @@
-import { PaginatedResponse, UUID } from "./common";
+import { PaginatedResponse } from "./common";
 
 export interface MacroPayload {
+  macro_id?: string;
   calories?: number;
   protein?: number;
   fiber?: number;
@@ -10,7 +11,7 @@ export interface MacroPayload {
   caffein?: number | null;
 }
 export interface Macro extends MacroPayload {
-  macro_id: UUID;
+  macro_id: string;
 }
 
 export type ListMacrosResponse = PaginatedResponse<Macro>;

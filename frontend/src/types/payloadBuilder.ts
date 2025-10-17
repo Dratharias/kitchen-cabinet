@@ -12,16 +12,19 @@ export interface OrchestratorResponse {
 }
 
 export interface CategoryPayload {
+  category_id?: string;
   str_value: string;
   type: string;
 }
 
 export interface ServingsPayload {
+  serving_id?: string;
   yield: number;
   value: string;
 }
 
 export interface MacroPayload {
+  macro_id?: string;
   calories?: number;
   protein?: number;
   carbs?: number;
@@ -75,7 +78,7 @@ export interface SegmentWithMeta {
 export interface ContentPayload {
   content_id?: string;
   total_prep_time: number;
-  servings: ServingsPayload | null; // <--- FIX: Assure le type objet
+  servings: ServingsPayload | null;
   gallery?: string[] | null;
   subtitle?: string;
   is_ingredient?: boolean;
@@ -88,10 +91,10 @@ export interface ContentPayload {
 export interface PublicationPayload {
   publication_id?: string;
   title: string;
-  description: string[];
-  note: string[];
-  public: boolean;
-  published: boolean;
+  description?: string[];
+  note?: string[];
+  public?: boolean;
+  published?: boolean;
   thumbnail?: string;
   gallery?: string[];
   type?: CategoryPayload;

@@ -9,9 +9,9 @@ import {
   Check,
   X,
 } from "lucide-react";
-import { FormInput } from "../atoms/FormInput";
-import { FormTextarea } from "../atoms/FormTextarea";
-import { PrepTimeFormSection } from "../molecules/PrepTimeFormSection";
+import { FormInput } from "@/components/atoms/FormInput";
+import { FormTextarea } from "@/components/atoms/FormTextarea";
+import { PrepTimeFormSection } from "@/components/molecules/PrepTimeFormSection";
 import type { PrepTimePayload } from "@/types/payloadBuilder";
 
 interface FullSegmentEditFields {
@@ -33,6 +33,7 @@ interface SegmentBlockEditableProps {
     fields: FullSegmentEditFields,
   ) => Promise<boolean | void>;
   onDeleteSegment?: (segmentId: string) => Promise<boolean | void>;
+  onDeleteBlock?: () => void; // New prop
   pendingAddItem: boolean;
   onConfirmAdd: (fields: FullSegmentEditFields) => void;
   onCancelAdd: () => void;
@@ -65,11 +66,11 @@ const SegmentEditor: React.FC<{
       />
       <div className="mt-3">
         <FormTextarea
-            label="Description de l'étape"
-            value={paragraph}
-            onChange={setParagraph}
-            rows={4}
-            required
+          label="Description de l'étape"
+          value={paragraph}
+          onChange={setParagraph}
+          rows={4}
+          required
         />
       </div>
       <div className="mt-4">
@@ -107,6 +108,7 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
   toggleChecked,
   onConfirmUpdate,
   onDeleteSegment,
+  onDeleteBlock,
   pendingAddItem,
   onConfirmAdd,
   onCancelAdd,
@@ -134,11 +136,24 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
           <FileText className="w-5 h-5 text-amber-500" />
           {block.subtitle || "Préparation"}
         </h3>
-        {expanded ? (
-          <ChevronDown className="w-5 h-5 text-gray-400" />
-        ) : (
-          <ChevronRight className="w-5 h-5 text-gray-400" />
-        )}
+        <div className="flex items-center gap-2">
+          {isAuthenticated && onDeleteBlock && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onDeleteBlock();
+              }}
+              className="p-1.5 rounded-md bg-neutral-700/80 text-red-500 hover:text-red-400"
+            >
+              <Trash2 size={16} />
+            </button>
+          )}
+          {expanded ? (
+            <ChevronDown className="w-5 h-5 text-gray-400" />
+          ) : (
+            <ChevronRight className="w-5 h-5 text-gray-400" />
+          )}
+        </div>
       </header>
 
       {expanded && (
@@ -227,4 +242,5 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
     </div>
   );
 };
+
 

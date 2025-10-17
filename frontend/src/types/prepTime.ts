@@ -1,15 +1,16 @@
 import { Category } from "./category";
-import { PaginatedResponse, UUID } from "./common";
+import { PaginatedResponse } from "./common";
 
 export interface PrepTimePayload {
+  prep_time_id: string;
   duration: number;
-  style_id?: UUID | null;
+  style_id?: string | null;
   connect?: {
     style?: Category[];
   };
 }
 export interface PrepTime extends PrepTimePayload {
-  prep_time_id: UUID;
+  prep_time_id: string;
 }
 
 export type ListPrepTimesResponse = PaginatedResponse<PrepTime>;

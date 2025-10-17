@@ -1,10 +1,10 @@
-import { PaginatedResponse, UUID } from "./common";
+import { PaginatedResponse } from "./common";
 
 export interface UnitPayload {
   name: string;
 }
 export interface Unit extends UnitPayload {
-  unit_id: UUID;
+  unit_id: string;
 }
 
 export type ListUnitsResponse = PaginatedResponse<Unit>;

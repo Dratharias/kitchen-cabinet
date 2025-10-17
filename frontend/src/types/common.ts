@@ -1,5 +1,3 @@
-export type UUID = string;
-
 export interface PaginatedRequest {
   page?: number;
   limit?: number;

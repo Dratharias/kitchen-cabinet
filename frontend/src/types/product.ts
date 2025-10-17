@@ -1,10 +1,10 @@
 import { Category } from "./category";
-import { PaginatedResponse, UUID } from "./common";
+import { PaginatedResponse } from "./common";
 import { Macro } from "./macro";
 
 export interface ProductPayload {
   name: string;
-  macro_id?: UUID | null;
+  macro_id?: string | null;
   is_recipe_id: string | null;
   connect?: {
     macro?: Macro[];
@@ -12,7 +12,7 @@ export interface ProductPayload {
   };
 }
 export interface Product extends ProductPayload {
-  product_id: UUID;
+  product_id: string;
 }
 
 export type ListProductsResponse = PaginatedResponse<Product>;

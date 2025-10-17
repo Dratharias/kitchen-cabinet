@@ -1,4 +1,4 @@
-import { PaginatedResponse, UUID } from "./common";
+import { PaginatedResponse } from "./common";
 import { PrepTime } from "./prepTime";
 
 export interface SegmentPayload {
@@ -9,7 +9,7 @@ export interface SegmentPayload {
   };
 }
 export interface Segment extends SegmentPayload {
-  segment_id: UUID;
+  segment_id: string;
 }
 
 export type ListSegmentsResponse = PaginatedResponse<Segment>;

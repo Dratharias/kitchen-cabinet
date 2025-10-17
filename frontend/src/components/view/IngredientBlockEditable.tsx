@@ -9,8 +9,8 @@ import {
   Check,
   X,
 } from "lucide-react";
-import { FormInput } from "../atoms/FormInput";
-import { MacroFormSection } from "../molecules/MacroFormSection";
+import { FormInput } from "@/components/atoms/FormInput";
+import { MacroFormSection } from "@/components/molecules/MacroFormSection";
 import type { MacroPayload } from "@/types/payloadBuilder";
 
 interface FullIngredientEditFields {
@@ -36,6 +36,7 @@ interface IngredientBlockEditableProps {
     fields: FullIngredientEditFields,
   ) => Promise<boolean | void>;
   onDeleteIngredient?: (ingredientId: string) => Promise<boolean | void>;
+  onDeleteBlock?: () => void; // New prop for deleting the whole block
   pendingAddItem: boolean;
   onConfirmAdd: (fields: FullIngredientEditFields) => void;
   onCancelAdd: () => void;
@@ -168,6 +169,7 @@ export const IngredientBlockEditable: React.FC<
   toggleChecked,
   onConfirmUpdate,
   onDeleteIngredient,
+  onDeleteBlock,
   pendingAddItem,
   onConfirmAdd,
   onCancelAdd,
@@ -219,11 +221,24 @@ export const IngredientBlockEditable: React.FC<
           <Utensils className="w-5 h-5 text-amber-500" />
           {block.subtitle || "Ingrédients"}
         </h3>
-        {expanded ? (
-          <ChevronDown className="w-5 h-5 text-gray-400" />
-        ) : (
-          <ChevronRight className="w-5 h-5 text-gray-400" />
-        )}
+        <div className="flex items-center gap-2">
+          {isAuthenticated && onDeleteBlock && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onDeleteBlock();
+              }}
+              className="p-1.5 rounded-md bg-neutral-700/80 text-red-500 hover:text-red-400"
+            >
+              <Trash2 size={16} />
+            </button>
+          )}
+          {expanded ? (
+            <ChevronDown className="w-5 h-5 text-gray-400" />
+          ) : (
+            <ChevronRight className="w-5 h-5 text-gray-400" />
+          )}
+        </div>
       </header>
 
       {expanded && (
@@ -307,3 +322,5 @@ export const IngredientBlockEditable: React.FC<
     </div>
   );
 };
+
+
