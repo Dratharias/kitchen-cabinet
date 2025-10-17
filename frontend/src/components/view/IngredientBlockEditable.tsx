@@ -59,7 +59,7 @@ const IngredientEditor: React.FC<{
 }> = ({ ingredient, onConfirm, onCancel }) => {
   const [fields, setFields] = useState<FullIngredientEditFields>({
     quantity: ingredient.quantity ?? 0,
-    unit: safeDecodeText(ingredient.ingredient_units?.[0]?.unit?.name) || "",
+    unit: safeDecodeText(ingredient.ingredient_units?.[0]?.name) || "",
     product: safeDecodeText(ingredient.product?.name) || "",
     title: safeDecodeText(ingredient.title) || "",
     cut: safeDecodeText(ingredient.cut) || "",
@@ -192,7 +192,7 @@ export const IngredientBlockEditable: React.FC<
   const getDisplayValue = (ing: any) => {
     const title = safeDecodeText(ing.title);
     const unitName =
-      safeDecodeText(ing.ingredient_units?.[0]?.unit?.name) || "";
+      safeDecodeText(ing.ingredient_units?.[0]?.name) || "";
     const rawQuantity = String(ing.quantity || "").trim();
     const productName = safeDecodeText(ing.product?.name);
     const cut = safeDecodeText(ing.cut);

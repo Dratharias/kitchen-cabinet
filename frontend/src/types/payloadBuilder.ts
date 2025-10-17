@@ -60,7 +60,7 @@ export interface IngredientPayload {
   cut?: string;
   title?: string;
   product: ProductPayload;
-  ingredient_units: { unit: UnitPayload }[];
+  ingredient_units: UnitPayload[];
 }
 
 export interface SegmentPayload {

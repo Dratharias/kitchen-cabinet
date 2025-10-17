@@ -47,7 +47,7 @@ export const IngredientFormSection: React.FC<IngredientFormSectionProps> = ({
             alcohol: 0,
           },
         },
-        ingredient_units: [{ unit: { name: "" } }],
+        ingredient_units: [{ name: "" }],
       },
     ]);
     setOpenMacros((prev) => [...prev, false]);
@@ -78,10 +78,9 @@ export const IngredientFormSection: React.FC<IngredientFormSectionProps> = ({
           macro: { ...currentMacro, [macroField]: Number(value) || 0 },
         },
       };
-    } else if (field === "unit") {
+    } else if (field === "name") {
       updated[index] = {
-        ...updated[index],
-        ingredient_units: [{ unit: { name: value } }],
+        ...updated[index]
       };
     } else {
       updated[index] = { ...updated[index], [field]: value };
@@ -160,8 +159,8 @@ export const IngredientFormSection: React.FC<IngredientFormSectionProps> = ({
               />
               <FormInput
                 label="Unité"
-                value={ingredient.ingredient_units?.[0]?.unit?.name || ""}
-                onChange={(v) => updateIngredient(index, "unit", v)}
+                value={ingredient.ingredient_units?.[0]?.name || ""}
+                onChange={(v) => updateIngredient(index, "ingredient_units", v)}
                 placeholder="g, ml, tasse..."
               />
             </div>

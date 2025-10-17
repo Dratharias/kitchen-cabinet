@@ -15,7 +15,7 @@ import { IngredientController } from "../controllers/molecules/ingredientControl
 import { CategoryController } from "../controllers/atoms/categoryController.js";
 import { MacroController } from "../controllers/atoms/macroController.js";
 import { PrepTimeController } from "../controllers/atoms/prepTimeController.js";
-import { SegmentController } from "../controllers/atoms/segmentController.js";
+import { SegmentController } from "../controllers/molecules/segmentController.js";
 import { UnitController } from "../controllers/atoms/unitsController.js";
 import { AppUserController } from "../controllers/organisms/appUserController.js";
 import { OrchestratorController } from "../controllers/orchestratorController.js";
