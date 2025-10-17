@@ -1,3 +1,4 @@
+import { GalleryItem } from "@/types";
 import {
   Camera,
   Mesh,
@@ -8,7 +9,6 @@ import {
   Transform,
 } from "ogl";
 import { useEffect, useRef, useMemo } from "react";
-import { GalleryItem } from "@/types/gallery";
 
 type GL = Renderer["gl"];
 
@@ -747,7 +747,7 @@ interface GalleryProps {
   scrollEase?: number;
 }
 
-export default function Gallery({
+export function Gallery({
   items,
   bend = 3,
   textColor = "#ffffff",

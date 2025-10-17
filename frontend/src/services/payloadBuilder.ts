@@ -1,24 +1,41 @@
-import { PublicationPayload, OrchestratorPayload, ContentPayload, IngredientPayload, PrepTimePayload, CategoryPayload, OrchestratorAction } from "@/types";
+import {
+  PublicationPayload,
+  OrchestratorPayload,
+  ContentPayload,
+  IngredientPayload,
+  PrepTimePayload,
+  CategoryPayload,
+  OrchestratorAction,
+  Servings,
+  Segment,
+  Publication,
+  Content,
+} from "@/types";
 
+interface SegmentWithMeta {
+  position: number;
+  segment: Partial<Segment>;
+  segment_prep_time?: { prep_time: Partial<PrepTimePayload> }[];
+}
 
 export class PayloadBuilder {
   build(
     action: OrchestratorAction,
     key: string,
     data: any,
-    existing?: PublicationPayload,
+    existing?: Publication,
   ): OrchestratorPayload {
     const publication = this.mapPublication(
       data,
       existing,
       action === "update",
     );
-    return { action, payload: { [key]: publication } };
+    return { action, payload: { publications: { [key]: publication } } };
   }
 
   private mapPublication(
     data: any,
-    existing?: PublicationPayload,
+    existing?: Publication,
     isUpdate = false,
   ): PublicationPayload {
     const descriptionLines = this.toArray(
@@ -26,7 +43,9 @@ export class PayloadBuilder {
     );
 
     return {
-      publication_id: isUpdate ? existing?.publication_id : undefined,
+      ...(isUpdate && existing?.publication_id
+        ? { publication_id: existing.publication_id }
+        : {}),
       title: data.title ?? existing?.title ?? "Untitled",
       description: descriptionLines.filter((line) => line.trim() !== ""),
       note: this.toArray(data.note ?? existing?.note ?? []).filter(
@@ -35,57 +54,48 @@ export class PayloadBuilder {
       public: data.public ?? existing?.public ?? false,
       published: data.published ?? existing?.published ?? false,
       thumbnail: data.thumbnail ?? existing?.thumbnail,
-      type_id: data.type?.category_id ?? existing?.type?.category_id,
-      style_id: data.style?.category_id ?? existing?.style?.category_id,
-      author_id: data.author?.category_id ?? existing?.author?.category_id,
-      connect: {
-        type: data.type ? [this.mapCategory(data.type, "Type")] : undefined,
-        style: data.style ? [this.mapCategory(data.style, "Style")] : undefined,
-        author: data.author ? [this.mapCategory(data.author, "Author")] : undefined,
-        tags: this.mapTags(data.tags ?? existing?.tags)?.map(tag => ({
-          category_id: tag.category_id,
-          str_value: tag.str_value,
-          type: tag.type
-        })),
-        contents: (data.contents ?? []).map((c: any, i: number) =>
-          this.mapContent(c, existing?.contents?.[i], isUpdate),
-        ),
-      },
+      type_id: data.type?.category_id ?? existing?.type_id,
+      style_id: data.style?.category_id ?? existing?.style_id,
+      author_id: data.author?.category_id ?? existing?.author_id,
+      tags: this.mapTags(data.tags ?? existing?.tags),
+      contents: (data.contents ?? []).map((c: any, i: number) =>
+        this.mapContent(c, existing?.contents?.[i], isUpdate),
+      ),
     };
   }
 
   private mapContent(
     c: any,
-    existing?: ContentPayload,
+    existing?: Content,
     isUpdate = false,
   ): ContentPayload {
     const rawServings = c.servings ?? existing?.servings ?? null;
-    let mappedServings: ServingsPayload | null = null;
+    let mappedServings: Servings | null = null;
 
-    // FIX: Conversion sécurisée en ServingsPayload
     if (rawServings) {
       if (typeof rawServings === "object" && rawServings.yield !== undefined) {
-        mappedServings = rawServings; // Déjà au bon format
+        mappedServings = rawServings;
       } else if (
         typeof rawServings === "number" ||
         (typeof rawServings === "string" && !isNaN(Number(rawServings)))
       ) {
-        // Conversion depuis un simple nombre (pour rétrocompatibilité/form simple)
         mappedServings = {
           yield: Number(rawServings),
-          value: "", // Valeur par défaut
+          value: "",
         };
       }
     }
 
     return {
-      content_id: isUpdate ? existing?.content_id : undefined,
+      ...(isUpdate && existing?.content_id
+        ? { content_id: existing.content_id }
+        : {}),
       total_prep_time:
         c.total_prep_time ?? existing?.total_prep_time ?? this.sumPrepTimes(c),
-      servings: mappedServings, // Utilisation de l'objet ServingsPayload
+      servings: mappedServings,
       subtitle: c.subtitle ?? existing?.subtitle,
       is_ingredient: c.is_ingredient ?? existing?.is_ingredient ?? false,
-      publication: c.publication ?? existing?.publication,
+      publication_id: c.publication_id ?? existing?.publication_id,
       gallery: c.gallery ?? existing?.gallery,
       content_segments: (c.content_segments ?? []).map((s: any, i: number) =>
         this.mapSegment(s, existing?.content_segments?.[i], isUpdate, i + 1),
@@ -109,7 +119,9 @@ export class PayloadBuilder {
     return {
       position,
       segment: {
-        segment_id: isUpdate ? existing?.segment?.segment_id : undefined,
+        ...(isUpdate && existing?.segment?.segment_id
+          ? { segment_id: existing.segment.segment_id }
+          : {}),
         title: s.segment?.title ?? existing?.segment?.title ?? "",
         paragraph: s.segment?.paragraph ?? existing?.segment?.paragraph ?? "",
       },
@@ -125,7 +137,7 @@ export class PayloadBuilder {
     isUpdate = false,
   ): IngredientPayload {
     return {
-      ingredient_id: isUpdate ? (i.ingredient_id ?? existing?.ingredient_id) : i.ingredient_id,
+      ...(isUpdate && i.ingredient_id ? { ingredient_id: i.ingredient_id } : {}),
       quantity: Number(i.quantity ?? existing?.quantity ?? 0),
       multiply_factor: Number(
         i.multiply_factor ?? existing?.multiply_factor ?? 1,
@@ -133,9 +145,9 @@ export class PayloadBuilder {
       cut: i.cut ?? existing?.cut,
       title: i.title ?? existing?.title,
       product: {
-        product_id: isUpdate
-          ? (i.product?.product_id ?? existing?.product?.product_id)
-          : i.product?.product_id,
+        ...(isUpdate && i.product?.product_id
+          ? { product_id: i.product.product_id }
+          : {}),
         name: i.product?.name ?? existing?.product?.name ?? "",
         is_recipe:
           i.product?.is_recipe ?? existing?.product?.is_recipe ?? false,
@@ -146,14 +158,15 @@ export class PayloadBuilder {
         existing?.ingredient_units ??
         []
       ).map((u: any) => ({
-        unit: { unit_id: u.unit?.unit_id, name: u.unit?.name ?? "" },
+        name: u.unit?.name ?? "",
+        ...(u.unit?.unit_id ? { unit_id: u.unit.unit_id } : {}),
       })),
     };
   }
 
   private mapPrepTime(p: any, isUpdate = false): PrepTimePayload {
     return {
-      prep_time_id: isUpdate ? p.prep_time_id : undefined,
+      ...(isUpdate && p.prep_time_id ? { prep_time_id: p.prep_time_id } : {}),
       duration: Number(p.duration ?? 0),
       style: p.style
         ? {
@@ -186,12 +199,10 @@ export class PayloadBuilder {
 
   private toArray(value: unknown): string[] {
     if (!value) return [];
-    // Gère le cas où l'input est déjà un tableau de chaînes, ou une seule chaîne multiligne
     if (Array.isArray(value)) {
       return value.filter((s) => typeof s === "string") as string[];
     }
     if (typeof value === "string") {
-      // Traite la chaîne multiligne en tableau de lignes
       return value.split("\n");
     }
     return [];

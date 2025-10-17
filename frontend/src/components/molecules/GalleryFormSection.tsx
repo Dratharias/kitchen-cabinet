@@ -1,7 +1,7 @@
 import React from "react";
 import { FormInput } from "@/components/atoms/FormInput";
 import { Plus, Trash2 } from "lucide-react";
-import { GalleryItem } from "@/types/gallery";
+import { GalleryItem } from "@/types";
 
 interface GalleryFormSectionProps {
   gallery: Partial<GalleryItem>[];

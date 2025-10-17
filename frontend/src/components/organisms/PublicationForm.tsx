@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { PublicationFormSection } from "@/components/molecules/PublicationFormSection";
 import { ContentFormSection } from "@/components/molecules/ContentFormSection";
 import { PayloadBuilder } from "@/services/payloadBuilder";
-import type { ContentPayload } from "@/types/payloadBuilder";
 import { Plus, Trash2 } from "lucide-react";
-import { GalleryItem } from "@/types/gallery";
+import { GalleryItem, ContentPayload } from "@/types";
 
 interface PublicationFormProps {
   onSubmit: (payload: any) => void;

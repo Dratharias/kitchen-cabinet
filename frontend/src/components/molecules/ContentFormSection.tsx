@@ -4,7 +4,7 @@ import { IngredientFormSection } from "./IngredientFormSection";
 import { SegmentFormSection } from "./SegmentFormSection";
 import { GalleryFormSection } from "./GalleryFormSection";
 import { PrepTimeFormSection } from "./PrepTimeFormSection";
-import type { ContentPayload } from "../../types/payloadBuilder";
+import { ContentPayload } from "@/types";
 
 interface ContentFormSectionProps {
   content: Partial<ContentPayload>;

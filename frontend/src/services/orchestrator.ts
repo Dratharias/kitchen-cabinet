@@ -1,7 +1,4 @@
-import {
-  OrchestratorPayload,
-  OrchestratorResponse,
-} from "@/types/payloadBuilder";
+import { OrchestratorPayload, OrchestratorResponse } from "@/types";
 import { CommonService } from "./common";
 
 /**

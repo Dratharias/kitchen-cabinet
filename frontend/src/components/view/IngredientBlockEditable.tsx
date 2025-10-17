@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { FormInput } from "@/components/atoms/FormInput";
 import { MacroFormSection } from "@/components/molecules/MacroFormSection";
-import type { MacroPayload } from "@/types/payloadBuilder";
+import { MacroPayload } from "@/types";
 
 interface FullIngredientEditFields {
   quantity: number;

@@ -1,23 +1,22 @@
 import { useState, useMemo, useCallback, useEffect } from "react";
-import { usePublicationView } from "@/hooks/view/usePublicationView";
-import { PublicationHeader } from "@/components/view/PublicationHeader";
-import { PublicationVariantTabs } from "@/components/view/PublicationVariantTabs";
-import { PublicationTabs } from "@/components/view/PublicationTabs";
-import { DotGrid } from "@/components/ui/DotGrid";
-import Gallery from "@/components/ui/Gallery";
-import { IngredientBlockEditable } from "@/components/view/IngredientBlockEditable";
-import { SegmentBlockEditable } from "@/components/view/SegmentBlockEditable";
-import { PublicationActions } from "@/components/view/PublicationActions";
-import { PublicationInfoView } from "@/components/view/PublicationInfoView";
-import { PublicationMetadataView } from "@/components/view/PublicationMetadataView";
-import { PublicationForm } from "@/components/organisms/PublicationForm";
+import { usePublicationView } from "../hooks/view/usePublicationView";
+import { PublicationHeader } from "../components/view/PublicationHeader";
+import { PublicationVariantTabs } from "../components/view/PublicationVariantTabs";
+import { PublicationTabs } from "../components/view/PublicationTabs";
+import { DotGrid } from "../components/ui/DotGrid";
+import { Gallery } from "../components/ui/Gallery";
+import { IngredientBlockEditable } from "../components/view/IngredientBlockEditable";
+import { SegmentBlockEditable } from "../components/view/SegmentBlockEditable";
+import { PublicationActions } from "../components/view/PublicationActions";
+import { PublicationInfoView } from "../components/view/PublicationInfoView";
+import { PublicationMetadataView } from "../components/view/PublicationMetadataView";
+import { PublicationForm } from "../components/organisms/PublicationForm";
 import {
   normalizePublicationToForm,
   denormalizeFormToPublication,
-} from "@/utils/formTransformers";
-import type { PublicationPayload } from "@/types/payloadBuilder";
+} from "../utils/formTransformers";
+import type { PublicationPayload, GalleryItem, Publication } from "../types";
 import { Clock, Users } from "lucide-react";
-import type { GalleryItem } from "@/types/gallery";
 
 const getBlockId = (block: any) =>
   block.content_id ||
@@ -51,7 +50,7 @@ export function PublicationView() {
 
   useEffect(() => {
     if (publication && isEditing) {
-      setFormData(normalizePublicationToForm(publication));
+      setFormData(normalizePublicationToForm(publication as Publication));
     } else {
       setFormData(null);
     }
@@ -62,7 +61,10 @@ export function PublicationView() {
 
   const handleSave = async () => {
     if (formData && publication) {
-      const payload = denormalizeFormToPublication(formData, publication);
+      const payload = denormalizeFormToPublication(
+        formData,
+        publication as Publication,
+      );
       const success = await updatePublication(payload);
       if (success) {
         setIsEditing(false);
@@ -87,17 +89,20 @@ export function PublicationView() {
 
   const allGalleryItems = useMemo(() => {
     const items: GalleryItem[] = [];
-    if (contents?.gallery) {
-      items.push(...contents.gallery);
+    const pub = publication as Publication & { gallery?: GalleryItem[] };
+
+    if (pub?.gallery && Array.isArray(pub.gallery)) {
+      items.push(...pub.gallery);
     }
     if (activeVariant?.gallery) {
       items.push(...activeVariant.gallery);
     }
     // Deduplicate items by gallery_id
-    const uniqueItems = Array.from(new Map(items.map(item => [item.gallery_id, item])).values());
-    return uniqueItems.sort((a, b) => a.order_num - b.order_num);
-  }, [contents, activeVariant]);
-
+    const uniqueItems = Array.from(
+      new Map(items.map((item) => [item.gallery_id, item])).values(),
+    );
+    return uniqueItems.sort((a, b) => (a.order_num || 0) - (b.order_num || 0));
+  }, [publication, activeVariant]);
 
   const allDisplayBlocks = useMemo(() => {
     const blocks: any[] = [];
@@ -167,9 +172,7 @@ export function PublicationView() {
         <div className="relative z-20 mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 py-6">
           <PublicationHeader title={publication.title} />
 
-          <div
-            className="w-full h-64 rounded-xl mb-6 bg-gray-800/20"
-          >
+          <div className="w-full h-64 rounded-xl mb-6 bg-gray-800/20">
             {allGalleryItems && allGalleryItems.length > 0 ? (
               <Gallery items={allGalleryItems} />
             ) : (
@@ -289,3 +292,4 @@ export function PublicationView() {
     </>
   );
 }
+

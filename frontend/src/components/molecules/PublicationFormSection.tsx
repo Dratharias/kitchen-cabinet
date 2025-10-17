@@ -2,8 +2,8 @@ import React from "react";
 import { FormInput } from "../atoms/FormInput";
 import { FormTextarea } from "../atoms/FormTextarea";
 import { FormCheckbox } from "../atoms/FormCheckbox";
-import { GalleryItem } from "@/types/gallery";
 import { GalleryFormSection } from "./GalleryFormSection";
+import { GalleryItem } from "@/types";
 
 interface PublicationFormSectionProps {
   title: string;

@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { FormInput } from "@/components/atoms/FormInput";
 import { FormCheckbox } from "@/components/atoms/FormCheckbox";
 import { Trash2, Plus, ChevronDown, ChevronRight } from "lucide-react";
-import type { IngredientPayload, MacroPayload } from "@/types/payloadBuilder";
 import { MacroFormSection } from "./MacroFormSection";
-import { PrepTimeFormSection } from "./PrepTimeFormSection";
+import { IngredientPayload, MacroPayload } from "@/types";
 
 interface IngredientFormSectionProps {
   ingredients: Partial<IngredientPayload>[];

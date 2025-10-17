@@ -12,7 +12,7 @@ import {
 import { FormInput } from "@/components/atoms/FormInput";
 import { FormTextarea } from "@/components/atoms/FormTextarea";
 import { PrepTimeFormSection } from "@/components/molecules/PrepTimeFormSection";
-import type { PrepTimePayload } from "@/types/payloadBuilder";
+import { PrepTimePayload } from "@/types";
 
 interface FullSegmentEditFields {
   title: string;
