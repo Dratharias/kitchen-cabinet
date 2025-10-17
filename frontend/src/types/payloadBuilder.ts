@@ -57,12 +57,12 @@ export interface UnitPayload {
 
 export interface IngredientPayload {
   ingredient_id?: string;
-  quantity: number;
-  multiply_factor: number;
+  quantity?: number;
+  multiply_factor?: number;
   cut?: string;
   title?: string;
   product: ProductPayload;
-  ingredient_units: UnitPayload[];
+  ingredient_units?: UnitPayload[];
 }
 
 export interface SegmentPayload {
@@ -85,9 +85,9 @@ export interface ContentPayload {
   subtitle?: string;
   is_ingredient?: boolean;
   publication?: string;
-  content_segments: SegmentWithMeta[];
-  content_ingredients: IngredientPayload[];
-  content_prep_times: PrepTimePayload[];
+  content_segments?: SegmentWithMeta[];
+  content_ingredients?: IngredientPayload[];
+  content_prep_times?: PrepTimePayload[];
 }
 
 export interface PublicationPayload {
@@ -103,6 +103,5 @@ export interface PublicationPayload {
   style?: CategoryPayload;
   author?: CategoryPayload;
   tags?: CategoryPayload[];
-  contents: ContentPayload[];
+  contents?: ContentPayload[];
 }
-

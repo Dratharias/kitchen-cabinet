@@ -11,7 +11,7 @@ interface PublicationFormSectionProps {
   isPublic: boolean;
   isPublished: boolean;
   thumbnail?: string;
-  gallery?: GalleryItem;
+  gallery?: GalleryItem[];
   onChange: (field: string, value: any) => void;
 }
 

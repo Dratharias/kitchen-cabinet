@@ -13,6 +13,7 @@ export interface PublicationPayload {
   type_id?: string | null;
   style_id?: string | null;
   author_id?: string | null;
+  contents?: Content[]; // Changed to optional
   connect?: {
     type?: Category[];
     style?: Category[];

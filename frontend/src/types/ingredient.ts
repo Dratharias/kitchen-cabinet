@@ -7,6 +7,7 @@ export interface IngredientPayload {
   quantity?: number;
   product_id?: string;
   multiply_factor?: number;
+  ingredient_units?: Unit[];
   connect?: {
     product?: Product[];
     ingredient_units?: Unit[];
