@@ -9,6 +9,9 @@ import { OrchestratorService } from "../../services/orchestrator";
 import toast from "react-hot-toast";
 import { PayloadBuilder } from "../../services/payloadBuilder";
 
+// Simple in-memory cache for publication data
+const publicationCache = new Map<string, Publication>();
+
 type SimpleUpdatePayload = {
   [key: string]: any;
 };
@@ -24,10 +27,12 @@ export function usePublicationView() {
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
   const [forceRefetch, setForceRefetch] = useState(0);
 
-  const forceReload = useCallback(
-    () => setForceRefetch((prev) => prev + 1),
-    [],
-  );
+  const forceReload = useCallback(() => {
+    if (id) {
+      publicationCache.delete(id); // Invalidate cache for the current ID
+    }
+    setForceRefetch((prev) => prev + 1);
+  }, [id]);
 
   const buildMicroUpdatePayload = useCallback(
     (id: string, fields: SimpleUpdatePayload): any => {
@@ -72,7 +77,7 @@ export function usePublicationView() {
             error: (err) => `Échec: ${err.message || "Erreur interne"}`,
           },
         );
-        forceReload();
+        forceReload(); // This will also clear the cache for the current ID
         return response.success ?? false;
       } catch (error) {
         console.error("Échec de la mutation orchestrée:", error);
@@ -178,6 +183,14 @@ export function usePublicationView() {
       navigate("/404", { replace: true });
       return;
     }
+
+    // Check cache first
+    if (publicationCache.has(id)) {
+      setPublication(publicationCache.get(id)!);
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
     try {
       const result = await PublicationsService.getPublicationById(
@@ -185,10 +198,12 @@ export function usePublicationView() {
         isAuthenticated,
       );
       if (result) {
-        setPublication(result as Publication);
-        return;
+        const pub = result as Publication;
+        publicationCache.set(id, pub); // Set cache on successful fetch
+        setPublication(pub);
+      } else {
+        navigate("/404", { replace: true });
       }
-      navigate("/404", { replace: true });
     } catch (err) {
       console.error("Erreur de chargement :", err);
       navigate("/404", { replace: true });

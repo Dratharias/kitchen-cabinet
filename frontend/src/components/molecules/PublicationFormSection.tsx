@@ -2,6 +2,7 @@ import React from "react";
 import { FormInput } from "../atoms/FormInput";
 import { FormTextarea } from "../atoms/FormTextarea";
 import { FormCheckbox } from "../atoms/FormCheckbox";
+import { GalleryItem } from "@/types/gallery";
 
 interface PublicationFormSectionProps {
   title: string;
@@ -10,6 +11,7 @@ interface PublicationFormSectionProps {
   isPublic: boolean;
   isPublished: boolean;
   thumbnail?: string;
+  gallery?: GalleryItem;
   onChange: (field: string, value: any) => void;
 }
 

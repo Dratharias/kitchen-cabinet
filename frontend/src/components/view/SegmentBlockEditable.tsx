@@ -231,7 +231,7 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
           {isAuthenticated && !pendingAddItem && (
             <button
               onClick={onAddSegmentClick}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-amber-600 text-white text-sm hover:bg-amber-700 transition-colors mt-4"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-amber-600 text-white text-sm hover:bg-amber-700 transition-colors mt-4 hover:cursor-pointer"
             >
               <Plus size={16} />
               Ajouter une étape

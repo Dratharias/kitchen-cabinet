@@ -4,6 +4,7 @@ import { ContentFormSection } from "@/components/molecules/ContentFormSection";
 import { PayloadBuilder } from "@/services/payloadBuilder";
 import type { ContentPayload } from "@/types/payloadBuilder";
 import { Plus, Trash2 } from "lucide-react";
+import { GalleryItem } from "@/types/gallery";
 
 interface PublicationFormProps {
   onSubmit: (payload: any) => void;
@@ -21,7 +22,7 @@ export const PublicationForm: React.FC<PublicationFormProps> = ({
     public: true,
     published: true,
     thumbnail: "",
-    gallery: [] as string[],
+    gallery: [] as GalleryItem[],
     contents: [] as Partial<ContentPayload>[],
   });
 
@@ -66,13 +67,11 @@ export const PublicationForm: React.FC<PublicationFormProps> = ({
 
     const data = {
       title: formData.title,
-      // FIX: La description est passée en chaîne, le builder la convertit en tableau
       description: formData.description,
       note: formData.note,
       public: formData.public,
       published: formData.published,
       thumbnail: formData.thumbnail || undefined,
-      // FIX: Gallery est passée mais sera ignorée par l'orchestrator (N-N)
       gallery: formData.gallery.length > 0 ? formData.gallery : undefined,
       contents: formData.contents,
     };
@@ -111,7 +110,7 @@ export const PublicationForm: React.FC<PublicationFormProps> = ({
           ing.quantity < 0
         )
           return false;
-        if (!ing.ingredient_units?.[0]?.unit?.name?.trim()) return false;
+        if (!ing.ingredient_units?.[0]?.name?.trim()) return false;
       }
 
       // Validation des Segments
@@ -199,7 +198,7 @@ export const PublicationForm: React.FC<PublicationFormProps> = ({
         ))}
 
         {formData.contents.length === 0 && (
-          <p className="text-sm text-gray-500 text-center py-6 bg-[#2a2a2a]/70 border border-neutral-700 rounded-xl">
+          <p className="text-sm text-gray-500 text-center py-6 bg-[#2a2a2a]/70 border border-neutral-700 rounded-xl hover:cursor-pointer">
             Aucun contenu. Cliquez sur "Ajouter un contenu" pour commencer.
           </p>
         )}

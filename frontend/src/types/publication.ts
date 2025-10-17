@@ -10,7 +10,6 @@ export interface PublicationPayload {
   public?: boolean;
   published?: boolean;
   thumbnail?: string;
-  gallery?: string[];
   type_id?: string | null;
   style_id?: string | null;
   author_id?: string | null;

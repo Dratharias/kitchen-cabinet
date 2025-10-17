@@ -11,6 +11,8 @@ export interface OrchestratorResponse {
   data?: any;
 }
 
+import { GalleryItem } from "./gallery";
+
 export interface CategoryPayload {
   category_id?: string;
   str_value: string;
@@ -78,8 +80,8 @@ export interface SegmentWithMeta {
 export interface ContentPayload {
   content_id?: string;
   total_prep_time: number;
-  servings: ServingsPayload | null;
-  gallery?: string[] | null;
+  servings?: ServingsPayload | null;
+  gallery?: Partial<GalleryItem>[] | null;
   subtitle?: string;
   is_ingredient?: boolean;
   publication?: string;
@@ -96,10 +98,11 @@ export interface PublicationPayload {
   public?: boolean;
   published?: boolean;
   thumbnail?: string;
-  gallery?: string[];
+  gallery?: Partial<GalleryItem>[];
   type?: CategoryPayload;
   style?: CategoryPayload;
   author?: CategoryPayload;
   tags?: CategoryPayload[];
   contents: ContentPayload[];
 }
+

@@ -1,19 +1,20 @@
 import { PaginatedResponse } from "./common";
 import { Ingredient } from "./ingredient";
 import { PrepTime } from "./prepTime";
-import { Segment } from "./segment";
+import { SegmentWithMeta, ServingsPayload } from "./payloadBuilder";
+import { GalleryItem } from "./gallery";
 
 export interface Content {
   thumbnail?: string;
   content_id: string;
   publication_id?: string;
   total_prep_time: number;
-  servings?: number | null;
+  servings?: ServingsPayload | null;
   subtitle?: string | null;
-  gallery?: string[] | null;
+  gallery?: GalleryItem[] | null;
   is_ingredient?: boolean | null;
 
-  content_segments?: Segment[];
+  content_segments?: SegmentWithMeta[];
   content_ingredients?: Ingredient[];
   content_prep_times?: PrepTime[];
 }
@@ -24,3 +25,4 @@ export type CreateContentRequest = Omit<Content, "content_id">;
 export type CreateContentResponse = Content;
 export type UpdateContentRequest = Partial<Omit<Content, "content_id">>;
 export type UpdateContentResponse = Content;
+
