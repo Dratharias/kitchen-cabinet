@@ -85,6 +85,7 @@ export const ContentFormSection: React.FC<ContentFormSectionProps> = ({
       <GalleryFormSection
         gallery={content.gallery || []}
         onChange={(gallery) => handleFieldChange("gallery", gallery)}
+        label="Galerie du Contenu"
       />
 
       <IngredientFormSection

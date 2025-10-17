@@ -1,5 +1,4 @@
-import type { Publication } from "../types";
-import type { PublicationPayload } from "../types/payloadBuilder";
+import type { Publication, PublicationPayload } from "../types";
 
 /**
  * Converts a Publication object from the API into a format suitable for the form state.

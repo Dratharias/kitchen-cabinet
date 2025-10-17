@@ -1,18 +1,9 @@
-import type {
-  OrchestratorPayload,
-  PublicationPayload,
-  ContentPayload,
-  SegmentWithMeta,
-  IngredientPayload,
-  PrepTimePayload,
-  CategoryPayload,
-  ServingsPayload, // Import ajouté
-  Action,
-} from "@/types/payloadBuilder";
+import { PublicationPayload, OrchestratorPayload, ContentPayload, IngredientPayload, PrepTimePayload, CategoryPayload, OrchestratorAction } from "@/types";
+
 
 export class PayloadBuilder {
   build(
-    action: Action,
+    action: OrchestratorAction,
     key: string,
     data: any,
     existing?: PublicationPayload,
@@ -30,7 +21,6 @@ export class PayloadBuilder {
     existing?: PublicationPayload,
     isUpdate = false,
   ): PublicationPayload {
-    // FIX: S'assurer que la description est traitée comme un tableau de lignes
     const descriptionLines = this.toArray(
       data.description ?? existing?.description,
     );
@@ -45,14 +35,22 @@ export class PayloadBuilder {
       public: data.public ?? existing?.public ?? false,
       published: data.published ?? existing?.published ?? false,
       thumbnail: data.thumbnail ?? existing?.thumbnail,
-      gallery: data.gallery ?? existing?.gallery,
-      type: this.mapCategory(data.type ?? existing?.type, "Type"),
-      style: this.mapCategory(data.style ?? existing?.style, "Style"),
-      author: this.mapCategory(data.author ?? existing?.author, "Author"),
-      tags: this.mapTags(data.tags ?? existing?.tags),
-      contents: (data.contents ?? []).map((c: any, i: number) =>
-        this.mapContent(c, existing?.contents?.[i], isUpdate),
-      ),
+      type_id: data.type?.category_id ?? existing?.type?.category_id,
+      style_id: data.style?.category_id ?? existing?.style?.category_id,
+      author_id: data.author?.category_id ?? existing?.author?.category_id,
+      connect: {
+        type: data.type ? [this.mapCategory(data.type, "Type")] : undefined,
+        style: data.style ? [this.mapCategory(data.style, "Style")] : undefined,
+        author: data.author ? [this.mapCategory(data.author, "Author")] : undefined,
+        tags: this.mapTags(data.tags ?? existing?.tags)?.map(tag => ({
+          category_id: tag.category_id,
+          str_value: tag.str_value,
+          type: tag.type
+        })),
+        contents: (data.contents ?? []).map((c: any, i: number) =>
+          this.mapContent(c, existing?.contents?.[i], isUpdate),
+        ),
+      },
     };
   }
 
@@ -127,7 +125,7 @@ export class PayloadBuilder {
     isUpdate = false,
   ): IngredientPayload {
     return {
-      ingredient_id: isUpdate ? existing?.ingredient_id : undefined,
+      ingredient_id: isUpdate ? (i.ingredient_id ?? existing?.ingredient_id) : i.ingredient_id,
       quantity: Number(i.quantity ?? existing?.quantity ?? 0),
       multiply_factor: Number(
         i.multiply_factor ?? existing?.multiply_factor ?? 1,

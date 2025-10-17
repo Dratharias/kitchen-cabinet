@@ -3,6 +3,7 @@ import { FormInput } from "../atoms/FormInput";
 import { FormTextarea } from "../atoms/FormTextarea";
 import { FormCheckbox } from "../atoms/FormCheckbox";
 import { GalleryItem } from "@/types/gallery";
+import { GalleryFormSection } from "./GalleryFormSection";
 
 interface PublicationFormSectionProps {
   title: string;
@@ -11,7 +12,7 @@ interface PublicationFormSectionProps {
   isPublic: boolean;
   isPublished: boolean;
   thumbnail?: string;
-  gallery?: GalleryItem[];
+  gallery?: Partial<GalleryItem>[];
   onChange: (field: string, value: any) => void;
 }
 
@@ -22,6 +23,7 @@ export const PublicationFormSection: React.FC<PublicationFormSectionProps> = ({
   isPublic,
   isPublished,
   thumbnail,
+  gallery,
   onChange,
 }) => {
   return (
@@ -57,6 +59,12 @@ export const PublicationFormSection: React.FC<PublicationFormSectionProps> = ({
         value={thumbnail || ""}
         onChange={(v) => onChange("thumbnail", v)}
         placeholder="https://example.com/image.jpg"
+      />
+
+      <GalleryFormSection
+          gallery={gallery || []}
+          onChange={(newGallery) => onChange("gallery", newGallery)}
+          label="Galerie Principale"
       />
 
       <div className="flex gap-4">

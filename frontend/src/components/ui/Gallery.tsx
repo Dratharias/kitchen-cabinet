@@ -8,9 +8,11 @@ import {
   Transform,
 } from "ogl";
 import { useEffect, useRef, useMemo } from "react";
+import { GalleryItem } from "@/types/gallery";
 
 type GL = Renderer["gl"];
 
+// --- Helper Functions (unchanged) ---
 function debounce<T extends (...args: any[]) => void>(func: T, wait: number) {
   let timeout: number;
   return function (this: any, ...args: Parameters<T>) {
@@ -59,6 +61,8 @@ function createTextTexture(
   return { texture, width: canvas.width, height: canvas.height };
 }
 
+
+// --- OGL Classes (unchanged) ---
 interface TitleProps {
   gl: GL;
   plane: Mesh;
@@ -573,7 +577,7 @@ class App {
         text: "Palm Trees",
       },
     ];
-    const galleryItems = items && items.length ? items : defaultItems;
+    const galleryItems = items && items.length > 0 ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);
     this.medias = this.mediasImages.map((data, index) => {
       return new Media({
@@ -732,8 +736,9 @@ class App {
   }
 }
 
-interface CircularGalleryProps {
-  items?: { image: string; text: string }[];
+// --- React Component Wrapper (Updated) ---
+interface GalleryProps {
+  items?: GalleryItem[];
   bend?: number;
   textColor?: string;
   borderRadius?: number;
@@ -742,7 +747,7 @@ interface CircularGalleryProps {
   scrollEase?: number;
 }
 
-export default function CircularGallery({
+export default function Gallery({
   items,
   bend = 3,
   textColor = "#ffffff",
@@ -750,12 +755,21 @@ export default function CircularGallery({
   font = "bold 30px Figtree",
   scrollSpeed = 2,
   scrollEase = 0.05,
-}: CircularGalleryProps) {
+}: GalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Map GalleryItem[] to the internal { image: string, text: string }[] format
+  const formattedItems = useMemo(() =>
+    items?.map(item => ({
+      image: item.url,
+      text: item.label || '',
+    })),
+    [items]
+  );
 
   const config = useMemo(
     () => ({
-      items,
+      items: formattedItems,
       bend,
       textColor,
       borderRadius,
@@ -763,7 +777,7 @@ export default function CircularGallery({
       scrollSpeed,
       scrollEase,
     }),
-    [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase],
+    [formattedItems, bend, textColor, borderRadius, font, scrollSpeed, scrollEase],
   );
 
   useEffect(() => {

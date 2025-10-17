@@ -4,7 +4,7 @@ import { PublicationHeader } from "@/components/view/PublicationHeader";
 import { PublicationVariantTabs } from "@/components/view/PublicationVariantTabs";
 import { PublicationTabs } from "@/components/view/PublicationTabs";
 import { DotGrid } from "@/components/ui/DotGrid";
-import { SpotlightWrapper } from "@/components/ui/SpotlightWrapper";
+import Gallery from "@/components/ui/Gallery";
 import { IngredientBlockEditable } from "@/components/view/IngredientBlockEditable";
 import { SegmentBlockEditable } from "@/components/view/SegmentBlockEditable";
 import { PublicationActions } from "@/components/view/PublicationActions";
@@ -17,6 +17,7 @@ import {
 } from "@/utils/formTransformers";
 import type { PublicationPayload } from "@/types/payloadBuilder";
 import { Clock, Users } from "lucide-react";
+import type { GalleryItem } from "@/types/gallery";
 
 const getBlockId = (block: any) =>
   block.content_id ||
@@ -83,8 +84,20 @@ export function PublicationView() {
   }, [contents]);
 
   const activeVariant = variants[selectedVariant] || null;
-  const thumbnail =
-    activeVariant?.gallery?.[0]?.url || publication?.thumbnail || null;
+
+  const allGalleryItems = useMemo(() => {
+    const items: GalleryItem[] = [];
+    if (contents?.gallery) {
+      items.push(...contents.gallery);
+    }
+    if (activeVariant?.gallery) {
+      items.push(...activeVariant.gallery);
+    }
+    // Deduplicate items by gallery_id
+    const uniqueItems = Array.from(new Map(items.map(item => [item.gallery_id, item])).values());
+    return uniqueItems.sort((a, b) => a.order_num - b.order_num);
+  }, [contents, activeVariant]);
+
 
   const allDisplayBlocks = useMemo(() => {
     const blocks: any[] = [];
@@ -154,25 +167,17 @@ export function PublicationView() {
         <div className="relative z-20 mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 py-6">
           <PublicationHeader title={publication.title} />
 
-          <SpotlightWrapper
-            className="w-full h-64 rounded-xl mb-6"
-            radius="150px"
-            spotlightColor="rgba(255,255,255,0.2)"
-            softness={1}
+          <div
+            className="w-full h-64 rounded-xl mb-6 bg-gray-800/20"
           >
-            {thumbnail ? (
-              <img
-                src={thumbnail}
-                alt={publication.title}
-                className="object-cover w-full h-full transition-transform duration-500 hover:scale-105 rounded-xl"
-                loading="lazy"
-              />
+            {allGalleryItems && allGalleryItems.length > 0 ? (
+              <Gallery items={allGalleryItems} />
             ) : (
               <div className="flex items-center justify-center h-full bg-gray-800 text-gray-500 text-sm rounded-xl">
                 Aucun visuel
               </div>
             )}
-          </SpotlightWrapper>
+          </div>
 
           <PublicationInfoView
             description={publication.description || []}
@@ -273,7 +278,7 @@ export function PublicationView() {
       </DotGrid>
 
       <PublicationActions
-        isEditing={isEditing}
+        isEditMode={isEditing}
         isAuthenticated={isAuthenticated}
         onEdit={handleEdit}
         onSave={handleSave}

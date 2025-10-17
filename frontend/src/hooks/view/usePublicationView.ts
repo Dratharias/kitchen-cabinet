@@ -9,7 +9,6 @@ import { OrchestratorService } from "../../services/orchestrator";
 import toast from "react-hot-toast";
 import { PayloadBuilder } from "../../services/payloadBuilder";
 
-// Simple in-memory cache for publication data
 const publicationCache = new Map<string, Publication>();
 
 type SimpleUpdatePayload = {
@@ -29,7 +28,7 @@ export function usePublicationView() {
 
   const forceReload = useCallback(() => {
     if (id) {
-      publicationCache.delete(id); // Invalidate cache for the current ID
+      publicationCache.delete(id);
     }
     setForceRefetch((prev) => prev + 1);
   }, [id]);
@@ -77,7 +76,7 @@ export function usePublicationView() {
             error: (err) => `Échec: ${err.message || "Erreur interne"}`,
           },
         );
-        forceReload(); // This will also clear the cache for the current ID
+        forceReload();
         return response.success ?? false;
       } catch (error) {
         console.error("Échec de la mutation orchestrée:", error);
@@ -158,7 +157,7 @@ export function usePublicationView() {
   const updatePublication = useCallback(
     async (publicationData: PublicationPayload) => {
       if (!publication?.publication_id) return false;
-
+  
       const payloadBuilder = new PayloadBuilder();
       const payload = payloadBuilder.build(
         "update",
@@ -166,17 +165,16 @@ export function usePublicationView() {
         publicationData,
         publication,
       );
-
+  
       if (payload.payload[publication.publication_id]) {
-        (
-          payload.payload[publication.publication_id] as Publication
-        ).publication_id = publication.publication_id;
+        (payload.payload[publication.publication_id] as Publication).publication_id = publication.publication_id;
       }
-
+  
       return executeMutation(payload, "Publication mise à jour !");
     },
     [publication, executeMutation],
   );
+  
 
   const fetchPublication = useCallback(async () => {
     if (!id) {
@@ -184,7 +182,6 @@ export function usePublicationView() {
       return;
     }
 
-    // Check cache first
     if (publicationCache.has(id)) {
       setPublication(publicationCache.get(id)!);
       setLoading(false);
@@ -199,7 +196,7 @@ export function usePublicationView() {
       );
       if (result) {
         const pub = result as Publication;
-        publicationCache.set(id, pub); // Set cache on successful fetch
+        publicationCache.set(id, pub);
         setPublication(pub);
       } else {
         navigate("/404", { replace: true });
