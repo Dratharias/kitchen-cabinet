@@ -134,7 +134,7 @@ export function PublicationView() {
     shockStrength: 5,
     resistance: 750,
     returnDuration: 1.5,
-    className: "bg-[#1F1F1F] min-h-screen",
+    className: "bg-[#1F1F1F] min-h-screen py-8",
   };
 
   if (loading) {

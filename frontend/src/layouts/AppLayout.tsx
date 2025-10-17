@@ -49,7 +49,7 @@ export function AppLayout({
       {dockItems && searchButtonRef && (
         <div
           ref={searchButtonRef}
-          className="fixed bottom-0 left-1/2 -translate-x-1/2 z-50 h-26 w-110 backdrop-blur-md bg-black/10 p-4 rounded-lg"
+          className="fixed bottom-0 left-1/2 -translate-x-1/2 z-50 h-26 w-110 backdrop-blur-md/10 bg-black/10 p-4 rounded-lg"
         >
           <Dock
             panelHeight={40}

@@ -53,8 +53,15 @@ export const PublicationActions: React.FC<PublicationActionsProps> = ({
   }
 
   return (
-    <div className="fixed bottom-0 left-1/2 -translate-x-1/2 z-50 h-26 w-fit backdrop-blur-md bg-black/10 p-4 rounded-lg">
-      <Dock items={dockItems} />
+    <div className="fixed bottom-0 left-1/2 -translate-x-1/2 z-50 h-26 w-56 backdrop-blur-md/10 bg-black/10 p-4 rounded-lg">
+      <Dock
+        panelHeight={40}
+        items={dockItems}
+        magnification={70}
+        expandOnHover
+        bgClass="bg-[#1f1f1f]"
+        borderClass="border-neutral-700"
+      />
     </div>
   );
 };
