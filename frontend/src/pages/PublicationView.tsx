@@ -17,6 +17,7 @@ import {
 } from "../utils/formTransformers";
 import type { PublicationPayload, GalleryItem, Publication } from "../types";
 import { Clock, Users } from "lucide-react";
+import { formatTime, TIME_FORMATS } from "@/utils/timeFormatter";
 
 const getBlockId = (block: any) =>
   block.content_id ||
@@ -189,7 +190,7 @@ export function PublicationView() {
               <div className="flex items-center gap-2 text-gray-300">
                 <Clock className="w-4 h-4 text-amber-400" />
                 <span className="text-sm">
-                  {activeVariant.total_prep_time} min
+                  {formatTime(TIME_FORMATS.auto, activeVariant.total_prep_time)}
                 </span>
               </div>
               {activeVariant.servings && (
