@@ -34,22 +34,22 @@ export function usePublicationView() {
   }, [id]);
 
   const buildMicroUpdatePayload = useCallback(
-    (id: string, fields: SimpleUpdatePayload): any => {
+    (resourceType: string, id: string, fields: SimpleUpdatePayload): any => {
       if (fields.description && typeof fields.description === "string") {
         fields.description = fields.description.split("\n");
       }
-      return { action: "update", payload: { [id]: fields } };
+      return { action: "update", payload: { [resourceType]: { [id]: fields } } };
     },
     [],
   );
 
   const buildStructuralPayload = useCallback(
-    (action: "create" | "delete", resourceId: string, data?: any): any => {
+    (action: "create" | "delete", resourceType: string, resourceId: string, data?: any): any => {
       if (action === "delete") {
-        return { action: "delete", payload: { [resourceId]: null } };
+        return { action: "delete", payload: { [resourceType]: { [resourceId]: null } } };
       }
       if (action === "create" && data) {
-        return { action: "create", payload: { [resourceId]: data } };
+        return { action: "create", payload: { [resourceType]: { [resourceId]: data } } };
       }
       return null;
     },
@@ -90,6 +90,7 @@ export function usePublicationView() {
     async (fields: SimpleUpdatePayload) => {
       if (!publication?.publication_id) return false;
       const payload = buildMicroUpdatePayload(
+        "publications",
         publication.publication_id,
         fields,
       );
@@ -100,7 +101,7 @@ export function usePublicationView() {
 
   const updateContentField = useCallback(
     async (contentId: string, fields: SimpleUpdatePayload) => {
-      const payload = buildMicroUpdatePayload(contentId, fields);
+      const payload = buildMicroUpdatePayload("contents", contentId, fields);
       return executeMutation(payload, "Contenu mis à jour !");
     },
     [buildMicroUpdatePayload, executeMutation],
@@ -108,7 +109,7 @@ export function usePublicationView() {
 
   const updateIngredientFields = useCallback(
     async (ingredientId: string, fields: any) => {
-      const payload = buildMicroUpdatePayload(ingredientId, fields);
+      const payload = buildMicroUpdatePayload("ingredients", ingredientId, fields);
       return executeMutation(payload, "Ingrédient mis à jour !");
     },
     [buildMicroUpdatePayload, executeMutation],
@@ -116,7 +117,7 @@ export function usePublicationView() {
 
   const updateSegmentFields = useCallback(
     async (segmentId: string, fields: any) => {
-      const payload = buildMicroUpdatePayload(segmentId, fields);
+      const payload = buildMicroUpdatePayload("segments", segmentId, fields);
       return executeMutation(payload, "Étape mise à jour !");
     },
     [buildMicroUpdatePayload, executeMutation],
@@ -124,15 +125,26 @@ export function usePublicationView() {
 
   const addIngredient = useCallback(
     async (contentId: string, fields: any) => {
-      const payload = buildStructuralPayload("create", contentId, fields);
+      const payload = {
+        action: "update",
+        payload: {
+          contents: {
+            [contentId]: {
+              content_ingredients: {
+                connect: [fields],
+              },
+            },
+          },
+        },
+      };
       return executeMutation(payload, "Ingrédient ajouté.");
     },
-    [buildStructuralPayload, executeMutation],
+    [executeMutation],
   );
 
   const deleteIngredient = useCallback(
     async (ingredientId: string) => {
-      const payload = buildStructuralPayload("delete", ingredientId);
+      const payload = buildStructuralPayload("delete", "ingredients", ingredientId);
       return executeMutation(payload, "Ingrédient supprimé.");
     },
     [buildStructuralPayload, executeMutation],
@@ -140,15 +152,26 @@ export function usePublicationView() {
 
   const addSegment = useCallback(
     async (contentId: string, fields: any) => {
-      const payload = buildStructuralPayload("create", contentId, fields);
+       const payload = {
+        action: "update",
+        payload: {
+          contents: {
+            [contentId]: {
+              content_segments: {
+                connect: [{ segment: fields }],
+              },
+            },
+          },
+        },
+      };
       return executeMutation(payload, "Étape ajoutée.");
     },
-    [buildStructuralPayload, executeMutation],
+    [executeMutation],
   );
 
   const deleteSegment = useCallback(
     async (segmentId: string) => {
-      const payload = buildStructuralPayload("delete", segmentId);
+      const payload = buildStructuralPayload("delete", "segments", segmentId);
       return executeMutation(payload, "Étape supprimée.");
     },
     [buildStructuralPayload, executeMutation],
@@ -166,8 +189,8 @@ export function usePublicationView() {
         publication,
       );
   
-      if (payload.payload[publication.publication_id]) {
-        (payload.payload[publication.publication_id] as Publication).publication_id = publication.publication_id;
+      if (payload.payload.publications[publication.publication_id]) {
+        (payload.payload.publications[publication.publication_id] as Publication).publication_id = publication.publication_id;
       }
   
       return executeMutation(payload, "Publication mise à jour !");

@@ -1,5 +1,6 @@
 import { useState, useMemo, useCallback, useEffect } from "react";
 import { usePublicationView } from "../hooks/view/usePublicationView";
+import { usePublicationEdit } from "../hooks/view/usePublicationEdit";
 import { PublicationHeader } from "../components/view/PublicationHeader";
 import { PublicationVariantTabs } from "../components/view/PublicationVariantTabs";
 import { PublicationTabs } from "../components/view/PublicationTabs";
@@ -35,9 +36,24 @@ export function PublicationView() {
     setSelectedVariant,
     checkedItems,
     toggleChecked,
-    isAuthenticated,
     updatePublication,
+    updateIngredientFields,
+    deleteIngredient,
+    addIngredient,
+    updateSegmentFields,
+    deleteSegment,
+    addSegment,
   } = usePublicationView();
+
+  const {
+    editingField,
+    editValues,
+    startEdit,
+    cancelEdit,
+    updateValue,
+    setEditingField,
+    isAuthenticated,
+  } = usePublicationEdit();
 
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState<Partial<PublicationPayload> | null>(
@@ -48,6 +64,10 @@ export function PublicationView() {
     {},
   );
   const [tab, setTab] = useState<"ingredients" | "steps">("ingredients");
+  const [pendingAddItem, setPendingAddItem] = useState<{
+    type: "ingredient" | "segment";
+    blockId: string;
+  } | null>(null);
 
   useEffect(() => {
     if (publication && isEditing) {
@@ -73,6 +93,45 @@ export function PublicationView() {
     }
   };
 
+  // --- Handlers pour l'édition inline ---
+  const handleConfirmIngredientUpdate = async (
+    ingredientId: string,
+    fields: any,
+  ) => {
+    const success = await updateIngredientFields(ingredientId, fields);
+    if (success !== false) {
+      setEditingField(null);
+    }
+    return success;
+  };
+
+  const handleConfirmSegmentUpdate = async (
+    segmentId: string,
+    fields: any,
+  ) => {
+    const success = await updateSegmentFields(segmentId, fields);
+    if (success !== false) {
+      setEditingField(null);
+    }
+    return success;
+  };
+
+  const handleConfirmAdd = async (blockId: string, fields: any) => {
+    if (!pendingAddItem) return;
+    const contentId = blockId.replace("ing-", "").replace("step-", "");
+
+    let success;
+    if (pendingAddItem.type === "ingredient") {
+      success = await addIngredient(contentId, fields);
+    } else {
+      success = await addSegment(contentId, fields);
+    }
+
+    if (success) {
+      setPendingAddItem(null);
+    }
+  };
+
   const contents = publication?.contents || [];
 
   const { variants, subRecipes } = useMemo(() => {
@@ -90,18 +149,15 @@ export function PublicationView() {
 
   const allGalleryItems = useMemo(() => {
     if (!activeVariant?.gallery) return [];
-  
     const items: GalleryItem[] = Array.isArray(activeVariant.gallery)
       ? activeVariant.gallery
       : [activeVariant.gallery];
-  
-    // Deduplicate items by gallery_id
     const uniqueItems = Array.from(
       new Map(items.map((item) => [item.gallery_id, item])).values(),
     );
     return uniqueItems.sort((a, b) => (a.order_num || 0) - (b.order_num || 0));
   }, [activeVariant]);
-  
+
   const allDisplayBlocks = useMemo(() => {
     const blocks: any[] = [];
     if (activeVariant) {
@@ -220,26 +276,28 @@ export function PublicationView() {
           {tab === "ingredients" && (
             <div className="pb-16 space-y-4">
               {allDisplayBlocks.map((block) => {
-                const blockId = getBlockId(block);
+                const blockId = `ing-${getBlockId(block)}`;
                 return (
                   <IngredientBlockEditable
-                    key={`ing-${blockId}`}
+                    key={blockId}
                     block={block}
-                    expanded={isBlockExpanded(
-                      `ing-${blockId}`,
-                      block.__isMainVariant,
-                    )}
-                    toggleBlock={() => toggleBlock(`ing-${blockId}`)}
+                    expanded={isBlockExpanded(blockId, block.__isMainVariant)}
+                    toggleBlock={() => toggleBlock(blockId)}
                     ingredients={block.content_ingredients || []}
                     isAuthenticated={isAuthenticated}
                     checkedItems={checkedItems}
                     toggleChecked={toggleChecked}
-                    onConfirmUpdate={() => Promise.resolve(false)}
-                    onDeleteIngredient={() => Promise.resolve(false)}
-                    pendingAddItem={false}
-                    onConfirmAdd={() => {}}
-                    onCancelAdd={() => {}}
-                    onAddIngredientClick={() => {}}
+                    onConfirmUpdate={handleConfirmIngredientUpdate}
+                    onDeleteIngredient={deleteIngredient}
+                    pendingAddItem={
+                      pendingAddItem?.type === "ingredient" &&
+                      pendingAddItem?.blockId === blockId
+                    }
+                    onConfirmAdd={(fields) => handleConfirmAdd(blockId, fields)}
+                    onCancelAdd={() => setPendingAddItem(null)}
+                    onAddIngredientClick={() =>
+                      setPendingAddItem({ type: "ingredient", blockId })
+                    }
                   />
                 );
               })}
@@ -248,28 +306,28 @@ export function PublicationView() {
           {tab === "steps" && (
             <div className="pb-16 space-y-4">
               {allDisplayBlocks.map((block) => {
-                const blockId = getBlockId(block);
+                const blockId = `step-${getBlockId(block)}`;
                 return (
                   <SegmentBlockEditable
-                    key={`step-${blockId}`}
+                    key={blockId}
                     block={block}
-                    expanded={isBlockExpanded(
-                      `step-${blockId}`,
-                      block.__isMainVariant,
-                    )}
-                    toggleBlock={() => toggleBlock(`step-${blockId}`)}
+                    expanded={isBlockExpanded(blockId, block.__isMainVariant)}
+                    toggleBlock={() => toggleBlock(blockId)}
                     segments={block.content_segments || []}
                     isAuthenticated={isAuthenticated}
                     checkedItems={checkedItems}
                     toggleChecked={toggleChecked}
-                    onConfirmUpdate={() => Promise.resolve(false)}
-                    onDeleteSegment={() => Promise.resolve(false)}
-                    pendingAddItem={false}
-                    onConfirmAdd={() => {}}
-                    onCancelAdd={() => {}}
-                    onAddSegmentClick={function (): void {
-                      throw new Error("Function not implemented.");
-                    }}
+                    onConfirmUpdate={handleConfirmSegmentUpdate}
+                    onDeleteSegment={deleteSegment}
+                    pendingAddItem={
+                      pendingAddItem?.type === "segment" &&
+                      pendingAddItem?.blockId === blockId
+                    }
+                    onConfirmAdd={(fields) => handleConfirmAdd(blockId, fields)}
+                    onCancelAdd={() => setPendingAddItem(null)}
+                    onAddSegmentClick={() =>
+                      setPendingAddItem({ type: "segment", blockId })
+                    }
                   />
                 );
               })}

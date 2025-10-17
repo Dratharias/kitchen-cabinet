@@ -23,7 +23,7 @@
       "thumbnail": "~/nas/media/recipebook/boissons-fermentees.png",
       "contents": [
         {
-          "subtitle": "Levain de Gingembre (Ginger Bug)",
+          "subtitle": "Levain de Gingembre",
           "is_ingredient": true,
           "total_prep_time": 7205,
           "servings": { "yield": 250, "value": "ml" },
@@ -38,7 +38,7 @@
           ]
         },
         {
-          "subtitle": "Levain de Fruits (Fruit Starter)",
+          "subtitle": "Levain de Fruits",
           "is_ingredient": true,
           "total_prep_time": 7205,
           "servings": { "yield": 200, "value": "ml" },
