@@ -322,5 +322,3 @@ export const IngredientBlockEditable: React.FC<
     </div>
   );
 };
-
-

@@ -61,10 +61,7 @@ export function PublicationView() {
 
   const handleSave = async () => {
     if (formData && publication) {
-      const payload = denormalizeFormToPublication(
-        formData,
-        publication,
-      );
+      const payload = denormalizeFormToPublication(formData, publication);
       const success = await updatePublication(payload);
       if (success) {
         setIsEditing(false);
@@ -111,7 +108,7 @@ export function PublicationView() {
         : isMainVariant,
     [expandedBlocks],
   );
-  
+
   const dotGridProps = {
     dotSize: 10,
     gap: 15,
@@ -181,18 +178,21 @@ export function PublicationView() {
             description={publication.description || []}
             notes={publication.note || []}
           />
-          
+
           {activeVariant && (
             <div className="flex items-center justify-between p-2 bg-[#1F1F1F]/0 border-b border-t border-gray-700 my-4">
               <div className="flex items-center gap-2 text-gray-300">
                 <Clock className="w-4 h-4 text-amber-400" />
-                <span className="text-sm">{activeVariant.total_prep_time} min</span>
+                <span className="text-sm">
+                  {activeVariant.total_prep_time} min
+                </span>
               </div>
               {activeVariant.servings && (
                 <div className="flex items-center gap-3">
                   <Users className="w-4 h-4 text-amber-400" />
                   <span className="text-white font-semibold min-w-[80px] text-center">
-                    {activeVariant.servings.yield} {activeVariant.servings.value}
+                    {activeVariant.servings.yield}{" "}
+                    {activeVariant.servings.value}
                   </span>
                 </div>
               )}
@@ -205,7 +205,9 @@ export function PublicationView() {
             setSelectedVariant={setSelectedVariant}
           />
 
-          {showMetadata && <PublicationMetadataView publication={publication} />}
+          {showMetadata && (
+            <PublicationMetadataView publication={publication} />
+          )}
 
           <PublicationTabs currentTab={tab} setTab={setTab} />
 
@@ -217,7 +219,10 @@ export function PublicationView() {
                   <IngredientBlockEditable
                     key={`ing-${blockId}`}
                     block={block}
-                    expanded={isBlockExpanded(`ing-${blockId}`, block.__isMainVariant)}
+                    expanded={isBlockExpanded(
+                      `ing-${blockId}`,
+                      block.__isMainVariant,
+                    )}
                     toggleBlock={() => toggleBlock(`ing-${blockId}`)}
                     ingredients={block.content_ingredients || []}
                     isAuthenticated={isAuthenticated}
@@ -242,7 +247,10 @@ export function PublicationView() {
                   <SegmentBlockEditable
                     key={`step-${blockId}`}
                     block={block}
-                    expanded={isBlockExpanded(`step-${blockId}`, block.__isMainVariant)}
+                    expanded={isBlockExpanded(
+                      `step-${blockId}`,
+                      block.__isMainVariant,
+                    )}
                     toggleBlock={() => toggleBlock(`step-${blockId}`)}
                     segments={block.content_segments || []}
                     isAuthenticated={isAuthenticated}
@@ -251,13 +259,13 @@ export function PublicationView() {
                     onConfirmUpdate={() => Promise.resolve(false)}
                     onDeleteSegment={() => Promise.resolve(false)}
                     pendingAddItem={false}
-                    onConfirmAdd={() => { } }
-                    onCancelAdd={() => { } }
+                    onConfirmAdd={() => {}}
+                    onCancelAdd={() => {}}
                     onAddSegmentClick={function (): void {
                       throw new Error("Function not implemented.");
                     }}
                   />
-                )
+                );
               })}
             </div>
           )}
@@ -276,4 +284,3 @@ export function PublicationView() {
     </>
   );
 }
-

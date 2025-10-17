@@ -24,7 +24,10 @@ export function usePublicationView() {
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
   const [forceRefetch, setForceRefetch] = useState(0);
 
-  const forceReload = useCallback(() => setForceRefetch((prev) => prev + 1), []);
+  const forceReload = useCallback(
+    () => setForceRefetch((prev) => prev + 1),
+    [],
+  );
 
   const buildMicroUpdatePayload = useCallback(
     (id: string, fields: SimpleUpdatePayload): any => {
@@ -146,20 +149,29 @@ export function usePublicationView() {
     },
     [buildStructuralPayload, executeMutation],
   );
-  
-  const updatePublication = useCallback(async (publicationData: PublicationPayload) => {
-    if (!publication?.publication_id) return false;
 
-    const payloadBuilder = new PayloadBuilder();
-    const payload = payloadBuilder.build('update', publication.publication_id, publicationData, publication);
-    
-    if (payload.payload[publication.publication_id]) {
-        (payload.payload[publication.publication_id] as Publication).publication_id = publication.publication_id;
-    }
+  const updatePublication = useCallback(
+    async (publicationData: PublicationPayload) => {
+      if (!publication?.publication_id) return false;
 
-    return executeMutation(payload, "Publication mise à jour !");
-  }, [publication, executeMutation]);
+      const payloadBuilder = new PayloadBuilder();
+      const payload = payloadBuilder.build(
+        "update",
+        publication.publication_id,
+        publicationData,
+        publication,
+      );
 
+      if (payload.payload[publication.publication_id]) {
+        (
+          payload.payload[publication.publication_id] as Publication
+        ).publication_id = publication.publication_id;
+      }
+
+      return executeMutation(payload, "Publication mise à jour !");
+    },
+    [publication, executeMutation],
+  );
 
   const fetchPublication = useCallback(async () => {
     if (!id) {
@@ -212,4 +224,3 @@ export function usePublicationView() {
     deleteSegment,
   };
 }
-

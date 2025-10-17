@@ -107,4 +107,3 @@ export const ContentBlockHeaderEditable: React.FC<
     </div>
   );
 };
-

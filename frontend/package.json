@@ -16,7 +16,7 @@
     "clsx": "^2.1.1",
     "fastest-levenshtein": "^1.0.16",
     "gsap": "^3.13.0",
-    "lucide-react": "^0.545.0",
+    "lucide-react": "^0.546.0",
     "motion": "^12.23.24",
     "ogl": "^1.0.11",
     "react": "^19.2.0",
@@ -26,7 +26,7 @@
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
-    "@types/node": "^24.7.2",
+    "@types/node": "^24.8.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@vitejs/plugin-react": "^5.0.4",

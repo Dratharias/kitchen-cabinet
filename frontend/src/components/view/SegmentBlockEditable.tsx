@@ -242,5 +242,3 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
     </div>
   );
 };
-
-

@@ -65,14 +65,14 @@ export const ContentFormSection: React.FC<ContentFormSectionProps> = ({
           placeholder="tasse, portion..."
         />
       </div>
-      
+
       <FormInput
-          label="Temps de préparation total (min)"
-          type="number"
-          value={String(content.total_prep_time || 0)}
-          onChange={(v) => handleFieldChange("total_prep_time", Number(v))}
-          placeholder="0"
-        />
+        label="Temps de préparation total (min)"
+        type="number"
+        value={String(content.total_prep_time || 0)}
+        onChange={(v) => handleFieldChange("total_prep_time", Number(v))}
+        placeholder="0"
+      />
 
       <PrepTimeFormSection
         prepTimes={content.content_prep_times || []}
@@ -101,4 +101,3 @@ export const ContentFormSection: React.FC<ContentFormSectionProps> = ({
     </div>
   );
 };
-

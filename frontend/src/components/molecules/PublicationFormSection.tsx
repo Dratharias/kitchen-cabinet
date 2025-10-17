@@ -72,4 +72,3 @@ export const PublicationFormSection: React.FC<PublicationFormSectionProps> = ({
     </div>
   );
 };
-
