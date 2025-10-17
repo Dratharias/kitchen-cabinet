@@ -2,17 +2,14 @@ import React from "react";
 import { FormInput } from "../atoms/FormInput";
 import { FormTextarea } from "../atoms/FormTextarea";
 import { FormCheckbox } from "../atoms/FormCheckbox";
-import { GalleryFormSection } from "./GalleryFormSection";
-import { GalleryItem } from "@/types";
 
 interface PublicationFormSectionProps {
   title: string;
-  description: string;
-  note: string;
+  description: string[];
+  note: string[];
   isPublic: boolean;
   isPublished: boolean;
   thumbnail?: string;
-  gallery?: Partial<GalleryItem>[];
   onChange: (field: string, value: any) => void;
 }
 
@@ -23,7 +20,6 @@ export const PublicationFormSection: React.FC<PublicationFormSectionProps> = ({
   isPublic,
   isPublished,
   thumbnail,
-  gallery,
   onChange,
 }) => {
   return (
@@ -40,16 +36,16 @@ export const PublicationFormSection: React.FC<PublicationFormSectionProps> = ({
 
       <FormTextarea
         label="Description"
-        value={description}
-        onChange={(v) => onChange("description", v)}
+        value={Array.isArray(description) ? description.join('\n') : description}
+        onChange={(v) => onChange("description", v.split('\n'))}
         placeholder="Description de la recette"
         rows={3}
       />
 
       <FormTextarea
         label="Note"
-        value={note}
-        onChange={(v) => onChange("note", v)}
+        value={Array.isArray(note) ? note.join('\n') : note}
+        onChange={(v) => onChange("note", v.split('\n'))}
         placeholder="Notes additionnelles"
         rows={2}
       />
@@ -59,12 +55,6 @@ export const PublicationFormSection: React.FC<PublicationFormSectionProps> = ({
         value={thumbnail || ""}
         onChange={(v) => onChange("thumbnail", v)}
         placeholder="https://example.com/image.jpg"
-      />
-
-      <GalleryFormSection
-          gallery={gallery || []}
-          onChange={(newGallery) => onChange("gallery", newGallery)}
-          label="Galerie Principale"
       />
 
       <div className="flex gap-4">

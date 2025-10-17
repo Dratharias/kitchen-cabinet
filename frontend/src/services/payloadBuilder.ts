@@ -10,6 +10,7 @@ import {
   Segment,
   Publication,
   Content,
+  Category,
 } from "@/types";
 
 interface SegmentWithMeta {

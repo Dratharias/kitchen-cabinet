@@ -1,42 +1,71 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { PublicationFormSection } from "@/components/molecules/PublicationFormSection";
 import { ContentFormSection } from "@/components/molecules/ContentFormSection";
 import { PayloadBuilder } from "@/services/payloadBuilder";
 import { Plus, Trash2 } from "lucide-react";
-import { GalleryItem, ContentPayload } from "@/types";
+import { ContentPayload, Publication } from "@/types";
 
 interface PublicationFormProps {
   onSubmit: (payload: any) => void;
   onCancel?: () => void;
+  initialData?: Partial<Publication>;
 }
 
 export const PublicationForm: React.FC<PublicationFormProps> = ({
   onSubmit,
   onCancel,
+  initialData,
 }) => {
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    note: "",
-    public: true,
-    published: true,
-    thumbnail: "",
-    gallery: [] as GalleryItem[],
-    contents: [] as Partial<ContentPayload>[],
-  });
+  const getInitialState = () => {
+    const baseState = {
+      title: "",
+      description: [],
+      note: [],
+      public: true,
+      published: true,
+      thumbnail: "",
+      contents: [],
+    };
+
+    if (!initialData) {
+      return baseState;
+    }
+
+    const descriptionAsArray: string[] = 
+      initialData.description && initialData.description.length > 0
+        ? (Array.isArray(initialData.description) 
+            ? initialData.description 
+            : [initialData.description])
+        : [];
+        
+    const noteAsArray: string[] = 
+      initialData.note && initialData.note.length > 0
+        ? (Array.isArray(initialData.note) 
+            ? initialData.note 
+            : [initialData.note])
+        : [];
+
+    return { ...baseState, ...initialData, description: descriptionAsArray, note: noteAsArray };
+  };
+
+  const [formData, setFormData] = useState(getInitialState);
+
+  useEffect(() => {
+    setFormData(getInitialState() as any);
+  }, [initialData]);
 
   const handlePublicationChange = (field: string, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const addContent = () => {
-    setFormData((prev) => ({
+    setFormData((prev: any) => ({
       ...prev,
       contents: [
-        ...prev.contents,
+        ...(prev.contents || []),
         {
           total_prep_time: 0,
-          servings: { yield: 1, value: "portion" }, // Initialisation au format objet
+          servings: { yield: 1, value: "portion" },
           subtitle: "",
           content_ingredients: [],
           content_segments: [],
@@ -48,97 +77,57 @@ export const PublicationForm: React.FC<PublicationFormProps> = ({
   };
 
   const removeContent = (index: number) => {
-    setFormData((prev) => ({
+    setFormData((prev: any) => ({
       ...prev,
-      contents: prev.contents.filter((_, i) => i !== index),
+      contents: (prev.contents || []).filter((_: any, i: number) => i !== index),
     }));
   };
 
   const updateContent = (index: number, content: Partial<ContentPayload>) => {
-    setFormData((prev) => ({
+    setFormData((prev: any) => ({
       ...prev,
-      contents: prev.contents.map((c, i) => (i === index ? content : c)),
+      contents: (prev.contents || []).map((c: any, i: number) => (i === index ? content : c)),
     }));
   };
 
   const handleSubmit = () => {
     const builder = new PayloadBuilder();
-
-    const data = {
-      title: formData.title,
-      description: formData.description,
-      note: formData.note,
-      public: formData.public,
-      published: formData.published,
+    const payloadData = {
+      ...formData,
       thumbnail: formData.thumbnail || undefined,
-      gallery: formData.gallery.length > 0 ? formData.gallery : undefined,
-      contents: formData.contents,
     };
 
-    // La validation est faite avant l'appel à handleSubmit grâce à isValidForm()
-    const payload = builder.build("create", "publication", data);
+    const payload = builder.build(
+      initialData ? "update" : "create",
+      initialData?.publication_id || "new-publication",
+      payloadData,
+      initialData as Publication | undefined,
+    );
     onSubmit(payload);
   };
 
-  /**
-   * Valide que le formulaire contient les données minimales et cohérentes.
-   */
   const isValidForm = (): boolean => {
-    // Validation des champs de publication de base (title, description, note)
-    if (!formData.title.trim()) return false;
-    if (!formData.description.trim()) return false;
-    if (!formData.note.trim()) return false;
+    if (!formData.title || !formData.title.trim()) return false;
+    if (!formData.description || formData.description.join("").trim() === "") return false;
 
-    // Validation des Contenus
-    if (formData.contents.length === 0) return false;
+    if (!formData.contents || formData.contents.length === 0) return false;
 
     for (const content of formData.contents) {
-      // Validation des Ingrédients
-      if (
-        !content.content_ingredients ||
-        content.content_ingredients.length === 0
-      )
-        return false;
-
+      if (!content.content_ingredients || content.content_ingredients.length === 0) return false;
       for (const ing of content.content_ingredients) {
         if (!ing.product?.name?.trim()) return false;
-        // La quantité peut être 0 si l'unité est "au goût" ou "pincée", mais doit exister
-        if (
-          ing.quantity === undefined ||
-          ing.quantity === null ||
-          ing.quantity < 0
-        )
-          return false;
-        if (!ing.ingredient_units?.[0]?.name?.trim()) return false;
+        if (ing.quantity === undefined || ing.quantity === null || ing.quantity < 0) return false;
       }
-
-      // Validation des Segments
-      if (!content.content_segments || content.content_segments.length === 0)
-        return false;
-
+      if (!content.content_segments || content.content_segments.length === 0) return false;
       for (const seg of content.content_segments) {
         if (!seg.segment?.paragraph?.trim()) return false;
       }
-
-      // Validation du Temps de Préparation
-      if (
-        !content.content_prep_times ||
-        content.content_prep_times.length === 0
-      )
-        return false;
-
+      if (!content.content_prep_times || content.content_prep_times.length === 0) return false;
       for (const pt of content.content_prep_times) {
         if (pt.duration === undefined || pt.duration <= 0) return false;
         if (!pt.style?.str_value?.trim()) return false;
       }
-
-      // Validation des Servings
-      if (
-        !content.servings ||
-        content.servings.yield === undefined ||
-        content.servings.yield <= 0
-      ) {
-        // Si le yield n'est pas fourni ou est invalide, la validation échoue.
+      if (!content.servings || content.servings.yield === undefined || content.servings.yield <= 0) {
         return false;
       }
     }
@@ -152,13 +141,12 @@ export const PublicationForm: React.FC<PublicationFormProps> = ({
     <div className="space-y-8">
       <div className="bg-[#2a2a2a]/70 border border-neutral-700 rounded-xl p-6">
         <PublicationFormSection
-          title={formData.title}
-          description={formData.description}
-          note={formData.note}
-          isPublic={formData.public}
-          isPublished={formData.published}
-          thumbnail={formData.thumbnail}
-          gallery={formData.gallery}
+          title={formData.title || ""}
+          description={formData.description || []}
+          note={formData.note || []}
+          isPublic={formData.public || false}
+          isPublished={formData.published || false}
+          thumbnail={formData.thumbnail || ""}
           onChange={handlePublicationChange}
         />
       </div>
@@ -177,7 +165,7 @@ export const PublicationForm: React.FC<PublicationFormProps> = ({
           </button>
         </div>
 
-        {formData.contents.map((content, index) => (
+        {(formData.contents || []).map((content: any, index: number) => (
           <div
             key={index}
             className="relative bg-[#2a2a2a]/70 border border-neutral-700 rounded-xl p-6"
@@ -196,7 +184,7 @@ export const PublicationForm: React.FC<PublicationFormProps> = ({
           </div>
         ))}
 
-        {formData.contents.length === 0 && (
+        {(!formData.contents || formData.contents.length === 0) && (
           <p className="text-sm text-gray-500 text-center py-6 bg-[#2a2a2a]/70 border border-neutral-700 rounded-xl hover:cursor-pointer">
             Aucun contenu. Cliquez sur "Ajouter un contenu" pour commencer.
           </p>
@@ -215,13 +203,13 @@ export const PublicationForm: React.FC<PublicationFormProps> = ({
         <button
           onClick={handleSubmit}
           disabled={!isValid}
-          className={`px-5 py-2.5 rounded-md text-white text-sm font-medium transition-colors hover:cursor-not-allowed ${
+          className={`px-5 py-2.5 rounded-md text-white text-sm font-medium transition-colors ${
             isValid
-              ? "bg-amber-600 text-white hover:bg-amber-700"
-              : "bg-[#292929] border border-neutral-700 text-gray-300"
+              ? "bg-amber-600 text-white hover:bg-amber-700 hover:cursor-pointer"
+              : "bg-[#292929] border border-neutral-700 text-gray-300 cursor-not-allowed"
           }`}
         >
-          Créer la publication
+          {initialData ? "Sauvegarder les modifications" : "Créer la publication"}
         </button>
       </div>
     </div>

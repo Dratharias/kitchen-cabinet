@@ -88,22 +88,19 @@ export function PublicationView() {
   const activeVariant = variants[selectedVariant] || null;
 
   const allGalleryItems = useMemo(() => {
-    const items: GalleryItem[] = [];
-    const pub = publication as Publication & { gallery?: GalleryItem[] };
-
-    if (pub?.gallery && Array.isArray(pub.gallery)) {
-      items.push(...pub.gallery);
-    }
-    if (activeVariant?.gallery) {
-      items.push(...activeVariant.gallery);
-    }
+    if (!activeVariant?.gallery) return [];
+  
+    const items: GalleryItem[] = Array.isArray(activeVariant.gallery)
+      ? activeVariant.gallery
+      : [activeVariant.gallery];
+  
     // Deduplicate items by gallery_id
     const uniqueItems = Array.from(
       new Map(items.map((item) => [item.gallery_id, item])).values(),
     );
     return uniqueItems.sort((a, b) => (a.order_num || 0) - (b.order_num || 0));
-  }, [publication, activeVariant]);
-
+  }, [activeVariant]);
+  
   const allDisplayBlocks = useMemo(() => {
     const blocks: any[] = [];
     if (activeVariant) {
@@ -157,7 +154,7 @@ export function PublicationView() {
         <div className="relative z-20 mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 py-6">
           <PublicationHeader title={`Modification de: ${publication.title}`} />
           <PublicationForm
-            initialData={formData}
+            initialData={formData as Partial<Publication>}
             onSubmit={handleSave}
             onCancel={handleCancel}
           />
@@ -292,4 +289,3 @@ export function PublicationView() {
     </>
   );
 }
-

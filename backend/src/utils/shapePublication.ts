@@ -9,7 +9,6 @@ function shapePublicationBase(pub: any) {
     public: pub.public ?? false,
     published: pub.published ?? false,
     thumbnail: pub.thumbnail ?? null,
-    gallery: Array.isArray(pub.gallery) ? pub.gallery : [],
     type: pub.type
       ? {
           category_id: pub.type.category_id,

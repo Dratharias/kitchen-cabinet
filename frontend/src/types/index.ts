@@ -131,7 +131,7 @@ export interface PublicationPayload {
   style_id?: string | null;
   author_id?: string | null;
   tags?: CategoryPayload[];
-  contents?: ContentPayload[];
+  contents?: Content[];
 }
 export interface Publication extends PublicationPayload {
   publication_id: string;

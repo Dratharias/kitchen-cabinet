@@ -81,7 +81,6 @@ export interface PublicationData {
   public: boolean;
   published: boolean;
   thumbnail: string | null;
-  gallery: string[] | null;
   type_id: string | null;
   style_id: string | null;
   author_id: string | null;
@@ -311,18 +310,7 @@ export interface GalleryData {
 
   // Relations N-N
   content_gallery: ContentGalleryData[] | null; // N-N
-  publication_gallery: PublicationGalleryData[] | null; // N-N
 }
-
-export interface PublicationGalleryData {
-  publication_id: string;
-  gallery_id: string;
-
-  // Relations N-N
-  publication: PublicationData | null;
-  gallery: GalleryData | null;
-}
-
 /* ============================================================
    Domaine: Portions (Servings)
    ============================================================ */
