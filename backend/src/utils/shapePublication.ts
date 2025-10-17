@@ -120,6 +120,7 @@ export function shapePublicPublicationFull(pub: any): Publication {
                   ? {
                       product_id: ci.ingredient.product.product_id,
                       name: ci.ingredient.product.name,
+                      is_recipe_id: ci.ingredient.product.is_recipe_id,
                       macro: ci.ingredient.product.macro
                         ? {
                             calories: ci.ingredient.product.macro.calories ?? 0,

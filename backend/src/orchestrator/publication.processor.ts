@@ -3,6 +3,7 @@ import type { PrismaClient } from "@prisma/client";
 import { assert, safeId } from "./utils.js";
 import { AtomProcessor } from "./atom.processor.js";
 import { ContentProcessor } from "./content.processor.js";
+import winkler from "jaro-winkler";
 
 export class PublicationProcessor {
   private atomProcessor: AtomProcessor;
@@ -45,7 +46,6 @@ export class PublicationProcessor {
     const ctx = "updatePublication";
     assert(pub?.publication_id, "Missing publication_id for update", ctx, "publication_id", pub);
 
-    // For a full update, relationships are cleared and recreated.
     await this.tx.publication_tag.deleteMany({ where: { publication_id: pub.publication_id } });
     
     const contentsToDelete = await this.tx.content.findMany({
@@ -84,63 +84,108 @@ export class PublicationProcessor {
   }
   
   private async processRelations(publication_id: string, pub: any, isUpdate: boolean = false) {
-    const contents = pub.contents || [];
-    const recipeDefinitionContents = contents.filter((c: any) => c.is_ingredient === true);
-    const mainContents = contents.filter((c: any) => !c.is_ingredient);
-  
-    // 1. Pre-generate UUIDs for all sub-recipes
-    const subRecipeIdMap = new Map<string, string>();
-    for (const recipeContent of recipeDefinitionContents) {
-        assert(recipeContent.subtitle, "Content with is_ingredient=true must have a subtitle", "processRelations");
-        subRecipeIdMap.set(recipeContent.subtitle, uuidv4());
-    }
+  const contents = pub.contents || [];
+  const subRecipeContents = contents.filter((c: any) => c.is_ingredient === true);
+  const mainContents = contents.filter((c: any) => !c.is_ingredient);
 
-    // 2. Inject these pre-generated IDs into the main payload's products before any processing
-    for (const content of pub.contents) {
-        if (Array.isArray(content.content_ingredients)) {
-            for (const ingredient of content.content_ingredients) {
-                const productName = ingredient.product?.name;
-                if (productName && subRecipeIdMap.has(productName)) {
-                    // This is the crucial step: linking before insertion
-                    ingredient.product.is_recipe_id = subRecipeIdMap.get(productName);
-                }
-            }
-        }
-    }
+  console.log(`[PublicationProcessor] Processing publication '${pub.title}' (${publication_id})`);
+  console.log(`[PublicationProcessor] Found ${subRecipeContents.length} sub-recipes, ${mainContents.length} main contents`);
 
-    // 3. Process sub-recipes using their pre-generated IDs
-    for (const recipeContent of recipeDefinitionContents) {
-      const subRecipeTitle = recipeContent.subtitle!;
-      const subRecipeId = subRecipeIdMap.get(subRecipeTitle);
+  const subRecipePublications: Array<{ title: string; id: string }> = [];
 
-      const subPublicationPayload = {
-        publication_id: subRecipeId, // Use the pre-generated ID
-        title: subRecipeTitle,
-        public: pub.public,
-        published: pub.published,
-        author: pub.author,
-        type: { str_value: 'Recette', type: 'Type' },
-        contents: [{ ...recipeContent, is_ingredient: false }]
-      };
-      
-      // Create the sub-publication. It will now have the predictable ID.
-      await new PublicationProcessor(this.tx).create(subPublicationPayload);
-    }
+  // Création des sous-recettes
+  for (const [index, recipeContent] of subRecipeContents.entries()) {
+    assert(recipeContent.subtitle, "Content with is_ingredient=true must have a subtitle", "processRelations");
+    
+    const subRecipeId = uuidv4();
+    const subRecipeTitle = recipeContent.subtitle;
+    
+    console.log(`[PublicationProcessor] Creating sub-recipe ${index + 1}/${subRecipeContents.length}: '${subRecipeTitle}' (${subRecipeId})`);
 
-    // 4. Process main tags
-    if (Array.isArray(pub.tags)) {
-      for (const [i, tag] of pub.tags.entries()) {
-        const tagId = await this.atomProcessor.processCategory(tag, "Tag", `tags[${i}]`);
-        if (tagId) {
-          await this.tx.publication_tag.create({ data: { publication_id, category_id: tagId } });
+    const subPublicationPayload = {
+      publication_id: subRecipeId,
+      title: subRecipeTitle,
+      public: pub.public,
+      published: pub.published,
+      author: pub.author,
+      type: { str_value: 'Recette', type: 'Type' },
+      contents: [{ ...recipeContent, is_ingredient: false }]
+    };
+
+    await new PublicationProcessor(this.tx).create(subPublicationPayload);
+    subRecipePublications.push({ title: subRecipeTitle, id: subRecipeId });
+  }
+
+  console.log(`[PublicationProcessor] Created ${subRecipePublications.length} sub-recipe publications`);
+
+  // Matching logique
+  const THRESHOLD = 0.85;
+  const matches: Array<{ subRecipe: string; product: string | null; score: number; forced: boolean }> = [];
+
+  for (const subRecipe of subRecipePublications) {
+    let bestMatch: { ingredient: any; score: number } | null = null;
+
+    for (const content of mainContents) {
+      if (Array.isArray(content.content_ingredients)) {
+        for (const ingredient of content.content_ingredients) {
+          const productName = ingredient.product?.name;
+          if (!productName) continue;
+
+          const score = winkler(
+            productName.toLowerCase().trim(),
+            subRecipe.title.toLowerCase().trim()
+          );
+
+          console.log(`[PublicationProcessor] Score '${productName}' vs '${subRecipe.title}' = ${score.toFixed(3)}`);
+
+          if (!bestMatch || score > bestMatch.score) {
+            bestMatch = { ingredient, score };
+          }
         }
       }
     }
-  
-    // 5. Process only the main contents for the current publication
-    for (const [i, content] of mainContents.entries()) {
-        await this.contentProcessor.process(content, publication_id, `contents[${i}]`);
+
+    if (bestMatch) {
+      if (!bestMatch.ingredient.product) bestMatch.ingredient.product = {};
+      bestMatch.ingredient.product.is_recipe_id = subRecipe.id;
+
+      const forced = bestMatch.score < THRESHOLD;
+      matches.push({
+        subRecipe: subRecipe.title,
+        product: bestMatch.ingredient.product?.name ?? null,
+        score: bestMatch.score,
+        forced
+      });
+
+      if (forced) {
+        console.log(`[PublicationProcessor] Sub-recipe '${subRecipe.title}' forced match with product '${bestMatch.ingredient.product?.name}' (score: ${bestMatch.score.toFixed(3)}, below threshold)`);
+      } else {
+        console.log(`[PublicationProcessor] Sub-recipe '${subRecipe.title}' matched with product '${bestMatch.ingredient.product?.name}' (score: ${bestMatch.score.toFixed(3)}, above threshold)`);
+      }
+    } else {
+      matches.push({ subRecipe: subRecipe.title, product: null, score: 0, forced: true });
+      console.log(`[PublicationProcessor] Sub-recipe '${subRecipe.title}' has no product candidates, forced unmatched`);
     }
   }
+
+  console.log(`[PublicationProcessor] Completed matching. Results:`, matches);
+
+  // Tags
+  if (Array.isArray(pub.tags)) {
+    for (const [i, tag] of pub.tags.entries()) {
+      const tagId = await this.atomProcessor.processCategory(tag, "Tag", `tags[${i}]`);
+      if (tagId) {
+        await this.tx.publication_tag.create({ data: { publication_id, category_id: tagId } });
+      }
+    }
+  }
+
+  // Main contents processing
+  for (const [i, content] of mainContents.entries()) {
+    await this.contentProcessor.process(content, publication_id, `contents[${i}]`);
+  }
+
+  console.log(`[PublicationProcessor] Completed processing for publication '${pub.title}'`);
 }
 
+}

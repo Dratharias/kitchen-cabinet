@@ -68,7 +68,7 @@ export interface PrepTime extends PrepTimePayload {
 
 export interface ProductPayload {
   name: string;
-  is_recipe?: boolean;
+  is_recipe_id?: string | null;
   macro_id?: string | null;
   macro?: MacroPayload | null; // For connect/create operations
 }

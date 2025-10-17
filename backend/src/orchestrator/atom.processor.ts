@@ -1,11 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
-import type { PrismaClient } from "@prisma/client";
+import type { Prisma, PrismaClient } from "@prisma/client";
+import { Prisma as PrismaNS } from "@prisma/client";
 import { assert, safeId } from "./utils.js";
 
-/**
- * Handles the creation and lookup of atomic, reusable entities like
- * categories, products, units, etc.
- */
 export class AtomProcessor {
   constructor(private tx: PrismaClient) {}
 
@@ -48,37 +45,36 @@ export class AtomProcessor {
       macro_id = await this.processMacro(prod.macro, `${path}.macro`);
     }
     
-    // The is_recipe_id is now part of the product data from the start
     const is_recipe_id = prod.is_recipe_id ?? null;
 
-    const existing = await this.tx.product.findUnique({ where: { name } });
+    const product = await this.tx.product.upsert({
+      where: { name },
+      create: {
+        product_id: uuidv4(),
+        name,
+        macro_id,
+        is_recipe_id,
+      },
+      update: {},
+    });
+
+    const updateData: { macro_id?: string | null; is_recipe_id?: string | null } = {};
     
-    if (existing) {
-        // Data to update if the product already exists
-        const updateData: { macro_id?: string | null; is_recipe_id?: string | null } = {};
-        if (macro_id && !existing.macro_id) {
-            updateData.macro_id = macro_id;
-        }
-        if (is_recipe_id && existing.is_recipe_id !== is_recipe_id) {
-            updateData.is_recipe_id = is_recipe_id;
-        }
-        if (Object.keys(updateData).length > 0) {
-            await this.tx.product.update({ where: { product_id: existing.product_id }, data: updateData });
-        }
-        return existing.product_id;
+    if (macro_id && !product.macro_id) {
+      updateData.macro_id = macro_id;
+      console.log(`[AtomProcessor] Updating product '${name}' with macro_id: ${macro_id}`);
+    }
+    
+    if (is_recipe_id && product.is_recipe_id !== is_recipe_id) {
+      updateData.is_recipe_id = is_recipe_id;
+      console.log(`[AtomProcessor] Linking product '${name}' to sub-recipe: ${is_recipe_id}`);
     }
 
-    // Data for creating a new product
-    return (
-      await this.tx.product.create({
-        data: {
-          product_id: uuidv4(),
-          name,
-          macro_id,
-          is_recipe_id, // Include it here
-        },
-      })
-    ).product_id;
+    if (Object.keys(updateData).length > 0) {
+      await this.tx.product.update({ where: { product_id: product.product_id }, data: updateData });
+    }
+
+    return product.product_id;
   }
 
   async processMacro(macro: any, path: string): Promise<string> {
@@ -225,4 +221,3 @@ export class AtomProcessor {
     return undefined;
   }
 }
-
