@@ -4,10 +4,13 @@ import { useEffect, useState, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { PublicationsService } from "../../services/publications";
 import { useAuthStore } from "../../stores/authStore";
-import type { Publication, PublicationPayload } from "../../types";
+import type {
+  Publication,
+  PublicationPayload,
+  OrchestratorPayload,
+} from "../../types";
 import { OrchestratorService } from "../../services/orchestrator";
 import toast from "react-hot-toast";
-import { PayloadBuilder } from "../../services/payloadBuilder";
 
 const publicationCache = new Map<string, Publication>();
 
@@ -38,18 +41,32 @@ export function usePublicationView() {
       if (fields.description && typeof fields.description === "string") {
         fields.description = fields.description.split("\n");
       }
-      return { action: "update", payload: { [resourceType]: { [id]: fields } } };
+      return {
+        action: "update",
+        payload: { [resourceType]: { [id]: fields } },
+      };
     },
     [],
   );
 
   const buildStructuralPayload = useCallback(
-    (action: "create" | "delete", resourceType: string, resourceId: string, data?: any): any => {
+    (
+      action: "create" | "delete",
+      resourceType: string,
+      resourceId: string,
+      data?: any,
+    ): any => {
       if (action === "delete") {
-        return { action: "delete", payload: { [resourceType]: { [resourceId]: null } } };
+        return {
+          action: "delete",
+          payload: { [resourceType]: { [resourceId]: null } },
+        };
       }
       if (action === "create" && data) {
-        return { action: "create", payload: { [resourceType]: { [resourceId]: data } } };
+        return {
+          action: "create",
+          payload: { [resourceType]: { [`new_${Date.now()}`]: data } },
+        };
       }
       return null;
     },
@@ -60,11 +77,11 @@ export function usePublicationView() {
     async (payload: any, successMessage: string) => {
       if (!isAuthenticated) {
         toast.error("Authentification requise.");
-        return false;
+        return null;
       }
       if (!payload) {
         toast.error("Opération invalide.");
-        return false;
+        return null;
       }
 
       try {
@@ -76,11 +93,14 @@ export function usePublicationView() {
             error: (err) => `Échec: ${err.message || "Erreur interne"}`,
           },
         );
-        forceReload();
-        return response.success ?? false;
+        if (response.success) {
+          forceReload();
+          return response.results;
+        }
+        return null;
       } catch (error) {
         console.error("Échec de la mutation orchestrée:", error);
-        return false;
+        return null;
       }
     },
     [isAuthenticated, forceReload],
@@ -88,7 +108,7 @@ export function usePublicationView() {
 
   const updatePublicationField = useCallback(
     async (fields: SimpleUpdatePayload) => {
-      if (!publication?.publication_id) return false;
+      if (!publication?.publication_id) return null;
       const payload = buildMicroUpdatePayload(
         "publications",
         publication.publication_id,
@@ -102,15 +122,21 @@ export function usePublicationView() {
   const updateContentField = useCallback(
     async (contentId: string, fields: SimpleUpdatePayload) => {
       const payload = buildMicroUpdatePayload("contents", contentId, fields);
-      return executeMutation(payload, "Contenu mis à jour !");
+      const results = await executeMutation(payload, "Contenu mis à jour !");
+      return results?.[contentId] || null;
     },
     [buildMicroUpdatePayload, executeMutation],
   );
 
   const updateIngredientFields = useCallback(
     async (ingredientId: string, fields: any) => {
-      const payload = buildMicroUpdatePayload("ingredients", ingredientId, fields);
-      return executeMutation(payload, "Ingrédient mis à jour !");
+      const payload = buildMicroUpdatePayload(
+        "ingredients",
+        ingredientId,
+        fields,
+      );
+      const results = await executeMutation(payload, "Ingrédient mis à jour !");
+      return results?.[ingredientId] || null;
     },
     [buildMicroUpdatePayload, executeMutation],
   );
@@ -118,7 +144,8 @@ export function usePublicationView() {
   const updateSegmentFields = useCallback(
     async (segmentId: string, fields: any) => {
       const payload = buildMicroUpdatePayload("segments", segmentId, fields);
-      return executeMutation(payload, "Étape mise à jour !");
+      const results = await executeMutation(payload, "Étape mise à jour !");
+      return results?.[segmentId] || null;
     },
     [buildMicroUpdatePayload, executeMutation],
   );
@@ -144,15 +171,20 @@ export function usePublicationView() {
 
   const deleteIngredient = useCallback(
     async (ingredientId: string) => {
-      const payload = buildStructuralPayload("delete", "ingredients", ingredientId);
-      return executeMutation(payload, "Ingrédient supprimé.");
+      const payload = buildStructuralPayload(
+        "delete",
+        "ingredients",
+        ingredientId,
+      );
+      const results = await executeMutation(payload, "Ingrédient supprimé.");
+      return results?.[ingredientId]?.deleted || false;
     },
     [buildStructuralPayload, executeMutation],
   );
 
   const addSegment = useCallback(
     async (contentId: string, fields: any) => {
-       const payload = {
+      const payload = {
         action: "update",
         payload: {
           contents: {
@@ -172,32 +204,45 @@ export function usePublicationView() {
   const deleteSegment = useCallback(
     async (segmentId: string) => {
       const payload = buildStructuralPayload("delete", "segments", segmentId);
-      return executeMutation(payload, "Étape supprimée.");
+      const results = await executeMutation(payload, "Étape supprimée.");
+      return results?.[segmentId]?.deleted || false;
     },
     [buildStructuralPayload, executeMutation],
   );
 
   const updatePublication = useCallback(
-    async (publicationData: PublicationPayload) => {
+    async (formData: any) => {
       if (!publication?.publication_id) return false;
-  
-      const payloadBuilder = new PayloadBuilder();
-      const payload = payloadBuilder.build(
-        "update",
-        publication.publication_id,
-        publicationData,
-        publication,
+
+      // Construire manuellement le payload pour garantir l'intégrité des données
+      const publicationPayload: PublicationPayload = {
+        ...formData,
+        publication_id: publication.publication_id,
+        description: Array.isArray(formData.description)
+          ? formData.description
+          : formData.description.split("\n"),
+        note: Array.isArray(formData.note)
+          ? formData.note
+          : formData.note.split("\n"),
+      };
+
+      const orchestratorPayload: OrchestratorPayload = {
+        action: "update",
+        payload: {
+          publications: {
+            [publication.publication_id]: publicationPayload,
+          },
+        },
+      };
+
+      const results = await executeMutation(
+        orchestratorPayload,
+        "Publication mise à jour !",
       );
-  
-      if (payload.payload.publications[publication.publication_id]) {
-        (payload.payload.publications[publication.publication_id] as Publication).publication_id = publication.publication_id;
-      }
-  
-      return executeMutation(payload, "Publication mise à jour !");
+      return !!results;
     },
     [publication, executeMutation],
   );
-  
 
   const fetchPublication = useCallback(async () => {
     if (!id) {
@@ -240,6 +285,12 @@ export function usePublicationView() {
     setCheckedItems((prev) => ({ ...prev, [key]: !prev[key] }));
   }, []);
 
+  const setLocalPublication = (
+    updater: (prev: Publication | null) => Publication | null,
+  ) => {
+    setPublication(updater);
+  };
+
   return {
     publication,
     loading,
@@ -257,5 +308,6 @@ export function usePublicationView() {
     deleteIngredient,
     addSegment,
     deleteSegment,
+    setLocalPublication,
   };
 }

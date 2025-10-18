@@ -28,13 +28,49 @@
           "total_prep_time": 7205,
           "servings": { "yield": 250, "value": "ml" },
           "content_ingredients": [
-            { "quantity": 250, "product": { "name": "eau non chlorée" }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 50, "product": { "name": "gingembre frais bio haché (avec la peau)" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 50, "product": { "name": "sucre blanc" }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 250,
+              "product": { "name": "eau non chlorée" },
+              "ingredient_units": [{ "unit": { "name": "ml" } }]
+            },
+            {
+              "quantity": 50,
+              "product": { "name": "gingembre frais bio haché (avec la peau)" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 50,
+              "product": { "name": "sucre blanc" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "title": "Activation", "paragraph": "Dans un bocal en verre, mélanger l'eau, le gingembre haché et le sucre. Couvrir avec un tissu respirant maintenu par un élastique.", "segment_prep_time": [{ "duration": 5, "style": { "str_value": "Préparation", "type": "PrepTime" } }] } },
-            { "position": 2, "segment": { "title": "Nourrissage", "paragraph": "Chaque jour, ajouter 10g de gingembre haché et 10g de sucre, puis remuer. Le levain est prêt lorsqu'il est visiblement pétillant et actif, généralement après 3 à 7 jours à une température ambiante de 20-25°C.", "segment_prep_time": [{ "duration": 7200, "style": { "str_value": "Fermentation", "type": "PrepTime" } }] } }
+            {
+              "position": 1,
+              "segment": {
+                "title": "Activation",
+                "paragraph": "Dans un bocal en verre, mélanger l'eau, le gingembre haché et le sucre. Couvrir avec un tissu respirant maintenu par un élastique.",
+                "segment_prep_time": [
+                  {
+                    "duration": 5,
+                    "style": { "str_value": "Préparation", "type": "PrepTime" }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "title": "Nourrissage",
+                "paragraph": "Chaque jour, ajouter 10g de gingembre haché et 10g de sucre, puis remuer. Le levain est prêt lorsqu'il est visiblement pétillant et actif, généralement après 3 à 7 jours à une température ambiante de 20-25°C.",
+                "segment_prep_time": [
+                  {
+                    "duration": 7200,
+                    "style": { "str_value": "Fermentation", "type": "PrepTime" }
+                  }
+                ]
+              }
+            }
           ]
         },
         {
@@ -43,13 +79,49 @@
           "total_prep_time": 7205,
           "servings": { "yield": 200, "value": "ml" },
           "content_ingredients": [
-            { "quantity": 200, "product": { "name": "eau non chlorée" }, "ingredient_units": [{ "unit": { "name": "ml" } }] },
-            { "quantity": 25, "product": { "name": "fruits bio (fraises, bleuets, framboises)" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 20, "product": { "name": "sucre blanc" }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 200,
+              "product": { "name": "eau non chlorée" },
+              "ingredient_units": [{ "unit": { "name": "ml" } }]
+            },
+            {
+              "quantity": 25,
+              "product": {
+                "name": "fruits bio (fraises, bleuets, framboises)"
+              },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 20,
+              "product": { "name": "sucre blanc" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "Écraser légèrement les fruits et les placer dans un bocal avec l'eau et le sucre. Couvrir avec un tissu respirant.", "segment_prep_time": [{ "duration": 5, "style": { "str_value": "Préparation", "type": "PrepTime" } }] } },
-            { "position": 2, "segment": { "paragraph": "Remuer deux fois par jour. Le levain est prêt lorsque le liquide pétille et qu'une odeur de fermentation agréable se dégage. Filtrer les fruits avant utilisation. La température idéale est de 20-25°C.", "segment_prep_time": [{ "duration": 7200, "style": { "str_value": "Fermentation", "type": "PrepTime" } }] } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Écraser légèrement les fruits et les placer dans un bocal avec l'eau et le sucre. Couvrir avec un tissu respirant.",
+                "segment_prep_time": [
+                  {
+                    "duration": 5,
+                    "style": { "str_value": "Préparation", "type": "PrepTime" }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Remuer deux fois par jour. Le levain est prêt lorsque le liquide pétille et qu'une odeur de fermentation agréable se dégage. Filtrer les fruits avant utilisation. La température idéale est de 20-25°C.",
+                "segment_prep_time": [
+                  {
+                    "duration": 7200,
+                    "style": { "str_value": "Fermentation", "type": "PrepTime" }
+                  }
+                ]
+              }
+            }
           ]
         },
         {
@@ -57,15 +129,71 @@
           "total_prep_time": 4370,
           "servings": { "yield": 1, "value": "litre" },
           "content_ingredients": [
-            { "quantity": 1, "product": { "name": "eau" }, "ingredient_units": [{ "unit": { "name": "l" } }] },
-            { "quantity": 30, "product": { "name": "gingembre frais râpé" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 90, "product": { "name": "sucre" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 50, "product": { "name": "Levain de Gingembre (filtré)" }, "ingredient_units": [{ "unit": { "name": "ml" } }] }
+            {
+              "quantity": 1,
+              "product": { "name": "eau" },
+              "ingredient_units": [{ "unit": { "name": "l" } }]
+            },
+            {
+              "quantity": 30,
+              "product": { "name": "gingembre frais râpé" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 90,
+              "product": { "name": "sucre" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 50,
+              "product": { "name": "Levain de Gingembre (filtré)" },
+              "ingredient_units": [{ "unit": { "name": "ml" } }]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "Dans une casserole, faire mijoter l'eau, le gingembre et le sucre pendant 5 minutes. Retirer du feu et filtrer pour enlever les solides.", "segment_prep_time": [{ "duration": 10, "style": { "str_value": "Infusion", "type": "PrepTime" } }] } },
-            { "position": 2, "segment": { "paragraph": "Laisser le liquide refroidir complètement jusqu'à atteindre la température ambiante (environ 20-25°C). Un liquide trop chaud tuerait les levures sauvages.", "segment_prep_time": [{ "duration": 30, "style": { "str_value": "Refroidissement", "type": "PrepTime" } }] } },
-            { "position": 3, "segment": { "paragraph": "Ajouter le levain de gingembre actif. Embouteiller dans des bouteilles résistantes à la pression et laisser fermenter à température ambiante pendant 2 à 4 jours. Réfrigérer lorsque le niveau de carbonatation souhaité est atteint.", "segment_prep_time": [{ "duration": 5, "style": { "str_value": "Assemblage", "type": "PrepTime" } }, {"duration": 4320, "style": { "str_value": "Fermentation", "type": "PrepTime" }}] } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Dans une casserole, faire mijoter l'eau, le gingembre et le sucre pendant 5 minutes. Retirer du feu et filtrer pour enlever les solides.",
+                "segment_prep_time": [
+                  {
+                    "duration": 10,
+                    "style": { "str_value": "Infusion", "type": "PrepTime" }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Laisser le liquide refroidir complètement jusqu'à atteindre la température ambiante (environ 20-25°C). Un liquide trop chaud tuerait les levures sauvages.",
+                "segment_prep_time": [
+                  {
+                    "duration": 30,
+                    "style": {
+                      "str_value": "Refroidissement",
+                      "type": "PrepTime"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "paragraph": "Ajouter le levain de gingembre actif. Embouteiller dans des bouteilles résistantes à la pression et laisser fermenter à température ambiante pendant 2 à 4 jours. Réfrigérer lorsque le niveau de carbonatation souhaité est atteint.",
+                "segment_prep_time": [
+                  {
+                    "duration": 5,
+                    "style": { "str_value": "Assemblage", "type": "PrepTime" }
+                  },
+                  {
+                    "duration": 4320,
+                    "style": { "str_value": "Fermentation", "type": "PrepTime" }
+                  }
+                ]
+              }
+            }
           ]
         },
         {
@@ -73,15 +201,71 @@
           "total_prep_time": 2930,
           "servings": { "yield": 1, "value": "litre" },
           "content_ingredients": [
-            { "quantity": 1, "product": { "name": "eau" }, "ingredient_units": [{ "unit": { "name": "l" } }] },
-            { "quantity": 30, "product": { "name": "gingembre râpé" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 90, "product": { "name": "sucre" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 0.5, "product": { "name": "levure de bière (ex: Safale US-05)" }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 1,
+              "product": { "name": "eau" },
+              "ingredient_units": [{ "unit": { "name": "l" } }]
+            },
+            {
+              "quantity": 30,
+              "product": { "name": "gingembre râpé" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 90,
+              "product": { "name": "sucre" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 0.5,
+              "product": { "name": "levure de bière (ex: Safale US-05)" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "Suivre la même procédure que la version maison pour l'infusion et le filtrage.", "segment_prep_time": [{ "duration": 10, "style": { "str_value": "Infusion", "type": "PrepTime" } }] } },
-            { "position": 2, "segment": { "paragraph": "Refroidir le liquide à la température de fermentation idéale pour la levure utilisée, soit environ 20-22°C. Ceci est crucial pour une fermentation propre.", "segment_prep_time": [{ "duration": 30, "style": { "str_value": "Refroidissement", "type": "PrepTime" } }] } },
-            { "position": 3, "segment": { "paragraph": "Ajouter la levure réhydratée (si nécessaire). Embouteiller et laisser fermenter à 20-22°C pendant 2 à 3 jours. Réfrigérer pour arrêter la fermentation.", "segment_prep_time": [{ "duration": 5, "style": { "str_value": "Assemblage", "type": "PrepTime" } }, {"duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" }}] } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Suivre la même procédure que la version maison pour l'infusion et le filtrage.",
+                "segment_prep_time": [
+                  {
+                    "duration": 10,
+                    "style": { "str_value": "Infusion", "type": "PrepTime" }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Refroidir le liquide à la température de fermentation idéale pour la levure utilisée, soit environ 20-22°C. Ceci est crucial pour une fermentation propre.",
+                "segment_prep_time": [
+                  {
+                    "duration": 30,
+                    "style": {
+                      "str_value": "Refroidissement",
+                      "type": "PrepTime"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "paragraph": "Ajouter la levure réhydratée (si nécessaire). Embouteiller et laisser fermenter à 20-22°C pendant 2 à 3 jours. Réfrigérer pour arrêter la fermentation.",
+                "segment_prep_time": [
+                  {
+                    "duration": 5,
+                    "style": { "str_value": "Assemblage", "type": "PrepTime" }
+                  },
+                  {
+                    "duration": 2880,
+                    "style": { "str_value": "Fermentation", "type": "PrepTime" }
+                  }
+                ]
+              }
+            }
           ]
         },
         {
@@ -89,15 +273,71 @@
           "total_prep_time": 2935,
           "servings": { "yield": 1, "value": "litre" },
           "content_ingredients": [
-            { "quantity": 1, "product": { "name": "eau" }, "ingredient_units": [{ "unit": { "name": "l" } }] },
-            { "quantity": 10, "product": { "name": "fleurs séchées (lavande, rose, hibiscus)" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 80, "product": { "name": "sucre" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 100, "product": { "name": "Levain de Fruits (filtré)" }, "ingredient_units": [{ "unit": { "name": "ml" } }] }
+            {
+              "quantity": 1,
+              "product": { "name": "eau" },
+              "ingredient_units": [{ "unit": { "name": "l" } }]
+            },
+            {
+              "quantity": 10,
+              "product": { "name": "fleurs séchées (lavande, rose, hibiscus)" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 80,
+              "product": { "name": "sucre" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 100,
+              "product": { "name": "Levain de Fruits (filtré)" },
+              "ingredient_units": [{ "unit": { "name": "ml" } }]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "Faire chauffer l'eau sans la faire bouillir (environ 80°C). Retirer du feu, ajouter les fleurs séchées et laisser infuser 10 minutes. Filtrer, puis dissoudre le sucre.", "segment_prep_time": [{ "duration": 15, "style": { "str_value": "Infusion", "type": "PrepTime" } }] } },
-            { "position": 2, "segment": { "paragraph": "Laisser le liquide refroidir complètement jusqu'à température ambiante (20-25°C).", "segment_prep_time": [{ "duration": 30, "style": { "str_value": "Refroidissement", "type": "PrepTime" } }] } },
-            { "position": 3, "segment": { "paragraph": "Incorporer le levain de fruits. Embouteiller et laisser fermenter 2 à 3 jours à température ambiante. Réfrigérer.", "segment_prep_time": [{ "duration": 5, "style": { "str_value": "Assemblage", "type": "PrepTime" } }, {"duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" }}] } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Faire chauffer l'eau sans la faire bouillir (environ 80°C). Retirer du feu, ajouter les fleurs séchées et laisser infuser 10 minutes. Filtrer, puis dissoudre le sucre.",
+                "segment_prep_time": [
+                  {
+                    "duration": 15,
+                    "style": { "str_value": "Infusion", "type": "PrepTime" }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Laisser le liquide refroidir complètement jusqu'à température ambiante (20-25°C).",
+                "segment_prep_time": [
+                  {
+                    "duration": 30,
+                    "style": {
+                      "str_value": "Refroidissement",
+                      "type": "PrepTime"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "paragraph": "Incorporer le levain de fruits. Embouteiller et laisser fermenter 2 à 3 jours à température ambiante. Réfrigérer.",
+                "segment_prep_time": [
+                  {
+                    "duration": 5,
+                    "style": { "str_value": "Assemblage", "type": "PrepTime" }
+                  },
+                  {
+                    "duration": 2880,
+                    "style": { "str_value": "Fermentation", "type": "PrepTime" }
+                  }
+                ]
+              }
+            }
           ]
         },
         {
@@ -105,15 +345,71 @@
           "total_prep_time": 2930,
           "servings": { "yield": 1, "value": "litre" },
           "content_ingredients": [
-            { "quantity": 1, "product": { "name": "eau" }, "ingredient_units": [{ "unit": { "name": "l" } }] },
-            { "quantity": 10, "product": { "name": "fleurs séchées" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 80, "product": { "name": "sucre" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 0.5, "product": { "name": "levure de bière (ex: Safale US-05)" }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 1,
+              "product": { "name": "eau" },
+              "ingredient_units": [{ "unit": { "name": "l" } }]
+            },
+            {
+              "quantity": 10,
+              "product": { "name": "fleurs séchées" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 80,
+              "product": { "name": "sucre" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 0.5,
+              "product": { "name": "levure de bière (ex: Safale US-05)" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "Suivre la même procédure que la version maison pour l'infusion.", "segment_prep_time": [{ "duration": 15, "style": { "str_value": "Infusion", "type": "PrepTime" } }] } },
-            { "position": 2, "segment": { "paragraph": "Refroidir l'infusion à la température de fermentation de la levure (20-22°C).", "segment_prep_time": [{ "duration": 30, "style": { "str_value": "Refroidissement", "type": "PrepTime" } }] } },
-            { "position": 3, "segment": { "paragraph": "Ajouter la levure. Embouteiller et laisser fermenter à 20-22°C pendant 2 à 3 jours. Réfrigérer.", "segment_prep_time": [{ "duration": 5, "style": { "str_value": "Assemblage", "type": "PrepTime" } }, {"duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" }}] } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Suivre la même procédure que la version maison pour l'infusion.",
+                "segment_prep_time": [
+                  {
+                    "duration": 15,
+                    "style": { "str_value": "Infusion", "type": "PrepTime" }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Refroidir l'infusion à la température de fermentation de la levure (20-22°C).",
+                "segment_prep_time": [
+                  {
+                    "duration": 30,
+                    "style": {
+                      "str_value": "Refroidissement",
+                      "type": "PrepTime"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "paragraph": "Ajouter la levure. Embouteiller et laisser fermenter à 20-22°C pendant 2 à 3 jours. Réfrigérer.",
+                "segment_prep_time": [
+                  {
+                    "duration": 5,
+                    "style": { "str_value": "Assemblage", "type": "PrepTime" }
+                  },
+                  {
+                    "duration": 2880,
+                    "style": { "str_value": "Fermentation", "type": "PrepTime" }
+                  }
+                ]
+              }
+            }
           ]
         },
         {
@@ -121,11 +417,39 @@
           "total_prep_time": 10085,
           "servings": { "yield": 1, "value": "litre" },
           "content_ingredients": [
-            { "quantity": 1, "product": { "name": "jus de pomme frais, non pasteurisé et sans additifs" }, "ingredient_units": [{ "unit": { "name": "l" } }] }
+            {
+              "quantity": 1,
+              "product": {
+                "name": "jus de pomme frais, non pasteurisé et sans additifs"
+              },
+              "ingredient_units": [{ "unit": { "name": "l" } }]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "Verser le jus de pomme dans une bouteille résistante à la pression, en remplissant aux 4/5. Fermer hermétiquement.", "segment_prep_time": [{ "duration": 5, "style": { "str_value": "Préparation", "type": "PrepTime" } }] } },
-            { "position": 2, "segment": { "paragraph": "Laisser fermenter à température ambiante (18-22°C) pendant 5 à 10 jours. Les levures sauvages présentes naturellement dans le jus feront le travail. Dégazer prudemment chaque jour. Réfrigérer pour stopper la fermentation quand le goût vous convient.", "segment_prep_time": [{ "duration": 10080, "style": { "str_value": "Fermentation", "type": "PrepTime" } }] } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Verser le jus de pomme dans une bouteille résistante à la pression, en remplissant aux 4/5. Fermer hermétiquement.",
+                "segment_prep_time": [
+                  {
+                    "duration": 5,
+                    "style": { "str_value": "Préparation", "type": "PrepTime" }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Laisser fermenter à température ambiante (18-22°C) pendant 5 à 10 jours. Les levures sauvages présentes naturellement dans le jus feront le travail. Dégazer prudemment chaque jour. Réfrigérer pour stopper la fermentation quand le goût vous convient.",
+                "segment_prep_time": [
+                  {
+                    "duration": 10080,
+                    "style": { "str_value": "Fermentation", "type": "PrepTime" }
+                  }
+                ]
+              }
+            }
           ]
         },
         {
@@ -133,12 +457,44 @@
           "total_prep_time": 4325,
           "servings": { "yield": 1, "value": "litre" },
           "content_ingredients": [
-            { "quantity": 1, "product": { "name": "jus de pomme pasteurisé, sans conservateurs" }, "ingredient_units": [{ "unit": { "name": "l" } }] },
-            { "quantity": 0.5, "product": { "name": "levure à champagne ou à cidre" }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 1,
+              "product": {
+                "name": "jus de pomme pasteurisé, sans conservateurs"
+              },
+              "ingredient_units": [{ "unit": { "name": "l" } }]
+            },
+            {
+              "quantity": 0.5,
+              "product": { "name": "levure à champagne ou à cidre" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "S'assurer que le jus de pomme est à une température de 20-22°C. Verser dans un contenant désinfecté et ajouter la levure.", "segment_prep_time": [{ "duration": 5, "style": { "str_value": "Préparation", "type": "PrepTime" } }] } },
-            { "position": 2, "segment": { "paragraph": "Embouteiller et laisser fermenter à 20-22°C pendant 2 à 5 jours, en surveillant la pression. Réfrigérer pour arrêter la fermentation et clarifier.", "segment_prep_time": [{ "duration": 4320, "style": { "str_value": "Fermentation", "type": "PrepTime" } }] } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "S'assurer que le jus de pomme est à une température de 20-22°C. Verser dans un contenant désinfecté et ajouter la levure.",
+                "segment_prep_time": [
+                  {
+                    "duration": 5,
+                    "style": { "str_value": "Préparation", "type": "PrepTime" }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Embouteiller et laisser fermenter à 20-22°C pendant 2 à 5 jours, en surveillant la pression. Réfrigérer pour arrêter la fermentation et clarifier.",
+                "segment_prep_time": [
+                  {
+                    "duration": 4320,
+                    "style": { "str_value": "Fermentation", "type": "PrepTime" }
+                  }
+                ]
+              }
+            }
           ]
         },
         {
@@ -146,16 +502,76 @@
           "total_prep_time": 2920,
           "servings": { "yield": 1, "value": "litre" },
           "content_ingredients": [
-            { "quantity": 1, "product": { "name": "eau" }, "ingredient_units": [{ "unit": { "name": "l" } }] },
-            { "quantity": 100, "product": { "name": "fraises écrasées" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 1, "product": { "name": "citron (jus)" }, "ingredient_units": [{ "unit": { "name": "pièce" } }] },
-            { "quantity": 80, "product": { "name": "sucre" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 100, "product": { "name": "Levain de Fruits (filtré)" }, "ingredient_units": [{ "unit": { "name": "ml" } }] }
+            {
+              "quantity": 1,
+              "product": { "name": "eau" },
+              "ingredient_units": [{ "unit": { "name": "l" } }]
+            },
+            {
+              "quantity": 100,
+              "product": { "name": "fraises écrasées" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 1,
+              "product": { "name": "citron (jus)" },
+              "ingredient_units": [{ "unit": { "name": "pièce" } }]
+            },
+            {
+              "quantity": 80,
+              "product": { "name": "sucre" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 100,
+              "product": { "name": "Levain de Fruits (filtré)" },
+              "ingredient_units": [{ "unit": { "name": "ml" } }]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "Mélanger les fraises, le jus de citron, l'eau et le sucre. Chauffer légèrement si nécessaire pour dissoudre le sucre.", "segment_prep_time": [{ "duration": 5, "style": { "str_value": "Mélange", "type": "PrepTime" } }] } },
-            { "position": 2, "segment": { "paragraph": "Laisser refroidir à température ambiante (20-25°C).", "segment_prep_time": [{ "duration": 30, "style": { "str_value": "Refroidissement", "type": "PrepTime" } }] } },
-            { "position": 3, "segment": { "paragraph": "Ajouter le levain, embouteiller et fermenter 2 à 3 jours. Réfrigérer.", "segment_prep_time": [{ "duration": 5, "style": { "str_value": "Assemblage", "type": "PrepTime" } }, { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } }] } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Mélanger les fraises, le jus de citron, l'eau et le sucre. Chauffer légèrement si nécessaire pour dissoudre le sucre.",
+                "segment_prep_time": [
+                  {
+                    "duration": 5,
+                    "style": { "str_value": "Mélange", "type": "PrepTime" }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Laisser refroidir à température ambiante (20-25°C).",
+                "segment_prep_time": [
+                  {
+                    "duration": 30,
+                    "style": {
+                      "str_value": "Refroidissement",
+                      "type": "PrepTime"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "paragraph": "Ajouter le levain, embouteiller et fermenter 2 à 3 jours. Réfrigérer.",
+                "segment_prep_time": [
+                  {
+                    "duration": 5,
+                    "style": { "str_value": "Assemblage", "type": "PrepTime" }
+                  },
+                  {
+                    "duration": 2880,
+                    "style": { "str_value": "Fermentation", "type": "PrepTime" }
+                  }
+                ]
+              }
+            }
           ]
         },
         {
@@ -163,16 +579,76 @@
           "total_prep_time": 2920,
           "servings": { "yield": 1, "value": "litre" },
           "content_ingredients": [
-            { "quantity": 1, "product": { "name": "eau" }, "ingredient_units": [{ "unit": { "name": "l" } }] },
-            { "quantity": 100, "product": { "name": "fraises écrasées" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 1, "product": { "name": "citron (jus)" }, "ingredient_units": [{ "unit": { "name": "pièce" } }] },
-            { "quantity": 80, "product": { "name": "sucre" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 0.5, "product": { "name": "levure de bière (ex: Safale US-05)" }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 1,
+              "product": { "name": "eau" },
+              "ingredient_units": [{ "unit": { "name": "l" } }]
+            },
+            {
+              "quantity": 100,
+              "product": { "name": "fraises écrasées" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 1,
+              "product": { "name": "citron (jus)" },
+              "ingredient_units": [{ "unit": { "name": "pièce" } }]
+            },
+            {
+              "quantity": 80,
+              "product": { "name": "sucre" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 0.5,
+              "product": { "name": "levure de bière (ex: Safale US-05)" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "Même mélange que la version maison.", "segment_prep_time": [{ "duration": 5, "style": { "str_value": "Mélange", "type": "PrepTime" } }] } },
-            { "position": 2, "segment": { "paragraph": "Refroidir à 20-22°C avant d'ajouter la levure.", "segment_prep_time": [{ "duration": 30, "style": { "str_value": "Refroidissement", "type": "PrepTime" } }] } },
-            { "position": 3, "segment": { "paragraph": "Ajouter la levure, embouteiller et fermenter 2 à 3 jours. Réfrigérer.", "segment_prep_time": [{ "duration": 5, "style": { "str_value": "Assemblage", "type": "PrepTime" } }, { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } }] } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Même mélange que la version maison.",
+                "segment_prep_time": [
+                  {
+                    "duration": 5,
+                    "style": { "str_value": "Mélange", "type": "PrepTime" }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Refroidir à 20-22°C avant d'ajouter la levure.",
+                "segment_prep_time": [
+                  {
+                    "duration": 30,
+                    "style": {
+                      "str_value": "Refroidissement",
+                      "type": "PrepTime"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "paragraph": "Ajouter la levure, embouteiller et fermenter 2 à 3 jours. Réfrigérer.",
+                "segment_prep_time": [
+                  {
+                    "duration": 5,
+                    "style": { "str_value": "Assemblage", "type": "PrepTime" }
+                  },
+                  {
+                    "duration": 2880,
+                    "style": { "str_value": "Fermentation", "type": "PrepTime" }
+                  }
+                ]
+              }
+            }
           ]
         },
         {
@@ -180,15 +656,71 @@
           "total_prep_time": 2920,
           "servings": { "yield": 1, "value": "litre" },
           "content_ingredients": [
-            { "quantity": 1, "product": { "name": "eau" }, "ingredient_units": [{ "unit": { "name": "l" } }] },
-            { "quantity": 150, "product": { "name": "bleuets écrasés" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 80, "product": { "name": "sucre" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 100, "product": { "name": "Levain de Fruits (filtré)" }, "ingredient_units": [{ "unit": { "name": "ml" } }] }
+            {
+              "quantity": 1,
+              "product": { "name": "eau" },
+              "ingredient_units": [{ "unit": { "name": "l" } }]
+            },
+            {
+              "quantity": 150,
+              "product": { "name": "bleuets écrasés" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 80,
+              "product": { "name": "sucre" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 100,
+              "product": { "name": "Levain de Fruits (filtré)" },
+              "ingredient_units": [{ "unit": { "name": "ml" } }]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "Mélanger les bleuets, l'eau et le sucre.", "segment_prep_time": [{ "duration": 5, "style": { "str_value": "Mélange", "type": "PrepTime" } }] } },
-            { "position": 2, "segment": { "paragraph": "Refroidir à température ambiante (20-25°C).", "segment_prep_time": [{ "duration": 30, "style": { "str_value": "Refroidissement", "type": "PrepTime" } }] } },
-            { "position": 3, "segment": { "paragraph": "Ajouter le levain, fermenter 2-3 jours en bouteille, puis réfrigérer.", "segment_prep_time": [{ "duration": 5, "style": { "str_value": "Assemblage", "type": "PrepTime" } }, { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } }] } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Mélanger les bleuets, l'eau et le sucre.",
+                "segment_prep_time": [
+                  {
+                    "duration": 5,
+                    "style": { "str_value": "Mélange", "type": "PrepTime" }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Refroidir à température ambiante (20-25°C).",
+                "segment_prep_time": [
+                  {
+                    "duration": 30,
+                    "style": {
+                      "str_value": "Refroidissement",
+                      "type": "PrepTime"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "paragraph": "Ajouter le levain, fermenter 2-3 jours en bouteille, puis réfrigérer.",
+                "segment_prep_time": [
+                  {
+                    "duration": 5,
+                    "style": { "str_value": "Assemblage", "type": "PrepTime" }
+                  },
+                  {
+                    "duration": 2880,
+                    "style": { "str_value": "Fermentation", "type": "PrepTime" }
+                  }
+                ]
+              }
+            }
           ]
         },
         {
@@ -196,15 +728,71 @@
           "total_prep_time": 2920,
           "servings": { "yield": 1, "value": "litre" },
           "content_ingredients": [
-            { "quantity": 1, "product": { "name": "eau" }, "ingredient_units": [{ "unit": { "name": "l" } }] },
-            { "quantity": 150, "product": { "name": "bleuets écrasés" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 80, "product": { "name": "sucre" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 0.5, "product": { "name": "levure de bière (ex: Safale US-05)" }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 1,
+              "product": { "name": "eau" },
+              "ingredient_units": [{ "unit": { "name": "l" } }]
+            },
+            {
+              "quantity": 150,
+              "product": { "name": "bleuets écrasés" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 80,
+              "product": { "name": "sucre" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 0.5,
+              "product": { "name": "levure de bière (ex: Safale US-05)" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "Même base que la version maison.", "segment_prep_time": [{ "duration": 5, "style": { "str_value": "Mélange", "type": "PrepTime" } }] } },
-            { "position": 2, "segment": { "paragraph": "Refroidir à 20-22°C, ajouter la levure.", "segment_prep_time": [{ "duration": 30, "style": { "str_value": "Refroidissement", "type": "PrepTime" } }] } },
-            { "position": 3, "segment": { "paragraph": "Fermenter 2-3 jours, puis réfrigérer.", "segment_prep_time": [{ "duration": 5, "style": { "str_value": "Assemblage", "type": "PrepTime" } }, { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } }] } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Même base que la version maison.",
+                "segment_prep_time": [
+                  {
+                    "duration": 5,
+                    "style": { "str_value": "Mélange", "type": "PrepTime" }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Refroidir à 20-22°C, ajouter la levure.",
+                "segment_prep_time": [
+                  {
+                    "duration": 30,
+                    "style": {
+                      "str_value": "Refroidissement",
+                      "type": "PrepTime"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "paragraph": "Fermenter 2-3 jours, puis réfrigérer.",
+                "segment_prep_time": [
+                  {
+                    "duration": 5,
+                    "style": { "str_value": "Assemblage", "type": "PrepTime" }
+                  },
+                  {
+                    "duration": 2880,
+                    "style": { "str_value": "Fermentation", "type": "PrepTime" }
+                  }
+                ]
+              }
+            }
           ]
         },
         {
@@ -212,16 +800,76 @@
           "total_prep_time": 2925,
           "servings": { "yield": 1, "value": "litre" },
           "content_ingredients": [
-            { "quantity": 1, "product": { "name": "eau" }, "ingredient_units": [{ "unit": { "name": "l" } }] },
-            { "quantity": 100, "product": { "name": "rhubarbe coupée" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 100, "product": { "name": "fraises écrasées" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 80, "product": { "name": "sucre" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 100, "product": { "name": "Levain de Fruits (filtré)" }, "ingredient_units": [{ "unit": { "name": "ml" } }] }
+            {
+              "quantity": 1,
+              "product": { "name": "eau" },
+              "ingredient_units": [{ "unit": { "name": "l" } }]
+            },
+            {
+              "quantity": 100,
+              "product": { "name": "rhubarbe coupée" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 100,
+              "product": { "name": "fraises écrasées" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 80,
+              "product": { "name": "sucre" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 100,
+              "product": { "name": "Levain de Fruits (filtré)" },
+              "ingredient_units": [{ "unit": { "name": "ml" } }]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "Mijoter la rhubarbe, les fraises, le sucre et l'eau 5 min. Filtrer.", "segment_prep_time": [{ "duration": 10, "style": { "str_value": "Infusion", "type": "PrepTime" } }] } },
-            { "position": 2, "segment": { "paragraph": "Refroidir, ajouter le levain.", "segment_prep_time": [{ "duration": 30, "style": { "str_value": "Refroidissement", "type": "PrepTime" } }] } },
-            { "position": 3, "segment": { "paragraph": "Fermenter 2-3 jours.", "segment_prep_time": [{ "duration": 5, "style": { "str_value": "Assemblage", "type": "PrepTime" } }, { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } }] } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Mijoter la rhubarbe, les fraises, le sucre et l'eau 5 min. Filtrer.",
+                "segment_prep_time": [
+                  {
+                    "duration": 10,
+                    "style": { "str_value": "Infusion", "type": "PrepTime" }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Refroidir, ajouter le levain.",
+                "segment_prep_time": [
+                  {
+                    "duration": 30,
+                    "style": {
+                      "str_value": "Refroidissement",
+                      "type": "PrepTime"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "paragraph": "Fermenter 2-3 jours.",
+                "segment_prep_time": [
+                  {
+                    "duration": 5,
+                    "style": { "str_value": "Assemblage", "type": "PrepTime" }
+                  },
+                  {
+                    "duration": 2880,
+                    "style": { "str_value": "Fermentation", "type": "PrepTime" }
+                  }
+                ]
+              }
+            }
           ]
         },
         {
@@ -229,20 +877,79 @@
           "total_prep_time": 2925,
           "servings": { "yield": 1, "value": "litre" },
           "content_ingredients": [
-            { "quantity": 1, "product": { "name": "eau" }, "ingredient_units": [{ "unit": { "name": "l" } }] },
-            { "quantity": 100, "product": { "name": "rhubarbe coupée" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 100, "product": { "name": "fraises écrasées" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 80, "product": { "name": "sucre" }, "ingredient_units": [{ "unit": { "name": "g" } }] },
-            { "quantity": 0.5, "product": { "name": "levure de bière (ex: Safale US-05)" }, "ingredient_units": [{ "unit": { "name": "g" } }] }
+            {
+              "quantity": 1,
+              "product": { "name": "eau" },
+              "ingredient_units": [{ "unit": { "name": "l" } }]
+            },
+            {
+              "quantity": 100,
+              "product": { "name": "rhubarbe coupée" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 100,
+              "product": { "name": "fraises écrasées" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 80,
+              "product": { "name": "sucre" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            },
+            {
+              "quantity": 0.5,
+              "product": { "name": "levure de bière (ex: Safale US-05)" },
+              "ingredient_units": [{ "unit": { "name": "g" } }]
+            }
           ],
           "content_segments": [
-            { "position": 1, "segment": { "paragraph": "Même base que la version maison.", "segment_prep_time": [{ "duration": 10, "style": { "str_value": "Infusion", "type": "PrepTime" } }] } },
-            { "position": 2, "segment": { "paragraph": "Refroidir à 20-22°C, ajouter la levure.", "segment_prep_time": [{ "duration": 30, "style": { "str_value": "Refroidissement", "type": "PrepTime" } }] } },
-            { "position": 3, "segment": { "paragraph": "Fermenter 2-3 jours.", "segment_prep_time": [{ "duration": 5, "style": { "str_value": "Assemblage", "type": "PrepTime" } }, { "duration": 2880, "style": { "str_value": "Fermentation", "type": "PrepTime" } }] } }
+            {
+              "position": 1,
+              "segment": {
+                "paragraph": "Même base que la version maison.",
+                "segment_prep_time": [
+                  {
+                    "duration": 10,
+                    "style": { "str_value": "Infusion", "type": "PrepTime" }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 2,
+              "segment": {
+                "paragraph": "Refroidir à 20-22°C, ajouter la levure.",
+                "segment_prep_time": [
+                  {
+                    "duration": 30,
+                    "style": {
+                      "str_value": "Refroidissement",
+                      "type": "PrepTime"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "position": 3,
+              "segment": {
+                "paragraph": "Fermenter 2-3 jours.",
+                "segment_prep_time": [
+                  {
+                    "duration": 5,
+                    "style": { "str_value": "Assemblage", "type": "PrepTime" }
+                  },
+                  {
+                    "duration": 2880,
+                    "style": { "str_value": "Fermentation", "type": "PrepTime" }
+                  }
+                ]
+              }
+            }
           ]
         }
       ]
     }
   }
 }
-

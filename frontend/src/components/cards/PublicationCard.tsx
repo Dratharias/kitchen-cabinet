@@ -196,16 +196,16 @@ export function PublicationCard({
 
       {/* Image */}
       {thumbnail ? (
-        <div className="relative w-full h-48 overflow-hidden">
+        <div className="relative w-full h-48 mb-6 overflow-hidden">
           <img
             src={thumbnail}
             alt={title}
-            className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
+            className="object-cover w-full h-full transition-transform duration-500 hover:scale-105 flex bg-gray-800 text-gray-500 text-sm"
             loading="lazy"
           />
         </div>
       ) : (
-        <div className="flex items-center justify-center h-48 bg-gray-800 text-gray-500 text-sm">
+        <div className="flex h-48 bg-gray-800 text-gray-500 text-sm">
           Aucun visuel
         </div>
       )}

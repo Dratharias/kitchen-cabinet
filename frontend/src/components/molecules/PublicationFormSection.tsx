@@ -36,16 +36,18 @@ export const PublicationFormSection: React.FC<PublicationFormSectionProps> = ({
 
       <FormTextarea
         label="Description"
-        value={Array.isArray(description) ? description.join('\n') : description}
-        onChange={(v) => onChange("description", v.split('\n'))}
+        value={
+          Array.isArray(description) ? description.join("\n") : description
+        }
+        onChange={(v) => onChange("description", v.split("\n"))}
         placeholder="Description de la recette"
         rows={3}
       />
 
       <FormTextarea
         label="Note"
-        value={Array.isArray(note) ? note.join('\n') : note}
-        onChange={(v) => onChange("note", v.split('\n'))}
+        value={Array.isArray(note) ? note.join("\n") : note}
+        onChange={(v) => onChange("note", v.split("\n"))}
         placeholder="Notes additionnelles"
         rows={2}
       />

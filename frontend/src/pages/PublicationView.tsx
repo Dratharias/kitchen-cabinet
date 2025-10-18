@@ -12,13 +12,11 @@ import { PublicationActions } from "../components/view/PublicationActions";
 import { PublicationInfoView } from "../components/view/PublicationInfoView";
 import { PublicationMetadataView } from "../components/view/PublicationMetadataView";
 import { PublicationForm } from "../components/organisms/PublicationForm";
-import {
-  normalizePublicationToForm,
-  denormalizeFormToPublication,
-} from "../utils/formTransformers";
-import type { PublicationPayload, GalleryItem, Publication } from "../types";
+import { normalizePublicationToForm } from "../utils/formTransformers";
+import type { PublicationPayload, GalleryItem, Content } from "../types";
 import { Clock, Users } from "lucide-react";
 import { formatTime, TIME_FORMATS } from "@/utils/timeFormatter";
+import { AnimatePresence, motion } from "framer-motion";
 
 const getBlockId = (block: any) =>
   block.content_id ||
@@ -43,22 +41,12 @@ export function PublicationView() {
     updateSegmentFields,
     deleteSegment,
     addSegment,
+    setLocalPublication,
   } = usePublicationView();
 
-  const {
-    editingField,
-    editValues,
-    startEdit,
-    cancelEdit,
-    updateValue,
-    setEditingField,
-    isAuthenticated,
-  } = usePublicationEdit();
+  const { setEditingField, isAuthenticated } = usePublicationEdit();
 
   const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState<Partial<PublicationPayload> | null>(
-    null,
-  );
   const [showMetadata, setShowMetadata] = useState(false);
   const [expandedBlocks, setExpandedBlocks] = useState<Record<string, boolean>>(
     {},
@@ -69,66 +57,113 @@ export function PublicationView() {
     blockId: string;
   } | null>(null);
 
-  useEffect(() => {
-    if (publication && isEditing) {
-      setFormData(normalizePublicationToForm(publication as Publication));
-    } else {
-      setFormData(null);
-    }
-  }, [publication, isEditing]);
-
   const handleEdit = () => setIsEditing(true);
   const handleCancel = () => setIsEditing(false);
 
-  const handleSave = async () => {
-    if (formData && publication) {
-      const payload = denormalizeFormToPublication(
-        formData,
-        publication as Publication,
-      );
-      const success = await updatePublication(payload);
-      if (success) {
-        setIsEditing(false);
-      }
+  const handleSave = async (payload: PublicationPayload) => {
+    const success = await updatePublication(payload);
+    if (success) {
+      setIsEditing(false);
     }
   };
 
-  // --- Handlers pour l'édition inline ---
   const handleConfirmIngredientUpdate = async (
     ingredientId: string,
     fields: any,
   ) => {
-    const success = await updateIngredientFields(ingredientId, fields);
-    if (success !== false) {
+    const updatedIngredient = await updateIngredientFields(
+      ingredientId,
+      fields,
+    );
+    if (updatedIngredient) {
+      setLocalPublication((prevPub) => {
+        if (!prevPub) return null;
+        const newPub = JSON.parse(JSON.stringify(prevPub));
+        for (const content of newPub.contents) {
+          const index = content.content_ingredients.findIndex(
+            (i: any) => i.ingredient_id === ingredientId,
+          );
+          if (index > -1) {
+            content.content_ingredients[index] = {
+              ...content.content_ingredients[index],
+              ...updatedIngredient,
+            };
+          }
+        }
+        return newPub;
+      });
       setEditingField(null);
     }
-    return success;
   };
 
-  const handleConfirmSegmentUpdate = async (
-    segmentId: string,
-    fields: any,
-  ) => {
-    const success = await updateSegmentFields(segmentId, fields);
-    if (success !== false) {
+  const handleConfirmSegmentUpdate = async (segmentId: string, fields: any) => {
+    const updatedSegment = await updateSegmentFields(segmentId, fields);
+    if (updatedSegment) {
+      setLocalPublication((prevPub) => {
+        if (!prevPub) return null;
+        const newPub = JSON.parse(JSON.stringify(prevPub));
+        for (const content of newPub.contents) {
+          const index = content.content_segments.findIndex(
+            (s: any) => s.segment.segment_id === segmentId,
+          );
+          if (index > -1) {
+            content.content_segments[index].segment = {
+              ...content.content_segments[index].segment,
+              ...updatedSegment,
+            };
+          }
+        }
+        return newPub;
+      });
       setEditingField(null);
     }
-    return success;
   };
 
   const handleConfirmAdd = async (blockId: string, fields: any) => {
     if (!pendingAddItem) return;
     const contentId = blockId.replace("ing-", "").replace("step-", "");
 
-    let success;
     if (pendingAddItem.type === "ingredient") {
-      success = await addIngredient(contentId, fields);
+      await addIngredient(contentId, fields);
     } else {
-      success = await addSegment(contentId, fields);
+      await addSegment(contentId, fields);
     }
+    setPendingAddItem(null);
+  };
 
+  const handleDeleteIngredient = async (ingredientId: string) => {
+    const success = await deleteIngredient(ingredientId);
     if (success) {
-      setPendingAddItem(null);
+      setLocalPublication((prevPub) => {
+        if (!prevPub) return null;
+        const newPub = JSON.parse(JSON.stringify(prevPub));
+        newPub.contents.forEach((content: Content) => {
+          if (content.content_ingredients) {
+            content.content_ingredients = content.content_ingredients.filter(
+              (i: any) => i.ingredient_id !== ingredientId,
+            );
+          }
+        });
+        return newPub;
+      });
+    }
+  };
+
+  const handleDeleteSegment = async (segmentId: string) => {
+    const success = await deleteSegment(segmentId);
+    if (success) {
+      setLocalPublication((prevPub) => {
+        if (!prevPub) return null;
+        const newPub = JSON.parse(JSON.stringify(prevPub));
+        newPub.contents.forEach((content: Content) => {
+          if (content.content_segments) {
+            content.content_segments = content.content_segments.filter(
+              (s: any) => s.segment_id !== segmentId,
+            );
+          }
+        });
+        return newPub;
+      });
     }
   };
 
@@ -169,15 +204,26 @@ export function PublicationView() {
     return blocks;
   }, [activeVariant, subRecipes]);
 
+  useEffect(() => {
+    if (allDisplayBlocks.length > 0) {
+      const initialExpanded: Record<string, boolean> = {};
+      const firstBlock = allDisplayBlocks.find((b) => b.__isMainVariant);
+      if (firstBlock) {
+        const ingBlockId = `ing-${getBlockId(firstBlock)}`;
+        const stepBlockId = `step-${getBlockId(firstBlock)}`;
+        initialExpanded[ingBlockId] = true;
+        initialExpanded[stepBlockId] = true;
+      }
+      setExpandedBlocks(initialExpanded);
+    }
+  }, [publication, selectedVariant]); // Re-run when publication or variant changes
+
   const toggleBlock = useCallback((id: string) => {
     setExpandedBlocks((prev) => ({ ...prev, [id]: !prev[id] }));
   }, []);
 
   const isBlockExpanded = useCallback(
-    (blockId: string, isMainVariant: boolean) =>
-      expandedBlocks[blockId] !== undefined
-        ? expandedBlocks[blockId]
-        : isMainVariant,
+    (blockId: string) => !!expandedBlocks[blockId],
     [expandedBlocks],
   );
 
@@ -205,13 +251,14 @@ export function PublicationView() {
 
   // --- Render ---
 
-  if (isEditing && formData) {
+  if (isEditing) {
+    const formInitialData = normalizePublicationToForm(publication);
     return (
       <DotGrid {...dotGridProps}>
         <div className="relative z-20 mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 py-6">
           <PublicationHeader title={`Modification de: ${publication.title}`} />
           <PublicationForm
-            initialData={formData as Partial<Publication>}
+            initialData={formInitialData}
             onSubmit={handleSave}
             onCancel={handleCancel}
           />
@@ -226,15 +273,20 @@ export function PublicationView() {
         <div className="relative z-20 mx-auto w-full max-w-[1600px] px-4 sm:px-6 lg:px-8 py-6">
           <PublicationHeader title={publication.title} />
 
-          <div className="w-full h-64 rounded-xl mb-6 bg-gray-800/20">
-            {allGalleryItems && allGalleryItems.length > 0 ? (
-              <Gallery items={allGalleryItems} />
-            ) : (
-              <div className="flex items-center justify-center h-full bg-gray-800 text-gray-500 text-sm rounded-xl">
-                Aucun visuel
-              </div>
-            )}
-          </div>
+          {publication.thumbnail ? (
+            <div className="relative w-full h-48 mb-6 overflow-hidden rounded-md">
+              <img
+                src={publication.thumbnail}
+                alt={publication.title}
+                className="object-cover w-full h-full transition-transform duration-500 hover:scale-105 flex bg-gray-800 text-gray-500 text-sm rounded-md"
+                loading="lazy"
+              />
+            </div>
+          ) : (
+            <div className="flex h-48 bg-gray-800 text-gray-500 text-sm rounded-md">
+              Aucun visuel
+            </div>
+          )}
 
           <PublicationInfoView
             description={publication.description || []}
@@ -267,9 +319,18 @@ export function PublicationView() {
             setSelectedVariant={setSelectedVariant}
           />
 
-          {showMetadata && (
-            <PublicationMetadataView publication={publication} />
-          )}
+          <AnimatePresence>
+            {showMetadata && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <PublicationMetadataView publication={publication} />
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <PublicationTabs currentTab={tab} setTab={setTab} />
 
@@ -281,14 +342,14 @@ export function PublicationView() {
                   <IngredientBlockEditable
                     key={blockId}
                     block={block}
-                    expanded={isBlockExpanded(blockId, block.__isMainVariant)}
+                    expanded={isBlockExpanded(blockId)}
                     toggleBlock={() => toggleBlock(blockId)}
                     ingredients={block.content_ingredients || []}
                     isAuthenticated={isAuthenticated}
                     checkedItems={checkedItems}
                     toggleChecked={toggleChecked}
                     onConfirmUpdate={handleConfirmIngredientUpdate}
-                    onDeleteIngredient={deleteIngredient}
+                    onDeleteIngredient={handleDeleteIngredient}
                     pendingAddItem={
                       pendingAddItem?.type === "ingredient" &&
                       pendingAddItem?.blockId === blockId
@@ -311,14 +372,14 @@ export function PublicationView() {
                   <SegmentBlockEditable
                     key={blockId}
                     block={block}
-                    expanded={isBlockExpanded(blockId, block.__isMainVariant)}
+                    expanded={isBlockExpanded(blockId)}
                     toggleBlock={() => toggleBlock(blockId)}
                     segments={block.content_segments || []}
                     isAuthenticated={isAuthenticated}
                     checkedItems={checkedItems}
                     toggleChecked={toggleChecked}
                     onConfirmUpdate={handleConfirmSegmentUpdate}
-                    onDeleteSegment={deleteSegment}
+                    onDeleteSegment={handleDeleteSegment}
                     pendingAddItem={
                       pendingAddItem?.type === "segment" &&
                       pendingAddItem?.blockId === blockId
@@ -333,6 +394,11 @@ export function PublicationView() {
               })}
             </div>
           )}
+          <div className="w-full h-64 rounded-xl mb-6 bg-gray-800/20">
+            {allGalleryItems && allGalleryItems.length > 0 && (
+              <Gallery items={allGalleryItems} />
+            )}
+          </div>
         </div>
       </DotGrid>
 
@@ -340,7 +406,12 @@ export function PublicationView() {
         isEditMode={isEditing}
         isAuthenticated={isAuthenticated}
         onEdit={handleEdit}
-        onSave={handleSave}
+        onSave={() => {
+          // This button is now more of a conceptual trigger
+          // The actual save is handled by the form's submit button
+          // This can be left as is, or the logic can be moved entirely
+          // to be managed by the form. For now, it does nothing.
+        }}
         onCancel={handleCancel}
         onToggleMetadata={() => setShowMetadata((prev) => !prev)}
         showMetadata={showMetadata}

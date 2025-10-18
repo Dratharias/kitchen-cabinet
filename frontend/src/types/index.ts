@@ -67,6 +67,7 @@ export interface PrepTime extends PrepTimePayload {
 }
 
 export interface ProductPayload {
+  is_recipe?: boolean | null;
   name: string;
   is_recipe_id?: string | null;
   macro_id?: string | null;
@@ -82,6 +83,8 @@ export interface IngredientPayload {
   cut?: string;
   title?: string;
   product_id?: string;
+  is_recipe?: boolean;
+  is_recipe_id?: string;
   product: ProductPayload; // For connect/create operations
   ingredient_units?: UnitPayload[]; // For connect/create operations
 }
@@ -94,6 +97,7 @@ export interface Ingredient extends IngredientPayload {
 export interface SegmentPayload {
   title?: string;
   paragraph: string;
+  position: number;
   segment_prep_time?: { prep_time: PrepTimePayload }[]; // For connect/create
 }
 export interface Segment extends SegmentPayload {
@@ -160,7 +164,6 @@ export interface Review extends ReviewPayload {
   publication: Publication | null;
 }
 
-
 // =================================================================
 // 2. API Contracts
 //    - Defines request/response types for API endpoints.
@@ -189,7 +192,7 @@ export interface ErrorResponse {
 }
 
 export interface SuccessResponse {
-    success: boolean;
+  success: boolean;
 }
 
 // Auth
@@ -222,7 +225,10 @@ type EntityApi<T, TPayload> = {
 };
 
 // Applying generic types to each entity
-export type UserApi = EntityApi<User, Omit<User, 'user_id' | 'created_at'> & { password?: string }>;
+export type UserApi = EntityApi<
+  User,
+  Omit<User, "user_id" | "created_at"> & { password?: string }
+>;
 export type CategoryApi = EntityApi<Category, CategoryPayload>;
 export type UnitApi = EntityApi<Unit, UnitPayload>;
 export type MacroApi = EntityApi<Macro, MacroPayload>;
@@ -231,9 +237,10 @@ export type PrepTimeApi = EntityApi<PrepTime, PrepTimePayload>;
 export type IngredientApi = EntityApi<Ingredient, IngredientPayload>;
 export type SegmentApi = EntityApi<Segment, SegmentPayload>;
 export type ContentApi = EntityApi<Content, ContentPayload>;
-export type PublicationApi = EntityApi<Publication, PublicationPayload> & { ListRequest: PaginatedRequest & { tagIds?: string[], contentIds?: string[] } };
+export type PublicationApi = EntityApi<Publication, PublicationPayload> & {
+  ListRequest: PaginatedRequest & { tagIds?: string[]; contentIds?: string[] };
+};
 export type ReviewApi = EntityApi<Review, ReviewPayload>;
-
 
 // =================================================================
 // 3. Orchestrator & Complex Payloads
@@ -269,4 +276,3 @@ export interface OrchestratorResponse {
   };
   error?: string;
 }
-

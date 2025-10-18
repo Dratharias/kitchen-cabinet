@@ -1,7 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
-import type { Prisma, PrismaClient } from "@prisma/client";
-import { Prisma as PrismaNS } from "@prisma/client";
-import { assert, safeId } from "./utils.js";
+import { type PrismaClient } from "@prisma/client";
+import { assert } from "./utils.js";
 
 export class AtomProcessor {
   constructor(private tx: PrismaClient) {}
@@ -44,35 +43,24 @@ export class AtomProcessor {
     if (prod.macro) {
       macro_id = await this.processMacro(prod.macro, `${path}.macro`);
     }
-    
+
     const is_recipe_id = prod.is_recipe_id ?? null;
+
+    // This data will be used for both creation and update.
+    const productData = {
+      name,
+      macro_id,
+      is_recipe_id,
+    };
 
     const product = await this.tx.product.upsert({
       where: { name },
       create: {
         product_id: uuidv4(),
-        name,
-        macro_id,
-        is_recipe_id,
+        ...productData,
       },
-      update: {},
+      update: productData, // Ensure existing products are also updated with new macro or recipe links
     });
-
-    const updateData: { macro_id?: string | null; is_recipe_id?: string | null } = {};
-    
-    if (macro_id && !product.macro_id) {
-      updateData.macro_id = macro_id;
-      console.log(`[AtomProcessor] Updating product '${name}' with macro_id: ${macro_id}`);
-    }
-    
-    if (is_recipe_id && product.is_recipe_id !== is_recipe_id) {
-      updateData.is_recipe_id = is_recipe_id;
-      console.log(`[AtomProcessor] Linking product '${name}' to sub-recipe: ${is_recipe_id}`);
-    }
-
-    if (Object.keys(updateData).length > 0) {
-      await this.tx.product.update({ where: { product_id: product.product_id }, data: updateData });
-    }
 
     return product.product_id;
   }
@@ -136,60 +124,23 @@ export class AtomProcessor {
     ).segment_id;
   }
 
-  async processIngredient(ing: any, path: string): Promise<string> {
-    assert(ing, "Ingredient payload missing", "processIngredient", path, ing);
-
-    const product_id = await this.processProduct(
-      ing.product,
-      `${path}.product`,
-    );
-    const ingredient_id = await safeId(
-      this.tx,
-      "ingredient",
-      "ingredient_id",
-      ing.ingredient_id,
-    );
-
-    const created = await this.tx.ingredient.create({
-      data: {
-        ingredient_id,
-        quantity: typeof ing.quantity === "number" ? ing.quantity : null,
-        multiply_factor: Number.isFinite(ing.multiply_factor)
-          ? ing.multiply_factor
-          : 1,
-        cut: ing.cut ?? null,
-        title: ing.title ?? null,
-        product_id,
-      },
-    });
-
-    if (Array.isArray(ing.ingredient_units)) {
-      for (const unitWrap of ing.ingredient_units) {
-        const unitName = unitWrap?.name || unitWrap?.unit?.name;
-        if(unitName) {
-            const unit = await this.tx.unit.upsert({
-                where: { name: unitName },
-                create: { name: unitName },
-                update: {},
-            });
-            await this.tx.ingredient_unit.create({
-                data: {
-                    ingredient_id: created.ingredient_id,
-                    unit_id: unit.unit_id,
-                },
-            });
-        }
-      }
-    }
-
-    return created.ingredient_id;
-  }
-
   async processPrepTime(pt: any, path: string): Promise<string> {
     const prepTimePayload = pt.prep_time || pt;
-    assert(prepTimePayload, "PrepTime payload missing", "processPrepTime", path, pt);
+    assert(
+      prepTimePayload,
+      "PrepTime payload missing",
+      "processPrepTime",
+      path,
+      pt,
+    );
     const duration = Number(prepTimePayload.duration);
-    assert(Number.isFinite(duration), "PrepTime.duration is required", "processPrepTime", `${path}.duration`, prepTimePayload);
+    assert(
+      Number.isFinite(duration),
+      "PrepTime.duration is required",
+      "processPrepTime",
+      `${path}.duration`,
+      prepTimePayload,
+    );
 
     let style_id: string | null = null;
     if (prepTimePayload.style) {
@@ -201,15 +152,23 @@ export class AtomProcessor {
     }
 
     const prep_time_id = prepTimePayload.prep_time_id ?? uuidv4();
-    return (
-      await this.tx.prep_time.create({
-        data: { prep_time_id, duration, style_id },
-      })
-    ).prep_time_id;
+    const data = { duration, style_id };
+
+    const prepTime = await this.tx.prep_time.upsert({
+      where: { prep_time_id },
+      create: { prep_time_id, ...data },
+      update: data,
+    });
+
+    return prepTime.prep_time_id;
   }
 
   async processServings(servings: any): Promise<string | undefined> {
-    if (servings && typeof servings === "object" && servings.yield !== undefined) {
+    if (
+      servings &&
+      typeof servings === "object" &&
+      servings.yield !== undefined
+    ) {
       const { yield: sYield, value: sValue } = servings;
       const serving = await this.tx.servings.upsert({
         where: { serving_id: servings.serving_id ?? uuidv4() },

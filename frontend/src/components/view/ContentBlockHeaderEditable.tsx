@@ -1,13 +1,13 @@
 import React from "react";
 import { InlineEditField } from "./InlineEditField";
-import type { ServingsPayload } from "@/types/payloadBuilder";
 import { FormInput } from "@/components/atoms/FormInput";
 import { Check, X } from "lucide-react"; // Import icons
+import { Servings } from "@/types";
 
 interface ContentBlockHeaderEditableProps {
   contentId: string;
   subtitle?: string;
-  servings?: ServingsPayload | null;
+  servings?: Servings | null;
   isAuthenticated: boolean;
   editingField: string | null;
   editValues: Record<string, any>; // Supporte l'objet servings

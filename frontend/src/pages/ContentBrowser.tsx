@@ -15,8 +15,8 @@ import {
   CATEGORIES,
   type CategoryKey,
 } from "@/constants/contentBrowser";
-import type { Publication } from "@/types/publication";
 import { CreateCard } from "@/components/atoms/CreateCard";
+import { Publication } from "@/types";
 
 type CreateCardItem = { __kind: "create"; id: "create" };
 type DisplayItem = Publication | CreateCardItem;

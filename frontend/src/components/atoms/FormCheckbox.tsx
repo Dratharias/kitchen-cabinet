@@ -17,7 +17,7 @@ export const FormCheckbox: React.FC<FormCheckboxProps> = ({
         type="checkbox"
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
-        className="w-4 h-4 rounded border-gray-600 bg-[#292929] text-amber-600 focus:ring-2 focus:ring-amber-500"
+        className="w-4 h-4 rounded border-gray-600 bg-[#292929] text-amber-600 focus:ring-2 focus:ring-amber-500 hover:cursor-pointer"
       />
       <span className="text-sm text-gray-300">{label}</span>
     </label>

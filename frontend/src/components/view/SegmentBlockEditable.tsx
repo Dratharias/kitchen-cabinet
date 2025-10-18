@@ -83,13 +83,13 @@ const SegmentEditor: React.FC<{
       <div className="flex justify-end gap-2 mt-4">
         <button
           onClick={onCancel}
-          className="p-2 rounded-md text-red-500 bg-neutral-700/60 hover:text-red-400"
+          className="p-2 rounded-md text-red-500 bg-neutral-700/60 hover:text-red-400 hover:cursor-pointer"
         >
           <X size={18} />
         </button>
         <button
           onClick={handleConfirm}
-          className="p-2 rounded-md text-green-500 bg-neutral-700/60 hover:text-green-400"
+          className="p-2 rounded-md text-green-500 bg-neutral-700/60 hover:text-green-400 hover:cursor-pointer"
         >
           <Check size={18} />
         </button>
@@ -143,7 +143,7 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
                 e.stopPropagation();
                 onDeleteBlock();
               }}
-              className="p-1.5 rounded-md bg-neutral-700/80 text-red-500 hover:text-red-400"
+              className="p-1.5 rounded-md bg-neutral-700/80 text-red-500 hover:text-red-400 hover:cursor-pointer"
             >
               <Trash2 size={16} />
             </button>
@@ -199,13 +199,13 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
                         <div className="absolute top-0 right-0 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                           <button
                             onClick={() => onDeleteSegment?.(id)}
-                            className="p-1.5 rounded-md bg-neutral-700/80 text-red-500 hover:text-red-400"
+                            className="p-1.5 rounded-md bg-neutral-700/80 text-red-500 hover:text-red-400 hover:cursor-pointer"
                           >
                             <Trash2 size={16} />
                           </button>
                           <button
                             onClick={() => setEditingSegmentId(id)}
-                            className="p-1.5 rounded-md bg-neutral-700/80 text-amber-500 hover:text-amber-400"
+                            className="p-1.5 rounded-md bg-neutral-700/80 text-amber-500 hover:text-amber-400 hover:cursor-pointer"
                           >
                             <Edit2 size={16} />
                           </button>

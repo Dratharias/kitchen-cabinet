@@ -1,7 +1,7 @@
 import React from "react";
 import { FormInput } from "@/components/atoms/FormInput";
 import { Trash2, Plus } from "lucide-react";
-import type { PrepTimePayload } from "@/types/payloadBuilder";
+import { PrepTimePayload } from "@/types";
 
 interface PrepTimeFormSectionProps {
   prepTimes: PrepTimePayload[];
@@ -46,7 +46,7 @@ export const PrepTimeFormSection: React.FC<PrepTimeFormSectionProps> = ({
         <button
           type="button"
           onClick={addPrepTime}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-amber-600 text-white text-sm hover:bg-amber-700 transition-colors"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-amber-600 text-white text-sm hover:bg-amber-700 transition-colors hover:cursor-pointer"
         >
           <Plus size={16} />
           Ajouter

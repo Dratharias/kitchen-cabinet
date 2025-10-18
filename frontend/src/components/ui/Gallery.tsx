@@ -61,7 +61,6 @@ function createTextTexture(
   return { texture, width: canvas.width, height: canvas.height };
 }
 
-
 // --- OGL Classes (unchanged) ---
 interface TitleProps {
   gl: GL;
@@ -759,12 +758,13 @@ export function Gallery({
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Map GalleryItem[] to the internal { image: string, text: string }[] format
-  const formattedItems = useMemo(() =>
-    items?.map(item => ({
-      image: item.url,
-      text: item.label || '',
-    })),
-    [items]
+  const formattedItems = useMemo(
+    () =>
+      items?.map((item) => ({
+        image: item.url,
+        text: item.label || "",
+      })),
+    [items],
   );
 
   const config = useMemo(
@@ -777,7 +777,15 @@ export function Gallery({
       scrollSpeed,
       scrollEase,
     }),
-    [formattedItems, bend, textColor, borderRadius, font, scrollSpeed, scrollEase],
+    [
+      formattedItems,
+      bend,
+      textColor,
+      borderRadius,
+      font,
+      scrollSpeed,
+      scrollEase,
+    ],
   );
 
   useEffect(() => {

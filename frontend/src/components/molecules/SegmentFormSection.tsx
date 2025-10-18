@@ -3,11 +3,13 @@ import { FormInput } from "@/components/atoms/FormInput";
 import { FormTextarea } from "@/components/atoms/FormTextarea";
 import { Trash2, Plus } from "lucide-react";
 import { PrepTimeFormSection } from "./PrepTimeFormSection";
-import type { SegmentWithMeta } from "@/types/payloadBuilder";
+import type { PrepTimePayload, SegmentPayload } from "@/types";
 
 interface SegmentFormSectionProps {
-  segments: Partial<SegmentWithMeta>[];
-  onChange: (segments: Partial<SegmentWithMeta>[]) => void;
+  segments: Partial<SegmentPayload & { position: number }>[];
+  onChange: (
+    segments: Partial<SegmentPayload & { position: number }>[],
+  ) => void;
 }
 
 export const SegmentFormSection: React.FC<SegmentFormSectionProps> = ({
@@ -19,7 +21,8 @@ export const SegmentFormSection: React.FC<SegmentFormSectionProps> = ({
       ...segments,
       {
         position: segments.length + 1,
-        segment: { title: "", paragraph: "" },
+        title: "",
+        paragraph: "",
         segment_prep_time: [],
       },
     ]);
@@ -34,14 +37,11 @@ export const SegmentFormSection: React.FC<SegmentFormSectionProps> = ({
 
   const updateSegment = (index: number, field: string, value: any) => {
     const updated = [...segments];
-    updated[index] = {
-      ...updated[index],
-      segment: { ...updated[index].segment, [field]: value },
-    };
+    updated[index] = { ...updated[index], [field]: value };
     onChange(updated);
   };
 
-  const updatePrepTimes = (index: number, prepTimes: any[]) => {
+  const updatePrepTimes = (index: number, prepTimes: PrepTimePayload[]) => {
     const updated = [...segments];
     updated[index] = {
       ...updated[index],
@@ -85,23 +85,22 @@ export const SegmentFormSection: React.FC<SegmentFormSectionProps> = ({
 
             <FormInput
               label="Titre"
-              value={segment.segment?.title || ""}
+              value={segment.title || ""}
               onChange={(v) => updateSegment(index, "title", v)}
               placeholder="Titre de l'étape"
             />
 
             <FormTextarea
               label="Paragraphe"
-              value={segment.segment?.paragraph || ""}
+              value={segment.paragraph || ""}
               onChange={(v) => updateSegment(index, "paragraph", v)}
               placeholder="Description de l'étape"
               rows={3}
             />
 
-            {/* Temps de préparation avant le paragraphe */}
             <PrepTimeFormSection
               prepTimes={
-                segment.segment_prep_time?.map((p) => p.prep_time) || []
+                segment.segment_prep_time?.map((p: any) => p.prep_time) || []
               }
               title="Temps de préparation de l’étape"
               onChange={(prep) => updatePrepTimes(index, prep)}

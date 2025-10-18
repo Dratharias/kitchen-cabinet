@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { ChevronDown, ChevronRight, Loader } from 'lucide-react';
-import { PublicationsService } from '../../services/publications';
-import type { Publication } from '../../types';
-import { IngredientBlockEditable } from './IngredientBlockEditable';
-import { SegmentBlockEditable } from './SegmentBlockEditable';
+import React, { useState } from "react";
+import { ChevronDown, ChevronRight, Loader } from "lucide-react";
+import { PublicationsService } from "../../services/publications";
+import type { Publication } from "../../types";
+import { IngredientBlockEditable } from "./IngredientBlockEditable";
+import { SegmentBlockEditable } from "./SegmentBlockEditable";
 
 interface SubRecipeViewerProps {
   subRecipeId: string;
-  initialIngredient: any; 
+  initialIngredient: any;
 }
 
 const safeDecodeText = (text: string | null | undefined): string => {
@@ -19,7 +19,10 @@ const safeDecodeText = (text: string | null | undefined): string => {
   }
 };
 
-export const SubRecipeViewer: React.FC<SubRecipeViewerProps> = ({ subRecipeId, initialIngredient }) => {
+export const SubRecipeViewer: React.FC<SubRecipeViewerProps> = ({
+  subRecipeId,
+  initialIngredient,
+}) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [subRecipe, setSubRecipe] = useState<Publication | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -28,7 +31,10 @@ export const SubRecipeViewer: React.FC<SubRecipeViewerProps> = ({ subRecipeId, i
     if (!subRecipeId || subRecipe) return;
     setIsLoading(true);
     try {
-      const fetchedRecipe = await PublicationsService.getPublicationById(subRecipeId, false);
+      const fetchedRecipe = await PublicationsService.getPublicationById(
+        subRecipeId,
+        false,
+      );
       setSubRecipe(fetchedRecipe);
     } catch (error) {
       console.error("Failed to load sub-recipe:", error);
@@ -44,9 +50,12 @@ export const SubRecipeViewer: React.FC<SubRecipeViewerProps> = ({ subRecipeId, i
       loadSubRecipe();
     }
   };
-  
+
   const getDisplayValue = (ing: any) => {
-    const unitName = safeDecodeText(ing.ingredient_units?.[0]?.unit?.name) || safeDecodeText(ing.ingredient_units?.[0]?.name) || "";
+    const unitName =
+      safeDecodeText(ing.ingredient_units?.[0]?.unit?.name) ||
+      safeDecodeText(ing.ingredient_units?.[0]?.name) ||
+      "";
     const rawQuantity = String(ing.quantity || "").trim();
     const productName = safeDecodeText(ing.product?.name);
     return [rawQuantity, unitName, productName].filter(Boolean).join(" ");
@@ -59,23 +68,32 @@ export const SubRecipeViewer: React.FC<SubRecipeViewerProps> = ({ subRecipeId, i
         className="flex items-center justify-between p-2 cursor-pointer hover:bg-amber-800/10"
       >
         <div className="flex items-center gap-2">
-          {isExpanded ? <ChevronDown className="w-5 h-5 text-amber-400" /> : <ChevronRight className="w-5 h-5 text-amber-400" />}
+          {isExpanded ? (
+            <ChevronDown className="w-5 h-5 text-amber-400" />
+          ) : (
+            <ChevronRight className="w-5 h-5 text-amber-400" />
+          )}
           <span className="font-semibold text-amber-300">
-             {getDisplayValue(initialIngredient)}
+            {getDisplayValue(initialIngredient)}
           </span>
         </div>
       </header>
 
       {isExpanded && (
         <div className="p-3 border-t border-amber-800/30">
-          {isLoading && <div className="flex items-center justify-center p-4 text-gray-400"><Loader className="animate-spin mr-2" /> Chargement...</div>}
+          {isLoading && (
+            <div className="flex items-center justify-center p-4 text-gray-400">
+              <Loader className="animate-spin mr-2" /> Chargement...
+            </div>
+          )}
           {subRecipe && (
             <div className="space-y-4">
-              {subRecipe.contents?.map(content => (
+              {subRecipe.contents?.map((content) => (
                 <React.Fragment key={content.content_id}>
-                  {content.content_ingredients && content.content_ingredients.length > 0 && (
-                    <IngredientBlockEditable
-                        block={{ subtitle: 'Ingrédients' }}
+                  {content.content_ingredients &&
+                    content.content_ingredients.length > 0 && (
+                      <IngredientBlockEditable
+                        block={{ subtitle: "Ingrédients" }}
                         ingredients={content.content_ingredients || []}
                         expanded={true}
                         toggleBlock={() => {}}
@@ -88,11 +106,12 @@ export const SubRecipeViewer: React.FC<SubRecipeViewerProps> = ({ subRecipeId, i
                         onConfirmAdd={() => {}}
                         onCancelAdd={() => {}}
                         onAddIngredientClick={() => {}}
-                    />
-                  )}
-                  {content.content_segments && content.content_segments.length > 0 && (
-                    <SegmentBlockEditable
-                        block={{ subtitle: 'Préparation' }}
+                      />
+                    )}
+                  {content.content_segments &&
+                    content.content_segments.length > 0 && (
+                      <SegmentBlockEditable
+                        block={{ subtitle: "Préparation" }}
                         segments={content.content_segments || []}
                         expanded={true}
                         toggleBlock={() => {}}
@@ -105,8 +124,8 @@ export const SubRecipeViewer: React.FC<SubRecipeViewerProps> = ({ subRecipeId, i
                         onConfirmAdd={() => {}}
                         onCancelAdd={() => {}}
                         onAddSegmentClick={() => {}}
-                    />
-                  )}
+                      />
+                    )}
                 </React.Fragment>
               ))}
             </div>
@@ -116,4 +135,3 @@ export const SubRecipeViewer: React.FC<SubRecipeViewerProps> = ({ subRecipeId, i
     </div>
   );
 };
-

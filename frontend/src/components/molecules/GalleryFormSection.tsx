@@ -22,7 +22,11 @@ export const GalleryFormSection: React.FC<GalleryFormSectionProps> = ({
     onChange((gallery || []).filter((_, i) => i !== index));
   };
 
-  const updateGalleryItem = (index: number, field: keyof GalleryItem, value: string) => {
+  const updateGalleryItem = (
+    index: number,
+    field: keyof GalleryItem,
+    value: string,
+  ) => {
     const updated = [...(gallery || [])];
     updated[index] = { ...updated[index], [field]: value };
     onChange(updated);
@@ -43,7 +47,10 @@ export const GalleryFormSection: React.FC<GalleryFormSectionProps> = ({
       </div>
 
       {(gallery || []).map((item, index) => (
-        <div key={index} className="grid grid-cols-1 md:grid-cols-[1fr,1fr,auto] gap-2 items-end">
+        <div
+          key={index}
+          className="grid grid-cols-1 md:grid-cols-[1fr,1fr,auto] gap-2 items-end"
+        >
           <FormInput
             label="URL de l'image"
             value={item.url || ""}

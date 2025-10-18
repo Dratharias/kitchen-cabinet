@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { PublicationFormSection } from "@/components/molecules/PublicationFormSection";
-import { ContentFormSection } from "@/components/molecules/ContentFormSection";
-import { PayloadBuilder } from "@/services/payloadBuilder";
-import { Plus, Trash2 } from "lucide-react";
-import { ContentPayload, Publication } from "@/types";
+import { PublicationFormSection } from "../molecules/PublicationFormSection";
+import { ContentFormSection } from "../molecules/ContentFormSection";
+import { Plus, Trash2, ChevronDown, ChevronRight } from "lucide-react";
+import { ContentPayload, Publication } from "../../types";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface PublicationFormProps {
   onSubmit: (payload: any) => void;
@@ -31,34 +31,51 @@ export const PublicationForm: React.FC<PublicationFormProps> = ({
       return baseState;
     }
 
-    const descriptionAsArray: string[] = 
+    const descriptionAsArray: string[] =
       initialData.description && initialData.description.length > 0
-        ? (Array.isArray(initialData.description) 
-            ? initialData.description 
-            : [initialData.description])
-        : [];
-        
-    const noteAsArray: string[] = 
-      initialData.note && initialData.note.length > 0
-        ? (Array.isArray(initialData.note) 
-            ? initialData.note 
-            : [initialData.note])
+        ? Array.isArray(initialData.description)
+          ? initialData.description
+          : [initialData.description]
         : [];
 
-    return { ...baseState, ...initialData, description: descriptionAsArray, note: noteAsArray };
+    const noteAsArray: string[] =
+      initialData.note && initialData.note.length > 0
+        ? Array.isArray(initialData.note)
+          ? initialData.note
+          : [initialData.note]
+        : [];
+
+    return {
+      ...baseState,
+      ...initialData,
+      description: descriptionAsArray,
+      note: noteAsArray,
+    };
   };
 
   const [formData, setFormData] = useState(getInitialState);
+  const [expandedContents, setExpandedContents] = useState<
+    Record<number, boolean>
+  >({});
 
   useEffect(() => {
-    setFormData(getInitialState() as any);
+    const initialState = getInitialState();
+    setFormData(initialState as any);
+    if (initialState.contents && initialState.contents.length > 0) {
+      setExpandedContents({ 0: true });
+    }
   }, [initialData]);
+
+  const toggleContent = (index: number) => {
+    setExpandedContents((prev) => ({ ...prev, [index]: !prev[index] }));
+  };
 
   const handlePublicationChange = (field: string, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const addContent = () => {
+    const newIndex = formData.contents?.length || 0;
     setFormData((prev: any) => ({
       ...prev,
       contents: [
@@ -74,68 +91,58 @@ export const PublicationForm: React.FC<PublicationFormProps> = ({
         },
       ],
     }));
+    setExpandedContents((prev) => ({ ...prev, [newIndex]: true }));
   };
 
   const removeContent = (index: number) => {
     setFormData((prev: any) => ({
       ...prev,
-      contents: (prev.contents || []).filter((_: any, i: number) => i !== index),
+      contents: (prev.contents || []).filter(
+        (_: any, i: number) => i !== index,
+      ),
     }));
   };
 
   const updateContent = (index: number, content: Partial<ContentPayload>) => {
     setFormData((prev: any) => ({
       ...prev,
-      contents: (prev.contents || []).map((c: any, i: number) => (i === index ? content : c)),
+      contents: (prev.contents || []).map((c: any, i: number) =>
+        i === index ? content : c,
+      ),
     }));
   };
 
   const handleSubmit = () => {
-    const builder = new PayloadBuilder();
-    const payloadData = {
-      ...formData,
-      thumbnail: formData.thumbnail || undefined,
-    };
-
-    const payload = builder.build(
-      initialData ? "update" : "create",
-      initialData?.publication_id || "new-publication",
-      payloadData,
-      initialData as Publication | undefined,
-    );
-    onSubmit(payload);
+    // On ne construit plus le payload ici.
+    // On envoie directement les données du formulaire.
+    onSubmit(formData);
   };
 
   const isValidForm = (): boolean => {
-    if (!formData.title || !formData.title.trim()) return false;
-    if (!formData.description || formData.description.join("").trim() === "") return false;
+    if (!formData.title?.trim()) return false;
 
     if (!formData.contents || formData.contents.length === 0) return false;
 
     for (const content of formData.contents) {
-      if (!content.content_ingredients || content.content_ingredients.length === 0) return false;
+      if (
+        !content.content_ingredients ||
+        content.content_ingredients.length === 0
+      )
+        return false;
       for (const ing of content.content_ingredients) {
         if (!ing.product?.name?.trim()) return false;
-        if (ing.quantity === undefined || ing.quantity === null || ing.quantity < 0) return false;
       }
-      if (!content.content_segments || content.content_segments.length === 0) return false;
-      for (const seg of content.content_segments) {
-        if (!seg.segment?.paragraph?.trim()) return false;
-      }
-      if (!content.content_prep_times || content.content_prep_times.length === 0) return false;
-      for (const pt of content.content_prep_times) {
-        if (pt.duration === undefined || pt.duration <= 0) return false;
-        if (!pt.style?.str_value?.trim()) return false;
-      }
-      if (!content.servings || content.servings.yield === undefined || content.servings.yield <= 0) {
+      if (!content.content_segments || content.content_segments.length === 0)
         return false;
+      for (const seg of content.content_segments) {
+        const paragraph = seg.paragraph || seg.segment?.paragraph;
+        if (!paragraph?.trim()) return false;
       }
     }
-
     return true;
   };
 
-  const isValid = isValidForm();
+  const canSubmit = isValidForm();
 
   return (
     <div className="space-y-8">
@@ -144,15 +151,15 @@ export const PublicationForm: React.FC<PublicationFormProps> = ({
           title={formData.title || ""}
           description={formData.description || []}
           note={formData.note || []}
-          isPublic={formData.public || false}
-          isPublished={formData.published || false}
+          isPublic={formData.public ?? true}
+          isPublished={formData.published ?? true}
           thumbnail={formData.thumbnail || ""}
           onChange={handlePublicationChange}
         />
       </div>
 
-      <div className="space-y-4 px-4 py-6 bg-[#2a2a2a]/20 rounded-md border border-white/5">
-        <div className="flex justify-between items-center">
+      <div className="space-y-4">
+        <div className="flex justify-between items-center px-2">
           <h3 className="text-lg font-semibold text-gray-200">
             Contenus (Variantes/Recettes)
           </h3>
@@ -168,48 +175,82 @@ export const PublicationForm: React.FC<PublicationFormProps> = ({
         {(formData.contents || []).map((content: any, index: number) => (
           <div
             key={index}
-            className="relative bg-[#2a2a2a]/70 border border-neutral-700 rounded-xl p-6"
+            className="bg-[#2a2a2a]/70 border border-neutral-700 rounded-xl"
           >
-            <button
-              onClick={() => removeContent(index)}
-              className="absolute top-4 right-4 p-2 text-red-400 hover:text-red-300 transition-colors hover:cursor-pointer"
+            <header
+              className="flex items-center justify-between p-4 cursor-pointer"
+              onClick={() => toggleContent(index)}
             >
-              <Trash2 size={18} />
-            </button>
-            <ContentFormSection
-              content={content}
-              onChange={(updated) => updateContent(index, updated)}
-              index={index}
-            />
+              <div className="flex items-center gap-2">
+                {expandedContents[index] ? (
+                  <ChevronDown size={20} />
+                ) : (
+                  <ChevronRight size={20} />
+                )}
+                <h4 className="text-md font-semibold text-amber-500">
+                  {content.subtitle || `Contenu #${index + 1}`}
+                </h4>
+              </div>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  removeContent(index);
+                }}
+                className="p-2 text-red-400 hover:text-red-300 transition-colors"
+              >
+                <Trash2 size={18} />
+              </button>
+            </header>
+            <AnimatePresence>
+              {expandedContents[index] && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="p-6 border-t border-neutral-700">
+                    <ContentFormSection
+                      content={content}
+                      onChange={(updated) => updateContent(index, updated)}
+                      index={index}
+                    />
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         ))}
 
         {(!formData.contents || formData.contents.length === 0) && (
-          <p className="text-sm text-gray-500 text-center py-6 bg-[#2a2a2a]/70 border border-neutral-700 rounded-xl hover:cursor-pointer">
+          <p className="text-sm text-gray-500 text-center py-6 bg-[#2a2a2a]/70 border border-neutral-700 rounded-xl">
             Aucun contenu. Cliquez sur "Ajouter un contenu" pour commencer.
           </p>
         )}
       </div>
 
-      <div className="flex gap-3 justify-end">
+      <div className="flex gap-3 justify-end mt-8">
         {onCancel && (
           <button
             onClick={onCancel}
-            className="px-5 py-2.5 rounded-md border border-neutral-700 text-gray-300 text-sm font-medium hover:bg-[#333333] transition-colors hover:cursor-pointer"
+            className="px-5 py-2.5 rounded-md border border-neutral-700 text-gray-300 text-sm font-medium hover:bg-[#333333] transition-colors"
           >
             Annuler
           </button>
         )}
         <button
           onClick={handleSubmit}
-          disabled={!isValid}
-          className={`px-5 py-2.5 rounded-md text-white text-sm font-medium transition-colors ${
-            isValid
-              ? "bg-amber-600 text-white hover:bg-amber-700 hover:cursor-pointer"
-              : "bg-[#292929] border border-neutral-700 text-gray-300 cursor-not-allowed"
+          disabled={!canSubmit}
+          className={`px-5 py-2.5 rounded-md text-sm font-medium transition-colors ${
+            canSubmit
+              ? "bg-amber-600 text-white hover:bg-amber-700"
+              : "bg-neutral-700 text-gray-400 cursor-not-allowed"
           }`}
         >
-          {initialData ? "Sauvegarder les modifications" : "Créer la publication"}
+          {initialData?.publication_id
+            ? "Sauvegarder les modifications"
+            : "Créer la publication"}
         </button>
       </div>
     </div>

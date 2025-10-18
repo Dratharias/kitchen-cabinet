@@ -79,7 +79,7 @@ export const IngredientFormSection: React.FC<IngredientFormSectionProps> = ({
       };
     } else if (field === "name") {
       updated[index] = {
-        ...updated[index]
+        ...updated[index],
       };
     } else {
       updated[index] = { ...updated[index], [field]: value };

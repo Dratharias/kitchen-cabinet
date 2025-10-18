@@ -138,7 +138,9 @@ export class PayloadBuilder {
     isUpdate = false,
   ): IngredientPayload {
     return {
-      ...(isUpdate && i.ingredient_id ? { ingredient_id: i.ingredient_id } : {}),
+      ...(isUpdate && i.ingredient_id
+        ? { ingredient_id: i.ingredient_id }
+        : {}),
       quantity: Number(i.quantity ?? existing?.quantity ?? 0),
       multiply_factor: Number(
         i.multiply_factor ?? existing?.multiply_factor ?? 1,
@@ -150,8 +152,8 @@ export class PayloadBuilder {
           ? { product_id: i.product.product_id }
           : {}),
         name: i.product?.name ?? existing?.product?.name ?? "",
-        is_recipe:
-          i.product?.is_recipe ?? existing?.product?.is_recipe ?? false,
+        is_recipe_id:
+          i.product?.is_recipe_id ?? existing?.product?.is_recipe_id ?? null,
         macro: i.product?.macro ?? existing?.product?.macro ?? null,
       },
       ingredient_units: (
