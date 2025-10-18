@@ -250,7 +250,6 @@ export const IngredientBlockEditable: React.FC<
     return groups;
   }, [ingredients]);
 
-
   return (
     <div className="border border-gray-700 rounded-lg bg-[#1F1F1F]/80 mb-4 overflow-hidden">
       <header
@@ -308,6 +307,7 @@ export const IngredientBlockEditable: React.FC<
                       <SubRecipeViewer
                         subRecipeId={ing.product.is_recipe_id}
                         initialIngredient={ing}
+                        isAuthenticated={isAuthenticated}
                       />
                     ) : (
                       <div className="flex items-start gap-2 w-full py-1 pl-5">

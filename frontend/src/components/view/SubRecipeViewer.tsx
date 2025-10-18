@@ -8,6 +8,7 @@ import { SegmentBlockEditable } from "./SegmentBlockEditable";
 interface SubRecipeViewerProps {
   subRecipeId: string;
   initialIngredient: any;
+  isAuthenticated: boolean;
 }
 
 const safeDecodeText = (text: string | null | undefined): string => {
@@ -22,6 +23,7 @@ const safeDecodeText = (text: string | null | undefined): string => {
 export const SubRecipeViewer: React.FC<SubRecipeViewerProps> = ({
   subRecipeId,
   initialIngredient,
+  isAuthenticated,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [subRecipe, setSubRecipe] = useState<Publication | null>(null);
@@ -33,7 +35,7 @@ export const SubRecipeViewer: React.FC<SubRecipeViewerProps> = ({
     try {
       const fetchedRecipe = await PublicationsService.getPublicationById(
         subRecipeId,
-        false,
+        isAuthenticated,
       );
       setSubRecipe(fetchedRecipe);
     } catch (error) {

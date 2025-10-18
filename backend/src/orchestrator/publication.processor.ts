@@ -182,7 +182,7 @@ export class PublicationProcessor {
     );
 
     // Matching logique
-    const THRESHOLD = 0.85;
+    const THRESHOLD = 0.8; // Seuil assoupli
     const matches: Array<{
       subRecipe: string;
       product: string | null;
@@ -215,6 +215,7 @@ export class PublicationProcessor {
         }
       }
 
+      // MODIFICATION: Rendre le match obligatoire
       if (bestMatch) {
         if (!bestMatch.ingredient.product) bestMatch.ingredient.product = {};
         bestMatch.ingredient.product.is_recipe_id = subRecipe.id;
@@ -237,14 +238,13 @@ export class PublicationProcessor {
           );
         }
       } else {
-        matches.push({
-          subRecipe: subRecipe.title,
-          product: null,
-          score: 0,
-          forced: true,
-        });
-        console.log(
-          `[PublicationProcessor] Sub-recipe '${subRecipe.title}' has no product candidates, forced unmatched`,
+        // Levée d'erreur si aucune correspondance n'est trouvée
+        assert(
+          bestMatch, // Cette condition échouera
+          `La sous-recette '${subRecipe.title}' n'a trouvé aucune correspondance d'ingrédient dans la recette principale.`,
+          "processRelations:match",
+          `publication: ${pub.title}`,
+          subRecipe,
         );
       }
     }

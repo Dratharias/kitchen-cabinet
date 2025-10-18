@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useFormCache } from "@/stores/formCacheStore";
 import { FormInput } from "@/components/atoms/FormInput";
 import { FormCheckbox } from "@/components/atoms/FormCheckbox";
 import { Trash2, Plus, ChevronDown, ChevronRight } from "lucide-react";
@@ -14,9 +15,14 @@ export const IngredientFormSection: React.FC<IngredientFormSectionProps> = ({
   ingredients,
   onChange,
 }) => {
+  const { cache, fetchResource } = useFormCache();
   const [openMacros, setOpenMacros] = useState<boolean[]>(
     ingredients.map(() => false),
   );
+
+  useEffect(() => {
+    fetchResource("publications", "publications");
+  }, [fetchResource]);
 
   const toggleMacro = (index: number) => {
     setOpenMacros((prev) => {
@@ -35,6 +41,7 @@ export const IngredientFormSection: React.FC<IngredientFormSectionProps> = ({
         product: {
           name: "",
           is_recipe: false,
+          is_recipe_id: null,
           macro: {
             calories: 0,
             protein: 0,
@@ -59,32 +66,51 @@ export const IngredientFormSection: React.FC<IngredientFormSectionProps> = ({
 
   const updateIngredient = (index: number, field: string, value: any) => {
     const updated = [...ingredients];
+    const currentIngredient = { ...updated[index] };
 
     if (field.startsWith("product.")) {
       const productField = field.split(".")[1];
-      updated[index] = {
-        ...updated[index],
-        product: { ...updated[index].product, [productField]: value },
+      const newProduct = {
+        ...currentIngredient.product,
+        [productField]: value,
       };
+
+      if (productField === "is_recipe" && !value) {
+        newProduct.is_recipe_id = null;
+      }
+
+      currentIngredient.product = newProduct;
     } else if (field.startsWith("macro.")) {
       const macroField = field.split(".")[1] as keyof MacroPayload;
       const currentMacro =
-        updated[index].product?.macro || ({} as Partial<MacroPayload>);
-      updated[index] = {
-        ...updated[index],
-        product: {
-          ...updated[index].product,
-          macro: { ...currentMacro, [macroField]: Number(value) || 0 },
-        },
-      };
-    } else if (field === "name") {
-      updated[index] = {
-        ...updated[index],
+        currentIngredient.product?.macro || ({} as Partial<MacroPayload>);
+      currentIngredient.product = {
+        ...currentIngredient.product,
+        macro: { ...currentMacro, [macroField]: Number(value) || 0 },
       };
     } else {
-      updated[index] = { ...updated[index], [field]: value };
+      (currentIngredient as any)[field] = value;
     }
 
+    updated[index] = currentIngredient;
+    onChange(updated);
+  };
+
+  const handleRecipeLink = (index: number, publicationId: string) => {
+    const selectedPub = cache.publications.find(
+      (p) => p.value === publicationId,
+    );
+    const updated = [...ingredients];
+    const currentProduct = updated[index].product || {};
+
+    updated[index] = {
+      ...updated[index],
+      product: {
+        ...currentProduct,
+        is_recipe_id: publicationId,
+        name: selectedPub ? selectedPub.label : currentProduct.name,
+      },
+    };
     onChange(updated);
   };
 
@@ -105,6 +131,7 @@ export const IngredientFormSection: React.FC<IngredientFormSectionProps> = ({
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-semibold text-gray-200">Ingrédients</h3>
         <button
+          type="button"
           onClick={addIngredient}
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-amber-600 text-white text-sm hover:bg-amber-700 transition-colors hover:cursor-pointer"
         >
@@ -119,7 +146,6 @@ export const IngredientFormSection: React.FC<IngredientFormSectionProps> = ({
             key={index}
             className="p-4 border border-gray-600 rounded-lg bg-[#292929]/40 space-y-4"
           >
-            {/* Ligne produit + preptime + suppression */}
             <div className="flex flex-wrap justify-between gap-3 items-start">
               <div className="flex-1 min-w-[220px]">
                 <FormInput
@@ -127,10 +153,12 @@ export const IngredientFormSection: React.FC<IngredientFormSectionProps> = ({
                   value={ingredient.product?.name || ""}
                   onChange={(v) => updateIngredient(index, "product.name", v)}
                   placeholder="Nom du produit"
+                  disabled={!!ingredient.product?.is_recipe_id}
                 />
               </div>
 
               <button
+                type="button"
                 onClick={() => removeIngredient(index)}
                 className="mt-6 p-2 text-red-400 hover:text-red-300 transition-colors hover:cursor-pointer"
               >
@@ -138,7 +166,6 @@ export const IngredientFormSection: React.FC<IngredientFormSectionProps> = ({
               </button>
             </div>
 
-            {/* Quantité / Facteur / Unité */}
             <div className="grid grid-cols-3 gap-3">
               <FormInput
                 label="Quantité"
@@ -164,7 +191,6 @@ export const IngredientFormSection: React.FC<IngredientFormSectionProps> = ({
               />
             </div>
 
-            {/* Autres propriétés */}
             <FormInput
               label="Coupe"
               value={ingredient.cut || ""}
@@ -178,7 +204,26 @@ export const IngredientFormSection: React.FC<IngredientFormSectionProps> = ({
               onChange={(v) => updateIngredient(index, "product.is_recipe", v)}
             />
 
-            {/* Toggle macros */}
+            {ingredient.product?.is_recipe && (
+              <div className="mt-2">
+                <label className="text-sm font-medium text-gray-400">
+                  Lier à la recette
+                </label>
+                <select
+                  value={ingredient.product?.is_recipe_id || ""}
+                  onChange={(e) => handleRecipeLink(index, e.target.value)}
+                  className="w-full mt-1.5 px-3 py-2 rounded-md border border-gray-600 bg-[#292929] text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                >
+                  <option value="">Sélectionner une recette</option>
+                  {cache.publications.map((pub) => (
+                    <option key={pub.value} value={pub.value}>
+                      {pub.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+
             <div className="border-t border-gray-600 pt-4 mt-4">
               <button
                 type="button"
