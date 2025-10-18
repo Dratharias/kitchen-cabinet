@@ -394,11 +394,11 @@ export function PublicationView() {
               })}
             </div>
           )}
-          <div className="w-full h-64 rounded-xl mb-6 bg-gray-800/20">
             {allGalleryItems && allGalleryItems.length > 0 && (
-              <Gallery items={allGalleryItems} />
+            <div className="w-full h-64 rounded-xl mb-6 bg-gray-800/20">
+                <Gallery items={allGalleryItems} />
+            </div>
             )}
-          </div>
         </div>
       </DotGrid>
 

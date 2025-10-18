@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import {
   FileText,
   ChevronDown,
@@ -33,7 +33,7 @@ interface SegmentBlockEditableProps {
     fields: FullSegmentEditFields,
   ) => Promise<boolean | void>;
   onDeleteSegment?: (segmentId: string) => Promise<boolean | void>;
-  onDeleteBlock?: () => void; // New prop
+  onDeleteBlock?: () => void;
   pendingAddItem: boolean;
   onConfirmAdd: (fields: FullSegmentEditFields) => void;
   onCancelAdd: () => void;
@@ -126,6 +126,27 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
     }
   };
 
+  // regroupement par titre
+  const groupedSegments = useMemo(() => {
+    const groups: { title: string | null; items: any[] }[] = [];
+    let currentGroup: { title: string | null; items: any[] } | null = null;
+
+    for (const seg of segments) {
+      if (seg.title) {
+        currentGroup = { title: seg.title, items: [seg] };
+        groups.push(currentGroup);
+      } else {
+        if (!currentGroup) {
+          currentGroup = { title: null, items: [] };
+          groups.push(currentGroup);
+        }
+        currentGroup.items.push(seg);
+      }
+    }
+
+    return groups;
+  }, [segments]);
+
   return (
     <div className="border border-gray-700 rounded-lg bg-[#1F1F1F]/80 mb-4 overflow-hidden">
       <header
@@ -158,65 +179,72 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
 
       {expanded && (
         <div className="p-4 space-y-4 text-gray-300">
-          {segments.map((seg: any) => {
-            const id = seg.segment_id;
-            const isEditingThis = editingSegmentId === id;
+          {groupedSegments.map((group, idx) => (
+            <div key={group.title || `group-${idx}`}>
+              {group.title && (
+                <h4 className="font-semibold text-gray-100 mt-3 mb-2 text-base">
+                  {group.title}
+                </h4>
+              )}
 
-            return (
-              <div key={id} className="flex items-start gap-3 w-full">
-                {isEditingThis ? (
-                  <SegmentEditor
-                    segment={seg}
-                    onConfirm={(fields) => handleConfirmUpdate(id, fields)}
-                    onCancel={() => setEditingSegmentId(null)}
-                  />
-                ) : (
-                  <>
-                    <div className="pt-1">
-                      <input
-                        type="checkbox"
-                        checked={!!checkedItems[id]}
-                        onChange={() => toggleChecked(id)}
-                        className="accent-amber-500 w-4 h-4 mt-0.5 cursor-pointer"
+              {group.items.map((seg: any) => {
+                const id = seg.segment_id;
+                const isEditingThis = editingSegmentId === id;
+
+                return (
+                  <div key={id} className="flex items-start gap-3 w-full">
+                    {isEditingThis ? (
+                      <SegmentEditor
+                        segment={seg}
+                        onConfirm={(fields) => handleConfirmUpdate(id, fields)}
+                        onCancel={() => setEditingSegmentId(null)}
                       />
-                    </div>
-                    <div
-                      className={`group relative flex-1 border-b border-gray-800 pb-3`}
-                    >
-                      <div
-                        className={
-                          checkedItems[id] ? "line-through text-gray-500" : ""
-                        }
-                      >
-                        {seg.title && (
-                          <h4 className="font-semibold text-white mb-1">
-                            {seg.title}
-                          </h4>
-                        )}
-                        <p className="whitespace-pre-line">{seg.paragraph}</p>
-                      </div>
-                      {isAuthenticated && (
-                        <div className="absolute top-0 right-0 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                          <button
-                            onClick={() => onDeleteSegment?.(id)}
-                            className="p-1.5 rounded-md bg-neutral-700/80 text-red-500 hover:text-red-400 hover:cursor-pointer"
-                          >
-                            <Trash2 size={16} />
-                          </button>
-                          <button
-                            onClick={() => setEditingSegmentId(id)}
-                            className="p-1.5 rounded-md bg-neutral-700/80 text-amber-500 hover:text-amber-400 hover:cursor-pointer"
-                          >
-                            <Edit2 size={16} />
-                          </button>
+                    ) : (
+                      <>
+                        <div className="pt-1">
+                          <input
+                            type="checkbox"
+                            checked={!!checkedItems[id]}
+                            onChange={() => toggleChecked(id)}
+                            className="accent-amber-500 w-4 h-4 mt-0.5 cursor-pointer"
+                          />
                         </div>
-                      )}
-                    </div>
-                  </>
-                )}
-              </div>
-            );
-          })}
+                        <div className="group relative flex-1 border-b border-gray-800 pb-3">
+                          <div
+                            className={
+                              checkedItems[id]
+                                ? "line-through text-gray-500"
+                                : ""
+                            }
+                          >
+                            <p className="whitespace-pre-line">
+                              {seg.paragraph}
+                            </p>
+                          </div>
+                          {isAuthenticated && (
+                            <div className="absolute top-0 right-0 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                              <button
+                                onClick={() => onDeleteSegment?.(id)}
+                                className="p-1.5 rounded-md bg-neutral-700/80 text-red-500 hover:text-red-400 hover:cursor-pointer"
+                              >
+                                <Trash2 size={16} />
+                              </button>
+                              <button
+                                onClick={() => setEditingSegmentId(id)}
+                                className="p-1.5 rounded-md bg-neutral-700/80 text-amber-500 hover:text-amber-400 hover:cursor-pointer"
+                              >
+                                <Edit2 size={16} />
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          ))}
 
           {pendingAddItem && (
             <div className="flex items-start gap-3 w-full">

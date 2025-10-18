@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react"; // Assurez-vous d'importer useMemo
 import {
   Utensils,
   ChevronDown,
@@ -190,7 +190,7 @@ export const IngredientBlockEditable: React.FC<
   };
 
   const getDisplayValue = (ing: any) => {
-    const title = safeDecodeText(ing.title);
+    // Le titre est géré par le groupe, nous l'enlevons d'ici
     const unitName =
       safeDecodeText(ing.ingredient_units?.[0]?.unit?.name) ||
       safeDecodeText(ing.ingredient_units?.[0]?.name) ||
@@ -201,15 +201,55 @@ export const IngredientBlockEditable: React.FC<
     const mainParts = [rawQuantity, unitName, productName]
       .filter(Boolean)
       .join(" ");
-    const fullDisplay = [
-      title ? `[${title}]` : "",
-      mainParts,
-      cut ? `(${cut})` : "",
-    ]
+    const fullDisplay = [mainParts, cut ? `(${cut})` : ""]
       .filter(Boolean)
       .join(" ");
     return fullDisplay || "[Ingrédient vide]";
   };
+
+  // Logique de regroupement
+  const groupedIngredients = useMemo(() => {
+    const groups: { title: string | null; items: any[] }[] = [];
+    let currentGroup: { title: string | null; items: any[] } | null = null;
+
+    const isEmptyIngredient = (ing: any) => {
+      const unitName =
+        safeDecodeText(ing.ingredient_units?.[0]?.unit?.name) ||
+        safeDecodeText(ing.ingredient_units?.[0]?.name) ||
+        "";
+      const productName = safeDecodeText(ing.product?.name);
+      const cut = safeDecodeText(ing.cut);
+      const qty = ing.quantity;
+
+      return !ing.title && !unitName && !productName && !cut && !qty;
+    };
+
+    for (const ing of ingredients) {
+      if (ing.title) {
+        // nouveau groupe titré
+        currentGroup = { title: ing.title, items: [ing] };
+        groups.push(currentGroup);
+      } else if (isEmptyIngredient(ing)) {
+        // ingrédient complètement vide → attaché au bloc principal
+        let mainGroup = groups.find((g) => g.title === null);
+        if (!mainGroup) {
+          mainGroup = { title: null, items: [] };
+          groups.unshift(mainGroup);
+        }
+        mainGroup.items.push(ing);
+      } else {
+        // pas de titre mais non vide → tombe dans le dernier groupe
+        if (!currentGroup) {
+          currentGroup = { title: null, items: [] };
+          groups.push(currentGroup);
+        }
+        currentGroup.items.push(ing);
+      }
+    }
+
+    return groups;
+  }, [ingredients]);
+
 
   return (
     <div className="border border-gray-700 rounded-lg bg-[#1F1F1F]/80 mb-4 overflow-hidden">
@@ -242,62 +282,80 @@ export const IngredientBlockEditable: React.FC<
       </header>
       {expanded && (
         <div className="p-3 text-gray-300">
-          {ingredients.map((ing: any) => {
-            const id = ing.ingredient_id;
-            const isEditingThis = editingIngredientId === id;
-            return (
-              <div key={id} className="flex items-start gap-2 w-full">
-                {isEditingThis ? (
-                  <IngredientEditor
-                    ingredient={ing}
-                    onConfirm={(fields) => handleConfirmUpdate(id, fields)}
-                    onCancel={() => setEditingIngredientId(null)}
-                  />
-                ) : ing.product?.is_recipe_id ? (
-                  <SubRecipeViewer
-                    subRecipeId={ing.product.is_recipe_id}
-                    initialIngredient={ing}
-                  />
-                ) : (
-                  <div className="flex items-start gap-2 w-full py-1">
-                    <div className="py-1">
-                      <input
-                        type="checkbox"
-                        checked={!!checkedItems[id]}
-                        onChange={() => toggleChecked(id)}
-                        className="accent-amber-500 w-4 h-4 cursor-pointer mt-0.5"
+          {/* Boucle sur les groupes */}
+          {groupedIngredients.map((group, index) => (
+            <div key={group.title || `untitled-${index}`}>
+              {/* Afficher le titre du groupe */}
+              {group.title && (
+                <h4 className="font-semibold text-gray-100 mt-3 mb-2 pl-5 text-base">
+                  {group.title}
+                </h4>
+              )}
+
+              {/* Boucle sur les ingrédients du groupe */}
+              {group.items.map((ing: any) => {
+                const id = ing.ingredient_id;
+                const isEditingThis = editingIngredientId === id;
+                return (
+                  <div key={id} className="flex items-start gap-2 w-full">
+                    {isEditingThis ? (
+                      <IngredientEditor
+                        ingredient={ing}
+                        onConfirm={(fields) => handleConfirmUpdate(id, fields)}
+                        onCancel={() => setEditingIngredientId(null)}
                       />
-                    </div>
-                    <div className="group relative justify-center items-center flex-1 border-b border-gray-800 py-1">
-                      <span
-                        className={
-                          checkedItems[id] ? "line-through text-gray-500" : ""
-                        }
-                      >
-                        {getDisplayValue(ing)}
-                      </span>
-                      {isAuthenticated && (
-                        <div className="absolute top-0 right-0 flex items-center gap-2 opacity-0 group-hover:opacity-100">
-                          <button
-                            onClick={() => onDeleteIngredient?.(id)}
-                            className="p-1.5 rounded-md bg-neutral-700/80 text-red-500 hover:text-red-400 hover:cursor-pointer"
-                          >
-                            <Trash2 size={16} />
-                          </button>
-                          <button
-                            onClick={() => setEditingIngredientId(id)}
-                            className="p-1.5 rounded-md bg-neutral-700/80 text-amber-500 hover:text-amber-400 hover:cursor-pointer"
-                          >
-                            <Edit2 size={16} />
-                          </button>
+                    ) : ing.product?.is_recipe_id ? (
+                      <SubRecipeViewer
+                        subRecipeId={ing.product.is_recipe_id}
+                        initialIngredient={ing}
+                      />
+                    ) : (
+                      <div className="flex items-start gap-2 w-full py-1 pl-5">
+                        <div className="py-1">
+                          <input
+                            type="checkbox"
+                            checked={!!checkedItems[id]}
+                            onChange={() => toggleChecked(id)}
+                            className="accent-amber-500 w-4 h-4 cursor-pointer mt-0.5"
+                          />
                         </div>
-                      )}
-                    </div>
+                        <div className="group relative justify-center items-center flex-1 border-b border-gray-800 py-1">
+                          <span
+                            className={
+                              checkedItems[id]
+                                ? "line-through text-gray-500"
+                                : ""
+                            }
+                          >
+                            {/* getDisplayValue n'affiche plus le titre */}
+                            {getDisplayValue(ing)}
+                          </span>
+                          {isAuthenticated && (
+                            <div className="absolute top-0 right-0 flex items-center gap-2 opacity-0 group-hover:opacity-100">
+                              <button
+                                onClick={() => onDeleteIngredient?.(id)}
+                                className="p-1.5 rounded-md bg-neutral-700/80 text-red-500 hover:text-red-400 hover:cursor-pointer"
+                              >
+                                <Trash2 size={16} />
+                              </button>
+                              <button
+                                onClick={() => setEditingIngredientId(id)}
+                                className="p-1.5 rounded-md bg-neutral-700/80 text-amber-500 hover:text-amber-400 hover:cursor-pointer"
+                              >
+                                <Edit2 size={16} />
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            );
-          })}
+                );
+              })}
+            </div>
+          ))}
+
+          {/* L'éditeur pour l'ajout reste à la fin */}
           {pendingAddItem && (
             <div className="flex items-start gap-2 w-full mt-2">
               <IngredientEditor
