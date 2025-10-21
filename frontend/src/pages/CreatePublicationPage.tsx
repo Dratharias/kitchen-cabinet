@@ -2,11 +2,11 @@
 
 import React, { useState, useRef } from "react";
 import { OrchestratorService } from "@/services/orchestrator";
-import type { OrchestratorPayload } from "@/types/payloadBuilder";
 import { PublicationHeader } from "@/components/view/PublicationHeader";
 import { PublicationForm } from "@/components/organisms/PublicationForm";
 import { AppLayout } from "@/layouts/AppLayout";
 import { Trash2 } from "lucide-react";
+import { OrchestratorPayload } from "@/types";
 
 export function CreatePublicationPage() {
   const [mode, setMode] = useState<"write" | "json">("write");
@@ -52,12 +52,18 @@ export function CreatePublicationPage() {
   const handleProcess = async () => {
     setIsProcessing(true);
     try {
-      const results = await Promise.allSettled(
-        payloads.map((payload) => OrchestratorService.publicate(payload)),
-      );
+      let succeeded = 0;
+      let failed = 0;
 
-      const succeeded = results.filter((r) => r.status === "fulfilled").length;
-      const failed = results.filter((r) => r.status === "rejected").length;
+      for (const payload of payloads) {
+        try {
+          await OrchestratorService.publicate(payload);
+          succeeded++;
+        } catch (err) {
+          console.error("Erreur pour un payload:", err);
+          failed++;
+        }
+      }
 
       alert(`Traitement terminé: ${succeeded} succès, ${failed} échecs`);
 
@@ -74,6 +80,7 @@ export function CreatePublicationPage() {
       setIsProcessing(false);
     }
   };
+
 
   const handleFormSubmit = async (payload: OrchestratorPayload) => {
     setIsProcessing(true);

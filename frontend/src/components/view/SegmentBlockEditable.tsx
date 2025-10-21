@@ -182,17 +182,18 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
           {groupedSegments.map((group, idx) => (
             <div key={group.title || `group-${idx}`}>
               {group.title && (
-                <h4 className="font-semibold text-gray-100 mt-3 mb-2 text-base">
+                <h4 className="font-semibold text-gray-100 text-base">
                   {group.title}
                 </h4>
               )}
 
-              {group.items.map((seg: any) => {
+              {group.items.map((seg: any, segIdx: number) => {
                 const id = seg.segment_id;
                 const isEditingThis = editingSegmentId === id;
+                const isFirst = segIdx === 0;
 
                 return (
-                  <div key={id} className="flex items-start gap-3 w-full">
+                  <div key={id} className={`flex items-start w-full ${isFirst ? "-mt-1" : ""}`}>
                     {isEditingThis ? (
                       <SegmentEditor
                         segment={seg}
@@ -200,29 +201,32 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
                         onCancel={() => setEditingSegmentId(null)}
                       />
                     ) : (
-                      <>
-                        <div className="pt-1">
+                      <div
+                        className={`flex items-center border-b border-gray-800 w-full ${
+                          isFirst ? "pt-0 pb-2" : "py-2"
+                        }`}
+                      >
+                        <div className="flex justify-center items-center w-8">
                           <input
                             type="checkbox"
                             checked={!!checkedItems[id]}
                             onChange={() => toggleChecked(id)}
-                            className="accent-amber-500 w-4 h-4 mt-0.5 cursor-pointer"
+                            className="accent-amber-500 w-4 h-4 cursor-pointer"
                           />
                         </div>
-                        <div className="group relative flex-1 border-b border-gray-800 pb-3">
+
+                        <div className="flex flex-1 items-center justify-between group">
                           <div
-                            className={
-                              checkedItems[id]
-                                ? "line-through text-gray-500"
-                                : ""
-                            }
+                            className={checkedItems[id] ? "flex w-full line-through text-gray-500" : "flex w-full"}
+                            onClick={() => toggleChecked(id)}
                           >
-                            <p className="whitespace-pre-line">
+                            <p className="whitespace-pre-line hover:cursor-pointer w-full ml-2">
                               {seg.paragraph}
                             </p>
                           </div>
+
                           {isAuthenticated && (
-                            <div className="absolute top-0 right-0 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity ms-2">
                               <button
                                 onClick={() => onDeleteSegment?.(id)}
                                 className="p-1.5 rounded-md bg-neutral-700/80 text-red-500 hover:text-red-400 hover:cursor-pointer"
@@ -238,7 +242,7 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
                             </div>
                           )}
                         </div>
-                      </>
+                      </div>
                     )}
                   </div>
                 );

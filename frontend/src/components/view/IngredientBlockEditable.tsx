@@ -44,6 +44,7 @@ interface IngredientBlockEditableProps {
   onAddIngredientClick: () => void;
 }
 
+
 const safeDecodeText = (text: string | null | undefined): string => {
   if (!text) return "";
   try {
@@ -181,6 +182,9 @@ export const IngredientBlockEditable: React.FC<
     null,
   );
 
+  const [yieldFactor, setYieldFactor] = useState("1.0");
+  const parsedYield = parseFloat(yieldFactor) || 1;
+
   const handleConfirmUpdate = async (
     ingredientId: string,
     fields: FullIngredientEditFields,
@@ -190,22 +194,27 @@ export const IngredientBlockEditable: React.FC<
   };
 
   const getDisplayValue = (ing: any) => {
-    // Le titre est géré par le groupe, nous l'enlevons d'ici
+    const factor = parsedYield * (ing.multiply_factor ?? 1);
+    const adjustedQty = (ing.quantity ?? 0) * factor;
+
     const unitName =
       safeDecodeText(ing.ingredient_units?.[0]?.unit?.name) ||
       safeDecodeText(ing.ingredient_units?.[0]?.name) ||
       "";
-    const rawQuantity = String(ing.quantity || "").trim();
     const productName = safeDecodeText(ing.product?.name);
     const cut = safeDecodeText(ing.cut);
-    const mainParts = [rawQuantity, unitName, productName]
+
+    const mainParts = [
+      adjustedQty ? adjustedQty.toFixed(1) : "",
+      unitName,
+      productName,
+    ]
       .filter(Boolean)
       .join(" ");
-    const fullDisplay = [mainParts, cut ? `(${cut})` : ""]
-      .filter(Boolean)
-      .join(" ");
-    return fullDisplay || "[Ingrédient vide]";
+
+    return [mainParts, cut ? `(${cut})` : ""].filter(Boolean).join(" ") || "[Ingrédient vide]";
   };
+
 
   // Logique de regroupement
   const groupedIngredients = useMemo(() => {
@@ -261,6 +270,22 @@ export const IngredientBlockEditable: React.FC<
           {block.subtitle || "Ingrédients"}
         </h3>
         <div className="flex items-center gap-2">
+          <label htmlFor="yieldFactor" className="text-gray-300 text-sm">
+            Rendement :
+          </label>
+          <input
+            id="yieldFactor"
+            type="number"
+            step="0.1"
+            min="0.1"
+            value={yieldFactor}
+            onClick={(e) => e.stopPropagation()}
+            onChange={(e) => setYieldFactor(e.target.value)}
+            className="w-20 bg-neutral-700 text-white text-center rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-amber-500"
+          />
+          <span className="text-amber-400 text-sm">×</span>
+        </div>
+        <div className="flex items-center gap-2">
           {isAuthenticated && onDeleteBlock && (
             <button
               onClick={(e) => {
@@ -292,11 +317,13 @@ export const IngredientBlockEditable: React.FC<
               )}
 
               {/* Boucle sur les ingrédients du groupe */}
-              {group.items.map((ing: any) => {
+              {group.items.map((ing: any, ingIdx: number) => {
                 const id = ing.ingredient_id;
                 const isEditingThis = editingIngredientId === id;
+                const isFirst = ingIdx === 0;
+
                 return (
-                  <div key={id} className="flex items-start gap-2 w-full">
+                  <div key={id} className={`flex items-start w-full ${isFirst ? "-mt-1" : ""}`}>
                     {isEditingThis ? (
                       <IngredientEditor
                         ingredient={ing}
@@ -310,28 +337,32 @@ export const IngredientBlockEditable: React.FC<
                         isAuthenticated={isAuthenticated}
                       />
                     ) : (
-                      <div className="flex items-start gap-2 w-full py-1 pl-5">
-                        <div className="py-1">
+                      <div
+                        className={`flex items-center border-b border-gray-800 w-full pl-5 ${
+                          isFirst ? "pt-0 pb-2" : "py-2"
+                        }`}
+                      >
+                        <div className="flex justify-center items-center w-8">
                           <input
                             type="checkbox"
                             checked={!!checkedItems[id]}
                             onChange={() => toggleChecked(id)}
-                            className="accent-amber-500 w-4 h-4 cursor-pointer mt-0.5"
+                            className="accent-amber-500 w-4 h-4 cursor-pointer"
                           />
                         </div>
-                        <div className="group relative justify-center items-center flex-1 border-b border-gray-800 py-1">
-                          <span
-                            className={
-                              checkedItems[id]
-                                ? "line-through text-gray-500"
-                                : ""
-                            }
+
+                        <div className="flex flex-1 items-center justify-between group">
+                          <div
+                            className={checkedItems[id] ? "flex w-full line-through text-gray-500" : "flex w-full"}
+                            onClick={() => toggleChecked(id)}
                           >
-                            {/* getDisplayValue n'affiche plus le titre */}
-                            {getDisplayValue(ing)}
-                          </span>
+                            <p className="whitespace-pre-line hover:cursor-pointer w-full ml-2">
+                              {getDisplayValue(ing)}
+                            </p>
+                          </div>
+
                           {isAuthenticated && (
-                            <div className="absolute top-0 right-0 flex items-center gap-2 opacity-0 group-hover:opacity-100">
+                            <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity ms-2">
                               <button
                                 onClick={() => onDeleteIngredient?.(id)}
                                 className="p-1.5 rounded-md bg-neutral-700/80 text-red-500 hover:text-red-400 hover:cursor-pointer"
