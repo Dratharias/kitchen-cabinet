@@ -1,0 +1,21 @@
+FROM node:20-alpine
+
+RUN addgroup -S kitchen-kabinet-back && adduser -S podman-kabinet -G kitchen-kabinet-back
+
+WORKDIR /app
+
+COPY package*.json tsconfig.json ./
+
+RUN npm ci --no-cache
+
+COPY . .
+
+RUN chown -R podman-kabinet:kitchen-kabinet-back /app
+
+USER podman-kabinet
+
+RUN npm run build
+
+EXPOSE 3001
+
+CMD ["npm", "run", "start"]

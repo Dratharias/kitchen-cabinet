@@ -5,7 +5,7 @@ services:
     ports:
       - "3001:3001"
     volumes:
-      - ./backend:/app
+      - ./backend:/app:Z
       - /app/node_modules
     env_file:
       - ./backend/.env
@@ -20,7 +20,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./frontend:/app
+      - ./frontend:/app:Z
       - /app/node_modules
     env_file:
       - ./frontend/.env
@@ -37,8 +37,8 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./sql:/docker-entrypoint-initdb.d:ro
-      - pgdata:/var/lib/postgresql/data
+      - ./sql:/docker-entrypoint-initdb.d:ro,Z
+      - pgdata:/var/lib/postgresql/data:Z
     restart: unless-stopped
 
 volumes:
