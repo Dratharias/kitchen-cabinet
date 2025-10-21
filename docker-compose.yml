@@ -11,6 +11,8 @@ services:
       - ./backend/.env
     stdin_open: true
     tty: true
+    depends_on:
+      - dev-kitchen
 
   frontend:
     build: ./frontend
@@ -24,6 +26,8 @@ services:
       - ./frontend/.env
     stdin_open: true
     tty: true
+    depends_on:
+      - backend
 
   dev-kitchen:
     image: postgres:latest
