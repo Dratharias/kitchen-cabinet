@@ -65,7 +65,7 @@ export class GeminiCodeClient {
 
       const authenticated = await this.isAuthenticated();
       if (!authenticated) {
-        console.log('Gemini CLI not authenticated. Run: podman exec -it meal-ticket-ai-service gemini-cli');
+        console.log('Gemini CLI not authenticated. Run: podman exec -it kitchen-kabinet-ai-service gemini-cli');
         return false;
       }
 
@@ -136,7 +136,7 @@ export class GeminiCodeClient {
   getAuthInstructions() {
     return {
       installed: 'Gemini CLI is installed',
-      notAuthenticated: 'To authenticate, run: podman exec -it meal-ticket-ai-service gemini-cli',
+      notAuthenticated: 'To authenticate, run: podman exec -it kitchen-kabinet-ai-service gemini-cli',
       follow: 'Choose "Login with Google" and follow the OAuth prompts in your browser',
       subscription: 'If you have Google One AI Premium, higher rate limits will be automatically applied',
     };

@@ -1,7 +1,7 @@
 services:
   backend:
     build: ./backend
-    container_name: meal-ticket-backend
+    container_name: kitchen-kabinet-backend
     ports:
       - "3001:3001"
     volumes:
@@ -26,7 +26,7 @@ services:
 
   frontend:
     build: ./frontend
-    container_name: meal-ticket-frontend
+    container_name: kitchen-kabinet-frontend
     ports:
       - "3000:3000"
     volumes:
@@ -49,7 +49,7 @@ services:
 
   ai-service:
     build: ./ai-service
-    container_name: meal-ticket-ai-service
+    container_name: kitchen-kabinet-ai-service
     ports:
       - "3002:3002"
     volumes:

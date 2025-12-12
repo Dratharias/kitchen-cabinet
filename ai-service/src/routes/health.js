@@ -46,14 +46,14 @@ export async function healthRouter(fastify, options) {
         message: 'Claude Code CLI is ready to use with your subscription'
       } : {
         status: 'not-authenticated',
-        message: 'Run: podman exec -it meal-ticket-ai-service claude login'
+        message: 'Run: podman exec -it kitchen-kabinet-ai-service claude login'
       },
       geminiCode: providers['gemini-code'] ? {
         status: 'authenticated',
         message: 'Gemini CLI is ready to use with your Google account'
       } : {
         status: 'not-authenticated',
-        message: 'Run: podman exec -it meal-ticket-ai-service gemini-cli (choose "Login with Google")'
+        message: 'Run: podman exec -it kitchen-kabinet-ai-service gemini-cli (choose "Login with Google")'
       }
     };
   });

@@ -49,7 +49,7 @@ export class ClaudeCodeClient {
           lowerOutput.includes('please run /login') ||
           lowerOutput.includes('not authenticated') ||
           lowerOutput.includes('error')) {
-        console.log('Claude Code CLI not authenticated. Run: podman exec -it meal-ticket-ai-service claude login');
+        console.log('Claude Code CLI not authenticated. Run: podman exec -it kitchen-kabinet-ai-service claude login');
         return false;
       }
 
@@ -82,7 +82,7 @@ export class ClaudeCodeClient {
 
       const authenticated = await this.isAuthenticated();
       if (!authenticated) {
-        console.log('Claude Code CLI not authenticated. Run: podman exec -it meal-ticket-ai-service claude login');
+        console.log('Claude Code CLI not authenticated. Run: podman exec -it kitchen-kabinet-ai-service claude login');
         return false;
       }
 
@@ -185,7 +185,7 @@ Return ONLY JSON.`;
   getAuthInstructions() {
     return {
       installed: 'Claude Code CLI is installed',
-      notAuthenticated: 'To authenticate, run: podman exec -it meal-ticket-ai-service claude login',
+      notAuthenticated: 'To authenticate, run: podman exec -it kitchen-kabinet-ai-service claude login',
       follow: 'Follow the prompts to link your Anthropic account',
     };
   }

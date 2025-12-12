@@ -65,7 +65,7 @@ export function SettingsPage() {
   const handleGetGeminiInstructions = () => {
     setGeminiInstructions({
       message: "Pour authentifier Gemini CLI, exécutez la commande suivante:",
-      command: "podman exec -it meal-ticket-ai-service gemini-cli",
+      command: "podman exec -it kitchen-kabinet-ai-service gemini-cli",
       steps: [
         "Ouvrez un terminal sur votre machine hôte",
         "Exécutez la commande ci-dessus",

@@ -7,12 +7,12 @@
     "down": "podman compose down",
     "restart": "podman compose down && podman compose up -d",
     "logs": "podman compose logs -f",
-    "status": "podman ps --filter name=meal-ticket",
+    "status": "podman ps --filter name=kitchen-kabinet",
     "db:connect": "podman exec -it dev-kitchen psql -U dratharias -d dev-kitchen",
     "db:backup": "podman exec dev-kitchen sh -c 'pg_dump -U dratharias dev-kitchen' > backups/dev-kitchen.sql",
     "db:restore": "podman exec -i dev-kitchen sh -c 'psql -U dratharias -d dev-kitchen' < backups/dev-kitchen.sql",
     "clean": "podman compose down --volumes --remove-orphans && podman system prune -af --volumes",
-    "prisma:migrate": "podman exec meal-ticket-backend sh -c 'npx prisma migrate deploy'",
-    "prisma:seed": "podman exec meal-ticket-backend sh -c 'node /app/prisma/seed.js'"
+    "prisma:migrate": "podman exec kitchen-kabinet-backend sh -c 'npx prisma migrate deploy'",
+    "prisma:seed": "podman exec kitchen-kabinet-backend sh -c 'node /app/prisma/seed.js'"
   }
 }

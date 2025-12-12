@@ -12,7 +12,7 @@ export class ClaudeCodeController {
     try {
       // Forward request to AI service
       const AI_SERVICE_URL =
-        process.env.AI_SERVICE_URL || "http://meal-ticket-ai-service:3002";
+        process.env.AI_SERVICE_URL || "http://kitchen-kabinet-ai-service:3002";
 
       const response = await fetch(`${AI_SERVICE_URL}/api/health`);
       const data = await response.json();
@@ -45,7 +45,7 @@ export class ClaudeCodeController {
       data: {
         message:
           "To authenticate Claude Code, run the following command in your terminal:",
-        command: "podman exec -it meal-ticket-ai-service claude login",
+        command: "podman exec -it kitchen-kabinet-ai-service claude login",
         steps: [
           "Open a terminal",
           "Run the command above",
