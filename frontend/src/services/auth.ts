@@ -15,7 +15,8 @@ export class AuthService {
 
       if (!res.ok) throw new Error("Login failed");
 
-      const data: LoginResponse = await res.json();
+      const response: { success: boolean; data: LoginResponse } = await res.json();
+      const data = response.data;
       if (data?.token) {
         localStorage.setItem(TOKEN_KEY, data.token);
         localStorage.setItem(
@@ -57,4 +58,15 @@ export class AuthService {
     const user = localStorage.getItem(USER_KEY);
     return user ? JSON.parse(user) : null;
   }
+}
+
+/**
+ * Get authentication headers for API requests
+ */
+export function getAuthHeaders(): HeadersInit {
+  const token = AuthService.getToken();
+  return {
+    "Content-Type": "application/json",
+    ...(token && { Authorization: `Bearer ${token}` }),
+  };
 }

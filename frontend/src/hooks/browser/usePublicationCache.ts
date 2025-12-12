@@ -41,5 +41,30 @@ export function usePublicationCache() {
     setDisplayIds([]);
   }, []);
 
-  return { loadViewFromCache, mergeIntoCache, getDisplayItems, clearCache };
+  const removePrivatePublications = useCallback(() => {
+    // Filter out private publications from entity cache
+    const publicIds: string[] = [];
+    entityCache.current.forEach((pub, id) => {
+      if (pub.public === false || pub.published === false) {
+        entityCache.current.delete(id);
+      } else {
+        publicIds.push(id);
+      }
+    });
+
+    // Update view cache to only include public publication IDs
+    viewCache.current.forEach((view, key) => {
+      const filteredIds = view.ids.filter(id => publicIds.includes(id));
+      if (filteredIds.length > 0) {
+        viewCache.current.set(key, { ...view, ids: filteredIds });
+      } else {
+        viewCache.current.delete(key);
+      }
+    });
+
+    // Update display IDs to only show public ones
+    setDisplayIds(prev => prev.filter(id => publicIds.includes(id)));
+  }, []);
+
+  return { loadViewFromCache, mergeIntoCache, getDisplayItems, clearCache, removePrivatePublications };
 }

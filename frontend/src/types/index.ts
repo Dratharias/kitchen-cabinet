@@ -6,8 +6,6 @@
 // =================================================================
 
 export interface GalleryItem {
-  gallery_id: string;
-  order_num: number;
   url: string;
   label?: string | null;
 }
@@ -28,140 +26,109 @@ export interface Unit extends UnitPayload {
   unit_id: string;
 }
 
-export interface MacroPayload {
-  calories?: number;
-  protein?: number;
-  carbs?: number;
-  fiber?: number;
-  sugar?: number;
-  saturated?: number | null;
-  trans?: number | null;
-  caffein?: number | null;
-  alcohol?: number;
+export interface TagPayload {
+  name: string;
+  slug?: string;
+  description?: string | null;
 }
-export interface Macro extends MacroPayload {
-  macro_id: string;
-}
-
-export interface CategoryPayload {
-  str_value: string;
-  type: string;
-}
-export interface Category extends CategoryPayload {
-  category_id: string;
-}
-
-export interface Servings {
-  serving_id?: string;
-  yield: number;
-  value: string;
-}
-
-export interface PrepTimePayload {
-  duration: number;
-  style_id?: string | null;
-  style?: CategoryPayload; // For connect/create operations
-}
-export interface PrepTime extends PrepTimePayload {
-  prep_time_id: string;
+export interface Tag extends TagPayload {
+  tag_id: string;
+  slug: string;
 }
 
 export interface ProductPayload {
-  is_recipe?: boolean | null;
   name: string;
-  is_recipe_id?: string | null;
-  macro_id?: string | null;
-  macro?: MacroPayload | null; // For connect/create operations
 }
 export interface Product extends ProductPayload {
   product_id: string;
 }
 
 export interface IngredientPayload {
-  quantity?: number;
-  multiply_factor?: number;
-  cut?: string;
-  title?: string;
-  product_id?: string;
-  is_recipe?: boolean;
-  is_recipe_id?: string;
+  quantity?: number | null;
+  unit_id?: string | null;
+  note?: string | null;
+  section?: string | null; // Group title for visual segmentation
   product: ProductPayload; // For connect/create operations
-  ingredient_units?: UnitPayload[]; // For connect/create operations
+  unit?: UnitPayload | null; // For connect/create operations
 }
-export interface Ingredient extends IngredientPayload {
+export interface Ingredient extends Omit<IngredientPayload, 'product' | 'unit'> {
   ingredient_id: string;
+  product_id: string;
   product: Product;
-  ingredient_units?: Unit[];
+  unit?: Unit | null;
+  section?: string | null; // Group title for visual segmentation
 }
 
 export interface SegmentPayload {
-  title?: string;
+  title?: string | null;
   paragraph: string;
-  position: number;
-  segment_prep_time?: { prep_time: PrepTimePayload }[]; // For connect/create
+  note?: string | null;
+  section?: string | null; // Group title for visual segmentation
 }
 export interface Segment extends SegmentPayload {
   segment_id: string;
-  segment_prep_time?: { prep_time: PrepTime }[];
+  section?: string | null; // Group title for visual segmentation
+}
+
+export interface SegmentWithPosition extends SegmentPayload {
+  position: number;
+  section?: string | null; // Group title for visual segmentation
 }
 
 export interface ContentPayload {
+  subtitle?: string | null;
+  note?: string | null;
   total_prep_time: number;
-  servings?: Servings | null;
+  prep_time_note?: string | null;
+  serving_yield?: number | null;
+  serving_value?: string | null;
   gallery?: GalleryItem[] | null;
-  subtitle?: string;
-  is_ingredient?: boolean;
-  publication_id?: string;
-  content_segments?: { position: number; segment: SegmentPayload }[];
-  content_ingredients?: IngredientPayload[];
-  content_prep_times?: PrepTimePayload[];
+  segments?: SegmentWithPosition[];
+  ingredients?: IngredientPayload[];
 }
-export interface Content extends ContentPayload {
+export interface Content extends Omit<ContentPayload, 'segments' | 'ingredients'> {
   content_id: string;
-  thumbnail?: string;
+  publication_id: string;
+  thumbnail?: string | null;
   content_segments?: { position: number; segment: Segment }[];
   content_ingredients?: Ingredient[];
-  content_prep_times?: PrepTime[];
 }
 
 export interface PublicationPayload {
+  publication_id?: string;
   title: string;
-  description?: string[];
-  note?: string[];
+  description?: string[] | null;
+  note?: string[] | null;
   public?: boolean;
   published?: boolean;
-  thumbnail?: string;
-  type_id?: string | null;
-  style_id?: string | null;
-  author_id?: string | null;
-  tags?: CategoryPayload[];
-  contents?: Content[];
+  thumbnail?: string | null;
+  tags?: TagPayload[];
+  contents?: ContentPayload[];
 }
-export interface Publication extends PublicationPayload {
+export interface Publication extends Omit<PublicationPayload, 'tags' | 'contents'> {
   publication_id: string;
-  reviewCount: number;
-  averageRating: number;
-  type: Category;
-  style: Category;
-  author: Category;
-  contents: Content[];
-  productsRef?: Product[];
-  tags?: Category[];
+  created_at: string;
+  updated_at: string;
+  review_count: number;
+  average_rating: number;
+  publication_tags?: { tag: Tag }[];
+  contents?: Content[];
 }
 
 export interface ReviewPayload {
-  product_id?: string | null;
-  publication_id?: string | null;
+  publication_id: string;
   rating?: number | null;
-  comment?: string[];
-  description?: string[];
+  comment?: string[] | null;
+  description?: string[] | null;
   buy_again?: BuyAgain | null;
-  date_review?: string;
+  date_review?: string | null;
 }
 export interface Review extends ReviewPayload {
   review_id: string;
-  product: Product | null;
-  publication: Publication | null;
+  user_id: string;
+  created_at: string;
+  publication: Publication;
+  user: User;
 }
 
 // =================================================================
@@ -188,11 +155,13 @@ export interface PaginatedResponse<T> {
 }
 
 export interface ErrorResponse {
+  success: false;
   error: string;
 }
 
 export interface SuccessResponse {
   success: boolean;
+  message?: string;
 }
 
 // Auth
@@ -229,17 +198,13 @@ export type UserApi = EntityApi<
   User,
   Omit<User, "user_id" | "created_at"> & { password?: string }
 >;
-export type CategoryApi = EntityApi<Category, CategoryPayload>;
+export type TagApi = EntityApi<Tag, TagPayload>;
 export type UnitApi = EntityApi<Unit, UnitPayload>;
-export type MacroApi = EntityApi<Macro, MacroPayload>;
 export type ProductApi = EntityApi<Product, ProductPayload>;
-export type PrepTimeApi = EntityApi<PrepTime, PrepTimePayload>;
 export type IngredientApi = EntityApi<Ingredient, IngredientPayload>;
 export type SegmentApi = EntityApi<Segment, SegmentPayload>;
 export type ContentApi = EntityApi<Content, ContentPayload>;
-export type PublicationApi = EntityApi<Publication, PublicationPayload> & {
-  ListRequest: PaginatedRequest & { tagIds?: string[]; contentIds?: string[] };
-};
+export type PublicationApi = EntityApi<Publication, PublicationPayload>;
 export type ReviewApi = EntityApi<Review, ReviewPayload>;
 
 // =================================================================
@@ -251,28 +216,12 @@ export type OrchestratorAction = "create" | "update" | "delete";
 
 export interface OrchestratorPayload {
   action: OrchestratorAction;
-  payload: {
-    publications?: Record<string, PublicationPayload | null>;
-    reviews?: Record<string, ReviewPayload | null>;
-    // Add other entities here as needed for orchestration
-  };
+  payload: PublicationPayload;
 }
 
 export interface OrchestratorResponse {
   success: boolean;
   message?: string;
-  results?: {
-    publications?: Publication[];
-    contents?: Content[];
-    segments?: Segment[];
-    ingredients?: Ingredient[];
-    products?: Product[];
-    categories?: Category[];
-    units?: Unit[];
-    prepTimes?: PrepTime[];
-    reviews?: Review[];
-    macros?: Macro[];
-    users?: User[];
-  };
+  publication?: Publication;
   error?: string;
 }

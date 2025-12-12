@@ -82,10 +82,45 @@ export function CreatePublicationPage() {
   };
 
 
-  const handleFormSubmit = async (payload: OrchestratorPayload) => {
+  const handleFormSubmit = async (publicationPayload: any) => {
     setIsProcessing(true);
     try {
-      await OrchestratorService.publicate(payload);
+      // Generate a key for the publication (use title slug or random ID)
+      const slug = publicationPayload.title
+        ? publicationPayload.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
+        : `recipe-${Date.now()}`;
+
+      // Transform segments from flat to nested format for backend
+      // Frontend format: { position: 1, title, paragraph, note }
+      // Backend format: { position: 1, segment: { title, paragraph, note } }
+      const transformedPayload = { ...publicationPayload };
+      if (transformedPayload.contents) {
+        transformedPayload.contents = transformedPayload.contents.map((content: any) => {
+          if (content.segments) {
+            return {
+              ...content,
+              segments: content.segments.map((seg: any) => ({
+                position: seg.position,
+                segment: {
+                  title: seg.title,
+                  paragraph: seg.paragraph,
+                  note: seg.note,
+                },
+              })),
+            };
+          }
+          return content;
+        });
+      }
+
+      // Wrap payload in orchestrator format
+      const orchestratorPayload: OrchestratorPayload = {
+        action: "create",
+        payload: {
+          [slug]: transformedPayload,
+        },
+      };
+      await OrchestratorService.publicate(orchestratorPayload);
       alert("Publication créée avec succès");
     } catch (error) {
       console.error("Erreur lors de la création:", error);

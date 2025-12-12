@@ -1,0 +1,21 @@
+{
+  "name": "kitchen-cabinet-ai-service",
+  "version": "1.0.0",
+  "description": "AI service for recipe migration",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0",
+    "@google/generative-ai": "^0.21.0",
+    "openai": "^4.76.1",
+    "fastify": "^5.2.1",
+    "@fastify/cors": "^10.0.1"
+  }
+}

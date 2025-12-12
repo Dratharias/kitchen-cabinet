@@ -40,11 +40,12 @@ export function usePublicationLoader(): UsePublicationLoaderResult {
 
       setLoading(true);
       const filter: Record<string, unknown> = {};
-      if (types?.length) filter.type = types;
+      // TODO: Implement tag-based filtering instead of type
+      // if (types?.length) filter.type = types;
       if (query?.trim()) filter.q = query.trim();
 
       try {
-        const res = await PublicationsService.getPublications(
+        const publications = await PublicationsService.getPublications(
           {
             page,
             limit,
@@ -54,8 +55,10 @@ export function usePublicationLoader(): UsePublicationLoaderResult {
           },
           isAuthenticated,
         );
-        setTotalPages(res.totalPages ?? 1);
-        return (res.items ?? []) as Publication[];
+        // Backend returns array directly now, not paginated response
+        // TODO: Implement proper pagination on backend
+        setTotalPages(1);
+        return publications as Publication[];
       } catch (err: any) {
         console.error("Error fetching publications:", err);
         return [];

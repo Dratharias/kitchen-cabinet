@@ -33,3 +33,8 @@ gitignore
 Thumbs.db
 
 /src/generated/prisma
+
+.claude
+docs
+
+CLAUDE.md

@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Search, User } from "lucide-react";
+import { Search, User, Settings } from "lucide-react";
 import { PublicationCard } from "@/components/cards/PublicationCard";
 import {
   fadeSlideVariants,
@@ -64,14 +64,17 @@ export function ContentBrowser() {
       : "bg-[#292929] hover:bg-[#333333]",
   };
 
-  const authItem = {
-    icon: <User className="w-6 h-6" />,
-    label: isAuthenticated ? "Déconnexion" : "Connexion",
-    onClick: () => {
-      if (isAuthenticated) logout();
-      else navigate("/login");
-    },
-  };
+  const authItem = isAuthenticated
+    ? {
+        icon: <Settings className="w-6 h-6" />,
+        label: "Paramètres",
+        onClick: () => navigate("/settings"),
+      }
+    : {
+        icon: <User className="w-6 h-6" />,
+        label: "Connexion",
+        onClick: () => navigate("/login"),
+      };
 
   const dockItems = [
     ...categoryItems.slice(0, 2),

@@ -5,6 +5,8 @@ import { ContentBrowser } from "./pages/ContentBrowser";
 import { PublicationView } from "./pages/PublicationView";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { CreatePublicationPage } from "./pages/CreatePublicationPage";
+import { SettingsPage } from "./pages/SettingsPage";
+import { CreateReviewPage } from "./pages/CreateReviewPage";
 import { ProtectedRoute } from "./components/utilities/ProtectedRoute";
 
 export default function App() {
@@ -22,6 +24,22 @@ export default function App() {
               element={
                 <ProtectedRoute>
                   <CreatePublicationPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/settings"
+              element={
+                <ProtectedRoute>
+                  <SettingsPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/review/create/:publicationId"
+              element={
+                <ProtectedRoute>
+                  <CreateReviewPage />
                 </ProtectedRoute>
               }
             />

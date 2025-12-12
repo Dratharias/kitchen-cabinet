@@ -2,14 +2,11 @@ import React from "react";
 import { FormInput } from "@/components/atoms/FormInput";
 import { FormTextarea } from "@/components/atoms/FormTextarea";
 import { Trash2, Plus } from "lucide-react";
-import { PrepTimeFormSection } from "./PrepTimeFormSection";
-import type { PrepTimePayload, SegmentPayload } from "@/types";
+import type { SegmentWithPosition } from "@/types";
 
 interface SegmentFormSectionProps {
-  segments: Partial<SegmentPayload & { position: number }>[];
-  onChange: (
-    segments: Partial<SegmentPayload & { position: number }>[],
-  ) => void;
+  segments: Partial<SegmentWithPosition>[];
+  onChange: (segments: Partial<SegmentWithPosition>[]) => void;
 }
 
 export const SegmentFormSection: React.FC<SegmentFormSectionProps> = ({
@@ -23,7 +20,7 @@ export const SegmentFormSection: React.FC<SegmentFormSectionProps> = ({
         position: segments.length + 1,
         title: "",
         paragraph: "",
-        segment_prep_time: [],
+        note: "",
       },
     ]);
   };
@@ -41,14 +38,21 @@ export const SegmentFormSection: React.FC<SegmentFormSectionProps> = ({
     onChange(updated);
   };
 
-  const updatePrepTimes = (index: number, prepTimes: PrepTimePayload[]) => {
-    const updated = [...segments];
-    updated[index] = {
-      ...updated[index],
-      segment_prep_time: prepTimes.map((p) => ({ prep_time: p })),
-    };
-    onChange(updated);
-  };
+  // Group segments by section
+  const groupedSegments = React.useMemo(() => {
+    const groups: Record<string, { indices: number[]; segments: Partial<SegmentWithPosition>[] }> = {};
+
+    segments.forEach((segment, index) => {
+      const section = segment.section || "Sans groupe";
+      if (!groups[section]) {
+        groups[section] = { indices: [], segments: [] };
+      }
+      groups[section].indices.push(index);
+      groups[section].segments.push(segment);
+    });
+
+    return groups;
+  }, [segments]);
 
   return (
     <div className="p-4 border border-gray-600 rounded-lg bg-[#292929]/50 space-y-4">
@@ -66,7 +70,23 @@ export const SegmentFormSection: React.FC<SegmentFormSectionProps> = ({
       </div>
 
       <div className="space-y-3">
-        {segments.map((segment, index) => (
+        {Object.entries(groupedSegments).map(([sectionName, { indices }]) => (
+          <div key={sectionName} className="space-y-3">
+            {/* Section Header */}
+            {sectionName !== "Sans groupe" && (
+              <div className="flex items-center gap-2 pt-2">
+                <div className="h-px bg-amber-600/30 flex-1" />
+                <h4 className="text-sm font-semibold text-amber-500 uppercase tracking-wide">
+                  {sectionName}
+                </h4>
+                <div className="h-px bg-amber-600/30 flex-1" />
+              </div>
+            )}
+
+            {/* Segments in this section */}
+            {indices.map((index) => {
+              const segment = segments[index];
+              return (
           <div
             key={index}
             className="p-4 border border-gray-600 rounded-lg bg-[#292929]/40 space-y-4"
@@ -90,6 +110,13 @@ export const SegmentFormSection: React.FC<SegmentFormSectionProps> = ({
               placeholder="Titre de l'étape"
             />
 
+            <FormInput
+              label="Section (optionnel)"
+              value={segment.section || ""}
+              onChange={(v) => updateSegment(index, "section", v)}
+              placeholder="Ex: Préparation du tofu, Vinaigrette, Assemblage..."
+            />
+
             <FormTextarea
               label="Paragraphe"
               value={segment.paragraph || ""}
@@ -98,13 +125,16 @@ export const SegmentFormSection: React.FC<SegmentFormSectionProps> = ({
               rows={3}
             />
 
-            <PrepTimeFormSection
-              prepTimes={
-                segment.segment_prep_time?.map((p: any) => p.prep_time) || []
-              }
-              title="Temps de préparation de l’étape"
-              onChange={(prep) => updatePrepTimes(index, prep)}
+            <FormTextarea
+              label="Note"
+              value={segment.note || ""}
+              onChange={(v) => updateSegment(index, "note", v)}
+              placeholder="Notes sur l'étape..."
+              rows={2}
             />
+          </div>
+              );
+            })}
           </div>
         ))}
 

@@ -215,7 +215,7 @@ export function usePublicationView() {
       if (!publication?.publication_id) return false;
 
       // Construire manuellement le payload pour garantir l'intégrité des données
-      const publicationPayload: PublicationPayload = {
+      let publicationPayload: PublicationPayload = {
         ...formData,
         publication_id: publication.publication_id,
         description: Array.isArray(formData.description)
@@ -226,12 +226,32 @@ export function usePublicationView() {
           : formData.note.split("\n"),
       };
 
+      // Transform segments from flat to nested format for backend
+      // Frontend format: { position: 1, title, paragraph, note }
+      // Backend format: { position: 1, segment: { title, paragraph, note } }
+      if (publicationPayload.contents) {
+        publicationPayload.contents = publicationPayload.contents.map((content: any) => {
+          if (content.segments) {
+            return {
+              ...content,
+              segments: content.segments.map((seg: any) => ({
+                position: seg.position,
+                segment: {
+                  title: seg.title,
+                  paragraph: seg.paragraph,
+                  note: seg.note,
+                },
+              })),
+            };
+          }
+          return content;
+        });
+      }
+
       const orchestratorPayload: OrchestratorPayload = {
         action: "update",
         payload: {
-          publications: {
-            [publication.publication_id]: publicationPayload,
-          },
+          [publication.publication_id]: publicationPayload,
         },
       };
 

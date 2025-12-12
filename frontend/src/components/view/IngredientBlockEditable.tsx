@@ -22,6 +22,7 @@ interface FullIngredientEditFields {
   cut: string;
   multiply_factor: number;
   macro: MacroPayload | null;
+  section: string;
 }
 
 interface IngredientBlockEditableProps {
@@ -61,15 +62,13 @@ const IngredientEditor: React.FC<{
 }> = ({ ingredient, onConfirm, onCancel }) => {
   const [fields, setFields] = useState<FullIngredientEditFields>({
     quantity: ingredient.quantity ?? 0,
-    unit:
-      safeDecodeText(ingredient.ingredient_units?.[0]?.unit?.name) ||
-      safeDecodeText(ingredient.ingredient_units?.[0]?.name) ||
-      "",
+    unit: safeDecodeText(ingredient.unit?.name) || "",
     product: safeDecodeText(ingredient.product?.name) || "",
     title: safeDecodeText(ingredient.title) || "",
     cut: safeDecodeText(ingredient.cut) || "",
     multiply_factor: ingredient.multiply_factor ?? 1,
     macro: ingredient.product?.macro || null,
+    section: safeDecodeText(ingredient.section) || "",
   });
   const [isMacroOpen, setMacroOpen] = useState(
     !!(fields.macro && Object.values(fields.macro).some((v) => v)),
@@ -124,6 +123,12 @@ const IngredientEditor: React.FC<{
           placeholder="1.0"
         />
       </div>
+      <FormInput
+        label="Groupe / Section (optionnel)"
+        value={fields.section}
+        onChange={(v) => handleChange("section", v)}
+        placeholder="Ex: Vinaigrette, Salade, Épices..."
+      />
       <div>
         <button
           type="button"
@@ -182,6 +187,30 @@ export const IngredientBlockEditable: React.FC<
     null,
   );
 
+  // Normalize ingredients: flatten nested structure from backend
+  const normalizedIngredients = useMemo(() => {
+    return ingredients.map((ing: any) => {
+      // If ingredient is nested (from backend), flatten it
+      if (ing.ingredient) {
+        return {
+          ingredient_id: ing.ingredient_id,
+          product_id: ing.ingredient.product_id,
+          quantity: ing.ingredient.quantity,
+          unit_id: ing.ingredient.unit_id,
+          cut: ing.ingredient.cut,
+          title: ing.ingredient.title,
+          note: ing.ingredient.note,
+          multiply_factor: ing.ingredient.multiply_factor,
+          section: ing.ingredient.section,
+          product: ing.ingredient.product,
+          unit: ing.ingredient.unit,
+        };
+      }
+      // Already flat (from form state)
+      return ing;
+    });
+  }, [ingredients]);
+
   const [yieldFactor, setYieldFactor] = useState("1.0");
   const parsedYield = parseFloat(yieldFactor) || 1;
 
@@ -197,10 +226,7 @@ export const IngredientBlockEditable: React.FC<
     const factor = parsedYield * (ing.multiply_factor ?? 1);
     const adjustedQty = (ing.quantity ?? 0) * factor;
 
-    const unitName =
-      safeDecodeText(ing.ingredient_units?.[0]?.unit?.name) ||
-      safeDecodeText(ing.ingredient_units?.[0]?.name) ||
-      "";
+    const unitName = safeDecodeText(ing.unit?.name) || "";
     const productName = safeDecodeText(ing.product?.name);
     const cut = safeDecodeText(ing.cut);
 
@@ -216,47 +242,31 @@ export const IngredientBlockEditable: React.FC<
   };
 
 
-  // Logique de regroupement
+  // Logique de regroupement par section
   const groupedIngredients = useMemo(() => {
-    const groups: { title: string | null; items: any[] }[] = [];
-    let currentGroup: { title: string | null; items: any[] } | null = null;
+    const groups = new Map<string | null, any[]>();
 
-    const isEmptyIngredient = (ing: any) => {
-      const unitName =
-        safeDecodeText(ing.ingredient_units?.[0]?.unit?.name) ||
-        safeDecodeText(ing.ingredient_units?.[0]?.name) ||
-        "";
-      const productName = safeDecodeText(ing.product?.name);
-      const cut = safeDecodeText(ing.cut);
-      const qty = ing.quantity;
-
-      return !ing.title && !unitName && !productName && !cut && !qty;
-    };
-
-    for (const ing of ingredients) {
-      if (ing.title) {
-        // nouveau groupe titré
-        currentGroup = { title: ing.title, items: [ing] };
-        groups.push(currentGroup);
-      } else if (isEmptyIngredient(ing)) {
-        // ingrédient complètement vide → attaché au bloc principal
-        let mainGroup = groups.find((g) => g.title === null);
-        if (!mainGroup) {
-          mainGroup = { title: null, items: [] };
-          groups.unshift(mainGroup);
-        }
-        mainGroup.items.push(ing);
-      } else {
-        // pas de titre mais non vide → tombe dans le dernier groupe
-        if (!currentGroup) {
-          currentGroup = { title: null, items: [] };
-          groups.push(currentGroup);
-        }
-        currentGroup.items.push(ing);
+    for (const ing of normalizedIngredients) {
+      const section = ing.section || null;
+      if (!groups.has(section)) {
+        groups.set(section, []);
       }
+      groups.get(section)!.push(ing);
     }
 
-    return groups;
+    // Convert map to array with null section first
+    const result: { title: string | null; items: any[] }[] = [];
+    if (groups.has(null)) {
+      result.push({ title: null, items: groups.get(null)! });
+      groups.delete(null);
+    }
+
+    // Add other sections in order they appear
+    for (const [section, items] of groups.entries()) {
+      result.push({ title: section, items });
+    }
+
+    return result;
   }, [ingredients]);
 
   return (
@@ -306,14 +316,22 @@ export const IngredientBlockEditable: React.FC<
       </header>
       {expanded && (
         <div className="p-3 text-gray-300">
+          {normalizedIngredients.length === 0 && (
+            <p className="text-gray-500 text-sm">Aucun ingrédient disponible</p>
+          )}
+
           {/* Boucle sur les groupes */}
           {groupedIngredients.map((group, index) => (
             <div key={group.title || `untitled-${index}`}>
               {/* Afficher le titre du groupe */}
               {group.title && (
-                <h4 className="font-semibold text-gray-100 mt-3 mb-2 pl-5 text-base">
-                  {group.title}
-                </h4>
+                <div className="flex items-center gap-2 mt-4 mb-3 first:mt-0">
+                  <div className="h-px bg-amber-600/30 flex-1" />
+                  <h4 className="text-sm font-semibold text-amber-500 uppercase tracking-wide px-2">
+                    {group.title}
+                  </h4>
+                  <div className="h-px bg-amber-600/30 flex-1" />
+                </div>
               )}
 
               {/* Boucle sur les ingrédients du groupe */}

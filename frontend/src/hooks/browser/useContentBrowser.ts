@@ -27,7 +27,7 @@ export function useContentBrowser() {
   const debounceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const cols = useResponsiveColumns();
-  const { loadViewFromCache, mergeIntoCache, getDisplayItems } =
+  const { loadViewFromCache, mergeIntoCache, getDisplayItems, clearCache, removePrivatePublications } =
     usePublicationCache();
   const { loading, totalPages, fetchPublications } = usePublicationLoader();
   const { searchActive, query, setQuery, toggleSearch } = useSearchBar({
@@ -109,6 +109,12 @@ export function useContentBrowser() {
 
   const items = getDisplayItems() as Publication[];
 
+  const handleLogout = useCallback(() => {
+    logout();
+    removePrivatePublications(); // Keep public publications, remove private ones
+    navigate('/');
+  }, [logout, removePrivatePublications, navigate]);
+
   return {
     cols,
     items,
@@ -121,7 +127,7 @@ export function useContentBrowser() {
     searchButtonRef,
     toggleSearch,
     isAuthenticated,
-    logout,
+    logout: handleLogout,
     navigate,
   };
 }

@@ -18,6 +18,7 @@ interface FullSegmentEditFields {
   title: string;
   paragraph: string;
   segment_prep_time: PrepTimePayload[];
+  section: string;
 }
 
 interface SegmentBlockEditableProps {
@@ -47,13 +48,14 @@ const SegmentEditor: React.FC<{
 }> = ({ segment, onConfirm, onCancel }) => {
   const [title, setTitle] = useState(segment.title || "");
   const [paragraph, setParagraph] = useState(segment.paragraph || "");
+  const [section, setSection] = useState(segment.section || "");
   const [prepTimes, setPrepTimes] = useState<PrepTimePayload[]>(
     segment.segment_prep_time?.map((p: any) => p.prep_time).filter(Boolean) ||
       [],
   );
 
   const handleConfirm = () => {
-    onConfirm({ title, paragraph, segment_prep_time: prepTimes });
+    onConfirm({ title, paragraph, segment_prep_time: prepTimes, section });
   };
 
   return (
@@ -64,6 +66,14 @@ const SegmentEditor: React.FC<{
         onChange={setTitle}
         placeholder="Optionnel"
       />
+      <div className="mt-3">
+        <FormInput
+          label="Groupe / Section (optionnel)"
+          value={section}
+          onChange={setSection}
+          placeholder="Ex: Préparation, Cuisson, Assemblage..."
+        />
+      </div>
       <div className="mt-3">
         <FormTextarea
           label="Description de l'étape"
@@ -116,6 +126,25 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
 }) => {
   const [editingSegmentId, setEditingSegmentId] = useState<string | null>(null);
 
+  // Normalize segments: flatten nested structure from backend
+  const normalizedSegments = useMemo(() => {
+    return segments.map((seg: any) => {
+      // If segment is nested (from backend), flatten it
+      if (seg.segment) {
+        return {
+          segment_id: seg.segment_id,
+          position: seg.position,
+          title: seg.segment.title,
+          paragraph: seg.segment.paragraph,
+          note: seg.segment.note,
+          section: seg.segment.section,
+        };
+      }
+      // Already flat (from form state)
+      return seg;
+    });
+  }, [segments]);
+
   const handleConfirmUpdate = async (
     segmentId: string,
     fields: FullSegmentEditFields,
@@ -126,25 +155,31 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
     }
   };
 
-  // regroupement par titre
+  // Regroupement par section
   const groupedSegments = useMemo(() => {
-    const groups: { title: string | null; items: any[] }[] = [];
-    let currentGroup: { title: string | null; items: any[] } | null = null;
+    const groups = new Map<string | null, any[]>();
 
-    for (const seg of segments) {
-      if (seg.title) {
-        currentGroup = { title: seg.title, items: [seg] };
-        groups.push(currentGroup);
-      } else {
-        if (!currentGroup) {
-          currentGroup = { title: null, items: [] };
-          groups.push(currentGroup);
-        }
-        currentGroup.items.push(seg);
+    for (const seg of normalizedSegments) {
+      const section = seg.section || null;
+      if (!groups.has(section)) {
+        groups.set(section, []);
       }
+      groups.get(section)!.push(seg);
     }
 
-    return groups;
+    // Convert map to array with null section first
+    const result: { title: string | null; items: any[] }[] = [];
+    if (groups.has(null)) {
+      result.push({ title: null, items: groups.get(null)! });
+      groups.delete(null);
+    }
+
+    // Add other sections in order they appear
+    for (const [section, items] of groups.entries()) {
+      result.push({ title: section, items });
+    }
+
+    return result;
   }, [segments]);
 
   return (
@@ -179,12 +214,20 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
 
       {expanded && (
         <div className="p-4 space-y-4 text-gray-300">
+          {normalizedSegments.length === 0 && (
+            <p className="text-gray-500 text-sm">Aucune étape disponible</p>
+          )}
+
           {groupedSegments.map((group, idx) => (
             <div key={group.title || `group-${idx}`}>
               {group.title && (
-                <h4 className="font-semibold text-gray-100 text-base">
-                  {group.title}
-                </h4>
+                <div className="flex items-center gap-2 mt-4 mb-3 first:mt-0">
+                  <div className="h-px bg-amber-600/30 flex-1" />
+                  <h4 className="text-sm font-semibold text-amber-500 uppercase tracking-wide px-2">
+                    {group.title}
+                  </h4>
+                  <div className="h-px bg-amber-600/30 flex-1" />
+                </div>
               )}
 
               {group.items.map((seg: any, segIdx: number) => {
@@ -221,6 +264,7 @@ export const SegmentBlockEditable: React.FC<SegmentBlockEditableProps> = ({
                             onClick={() => toggleChecked(id)}
                           >
                             <p className="whitespace-pre-line hover:cursor-pointer w-full ml-2">
+                              {seg.title && <strong>{seg.title}: </strong>}
                               {seg.paragraph}
                             </p>
                           </div>
