@@ -34,6 +34,8 @@ Thumbs.db
 
 /src/generated/prisma
 
+.vscode
+
 .claude
 docs
 
